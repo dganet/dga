@@ -1,0 +1,12 @@
+{
+	 "autoload":{
+                "psr-4":{
+                        "Api\\" : "Api/",
+			"GORM\\" : "Api/Model/GORM"
+                }
+        },
+        "require": {
+                "slim/slim": "^3.5",
+                "slim/php-view": "^2.1"
+        }
+}
