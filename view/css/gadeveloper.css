@@ -1,0 +1,35 @@
+
+/* Desktop maiores */
+@media (min-width: 1200px) { 
+.blocoHome {
+	width: 100%;
+	display: table;
+	height: 1024px;
+	position: fixed;
+}
+.gadeveloper {
+	width: 70%;
+	height: 100%;
+	background: #1C4A4A;
+	position: fixed;
+}
+.blocoLogin {
+	background: #F3F3F3;
+	width: 30%;
+	height: 100%;
+	position: relative;
+	float: right;
+	border-right: 50px #1C4A4A solid;
+
+}
+
+ }
+ 
+/* tables em formato porta retrato até os desktos no formato paisagem */
+@media (min-width: 768px) and (max-width: 979px) { ... }
+ 
+/* dispositivo em paisagem até os tablets em formato porta-retrato */
+@media (max-width: 767px) { ... }
+ 
+/* dispositivo no formato paisagem e abaixos */
+@media (max-width: 480px) { ... }

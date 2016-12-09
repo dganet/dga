@@ -1,0 +1,79 @@
+<div id="topo">
+ <div class="blocoTopo">
+<!--Div do Logo -->
+	<div class="logo">
+		<img src="view/imagens/aetube.jpeg">
+	</div>
+
+<!--Div do Menu-->
+	<div class="menu">
+		
+		<div class="dropdown">
+		  <button class="dropbtn"><a ng-href="#/home/inicio">Home</a></button>
+		  <div class="dropdown-content">
+		    <a ng-href="#/home/teste">Teste</a>
+		    <a href="#">Link 2</a>
+		    <a href="#">Link 3</a>
+		  </div>
+		</div>
+
+		<div class="dropdown">
+		  <button class="dropbtn">Noticias</button>
+		  <div class="dropdown-content">
+		    <a href="#">Link 1</a>
+		    <a href="#">Link 2</a>
+		    <a href="#">Link 3</a>
+		  </div>
+		</div>
+
+		<div class="dropdown">
+		  <button class="dropbtn">Diretoria</button>
+		  <div class="dropdown-content">
+		    <a href="#">Link 1</a>
+		    <a href="#">Link 2</a>
+		    <a href="#">Link 3</a>
+		  </div>
+		</div>
+
+		<div class="dropdown">
+		  <button class="dropbtn">Fale Conosco</button>
+		  <div class="dropdown-content">
+		    <a href="#">Link 1</a>
+		    <a href="#">Link 2</a>
+		    <a href="#">Link 3</a>
+		  </div>
+		</div>
+
+		<div class="dropdown">
+		  <button class="dropbtn">Regulameto</button>
+		  <div class="dropdown-content">
+		    <a href="#">Link 1</a>
+		    <a href="#">Link 2</a>
+		    <a href="#">Link 3</a>
+		  </div>
+		</div>
+
+	</div>
+<!-- Div do Login e Senha do Usuario --> 
+	<div class="login">
+	<h4>Área do Associado <i class="fa fa-2x fa-graduation-cap" aria-hidden="true"></i></h4>
+
+		<form class="form-inline" name="formAut" ng-submit="logando(user)">
+			
+
+					<input type="text" ng-model="user.cpf" class="form-control" placeholder="Digite seu CPF">
+
+
+				<input type="password" ng-model="user.senha" class="form-control"  placeholder="Digite sua Senha">
+
+
+
+				<input type="submit" class="btn btn-warning" value="OK">
+	
+		</form>
+				
+				<a href="#/forget">Esqueceu sua senha ?</a> 
+	</div>
+ 
+ </div>
+</div>
