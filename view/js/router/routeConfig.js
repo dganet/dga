@@ -7,30 +7,23 @@ app.config(function ($stateProvider, $urlRouterProvider){
          controller:'homeCtrl'
     })
 
-    .state('home.inicio', {
+    .state('user', {
+      url:'/user',
+      templateUrl: 'view/painel/home.htm',
+      controller:'userCtrl'
+
+    })
+
+      .state('user.incio', {
       url:'/inicio',
-      templateUrl: 'view/login/inicio.htm'
-
+      templateUrl: 'view/painel/inicio.htm',
+      controller: 'userCtrl'
     })
 
-    .state('home.teste', {
-      url:'/teste',
-      templateUrl: 'view/site/teste.htm'
-    })
-
-    .state('home.leiaMais', {
-      url:'/leiaMais',
-      templateUrl: 'view/site/leiaMais.htm'
-    })
-
-      .state('associado', {
-      url:'/associado',
-      templateUrl: 'view/associado/home.htm'
-    })
-
-      .state('associado.fatura', {
-      url:'/fatura',
-      templateUrl: 'view/associado/fatura.htm'
+      .state('user.inicio', {
+      url:'/inicio/primeiro',
+      templateUrl: 'view/url/primeiro.htm',
+      controller: 'userCtrl'
     })
 
   $urlRouterProvider.otherwise("/login");

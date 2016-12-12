@@ -1,30 +1,168 @@
 
 /* Desktop maiores */
 @media (min-width: 1200px) { 
+body, html,.corpo{
+ 	background: #E6E6E6;
+ 	margin: 0 auto;
+}
 .blocoHome {
 	width: 100%;
 	display: table;
-	height: 1024px;
-	position: fixed;
 }
 .gadeveloper {
-	width: 70%;
-	height: 100%;
-	background: #1C4A4A;
-	position: fixed;
+  background: #1C4A4A;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width:70%;
 }
+
+.logo {
+	top: 40%;
+	margin:0 auto;
+	width: 70%;
+	height: 50px;
+	position: absolute;
+	left: 25%;
+}
+
 .blocoLogin {
 	background: #F3F3F3;
-	width: 30%;
-	height: 100%;
-	position: relative;
-	float: right;
-	border-right: 50px #1C4A4A solid;
+ 	position: absolute;
+ 	top: 0;
+  	left: 70%;
+  	bottom: 0;
+  	width: 30%;
+	}
+
+.login {
+	top: 35%;
+	margin:0 auto;
+	width: 70%;
+	height: 50px;
+	position: absolute;
+	left: 15%;
+}
+
+
+#topo {
+	width: 100%;
+	background: #1C4A4A;
+	height: 60px;
+	margin-top: 20px;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+
+#blocoLogo {
+	margin-top: -3px;
+	float: left;
+	margin-left: 20px;
+}
+
+#logo {
 
 }
 
- }
- 
+
+.dropbtn {
+    background-color:#1C4A4A;
+    color: white;
+    padding: 19px 30px;
+    border: none;
+    cursor: pointer;
+}
+.dropbtn a {
+	color: white;
+}
+.menu {
+	float: right;
+    margin-right: 60px;
+    }
+.menu .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.menu .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-left: -70px;
+    z-index: 1;
+}
+
+.menu .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+}
+
+.menu .dropdown-content a:hover {background-color: #f1f1f1; border-left: 1px solid gray;}
+
+.menu .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.menu .dropdown:hover .dropbtn {
+background:#365E5E; 
+color:white; 
+-moz-box-shadow:0 3px 10px 0 #CCC; 
+-webkit-box-shadow:0 3px 10px 0 #ccc; 
+
+}
+
+
+#caminho {
+	background: white;
+	margin:20px 10px 20px 10px;
+	width: calc(100% - 20px);
+	height: 50px;
+	color: #336699;
+	padding: 15px;
+}
+
+.um {
+	background: white;
+	width: 15%;
+	position: fixed;
+	bottom: 10px;
+	top:160px;
+	left: 10px;
+	padding-top: 20px;
+
+}
+.dois {
+	background: white;
+	width: calc(85% - 30px);
+	position: fixed;
+	bottom: 10px;
+	top:160px;
+	left: calc(15% + 20px);
+	}
+
+.um ul li {
+	display: inline;
+	margin-left: -10px;
+}
+.um ul li a {
+	padding: 10px 50px;
+	display: inline-block;
+	/* visual do link */
+	text-decoration: none;
+	color: gray;
+}
+
+.um a:hover {
+	text-decoration: none;
+	background: #F3F3F3;
+}
+
+
+} 
 /* tables em formato porta retrato até os desktos no formato paisagem */
 @media (min-width: 768px) and (max-width: 979px) { ... }
  
