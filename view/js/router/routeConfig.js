@@ -7,25 +7,35 @@ app.config(function ($stateProvider, $urlRouterProvider){
          controller:'homeCtrl'
     })
 
-    .state('user', {
-      url:'/user',
+      .state('user', {
+      url: '/user',
       templateUrl: 'view/painel/home.htm',
-      controller:'userCtrl'
-
+         controller:'homeCtrl',
+         ncyBreadcrumb: {
+            label: 'Home'
+         }
     })
 
-      .state('user.incio', {
-      url:'/inicio',
-      templateUrl: 'view/painel/inicio.htm',
-      controller: 'userCtrl'
+    /* Inserção de Modulos  */
+
+      .state('user.modulolinks', {
+      url: '/modulolinks',
+      templateUrl: 'view/modulo/links.htm',
+       ncyBreadcrumb: {
+            label: 'Modulo'
+         }
     })
 
-      .state('user.inicio', {
-      url:'/inicio/primeiro',
-      templateUrl: 'view/url/primeiro.htm',
-      controller: 'userCtrl'
+      .state('user.modulolinks.subs', {
+      url: '/sublink',
+      templateUrl: 'view/modulo/modulo.html',
+       ncyBreadcrumb: {
+            label: 'Links Modulo'
+         }
     })
 
+
+    
   $urlRouterProvider.otherwise("/login");
 
 
