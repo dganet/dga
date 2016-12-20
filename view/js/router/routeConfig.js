@@ -18,22 +18,30 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
     /* Inserção de Modulos  */
 
-      .state('user.modulolinks', {
-      url: '/modulolinks',
-      templateUrl: 'view/modulo/links.htm',
+      .state('user.associados', {
+      url: '/associados',
+      templateUrl: 'view/modAssociado/associados.htm',
        ncyBreadcrumb: {
-            label: 'Modulo'
+            label: 'Associado'
          }
     })
 
-      .state('user.modulolinks.subs', {
-      url: '/sublink',
-      templateUrl: 'view/modulo/modulo.html',
+      .state('user.cadastroAssociado', {
+      url: '/cadastroAssociado',
+      templateUrl: 'view/modAssociado/cadastroAssociadoLink.htm',
        ncyBreadcrumb: {
-            label: 'Links Modulo'
+            label: 'Cadastro Associado'
          }
     })
 
+
+      .state('user.cadastroAssociado.inseri', {
+      url: '/inseriCadastro',
+      templateUrl: 'view/modAssociado/cadastroAssociado.htm',
+       ncyBreadcrumb: {
+            label: 'Inseri Cadastro'
+         }
+    })
 
     
   $urlRouterProvider.otherwise("/login");
