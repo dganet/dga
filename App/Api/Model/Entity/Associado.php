@@ -1,5 +1,5 @@
 <?php
-namespace Api\Model;
+namespace Api\Model\Entity;
 
 class Associado extends GORM\Model{
 	
@@ -50,6 +50,9 @@ class Associado extends GORM\Model{
 	private $retidoFalta;				// Já foi retido por Falta Boolean
 	private $retidoMaisUmAno;			// Já foi retido mais de um ano letivo Boolean
 	private $desistiuCursarAnoLetivo;	// já desistiu de cursar o primeiro ano letivo? Boolean
+	private $createAt;					// Quando o cadastro foi Criado
+	private $updateAt;					// Quando o cadastro foi atualizado
+	private $status;					// Se o cadastro está ativo ou não
 	
 
 	
@@ -102,6 +105,9 @@ class Associado extends GORM\Model{
 		isset($data['retidoFalta']) ? $this->retidoFalta = $data['retidoFalta'] : $this->retidoFalta = null;
 		isset($data['retidoMaisUmAno']) ? $this->retidoMaisUmAno = $data['retidoMaisUmAno'] : $this->retidoMaisUmAno = null;
 		isset($data['desistiuCursarAnoLetivo']) ? $this->desistiuCursarAnoLetivo = $data['desistiuCursarAnoLetivo'] : $this->desistiuCursarAnoLetivo = null;
+		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null;
+		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null;
+		isset($data['status']) ? $this->status = $data['status'] : $this->status = null;
 		$this->class = $this;
 	}
 
@@ -247,6 +253,15 @@ class Associado extends GORM\Model{
 				break;
 			case 'desistiuCursarAnoLetivo':
 			return $this->desistiuCursarAnoLetivo;
+				break;
+			case 'createAt':
+			return $this->createAt;
+				break;
+			case 'updateAt':
+			return $this->updateAt;
+				break;
+			case 'status':
+			return $this->status;
 				break;
 			default:
 				# code...
@@ -397,12 +412,22 @@ class Associado extends GORM\Model{
 			case 'desistiuCursarAnoLetivo':
 			$this->desistiuCursarAnoLetivo = $value;
 				break;
+			case 'createAt':
+			$this->createAt = $value;
+				break;
+			case 'updateAt':
+			$this->updateAt = $value;
+				break;
+			case 'status':
+			$this->status = $value;
+				break;
 			default:
 				# code...
 				break;
 		}
 
 	}
+
 	//METODO QUE TEM QUE SER IMPLEMENTADO PARA QUE O GORM FUNCTIONE CORRETAMENTE
 	public function toArray(){
 		
@@ -453,7 +478,10 @@ class Associado extends GORM\Model{
 			"cursoNome"	=>	$this->cursoNome,
 			"retidoFalta"	=>	$this->retidoFalta,
 			"retidoMaisUmAno"	=>	$this->retidoMaisUmAno,
-			"desistiuCursarAnoLetivo"	=>	$this->desistiuCursarAnoLetivo
+			"desistiuCursarAnoLetivo"	=>	$this->desistiuCursarAnoLetivo,
+			"createAt"	=>	$this->createAt,
+			"updateAt"	=>	$this->updateAt,
+			"status"	=>	$this->status
 			);
 	}
 
