@@ -17,12 +17,12 @@ class AssociadoController {
 		$associado = new Associado($data);
 		return $associado->select();
 	}
-
+	//Update de cadastro
 	public function atulizaCadastro($data){
 		$associado = new Associado($data);
 		$associado->update();
 	}
-
+	//Desativa o cliente
 	public function inativar($id){
 		$associado = new Associado();
 		$associado->id = $id;
