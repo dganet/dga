@@ -1,8 +1,9 @@
 app.config(function ($stateProvider, $urlRouterProvider){
-  
+
+
   $stateProvider
     .state('login', {
-      url: '/login',
+      url: '/',
       templateUrl: 'view/login/home.htm',
          controller:'homeCtrl'
     })
@@ -42,10 +43,6 @@ app.config(function ($stateProvider, $urlRouterProvider){
             label: 'Inseri Cadastro'
          }
     })
-
+      .otherwise({redirectTo:'/login'});
     
-  $urlRouterProvider.otherwise("/login");
-
-
-
 });
