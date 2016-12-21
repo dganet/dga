@@ -8,27 +8,399 @@
 <hr>
 
 <div class="conteudo">
-	
-	<form>
-<div>
 
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#/user/cadastroAssociado/inseriCadastro#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#/user/cadastroAssociado/inseriCadastro#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-  </ul>
+  <div class="row">
+     
+     <div class="col-md-6">
+       
+      <div class="form-group">
+          <label>Nome Completo do Associado</label>
+          <input type="text" class="form-control" ng-model="associado.nome">
+        </div>
+      </div>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">home</div>
-    <div role="tabpanel" class="tab-pane" id="profile">profile</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>CPF</label>
+          <input type="text" class="form-control" ng-model="associado.cpf">
+        </div>
+      </div>
+      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>RG</label>
+          <input type="text" class="form-control" ng-model="associado.rg">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Orgão Expedidor</label>
+          <input type="text" class="form-control" ng-model="associado.orgaoExpedidor">
+        </div>
+      </div>
+
   </div>
 
-</div>
-	</form>
+  
+
+  <div class="row">
+     
+     <div class="col-md-4">
+       
+      <div class="form-group">
+          <label>Nome Completo do Pai</label>
+          <input type="text" class="form-control" ng-model="associado.nomePai">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Nome Completo Mãe</label>
+          <input type="text" class="form-control" ng-model="associado.nomeMae">
+        </div>
+      </div>
+      
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Endereço</label>
+          <input type="text" class="form-control" ng-model="associado.endereco">
+        </div>
+      </div>
+
+  </div>
+
+  <div class="row">
+     
+     <div class="col-md-1">
+       
+      <div class="form-group">
+          <label>Número</label>
+          <input type="text" class="form-control" ng-model="associado.numero">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Bairro</label>
+          <input type="text" class="form-control" ng-model="associado.bairro">
+        </div>
+      </div>
+      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Cidade</label>
+          <input type="text" class="form-control" ng-model="associado.cidade">
+        </div>
+      </div>
+
+     <div class="col-md-2">
+        <div class="form-group">
+          <label>CEP</label>
+          <input type="text" class="form-control" ng-model="associado.cep">
+        </div>
+      </div>
+
+     <div class="col-md-2">
+        <div class="form-group">
+          <label>Telefone Residencial</label>
+          <input type="text" class="form-control" ng-model="associado.telResidencial">
+        </div>
+      </div>
+
+     <div class="col-md-2">
+        <div class="form-group">
+          <label>Telefone Celular</label>
+          <input type="text" class="form-control" ng-model="associado.telCelular">
+        </div>
+      </div>
+
+
+  </div>
+
+  <div class="row">
+     
+     <div class="col-md-2">
+       
+      <div class="form-group">
+          <label>Profissão</label>
+          <input type="text" class="form-control" ng-model="associado.profissao">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Nome da Empresa</label>
+          <input type="text" class="form-control" ng-model="associado.nomeEmpresa">
+        </div>
+      </div>
+      
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Função</label>
+          <input type="text" class="form-control" ng-model="associado.funcao">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Salário</label>
+          <input type="text" class="form-control" ng-model="associado.salario">
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Outra Renda</label>
+          <input type="text" class="form-control" ng-model="associado.outraRenda">
+        </div>
+      </div>  
+
+  </div>
+
+  <div class="row">
+     
+     <div class="col-md-2">
+       
+      <div class="form-group">
+          <label>Renda Extra</label>
+          <input type="text" class="form-control" ng-model="associado.rendaExtra">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Estado Civil</label>
+          <input type="text" class="form-control" ng-model="associado.estadoCivil">
+        </div>
+      </div>
+      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Nome do Conjuje</label>
+          <input type="text" class="form-control" ng-model="associado.nomeConjuje">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Quantidades de Filho</label>
+          <input type="text" class="form-control" ng-model="associado.qtdeFilhos">
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Idades dos Filhos</label>
+          <input type="text" class="form-control" ng-model="associado.idadeFilhos">
+        </div>
+      </div>  
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Qtd Pesssoas Reside</label>
+          <input type="text" class="form-control" ng-model="associado.idadeFilhos">
+        </div>
+      </div>
+
+  </div>
+
+
+  <div class="row">
+     
+     <div class="col-md-2">
+       
+      <div class="form-group">
+          <label>Pessoas que trabalham</label>
+          <input type="text" class="form-control" ng-model="associado.qtasPessoasTrab">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Renda Familiar</label>
+          <input type="text" class="form-control" ng-model="associado.rendaFamiliar">
+        </div>
+      </div>
+      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Plano de Saude</label>
+          <input type="text" class="form-control" ng-model="associado.planoSaude">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Plano Empresa</label>
+          <input type="text" class="form-control" ng-model="associado.planoEmpresa">
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Tipo de Sangue</label>
+          <input type="text" class="form-control" ng-model="associado.tipoSangue">
+        </div>
+      </div>  
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Possui Problema de Saude</label>
+          <input type="text" class="form-control" ng-model="associado.problemaSaude">
+        </div>
+      </div>
+
+  </div>
+
+<div class="row">
+     
+     <div class="col-md-2">
+       
+      <div class="form-group">
+          <label>Curso</label>
+          <input type="text" class="form-control" ng-model="associado.curso">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Universidade</label>
+          <input type="text" class="form-control" ng-model="associado.universidade">
+        </div>
+      </div>
+      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Semestre Cursando</label>
+          <input type="text" class="form-control" ng-model="associado.semestreCursando">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Aula Sabado</label>
+          <input type="text" class="form-control" ng-model="associado.aulaSabado">
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Duranção de Curso</label>
+          <input type="text" class="form-control" ng-model="associado.duracaoCurso">
+        </div>
+      </div>  
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>RGM</label>
+          <input type="text" class="form-control" ng-model="associado.rgm">
+        </div>
+      </div>
+
+  </div>
+
+<div class="row">
+     
+     <div class="col-md-2">
+       
+      <div class="form-group">
+          <label>Valor Mensalidade</label>
+          <input type="text" class="form-control" ng-model="associado.valorMensalidade">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Possui Bolsa</label>
+          <input type="text" class="form-control" ng-model="associado.possuiBolsaFinCred">
+        </div>
+      </div>
+      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>% Bolsa</label>
+          <input type="text" class="form-control" ng-model="associado.porcBolsaFinCred">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Possui Curso Universitario</label>
+          <input type="text" class="form-control" ng-model="associado.cursoUniversitario">
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Nome do Curso</label>
+          <input type="text" class="form-control" ng-model="associado.cursoNome">
+        </div>
+      </div>  
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Retido por Falta</label>
+          <input type="text" class="form-control" ng-model="associado.retidoFalta">
+        </div>
+      </div>
+
+  </div>
+
+<div class="row">
+     
+     <div class="col-md-2">
+       
+      <div class="form-group">
+          <label>Retido no Ano</label>
+          <input type="text" class="form-control" ng-model="associado.retidoMaisUmAno">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Já Desistiu de cursar o ano letivo ?</label>
+          <input type="text" class="form-control" ng-model="associado.desistiuCursarAnoLetivo">
+        </div>
+      </div>
+      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>% Bolsa</label>
+          <input type="text" class="form-control" ng-model="associado.porcBolsaFinCred">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Possui Curso Universitario</label>
+          <input type="text" class="form-control" ng-model="associado.cursoUniversitario">
+        </div>
+      </div>
+      
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Nome do Curso</label>
+          <input type="text" class="form-control" ng-model="associado.cursoNome">
+        </div>
+      </div>  
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Retido por Falta</label>
+          <input type="text" class="form-control" ng-model="associado.retidoFalta">
+        </div>
+      </div>
+
+  </div>
 
 </div>

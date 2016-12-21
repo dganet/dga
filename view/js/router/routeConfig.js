@@ -3,7 +3,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
   $stateProvider
     .state('login', {
-      url: '/',
+      url: '/login',
       templateUrl: 'view/login/home.htm',
          controller:'homeCtrl'
     })
@@ -19,30 +19,22 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
     /* Inserção de Modulos  */
 
-      .state('user.associados', {
-      url: '/associados',
-      templateUrl: 'view/modAssociado/associados.htm',
+      .state('user.associado', {
+      url: '/associado',
+      templateUrl: 'view/modAssociado/cadastroAssociadoLink.htm',
        ncyBreadcrumb: {
             label: 'Associado'
          }
     })
 
-      .state('user.cadastroAssociado', {
-      url: '/cadastroAssociado',
-      templateUrl: 'view/modAssociado/cadastroAssociadoLink.htm',
-       ncyBreadcrumb: {
-            label: 'Cadastro Associado'
-         }
-    })
 
-
-      .state('user.cadastroAssociado.inseri', {
-      url: '/inseriCadastro',
+      .state('user.associado.inseri', {
+      url: '/inseri',
       templateUrl: 'view/modAssociado/cadastroAssociado.htm',
        ncyBreadcrumb: {
-            label: 'Inseri Cadastro'
+            label: 'Inseri'
          }
     })
-      .otherwise({redirectTo:'/login'});
+        $urlRouterProvider.otherwise("/login");
     
 });
