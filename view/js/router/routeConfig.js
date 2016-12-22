@@ -31,6 +31,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.associado.inseri', {
       url: '/inseri',
       templateUrl: 'view/modAssociado/cadastroAssociado.htm',
+      controller:'cadastroAssociadoCtrl',
        ncyBreadcrumb: {
             label: 'Inseri'
          }
