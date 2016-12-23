@@ -1,7 +1,7 @@
 <?php
 namespace Api\Model\Entity;
 
-class Associado extends GORM\Model{
+class Associado extends \GORM\Model{
 	
 	private $id;						// Id de controle do associado	
 	private $nome;						// Nome do associado
@@ -19,6 +19,7 @@ class Associado extends GORM\Model{
 	private $telCelular;				// Telefone Celular
 	private $telComercial;				// Telefone Comercial
 	private $email;						// Email que sera usado para login
+	private $senha;						// Senha para acesso do Associado
 	private $profissao;					// Profissão do Associado
 	private $nomeEmpresa;				// Nome da Empresa onde o Associado trabalha
 	private $funcao;					// Cargo do Associado
@@ -57,7 +58,7 @@ class Associado extends GORM\Model{
 
 	
 	// adiciona uma instancia desta classe na classe GORM/MODEL
-	public function __construct($data){
+	public function __construct($data = []){
 		isset($data['id']) ? $this->id = $data['id'] : $this->id = null;
 		isset($data['nome']) ? $this->nome = $data['nome'] : $this->nome = null;
 		isset($data['cpf']) ? $this->cpf = $data['cpf'] : $this->cpf = null;
@@ -108,6 +109,7 @@ class Associado extends GORM\Model{
 		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null;
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null;
 		isset($data['status']) ? $this->status = $data['status'] : $this->status = null;
+		isset($data['senha']) ? $this->senha = $data['senha'] : $this->senha = null;
 		$this->class = $this;
 	}
 
@@ -174,7 +176,7 @@ class Associado extends GORM\Model{
 			return $this->salario;
 				break;
 			case 'outraRenda':
-			return $this
+			return $this->outraRenga;
 				break;
 			case 'rendaExtra':
 			return $this->rendaExtra;
@@ -263,6 +265,9 @@ class Associado extends GORM\Model{
 			case 'status':
 			return $this->status;
 				break;
+			case 'senha':
+			return $this->senha;
+				break;
 			default:
 				# code...
 				break;
@@ -332,7 +337,7 @@ class Associado extends GORM\Model{
 			$this->salario = $value;
 				break;
 			case 'outraRenda':
-			$thi = $values
+				$this->outraRenda = $values;
 				break;
 			case 'rendaExtra':
 			$this->rendaExtra = $value;
@@ -421,6 +426,9 @@ class Associado extends GORM\Model{
 			case 'status':
 			$this->status = $value;
 				break;
+			case 'senha':
+			$this->senha = $value;
+				break;
 			default:
 				# code...
 				break;
@@ -481,7 +489,8 @@ class Associado extends GORM\Model{
 			"desistiuCursarAnoLetivo"	=>	$this->desistiuCursarAnoLetivo,
 			"createAt"	=>	$this->createAt,
 			"updateAt"	=>	$this->updateAt,
-			"status"	=>	$this->status
+			"status"	=>	$this->status,
+			"senha"		=>  $this->senha
 			);
 	}
 

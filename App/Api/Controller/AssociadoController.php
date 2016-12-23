@@ -14,7 +14,7 @@ class AssociadoController {
 
 	//Lista todos os associados
 	public function listaTudo(){
-		$associado = new Associado($data);
+		$associado = new Associado();
 		return $associado->select();
 	}
 	//Update de cadastro
