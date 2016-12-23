@@ -1,6 +1,5 @@
-app.controller("cadastroAssociadoCtrl",function($scope){
-
-$scope.tabs = "true";
+app.controller("alteraAssociadoCtrl", function($scope){
+	$scope.tabs = "true";
 $scope.tab1 = true;
 
 $scope.go = function (dados){
@@ -154,8 +153,4 @@ $scope.go = function (dados){
 	}
 
 	}
-
-
-
-
 });
