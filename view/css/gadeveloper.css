@@ -79,6 +79,14 @@ body, html,.corpo{
 .dropbtn a {
 	color: white;
 }
+.dropbtn a:hover{
+	color: white;
+	text-decoration: none;
+}
+.dropbtn a:visited{
+	color: white;
+	text-decoration: none;
+}
 .menu {
 	float: right;
     margin-right: 60px;

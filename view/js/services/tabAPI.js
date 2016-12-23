@@ -1,11 +1,8 @@
-app.controller("cadastroAssociadoCtrl",function($scope){
+app.factory("tabAPI", function($scope){
 
-$scope.tabs = "true";
-$scope.tab1 = true;
+	var _getTab = function(dados){
 
-$scope.go = function (dados){
-
-	if (dados == 'tab1'){
+		if (dados == 'tab1'){
 		$scope.tab1 = true;
 		$scope.tab2 = false;
 		$scope.tab3 = false;
@@ -153,9 +150,11 @@ $scope.go = function (dados){
 
 	}
 
+	return {
+		getTab : _getTab
+
 	}
 
-
-
-
+ }
+	
 });
