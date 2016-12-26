@@ -1,0 +1,4 @@
+
+App/associado/save 			------ Salva um Associado
+App/associado/list 			------ Lista todos Associados
+App/associado/update{id} 	------ Atualiza o associado
