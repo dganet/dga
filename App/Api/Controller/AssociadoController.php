@@ -17,6 +17,11 @@ class AssociadoController {
 		$associado = new Associado();
 		return $associado->select();
 	}
+	//Lista Por Id
+	public function listaId($id){
+		$associado = new Associado();
+		return $associado->select(array('id' => $id));
+	}
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$associado = new Associado($data);

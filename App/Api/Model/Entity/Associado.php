@@ -54,6 +54,7 @@ class Associado extends \GORM\Model{
 	private $createAt;					// Quando o cadastro foi Criado
 	private $updateAt;					// Quando o cadastro foi atualizado
 	private $status;					// Se o cadastro está ativo ou não
+	private $usuario_id;				// Chave estrangeira
 	
 
 	
@@ -110,6 +111,7 @@ class Associado extends \GORM\Model{
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null;
 		isset($data['status']) ? $this->status = $data['status'] : $this->status = null;
 		isset($data['senha']) ? $this->senha = $data['senha'] : $this->senha = null;
+		isset($data['usuario_id']) ? $this->usuario_id = $data['usuario_id'] : $this->usuario_id = null;
 		$this->class = $this;
 	}
 
@@ -268,6 +270,10 @@ class Associado extends \GORM\Model{
 			case 'senha':
 			return $this->senha;
 				break;
+			case 'usuario_id':
+			return $this->usuario_id;
+				break;
+			
 			default:
 				# code...
 				break;
@@ -429,6 +435,9 @@ class Associado extends \GORM\Model{
 			case 'senha':
 			$this->senha = $value;
 				break;
+			case 'usuario_id':
+			$this->usuario_id = $value;
+				break;
 			default:
 				# code...
 				break;
@@ -490,7 +499,8 @@ class Associado extends \GORM\Model{
 			"createAt"	=>	$this->createAt,
 			"updateAt"	=>	$this->updateAt,
 			"status"	=>	$this->status,
-			"senha"		=>  $this->senha
+			"senha"		=>  $this->senha,
+			"usuario_id"		=>  $this->usuario_id
 			);
 	}
 
