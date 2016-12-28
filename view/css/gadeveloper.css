@@ -4,6 +4,7 @@
 body, html,.corpo{
  	background: #E6E6E6;
  	margin: 0 auto;
+
 }
 
 /*  PAINEL LOGIN  */
@@ -159,7 +160,24 @@ color:white;
 	bottom: 10px;
 	top:150px;
 	left: calc(15% + 20px);
+	overflow: auto;
 	}
+
+.tres {
+	width: 20%;
+	margin-top: -20px;
+	padding-right: 20px;
+	border-right:1px solid #E6E6E6;
+}
+
+.tres thead {
+	font-weight: bold;
+}
+
+
+.quatro {
+	width: 80%;
+}
 
 .um ul li {
 	display: inline;

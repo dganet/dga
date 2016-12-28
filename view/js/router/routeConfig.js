@@ -46,6 +46,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
     })
 
+      .state('user.associado.altera.detalhes', {
+      url: '/:idAssociado',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.idAssociado;
+        }
+    })
+
       .state('user.periodo', {
       url: '/periodo',
       templateUrl: 'view/modVagas/periodoVagaLink.htm',

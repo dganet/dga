@@ -153,4 +153,35 @@ $scope.go = function (dados){
 	}
 
 	}
+
+$scope.associados = [
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+{cod:'001', nome:'Adnilton da Silva Santos'},
+{cod:'002', nome:'Guilherme Lima de Britto'},
+{cod:'003', nome:'Ligia Victora Lima de Britto'},
+];
+
 });
