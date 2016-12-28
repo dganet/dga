@@ -78,7 +78,7 @@ class Post extends \GORM\Model{
 				break;
 		}
 	}
-	public function toAttay(){
+	public function toArray(){
 		return array(
 			'id' => $this->id,
 			'descricao' => $this->descricao,

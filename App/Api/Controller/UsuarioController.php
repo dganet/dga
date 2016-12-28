@@ -19,7 +19,7 @@ class UsuarioController implements Controller{
 	//Lita usuario pelo ID
 	public function listaPorId($id){
 		$usuario = new Usuario();
-		return $usuario->select(array('id' => $id));
+		return $usuario->select(array('where' => array('id' => $id)));
 	}
 	//Update de cadastro
 	public function atulizaCadastro($data){

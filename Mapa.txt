@@ -9,10 +9,37 @@ App/associado/delete/{id}	------ Inativa um Associado     #
 #############################################################
 ##################### POST ##################################
 															#
-App/POST/save 				------ Salva um Associado 		#
-App/POST/list 				------ Lista todos Associados   #
-App/POST/list/{id}			------ Lista associado por id	#
-App/POST/update{id} 		------ Atualiza o associado     #
-App/POST/delete/{id}		------ Inativa um Associado     #
+App/post/save 				------ Salva um Associado 		#
+App/post/list 				------ Lista todos Associados   #
+App/post/list/{id}			------ Lista associado por id	#
+App/post/update{id} 		------ Atualiza o associado     #
+App/post/delete/{id}		------ Inativa um Associado     #
+															#
+#############################################################
+##################### USUARIO ###############################
+															#
+App/usuario/save 			------ Salva um Associado 		#
+App/usuario/list 			------ Lista todos Associados   #
+App/usuario/list/{id}		------ Lista associado por id	#
+App/usuario/update{id} 		------ Atualiza o associado     #
+App/usuario/delete/{id}		------ Inativa um Associado     #
+															#
+#############################################################
+##################### PERIODO ###############################
+															#
+App/periodo/save 			------ Salva um Associado 		#
+App/periodo/list 			------ Lista todos Associados   #
+App/periodo/list/{id}		------ Lista associado por id	#
+App/periodo/update{id} 		------ Atualiza o associado     #
+App/periodo/delete/{id}		------ Inativa um Associado     #
+															#
+#############################################################
+##################### VAGA ##################################
+															#
+App/vaga/save 				------ Salva um Associado 		#
+App/vaga/list 				------ Lista todos Associados   #
+App/vaga/list/{id}			------ Lista associado por id	#
+App/vaga/update{id} 		------ Atualiza o associado     #
+App/vaga/delete/{id}		------ Inativa um Associado     #
 															#
 #############################################################

@@ -20,7 +20,7 @@ class AssociadoController implements Controller {
 	//Lista Por Id
 	public function listaPorId($id){
 		$associado = new Associado();
-		return $associado->select(array('id' => $id));
+		return $associado->select(array('where' => array('id' => $id)));
 	}
 	//Update de cadastro
 	public function atulizaCadastro($data){

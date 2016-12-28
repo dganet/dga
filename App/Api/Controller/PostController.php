@@ -18,7 +18,7 @@ class PostController implements Controller{
 	}
 	public function listaPorId($id){
 		$post = new Post();
-		return $post->select(array('id' => $id));
+		return $post->select(array('where' => array('id' => $id)));
 	}
 	public function atulizaCadastro($data){
 		$post = new Post($data);

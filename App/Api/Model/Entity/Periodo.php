@@ -10,7 +10,6 @@ class Periodo extends \GORM\Model{
 	private $status;
 	private $createAt;
 	private $updateAt;
-	private $status;
 	private $usuario_id;
 
 
@@ -23,7 +22,6 @@ class Periodo extends \GORM\Model{
 		isset($data['status']) ? $this->status = $data['status'] : $this->status = null ;
 		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null ;
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null ;
-		isset($data['status']) ? $this->status = $data['status'] : $this->status = null ;
 		isset($data['usuario_id']) ? $this->usuario_id = $data['usuario_id'] : $this->usuario_id = null ;
 		$this->class = $this;
 	}
@@ -53,9 +51,6 @@ class Periodo extends \GORM\Model{
 				break;
 			case 'updateAt':
 				return $this->updateAt;
-				break;
-			case 'status':
-				return $this->status;
 				break;
 			case 'usuario_id':
 				return $this->usuario_id;
@@ -92,9 +87,6 @@ class Periodo extends \GORM\Model{
 			case 'updateAt':
 				$this->updateAt = $value;
 				break;
-			case 'status':
-				$this->status = $value;
-				break;
 			case 'usuario_id':
 				$this->usuario_id = $value;
 				break;
@@ -114,7 +106,6 @@ class Periodo extends \GORM\Model{
 			'status' => $this->status,
 			'createAt' => $this->createAt,
 			'updateAt' => $this->updateAt,
-			'status' => $this->status,
 			'usuario_id' => $this->usuario_id
 			);
 	}

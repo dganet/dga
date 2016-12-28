@@ -62,7 +62,6 @@ $app->group('/associado', function() use ($app){
 		return $associado->inativar($args['id']);
 	});
 });
-
 /**
 *	POST
 */
@@ -119,7 +118,170 @@ $app->group('/post', function() use ($app){
 		return $response;
 	});
 });
+/**
+*	USUARIO
+*/
+$app->group('/usuario', function() use ($app){
 
+	$app->post('/save', function(Request $request, Response $response){
+		$usuario = new \Api\Controller\UsuarioController();
+		$post = json_decode($request->getBody(), true);
+		if ($usuario->cadastrar($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson($usuario);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson(['save' => false]);
+		}
+		return $response;
+	});
+	//lista todos os POSTs
+	$app->get('/list', function(Request $request, Response $response){
+		$usuario = new \Api\Controller\UsuarioController();
+		$usuario = $usuario->listaTudo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($usuario);
+		return $response;
+	});
+	//Lista post por Id
+	$app->get('/list/{id}', function(Request $request, Response $response, $args){
+		$usuario = new \Api\Controller\UsuarioController();
+		$usuario = $usuario->listaPorId($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($usuario);
+		return $response;
+	});
+	//Atualiza cadastro
+	$app->put('/update/{id}', function(Request $request, Response $response, $args){
+		$post = json_decode($request->getBody(), true);
+		$usuario = new \Api\Controller\UsuarioController();
+		if ($usuario->atulizaCadastro($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson($usuario);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson(['update' => false]);
+		}
+		return $response;
+	});
+	//Inativa um Associado
+	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
+		$usuario = new \Api\Controller\UsuarioController();
+		$usuario =  $usuario->inativar($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($usuario);
+		return $response;
+	});
+});
+/**
+* VAGA
+*/
+$app->group('/vaga', function() use ($app){
 
+	$app->post('/save', function(Request $request, Response $response){
+		$vaga = new \Api\Controller\vagaController();
+		$post = json_decode($request->getBody(), true);
+		if ($vaga->cadastrar($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson($vaga);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson(['save' => false]);
+		}
+		return $response;
+	});
+	//lista todos os POSTs
+	$app->get('/list', function(Request $request, Response $response){
+		$vaga = new \Api\Controller\VagaController();
+		$vaga = $vaga->listaTudo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($vaga);
+		return $response;
+	});
+	//Lista post por Id
+	$app->get('/list/{id}', function(Request $request, Response $response, $args){
+		$vaga = new \Api\Controller\VagaController();
+		$vaga = $vaga->listaPorId($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($vaga);
+		return $response;
+	});
+	//Atualiza cadastro
+	$app->put('/update/{id}', function(Request $request, Response $response, $args){
+		$post = json_decode($request->getBody(), true);
+		$vaga = new \Api\Controller\VagaController();
+		if ($vaga->atulizaCadastro($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson($vaga);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson(['update' => false]);
+		}
+		return $response;
+	});
+	//Inativa um Associado
+	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
+		$vaga = new \Api\Controller\VagaController();
+		$vaga =  $vaga->inativar($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($vaga);
+		return $response;
+	});
+});
+/**
+* PERIODO
+*/
+$app->group('/periodo', function() use ($app){
+
+	$app->post('/save', function(Request $request, Response $response){
+		$periodo = new \Api\Controller\PeriodoController();
+		$post = json_decode($request->getBody(), true);
+		if ($periodo->cadastrar($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson($periodo);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson(['save' => false]);
+		}
+		return $response;
+	});
+	//lista todos os POSTs
+	$app->get('/list', function(Request $request, Response $response){
+		$periodo = new \Api\Controller\PeriodoController();
+		$periodo = $periodo->listaTudo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($periodo);
+		return $response;
+	});
+	//Lista post por Id
+	$app->get('/list/{id}', function(Request $request, Response $response, $args){
+		$periodo = new \Api\Controller\PeriodoController();
+		$periodo = $periodo->listaPorId($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($periodo);
+		return $response;
+	});
+	//Atualiza cadastro
+	$app->put('/update/{id}', function(Request $request, Response $response, $args){
+		$post = json_decode($request->getBody(), true);
+		$periodo = new \Api\Controller\PeriodoController();
+		if ($periodo->atulizaCadastro($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson($periodo);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson(['update' => false]);
+		}
+		return $response;
+	});
+	//Inativa um Associado
+	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
+		$periodo = new \Api\Controller\PeriodoController();
+		$periodo =  $periodo->inativar($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($periodo);
+		return $response;
+	});
+});
 
 $app->run();

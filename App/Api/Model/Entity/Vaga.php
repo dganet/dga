@@ -7,9 +7,9 @@ class Vaga extends \GORM\Model{
 	private $associado_id;
 
 	public function __construct($data = []){
-		isset($data['id']) ? $this->id = $data['id'] : $this->$id = null
-		isset($data['periodo_id']) ? $this->periodo_id = $data['periodo_id'] : $this->$periodo_id = null
-		isset($data['associado_id']) ? $this->associado_id = $data['associado_id'] : $this->$associado_id = null
+		isset($data['id']) ? $this->id = $data['id'] : $this->$id = null;
+		isset($data['periodo_id']) ? $this->periodo_id = $data['periodo_id'] : $this->$periodo_id = null;
+		isset($data['associado_id']) ? $this->associado_id = $data['associado_id'] : $this->$associado_id = null;
 		$this->class = $this;
 	}
 	public function __get($attr){
@@ -46,10 +46,10 @@ class Vaga extends \GORM\Model{
 				break;
 		}
 	}
-	public function toAttay(){
+	public function toArray(){
 		return array(
-			'$id' => $this->id
-			'$periodo_id' => $this->periodo_id
+			'$id' => $this->id,
+			'$periodo_id' => $this->periodo_id,
 			'$associado_id' => $this->associado_id
 			);
 	}
