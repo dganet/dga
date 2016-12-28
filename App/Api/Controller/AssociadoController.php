@@ -2,7 +2,7 @@
 namespace Api\Controller;
 use \Api\Model\Entity\Associado;
 
-class AssociadoController {
+class AssociadoController implements Controller {
 
 	// Salva as Informações do Associado
 	public function cadastrar($data){
@@ -18,19 +18,21 @@ class AssociadoController {
 		return $associado->select();
 	}
 	//Lista Por Id
-	public function listaId($id){
+	public function listaPorId($id){
 		$associado = new Associado();
 		return $associado->select(array('id' => $id));
 	}
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$associado = new Associado($data);
+		$associado->createAt = $_SERVER['REQUEST_TIME'];
 		$associado->update();
 	}
 	//Desativa o cliente
 	public function inativar($id){
 		$associado = new Associado();
 		$associado->id = $id;
+		$associado->createAt = $_SERVER['REQUEST_TIME'];
 		$associado->status = 'INATIVO';
 		$associado->update();
 	}

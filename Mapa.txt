@@ -7,3 +7,12 @@ App/associado/update{id} 	------ Atualiza o associado     #
 App/associado/delete/{id}	------ Inativa um Associado     #
 															#
 #############################################################
+##################### POST ##################################
+															#
+App/POST/save 				------ Salva um Associado 		#
+App/POST/list 				------ Lista todos Associados   #
+App/POST/list/{id}			------ Lista associado por id	#
+App/POST/update{id} 		------ Atualiza o associado     #
+App/POST/delete/{id}		------ Inativa um Associado     #
+															#
+#############################################################
