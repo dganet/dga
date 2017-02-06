@@ -35,5 +35,18 @@ class UsuarioController implements Controller{
 		$usuario->id = $id;
 		return $usuario->update();
 	}
+	//Logar 
+	public function login($data){
+		$usuario = new Usuario();
+		return $usuario->select(array('where' => array(
+								'AND' => array(
+										'email' => $data['email'],
+										'senha' => $data['senha']
+												)
+									)
+								)
+							);
+
+	}
 
 }

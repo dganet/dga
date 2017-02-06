@@ -19,6 +19,7 @@ App/post/delete/{id}		------ Inativa um Associado     #
 ##################### USUARIO ###############################
 															#
 App/usuario/save 			------ Salva um Associado 		#
+App/usuario/login			------ Loga um usuario 			#
 App/usuario/list 			------ Lista todos Associados   #
 App/usuario/list/{id}		------ Lista associado por id	#
 App/usuario/update{id} 		------ Atualiza o associado     #

@@ -18,11 +18,11 @@ $app->group('/associado', function() use ($app){
 	$app->post('/save', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();
 		$post = json_decode($request->getBody(), true);
-		if ($associado->cadastrar($associado)){
+		if ($associado->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson($associado);
 		}else{
-			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withHeader('Content-xtype', 'application/json');
 			$response = $response->withJson(['save' => false]);
 		}
 		return $response;
@@ -123,6 +123,20 @@ $app->group('/post', function() use ($app){
 */
 $app->group('/usuario', function() use ($app){
 
+	//Loga o Usuario
+	$app->post('/login', function(Request $request, Response $response){
+		$usuario = new \Api\Controller\UsuarioController();
+		$post = json_decode($request->getBody(), true);
+		if ($usuario->login($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson($usuario);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson(['save' => false]);
+		}
+		return $response;
+	});
+	//Salva um usuario
 	$app->post('/save', function(Request $request, Response $response){
 		$usuario = new \Api\Controller\UsuarioController();
 		$post = json_decode($request->getBody(), true);
