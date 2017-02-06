@@ -88,43 +88,59 @@ app.config(function ($stateProvider, $urlRouterProvider){
     })
 
 //############################################################################
+//############# **  MODULO VAGAS ** ##########################################
+//############################################################################
 
 
-      .state('user.periodo', {
+      .state('user.vagas', {
       url: '/periodo',
       templateUrl: 'view/modVagas/periodoVagaLink.htm',
-       ncyBreadcrumb: {
-            label: 'Periodo'
-         }
-    })
-
-      .state('user.periodo.inseri', {
-      url: '/periodo',
-      templateUrl: 'view/modVagas/periodoVaga.htm',
-      controller:'vagasPeriodoCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri'
-         }
-    })
-
-      .state('user.vaga', {
-      url: '/vaga',
-      templateUrl: 'view/modVagas/cadastroVagaLink.htm',
        ncyBreadcrumb: {
             label: 'Vagas'
          }
     })
 
-
-      .state('user.vaga.inseri', {
-      url: '/inseri',
-      templateUrl: 'view/modVagas/cadastroVaga.htm',
-      controller:'cadastroAssociadoCtrl',
+      .state('user.vagas.inseri', {
+      url: '/vagas',
+      templateUrl: 'view/modVagas/periodoVaga.htm',
+      controller:'vagasPeriodoCtrl',
        ncyBreadcrumb: {
-            label: 'Inseri'
+            label: 'Inseri Vagas'
          }
     })
 
+      .state('user.vagas.remove', {
+      url: '/remove',
+      templateUrl: 'view/modVagas/removeVaga.htm',
+      controller:'vagasPeriodoCtrl',
+       ncyBreadcrumb: {
+            label: 'Remove Vagas'
+         }
+    })
+
+
+      .state('user.vagas.inseriAssociado', {
+      url: '/inseriAssociado',
+      templateUrl: 'view/modVagas/periodoAssociado.htm',
+      controller:'vagasPeriodoCtrl',
+       ncyBreadcrumb: {
+            label: 'Inseri Associado'
+         }
+    })
+
+
+      .state('user.vagas.listagem', {
+      url: '/listagem',
+      templateUrl: 'view/modVagas/listagem.htm',
+      controller:'vagasPeriodoCtrl',
+       ncyBreadcrumb: {
+            label: 'Listagem de Vagas'
+         }
+    })
+
+//############################################################################
+//############# **  MODULO NOTICIAS ** ##########################################
+//############################################################################
       .state('user.noticia', {
       url: '/noticia',
       templateUrl: 'view/modNoticias/cadastraNoticiaLink.htm',
@@ -142,6 +158,77 @@ app.config(function ($stateProvider, $urlRouterProvider){
             label: 'Inseri'
          }
     })
+
+      .state('user.noticia.altera', {
+      url: '/altera',
+      templateUrl: 'view/modNoticias/alteraNoticia.htm',
+      controller:'cadastroNoticiaCtrl',
+       ncyBreadcrumb: {
+            label: 'Altera'
+         }
+    })
+
+//############################################################################
+//############# **  MODULO CURSOS ** ##########################################
+//############################################################################
+      .state('user.cursos', {
+      url: '/cursos',
+      templateUrl: 'view/modCursos/cursoLink.htm',
+       ncyBreadcrumb: {
+            label: 'Cursos'
+         }
+    })
+
+
+      .state('user.cursos.inseri', {
+      url: '/inseri',
+      templateUrl: 'view/modCursos/cadastraCurso.htm',
+      controller:'cadastroNoticiaCtrl',
+       ncyBreadcrumb: {
+            label: 'Inseri'
+         }
+    })
+
+      .state('user.cursos.altera', {
+      url: '/altera',
+      templateUrl: 'view/modCursos/alteraCurso.htm',
+      controller:'cadastroNoticiaCtrl',
+       ncyBreadcrumb: {
+            label: 'Altera'
+         }
+    })
+
+//############################################################################
+//############# **  MODULO OPORTUNIDADE ** ##########################################
+//############################################################################
+      .state('user.oportunidade', {
+      url: '/oportunidade',
+      templateUrl: 'view/modOportunidade/oportunidadeLink.htm',
+       ncyBreadcrumb: {
+            label: 'Oportunidade'
+         }
+    })
+
+
+      .state('user.oportunidade.inseri', {
+      url: '/inseri',
+      templateUrl: 'view/modOportunidade/cadastraOportunidade.htm',
+      controller:'cadastroNoticiaCtrl',
+       ncyBreadcrumb: {
+            label: 'Inseri Oportunidade'
+         }
+    })
+
+      .state('user.oportunidade.altera', {
+      url: '/altera',
+      templateUrl: 'view/modOportunidade/alteraOportunidade.htm',
+      controller:'cadastroNoticiaCtrl',
+       ncyBreadcrumb: {
+            label: 'Altera Oportunidade'
+         }
+    })
+
+//############################################################################
         $urlRouterProvider.otherwise("/login");
     
 });

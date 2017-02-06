@@ -1,0 +1,37 @@
+<div class="acoes">
+
+	<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+	<label>Alteraração dos Cursos</label>
+</div>
+
+<hr>
+
+<div class="conteudo">
+ 
+ <div class="tres">
+
+   <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo titulo">
+   <br>
+
+   <table class="table table-condensed">
+    <thead>
+     <tr>
+        <td>Noticias</td>
+     </tr>
+    </thead>
+
+    <tbody> 
+     <tr ng-repeat="x in associados | filter: busca">
+       <td> <a ui-sref="user.associado.altera.detalhes({idAssociado: 2})">{{x.nome}}</a></td>
+     </tr>
+   
+    </tbody>
+
+   </table>
+
+  </div>
+
+  <div class="quatro">
+
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="acoes">
+
+	<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+	<label>Deleta o Associado</label>
+</div>
+
+<hr>
+
+<div class="conteudo">
+ 
+ <div class="tres">
+
+   <input type="text" class="form-control" ng-model="busca" placeholder="Procure por Nome ou COD">
+   <br>
+
+   <table class="table table-condensed">
+    <thead>
+     <tr>
+        <td>Cod</td>
+        <td>Nome do Associado</td>
+     </tr>
+    </thead>
+
+    <tbody> 
+     <tr ng-repeat="x in associados | filter: busca">
+       <td>{{x.cod}}</td>
+       <td> <a ui-sref="user.associado.altera.detalhes({idAssociado: 2})">{{x.nome}}</a></td>
+     </tr>
+   
+    </tbody>
+
+   </table>
+
+  </div>
+
+  <div class="quatro">
+
+
+<div class="alert alert-info">
+  <strong>Atenção!</strong> Ao Deletar o Associado ele deixará de acessar seu Portal do Associado , porém todos dados referente ao mesmo será preservado e guardado no banco de dados para futuras consulta.
+</div>
+
+  </div>
+</div>
