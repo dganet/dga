@@ -168,6 +168,7 @@ color:white;
 	margin-top: -20px;
 	padding-right: 20px;
 	border-right:1px solid #E6E6E6;
+	float: left;
 }
 
 .tres thead {
@@ -176,7 +177,9 @@ color:white;
 
 
 .quatro {
-	width: 80%;
+	width: calc(80% - 20px);
+	float: left;
+	margin-left: 20px;
 }
 
 .um ul li {

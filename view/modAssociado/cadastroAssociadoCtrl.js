@@ -1,4 +1,4 @@
-app.controller("cadastroAssociadoCtrl",function($scope){
+app.controller("cadastroAssociadoCtrl",function($scope, $http,$location , $timeout , $rootScope){
 
 $scope.tabs = "true";
 $scope.tab1 = true;
@@ -156,6 +156,36 @@ $scope.go = function (dados){
 	}
 
 
+ var id  = $rootScope.id;
+  //scope.master vazio;
+  $scope.master = {};
+  //Ocultando o Alert Mensagem .
+  $scope.mensagem = true;
 
+//*************CADASTRA NOVO CLIENTE *********************// 
+
+//Passa os valores do form em Objeto no "values"
+  $scope.add = function(values, FormAssociado) {
+
+    // Enviado os valores em objetos para api/user do php/slim
+    $http.post('App/associado/save/', values).success(function(){
+      // Depois mandando para mesma pagina  
+      $scope.activePath = $location.path('/user/associado/inseri');
+         
+      // Funcão de exibir a mensagem de sucesso em 5 segundos.
+      $scope.mensagem = false;
+      $timeout(function () {
+               $scope.mensagem = true;
+           },20000);
+    });
+     //Resentando os input do formulario .
+    $scope.reset = function() {
+    // Copiando os valores vazio do scope.master 
+      $scope.cliente = angular.copy($scope.master);
+    };
+    // Ativando a função
+    $scope.reset();
+
+  };
 
 });

@@ -1,0 +1,64 @@
+<div class="acoes">
+
+	<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+	<label>Portal do Associado</label>
+</div>
+
+<hr>
+
+<div class="conteudo">
+ 
+ <div class="tres">
+
+   <input type="text" class="form-control" ng-model="busca" placeholder="Procure por Nome ou COD">
+   <br>
+
+   <table class="table table-condensed">
+    <thead>
+     <tr>
+        <td>Cod</td>
+        <td>Nome do Associado</td>
+     </tr>
+    </thead>
+
+    <tbody> 
+     <tr ng-repeat="x in associados | filter: busca">
+       <td>{{x.cod}}</td>
+       <td> <a ui-sref="user.associado.portal.detalhes({idAssociado: 2})">{{x.nome}}</a></td>
+     </tr>
+   
+    </tbody>
+
+   </table>
+
+  </div>
+
+  <div class="quatro">
+
+  <form>
+      <div class="row">
+
+  <div class="col-md-3">
+    
+    <div class="form-group">
+      <label>CPF</label>
+      <input type="text" class="form-control" disabled="disabled"> 
+      </div> 
+    </div>
+
+     <div class="col-md-9">
+      <div class="form-group">
+            <label>Senha</label>
+            <input type="password" class="form-control">
+       </div>
+     </div>
+
+  </div>
+  
+<hr>
+<button type="śubmit" class="btn btn-primary">Salvar Dados</button> 
+
+  </form>
+
+  </div>
+</div>

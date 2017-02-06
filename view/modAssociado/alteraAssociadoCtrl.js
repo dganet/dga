@@ -184,4 +184,6 @@ $scope.associados = [
 {cod:'003', nome:'Ligia Victora Lima de Britto'},
 ];
 
+$scope.quatro = true;
+
 });

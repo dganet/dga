@@ -16,8 +16,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
             label: 'Home'
          }
     })
-
-    /* Inserção de Modulos  */
+//############# **  MODULO ASSOCIADO ** ###########################################################
 
       .state('user.associado', {
       url: '/associado',
@@ -53,6 +52,43 @@ app.config(function ($stateProvider, $urlRouterProvider){
             $scope.id = $stateParams.idAssociado;
         }
     })
+
+      .state('user.associado.portal', {
+      url: '/portal',
+      templateUrl: 'view/modAssociado/portalAssociado.htm',
+      controller:'alteraAssociadoCtrl',
+       ncyBreadcrumb: {
+            label: 'Portal'
+         }
+    })
+
+      .state('user.associado.portal.detalhes', {
+      url: '/:idAssociado',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.idAssociado;
+        }
+    })
+
+      .state('user.associado.del', {
+      url: '/del',
+      templateUrl: 'view/modAssociado/del.htm',
+      controller:'alteraAssociadoCtrl',
+       ncyBreadcrumb: {
+            label: 'Deleta'
+         }
+    })
+
+      .state('user.associado.del.detalhes', {
+      url: '/:idAssociado',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.idAssociado;
+        }
+    })
+
+//############################################################################
+
 
       .state('user.periodo', {
       url: '/periodo',
