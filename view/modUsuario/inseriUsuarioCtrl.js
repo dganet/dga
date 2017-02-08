@@ -9,8 +9,10 @@ app.controller("inseriUsuarioCtrl",function($scope, $http,$location , $timeout ,
 //*************CADASTRA NOVO CLIENTE *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormAssociado) {
+  $scope.add = function(values, FormUsuario) {
 
+  	$scope.dados = values;
+  	
     // Enviado os valores em objetos para api/user do php/slim
     $http.post('App/usuario/save', values).success(function(){
       // Depois mandando para mesma pagina  
