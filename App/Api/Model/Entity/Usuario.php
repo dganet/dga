@@ -13,15 +13,15 @@ class Usuario extends \GORM\Model{
 	private $updateAt;
 
 	public function __construct($data = []){
-		isset($data['id']) ? $this->id = $data['$id'] : $this->id = null ;
-		isset($data['email']) ? $this->email = $data['$email'] : $this->email = null ;
-		isset($data['senha']) ? $this->senha = $data['$senha'] : $this->senha = null ;
-		isset($data['nome']) ? $this->nome = $data['$nome'] : $this->nome = null ;
-		isset($data['cargo']) ? $this->cargo = $data['$cargo'] : $this->cargo = null ;
-		isset($data['imagem']) ? $this->imagem = $data['$imagem'] : $this->imagem = null ;
-		isset($data['cpf']) ? $this->cpf = $data['$cpf'] : $this->cpf = null ;
-		isset($data['createAt']) ? $this->createAt = $data['$createAt'] : $this->createAt = null ;
-		isset($data['updateAt']) ? $this->updateAt = $data['$updateAt'] : $this->updateAt = null ;
+		isset($data['id']) ? $this->id = $data['id'] : $this->id = null ;
+		isset($data['email']) ? $this->email = $data['email'] : $this->email = null ;
+		isset($data['senha']) ? $this->senha = $data['senha'] : $this->senha = null ;
+		isset($data['nome']) ? $this->nome = $data['nome'] : $this->nome = null ;
+		isset($data['cargo']) ? $this->cargo = $data['cargo'] : $this->cargo = null ;
+		isset($data['imagem']) ? $this->imagem = $data['imagem'] : $this->imagem = null ;
+		isset($data['cpf']) ? $this->cpf = $data['cpf'] : $this->cpf = null ;
+		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null ;
+		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null ;
 		$this->class = $this;
 	}
 
@@ -97,15 +97,15 @@ class Usuario extends \GORM\Model{
 	}
 	public function toArray(){
 		return array(
-			'$id' => $this->id,
-			'$email' => $this->email,
-			'$senha' => $this->senha,
-			'$nome' => $this->nome,
-			'$cargo' => $this->cargo,
-			'$imagem' => $this->imagem,
-			'$cpf' => $this->cpf,
-			'$createAt' => $this->createAt,
-			'$updateAt' => $this->updateAt
+			'id' => $this->id,
+			'email' => $this->email,
+			'senha' => $this->senha,
+			'nome' => $this->nome,
+			'cargo' => $this->cargo,
+			'imagem' => $this->imagem,
+			'cpf' => $this->cpf,
+			'createAt' => $this->createAt,
+			'updateAt' => $this->updateAt
 			);
 	}
 
