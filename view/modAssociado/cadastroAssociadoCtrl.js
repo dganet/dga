@@ -168,7 +168,7 @@ $scope.go = function (dados){
   $scope.add = function(values, FormAssociado) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('App/associado/save', values).success(function(){
+    $http.pots('App/associado/save', values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/associado/inseri');
          

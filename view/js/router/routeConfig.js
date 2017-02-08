@@ -229,6 +229,36 @@ app.config(function ($stateProvider, $urlRouterProvider){
     })
 
 //############################################################################
+//############# **  MODULO USUARIO ** ##########################################
+//############################################################################
+      .state('user.usuario', {
+      url: '/usuario',
+      templateUrl: 'view/modUsuario/link.htm',
+       ncyBreadcrumb: {
+            label: 'Usuario'
+         }
+    })
+
+
+      .state('user.usuario.inseri', {
+      url: '/inseri',
+      templateUrl: 'view/modUsuario/inseriUsuario.htm',
+      controller:'inseriUsuarioCtrl',
+       ncyBreadcrumb: {
+            label: 'Inseri Usuario'
+         }
+    })
+
+      .state('user.usuario.altera', {
+      url: '/altera',
+      templateUrl: 'view/modUsuario/alteraUsuario.htm',
+      controller:'cadastroNoticiaCtrl',
+       ncyBreadcrumb: {
+            label: 'Altera Usuario'
+         }
+    })
+
+//############################################################################
         $urlRouterProvider.otherwise("/login");
     
 });
