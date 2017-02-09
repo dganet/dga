@@ -41,17 +41,20 @@ app.config(function ($stateProvider, $urlRouterProvider){
       templateUrl: 'view/modAssociado/alteraAssociado.htm',
       controller:'alteraAssociadoCtrl',
        ncyBreadcrumb: {
-            label: 'Alterar'
+            label: 'Altera Usuario'
          }
     })
 
       .state('user.associado.altera.detalhes', {
-      url: '/:idAssociado',
+      url: '/:id',
        controller: function($scope, $stateParams) {
             // get the id
-            $scope.id = $stateParams.idAssociado;
-        }
-    })
+            $scope.id = $stateParams.id;
+        },
+              ncyBreadcrumb: {
+            label: 'Altera'
+         }
+      })
 
       .state('user.associado.portal', {
       url: '/portal',

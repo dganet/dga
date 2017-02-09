@@ -171,8 +171,8 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		$http.get('App/usuario/list/'+ id).success(function(data){
-		$scope.usuario = data[0];
+		$http.get('App/associado/list/'+ id).success(function(data){
+		$scope.associado = data[0];
 		
 	});
 
