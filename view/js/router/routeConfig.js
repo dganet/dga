@@ -5,13 +5,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
     .state('login', {
       url: '/login',
       templateUrl: 'view/login/home.htm',
-         controller:'homeCtrl'
+       controller:'loginCtrl',
     })
 
       .state('user', {
       url: '/user',
       templateUrl: 'view/painel/home.htm',
-         controller:'homeCtrl',
+        
          ncyBreadcrumb: {
             label: 'Home'
          }
@@ -252,10 +252,22 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.usuario.altera', {
       url: '/altera',
       templateUrl: 'view/modUsuario/alteraUsuario.htm',
-      controller:'cadastroNoticiaCtrl',
+      controller:'alteraUsuarioCtrl',
        ncyBreadcrumb: {
             label: 'Altera Usuario'
          }
+    })
+
+      .state('user.usuario.altera.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+              ncyBreadcrumb: {
+            label: 'Altera'
+         }
+
     })
 
 //############################################################################

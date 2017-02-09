@@ -1,17 +1,13 @@
-app.controller("inseriUsuarioCtrl",function($scope, $http,$location , $timeout , $rootScope){
-
- var id  = $rootScope.id;
+app.controller("inseriUsuarioCtrl",function($scope, $http,$location , $timeout){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
 
-//*************CADASTRA NOVO CLIENTE *********************// 
+//*************CADASTRA NOVO USUARIO *********************// 
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormUsuario) {
-
-  	$scope.dados = values;
   	
     // Enviado os valores em objetos para api/user do php/slim
     $http.post('App/usuario/save', values).success(function(){
