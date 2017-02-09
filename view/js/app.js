@@ -1,1 +1,1 @@
-var app = angular.module('myApp',['ui.router','ncy-angular-breadcrumb']);
+var app = angular.module('myApp',['ui.router','ncy-angular-breadcrumb','ngStorage']);

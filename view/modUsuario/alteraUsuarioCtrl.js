@@ -1,4 +1,4 @@
-app.controller("alteraUsuarioCtrl", function($scope, $http,$location , $timeout , $rootScope){
+app.controller("alteraUsuarioCtrl", function($scope, $http,$location , $timeout ){
 
 $scope.quatro = false;
 

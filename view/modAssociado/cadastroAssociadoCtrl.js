@@ -1,4 +1,8 @@
-app.controller("cadastroAssociadoCtrl",function($scope, $http,$location , $timeout , $rootScope){
+app.controller("cadastroAssociadoCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
+
+var id = sessionStorage.getItem('usuario.id');
+console.log($scope.id);
+
 
 $scope.tabs = "true";
 $scope.tab1 = true;
@@ -156,7 +160,7 @@ $scope.go = function (dados){
 	}
 
 
- var id  = $rootScope.id;
+ 
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -168,9 +172,11 @@ $scope.go = function (dados){
   $scope.add = function(values, FormAssociado) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.pots('App/associado/save', values).success(function(){
+    $http.post('App/associado/save/'+ id, values).success(function(response){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/associado/inseri');
+      console.log(response);
+
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;

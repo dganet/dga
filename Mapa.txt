@@ -1,6 +1,6 @@
 ##################### ASSOCIADO #############################
 															#
-App/associado/save 			------ Salva um Associado 		#
+App/associado/save/{id}		------ Salva um Associado 		#
 App/associado/list 			------ Lista todos Associados   #
 App/associado/list/{id}		------ Lista associado por id	#
 App/associado/update{id} 	------ Atualiza o associado     #

@@ -38,14 +38,21 @@ class UsuarioController implements Controller{
 	//Logar 
 	public function login($data){
 		$usuario = new Usuario();
-		return $usuario->select(array('where' => array(
+		$flag =  $usuario->select(array('where' => array(
 								'AND' => array(
-										'email' => $data['email'],
+										'email' => $data['login'],
 										'senha' => $data['senha']
 												)
 									)
 								)
 							);
+		if (count($flag)==0){
+			$flag['check'] = false;
+		}else{
+			$flag['check'] = true;
+		}
+		return $flag;
+
 
 	}
 

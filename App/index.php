@@ -15,9 +15,10 @@ $app = new Slim\App([
 */
 $app->group('/associado', function() use ($app){
 
-	$app->post('/save', function(Request $request, Response $response){
+	$app->post('/save/{id}', function(Request $request, Response $response, $args){
 		$associado = new \Api\Controller\AssociadoController();
 		$post = json_decode($request->getBody(), true);
+		$post['usuario_id'] = $args['id'];
 		if ($associado->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson($associado);
@@ -127,12 +128,14 @@ $app->group('/usuario', function() use ($app){
 	$app->post('/login', function(Request $request, Response $response){
 		$usuario = new \Api\Controller\UsuarioController();
 		$post = json_decode($request->getBody(), true);
-		if ($usuario->login($post)){
+		$usuario = $usuario->login($post);
+		if ($usuario['check']){
+			unset($usuario['check']);
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson($usuario);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['save' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
