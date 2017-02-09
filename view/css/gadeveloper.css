@@ -20,6 +20,12 @@ body, html,.corpo{
   width:70%;
 }
 
+.titulo_login{
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+
 .logo {
 	top: 40%;
 	margin:0 auto;
@@ -39,7 +45,7 @@ body, html,.corpo{
 	}
 
 .login {
-	top: 35%;
+	top: calc(35% - 30px);
 	margin:0 auto;
 	width: 70%;
 	height: 50px;
