@@ -1,4 +1,7 @@
-app.controller("alteraAssociadoCtrl", function($scope, $http,$location , $timeout ){
+app.controller("alteraAssociadoCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
+//Pega o Id do Usuario Logado
+var id = sessionStorage.getItem('usuario.id');
+
 	$scope.tabs = "true";
 $scope.tab1 = true;
 
@@ -184,18 +187,16 @@ $scope.dados = function (values){
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
 
-//*************UPDATE USUARIO *********************// 
+//************* UPDATE ASSOCIADO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormUsuario) {
-
-	 $scope.dados = values;
-	 var id = $scope.dados.id;
+  $scope.add = function(values, FormAssociado) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.put('App/usuario/update/'+ id , values).success(function(){
+	 $http.put('App/associado/update/'+ id , values).success(function(response){
+
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/usuario/altera');
+    	 $scope.activePath = $location.path('/user/associado/altera');
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
@@ -204,8 +205,8 @@ $scope.dados = function (values){
            },10000);
     });
 
-    $http.get('App/usuario/list').success(function(data){
-		$scope.usuarios = data;
+    $http.get('App/associado/list').success(function(data){
+		$scope.associados = data;
 
 	});
 
@@ -215,8 +216,8 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		$http.get('App/usuario/list/'+ id).success(function(data){
-		$scope.usuario = data[0];
+		$http.get('App/associado/list/'+ id).success(function(data){
+		$scope.associado = data[0];
 		
 	});
 

@@ -132,14 +132,11 @@ trait Builder
         foreach ($class as $key => $value) {
             if (empty($value)){
             }else{
-                if($key == "id"){
-                }else{
-                }
-                $temp .= " $key=$value";
+                $temp .= " $key='$value'";
             }
         }
+        substr($temp, 0, -1);
         self::$sql = self::$update.self::$table.self::$set.$temp.self::$where." id=".$id;
-        echo self::$sql;
     }
     
     

@@ -1,7 +1,9 @@
 app.controller("cadastroAssociadoCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
 
+//Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
-console.log($scope.id);
+
+
 
 
 $scope.tabs = "true";

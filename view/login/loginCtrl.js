@@ -11,12 +11,12 @@
 				$http.post('App/usuario/login', values).success(function(response){
 			 			      
 		    	if (response[0] == false){
-		    	    // Exibi a mensagem  				    
+		    		// Exibi a mensagem  				    
 				    $scope.mensagem = false;
 				    // Depois de 5 segundos some a mensagem
 			        $timeout(function () {
 		               $scope.mensagem = true;
-		           },5000);
+		           },10000);
 
 		      	} else {
 		      		

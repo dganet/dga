@@ -46,9 +46,8 @@ class Model{
 		Builder::makeUpdate($this->class);
 		$con                   = new ConnectionFactory($this->mode);
 		$db                    = $con->getInstance();
-		$linha                 = $db->execute(Builder::$sql);
-		$r                     = $linha->fetchAll(PDO::FETCH_ASSOC);
-		return $r;
+		$linha                 = $db->prepare(Builder::$sql);
+		return $linha->execute();
 	}
 	/**
 	*	Carrega a Tabela na variavel dentro da trait Builder::$table 

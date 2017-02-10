@@ -6,9 +6,8 @@ class AssociadoController implements Controller {
 
 	// Salva as Informações do Associado
 	public function cadastrar($data){
-		$associado = new Associado($data);
+		$associado = new Associado();
 		$associado->createAt = $_SERVER['REQUEST_TIME'];
-		$associado->status = "ATIVO";
 		return $associado->save();
 	}
 
@@ -26,7 +25,8 @@ class AssociadoController implements Controller {
 	public function atulizaCadastro($data){
 		$associado = new Associado($data);
 		$associado->createAt = $_SERVER['REQUEST_TIME'];
-		$associado->update();
+		var_dump($data);
+		//return $associado->update();
 	}
 	//Desativa o cliente
 	public function inativar($id){

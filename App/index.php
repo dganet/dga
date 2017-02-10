@@ -46,14 +46,15 @@ $app->group('/associado', function() use ($app){
 	});
 	//Atualiza Todos os Associados
 	$app->put('/update/{id}', function(Request $request, Response $response, $args){
-		$post = json_decode($request->getBody());
+		$post = json_decode($request->getBody(), true);
+		$post['usuario_id'] = $args['id'];
 		$associado = new \Api\Controller\AssociadoController();
-		if ($associado->atulizaCadastro($associado)){
+		if ($associado->atulizaCadastro($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($associado);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['save' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
