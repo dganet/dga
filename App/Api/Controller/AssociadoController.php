@@ -25,8 +25,7 @@ class AssociadoController implements Controller {
 	public function atulizaCadastro($data){
 		$associado = new Associado($data);
 		$associado->createAt = $_SERVER['REQUEST_TIME'];
-		var_dump($data);
-		//return $associado->update();
+		return $associado->update();
 	}
 	//Desativa o cliente
 	public function inativar($id){
