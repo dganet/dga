@@ -10,7 +10,7 @@
  
  <div class="tres">
 
-   <input type="text" class="form-control" ng-model="busca" placeholder="Procure por Nome ou COD">
+   <input type="text" class="form-control" ng-model="busca" placeholder="Procure por Nome ou ID">
    <br>
 
    <table class="table table-condensed">
@@ -23,8 +23,8 @@
 
     <tbody> 
      <tr ng-repeat="x in associados | filter: busca">
-       <td>{{x.cod}}</td>
-       <td> <a ui-sref="user.associado.portal.detalhes({idAssociado: 2})">{{x.nome}}</a></td>
+       <td>{{x.id}}</td>
+       <td> <a ui-sref="user.associado.portal.detalhes({id: x.id})">{{x.nome}}</a></td>
      </tr>
    
     </tbody>
@@ -35,21 +35,21 @@
 
   <div class="quatro">
 
-  <form>
+  <form name="FormPortal" ng-submit="add(usuario)">
       <div class="row">
 
   <div class="col-md-3">
     
     <div class="form-group">
-      <label>CPF</label>
-      <input type="text" class="form-control" disabled="disabled"> 
+      <label>E-mail</label>
+      <input type="text" class="form-control" disabled="disabled" ng-model="usuario.email"> 
       </div> 
     </div>
 
      <div class="col-md-9">
       <div class="form-group">
             <label>Senha</label>
-            <input type="password" class="form-control">
+            <input type="password" class="form-control" ng-model="usuario.senha">
        </div>
      </div>
 

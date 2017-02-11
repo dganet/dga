@@ -66,7 +66,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
     })
 
       .state('user.associado.portal.detalhes', {
-      url: '/:idAssociado',
+      url: '/:id',
        controller: function($scope, $stateParams) {
             // get the id
             $scope.id = $stateParams.idAssociado;
