@@ -1,3 +1,8 @@
+<div class="alert alert-warning" ng-hide="mensagem">
+  <strong>Update!</strong> Atualização dos Dados foram inserido com sucesso.
+</div>
+
+
 <div class="acoes">
 
 	<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
@@ -24,7 +29,7 @@
     <tbody> 
      <tr ng-repeat="x in associados | filter: busca">
        <td>{{x.id}}</td>
-       <td> <a ui-sref="user.associado.portal.detalhes({id: x.id})">{{x.nome}}</a></td>
+       <td> <a ui-sref="user.associado.portal.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
      </tr>
    
     </tbody>
@@ -35,28 +40,32 @@
 
   <div class="quatro">
 
-  <form name="FormPortal" ng-submit="add(usuario)">
-      <div class="row">
+  <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>{{associado.nome}}
+    <hr>
+
+  <form name="FormPortal" ng-submit="add(associado)">
+    
+    <div class="row">
 
   <div class="col-md-3">
     
     <div class="form-group">
       <label>E-mail</label>
-      <input type="text" class="form-control" disabled="disabled" ng-model="usuario.email"> 
+      <input type="text" class="form-control" ng-model="associado.email"> 
       </div> 
     </div>
 
      <div class="col-md-9">
       <div class="form-group">
             <label>Senha</label>
-            <input type="password" class="form-control" ng-model="usuario.senha">
+            <input type="password" class="form-control" ng-model="associado.senha">
        </div>
      </div>
 
   </div>
   
 <hr>
-<button type="śubmit" class="btn btn-primary">Salvar Dados</button> 
+<button type="śubmit" class="btn btn-warning">Atualizar Dados</button> 
 
   </form>
 

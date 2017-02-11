@@ -59,7 +59,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.associado.portal', {
       url: '/portal',
       templateUrl: 'view/modAssociado/portalAssociado.htm',
-      controller:'alteraAssociadoCtrl',
+      controller:'portalAssociadoCtrl',
        ncyBreadcrumb: {
             label: 'Portal'
          }
@@ -69,8 +69,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
       url: '/:id',
        controller: function($scope, $stateParams) {
             // get the id
-            $scope.id = $stateParams.idAssociado;
-        }
+            $scope.id = $stateParams.id;
+        },
+            ncyBreadcrumb: {
+            label: 'Altera'
+         }
+
     })
 
       .state('user.associado.del', {
@@ -105,8 +109,8 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
       .state('user.vagas.inseri', {
       url: '/vagas',
-      templateUrl: 'view/modVagas/periodoVaga.htm',
-      controller:'vagasPeriodoCtrl',
+      templateUrl: 'view/modVagas/inseriVagas.htm',
+      controller:'inseriVagasCtrl',
        ncyBreadcrumb: {
             label: 'Inseri Vagas'
          }

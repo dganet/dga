@@ -9,12 +9,14 @@
 
 <div class="conteudo">
 	
+	<form name="FormVagas" ng-submit="add(vaga)">
+
 	<div class="row">
 
 	<div class="col-md-3">
 		<div class="form-group">
 			<label>Escolha qual a Linha</label>
-			<select class="form-control">
+			<select class="form-control" ng-model="vaga.linha">
 				<option>Linha 01</option>
 			    <option>Linha 02</option>
 				<option>Linha 03</option>
@@ -26,27 +28,28 @@
     <div class="col-md-2">
 	    <div class="form-group">
 	          <label>Quantidade de Vagas</label>
-	          <input type="text" class="form-control" ng-model="associado.nome">
+	          <input type="number" class="form-control" ng-model="vaga.qtasVagas">
 	     </div>
      </div>
 
      <div class="col-md-3">
 	    <div class="form-group">
 	          <label>Data Inicial</label>
-	          <input type="date" class="form-control" ng-model="associado.nome">
+	          <input type="date" class="form-control" ng-model="vaga.dataInicio">
 	     </div>
      </div>
 
      <div class="col-md-3">
 	    <div class="form-group">
 	          <label>Data Final</label>
-	          <input type="date" class="form-control" ng-model="associado.nome">
+	          <input type="date" class="form-control" ng-model="vaga.dataFinal">
 	     </div>
      </div>
 
 	</div>
 	
 <hr>
+
 <button type="śubmit" class="btn btn-primary">Salvar Dados</button> 
 </form>
 
