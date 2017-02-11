@@ -1,9 +1,9 @@
 ##################### POST ##################################################################
 															#	private $id;				#
-App/post/save 				------ Salva um Associado 		#	private $descricao;			#
+App/post/save/{id}			------ Salva um Associado 		#	private $descricao;			#
 App/post/list 				------ Lista todos Associados   #	private $titulo;			#
 App/post/list/{id}			------ Lista associado por id	#	private $imagem;			#
-App/post/update{id} 		------ Atualiza o associado     #	private $usuario 			#
+App/post/update{id} 		------ Atualiza o associado     #	private $usuario_id			#
 App/post/delete/{id}		------ Inativa um Associado     #								#
 															#								#
 #############################################################################################
@@ -19,7 +19,7 @@ App/usuario/delete/{id}		------ Inativa um Associado     #	private $cpf;				#
 #############################################################################################
 ##################### PERIODO ###############################################################
 															#	private $id;				#
-App/periodo/save 			------ Salva um Associado 		#	private $linha;				#
+App/periodo/save/{id}		------ Salva um Associado 		#	private $linha;				#
 App/periodo/list 			------ Lista todos Associados   #	private $dataInicio;		#	
 App/periodo/list/{id}		------ Lista associado por id	#	private $dataFinal;			#
 App/periodo/update{id} 		------ Atualiza o associado     #	private $qtasVagas;			#
@@ -29,7 +29,7 @@ App/periodo/delete/{id}		------ Inativa um Associado     #	private $status;			#
 ##################### VAGA ##################################################################
 															#   private $id;				#
 App/vaga/save 				------ Salva um Associado 		#	private $periodo_id;		#
-App/vaga/list 				------ Lista todos Associados   #	private $associado_id;		#
+App/vaga/list 				------ Lista todos Associados   #	private $usuario_id;		#
 App/vaga/list/{id}			------ Lista associado por id	#								#
 App/vaga/update{id} 		------ Atualiza o associado     #								#
 App/vaga/delete/{id}		------ Inativa um Associado     #								#

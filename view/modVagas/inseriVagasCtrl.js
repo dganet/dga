@@ -1,16 +1,17 @@
-app.controller("inseriVagasCtrl",function($scope, $http,$location , $timeout){
+app.controller("inseriVagasCtrl",function($scope, $http,$location , $timeout, $sessionStorage){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
-
+  // Pega o id de quem está logado
+  var id = sessionStorage.getItem('usuario.id');
 //*************CADASTRA NOVO USUARIO *********************// 
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormVagas) {
   	console.log(values);
         // Enviado os valores em objetos para api/user do php/slim
-    $http.post('App/periodo/save', values).success(function(){
+    $http.post('App/periodo/save/'+ id, values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/usuario/inseri');
          
