@@ -1,46 +1,99 @@
-##################### ASSOCIADO #############################
-															#
-App/associado/save/{id}		------ Salva um Associado 		#
-App/associado/list 			------ Lista todos Associados   #
-App/associado/list/{id}		------ Lista associado por id	#
-App/associado/update{id} 	------ Atualiza o associado     #
-App/associado/delete/{id}	------ Inativa um Associado     #
-															#
-#############################################################
-##################### POST ##################################
-															#
-App/post/save 				------ Salva um Associado 		#
-App/post/list 				------ Lista todos Associados   #
-App/post/list/{id}			------ Lista associado por id	#
-App/post/update{id} 		------ Atualiza o associado     #
-App/post/delete/{id}		------ Inativa um Associado     #
-															#
-#############################################################
-##################### USUARIO ###############################
-															#
-App/usuario/save 			------ Salva um Associado 		#
-App/usuario/login			------ Loga um usuario 			#
-App/usuario/list 			------ Lista todos Associados   #
-App/usuario/list/{id}		------ Lista associado por id	#
-App/usuario/update{id} 		------ Atualiza o associado     #
-App/usuario/delete/{id}		------ Inativa um Associado     #
-															#
-#############################################################
-##################### PERIODO ###############################
-															#
-App/periodo/save 			------ Salva um Associado 		#
-App/periodo/list 			------ Lista todos Associados   #
-App/periodo/list/{id}		------ Lista associado por id	#
-App/periodo/update{id} 		------ Atualiza o associado     #
-App/periodo/delete/{id}		------ Inativa um Associado     #
-															#
-#############################################################
-##################### VAGA ##################################
-															#
-App/vaga/save 				------ Salva um Associado 		#
-App/vaga/list 				------ Lista todos Associados   #
-App/vaga/list/{id}			------ Lista associado por id	#
-App/vaga/update{id} 		------ Atualiza o associado     #
-App/vaga/delete/{id}		------ Inativa um Associado     #
-															#
-#############################################################
+##################### POST ##################################################################
+															#	private $id;				#
+App/post/save 				------ Salva um Associado 		#	private $descricao;			#
+App/post/list 				------ Lista todos Associados   #	private $titulo;			#
+App/post/list/{id}			------ Lista associado por id	#	private $imagem;			#
+App/post/update{id} 		------ Atualiza o associado     #	private $usuario 			#
+App/post/delete/{id}		------ Inativa um Associado     #								#
+															#								#
+#############################################################################################
+##################### USUARIO ###############################################################
+															#	private $id;				#	
+App/usuario/save 			------ Salva um Associado 		#	private $email				#
+App/usuario/login			------ Loga um usuario 			#	private $senha;				#	
+App/usuario/list 			------ Lista todos Associados   #	private $nome;				#	
+App/usuario/list/{id}		------ Lista associado por id	#	private $cargo;				#
+App/usuario/update{id} 		------ Atualiza o associado     #	private $imagem;			#
+App/usuario/delete/{id}		------ Inativa um Associado     #	private $cpf;				#
+															#								#
+#############################################################################################
+##################### PERIODO ###############################################################
+															#	private $id;				#
+App/periodo/save 			------ Salva um Associado 		#	private $linha;				#
+App/periodo/list 			------ Lista todos Associados   #	private $dataInicio;		#	
+App/periodo/list/{id}		------ Lista associado por id	#	private $dataFinal;			#
+App/periodo/update{id} 		------ Atualiza o associado     #	private $qtasVagas;			#
+App/periodo/delete/{id}		------ Inativa um Associado     #	private $status;			#
+															#	private $usuario_id			#
+#############################################################################################
+##################### VAGA ##################################################################
+															#   private $id;				#
+App/vaga/save 				------ Salva um Associado 		#	private $periodo_id;		#
+App/vaga/list 				------ Lista todos Associados   #	private $associado_id;		#
+App/vaga/list/{id}			------ Lista associado por id	#								#
+App/vaga/update{id} 		------ Atualiza o associado     #								#
+App/vaga/delete/{id}		------ Inativa um Associado     #								#
+															#								#
+#############################################################################################
+##################### ASSOCIADO #############################################################
+															#	private $id;				#							
+App/associado/save/{id}		------ Salva um Associado 		#	private $nome;				#							
+App/associado/list 			------ Lista todos Associados   #	private $cpf;				#							
+App/associado/list/{id}		------ Lista associado por id	#	private $rg;				#							
+App/associado/update{id} 	------ Atualiza o associado     #	private $orgaoExpedidor;	#							
+App/associado/delete/{id}	------ Inativa um Associado     #	private $nomePai;			#							
+															#	private $nomeMae;			#							
+#############################################################	private $endereco;			#
+																private $numero;			#
+																private $bairro;			#
+																private $cidade;			#
+																private $cep;				#
+																private $telResidencial;	#
+																private $telCelular;		#
+																private $telComercial;		#
+																private $email;				#
+																private $senha;				#
+																private $profissao;			#
+																private $nomeEmpresa;		#
+																private $funcao;			#
+																private $salario;			#
+																private $outraRenda;		#
+																private $rendaExtra;		#
+																private $estadoCivil;		#
+																private $nomeConjuje;		#
+																private $qtdeFilhos;		#
+																private $idadeFilhos;		#
+																private $pessoasResidencia;	#
+																private $qtasPessoasTrab;	#
+																private $rendaFamiliar;		#
+																private $planoSaude;		#
+																private $planoEmpresa;		#
+																private $tipoSangue;		#
+																private $problemaSaude;		#
+																private $curso;				#
+																private $universidade;		#
+																private $semestreCursando;	#
+																private $aulaSabado;		#
+																private $duracaoCurso;		#
+																private $rgm;				#
+																private $valorMensalidade;	#
+																private $possuiBolsaFinCred;#
+																private $porcBolsaFinCred;	#
+																private $cursoUniversitario;#
+																private $cursoNome;			#
+																private $retidoFalta;		#
+																private $retidoMaisUmAno;	#
+																private $desistiuCursarAnoLetivo;				
+																private $createAt;			#
+																private $updateAt;			#
+																private $status;			#
+																private $usuario_id;		#
+
+																
+																
+																
+																
+																
+																
+																
+																

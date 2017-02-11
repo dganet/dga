@@ -21,10 +21,10 @@ $app->group('/associado', function() use ($app){
 		$post['usuario_id'] = $args['id'];
 		if ($associado->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($associado);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-xtype', 'application/json');
-			$response = $response->withJson(['save' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
@@ -75,10 +75,10 @@ $app->group('/post', function() use ($app){
 		$post = json_decode($request->getBody(), true);
 		if ($postController->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($postController);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['save' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
@@ -104,10 +104,10 @@ $app->group('/post', function() use ($app){
 		$postController = new \Api\Controller\Postcontroller();
 		if ($postController->atulizaCadastro($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($postController);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['update' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
@@ -146,10 +146,10 @@ $app->group('/usuario', function() use ($app){
 		$post = json_decode($request->getBody(), true);
 		if ($usuario->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($usuario);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['save' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
@@ -175,10 +175,10 @@ $app->group('/usuario', function() use ($app){
 		$usuario = new \Api\Controller\UsuarioController();
 		if ($usuario->atulizaCadastro($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($usuario);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['update' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
@@ -201,10 +201,10 @@ $app->group('/vaga', function() use ($app){
 		$post = json_decode($request->getBody(), true);
 		if ($vaga->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($vaga);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['save' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
@@ -230,10 +230,10 @@ $app->group('/vaga', function() use ($app){
 		$vaga = new \Api\Controller\VagaController();
 		if ($vaga->atulizaCadastro($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($vaga);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['update' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
@@ -256,10 +256,10 @@ $app->group('/periodo', function() use ($app){
 		$post = json_decode($request->getBody(), true);
 		if ($periodo->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($periodo);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['save' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});
@@ -285,10 +285,10 @@ $app->group('/periodo', function() use ($app){
 		$periodo = new \Api\Controller\PeriodoController();
 		if ($periodo->atulizaCadastro($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($periodo);
+			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson(['update' => false]);
+			$response = $response->withJson([false]);
 		}
 		return $response;
 	});

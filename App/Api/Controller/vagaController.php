@@ -2,7 +2,7 @@
 namespace Api\Controller;
 use \Api\Model\Entity\Vaga;
 
-class VagaController implements Controller{
+class vagaController implements Controller{
 
 	public function cadastrar($data){
 		$vaga = new Vaga($data);
