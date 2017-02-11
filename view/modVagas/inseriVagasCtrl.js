@@ -10,7 +10,7 @@ app.controller("inseriVagasCtrl",function($scope, $http,$location , $timeout){
   $scope.add = function(values, FormVagas) {
   	console.log(values);
         // Enviado os valores em objetos para api/user do php/slim
-    $http.post('App/vaga/save', values).success(function(){
+    $http.post('App/periodo/save', values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/usuario/inseri');
          

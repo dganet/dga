@@ -3,10 +3,11 @@ app.controller("cadastroAssociadoCtrl",function($scope, $http,$location , $timeo
 //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
 
-$scope.estadoCiviel = [{
-	tipo : 'Solteiro(a)',
-	tipo : 'Casado(a)'
-}];
+$scope.estadoCivil = [
+		{tipo : "Solteiro(a)"}
+		{tipo: "Casado(a)"}
+		];
+
 
 $scope.tabs = "true";
 $scope.tab1 = true;
