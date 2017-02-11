@@ -223,21 +223,26 @@ color:white;
 	padding: 25px 30px 0px 30px;
 
 }
+.icone_altera {
+margin-left: 20px;
+}
+
 /*  FIM  */
 
 .navTabs {
-	margin-top: -40px;
+
 	margin-bottom: 20px;
 }
 
 } 
-/* tables em formato porta retrato até os desktos no formato paisagem */
-@media (min-width: 768px) and (max-width: 1200px) {  }
- 
-/* dispositivo em paisagem até os tablets em formato porta-retrato */
-@media (min-width: 481px) and  (max-width: 767px) {  }
 
-  }
+/* tables em formato porta retrato até os desktos no formato paisagem */
+/* @media (min-width: 768px) and (max-width: 1200px) {  }
+/*
+/* dispositivo em paisagem até os tablets em formato porta-retrato */
+/*@media (min-width: 481px) and  (max-width: 767px) {  }
+/*
+/*  }
  
 /* dispositivo no formato paisagem e abaixos */
-@media (max-width: 480px) {}
+/*@media (max-width: 480px) {}

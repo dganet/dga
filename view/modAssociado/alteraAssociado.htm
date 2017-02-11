@@ -39,11 +39,9 @@
 
 <div class="quatro" ng-show="quatro">
  
-  <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>{{usuario.nome}}
+  <div class="icone_altera"><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>{{associado.nome}}
     <hr>
 
-
-  
  <!-- Nav tabs -->
   <div class="navTabs">
     <a class="btn btn-default" role="button" ng-click="go('tab1')">Dados Pessoais</a>
@@ -55,9 +53,10 @@
   </div>
   
 <form name="FormAssociado" ng-submit="add(associado)">
+  
   <div class="row" ng-show="tab1">
      
-     <div class="col-md-6">
+     <div class="col-md-3">
        
       <div class="form-group">
           <label>Nome Completo do Associado</label>
