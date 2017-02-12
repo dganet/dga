@@ -1,0 +1,41 @@
+<div class="alert alert-success" ng-hide="mensagem">
+  <strong>Sucesso!</strong> Dados cadastrado com sucesso.
+</div>
+
+<div class="acoes">
+
+<i class="fa fa-calendar" aria-hidden="true"></i>
+	<label>Cadastro de Noticia</label>
+
+</div>
+
+<hr>
+
+<div class="conteudo">
+
+<form name="FormNoticia" ng-submit="add(noticia)">
+	
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="form-group">
+			<label>Titulo</label>
+			<input type="text" class="form-control" ng-model="noticia.titulo"> 
+	    </div>
+	    </div>
+	  </div>
+
+	<div class="row">
+		<div class="col-md-12">		
+		<label>Descrição</label>
+			<textarea class="form-control" rows="15" ng-model="noticia.descricao"></textarea>
+		</div>
+	</div>
+
+
+	
+<hr>
+<button type="submit" class="btn btn-primary">Salvar Dados</button> 
+</form>
+
+</div>
