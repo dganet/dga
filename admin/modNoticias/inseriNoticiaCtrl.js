@@ -16,7 +16,7 @@ var id = sessionStorage.getItem('usuario.id');
     // Enviado os valores em objetos para api/user do php/slim
     $http.post('../App/post/save/'+ id , values).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/post/inseri');
+      $scope.activePath = $location.path('/user/noticia/inseri');
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;

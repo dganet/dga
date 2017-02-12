@@ -18,6 +18,11 @@ app.config(function ($stateProvider, $urlRouterProvider){
       templateUrl: 'aetub/site/leiaMais.htm'
     })
 
+    .state('portal', {
+      url:'/portal',
+      templateUrl: 'aetub/portal/home.htm'
+
+    })
   $urlRouterProvider.otherwise("/home/inicio");
 
 

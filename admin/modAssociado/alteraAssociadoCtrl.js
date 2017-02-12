@@ -168,7 +168,7 @@ $scope.go = function (dados){
 $scope.quatro = false;
 
 //Lista os Usuarios
-	$http.get('App/associado/list').success(function(data){
+	$http.get('../App/associado/list').success(function(data){
 		$scope.associados = data;
 
 	});

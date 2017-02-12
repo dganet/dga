@@ -169,10 +169,17 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.noticia.altera', {
       url: '/altera',
       templateUrl: 'modNoticias/alteraNoticia.htm',
-      controller:'cadastroNoticiaCtrl',
+      controller:'alteraNoticiaCtrl',
        ncyBreadcrumb: {
             label: 'Altera'
          }
+    })
+      .state('user.noticia.altera.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        }
     })
 
 //############################################################################

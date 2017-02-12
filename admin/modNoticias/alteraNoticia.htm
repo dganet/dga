@@ -21,8 +21,8 @@
     </thead>
 
     <tbody> 
-     <tr ng-repeat="x in associados | filter: busca">
-       <td> <a ui-sref="user.associado.altera.detalhes({idAssociado: 2})">{{x.nome}}</a></td>
+     <tr ng-repeat="x in posts | filter: busca">
+       <td> <a ui-sref="user.noticia.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.titulo}}</a></td>
      </tr>
    
     </tbody>
@@ -32,6 +32,35 @@
   </div>
 
   <div class="quatro">
+ <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>{{post.titulo}}
+    <hr>
+
+<form name="FormNoticia" ng-submit="add(post)">
+  
+  <div class="row">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="form-group">
+      <label>Titulo</label>
+      <input type="text" class="form-control" ng-model="post.titulo"> 
+      </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-12">   
+    <label>Descrição</label>
+      <textarea class="form-control" rows="15" ng-model="post.descricao"></textarea>
+    </div>
+  </div>
+  </div>
+  
+<hr>
+
+<button type="submit" class="btn btn-warning">Atualizar Dados</button>
+</form>
 
   </div>
 </div>
