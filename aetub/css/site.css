@@ -1,0 +1,180 @@
+
+#topo {
+	width: 100%;
+	height: 170px;
+	background: #422774;
+	border-bottom: 20px solid #ECA33D;
+    box-shadow: 5px 5px 15px #000000;	
+    position: fixed;	
+    border-top: 20px solid	white;
+    display: table;
+
+}
+
+/* Div do Topo que Centralizar */
+.blocoTopo {
+	width: 1248px;
+	height: 150px;
+	margin:0 auto;
+	display: table;
+}
+
+
+
+.logo img {
+	width: 150px;
+	height: 150px;
+	float:left;
+}
+
+
+.login {
+	float: left;
+	color: white;
+	width: 500px;
+	margin-left: 100px;
+	margin-top: 10px;
+}
+
+
+
+.login a{
+	color:white;
+	float: left;
+	margin-top: 5px;
+}
+.login a:hover {
+	opacity: 0.5;
+	color:white;
+	text-decoration: none;
+}
+
+.menu {
+	width: 450px;
+	float: left;
+	display: table;
+	margin-top: 100px;
+    background: #ECA33D;
+    border-radius: 10px 100px;
+    border-top:10px solid #ECA33D ;
+}
+
+.dropbtn {
+    background-color: #727473;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: -4px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black	;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown a:hover {
+	text-decoration: none;
+}
+.dropdown a:visited{
+	color: white;
+}
+.dropdown-content a:visited{
+	color:black;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1; text-decoration: none;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #422774	;
+}
+
+
+section	{
+	margin:0 auto;
+	width: 1248px;
+	padding-top: 220px;
+	display: table;
+
+}
+#blocoBanner {
+	float: left;
+	width: 300px;
+	height: auto;
+}
+#blocoBanner img {
+	width: 250px;
+	height: 150px;
+	margin-bottom: 20px;
+}
+#blocoNoticias {
+	display: block;
+	width: 500px;
+	height: auto;
+	padding: 10px;
+	float: left;
+}
+
+.titulo {
+	padding-top: 12px;
+	font-size: 12px;
+	color: #ECA33D;
+	font-weight: bold;
+}
+.chamada {
+	font-size: 14px;
+}
+.leiamais {
+		padding-top: 15px;
+}
+
+
+#blocoEspera {
+	display: block;
+	width: 300px;
+	height: auto;
+	padding: 10px;
+	float: left;
+	margin-left: 20px;
+
+}
+
+footer{
+float: left;
+width: 100%;
+height: 50px;
+background: #ECA33D;
+margin-top: 50px;
+text-align: center;
+color: white;
+font-weight: bold;
+padding-top: 10px;
+}
+
+
