@@ -70,9 +70,10 @@ $app->group('/associado', function() use ($app){
 // Salva um post
 $app->group('/post', function() use ($app){
 
-	$app->post('/save', function(Request $request, Response $response){
+	$app->post('/save/{id}', function(Request $request, Response $response, $args){
 		$postController = new \Api\Controller\Postcontroller();
 		$post = json_decode($request->getBody(), true);
+		$post['usuario_id'] = $args['id'];
 		if ($postController->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson([true]);
@@ -251,9 +252,10 @@ $app->group('/vaga', function() use ($app){
 */
 $app->group('/periodo', function() use ($app){
 
-	$app->post('/save', function(Request $request, Response $response){
+	$app->post('/save/{id}', function(Request $request, Response $response, $args){
 		$periodo = new \Api\Controller\PeriodoController();
 		$post = json_decode($request->getBody(), true);
+		$post['usuario_id'] = $args['id'];
 		if ($periodo->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson([true]);
