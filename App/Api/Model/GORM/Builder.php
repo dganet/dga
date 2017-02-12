@@ -94,6 +94,7 @@ trait Builder
                 // array("OR" => array('key' => value))
                 }elseif (isset($where["OR"])) {
                     $count = count($where['OR']);
+			$i=0;
                     foreach ($value as $key => $values) {
                         $i++;
                         if($i<$count){
