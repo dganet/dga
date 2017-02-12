@@ -8,7 +8,7 @@
 		    
 		    $scope.logando = function (values , formAut){
 		    	
-				$http.post('App/associado/list', values).success(function(response){
+				$http.post('App/associado/login', values).success(function(response){
 		
 		    	if (response[0] == false){
 		    		// Exibi a mensagem  				    
