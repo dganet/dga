@@ -4,6 +4,24 @@ use \Api\Model\Entity\Associado;
 
 class AssociadoController implements Controller {
 
+	public function logar($data){
+		$associado = new As]();
+		$flag =  $associado->select(array('where' => array(
+								'AND' => array(
+										'cpf' => $data['cpf'],
+										'senha' => $data['senha']
+												)
+									)
+								)
+							);
+		if (count($flag)==0){
+			$flag['check'] = false;
+		}else{
+			$flag['check'] = true;
+		}
+		return $flag;
+	}
+
 	// Salva as Informações do Associado
 	public function cadastrar($data){
 		$associado = new Associado();

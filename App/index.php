@@ -15,6 +15,21 @@ $app = new Slim\App([
 */
 $app->group('/associado', function() use ($app){
 
+	$app->post('/login', function(Request $request, Response $response){
+		$associado = new \Api\Controller\AssociadoController();
+		$post = json_decode($request->getBody(), true);
+		$associado = $associado->login($post);
+		if ($associado['check']){
+			unset($associado['check']);
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson($associado);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([false]);
+		}
+		return $response;
+	});
+
 	$app->post('/save/{id}', function(Request $request, Response $response, $args){
 		$associado = new \Api\Controller\AssociadoController();
 		$post = json_decode($request->getBody(), true);
