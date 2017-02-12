@@ -5,7 +5,7 @@ use \Api\Model\Entity\Associado;
 class AssociadoController implements Controller {
 
 	public function logar($data){
-		$associado = new ();
+		$associado = new Associado();
 		$flag =  $associado->select(array('where' => array(
 								'AND' => array(
 										'cpf' => $data['cpf'],
