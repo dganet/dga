@@ -1,4 +1,7 @@
 app.controller("inseriNoticiaCtrl",function($scope, $http,$location , $timeout){
+  //Pega o Id do Usuario Logado
+var id = sessionStorage.getItem('usuario.id');
+
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -11,7 +14,7 @@ app.controller("inseriNoticiaCtrl",function($scope, $http,$location , $timeout){
 
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/post/save', values).success(function(){
+    $http.post('../App/post/save/'+ id , values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/post/inseri');
          

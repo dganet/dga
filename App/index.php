@@ -86,7 +86,7 @@ $app->group('/associado', function() use ($app){
 $app->group('/post', function() use ($app){
 
 	$app->post('/save/{id}', function(Request $request, Response $response, $args){
-		$postController = new \Api\Controller\Postcontroller();
+		$postController = new \Api\Controller\PostController();
 		$post = json_decode($request->getBody(), true);
 		$post['usuario_id'] = $args['id'];
 		if ($postController->cadastrar($post)){
