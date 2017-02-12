@@ -36,7 +36,8 @@ App/vaga/delete/{id}		------ Inativa um Associado     #								#
 															#								#
 #############################################################################################
 ##################### ASSOCIADO #############################################################
-															#	private $id;				#							
+															#								#
+App/associado/save/{id}										#								#
 App/associado/save/{id}		------ Salva um Associado 		#	private $nome;				#							
 App/associado/list 			------ Lista todos Associados   #	private $cpf;				#							
 App/associado/list/{id}		------ Lista associado por id	#	private $rg;				#							

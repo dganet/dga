@@ -18,7 +18,7 @@ $app->group('/associado', function() use ($app){
 	$app->post('/login', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();
 		$post = json_decode($request->getBody(), true);
-		$associado = $associado->login($post);
+		$associado = $associado->logar($post);
 		if ($associado['check']){
 			unset($associado['check']);
 			$response = $response->withHeader('Content-type', 'application/json');
