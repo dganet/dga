@@ -12,6 +12,15 @@ app.config(function ($stateProvider, $urlRouterProvider){
       templateUrl: 'aetub/site/inicio.htm',
     })
 
+    .state('home.inicio.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+
+      })
+
    .state('home.leiaMais', {
       url:'/leiaMais',
       templateUrl: 'aetub/site/leiaMais.htm'

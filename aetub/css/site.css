@@ -143,12 +143,15 @@ section	{
 
 .titulo {
 	padding-top: 12px;
-	font-size: 12px;
+	font-size: 16px;
 	color: #ECA33D;
 	font-weight: bold;
 }
-.descricao {
+.chamada {
 	font-size: 14px;
+}
+.descricao {
+	font-size: 12px;
 }
 .leiamais {
 		padding-top: 15px;
