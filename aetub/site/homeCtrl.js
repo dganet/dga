@@ -31,6 +31,12 @@
 		    });
 
 		};
+
+
+$http.get('App/post/list').success(function(data){
+	$scope.posts = data;
+
+});
 	
 
  

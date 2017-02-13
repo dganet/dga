@@ -117,7 +117,7 @@ $app->group('/post', function() use ($app){
 	//Atualiza cadastro
 	$app->put('/update/{id}', function(Request $request, Response $response, $args){
 		$post = json_decode($request->getBody(), true);
-		$postController = new \Api\Controller\Postcontroller();
+		$postController = new \Api\Controller\PostController();
 		if ($postController->atulizaCadastro($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson([true]);

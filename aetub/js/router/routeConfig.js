@@ -9,8 +9,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
     .state('home.inicio', {
       url:'/inicio',
-      templateUrl: 'aetub/site/inicio.htm'
-
+      templateUrl: 'aetub/site/inicio.htm',
     })
 
    .state('home.leiaMais', {

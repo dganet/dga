@@ -34,7 +34,7 @@ $scope.dados = function (values){
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormNoticia) {
-    console.log(idUsuario);
+
 	 $scope.dados = values;
 	 var id = $scope.dados.id;
 
