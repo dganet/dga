@@ -9,17 +9,19 @@ class Usuario extends \GORM\Model{
 	private $cargo;
 	private $imagem;
 	private $cpf;
+	private $status;
 	private $createAt;
 	private $updateAt;
 
 	public function __construct($data = []){
 		isset($data['id']) ? $this->id = $data['id'] : $this->id = null ;
 		isset($data['email']) ? $this->email = $data['email'] : $this->email = null ;
-		isset($data['senha']) ? $this->senha = $data['senha'] : $this->senha = null ;
+		isset($data['senha']) ? $this->senha = md5($data['senha']) : $this->senha = null ;
 		isset($data['nome']) ? $this->nome = $data['nome'] : $this->nome = null ;
 		isset($data['cargo']) ? $this->cargo = $data['cargo'] : $this->cargo = null ;
 		isset($data['imagem']) ? $this->imagem = $data['imagem'] : $this->imagem = null ;
 		isset($data['cpf']) ? $this->cpf = $data['cpf'] : $this->cpf = null ;
+		isset($data['status']) ? $this->status = $data['status'] : $this->status = null ;
 		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null ;
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null ;
 		$this->class = $this;
@@ -48,6 +50,9 @@ class Usuario extends \GORM\Model{
 			case 'cpf':
 				return $this->cpf;
 				break;
+			case 'status':
+				return $this->status;
+				break;
 			case 'createAt':
 				return $this->createAt;
 				break;
@@ -69,7 +74,7 @@ class Usuario extends \GORM\Model{
 				$this->email = $value;
 				break;
 			case 'senha':
-				$this->senha = $value;
+				$this->senha = md5($value);
 				break;
 			case 'nome':
 				$this->nome = $value;
@@ -82,6 +87,9 @@ class Usuario extends \GORM\Model{
 				break;
 			case 'cpf':
 				$this->cpf = $value;
+				break;
+			case 'status':
+				$this->status = $value;
 				break;
 			case 'createAt':
 				$this->createAt = $value;
@@ -104,6 +112,7 @@ class Usuario extends \GORM\Model{
 			'cargo' => $this->cargo,
 			'imagem' => $this->imagem,
 			'cpf' => $this->cpf,
+			'status' => $this->status,
 			'createAt' => $this->createAt,
 			'updateAt' => $this->updateAt
 			);

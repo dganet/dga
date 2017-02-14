@@ -40,8 +40,9 @@ class UsuarioController implements Controller{
 		$usuario = new Usuario();
 		$flag =  $usuario->select(array('where' => array(
 								'AND' => array(
-										'email' => $data['login'],
-										'senha' => $data['senha']
+										'email'  => $data['login'],
+										'senha'  => md5($data['senha']),
+										'status' => 'ATIVO'
 												)
 									)
 								)

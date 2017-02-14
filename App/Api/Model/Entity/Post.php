@@ -4,6 +4,7 @@ namespace Api\Model\Entity;
 class Post extends \GORM\Model{
 	private $id;
 	private $descricao;
+	private $chamada;
 	private $createAt;
 	private $updateAt;
 	private $titulo;
@@ -13,6 +14,7 @@ class Post extends \GORM\Model{
 	public function __construct($data = []){
 		isset($data['id']) ? $this->id = $data['id'] : $this->id = null;
 		isset($data['descricao']) ? $this->descricao = $data['descricao'] : $this->descricao = null;
+		isset($data['chamada']) ? $this->chamada = $data['chamada'] : $this->chamada = null;
 		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null;
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null;
 		isset($data['titulo']) ? $this->titulo = $data['titulo'] : $this->titulo = null;
@@ -27,6 +29,9 @@ class Post extends \GORM\Model{
 				break;
 			case 'descricao':
 				return $this->descricao;
+				break;
+			case 'chamada':
+				return $this->chamada;
 				break;
 			case 'createAt':
 				return $this->createAt;
@@ -57,6 +62,9 @@ class Post extends \GORM\Model{
 			case 'descricao':
 				$this->descricao = $values;
 				break;
+			case 'chamada':
+				$this->chamada = $values;
+				break;
 			case 'createAt':
 				$this->createAt = $values;
 				break;
@@ -82,6 +90,7 @@ class Post extends \GORM\Model{
 		return array(
 			'id' => $this->id,
 			'descricao' => $this->descricao,
+			'chamada' => $this->chamada,
 			'createAt' => $this->createAt,
 			'updateAt' => $this->updateAt,
 			'titulo' => $this->titulo,

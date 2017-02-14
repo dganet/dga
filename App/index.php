@@ -319,4 +319,10 @@ $app->group('/periodo', function() use ($app){
 	});
 });
 
+$app->get('/teste', function (Request $request, Response $response){
+	$teste = new \Api\Controller\AssociadoController();
+	$bla = $teste->test();
+	echo $bla;
+});
+
 $app->run();

@@ -121,6 +121,10 @@ trait Builder
                 }
             }
         }
+        ############ FIM DO WHERE #######################
+        // Caso não tenha nada ele entende que voce quer fazer um select simples 
+        // com where
+        
         self::$sql = $temp;
         
     }

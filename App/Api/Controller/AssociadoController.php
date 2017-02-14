@@ -9,7 +9,8 @@ class AssociadoController implements Controller {
 		$flag =  $associado->select(array('where' => array(
 								'AND' => array(
 										'cpf' => $data['cpf'],
-										'senha' => $data['senha']
+										'senha' => md5($data['senha']),
+										'status' => 'ATIVO'
 												)
 									)
 								)
@@ -52,6 +53,11 @@ class AssociadoController implements Controller {
 		$associado->createAt = $_SERVER['REQUEST_TIME'];
 		$associado->status = 'INATIVO';
 		$associado->update();
+	}
+
+	public function test(){
+		$associado = new Associado();
+		return $associado->select(array('where' => array('AND' => array('id' => '1', 'nome' => 'guilherme', 'bla' => 11))));
 	}
 
 }
