@@ -23,6 +23,8 @@ trait Builder
         $valor 	= "("; // irá receber o valor do campo
         
         foreach ($array as $key => $value) {
+           //$value =  str_replace("'", "\"", $value);
+            $value = addslashes($value);
             if($i < ($size - 1) ){
                 $chave  .= $key.", ";
                 $valor  .= "'".$value."', ";
@@ -96,6 +98,7 @@ trait Builder
                     $count = count($where['OR']);
 			$i=0;
                     foreach ($value as $key => $values) {
+                        
                         $i++;
                         if($i<$count){
                             if (is_string($values)){
