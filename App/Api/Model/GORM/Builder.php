@@ -34,7 +34,6 @@ trait Builder
         	$i++;
         }
         $retorno = ["key" => $chave, "value" => $valor ];
-        echo $retorno;
         self::$sql = self::$insert.self::$table." ".$retorno['key']." values ".$retorno['value'];
     }
     /**

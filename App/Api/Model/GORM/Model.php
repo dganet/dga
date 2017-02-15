@@ -16,9 +16,9 @@ class Model{
 	*/
 	public function save(){
 		$this->loadTable();
+		$sql  = Builder::makeInsert($this->class);
 		$con  = new ConnectionFactory($this->mode);
 		$db   = $con->getInstance();
-		$sql  = Builder::makeInsert($this->class);
 		$stmt = $db->prepare(Builder::$sql);
 		return $stmt->execute();
 	}	
