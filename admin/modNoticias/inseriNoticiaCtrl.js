@@ -27,7 +27,7 @@ var id = sessionStorage.getItem('usuario.id');
      //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.cliente = angular.copy($scope.master);
+      $scope.noticia = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
