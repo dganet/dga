@@ -20,8 +20,7 @@ trait Builder
         $size 	= count($array);
         $i 		= 0;
     	$chave 	= "("; // irá receber o campo
-        $valor 	= "("; // irá receber o valor do campo
-        
+        $valor 	= "("; // irá receber o valor do campo 
         foreach ($array as $key => $value) {
            //$value =  str_replace("'", "\"", $value);
             $value = addslashes($value);
@@ -35,6 +34,7 @@ trait Builder
         	$i++;
         }
         $retorno = ["key" => $chave, "value" => $valor ];
+        echo $retorno;
         self::$sql = self::$insert.self::$table." ".$retorno['key']." values ".$retorno['value'];
     }
     /**
