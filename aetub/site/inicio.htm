@@ -11,7 +11,7 @@
 		<div ng-repeat="x in posts" ng-show="leiaMais">
 		
 		<div class="titulo">{{x.titulo}}</div>
-		<div class="chamada">{{x.descricao}}</div>
+		<div class="chamada">{{x.chamada}}</div>
 		<div class="leiamais"><a ui-sref="home.inicio.detalhes({id: x.id})" ng-click="dados(x.id)"><button type="button" class="btn btn-primary">Leia Mais</button></a></div>
 		</div>
 

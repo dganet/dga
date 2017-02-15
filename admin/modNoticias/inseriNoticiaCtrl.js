@@ -1,4 +1,4 @@
-app.controller("inseriNoticiaCtrl",function($scope, $http,$location , $timeout){
+app.controller("inseriNoticiaCtrl",function($scope, $http,$location , $timeout , $sessionStorage)){
   //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
 
