@@ -21,6 +21,7 @@ trait Builder
         $i 		= 0;
     	$chave 	= "("; // irá receber o campo
         $valor 	= "("; // irá receber o valor do campo 
+        
         foreach ($array as $key => $value) {
           
             $value = addslashes($value);

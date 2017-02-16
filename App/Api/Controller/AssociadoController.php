@@ -33,7 +33,7 @@ class AssociadoController implements Controller {
 	//Lista todos os associados
 	public function listaTudo(){
 		$associado = new Associado();
-		return $associado->select();
+		return $associado->select(array('where' => array('status' => 'ATIVO'));
 	}
 	//Lista Por Id
 	public function listaPorId($id){

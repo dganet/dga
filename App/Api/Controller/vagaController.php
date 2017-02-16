@@ -14,7 +14,7 @@ class vagaController implements Controller{
 	//Lista todos os associados
 	public function listaTudo(){
 		$vaga = new Vaga();
-		return $vaga->select();
+		return $vaga->select(array('where' => array('status' => 'ATIVO'));
 	}
 	//Lita vaga pelo ID
 	public function listaPorId($id){

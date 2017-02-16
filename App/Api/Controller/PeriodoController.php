@@ -15,7 +15,7 @@ class PeriodoController implements Controller {
 	//Lista todos os periodos
 	public function listaTudo(){
 		$periodo = new Periodo();
-		return $periodo->select();
+		return $periodo->select(array('where' => array('status' => 'ATIVO'));
 	}
 	//Lista Por Id
 	public function listaPorId($id){

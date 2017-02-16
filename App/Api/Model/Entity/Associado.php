@@ -99,7 +99,7 @@ class Associado extends \GORM\Model{
 		isset($data['aulaSabado']) ? $this->aulaSabado = $data['aulaSabado'] : $this->aulaSabado = null;
 		isset($data['duracaoCurso']) ? $this->duracaoCurso = $data['duracaoCurso'] : $this->duracaoCurso = null;
 		isset($data['rgm']) ? $this->rgm = $data['rgm'] : $this->rgm = null;
-		isset($data['valorMensalidade']) ? $this->valorMensalidade = $data['valorMensalidade'] : $this->valorMensalidade = null;
+		isset($data['valorMensalidade']) ? $this->valorMensalidade = $data['valorMensalidade'] : $this->valorMensalidade = null;return $stmt->execute();
 		isset($data['possuiBolsaFinCred']) ? $this->possuiBolsaFinCred = $data['possuiBolsaFinCred'] : $this->possuiBolsaFinCred = null;
 		isset($data['porcBolsaFinCred']) ? $this->porcBolsaFinCred = $data['porcBolsaFinCred'] : $this->porcBolsaFinCred = null;
 		isset($data['cursoUniversitario']) ? $this->cursoUniversitario = $data['cursoUniversitario'] : $this->cursoUniversitario = null;
