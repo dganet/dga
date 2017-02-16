@@ -25,7 +25,7 @@ class AssociadoController implements Controller {
 
 	// Salva as Informações do Associado
 	public function cadastrar($data){
-		$associado = new Associado();
+		$associado = new Associado($data);
 		$associado->createAt = $_SERVER['REQUEST_TIME'];
 		return $associado->save();
 	}

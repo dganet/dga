@@ -31,6 +31,7 @@ class PostController implements Controller{
 		$post->updateAt = $_SERVER['REQUEST_TIME'];
 		$post->id = $id;
 		$post->status = 'INATIVO';
+		var_dump($post->updateAt);
 		return $post->update();
 	}
 

@@ -22,7 +22,7 @@ trait Builder
     	$chave 	= "("; // irá receber o campo
         $valor 	= "("; // irá receber o valor do campo 
         foreach ($array as $key => $value) {
-           //$value =  str_replace("'", "\"", $value);
+          
             $value = addslashes($value);
             if($i < ($size - 1) ){
                 $chave  .= $key.", ";
