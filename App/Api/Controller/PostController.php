@@ -16,9 +16,15 @@ class PostController implements Controller{
 		$post = new Post();
 		return $post->select(array('where' => array('status' => 'ATIVO')));
 	}
+	//Lista Post por id
 	public function listaPorId($id){
 		$post = new Post();
 		return $post->select(array('where' => array('id' => $id)));
+	}
+	//Lista todos os registros Inativos
+	public function listaInativo(){
+		$post = new Post();
+		return $post->select(array('where' => array('status' => 'INATIVO')));
 	}
 	public function atulizaCadastro($data){
 		$post = new Post($data);
@@ -31,7 +37,6 @@ class PostController implements Controller{
 		$post->updateAt = $_SERVER['REQUEST_TIME'];
 		$post->id = $id;
 		$post->status = 'INATIVO';
-		var_dump($post->updateAt);
 		return $post->update();
 	}
 

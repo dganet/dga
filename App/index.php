@@ -59,7 +59,15 @@ $app->group('/associado', function() use ($app){
 		$response = $response->withJson($associado);
 		return $response;
 	});
-	//Atualiza Todos os Associados
+	//Lista os Associados Inativos
+	$app->get('/inativo', function(Request $request, Response $response){
+		$associado = new \Api\Controller\AssociadoController();
+		$associado = $associado->listaInativo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($associado);
+		return $response;
+	});
+	//Atualiza os Associados
 	$app->put('/update/{id}', function(Request $request, Response $response, $args){
 		$post = json_decode($request->getBody(), true);
 		$post['usuario_id'] = $args['id'];
@@ -114,7 +122,15 @@ $app->group('/post', function() use ($app){
 		$response = $response->withJson($postController);
 		return $response;
 	});
-	//Atualiza cadastro
+	//Lista registros Inativos
+	$app->get('/inativo', function(Request $request, Response $response){
+		$postController = new \Api\Controller\PostController();
+		$postController = $postController->listaInativo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($postController);
+		return $response;
+	});
+	//Atualiza POST
 	$app->put('/update/{id}', function(Request $request, Response $response, $args){
 		$post = json_decode($request->getBody(), true);
 		$postController = new \Api\Controller\PostController();
@@ -131,9 +147,9 @@ $app->group('/post', function() use ($app){
 	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
 		$postController = new \Api\Controller\PostController();
 		$postController =  $postController->inativar($args['id']);
-		//$response = $response->withHeader('Content-type', 'application/json');
-		//$response = $response->withJson($postController);
-		//return $response;
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($postController);
+		return $response;
 	});
 });
 /**
@@ -185,6 +201,14 @@ $app->group('/usuario', function() use ($app){
 		$response = $response->withJson($usuario);
 		return $response;
 	});
+	//Lista registros inativos
+	$app->get('/inativo', function(Request $request, Response $response){
+		$usuario = new \Api\Controller\UsuarioController();
+		$usuario = $usuario->listaInativo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($response);
+		return $response;
+	});
 	//Atualiza cadastro
 	$app->put('/update/{id}', function(Request $request, Response $response, $args){
 		$post = json_decode($request->getBody(), true);
@@ -213,7 +237,7 @@ $app->group('/usuario', function() use ($app){
 $app->group('/vaga', function() use ($app){
 
 	$app->post('/save', function(Request $request, Response $response){
-		$vaga = new \Api\Controller\vagaController();
+		$vaga = new \Api\Controller\VagaController();
 		$post = json_decode($request->getBody(), true);
 		if ($vaga->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
@@ -236,6 +260,14 @@ $app->group('/vaga', function() use ($app){
 	$app->get('/list/{id}', function(Request $request, Response $response, $args){
 		$vaga = new \Api\Controller\VagaController();
 		$vaga = $vaga->listaPorId($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($vaga);
+		return $response;
+	});
+	//Lista registros inativos
+	$app->get('/inativo', function(Request $request, Response $response){
+		$vaga = new \Api\Controller\VagaController();
+		$vaga = $vaga->listaInativo();
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($vaga);
 		return $response;
@@ -280,7 +312,7 @@ $app->group('/periodo', function() use ($app){
 		}
 		return $response;
 	});
-	//lista todos os POSTs
+	//lista todos os periodo
 	$app->get('/list', function(Request $request, Response $response){
 		$periodo = new \Api\Controller\PeriodoController();
 		$periodo = $periodo->listaTudo();
@@ -288,10 +320,18 @@ $app->group('/periodo', function() use ($app){
 		$response = $response->withJson($periodo);
 		return $response;
 	});
-	//Lista post por Id
+	//Lista periodo por Id
 	$app->get('/list/{id}', function(Request $request, Response $response, $args){
 		$periodo = new \Api\Controller\PeriodoController();
 		$periodo = $periodo->listaPorId($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($periodo);
+		return $response;
+	});
+	//Lista registros inativos
+	$app->get('/inativo', function(Request $request, Response $response){
+		$periodo = new \Api\Controller\PeriodoController();
+		$periodo = $periodo->listaInativo();
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($periodo);
 		return $response;

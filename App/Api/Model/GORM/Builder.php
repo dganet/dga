@@ -37,14 +37,14 @@ trait Builder
         $retorno = ["key" => $chave, "value" => $valor ];
         self::$sql = self::$insert.self::$table." ".$retorno['key']." values ".$retorno['value'];
     }
+
     /**
     *   Gera SQL para select com ou sem Where
     */
     public function makeSelect($class){
         $class = $class->toArray();
         $temp = self::$select.self::$table;
-        
-        
+   
         //Faz um inner Join
         if (isset(self::$condition['inner'])){
             $inner = self::$condition['inner'];
@@ -96,7 +96,7 @@ trait Builder
                 // array("OR" => array('key' => value))
                 }elseif (isset($where["OR"])) {
                     $count = count($where['OR']);
-			$i=0;
+			         $i=0;
                     foreach ($value as $key => $values) {
                         
                         $i++;

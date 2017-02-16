@@ -22,6 +22,10 @@ class PeriodoController implements Controller {
 		$periodo = new Periodo();
 		return $periodo->select(array('where' => array('id' => $id)));
 	}
+	public function listaInativo(){
+		$periodo = new Periodo();
+		return $periodo->select(array('where' => array('status' => 'INATIVO')));
+	}
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$periodo = new Periodo($data);

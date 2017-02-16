@@ -2,7 +2,7 @@
 namespace Api\Controller;
 use \Api\Model\Entity\Vaga;
 
-class vagaController implements Controller{
+class VagaController implements Controller{
 
 	public function cadastrar($data){
 		$vaga = new Vaga($data);
@@ -20,6 +20,11 @@ class vagaController implements Controller{
 	public function listaPorId($id){
 		$vaga = new Vaga();
 		return $vaga->select(array('where' => array('id' => $id)));
+	}
+	//Lista registros inativo
+	public function listaInativo(){
+		$vaga = new Vaga();
+		return $vaga->select(array('where' => array('status' => 'INATIVO')));
 	}
 	//Update de cadastro
 	public function atulizaCadastro($data){

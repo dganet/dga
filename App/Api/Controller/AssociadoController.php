@@ -60,4 +60,10 @@ class AssociadoController implements Controller {
 		return $associado->select(array('where' => array('AND' => array('id' => '1', 'nome' => 'guilherme', 'bla' => 11))));
 	}
 
+
+	public function listaInativo(){
+		$associado = new Associado();
+		return $associado->select(array('where' => array('status' => 'INATIVO')));
+	}
+
 }

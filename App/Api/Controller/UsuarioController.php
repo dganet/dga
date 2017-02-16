@@ -27,6 +27,11 @@ class UsuarioController implements Controller{
 		$usuario->updateAt = $_SERVER['REQUEST_TIME'];
 		return $usuario->update();
 	}
+	//Lista registros inativos
+	public function listaInativo(){
+		$usuario = new Usuario();
+		return $usuario->select(array('where' => array('status' => 'INATIVO')));
+	}
 	//Desativa o cliente
 	public function inativar($id){
 		$usuario = new Usuario();

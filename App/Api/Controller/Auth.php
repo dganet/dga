@@ -9,6 +9,7 @@ class Auth {
 	*/
 	public function login($data){
 
+		//Se a posição email existir, logo é um usuario
 		if(isset($data['email'])){
 			$usuario = new \Api\Model\Usuairo();
 			$flag =  $usuario->select(array('where' => array(
@@ -21,6 +22,7 @@ class Auth {
 								)
 							);
 		}
+		// Se a posião cpf existir, logo é um associado
 		if(isset($data['cpf'])){
 			$associado = new \Api\Model\Associado();
 			$flag =  $associado->select(array('where' => array(
