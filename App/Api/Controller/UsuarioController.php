@@ -14,7 +14,7 @@ class UsuarioController implements Controller{
 	//Lista todos os associados
 	public function listaTudo(){
 		$usuario = new Usuario();
-		return $usuario->select(array('where' => array('status' => 'ATIVO'));
+		return $usuario->select(array('where' => array('status' => 'ATIVO')));
 	}
 	//Lita usuario pelo ID
 	public function listaPorId($id){
