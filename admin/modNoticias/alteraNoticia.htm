@@ -2,6 +2,11 @@
   <strong>Sucesso!</strong> Dados alterado com sucesso.
 </div>
 
+<div class="alert alert-success" ng-hide="mensagemDeleta">
+  <strong>Sucesso!</strong> Dados Deleta com sucesso.
+</div>
+
+
 <div class="acoes">
 
 <i class="fa fa-newspaper-o" aria-hidden="true"></i>
@@ -73,7 +78,7 @@
 <hr>
 
 <button type="submit" class="btn btn-warning">Atualizar</button>
-<button type="submit" class="btn btn-danger">Deletar</button>
+<button type="button" class="btn btn-danger" ng-click="deleta(post.id)">Deletar</button>
 </form>
 
   </div>

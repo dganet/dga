@@ -29,8 +29,10 @@ $scope.dados = function (values){
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
+    //Ocultando o Alert Mensagem .
+  $scope.mensagemDeleta = true;
 
-//*************UPDATE USUARIO *********************// 
+//*************UPDATE NOTICIA *********************// 
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormNoticia) {
@@ -80,5 +82,31 @@ $scope.dados = function (values){
 
   };
 
+
+
+//*************DELETE NOTICIA *********************// 
+
+//Passa os valores do form em Objeto no "values"
+  $scope.deleta = function(values) {
+    console.log(values);
+
+    // Enviado os valores em objetos para api/user do php/slim
+    $http.delete('../App/post/delete/'+ values).success(function(){
+      // Depois mandando para mesma pagina  
+      $scope.activePath = $location.path('/user/noticia');
+         
+      // Funcão de exibir a mensagem de sucesso em 5 segundos.
+      $scope.mensagemDeleta = false;
+      $timeout(function () {
+               $scope.mensagemDeleta = true;
+           },10000);
+    });
+
+    $http.get('../App/post/list').success(function(data){
+    $scope.posts = data;
+
+  });
+
+  };
 
 });
