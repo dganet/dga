@@ -2,11 +2,6 @@
   <strong>Sucesso!</strong> Dados alterado com sucesso.
 </div>
 
-<div class="alert alert-success" ng-hide="mensagemDeleta">
-  <strong>Sucesso!</strong> Dados Deleta com sucesso.
-</div>
-
-
 <div class="acoes">
 
 <i class="fa fa-newspaper-o" aria-hidden="true"></i>
@@ -30,7 +25,7 @@
     </thead>
 
     <tbody> 
-     <tr ng-repeat="x in posts | filter: busca">
+     <tr ng-repeat="x in posts | orderBy : 'id' | filter: busca  ">
        <td> <a ui-sref="user.noticia.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.titulo}}</a></td>
      </tr>
    
@@ -41,7 +36,7 @@
   </div>
 
   <div class="quatro" ng-show="quatro">
-<i class="fa fa-newspaper-o" aria-hidden="true"></i>{{post.titulo}}
+<h4>{{post.titulo}}</h4>
     <hr>
 
 <form name="FormNoticia" ng-submit="add(post)">

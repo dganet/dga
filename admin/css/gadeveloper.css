@@ -185,7 +185,8 @@ color:white;
 .quatro {
 	width: calc(80% - 20px);
 	float: left;
-	margin-left: 20px;
+	padding-left: 20px;
+	margin-bottom: 20px;
 }
 
 .um ul li {
@@ -232,6 +233,11 @@ margin-left: 20px;
 .navTabs {
 
 	margin-bottom: 20px;
+}
+
+h4 {
+	border-left: 10px solid gray;
+	padding-left: 5px;
 }
 
 } 

@@ -179,23 +179,10 @@ app.config(function ($stateProvider, $urlRouterProvider){
        controller: function($scope, $stateParams) {
             // get the id
             $scope.id = $stateParams.id;
-        }
-    })
-
-      .state('user.noticia.deleta', {
-      url: '/deleta',
-      templateUrl: 'modNoticias/deletaNoticia.htm',
-      controller:'deletaNoticiaCtrl',
-       ncyBreadcrumb: {
-            label: 'Deleta'
+        },
+               ncyBreadcrumb: {
+            label: 'Posts'
          }
-    })
-      .state('user.noticia.deleta.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        }
     })
 
 //############################################################################

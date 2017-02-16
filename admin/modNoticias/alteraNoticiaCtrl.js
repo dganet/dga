@@ -1,4 +1,4 @@
-app.controller("alteraNoticiaCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
+app.controller("alteraNoticiaCtrl", function($scope, $http,$location , $timeout, $sessionStorage , $rootScope){
 //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
 
@@ -88,18 +88,14 @@ $scope.dados = function (values){
 
 //Passa os valores do form em Objeto no "values"
   $scope.deleta = function(values) {
-    console.log(values);
 
     // Enviado os valores em objetos para api/user do php/slim
     $http.delete('../App/post/delete/'+ values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/noticia');
+      $rootScope.mensagemDeleta = false; 
+
          
-      // Funcão de exibir a mensagem de sucesso em 5 segundos.
-      $scope.mensagemDeleta = false;
-      $timeout(function () {
-               $scope.mensagemDeleta = true;
-           },10000);
     });
 
     $http.get('../App/post/list').success(function(data){
