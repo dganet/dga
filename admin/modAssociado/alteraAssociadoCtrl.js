@@ -1,7 +1,7 @@
-app.controller("alteraAssociadoCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
+app.controller("alteraAssociadoCtrl", function($scope, $http,$location , $timeout, $sessionStorage){
 //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
-
+if(id == null){$location.path('/login')};
 
 $scope.tabs = "true";
 $scope.tab1 = true;
@@ -187,6 +187,8 @@ $scope.dados = function (values){
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
+  //Ocultando o Alert Mensagem .
+  $scope.mensagemDeleta = true;
 
 //************* UPDATE ASSOCIADO *********************// 
 
@@ -242,13 +244,32 @@ $scope.dados = function (values){
     // Enviado os valores em objetos para api/user do php/slim
     $http.delete('../App/associado/delete/'+ values).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/associado');
+      $scope.activePath = $location.path('/user/associado/altera');
 
          
+      // Funcão de exibir a mensagem de sucesso em 5 segundos.
+      $scope.mensagemDeleta = false;
+      $timeout(function () {
+               $scope.mensagemDeleta = true;
+           },10000);
     });
+    
+    //Resentando os input do formulario .
+    $scope.reset = function() {
+    // Copiando os valores vazio do scope.master 
+      $scope.post = angular.copy($scope.master);
+    };
+    // Ativando a função
+    $scope.reset();
+         
 
+    $http.get('../App/associado/list').success(function(data){
+    $scope.associados = data;
+
+  });
+
+    $scope.quatro = false;
 
   };
-
 
 });

@@ -1,4 +1,4 @@
-app.controller("alteraNoticiaCtrl", function($scope, $http,$location , $timeout, $sessionStorage , $rootScope){
+app.controller("alteraNoticiaCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
 //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
 
@@ -29,7 +29,7 @@ $scope.dados = function (values){
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
-    //Ocultando o Alert Mensagem .
+  //Ocultando o Alert Mensagem .
   $scope.mensagemDeleta = true;
 
 //*************UPDATE NOTICIA *********************// 
@@ -49,6 +49,7 @@ $scope.dados = function (values){
       $scope.mensagem = false;
       $timeout(function () {
                $scope.mensagem = true;
+               console.log('funcao1');
            },10000);
     });
 
@@ -91,12 +92,24 @@ $scope.dados = function (values){
 
     // Enviado os valores em objetos para api/user do php/slim
     $http.delete('../App/post/delete/'+ values).success(function(){
-      // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/noticia');
-      $rootScope.mensagemDeleta = false; 
-
-         
+    // Depois mandando para mesma pagina  
+    $scope.activePath = $location.path('/user/noticia/altera');
+   
+      // Funcão de exibir a mensagem de sucesso em 5 segundos.
+      $scope.mensagemDeleta = false;
+      $timeout(function () {
+               $scope.mensagemDeleta = true;
+           },10000);
     });
+    
+    //Resentando os input do formulario .
+    $scope.reset = function() {
+    // Copiando os valores vazio do scope.master 
+      $scope.post = angular.copy($scope.master);
+    };
+    // Ativando a função
+    $scope.reset();
+         
 
     $http.get('../App/post/list').success(function(data){
     $scope.posts = data;

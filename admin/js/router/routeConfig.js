@@ -1,6 +1,7 @@
 app.config(function ($stateProvider, $urlRouterProvider){
 
 
+
   $stateProvider
     .state('login', {
       url: '/login',
@@ -11,16 +12,33 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user', {
       url: '/user',
       templateUrl: 'painel/home.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
         
          ncyBreadcrumb: {
             label: 'Home'
          }
+      
     })
 //############# **  MODULO ASSOCIADO ** ###########################################################
 
       .state('user.associado', {
       url: '/associado',
       templateUrl: 'modAssociado/associadoLink.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
        ncyBreadcrumb: {
             label: 'Associado'
          }
@@ -102,6 +120,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.vagas', {
       url: '/periodo',
       templateUrl: 'modVagas/periodoVagaLink.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
        ncyBreadcrumb: {
             label: 'Vagas'
          }
@@ -151,6 +177,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.noticia', {
       url: '/noticia',
       templateUrl: 'modNoticias/noticiaLink.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
        ncyBreadcrumb: {
             label: 'Noticias'
          }
@@ -191,6 +225,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.cursos', {
       url: '/cursos',
       templateUrl: 'modCursos/cursoLink.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
        ncyBreadcrumb: {
             label: 'Cursos'
          }
@@ -221,6 +263,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.oportunidade', {
       url: '/oportunidade',
       templateUrl: 'modOportunidade/oportunidadeLink.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
        ncyBreadcrumb: {
             label: 'Oportunidade'
          }
@@ -251,6 +301,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.usuario', {
       url: '/usuario',
       templateUrl: 'modUsuario/link.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
        ncyBreadcrumb: {
             label: 'Usuario'
          }
