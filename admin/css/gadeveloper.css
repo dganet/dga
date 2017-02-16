@@ -94,6 +94,10 @@ body, html,.corpo{
 	color: white;
 	text-decoration: none;
 }
+.dropbtn a:active{
+	color: white;
+	text-decoration: none;
+}
 .menu {
 	float: right;
     margin-right: 60px;
