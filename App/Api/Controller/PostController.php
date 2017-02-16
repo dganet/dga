@@ -7,8 +7,8 @@ class PostController implements Controller{
 	//Cadastra Post
 	public function cadastrar($data){
 		$post = new Post($data);
-		$usuario->status = "ATIVO";
-		$usuario->createAt = $_SERVER['REQUEST_TIME'];
+		$post->status = "ATIVO";
+		$post->createAt = $_SERVER['REQUEST_TIME'];
 		return $post->save();
 	}
 	//Lista todos os POST

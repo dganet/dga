@@ -198,7 +198,7 @@ $app->group('/usuario', function() use ($app){
 		}
 		return $response;
 	});
-	//Inativa um Associado
+	//Inativa um Usuario
 	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
 		$usuario = new \Api\Controller\UsuarioController();
 		$usuario =  $usuario->inativar($args['id']);
@@ -253,7 +253,7 @@ $app->group('/vaga', function() use ($app){
 		}
 		return $response;
 	});
-	//Inativa um Associado
+	//Inativa um Vaga
 	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
 		$vaga = new \Api\Controller\VagaController();
 		$vaga =  $vaga->inativar($args['id']);
@@ -309,7 +309,7 @@ $app->group('/periodo', function() use ($app){
 		}
 		return $response;
 	});
-	//Inativa um Associado
+	//Inativa um Periodo
 	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
 		$periodo = new \Api\Controller\PeriodoController();
 		$periodo =  $periodo->inativar($args['id']);
