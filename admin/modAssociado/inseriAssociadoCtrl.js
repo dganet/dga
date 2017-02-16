@@ -3,13 +3,6 @@ app.controller("inseriAssociadoCtrl",function($scope, $http,$location , $timeout
 //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
 
-
-$scope.estadoCivis = [
-		{tipo : "Solteiro(a)"},
-		{tipo : "Casado(a)"}
-		];
-
-
 $scope.tabs = "true";
 $scope.tab1 = true;
 
@@ -181,22 +174,23 @@ $scope.go = function (dados){
     $http.post('../App/associado/save/'+ id, values).success(function(response){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/associado/inseri');
-      console.log(response);
-
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
       $timeout(function () {
                $scope.mensagem = true;
            },20000);
-    });
-     //Resentando os input do formulario .
+
+    //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.cliente = angular.copy($scope.master);
+      $scope.associado = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
+
+    });
+
 
   };
 

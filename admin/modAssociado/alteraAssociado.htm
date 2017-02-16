@@ -39,7 +39,7 @@
 
 <div class="quatro" ng-show="quatro">
  
-  <div class="icone_altera"><i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>{{associado.nome}}
+<h4>{{associado.nome}}</h4>
     <hr>
 
  <!-- Nav tabs -->
@@ -406,7 +406,8 @@
   </div>
 <hr>
 
-<button type="submit" class="btn btn-warning">Atualizar Dados</button>
+<button type="submit" class="btn btn-warning">Atualizar</button>
+<button type="button" class="btn btn-danger" ng-click="deleta(associado.id)">Deletar</button>
 </form>
 
   </div>

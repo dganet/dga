@@ -224,15 +224,29 @@ $scope.dados = function (values){
 
 	}
 
-
-
      //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.cliente = angular.copy($scope.master);
+      $scope.associado = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
+
+  };
+
+//*************DELETE ASSOCIADO *********************// 
+
+//Passa os valores do form em Objeto no "values"
+  $scope.deleta = function(values) {
+
+    // Enviado os valores em objetos para api/user do php/slim
+    $http.delete('../App/associado/delete/'+ values).success(function(){
+      // Depois mandando para mesma pagina  
+      $scope.activePath = $location.path('/user/associado');
+
+         
+    });
+
 
   };
 
