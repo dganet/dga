@@ -123,20 +123,18 @@ trait Builder
                 }
             }
         }
-        ############ FIM DO WHERE #######################
-        // Caso não tenha nada ele entende que voce quer fazer um select simples 
-        // com where
-        
+        ############ FIM DO WHERE ####################### 
         self::$sql = $temp;
         
     }
-
+    
     public function makeUpdate($class){
         $class = $class->toArray();
         $temp = null;
         $id = $class['id'];
         unset($class['id']);
         foreach ($class as $key => $value) {
+            $value = addslashes($value);
             if (empty($value)){
             }else{
                 $temp .= " $key='$value',";
