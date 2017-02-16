@@ -150,7 +150,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //############################################################################
       .state('user.noticia', {
       url: '/noticia',
-      templateUrl: 'modNoticias/cadastraNoticiaLink.htm',
+      templateUrl: 'modNoticias/noticiaLink.htm',
        ncyBreadcrumb: {
             label: 'Noticias'
          }
@@ -175,6 +175,22 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
     })
       .state('user.noticia.altera.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        }
+    })
+
+      .state('user.noticia.deleta', {
+      url: '/deleta',
+      templateUrl: 'modNoticias/deletaNoticia.htm',
+      controller:'deletaNoticiaCtrl',
+       ncyBreadcrumb: {
+            label: 'Deleta'
+         }
+    })
+      .state('user.noticia.deleta.detalhes', {
       url: '/:id',
        controller: function($scope, $stateParams) {
             // get the id
