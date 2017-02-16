@@ -73,7 +73,7 @@ $scope.dados = function (values){
      //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.cliente = angular.copy($scope.master);
+      $scope.post = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
