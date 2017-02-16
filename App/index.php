@@ -131,9 +131,9 @@ $app->group('/post', function() use ($app){
 	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
 		$postController = new \Api\Controller\PostController();
 		$postController =  $postController->inativar($args['id']);
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($postController);
-		return $response;
+		//$response = $response->withHeader('Content-type', 'application/json');
+		//$response = $response->withJson($postController);
+		//return $response;
 	});
 });
 /**

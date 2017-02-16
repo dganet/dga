@@ -14,7 +14,7 @@ class PostController implements Controller{
 	//Lista todos os POST
 	public function listaTudo(){
 		$post = new Post();
-		return $post->select();
+		return $post->select(array('where' => array('status' => 'ATIVO')));
 	}
 	public function listaPorId($id){
 		$post = new Post();

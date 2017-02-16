@@ -19,6 +19,7 @@ class Post extends \GORM\Model{
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null;
 		isset($data['titulo']) ? $this->titulo = $data['titulo'] : $this->titulo = null;
 		isset($data['imagem']) ? $this->imagem = $data['imagem'] : $this->imagem = null;
+		isset($data['status']) ? $this->status = $data['status'] : $this->status = null;
 		isset($data['usuario_id']) ? $this->usuario_id = $data['usuario_id'] : $this->usuario_id = null;
 		$this->class = $this;
 	}
@@ -45,6 +46,9 @@ class Post extends \GORM\Model{
 			case 'imagem':
 				return $this->imagem;
 				break;
+			case 'status':
+				return $this->status;
+				break;	
 			case 'usuario_id':
 				return $this->usuario_id;
 				break;
@@ -57,28 +61,31 @@ class Post extends \GORM\Model{
 	public function __set($attr, $value){
 		switch ($attr) {
 			case 'id':
-				$this->id = $values;
+				$this->id = $value;
 				break;
 			case 'descricao':
-				$this->descricao = $values;
+				$this->descricao = $value;
 				break;
 			case 'chamada':
-				$this->chamada = $values;
+				$this->chamada = $value;
 				break;
 			case 'createAt':
-				$this->createAt = $values;
+				$this->createAt = $value;
 				break;
 			case 'updateAt':
-				$this->updateAt = $values;
+				$this->updateAt = $value;
 				break;
 			case 'titulo':
-				$this->titulo = $values;
+				$this->titulo = $value;
 				break;
 			case 'imagem':
-				$this->imagem = $values;
+				$this->imagem = $value;
 				break;
+			case 'status':
+				$this->status = $value;
+				break;	
 			case 'usuario_id':
-				$this->usuario_id = $values;
+				$this->usuario_id = $value;
 				break;
 			
 			default:
@@ -95,6 +102,7 @@ class Post extends \GORM\Model{
 			'updateAt' => $this->updateAt,
 			'titulo' => $this->titulo,
 			'imagem' => $this->imagem,
+			'status' => $this->status,
 			'usuario_id' => $this->usuario_id
 			);
 	}
