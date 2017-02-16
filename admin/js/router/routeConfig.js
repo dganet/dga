@@ -20,7 +20,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
       .state('user.associado', {
       url: '/associado',
-      templateUrl: 'modAssociado/cadastroAssociadoLink.htm',
+      templateUrl: 'modAssociado/associadoLink.htm',
        ncyBreadcrumb: {
             label: 'Associado'
          }
@@ -29,8 +29,8 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
       .state('user.associado.inseri', {
       url: '/inseri',
-      templateUrl: 'modAssociado/cadastroAssociado.htm',
-      controller:'cadastroAssociadoCtrl',
+      templateUrl: 'modAssociado/inseriAssociado.htm',
+      controller:'inseriAssociadoCtrl',
        ncyBreadcrumb: {
             label: 'Inseri'
          }

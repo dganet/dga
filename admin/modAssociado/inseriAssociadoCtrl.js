@@ -1,7 +1,8 @@
-app.controller("cadastroAssociadoCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
+app.controller("inseriAssociadoCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
 
 //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
+
 
 $scope.estadoCivis = [
 		{tipo : "Solteiro(a)"},

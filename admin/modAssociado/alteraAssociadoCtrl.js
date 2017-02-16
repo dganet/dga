@@ -2,11 +2,6 @@ app.controller("alteraAssociadoCtrl", function($scope, $http,$location , $timeou
 //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
 
-$scope.estadoCivil = [
-		{tipo : 'Solteiro(a)'},
-		{tipo: 'Casado(a)'}
-	];
-
 
 $scope.tabs = "true";
 $scope.tab1 = true;
