@@ -359,6 +359,136 @@ $app->group('/periodo', function() use ($app){
 	});
 });
 
+/**
+* CURSO
+*/
+$app->group('/curso', function() use ($app){
+
+	$app->post('/save/{id}', function(Request $request, Response $response, $args){
+		$curso = new \Api\Controller\CursoController();
+		$post = json_decode($request->getBody(), true);
+		$post['usuario_id'] = $args['id'];
+		if ($curso->cadastrar($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([true]);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([false]);
+		}
+		return $response;
+	});
+	//lista todos os curso
+	$app->get('/list', function(Request $request, Response $response){
+		$curso = new \Api\Controller\CursoController();
+		$curso = $curso->listaTudo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($curso);
+		return $response;
+	});
+	//Lista curso por Id
+	$app->get('/list/{id}', function(Request $request, Response $response, $args){
+		$curso = new \Api\Controller\CursoController();
+		$curso = $curso->listaPorId($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($curso);
+		return $response;
+	});
+	//Lista registros inativos
+	$app->get('/inativo', function(Request $request, Response $response){
+		$curso = new \Api\Controller\CursoController();
+		$curso = $curso->listaInativo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($curso);
+		return $response;
+	});
+	//Atualiza cadastro
+	$app->put('/update/{id}', function(Request $request, Response $response, $args){
+		$post = json_decode($request->getBody(), true);
+		$curso = new \Api\Controller\CursoController();
+		if ($curso->atulizaCadastro($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([true]);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([false]);
+		}
+		return $response;
+	});
+	//Inativa um curso
+	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
+		$curso = new \Api\Controller\CursoController();
+		$curso =  $curso->inativar($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($curso);
+		return $response;
+	});
+});
+/**
+* OPORTUNIDADE
+*/
+$app->group('/oportunidade', function() use ($app){
+
+	$app->post('/save/{id}', function(Request $request, Response $response, $args){
+		$oportunidade = new \Api\Controller\OportunidadeController();
+		$post = json_decode($request->getBody(), true);
+		$post['usuario_id'] = $args['id'];
+		if ($oportunidade->cadastrar($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([true]);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([false]);
+		}
+		return $response;
+	});
+	//lista todos os oportunidade
+	$app->get('/list', function(Request $request, Response $response){
+		$oportunidade = new \Api\Controller\OportunidadeController();
+		$oportunidade = $oportunidade->listaTudo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($oportunidade);
+		return $response;
+	});
+	//Lista oportunidade por Id
+	$app->get('/list/{id}', function(Request $request, Response $response, $args){
+		$oportunidade = new \Api\Controller\OportunidadeController();
+		$oportunidade = $oportunidade->listaPorId($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($oportunidade);
+		return $response;
+	});
+	//Lista registros inativos
+	$app->get('/inativo', function(Request $request, Response $response){
+		$oportunidade = new \Api\Controller\OportunidadeController();
+		$oportunidade = $oportunidade->listaInativo();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($oportunidade);
+		return $response;
+	});
+	//Atualiza cadastro
+	$app->put('/update/{id}', function(Request $request, Response $response, $args){
+		$post = json_decode($request->getBody(), true);
+		$oportunidade = new \Api\Controller\OportunidadeController();
+		if ($oportunidade->atulizaCadastro($post)){
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([true]);
+		}else{
+			$response = $response->withHeader('Content-type', 'application/json');
+			$response = $response->withJson([false]);
+		}
+		return $response;
+	});
+	//Inativa um oportunidade
+	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
+		$oportunidade = new \Api\Controller\OportunidadeController();
+		$oportunidade =  $oportunidade->inativar($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($oportunidade);
+		return $response;
+	});
+});
+
+
 $app->get('/teste', function (Request $request, Response $response){
 	$teste = new \Api\Controller\AssociadoController();
 	$bla = $teste->test();
