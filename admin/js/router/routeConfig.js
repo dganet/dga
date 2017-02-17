@@ -241,8 +241,8 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
       .state('user.cursos.inseri', {
       url: '/inseri',
-      templateUrl: 'modCursos/cadastraCurso.htm',
-      controller:'cadastroNoticiaCtrl',
+      templateUrl: 'modCursos/inseriCurso.htm',
+      controller:'inseriCursoCtrl',
        ncyBreadcrumb: {
             label: 'Inseri'
          }

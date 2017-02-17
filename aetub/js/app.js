@@ -1,1 +1,1 @@
-var app = angular.module('myApp',['ui.router','ngStorage']);
+var app = angular.module('myApp',['ui.router','ngStorage','ui.utils.masks']);

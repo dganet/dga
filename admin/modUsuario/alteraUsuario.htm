@@ -2,9 +2,14 @@
   <strong>Update!</strong> Atualização dos Dados foram inserido com sucesso.
 </div>
 
+<div class="alert alert-danger" ng-hide="mensagemDeleta">
+  <strong>Sucesso!</strong> Dados deletado com sucesso.
+</div>
+
 <div class="acoes">
 
-	<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+<i class="fa fa-users fa-lg aria-hidden="true"></i>
+
 	<label>Altera Usuários</label>
 </div>
 
@@ -37,7 +42,7 @@
 
 <div class="quatro" ng-show="quatro">
  
-  <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>{{usuario.nome}}
+<h4>{{usuario.nome}}</h4>
     <hr>
 
 <form name="FormUsuario" ng-submit="add(usuario)">
@@ -76,7 +81,8 @@
   
 <hr>
 
-<button type="submit" class="btn btn-warning">Atualizar Dados</button>
+<button type="submit" class="btn btn-warning">Atualizar</button>
+<button type="button" class="btn btn-danger" ng-click="deleta(usuario.id)">Deletar</button>
 </form>
 
   </div>

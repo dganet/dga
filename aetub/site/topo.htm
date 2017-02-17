@@ -61,10 +61,10 @@
 		<form class="form-inline" name="formAut" ng-submit="logando(user)">
 			
 
-					<input type="text" ng-model="user.cpf" class="form-control" placeholder="Digite seu CPF">
+					<input type="text" ng-model="user.cpf" class="form-control" placeholder="Digite seu CPF" ui-br-cpf-mask required="required">
 
 
-				<input type="password" ng-model="user.senha" class="form-control"  placeholder="Digite sua Senha">
+				<input type="password" ng-model="user.senha" class="form-control"  placeholder="Digite sua Senha" required="required">
 
 
 
