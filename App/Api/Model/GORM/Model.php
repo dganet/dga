@@ -20,6 +20,7 @@ class Model{
 		$con  = new ConnectionFactory($this->mode);
 		$db   = $con->getInstance();
 		$stmt = $db->prepare(Builder::$sql);
+		var_dump(Builder::$sql);
 		if ($stmt->execute()){
 			return true;
 		}else{
