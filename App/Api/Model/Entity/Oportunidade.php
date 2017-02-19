@@ -6,7 +6,7 @@ class Oportunidade extends \GORM\Model{
 	private $usuario_id;
 	private $titulo;
 	private $descricao;
-	private $empresa
+	private $empresa;
 	private $contratoTipo;
 
 	public function __construct($data = []){
@@ -48,22 +48,22 @@ class Oportunidade extends \GORM\Model{
 	public function __set($attr, $value){
 		switch ($attr) {
 			case 'id':
-				$this->id = $value
+				$this->id = $value;
 				break;
 			case 'usuario_id':
-				$this->usuario_id = $value
+				$this->usuario_id = $value;
 				break;
 			case 'titulo':
-				$this->titulo = $value
+				$this->titulo = $value;
 				break;
 			case 'descricao':
-				$this->descricao = $value
+				$this->descricao = $value;
 				break;
 			case 'empresa':
-				$this->empresa = $value
+				$this->empresa = $value;
 				break;
 			case 'contratoTipo':
-				$this->contratoTipo = $value
+				$this->contratoTipo = $value;
 				break;
 			
 			default:

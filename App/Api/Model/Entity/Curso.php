@@ -1,4 +1,4 @@
-<?
+<?php
 namespace Api\Model\Entity;
 
 class Curso extends \GORM\Model {

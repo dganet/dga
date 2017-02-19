@@ -6,7 +6,8 @@ class OportunidadeController implements Controller {
 
 	// Salva as Informações do oportunidade
 	public function cadastrar($data){
-		$oportunidade = new Oportunidade	$oportunidade->status = "ATIVO";
+		$oportunidade = new Oportunidade($data);	
+		$oportunidade->status = "ATIVO";
 		$oportunidade->createAt = $_SERVER['REQUEST_TIME'];
 		return $oportunidade->save();
 	}
