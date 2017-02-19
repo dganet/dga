@@ -6,31 +6,30 @@ class OportunidadeController implements Controller {
 
 	// Salva as Informações do oportunidade
 	public function cadastrar($data){
-		$oportunidade = new OportunidadeController($data);
-		$oportunidade->status = "ATIVO";
+		$oportunidade = new Oportunidade	$oportunidade->status = "ATIVO";
 		$oportunidade->createAt = $_SERVER['REQUEST_TIME'];
 		return $oportunidade->save();
 	}
 
 	//Lista todos os oportunidade
 	public function listaTudo(){
-		$oportunidade = new OportunidadeController();
+		$oportunidade = new Oportunidade();
 		return $oportunidade->select(array('where' => array('status' => 'ATIVO')));
 	}
 	//Lista Por Id
 	public function listaPorId($id){
-		$oportunidade = new OportunidadeController();
+		$oportunidade = new Oportunidade();
 		return $oportunidade->select(array('where' => array('id' => $id)));
 	}
 	//Update de cadastro
 	public function atulizaCadastro($data){
-		$oportunidade = new OportunidadeController($data);
+		$oportunidade = new Oportunidade($data);
 		$oportunidade->createAt = $_SERVER['REQUEST_TIME'];
 		return $oportunidade->update();
 	}
 	//Desativa o cliente
 	public function inativar($id){
-		$oportunidade = new OportunidadeController();
+		$oportunidade = new Oportunidade();
 		$oportunidade->id = $id;
 		$oportunidade->createAt = $_SERVER['REQUEST_TIME'];
 		$oportunidade->status = 'INATIVO';
@@ -38,13 +37,13 @@ class OportunidadeController implements Controller {
 	}
 
 	public function test(){
-		$oportunidade = new OportunidadeController();
+		$oportunidade = new Oportunidade();
 		return $oportunidade->select(array('where' => array('AND' => array('id' => '1', 'nome' => 'guilherme', 'bla' => 11))));
 	}
 
 
 	public function listaInativo(){
-		$oportunidade = new OportunidadeController();
+		$oportunidade = new Oportunidade();
 		return $oportunidade->select(array('where' => array('status' => 'INATIVO')));
 	}
 
