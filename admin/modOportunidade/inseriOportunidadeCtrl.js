@@ -10,7 +10,7 @@ var id = sessionStorage.getItem('usuario.id');
 //*************CADASTRA NOVO USUARIO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormNoticia) {
+  $scope.add = function(values, FormOportunidade) {
 
 
     // Enviado os valores em objetos para api/user do php/slim

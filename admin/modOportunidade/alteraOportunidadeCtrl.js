@@ -35,7 +35,7 @@ $scope.dados = function (values){
 //*************UPDATE NOTICIA *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormNoticia) {
+  $scope.add = function(values, FormOportunidade) {
 
 	 $scope.dados = values;
 	 var id = $scope.dados.id;

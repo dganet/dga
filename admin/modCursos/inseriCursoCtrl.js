@@ -10,11 +10,10 @@ var id = sessionStorage.getItem('usuario.id');
 //*************CADASTRA NOVO USUARIO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormNoticia) {
-
+  $scope.add = function(values, FormCurso) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/post/save/'+ id , values).success(function(){
+    $http.post('../App/curso/save/'+ id , values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/curso/inseri');
          
