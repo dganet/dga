@@ -32,14 +32,9 @@ class OportunidadeController implements Controller {
 	public function inativar($id){
 		$oportunidade = new Oportunidade();
 		$oportunidade->id = $id;
-		$oportunidade->createAt = $_SERVER['REQUEST_TIME'];
+		$oportunidade->updateAt = $_SERVER['REQUEST_TIME'];
 		$oportunidade->status = 'INATIVO';
 		$oportunidade->update();
-	}
-
-	public function test(){
-		$oportunidade = new Oportunidade();
-		return $oportunidade->select(array('where' => array('AND' => array('id' => '1', 'nome' => 'guilherme', 'bla' => 11))));
 	}
 
 

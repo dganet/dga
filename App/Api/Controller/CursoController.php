@@ -37,11 +37,6 @@ class CursoController implements Controller {
 		$curso->update();
 	}
 
-	public function test(){
-		$curso = new Curso();
-		return $curso->select(array('where' => array('AND' => array('id' => '1', 'nome' => 'guilherme', 'bla' => 11))));
-	}
-
 
 	public function listaInativo(){
 		$curso = new Curso();

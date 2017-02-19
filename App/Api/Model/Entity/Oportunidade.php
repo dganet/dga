@@ -4,6 +4,9 @@ namespace Api\Model\Entity;
 class Oportunidade extends \GORM\Model{
 	private $id;
 	private $usuario_id;
+	private $status;
+	private $createAt;
+	private $updateAt;
 	private $titulo;
 	private $descricao;
 	private $empresa;
@@ -16,6 +19,9 @@ class Oportunidade extends \GORM\Model{
 		isset($data['descricao']) ? $this->descricao = $data['descricao'] : $this->descricao = null;
 		isset($data['empresa']) ? $this->empresa = $data['empresa'] : $this->empresa = null;
 		isset($data['contratoTipo']) ? $this->contratoTipo = $data['contratoTipo'] : $this->contratoTipo = null;
+		isset($data['status']) ? $this->status = $data['status'] : $this->status = null ;
+		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null ;
+		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null ;
 		$this->class = $this;
 	}
 	public function __get($attr){
@@ -37,6 +43,15 @@ class Oportunidade extends \GORM\Model{
 				break;
 			case 'contratoTipo':
 				return $this->contratoTipo;
+				break;
+			case 'status':
+				return $this->status;
+				break;
+			case 'createAt':
+				return $this->createAt;
+				break;
+			case 'updateAt':
+				return $this->updateAt;
 				break;
 			
 			default:
@@ -65,6 +80,15 @@ class Oportunidade extends \GORM\Model{
 			case 'contratoTipo':
 				$this->contratoTipo = $value;
 				break;
+			case 'status':
+				$this->status = $value;
+				break;
+			case 'createAt':
+				$this->createAt = $value;
+				break;
+			case 'updateAt':
+				$this->updateAt = $value;
+				break;
 			
 			default:
 				# code...
@@ -78,7 +102,10 @@ class Oportunidade extends \GORM\Model{
 			'titulo' => $this->titulo,
 			'descricao' => $this->descricao,
 			'empresa' => $this->empresa,
-			'contratoTipo' => $this->contratoTipo
+			'contratoTipo' => $this->contratoTipo,
+			'status' => $this->status,
+			'createAt' => $this->createAt,
+			'updateAt' => $this->updateAt
 			);
 	}
 }
