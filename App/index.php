@@ -2,7 +2,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 require_once "vendor/autoload.php";
-
+date_default_timezone_set('America/Sao_Paulo');
 $app = new Slim\App([
     'settings' => [
         'displayErrorDetails' => true
@@ -490,9 +490,7 @@ $app->group('/oportunidade', function() use ($app){
 
 
 $app->get('/teste', function (Request $request, Response $response){
-	$teste = new \Api\Controller\AssociadoController();
-	$bla = $teste->test();
-	echo $bla;
+	\Api\Model\Log::Error("mensagem de teste\n");
 });
 
 $app->run();

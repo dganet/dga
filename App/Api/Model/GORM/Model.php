@@ -20,7 +20,11 @@ class Model{
 		$con  = new ConnectionFactory($this->mode);
 		$db   = $con->getInstance();
 		$stmt = $db->prepare(Builder::$sql);
-		return $stmt->execute();
+		if ($stmt->execute()){
+			return true;
+		}else{
+			Throw new Exeption("Ocorreu algum problema na execução da SQL");
+		}
 	}	
 	/**
 	*	Cria select da conforme o objeto da classe que chamou o metodo;
@@ -33,9 +37,13 @@ class Model{
 		Builder::makeSelect($this->class);
 		$con                = new ConnectionFactory($this->mode);
 		$db                 = $con->getInstance();
-		$consulta           = $db->query(Builder::$sql);
-		$r 		            = $consulta->fetchAll(PDO::FETCH_ASSOC);
-		return $r;
+		try{
+			$consulta           = $db->query(Builder::$sql);
+			$r 		            = $consulta->fetchAll(PDO::FETCH_ASSOC);
+			return $r;
+		}catch(PDOException $e){
+			Throw new Exception("Não foi possivel realizar a consulta ".$e);
+		}
 	}
 	/**
 	*	Atualiza informação conforme o objeto que chamou está função

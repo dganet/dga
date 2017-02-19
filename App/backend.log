@@ -1,0 +1,22 @@
+
+18/02/2017 16:19:23 [MESSAGE]:Logando o usuario com CPF: 38729417805
+18/02/2017 16:19:24[ERROR]: Usuario com CPF: 38729417805 não encontrado, usuario ou senha invalidos
+18/02/2017 17:29:41 [MESSAGE]:Tentando Logar o Associado: 38729417805
+18/02/2017 17:29:42 [ERROR]: Cpf ou senha invalidos
+18/02/2017 17:29:49 [MESSAGE]:Tentando Logar o Associado: 38729417805
+18/02/2017 17:29:50 [ERROR]: Cpf ou senha invalidos
+18/02/2017 17:30:15 [MESSAGE]:Tentando Cadastrar o Associado Teste
+18/02/2017 17:30:16 [MESSAGE]:UsuárioTestecadastrado com sucesso !
+18/02/2017 17:30:57 [MESSAGE]:Listando Associados
+18/02/2017 17:30:59 [MESSAGE]:Solicitado informações sobre o Associado 
+18/02/2017 17:31:01 [MESSAGE]:Inativando Associado 53
+18/02/2017 17:31:01 [MESSAGE]:Listando Associados
+18/02/2017 17:31:26 [MESSAGE]:Listando Associados
+18/02/2017 17:31:28 [MESSAGE]:Solicitado informações sobre o Associado 
+18/02/2017 17:31:35 [MESSAGE]:Atualizando informações do Associado
+18/02/2017 17:31:35 [MESSAGE]:Listando Associados
+18/02/2017 17:31:53 [MESSAGE]:Tentando Logar o Associado: 38729417805
+18/02/2017 17:31:54 [MESSAGE]:Associado logado com sucesso!
+18/02/2017 17:32:39 [MESSAGE]:Tentando Logar o Associado: 38729417805
+18/02/2017 17:32:52 [MESSAGE]:Tentando Logar o Associado: 38729417805
+18/02/2017 17:32:55 [MESSAGE]:Tentando Logar o Associado: 38729417805
