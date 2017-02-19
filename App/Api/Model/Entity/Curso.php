@@ -3,6 +3,7 @@ namespace Api\Model\Entity;
 
 class Curso extends \GORM\Model {
 	private $id;
+	private $titulo;
 	private $descricao;
 	private $createAt;
 	private $updateAt;
@@ -10,6 +11,7 @@ class Curso extends \GORM\Model {
 
 	public function __construct($data = []){
 		isset($data['id']) ? $this->id = $data['id'] : $this->id = null;
+		isset($data['titulo']) ? $this->titulo = $data['titulo'] : $this->titulo = null;
 		isset($data['descricao']) ? $this->descricao = $data['descricao'] : $this->descricao = null;
 		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null;
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null;
@@ -23,6 +25,9 @@ class Curso extends \GORM\Model {
 				break;
 			case 'descricao':
 				return $this->descricao;
+				break;
+			case 'titulo':
+				return $this->titulo;
 				break;
 			case 'createAt':
 				return $this->createAt;
@@ -48,6 +53,9 @@ class Curso extends \GORM\Model {
 			case 'descricao':
 				$this->descricao = $value;
 				break;
+			case 'titulo':
+				$this->titulo = $value;
+				break;
 			case 'createAt':
 				$this->createAt = $value;
 				break;
@@ -67,6 +75,7 @@ class Curso extends \GORM\Model {
 		return array(
 			'id' => $this->id,
 			'descricao' => $this->descricao,
+			'titulo' => $this->titulo,
 			'createAt' => $this->createAt,
 			'updateAt' => $this->updateAt,
 			'status' => $this->status

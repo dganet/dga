@@ -1,4 +1,4 @@
-app.controller("inseriCursoCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
+app.controller("inseriOportunidadeCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
   //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
 
@@ -14,9 +14,9 @@ var id = sessionStorage.getItem('usuario.id');
 
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/post/save/'+ id , values).success(function(){
+    $http.post('../App/oportunidade/save/'+ id , values).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/curso/inseri');
+      $scope.activePath = $location.path('/user/oportunidade/inseri');
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
@@ -27,7 +27,7 @@ var id = sessionStorage.getItem('usuario.id');
      //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.curso = angular.copy($scope.master);
+      $scope.oportunidade = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();

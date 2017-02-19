@@ -222,8 +222,8 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //############################################################################
 //############# **  MODULO CURSOS ** ##########################################
 //############################################################################
-      .state('user.cursos', {
-      url: '/cursos',
+      .state('user.curso', {
+      url: '/curso',
       templateUrl: 'modCursos/cursoLink.htm',
       resolve: { 
           function ($sessionStorage, $location){
@@ -234,12 +234,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
      
       },
        ncyBreadcrumb: {
-            label: 'Cursos'
+            label: 'Curso'
          }
     })
 
 
-      .state('user.cursos.inseri', {
+      .state('user.curso.inseri', {
       url: '/inseri',
       templateUrl: 'modCursos/inseriCurso.htm',
       controller:'inseriCursoCtrl',
@@ -248,10 +248,10 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
     })
 
-      .state('user.cursos.altera', {
+      .state('user.curso.altera', {
       url: '/altera',
       templateUrl: 'modCursos/alteraCurso.htm',
-      controller:'cadastroNoticiaCtrl',
+      controller:'alteraCursoCtrl',
        ncyBreadcrumb: {
             label: 'Altera'
          }
@@ -279,8 +279,8 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
       .state('user.oportunidade.inseri', {
       url: '/inseri',
-      templateUrl: 'modOportunidade/cadastraOportunidade.htm',
-      controller:'cadastroNoticiaCtrl',
+      templateUrl: 'modOportunidade/inseriOportunidade.htm',
+      controller:'inseriOportunidadeCtrl',
        ncyBreadcrumb: {
             label: 'Inseri Oportunidade'
          }
@@ -289,7 +289,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.oportunidade.altera', {
       url: '/altera',
       templateUrl: 'modOportunidade/alteraOportunidade.htm',
-      controller:'cadastroNoticiaCtrl',
+      controller:'alteraOportunidadeCtrl',
        ncyBreadcrumb: {
             label: 'Altera Oportunidade'
          }

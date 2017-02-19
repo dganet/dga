@@ -4,25 +4,6 @@ use \Api\Model\Entity\Oportunidade;
 
 class OportunidadeController implements Controller {
 
-	public function logar($data){
-		$oportunidade = new OportunidadeController();
-		$flag =  $oportunidade->select(array('where' => array(
-								'AND' => array(
-										'cpf' => $data['cpf'],
-										'senha' => md5($data['senha']),
-										'status' => 'ATIVO'
-												)
-									)
-								)
-							);
-		if (count($flag)==0){
-			$flag['check'] = false;
-		}else{
-			$flag['check'] = true;
-		}
-		return $flag;
-	}
-
 	// Salva as Informações do oportunidade
 	public function cadastrar($data){
 		$oportunidade = new OportunidadeController($data);
