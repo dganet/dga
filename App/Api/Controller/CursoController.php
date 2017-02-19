@@ -4,25 +4,6 @@ use \Api\Model\Entity\Curso;
 
 class CursoController implements Controller {
 
-	public function logar($data){
-		$curso = new Curso();
-		$flag =  $curso->select(array('where' => array(
-								'AND' => array(
-										'cpf' => $data['cpf'],
-										'senha' => md5($data['senha']),
-										'status' => 'ATIVO'
-												)
-									)
-								)
-							);
-		if (count($flag)==0){
-			$flag['check'] = false;
-		}else{
-			$flag['check'] = true;
-		}
-		return $flag;
-	}
-
 	// Salva as Informações do curso
 	public function cadastrar($data){
 		$curso = new Curso($data);
