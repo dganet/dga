@@ -115,6 +115,8 @@ $scope.dados = function (values){
 
   });
 
+$scope.quatro = false;
+
   };
 
 });

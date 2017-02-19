@@ -5,8 +5,8 @@ var idUsuario = sessionStorage.getItem('usuario.id');
 $scope.quatro = false;
 
 //Lista os Usuarios
-	$http.get('../App/curso/list').success(function(data){
-		$scope.cursos = data;
+	$http.get('../App/oportunidade/list').success(function(data){
+		$scope.oportunidades = data;
 
 	});
 
@@ -17,8 +17,8 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		$http.get('../App/curso/list/'+ id).success(function(data){
-		$scope.curso = data[0];
+		$http.get('../App/oportunidade/list/'+ id).success(function(data){
+		$scope.oportunidade = data[0];
 		
 	});
 
@@ -41,9 +41,9 @@ $scope.dados = function (values){
 	 var id = $scope.dados.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.put('../App/curso/update/'+ idUsuario , values).success(function(){
+    $http.put('../App/oportunidade/update/'+ idUsuario , values).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/curso/altera');
+      $scope.activePath = $location.path('/user/oportunidade/altera');
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
@@ -52,8 +52,8 @@ $scope.dados = function (values){
            },10000);
     });
 
-    $http.get('../App/curso/list').success(function(data){
-		$scope.cursos = data;
+    $http.get('../App/oportunidade/list').success(function(data){
+		$scope.oportunidades = data;
 
 	});
 
@@ -63,8 +63,8 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		$http.get('../App/curso/list/'+ id).success(function(data){
-		$scope.curso = data[0];
+		$http.get('../App/oportunidade/list/'+ id).success(function(data){
+		$scope.oportunidade = data[0];
 		
 	});
 
@@ -75,7 +75,7 @@ $scope.dados = function (values){
      //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.curso = angular.copy($scope.master);
+      $scope.oportunidade = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
@@ -90,9 +90,9 @@ $scope.dados = function (values){
   $scope.deleta = function(values) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.delete('../App/curso/delete/'+ values).success(function(){
+    $http.delete('../App/oportunidade/delete/'+ values).success(function(){
     // Depois mandando para mesma pagina  
-    $scope.activePath = $location.path('/user/curso/altera');
+    $scope.activePath = $location.path('/user/oportunidade/altera');
    
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagemDeleta = false;
@@ -104,17 +104,17 @@ $scope.dados = function (values){
     //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.curso = angular.copy($scope.master);
+      $scope.oportunidade = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
          
 
-    $http.get('../App/curso/list').success(function(data){
-    $scope.cursos = data;
+    $http.get('../App/oportunidade/list').success(function(data){
+    $scope.oportunidades = data;
 
   });
-
+$scope.quatro = false;
   };
 
 });

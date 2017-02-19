@@ -257,6 +257,17 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
     })
 
+      .state('user.curso.altera.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+               ncyBreadcrumb: {
+            label: 'Cursos'
+         }
+    })
+
 //############################################################################
 //############# **  MODULO OPORTUNIDADE ** ##########################################
 //############################################################################
@@ -292,6 +303,17 @@ app.config(function ($stateProvider, $urlRouterProvider){
       controller:'alteraOportunidadeCtrl',
        ncyBreadcrumb: {
             label: 'Altera Oportunidade'
+         }
+    })
+
+      .state('user.oportunidade.altera.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+               ncyBreadcrumb: {
+            label: 'Oportunidades'
          }
     })
 
