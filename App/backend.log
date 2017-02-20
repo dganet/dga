@@ -26,3 +26,13 @@
 19/02/2017 13:50:52 [MESSAGE]:Listando Associados
 19/02/2017 13:50:56 [MESSAGE]:Listando Associados
 19/02/2017 13:50:56 [MESSAGE]:Listando Associados
+20/02/2017 6:35:54 [MESSAGE]:Tentando Logar o Associado: 38729417805
+20/02/2017 6:36:37 [MESSAGE]:Tentando Logar o Associado: 38729417805
+20/02/2017 6:38:55 [MESSAGE]:Tentando Logar o Associado: 38729417805
+20/02/2017 6:38:55 [ERROR]: Cpf ou senha invalidos
+20/02/2017 6:40:41 [MESSAGE]:Tentando Logar o Associado: 38729417805
+20/02/2017 6:40:42 [ERROR]: Cpf ou senha invalidos
+20/02/2017 6:41:04 [MESSAGE]:Listando Associados
+20/02/2017 6:41:13 [MESSAGE]:Solicitado informações sobre o Associado 
+20/02/2017 6:41:21 [MESSAGE]:Tentando Logar o Associado: 38583540829
+20/02/2017 6:41:21 [MESSAGE]:Associado logado com sucesso!

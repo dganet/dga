@@ -9,7 +9,7 @@ class AssociadoController implements Controller {
 		$associado = new Associado();
 		$flag =  $associado->select(array('where' => array(
 								'AND' => array(
-										'cpf' => $data['cpsf'],
+										'cpf' => $data['cpf'],
 										'senha' => md5($data['senha']),
 										'status' => 'ATIVO'
 												)
