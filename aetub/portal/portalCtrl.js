@@ -1,4 +1,4 @@
-app.controller("homeCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
+app.controller("portalCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
 //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
 var nome = sessionStorage.getItem('nome.id');

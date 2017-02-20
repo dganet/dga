@@ -28,7 +28,8 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
     .state('portal', {
       url:'/portal',
-      templateUrl: 'aetub/portal/home.htm'
+      templateUrl: 'aetub/portal/home.htm',
+      controller: 'portalCtrl',
 
     })
 

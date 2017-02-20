@@ -1,17 +1,3 @@
-.topo{
-	width: 100%;
-	height: 40PX;
-	background: #422774;
-}
-
-.conteudo_topo {
-	width: 1024px;
-	height: 40px;
-	margin: 0 auto;
-	color: white;
-
-}
-
 .bloco_portal{
 	width: 1024px;
 	margin: 0 auto;
@@ -45,10 +31,14 @@
 	border-bottom: 5px solid #ECA33D;
 
 }
-.perfil img {
+.perfil {
 	float: left;
+	width: 300px;
+}
+.perfil img {
+
 	margin-left: 26%;
-	border-radius: 50px;	
+	border-radius: 50px;
 }
 .info {
 	float: left;
@@ -60,9 +50,10 @@
 	padding-top: 20px;
 	border-top: 1px solid white;
 	margin-top: 20px;
+	width: 250px;
 }
 .nome {
-	font-size: 26px;
+	font-size: 18px;
 	text-align: center;
 	font-weight: bold;
 }    
@@ -114,4 +105,21 @@
 #blocoNoticiasPortal h4 {
 	border-left: 10px solid gray;
 	padding-left: 5px;
+}
+
+.empresa{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-top: 1px solid #b6b6b6;
+	border-bottom: 1px solid #b6b6b6;
+	padding: 20px 0px;
+
+}
+.title_empresa {
+	color: gray;
+	text-align: center;
+}
+.version {
+	color: gray;
+	text-align:center;
 }
