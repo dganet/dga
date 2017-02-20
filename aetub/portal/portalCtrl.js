@@ -1,11 +1,11 @@
 app.controller("portalCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
 //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
-var nome = sessionStorage.getItem('nome.id');
-var endereco = sessionStorage.getItem('endereco.id');
-var bairro = sessionStorage.getItem('bairro.id');
-var cidade = sessionStorage.getItem('cidade.id');
-var cep = sessionStorage.getItem('cep.id');
+var nome = sessionStorage.getItem('usuario.nome');
+var endereco = sessionStorage.getItem('usuario.endereco');
+var bairro = sessionStorage.getItem('usuario.bairro');
+var cidade = sessionStorage.getItem('usuario.cidade');
+var cep = sessionStorage.getItem('usuario.cep');
 
 $scope.nome = nome;
 $scope.endereco = endereco;
