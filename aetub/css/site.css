@@ -141,6 +141,7 @@ section	{
 	float: left;
 }
 
+
 .titulo {
 	padding-top: 12px;
 	font-size: 16px;
@@ -149,6 +150,11 @@ section	{
 }
 .chamada {
 	font-size: 14px;
+}
+.chamadaLeiaMais{
+	color: gray;
+	padding: 10px 0px;
+	font-weight: bold;
 }
 .descricao {
 	font-size: 12px;

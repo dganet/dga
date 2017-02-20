@@ -31,6 +31,53 @@ app.config(function ($stateProvider, $urlRouterProvider){
       templateUrl: 'aetub/portal/home.htm'
 
     })
+
+    .state('portal.noticias', {
+      url:'/noticias',
+      templateUrl: 'aetub/portal/noticias.htm',
+      controller: 'noticiasCtrl',
+
+    })
+    .state('portal.noticias.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+
+      })
+
+
+    .state('portal.oportunidades', {
+      url:'/oportunidades',
+      templateUrl: 'aetub/portal/oportunidades.htm',
+      controller: 'oportunidadesCtrl',
+
+    })
+    .state('portal.oportunidades.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+
+      })
+    .state('portal.cursos', {
+      url:'/cursos',
+      templateUrl: 'aetub/portal/cursos.htm',
+      controller: 'cursosCtrl',
+
+    })
+    .state('portal.cursos.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+
+      })
+
+
   $urlRouterProvider.otherwise("/home/inicio");
 
 

@@ -9,17 +9,109 @@
 	height: 40px;
 	margin: 0 auto;
 	color: white;
+
 }
 
-.corpo_portal{
+.bloco_portal{
 	width: 1024px;
 	margin: 0 auto;
 	height: 100px;
-	background: red;
+	padding: 10px;
 }
 
-.bloco_perfil {
-	width: 200px;
-	height: 200px;
+.bloco_um{
+	background: #D3D3D3;
+	width: 300px;
+	position: fixed;
+	bottom: 10px;
+	top:10px;
+	border: 1px solid gray;
+}
 
+.bloco_dois {
+    background: #eaeaea;
+	width: 724px;
+	position: fixed;
+	bottom: 10px;
+	top:10px;
+	left: 610px;
+	overflow: auto;
+}
+.bloco_perfil {
+	width: 300px;
+	height: 80px;
+	padding: 20px;
+	background: #422774;
+	border-bottom: 5px solid #ECA33D;
+
+}
+.perfil img {
+	float: left;
+	margin-left: 26%;
+	border-radius: 50px;	
+}
+.info {
+	float: left;
+	margin-left: 10px;
+	color: gray;
+	border-bottom: 1px solid white;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border-top: 1px solid white;
+	margin-top: 20px;
+}
+.nome {
+	font-size: 26px;
+	text-align: center;
+	font-weight: bold;
+}    
+
+.end {
+	font-size: 14px;
+}
+.cidade {
+	font-size: 14px;
+}
+.cep {
+	font-size: 14px;
+}
+.altera{
+	font-size: 14px;
+}
+
+
+.menu_portal ul li {
+	display: inline;
+	margin-left: -10px;
+	width: 100%;
+}
+.menu_portal  ul li a {
+	width: 90%;
+	padding: 10px;
+	display: inline-block;
+	/* visual do link */
+	text-decoration: none;
+	color: gray;
+}
+
+.menu_portal  a:hover {
+	text-decoration: none;
+	background: #F3F3F3;
+}
+#blocoNoticiasPortal {
+	display: block;
+	width: 724px;
+	height: auto;
+	padding: 10px;
+	float: left;
+}
+.chamadaLeiaMais{
+	color: gray;
+	padding: 10px 0px;
+	font-weight: bold;
+}
+#blocoNoticiasPortal h4 {
+	border-left: 10px solid gray;
+	padding-left: 5px;
 }

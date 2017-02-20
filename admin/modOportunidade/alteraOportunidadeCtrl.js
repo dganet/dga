@@ -110,7 +110,7 @@ $scope.dados = function (values){
     $scope.reset();
          
 
-    $http.get('../App/oportunidade/list').success(function(data){
+    $http.get('../App/oportunidade /list').success(function(data){
     $scope.oportunidades = data;
 
   });

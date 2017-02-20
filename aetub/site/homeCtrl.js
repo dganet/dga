@@ -26,6 +26,11 @@
 			    $scope.activePath = $location.path('/portal');
 			    sessionStorage.setItem('usuario.id', response[0].id);
 			    sessionStorage.setItem('usuario.nome', response[0].nome);
+			    sessionStorage.setItem('usuario.endereco', response[0].endereco);
+			    sessionStorage.setItem('usuario.bairro', response[0].bairro);
+			    sessionStorage.setItem('usuario.cidade', response[0].cidade);
+			    sessionStorage.setItem('usuario.cep', response[0].cep);
+
   				 
 		      }
 		     
