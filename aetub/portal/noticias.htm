@@ -4,15 +4,16 @@
 
 		<div ng-repeat="x in posts" ng-show="leiaMais">
 		
-		<div class="titulo">{{x.titulo}}</div>
-		<div class="chamada">{{x.chamada}}</div>
-		<div class="leiamais"><a ui-sref="portal.noticias.detalhes({id: x.id})" ng-click="dados(x.id)"><button type="button" class="btn btn-primary">Leia Mais</button></a></div>
+		<div class="tituloPortal">{{x.titulo}}</div>
+		<div class="chamadaPortal">{{x.chamada}}</div>
+		<div class="leiamaisPortal"><a ui-sref="portal.noticias.detalhes({id: x.id})" ng-click="dados(x.id)">Leia Mais</a></div>
+		<hr class="linhaPortal">
 		</div>
 
 		<div ng-show="Noticia">
-			<div class="titulo">{{post.titulo}}</div>
-			<div class="chamadaLeiaMais">{{post.chamada}}</div>
-			<div class="descricao">{{post.descricao}}</div>
+			<div class="tituloPortal">{{post.titulo}}</div>
+			<div class="chamadaLeiaMaisPortal">{{post.chamada}}</div>
+			<div class="descricaoPortal">{{post.descricao}}</div>
 			<hr>
 			<a ng-click="voltar()"><button type="button" class="btn btn-danger">Voltar</button></a>
 		</div>
