@@ -51,6 +51,7 @@
 	border-top: 1px solid white;
 	margin-top: 20px;
 	width: 250px;
+	text-align: center;
 }
 .nome {
 	font-size: 18px;
@@ -115,6 +116,11 @@
 	padding: 20px 0px;
 
 }
+.bloco-update-foto{
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
+
 .title_empresa {
 	color: gray;
 	text-align: center;
@@ -122,4 +128,30 @@
 .version {
 	color: gray;
 	text-align:center;
+}
+
+
+.tituloPortal {
+	padding-top: 12px;
+	font-size: 16px;
+	color: #422774;
+	font-weight: bold;
+}
+.chamadaPortal {
+	font-size: 14px;
+}
+.chamadaLeiaMaisPortal{
+	color: gray;
+	padding: 10px 0px;
+	font-weight: bold;
+}
+.descricaoPortal {
+	font-size: 12px;
+}
+.leiamaisPortal {
+		padding-top: 15px;
+}
+
+hr.linhaPortal {
+		border-top: 1px solid #b6b6b6;
 }

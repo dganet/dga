@@ -1,3 +1,4 @@
+
 <div class="alert alert-success" ng-hide="mensagem">
   <strong>Sucesso!</strong> Dados cadastrado com sucesso.
 </div>
@@ -12,7 +13,30 @@
 <hr>
 
 <div class="conteudo">
-
+<div id="sample">
+<script type="text/javascript">
+//<![CDATA[
+        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+  //]]>
+  </script>
+  <h4>
+    First Textarea
+  </h4>
+  <textarea name="area1" cols="40">
+</textarea><br />
+  <h4>
+    Second Textarea
+  </h4>
+  <textarea name="area2" style="width: 100%;">
+       Some Initial Content was in this textarea
+</textarea><br />
+  <h4>
+    Third Textarea
+  </h4>
+  <textarea name="area3" style="width: 300px; height: 100px;">
+       HTML content default in textarea
+</textarea>
+</div>
 <form name="FormNoticia" ng-submit="add(noticia)">
 	
 	<div class="row">
@@ -38,7 +62,10 @@
 	<div class="row">
 		<div class="col-md-12">		
 		<label>Descrição</label>
-			<textarea class="form-control" rows="15" ng-model="noticia.descricao"></textarea>
+			<textarea ng-model="noticia.descricao"></textarea>
+			<textarea name="area2" style="width: 100%;">
+       Some Initial Content was in this textarea
+</textarea>
 		</div>
 	</div>
 

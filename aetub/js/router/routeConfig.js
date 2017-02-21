@@ -78,6 +78,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
       })
 
+    .state('portal.update', {
+      url:'/update',
+      templateUrl: 'aetub/portal/update.htm',
+      controller: 'updateCtrl',
+
+    })
 
   $urlRouterProvider.otherwise("/home/inicio");
 
