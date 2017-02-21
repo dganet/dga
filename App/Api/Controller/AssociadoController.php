@@ -5,9 +5,10 @@ use \Api\Model\Entity\Associado, \Api\Controller\Log;
 class AssociadoController implements Controller {
 
 	public function logar($data){
-		Log::Message("Tentando Logar o Associado: ".$data['cpf']);
-		$associado = new Associado();
-		$flag =  $associado->select(array('where' => array(
+		if(isset($data['cpf'])){
+			Log::Message("Tentando Logar o Associado: ".$data['cpf']);
+			$associado = new Associado();
+			$flag =  $associado->select(array('where' => array(
 								'AND' => array(
 										'cpf' => $data['cpf'],
 										'senha' => md5($data['senha']),
@@ -24,6 +25,10 @@ class AssociadoController implements Controller {
 			$flag['check'] = true;
 			Log::Message("Associado logado com sucesso!");
 			return $flag;
+			}
+		}else{
+			Log::Error('CPF inválido!');
+			return false;
 		}
 	}
 
@@ -31,7 +36,7 @@ class AssociadoController implements Controller {
 	public function cadastrar($data){
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
 		$associado = new Associado($data);
-		$associado->status = "ATIVO";
+		$associado->status = "ESPERA";
 		$associado->createAt = $_SERVER['REQUEST_TIME'];
 		try{
 			$associado->save();
@@ -104,11 +109,7 @@ class AssociadoController implements Controller {
 		}
 	}
 	
-	public function test(){
-		$associado = new Associado();
-		return $associado->select(array('where' => array('AND' => array('id' => '1', 'nome' => 'guilherme', 'bla' => 11))));
-	}
-
+	
 
 	
 

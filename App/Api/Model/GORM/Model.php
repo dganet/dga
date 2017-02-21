@@ -17,6 +17,7 @@ class Model{
 	public function save(){
 		$this->loadTable();
 		$sql  = Builder::makeInsert($this->class);
+		\Api\Controller\Log::Debug(Builder::$sql);
 		$con  = new ConnectionFactory($this->mode);
 		$db   = $con->getInstance();
 		$stmt = $db->prepare(Builder::$sql);
@@ -38,11 +39,12 @@ class Model{
 		$con                = new ConnectionFactory($this->mode);
 		$db                 = $con->getInstance();
 		try{
+			\Api\Controller\Log::Debug(Builder::$sql);
 			$consulta           = $db->query(Builder::$sql);
 			$r 		            = $consulta->fetchAll(PDO::FETCH_ASSOC);
 			return $r;
 		}catch(PDOException $e){
-			Throw new Exception("Não foi possivel realizar a consulta ".$e);
+			Throw new Exception("Não foi possivel realizar a consulta ".$e->getMessage());
 		}
 	}
 	/**
@@ -52,6 +54,7 @@ class Model{
 		$this->loadTable();
 		$this->class->updateAt = $_SERVER["REQUEST_TIME"];
 		Builder::makeUpdate($this->class);
+		\Api\Controller\Log::Debug(Builder::$sql);
 		$con                   = new ConnectionFactory($this->mode);
 		$db                    = $con->getInstance();
 		$linha                 = $db->prepare(Builder::$sql);
