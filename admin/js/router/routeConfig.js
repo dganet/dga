@@ -112,64 +112,6 @@ app.config(function ($stateProvider, $urlRouterProvider){
         }
     })
 
-//############################################################################
-//############# **  MODULO VAGAS ** ##########################################
-//############################################################################
-
-
-      .state('user.vagas', {
-      url: '/periodo',
-      templateUrl: 'modVagas/periodoVagaLink.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-       ncyBreadcrumb: {
-            label: 'Vagas'
-         }
-    })
-
-      .state('user.vagas.inseri', {
-      url: '/vagas',
-      templateUrl: 'modVagas/inseriVagas.htm',
-      controller:'inseriVagasCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri Vagas'
-         }
-    })
-
-      .state('user.vagas.remove', {
-      url: '/remove',
-      templateUrl: 'modVagas/removeVaga.htm',
-      controller:'vagasPeriodoCtrl',
-       ncyBreadcrumb: {
-            label: 'Remove Vagas'
-         }
-    })
-
-
-      .state('user.vagas.inseriAssociado', {
-      url: '/inseriAssociado',
-      templateUrl: 'modVagas/periodoAssociado.htm',
-      controller:'vagasPeriodoCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri Associado'
-         }
-    })
-
-
-      .state('user.vagas.listagem', {
-      url: '/listagem',
-      templateUrl: 'modVagas/listagem.htm',
-      controller:'vagasPeriodoCtrl',
-       ncyBreadcrumb: {
-            label: 'Listagem de Vagas'
-         }
-    })
 
 //############################################################################
 //############# **  MODULO NOTICIAS ** ##########################################
@@ -366,6 +308,57 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
 
     })
+//############################################################################
+//############# **  MODULO Periodo ** ##########################################
+//############################################################################
+      .state('user.periodo', {
+      url: '/periodo',
+      templateUrl: 'modPeriodo/periodoLink.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
+       ncyBreadcrumb: {
+            label: 'Periodo'
+         }
+    })
+
+
+      .state('user.periodo.inseri', {
+      url: '/inseri',
+      templateUrl: 'modPeriodo/inseriPeriodo.htm',
+      controller:'inseriPeriodoCtrl',
+       ncyBreadcrumb: {
+            label: 'Inseri Periodo'
+         }
+    })
+
+      .state('user.periodo.altera', {
+      url: '/altera',
+      templateUrl: 'modPeriodo/alteraPeriodo.htm',
+      controller:'alteraPeriodoCtrl',
+       ncyBreadcrumb: {
+            label: 'Altera Periodo'
+         }
+    })
+
+      .state('user.periodo.altera.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+              ncyBreadcrumb: {
+            label: 'Altera'
+         }
+
+    })
+
+
 
 //############################################################################
 //############# **  MODULO CONFIGURAÇÕES ** ##########################################

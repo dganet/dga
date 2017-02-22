@@ -1,0 +1,60 @@
+<div class="alert alert-success" ng-hide="mensagem">
+  <strong>Sucesso!</strong> Dados cadastrado com sucesso.
+</div>
+
+<div class="acoes">
+
+<i class="fa fa-users" aria-hidden="true"></i>
+	<label>Cadastro de Periodo</label>
+
+</div>
+
+<hr>
+
+<div class="conteudo">
+
+<form name="FormPeriodo" ng-submit="add(periodo)">
+	
+	<div class="row">
+
+	<div class="col-md-3">
+		<div class="form-group">
+		<label>Linha</label>
+		<select class="form-control" ng-model="periodo.linha" required="required">
+			<option value="">Selecione uma Linha</option>
+		    <option value="linha01">Linha 01</option>
+			<option value="linha02">Linha 02</option>
+			<option value="linha03">Linha 03</option>
+			<option value="linha04">Linha 04</option>
+		</select>
+    </div> 
+    </div>
+
+ <div class="col-md-2">
+	    <div class="form-group">
+	          <label>Quantidade de Vagas</label>
+	          <input type="number" class="form-control" ng-model="periodo.qtasVagas">
+	     </div>
+     </div>
+
+     <div class="col-md-3">
+	    <div class="form-group">
+	          <label>Data Inicial</label>
+	          <input type="date" class="form-control" ng-model="periodo.dataInicio">
+	     </div>
+     </div>
+
+     <div class="col-md-3">
+	    <div class="form-group">
+	          <label>Data Final</label>
+	          <input type="date" class="form-control" ng-model="periodo.dataFinal">
+	     </div>
+     </div>
+
+	</div>
+	
+<hr>
+<button type="submit" class="btn btn-primary">Salvar Dados</button> 
+</form>
+
+</div>
