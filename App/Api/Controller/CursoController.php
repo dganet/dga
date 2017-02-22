@@ -8,7 +8,7 @@ class CursoController implements Controller {
 	public function cadastrar($data){
 		$curso = new Curso($data);
 		$curso->status = "ATIVO";
-		$curso->createAt = $_SERVER['REQUEST_TIME'];
+		$curso->createAt =date('Y-m-d H:i:s');
 		return $curso->save();
 	}
 
@@ -25,14 +25,14 @@ class CursoController implements Controller {
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$curso = new Curso($data);
-		$curso->createAt = $_SERVER['REQUEST_TIME'];
+		$curso->createAt =date('Y-m-d H:i:s');
 		return $curso->update();
 	}
 	//Desativa o cliente
 	public function inativar($id){
 		$curso = new Curso();
 		$curso->id = $id;
-		$curso->createAt = $_SERVER['REQUEST_TIME'];
+		$curso->createAt =date('Y-m-d H:i:s');
 		$curso->status = 'INATIVO';
 		$curso->update();
 	}

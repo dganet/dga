@@ -12,7 +12,7 @@ var idUsuario = sessionStorage.getItem('usuario.id');
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormPeriodo) {
     // Enviado os valores em objetos para api/user do php/slim
-     $http.post('../App/periodo/save', +idUsuario, values).success(function(){
+     $http.post('../App/periodo/save/' + idUsuario, values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/periodo/inseri');
          

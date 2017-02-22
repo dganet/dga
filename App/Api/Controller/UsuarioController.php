@@ -7,7 +7,7 @@ class UsuarioController implements Controller{
 	public function cadastrar($data){
 		$usuario = new Usuario($data);
 		$usuario->status = "ATIVO";
-		$usuario->createAt = $_SERVER['REQUEST_TIME'];
+		$usuario->createAt =date('Y-m-d H:i:s');
 		return $usuario->save();
 	}
 
@@ -24,7 +24,7 @@ class UsuarioController implements Controller{
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$usuario = new Usuario($data);
-		$usuario->updateAt = $_SERVER['REQUEST_TIME'];
+		$usuario->updateAt =date('Y-m-d H:i:s');
 		return $usuario->update();
 	}
 	//Lista registros inativos
@@ -36,7 +36,7 @@ class UsuarioController implements Controller{
 	public function inativar($id){
 		$usuario = new Usuario();
 		$usuario->status = "INATIVO";
-		$usuario->updateAt = $_SERVER['REQUEST_TIME'];
+		$usuario->updateAt =date('Y-m-d H:i:s');
 		$usuario->id = $id;
 		return $usuario->update();
 	}

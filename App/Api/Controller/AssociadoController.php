@@ -37,7 +37,7 @@ class AssociadoController implements Controller {
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
 		$associado = new Associado($data);
 		$associado->status = "ESPERA";
-		$associado->createAt = $_SERVER['REQUEST_TIME'];
+		$associado->createAt = date('Y-m-d H:i:s');
 		try{
 			$associado->save();
 			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
@@ -74,7 +74,7 @@ class AssociadoController implements Controller {
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$associado = new Associado($data);
-		$associado->createAt = $_SERVER['REQUEST_TIME'];
+		$associado->createAt = date('Y-m-d H:i:s');
 		try{
 			Log::Message("Atualizando informações do Associado");
 			return $associado->update();
@@ -87,7 +87,7 @@ class AssociadoController implements Controller {
 	public function inativar($id){
 		$associado = new Associado();
 		$associado->id = $id;
-		$associado->createAt = $_SERVER['REQUEST_TIME'];
+		$associado->createAt = date('Y-m-d H:i:s');
 		$associado->status = 'INATIVO';
 		try{
 			Log::Message("Inativando Associado ".$id);

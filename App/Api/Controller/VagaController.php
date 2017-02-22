@@ -7,7 +7,7 @@ class VagaController implements Controller{
 	public function cadastrar($data){
 		$vaga = new Vaga($data);
 		$vaga->status = "ATIVO";
-		$vaga->createAt = $_SERVER['REQUEST_TIME'];
+		$vaga->createAt =date('Y-m-d H:i:s');
 		return $vaga->save();
 	}
 
@@ -29,14 +29,14 @@ class VagaController implements Controller{
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$vaga = new Vaga($data);
-		$vaga->updateAt = $_SERVER['REQUEST_TIME'];
+		$vaga->updateAt =date('Y-m-d H:i:s');
 		return $vaga->update();
 	}
 	//Desativa o cliente
 	public function inativar($id){
 		$vaga = new Vaga();
 		$vaga->status = "INATIVO";
-		$vaga->updateAt = $_SERVER['REQUEST_TIME'];
+		$vaga->updateAt =date('Y-m-d H:i:s');
 		$vaga->id = $id;
 		return $vaga->update();
 	}

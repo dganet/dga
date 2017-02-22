@@ -8,7 +8,7 @@ class PostController implements Controller{
 	public function cadastrar($data){
 		$post = new Post($data);
 		$post->status = "ATIVO";
-		$post->createAt = $_SERVER['REQUEST_TIME'];
+		$post->createAt =date('Y-m-d H:i:s');
 		return $post->save();
 	}
 	//Lista todos os POST
@@ -28,13 +28,13 @@ class PostController implements Controller{
 	}
 	public function atulizaCadastro($data){
 		$post = new Post($data);
-		$post->updateAt = $_SERVER['REQUEST_TIME'];
+		$post->updateAt =date('Y-m-d H:i:s');
 		return $post->update();
 	}
 	
 	public function inativar($id){
 		$post = new Post();
-		$post->updateAt = $_SERVER['REQUEST_TIME'];
+		$post->updateAt =date('Y-m-d H:i:s');
 		$post->id = $id;
 		$post->status = 'INATIVO';
 		return $post->update();

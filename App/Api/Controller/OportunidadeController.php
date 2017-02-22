@@ -8,7 +8,7 @@ class OportunidadeController implements Controller {
 	public function cadastrar($data){
 		$oportunidade = new Oportunidade($data);	
 		$oportunidade->status = "ATIVO";
-		$oportunidade->createAt = $_SERVER['REQUEST_TIME'];
+		$oportunidade->createAt =date('Y-m-d H:i:s');
 		return $oportunidade->save();
 	}
 
@@ -25,14 +25,14 @@ class OportunidadeController implements Controller {
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$oportunidade = new Oportunidade($data);
-		$oportunidade->createAt = $_SERVER['REQUEST_TIME'];
+		$oportunidade->createAt =date('Y-m-d H:i:s');
 		return $oportunidade->update();
 	}
 	//Desativa o cliente
 	public function inativar($id){
 		$oportunidade = new Oportunidade();
 		$oportunidade->id = $id;
-		$oportunidade->updateAt = $_SERVER['REQUEST_TIME'];
+		$oportunidade->updateAt =date('Y-m-d H:i:s');
 		$oportunidade->status = 'INATIVO';
 		$oportunidade->update();
 	}

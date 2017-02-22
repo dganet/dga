@@ -50,3 +50,84 @@
 20/02/2017 7:50:38 [MESSAGE]:Associado logado com sucesso!
 20/02/2017 7:56:32 [MESSAGE]:Tentando Logar o Associado: 38729417805
 20/02/2017 7:56:32 [MESSAGE]:Associado logado com sucesso!
+21/02/2017 13:31:22 [MESSAGE]:Tentando Logar o Associado: 38729417805
+21/02/2017 13:31:23 [MESSAGE]:Associado logado com sucesso!
+21/02/2017 13:31:37 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:31:45 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:31:58 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:32:42 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:32:44 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:32:50 [MESSAGE]:Tentando Logar o Associado: 38729417805
+21/02/2017 13:32:51 [MESSAGE]:Associado logado com sucesso!
+21/02/2017 13:32:57 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:33:54 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:34:55 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:34:58 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:34:59 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:35:38 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:35:42 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:35:42 [ERROR]: SELECT * FROM associado WHERE cpf= AND senha='ed2b1f468c5f915f3f1cf75d7068baae' AND status='ATIVO'
+21/02/2017 13:38:41 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:38:45 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:38:45 [ERROR]: SELECT * FROM associado WHERE cpf= AND senha='f5bb0c8de146c67b44babbf4e6584cc0' AND status='ATIVO'
+21/02/2017 13:41:28 [MESSAGE]:Tentando Logar o Associado: 38729417805
+21/02/2017 13:41:28 [ERROR]: SELECT * FROM associado WHERE cpf='38729417805' AND senha='57a8a89fb276c1c48ba1c7512a392cb8' AND status='ATIVO'
+21/02/2017 13:41:28 [MESSAGE]:Associado logado com sucesso!
+21/02/2017 13:41:41 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:41:58 [MESSAGE]:Tentando Logar o Associado: 38729417805
+21/02/2017 13:41:58 [ERROR]: SELECT * FROM associado WHERE cpf='38729417805' AND senha='57a8a89fb276c1c48ba1c7512a392cb8' AND status='ATIVO'
+21/02/2017 13:41:58 [MESSAGE]:Associado logado com sucesso!
+21/02/2017 13:42:01 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:42:07 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:42:08 [ERROR]: SELECT * FROM associado WHERE cpf= AND senha='bb2d91d0fbbebe8719509ed0f865c63f' AND status='ATIVO'
+21/02/2017 13:43:39 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:43:42 [MESSAGE]:Tentando Logar o Associado:  
+21/02/2017 13:43:42 [ERROR]: SELECT * FROM associado WHERE cpf= AND senha='652035571f489a357385aefaedacf9c1' AND status='ATIVO'
+21/02/2017 13:44:17 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:44:21 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:44:22 [ERROR]: SELECT * FROM associado WHERE cpf= AND senha='5211dfe754ff76e2dfb328184ca0c6f2' AND status='ATIVO'
+21/02/2017 13:45:03 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:45:06 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:45:06 [ERROR]: SELECT * FROM associado WHERE cpf= AND senha='4297f44b13955235245b2497399d7a93' AND status='ATIVO'
+21/02/2017 13:45:06 [ERROR]: Cpf ou senha invalidos
+21/02/2017 13:45:52 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:45:56 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:45:57 [ERROR]: SELECT * FROM associado WHERE cpf= AND senha='4d3daeeb3ea3d90d4d6e7a20a5b483a9' AND status='ATIVO'
+21/02/2017 13:45:57 [ERROR]: Cpf ou senha invalidos
+21/02/2017 13:46:08 [MESSAGE]:Tentando Logar o Associado: 38729417805
+21/02/2017 13:46:08 [ERROR]: SELECT * FROM associado WHERE cpf='38729417805' AND senha='4d3daeeb3ea3d90d4d6e7a20a5b483a9' AND status='ATIVO'
+21/02/2017 13:46:08 [ERROR]: Cpf ou senha invalidos
+21/02/2017 13:46:40 [MESSAGE]:Tentando Logar o Associado: 
+21/02/2017 13:46:41 [ERROR]: SELECT * FROM associado WHERE cpf= AND senha='4d3daeeb3ea3d90d4d6e7a20a5b483a9' AND status='ATIVO'
+21/02/2017 13:46:41 [ERROR]: Cpf ou senha invalidos
+21/02/2017 13:48:18 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:48:20 [ERROR]: CPF inválido!
+21/02/2017 13:48:58 [ERROR]: SELECT * FROM post WHERE post.status='ATIVO'
+21/02/2017 13:49:05 [ERROR]: CPF inválido!
+21/02/2017 13:49:12 [MESSAGE]:Tentando Logar o Associado: 38729417805
+21/02/2017 13:49:13 [ERROR]: SELECT * FROM associado WHERE cpf='38729417805' AND senha='57a8a89fb276c1c48ba1c7512a392cb8' AND status='ATIVO'
+21/02/2017 13:49:13 [MESSAGE]:Associado logado com sucesso!
+21/02/2017 13:51:47 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+21/02/2017 13:52:40 [MESSAGE]:Tentando Cadastrar o Associado asdfasdfasdfasd
+21/02/2017 13:52:40 [DEBUG]:INSERT INTO associado (id, nome, cpf, rg, orgaoExpedidor, nomePai, nomeMae, endereco, numero, bairro, cidade, cep, telResidencial, telCelular, telComercial, email, profissao, nomeEmpresa, funcao, salario, outraRenda, rendaExtra, estadoCivil, nomeConjuje, qtdeFilhos, idadeFilhos, pessoasResidencia, qtasPessoasTrab, rendaFamiliar, planoSaude, planoEmpresa, tipoSangue, problemaSaude, curso, universidade, semestreCursando, aulaSabado, duracaoCurso, rgm, valorMensalidade, possuiBolsaFinCred, porcBolsaFinCred, cursoUniversitario, cursoNome, retidoFalta, retidoMaisUmAno, desistiuCursarAnoLetivo, createAt, updateAt, status, senha, usuario_id)  values ('', 'asdfasdfasdfasd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1487695960', '', 'ATIVO', '', '2') 
+21/02/2017 13:52:40 [MESSAGE]:Usuário asdfasdfasdfasd cadastrado com sucesso !
+21/02/2017 13:52:45 [MESSAGE]:Listando Associados
+21/02/2017 13:52:46 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+21/02/2017 13:52:47 [MESSAGE]:Solicitado informações sobre o Associado 
+21/02/2017 13:52:47 [DEBUG]:SELECT * FROM associado WHERE associado.id='55'
+21/02/2017 13:52:54 [MESSAGE]:Inativando Associado 55
+21/02/2017 13:52:54 [DEBUG]:UPDATE associado SET  createAt='1487695974', updateAt='1487695974', status='INATIVO' WHERE  id=55
+21/02/2017 13:52:54 [MESSAGE]:Listando Associados
+21/02/2017 13:52:55 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+21/02/2017 13:53:19 [MESSAGE]:Listando Associados
+21/02/2017 13:53:19 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+22/02/2017 13:09:17 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+22/02/2017 13:09:24 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+22/02/2017 17:02:17 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+22/02/2017 17:02:19 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+22/02/2017 17:02:23 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+22/02/2017 17:02:34 [DEBUG]:INSERT INTO periodo (id, linha, dataInicio, dataFinal, qtasVagas, status, createAt, updateAt, usuario_id)  values ('', 'linha02', '2017-02-18T02:00:00.000Z', '2017-02-22T03:00:00.000Z', '123123', 'ATIVO', '1487793754', '', '2') 
+22/02/2017 17:03:26 [DEBUG]:INSERT INTO periodo (id, linha, dataInicio, dataFinal, qtasVagas, status, createAt, updateAt, usuario_id)  values ('', 'linha03', '2017-02-22T03:00:00.000Z', '2017-02-28T03:00:00.000Z', '123123', 'ATIVO', '1487793806', '', '2') 
+22/02/2017 17:03:47 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+22/02/2017 17:24:51 [DEBUG]:INSERT INTO periodo (id, linha, dataInicio, dataFinal, qtasVagas, status, createAt, updateAt, usuario_id)  values ('', 'linha02', '2017-02-01T02:00:00.000Z', '2017-02-02T02:00:00.000Z', '199999', 'ATIVO', '2017-02-22 17:24:51', '', '2') 
+22/02/2017 17:24:56 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
