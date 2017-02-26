@@ -36,7 +36,7 @@ class AssociadoController implements Controller {
 	public function cadastrar($data){
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
 		$associado = new Associado($data);
-		$associado->status = "ESPERA";
+		$associado->status = "AGUARDANDOVAGA";
 		$associado->createAt = date('Y-m-d H:i:s');
 		try{
 			$associado->save();
@@ -105,6 +105,16 @@ class AssociadoController implements Controller {
 			return $associado->select(array('where' => array('status' => 'INATIVO')));
 		}catch (Exeption $e){
 			Log::Error("Não foi possivel entregar a lista de Associados Inativos ".$e);
+			return false;
+		}
+	}
+	public function ListaAguardandoVaga(){
+		$associado = new Associado();
+		try{
+			Log::Message("Listando Associados Aguardando uma vaga");
+			return $associado->select(array('where' => array('status' => 'AGUARDANDOVAGA')));
+		}catch (Exeption $e){
+			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma vaga ".$e);
 			return false;
 		}
 	}
