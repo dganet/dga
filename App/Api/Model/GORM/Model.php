@@ -4,6 +4,7 @@ use PDO;
 class Model{
 	use Builder;
 	protected  		$class;
+	protected		$instance;
 		public 		$mode = array(
 		"driver" 	=> "mysql",
 		"host"		=> "31.220.104.130",
@@ -54,7 +55,6 @@ class Model{
 		$this->loadTable();
 		$this->class->updateAt = $_SERVER["REQUEST_TIME"];
 		Builder::makeUpdate($this->class);
-		\Api\Controller\Log::Debug(Builder::$sql);
 		$con                   = new ConnectionFactory($this->mode);
 		$db                    = $con->getInstance();
 		$linha                 = $db->prepare(Builder::$sql);
@@ -64,7 +64,8 @@ class Model{
 	*	Carrega a Tabela na variavel dentro da trait Builder::$table 
 	*/
 	public function loadTable(){
-		Builder::$table = str_replace("\\", "/", strtolower(get_called_class()));
+		$this->instance = get_called_class();
+		Builder::$table = str_replace("\\", "/", strtolower($this->instance));
 		Builder::$table = explode('/', Builder::$table);
 		Builder::$table = Builder::$table[3];	
 

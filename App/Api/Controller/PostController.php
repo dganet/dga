@@ -13,18 +13,21 @@ class PostController implements Controller{
 	}
 	//Lista todos os POST
 	public function listaTudo(){
-		$post = new Post();
+		$post  = new Post();
 		return $post->select(array('where' => array('status' => 'ATIVO')));
+		
 	}
 	//Lista Post por id
 	public function listaPorId($id){
 		$post = new Post();
 		return $post->select(array('where' => array('id' => $id)));
+		
 	}
 	//Lista todos os registros Inativos
 	public function listaInativo(){
 		$post = new Post();
 		return $post->select(array('where' => array('status' => 'INATIVO')));
+		
 	}
 	public function atulizaCadastro($data){
 		$post = new Post($data);

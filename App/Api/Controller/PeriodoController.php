@@ -15,16 +15,22 @@ class PeriodoController implements Controller {
 	//Lista todos os periodos
 	public function listaTudo(){
 		$periodo = new Periodo();
-		return $periodo->select(array('where' => array('status' => 'ATIVO')));
+		$array =$periodo->select(array('where' => array('status' => 'ATIVO')));
+		$array[0]['qtasVagas'] = (int) $array[0]['qtasVagas'];
+		return $array; 
 	}
 	//Lista Por Id
 	public function listaPorId($id){
 		$periodo = new Periodo();
-		return $periodo->select(array('where' => array('id' => $id)));
+		$array =$periodo->select(array('where' => array('id' => $id)));
+		$array[0]['qtasVagas'] = (int) $array[0]['qtasVagas'];
+		return $array; 
 	}
 	public function listaInativo(){
 		$periodo = new Periodo();
-		return $periodo->select(array('where' => array('status' => 'INATIVO')));
+		$array =$periodo->select(array('where' => array('status' => 'INATIVO')));
+		$array[0]['qtasVagas'] = (int) $array[0]['qtasVagas'];
+		return $array; 
 	}
 	//Update de cadastro
 	public function atulizaCadastro($data){
