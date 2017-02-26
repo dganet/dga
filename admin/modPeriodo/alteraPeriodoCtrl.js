@@ -1,10 +1,10 @@
-app.controller("alteraUsuarioCtrl", function($scope, $http,$location , $timeout ){
+app.controller("alteraPeriodoCtrl", function($scope, $http,$location , $timeout ){
 
 $scope.quatro = false;
 
 //Lista os Usuarios
-	$http.get('../App/usuario/list').success(function(data){
-		$scope.usuarios = data;
+	$http.get('../App/periodo/list').success(function(data){
+		$scope.periodos = data;
 
 	});
 
@@ -15,9 +15,11 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		$http.get('../App/usuario/list/'+ id).success(function(data){
-		$scope.usuario = data[0];
-		
+		$http.get('../App/periodo/list/'+ id).success(function(data){
+		data[0]['dataInicio'] = new Date(data[0]['dataInicio']);
+    data[0]['dataFinal'] = new Date(data[0]['dataFinal']);
+    console.log($scope.periodo = data[0]);
+
 	});
 
 	}

@@ -30,8 +30,8 @@
     </thead>
 
     <tbody> 
-     <tr ng-repeat="x in usuarios | filter: busca">
-       <td> <a ui-sref="user.usuario.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
+     <tr ng-repeat="x in periodos | filter: busca">
+       <td> <a ui-sref="user.periodo.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.linha}}</a></td>
      </tr>
    
     </tbody>
@@ -42,44 +42,50 @@
 
 <div class="quatro" ng-show="quatro">
  
-<h4>{{usuario.nome}}</h4>
-    <hr>
+<h4>{{periodo.linha}}</h4>
+{{periodo.dataInicio}}
+<hr/>
 
-<form name="FormUsuario" ng-submit="add(usuario)">
+<form name="FormPeriodo" ng-submit="add(periodo)">
   
   <div class="row">
 
   <div class="col-md-3">
     <div class="form-group">
-    <label>E-mail</label>
-    <input type="text" class="form-control" ng-model="usuario.email"> 
+    <label>Linha</label>
+    <select class="form-control" ng-model="periodo.linha" required="required">
+      <option value="">Selecione uma Linha</option>
+        <option value="linha01">Linha 01</option>
+      <option value="linha02">Linha 02</option>
+      <option value="linha03">Linha 03</option>
+      <option value="linha04">Linha 04</option>
+    </select>
     </div> 
     </div>
 
-    <div class="col-md-3">
-    <div class="form-group">
-    <label>Senha</label>
-    <input type="password" class="form-control" ng-model="usuario.senha"> 
-    </div> 
-    </div>
+ <div class="col-md-2">
+      <div class="form-group">
+            <label>Quantidade de Vagas</label>
+            <input type="number" class="form-control" ng-model="periodo.qtasVagas">
+       </div>
+     </div>
 
      <div class="col-md-3">
-    <div class="form-group">
-    <label>Nome</label>
-    <input type="text" class="form-control" ng-model="usuario.nome"> 
-    </div> 
-    </div>
+      <div class="form-group">
+            <label>Data Inicial</label>
+            <input type="date" class="form-control" ng-model="periodo.dataInicio">
+       </div>
+     </div>
 
-  <div class="col-md-3">
-    <div class="form-group">
-    <label>CPF</label>
-    <input type="text" class="form-control" ng-model="usuario.cpf"> 
-    </div> 
-    </div>
+     <div class="col-md-3">
+      <div class="form-group">
+            <label>Data Final</label>
+            <input type="date" class="form-control" ng-model="periodo.dataFinal">
+       </div>
+     </div>
 
   </div>
-  
-<hr>
+  <hr>
 
 <button type="submit" class="btn btn-warning">Atualizar</button>
 <button type="button" class="btn btn-danger" ng-click="deleta(usuario.id)">Deletar</button>
