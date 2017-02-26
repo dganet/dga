@@ -1,4 +1,4 @@
-app.controller("inseriPeriodoCtrl",function($scope, $http,$location , $timeout){
+app.controller("inseriPeriodoCtrl",function($scope, $http,$location , $timeout, $sessionStorage){
   //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
 
