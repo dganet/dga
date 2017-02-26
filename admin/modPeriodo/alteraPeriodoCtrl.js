@@ -18,7 +18,7 @@ $scope.dados = function (values){
 		$http.get('../App/periodo/list/'+ id).success(function(data){
 		data[0]['dataInicio'] = new Date(data[0]['dataInicio']);
     data[0]['dataFinal'] = new Date(data[0]['dataFinal']);
-    console.log($scope.periodo = data[0]);
+    $scope.periodo = data[0];
 
 	});
 
@@ -35,15 +35,15 @@ $scope.dados = function (values){
 //*************UPDATE USUARIO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormUsuario) {
+  $scope.add = function(values, FormPeriodo) {
 
 	 $scope.dados = values;
 	 var id = $scope.dados.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.put('../App/usuario/update/'+ id , values).success(function(){
+    $http.put('../App/periodo/update/'+ id , values).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/usuario/altera');
+      $scope.activePath = $location.path('/user/periodo/altera');
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
@@ -52,8 +52,8 @@ $scope.dados = function (values){
            },10000);
     });
 
-    $http.get('../App/usuario/list').success(function(data){
-		$scope.usuarios = data;
+    $http.get('../App/periodo/list').success(function(data){
+		$scope.periodos = data;
 
 	});
 
@@ -63,8 +63,10 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		$http.get('../App/usuario/list/'+ id).success(function(data){
-		$scope.usuario = data[0];
+		$http.get('../App/periodo/list/'+ id).success(function(data){
+		data[0]['dataInicio'] = new Date(data[0]['dataInicio']);
+    data[0]['dataFinal'] = new Date(data[0]['dataFinal']);
+    $scope.periodo = data[0];
 		
 	});
 
@@ -75,10 +77,13 @@ $scope.dados = function (values){
      //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.cliente = angular.copy($scope.master);
+      $scope.periodo = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
+
+    $scope.quatro = false;
+
 
   };
 
@@ -87,9 +92,9 @@ $scope.dados = function (values){
   $scope.deleta = function(values) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.delete('../App/usuario/delete/'+ values).success(function(){
+    $http.delete('../App/periodo/delete/'+ values).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/usuario/altera');
+      $scope.activePath = $location.path('/user/periodo/altera');
 
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -101,8 +106,8 @@ $scope.dados = function (values){
     
          
 
-    $http.get('../App/usuario/list').success(function(data){
-    $scope.usuarios = data;
+    $http.get('../App/periodo/list').success(function(data){
+    $scope.periodos = data;
 
   });
 
