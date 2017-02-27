@@ -1,4 +1,6 @@
-app.controller("inseriVagaCtrl", function($scope, $http,$location , $timeout ,$rootScope){
+app.controller("inseriVagaCtrl", function($scope, $http,$location , $timeout,$sessionStorage){
+  //Pega o Id do Usuario Logado
+var idUsuario = sessionStorage.getItem('usuario.id');
 
 $scope.quatro = false;
 
@@ -16,7 +18,7 @@ $scope.dados = function (values){
 
 
     $http.get('../App/associado/list/'+ id).success(function(data){
-    $scope.teste = data[0];
+    $scope.objeto = data[0];
 
      });
 
@@ -35,12 +37,28 @@ $scope.dados = function (values){
     //Ocultando o Alert Mensagem .
   $scope.mensagemDeleta = true;
 
-//*************UPDATE USUARIO *********************// 
+/************* INSERI ASSOCIADO NA FILA DE ESPERA  *********************/
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormVaga) {
-console.log(values.nome);
-console.log(values.linha.linha);
+
+  var idAssociado = values.id;
+  var idPeriodo = values.linha.id;
+  var array  = {associado_id : idAssociado , periodo_id : idPeriodo};
+
+    // Enviado os valores em objetos para api/user do php/slim
+     $http.post('../App/vagas/save/' + idUsuario, array).success(function(){
+      // Depois mandando para mesma pagina  
+      $scope.activePath = $location.path('/user/vagas/inseri');
+         
+      // Funcão de exibir a mensagem de sucesso em 5 segundos.
+      $scope.mensagem = false;
+      $timeout(function () {
+               $scope.mensagem = true;
+           },20000);
+    });
+
+    $scope.quatro = false;
 
   };
 

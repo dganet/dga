@@ -45,14 +45,14 @@
 <h4>Cadastrar o Associado na Lista de Espera no Onibus</h4>
     <hr>
 
-<form name="FormVaga" ng-submit="add(teste)">
+<form name="FormVaga" ng-submit="add(objeto)">
   
   <div class="row">
 
       <div class="col-md-3">
         <div class="form-group">
           <label>Linha</label>
-            <select class="form-control" ng-model="teste.linha" required="required" ng-options="p.linha for p in periodos">
+            <select class="form-control" ng-model="objeto.linha" required="required" ng-options="p.linha for p in periodos">
               <option value="">Selecione uma Linha</option>
 
             </select>
@@ -62,7 +62,7 @@
       <div class="col-md-9">
         <div class="form-group">
           <label>Associado</label>
-            <input type="text" class="form-control" disabled="disabled" ng-model="teste.nome">
+            <input type="text" class="form-control" disabled="disabled" ng-model="objeto.nome">
         </div> 
       </div>
   </div>
