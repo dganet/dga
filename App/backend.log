@@ -174,3 +174,5 @@
 27/02/2017 13:03:00 [DEBUG]:SELECT * FROM associado WHERE associado.id='64'
 27/02/2017 13:03:17 [DEBUG]:UPDATE associado SET  updateAt='1488211397', status='APROVACAO' WHERE  id=64
 27/02/2017 13:03:18 [DEBUG]:INSERT INTO vaga (id, periodo_id, associado_id, usuario_id, createAt, updateAt, status)  values ('', '14', '64', '2', '2017-02-27 13:03:17', '', 'ATIVO') 
+27/02/2017 13:52:38 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 13:52:38 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'

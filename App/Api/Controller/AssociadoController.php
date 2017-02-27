@@ -118,6 +118,16 @@ class AssociadoController implements Controller {
 			return false;
 		}
 	}
+	public function listaAguardandoAprovacao(){
+		$associado = new Associado();
+		try{
+			Log::Message("Listando Associados Aguardando uma aprovacao");
+			return $associado->select(array('where' => array('status' => 'APROVACAO')));
+		}catch (Exeption $e){
+			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma aprovacao ".$e);
+			return false;
+		}
+	}
 	
 	
 

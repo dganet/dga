@@ -58,6 +58,13 @@ $app->group('/associado', function() use ($app){
 		$response = $response->withJson($associado);
 		return $response;
 	});
+	$app->get('/listaprovacao', function(Request $request, Response $response){
+		$associadoController = new \Api\Controller\AssociadoController();
+		$associado = $associadoController->listaAguardandoAprovacao();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($associado);
+		return $response;
+	});
 	//Lista Associado por ID
 	$app->get('/list/{id}', function(Request $request, Response $response, $args){
 		$associado = new \Api\Controller\AssociadoController();
