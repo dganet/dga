@@ -60,12 +60,26 @@ $scope.dados = function (values){
 
 };
 
+//Lista todas as noticias
 $http.get('App/post/list').success(function(data){
 	$scope.posts = data;
+});
 
+//Pega as linhas teste
+  $http.get('App/periodo/list').success(function(data){
+  $scope.linhas = data;
 
 });
-	
 
- 
+$scope.filtroLinha = function(values){
+	console.log(values);
+};
+
+//Lista todas as noticias
+$http.get('App/associado/listadeespera').success(function(data){
+	$scope.associados = data;
+});
+
+
+
 });

@@ -36,7 +36,8 @@ $scope.dados = function (values){
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormVaga) {
-    var array = {associado_id : values.id , status : "ATIVO"};
+    var array = {id : values.id , status : "ATIVO"};
+
         // Enviado os valores em objetos para api/user do php/slim
      $http.put('../App/associado/update/' + idUsuario, array).success(function(){
       // Depois mandando para mesma pagina  

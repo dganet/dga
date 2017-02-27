@@ -34,65 +34,18 @@
 <div id="blocoEspera">	
 	<h4>Próximos se Associar Geral</h4>
 	<form>
-		<select class="form-control">
-			<option>Filtre por Região</option>
-			<option>Bertioga</option>
-			<option>Guarujá</option>
-			<option>Mogi das Cruzes</option>
-			<option>Santos</option>
+		<select class="form-control" ng-change="filtroLinha(l.linha)" ng-model="l.linha" ng-options=" l.linha as l.linha for l in linhas">
+			<option value="">Filtre por Região</option>
+			<label>Lista Geral</label>
 		</select>
 	</form>
 
 	<table class="table .table-hover">
-		<tr>
+		<tr ng-repeat="x in associados | filter : l.linha">
 			<td>1º</td>
-			<td>Adnilton Santos</td>
+			<td>{{x.nome}}</td>
 		</tr>
 
-		<tr>
-			<td>2º</td>
-			<td>Guilherme Lima de Britto</td>
-		</tr>
-
-		<tr>
-			<td>3º</td>
-			<td>Talita Brito Ozea</td>
-		</tr>
-
-		<tr>
-			<td>4º</td>
-			<td>Erika Patricia Santos Alencar</td>
-		</tr>
-
-		<tr>
-			<td>5º</td>
-			<td>Lygia Victoria Lima de Britto</td>
-		</tr>
-
-		<tr>
-			<td>6º</td>
-			<td>Pedro Alvares Cabral</td>
-		</tr>
-
-		<tr>
-			<td>7º</td>
-			<td>Steve Jobs</td>
-		</tr>
-
-		<tr>
-			<td>8º</td>
-			<td>Mark Zuckeberg</td>
-		</tr>
-
-		<tr>
-			<td>9º</td>
-			<td>Tim Liberty</td>
-		</tr>
-
-		<tr>
-			<td>10º</td>
-			<td>Bill Gates2</td>
-		</tr>
 
 		<tr>
 			<td colspan="2"><button type="button" class="btn btn-primary">Lista Completa</button></td>
