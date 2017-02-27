@@ -10,7 +10,6 @@ class VagaController implements Controller{
 		$vaga->createAt =date('Y-m-d H:i:s');
 		$associado = new Associado(array('id' => $data['associado_id'], 'status' => 'APROVACAO'));
 		$associado->update();
-		var_dump($associado);
 		return $vaga->save();
 	}
 
