@@ -73,6 +73,14 @@ $app->group('/associado', function() use ($app){
 		$response = $response->withJson($associado);
 		return $response;
 	});
+	$app->get('/listadeespera', function(Request $request, Response $response, $args){
+		$associado = new \Api\Controller\AssociadoController();
+		$associado = $associado->listaEsperaSite($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($associado);
+		return $response;
+	});
+
 	//Lista os Associados Inativos
 	$app->get('/inativo', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();

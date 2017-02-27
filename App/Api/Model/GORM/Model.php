@@ -53,7 +53,7 @@ class Model{
 	*/
 	public function update(){
 		$this->loadTable();
-		$this->class->updateAt = $_SERVER["REQUEST_TIME"];
+		$this->class->updateAt = date('Y-m-d H:i:s');
 		Builder::makeUpdate($this->class);
 		\Api\Controller\Log::Debug(Builder::$sql);
 		$con                   = new ConnectionFactory($this->mode);

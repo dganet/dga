@@ -128,6 +128,22 @@ class AssociadoController implements Controller {
 			return false;
 		}
 	}
+	public function listaEsperaSite(){
+		$associado = new Associado();
+		try{
+			Log::Message("Listando Associados Em Espera");
+			return $associado->select(array('inner' => 
+				array('vaga' => array('associado.id' => 'vaga.associado_id'),
+					'periodo' => array('vaga.periodo_id' => 'periodo.id')
+					
+					)
+				)
+			);
+		}catch (Exeption $e){
+			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma aprovacao ".$e);
+			return false;
+		}
+	}
 	
 	
 
