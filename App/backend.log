@@ -131,3 +131,21 @@
 22/02/2017 17:03:47 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
 22/02/2017 17:24:51 [DEBUG]:INSERT INTO periodo (id, linha, dataInicio, dataFinal, qtasVagas, status, createAt, updateAt, usuario_id)  values ('', 'linha02', '2017-02-01T02:00:00.000Z', '2017-02-02T02:00:00.000Z', '199999', 'ATIVO', '2017-02-22 17:24:51', '', '2') 
 22/02/2017 17:24:56 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 12:06:29 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 12:06:30 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 12:07:08 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 12:07:08 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 12:07:09 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 12:07:10 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 12:07:10 [DEBUG]:SELECT * FROM associado WHERE associado.id='56'
+27/02/2017 12:07:14 [DEBUG]:UPDATE associado SET  updateAt='1488208034', status='APROVACAO' WHERE  id=2
+27/02/2017 12:08:01 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 12:08:02 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 12:08:04 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 12:08:05 [DEBUG]:SELECT * FROM associado WHERE associado.id='56'
+27/02/2017 12:08:05 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 12:08:06 [DEBUG]:UPDATE associado SET  updateAt='1488208086', status='APROVACAO' WHERE  id=56
+27/02/2017 12:08:18 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 12:08:18 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 12:08:52 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 12:08:52 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'

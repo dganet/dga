@@ -47,7 +47,7 @@ $scope.dados = function (values){
   var array  = {associado_id : idAssociado , periodo_id : idPeriodo};
 
     // Enviado os valores em objetos para api/user do php/slim
-     $http.post('../App/vagas/save/' + idUsuario, array).success(function(){
+     $http.post('../App/vaga/save/' + idUsuario, array).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/vagas/inseri');
          

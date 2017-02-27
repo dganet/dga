@@ -243,9 +243,10 @@ $app->group('/usuario', function() use ($app){
 */
 $app->group('/vaga', function() use ($app){
 
-	$app->post('/save', function(Request $request, Response $response){
+	$app->post('/save/{id}', function(Request $request, Response $response, $args){
 		$vaga = new \Api\Controller\VagaController();
 		$post = json_decode($request->getBody(), true);
+		$post['usuario_id'] = $args['id'];
 		if ($vaga->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson([true]);

@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Vaga;
+use \Api\Model\Entity\Vaga, \Api\Model\Entity\Associado ;
 
 class VagaController implements Controller{
 
@@ -8,6 +8,9 @@ class VagaController implements Controller{
 		$vaga = new Vaga($data);
 		$vaga->status = "ATIVO";
 		$vaga->createAt =date('Y-m-d H:i:s');
+		$associado = new Associado(array('id' => $data['associado_id'], 'status' => 'APROVACAO'));
+		$associado->update();
+		var_dump($associado);
 		return $vaga->save();
 	}
 

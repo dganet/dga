@@ -55,6 +55,7 @@ class Model{
 		$this->loadTable();
 		$this->class->updateAt = $_SERVER["REQUEST_TIME"];
 		Builder::makeUpdate($this->class);
+		\Api\Controller\Log::Debug(Builder::$sql);
 		$con                   = new ConnectionFactory($this->mode);
 		$db                    = $con->getInstance();
 		$linha                 = $db->prepare(Builder::$sql);
