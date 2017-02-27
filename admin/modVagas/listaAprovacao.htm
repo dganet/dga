@@ -6,7 +6,7 @@
 
 <i class="fa fa-users fa-lg aria-hidden="true"></i>
 
-	<label>Lista de Espera</label>
+	<label>Lista de Aprovação</label>
 </div>
 
 <hr>
@@ -27,7 +27,7 @@
 
     <tbody> 
      <tr ng-repeat="x in associados | filter: busca">
-       <td> <a ui-sref="user.vaga.inseri.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
+       <td> <a ui-sref="user.vaga.aprova.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
      </tr>
    
     </tbody>
@@ -38,22 +38,12 @@
 
 <div class="quatro" ng-show="quatro">
  
-<h4>Cadastrar o Associado na Lista de Espera no Onibus</h4>
+<h4>Associado Aguardando Aprovação</h4>
     <hr>
 
 <form name="FormVaga" ng-submit="add(objeto)">
   
   <div class="row">
-
-      <div class="col-md-3">
-        <div class="form-group">
-          <label>Linha</label>
-            <select class="form-control" ng-model="objeto.linha" required="required" ng-options="p.linha for p in periodos">
-              <option value="">Selecione uma Linha</option>
-
-            </select>
-        </div> 
-      </div>
 
       <div class="col-md-9">
         <div class="form-group">
@@ -66,7 +56,7 @@
 
 <hr>
 
-<button type="submit" class="btn btn-primary">Cadastrar</button>
+<button type="submit" class="btn btn-primary">Aprovar</button>
 
 </form>
 

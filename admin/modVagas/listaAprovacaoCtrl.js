@@ -1,11 +1,11 @@
-app.controller("inseriVagaCtrl", function($scope, $http,$location , $timeout,$sessionStorage){
+app.controller("listaAprovacaoCtrl", function($scope, $http,$location , $timeout,$sessionStorage){
   //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
 
 $scope.quatro = false;
 
 //Lista os Usuarios
-  $http.get('../App/associado/listaguardando').success(function(data){
+  $http.get('../App/associado/listaprovacao').success(function(data){
     $scope.associados = data;
 
   });
@@ -22,11 +22,6 @@ $scope.dados = function (values){
 
      });
 
-// Seleciona as vagas 
-
-  $http.get('../App/periodo/list').success(function(data){
-  $scope.periodos = [data[0]];
-  });
 
   }
 
@@ -41,15 +36,11 @@ $scope.dados = function (values){
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormVaga) {
-
-  var idAssociado = values.id;
-  var idPeriodo = values.linha.id;
-  var array  = {associado_id : idAssociado , periodo_id : idPeriodo};
-
-    // Enviado os valores em objetos para api/user do php/slim
-     $http.put('../App/vaga/save/' + idUsuario, array).success(function(){
+    var array = {associado_id : values.id , status : "ATIVO"};
+        // Enviado os valores em objetos para api/user do php/slim
+     $http.put('../App/associado/update/' + idUsuario, array).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/vaga/inseri');
+      $scope.activePath = $location.path('/user/vaga/aprova');
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
@@ -61,10 +52,11 @@ $scope.dados = function (values){
     $scope.quatro = false;
 
     //Lista os Usuarios
-    $http.get('../App/associado/listaguardando').success(function(data){
+    $http.get('../App/associado/listaprovacao').success(function(data){
     $scope.associados = data;
 
   });
+
 
   };
 

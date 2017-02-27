@@ -26,11 +26,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
       
     })
-//############# **  MODULO ASSOCIADO ** ###########################################################
+//############################################################################
+//############# **  MODULO ASSOCIADO ** ##########################################
+//############################################################################
 
       .state('user.associado', {
       url: '/associado',
-      templateUrl: 'modAssociado/associadoLink.htm',
+      templateUrl: 'modAssociado/Link.htm',
       resolve: { 
           function ($sessionStorage, $location){
             if (sessionStorage.getItem('usuario.id') == null){ 
@@ -118,7 +120,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //############################################################################
       .state('user.noticia', {
       url: '/noticia',
-      templateUrl: 'modNoticias/noticiaLink.htm',
+      templateUrl: 'modNoticias/Link.htm',
       resolve: { 
           function ($sessionStorage, $location){
             if (sessionStorage.getItem('usuario.id') == null){ 
@@ -166,7 +168,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //############################################################################
       .state('user.curso', {
       url: '/curso',
-      templateUrl: 'modCursos/cursoLink.htm',
+      templateUrl: 'modCursos/Link.htm',
       resolve: { 
           function ($sessionStorage, $location){
             if (sessionStorage.getItem('usuario.id') == null){ 
@@ -377,8 +379,27 @@ app.config(function ($stateProvider, $urlRouterProvider){
             label: 'Vagas'
          }
     })
+     
+      .state('user.vaga.aprova', {
+      url: '/aprova',
+      templateUrl: 'modVagas/listaAprovacao.htm',
+      controller:'listaAprovacaoCtrl',
+       ncyBreadcrumb: {
+            label: 'Aprova Associado'
+         }
+    })
 
+      .state('user.vaga.aprova.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+              ncyBreadcrumb: {
+            label: 'Inseri'
+         }
 
+    })
       .state('user.vaga.inseri', {
       url: '/inseri',
       templateUrl: 'modVagas/inseriVaga.htm',
