@@ -359,12 +359,47 @@ app.config(function ($stateProvider, $urlRouterProvider){
     })
 
 
-
 //############################################################################
-//############# **  MODULO CONFIGURAÇÕES ** ##########################################
+//############# **  MODULO VAGAS ** ##########################################
 //############################################################################
+      .state('user.vaga', {
+      url: '/vaga',
+      templateUrl: 'modVagas/link.htm',
+      resolve: { 
+          function ($sessionStorage, $location){
+            if (sessionStorage.getItem('usuario.id') == null){ 
+                $location.path('/login');
+            }
+        }
+     
+      },
+       ncyBreadcrumb: {
+            label: 'Vagas'
+         }
+    })
 
 
+      .state('user.vaga.inseri', {
+      url: '/inseri',
+      templateUrl: 'modVagas/inseriVaga.htm',
+      controller:'inseriVagaCtrl',
+       ncyBreadcrumb: {
+            label: 'Lista de Espera'
+         }
+    })
+
+
+      .state('user.vaga.inseri.detalhes', {
+      url: '/:id',
+       controller: function($scope, $stateParams) {
+            // get the id
+            $scope.id = $stateParams.id;
+        },
+              ncyBreadcrumb: {
+            label: 'Inseri'
+         }
+
+    })
 
 //############################################################################
         $urlRouterProvider.otherwise("/login");
