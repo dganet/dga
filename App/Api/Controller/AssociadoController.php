@@ -133,9 +133,10 @@ class AssociadoController implements Controller {
 		try{
 			Log::Message("Listando Associados Em Espera");
 			return $associado->select(array('inner' => 
-				array('vaga' 	=> array('associado.id' 	=> 'vaga.associado_id'),
-					  'periodo' => array('vaga.periodo_id'  => 'periodo.id')
-					)
+				array('vaga' => array('associado.id' => 'vaga.associado_id'),
+					'periodo' => array('vaga.periodo_id' => 'periodo.id')
+					),
+				'where' => array('status' => 'APROVACAO')
 				)
 			);
 		}catch (Exeption $e){
