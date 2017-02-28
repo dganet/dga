@@ -226,3 +226,158 @@
 27/02/2017 14:45:31 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id
 27/02/2017 14:46:55 [MESSAGE]:Listando Associados Em Espera
 27/02/2017 14:46:55 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id
+27/02/2017 16:52:57 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+27/02/2017 16:53:12 [DEBUG]:SELECT * FROM usuario WHERE usuario.status='ATIVO'
+27/02/2017 16:53:14 [DEBUG]:SELECT * FROM usuario WHERE usuario.id='2'
+27/02/2017 16:53:17 [DEBUG]:SELECT * FROM usuario WHERE usuario.id='11'
+27/02/2017 20:52:03 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 20:52:03 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 20:52:03 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 20:52:03 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id
+27/02/2017 20:52:34 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+27/02/2017 20:52:38 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 20:52:39 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 20:52:41 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:52:42 [DEBUG]:SELECT * FROM associado WHERE associado.id='79'
+27/02/2017 20:52:42 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 20:52:54 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 20:52:54 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 20:52:55 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:52:56 [DEBUG]:SELECT * FROM associado WHERE associado.id='79'
+27/02/2017 20:52:56 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 20:53:08 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 20:53:09 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id
+27/02/2017 20:53:09 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 20:53:09 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 20:53:30 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:53:30 [DEBUG]:SELECT * FROM associado WHERE associado.id='79'
+27/02/2017 20:53:30 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 20:53:33 [DEBUG]:UPDATE associado SET  updateAt='2017-02-27 20:53:33', status='APROVACAO' WHERE  id=79
+27/02/2017 20:53:35 [DEBUG]:INSERT INTO vaga (id, periodo_id, associado_id, usuario_id, createAt, updateAt, status)  values ('', '17', '79', '2', '2017-02-27 20:53:33', '', 'ATIVO') 
+27/02/2017 20:53:35 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 20:53:35 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 20:53:41 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 20:53:41 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id
+27/02/2017 20:53:42 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 20:53:42 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 20:54:28 [MESSAGE]:Tentando Logar o Associado: 38729417805
+27/02/2017 20:54:28 [DEBUG]:SELECT * FROM associado WHERE cpf='38729417805' AND senha='57a8a89fb276c1c48ba1c7512a392cb8' AND status='ATIVO'
+27/02/2017 20:54:29 [ERROR]: Cpf ou senha invalidos
+27/02/2017 20:54:39 [MESSAGE]:Tentando Logar o Associado: 38729417805
+27/02/2017 20:54:40 [DEBUG]:SELECT * FROM associado WHERE cpf='38729417805' AND senha='57a8a89fb276c1c48ba1c7512a392cb8' AND status='ATIVO'
+27/02/2017 20:54:40 [ERROR]: Cpf ou senha invalidos
+27/02/2017 20:54:49 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 20:54:50 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 20:54:52 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:54:53 [DEBUG]:SELECT * FROM associado WHERE associado.id='80'
+27/02/2017 20:54:53 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 20:54:56 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 20:54:58 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 20:55:00 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:55:04 [DEBUG]:SELECT * FROM associado WHERE associado.id='79'
+27/02/2017 20:55:38 [MESSAGE]:Listando Associados
+27/02/2017 20:55:39 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:55:40 [MESSAGE]:Listando Associados
+27/02/2017 20:55:40 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:55:45 [MESSAGE]:Listando Associados
+27/02/2017 20:55:46 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:55:49 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 20:55:50 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 20:55:52 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:55:53 [DEBUG]:SELECT * FROM associado WHERE associado.id='75'
+27/02/2017 20:55:53 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 20:55:53 [MESSAGE]:Atualizando informações do Associado
+27/02/2017 20:55:53 [DEBUG]:UPDATE associado SET  createAt='2017-02-27 20:55:53', updateAt='2017-02-27 20:55:53', status='ATIVO', usuario_id='2' WHERE  id=75
+27/02/2017 20:55:54 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 20:55:57 [MESSAGE]:Listando Associados
+27/02/2017 20:55:57 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:55:58 [MESSAGE]:Listando Associados
+27/02/2017 20:55:59 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:56:00 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:56:00 [DEBUG]:SELECT * FROM associado WHERE associado.id='75'
+27/02/2017 20:56:04 [MESSAGE]:Listando Associados
+27/02/2017 20:56:05 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:56:07 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:56:08 [DEBUG]:SELECT * FROM associado WHERE associado.id='75'
+27/02/2017 20:56:14 [MESSAGE]:Atualizando informações do Associado
+27/02/2017 20:56:14 [MESSAGE]:Listando Associados
+27/02/2017 20:56:14 [DEBUG]:UPDATE associado SET  nome='Guilherme', cpf='38729417805', createAt='2017-02-27 20:56:14', updateAt='2017-02-27 20:56:14', status='ATIVO', usuario_id='2' WHERE  id=75
+27/02/2017 20:56:15 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:56:16 [MESSAGE]:Listando Associados
+27/02/2017 20:56:17 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:56:19 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 20:56:21 [DEBUG]:SELECT * FROM associado WHERE associado.id='75'
+27/02/2017 20:56:24 [MESSAGE]:Atualizando informações do Associado
+27/02/2017 20:56:24 [DEBUG]:UPDATE associado SET  nome='Guilherme', cpf='38729417805', createAt='2017-02-27 20:56:24', updateAt='2017-02-27 20:56:24', status='ATIVO', senha='57a8a89fb276c1c48ba1c7512a392cb8', usuario_id='2' WHERE  id=75
+27/02/2017 20:56:24 [MESSAGE]:Listando Associados
+27/02/2017 20:56:26 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:56:30 [MESSAGE]:Tentando Logar o Associado: 38729417805
+27/02/2017 20:56:31 [DEBUG]:SELECT * FROM associado WHERE cpf='38729417805' AND senha='57a8a89fb276c1c48ba1c7512a392cb8' AND status='ATIVO'
+27/02/2017 20:56:31 [MESSAGE]:Associado logado com sucesso!
+27/02/2017 20:57:19 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 20:57:20 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 20:57:22 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 20:57:23 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 20:57:30 [MESSAGE]:Listando Associados
+27/02/2017 20:57:34 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:57:35 [MESSAGE]:Listando Associados
+27/02/2017 20:57:36 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:57:38 [MESSAGE]:Listando Associados
+27/02/2017 20:57:39 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:57:46 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 20:57:47 [DEBUG]:SELECT * FROM oportunidade WHERE oportunidade.status='ATIVO'
+27/02/2017 20:57:48 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+27/02/2017 20:57:48 [MESSAGE]:Listando Associados
+27/02/2017 20:57:49 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+27/02/2017 20:57:54 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 20:57:55 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 20:57:55 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id
+27/02/2017 20:57:55 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 21:01:13 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:01:14 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 21:01:14 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 21:01:14 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='AGUARDANDO'
+27/02/2017 21:02:09 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:02:10 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='AGUARDANDO'
+27/02/2017 21:02:10 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 21:02:10 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 21:02:12 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:02:14 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='AGUARDANDO'
+27/02/2017 21:02:27 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 21:02:28 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 21:02:30 [MESSAGE]:Listando Associados Aguardando uma vaga
+27/02/2017 21:02:30 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+27/02/2017 21:02:30 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 21:02:31 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 21:03:34 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:03:35 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='AGUARDANDO'
+27/02/2017 21:04:07 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:04:10 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+27/02/2017 21:04:12 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:04:13 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+27/02/2017 21:04:13 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 21:04:13 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 21:04:59 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 21:05:00 [DEBUG]:SELECT * FROM associado WHERE associado.id='69'
+27/02/2017 21:05:04 [MESSAGE]:Atualizando informações do Associado
+27/02/2017 21:05:04 [DEBUG]:UPDATE associado SET  createAt='2017-02-27 21:05:04', updateAt='2017-02-27 21:05:04', status='ATIVO', usuario_id='2' WHERE  id=69
+27/02/2017 21:05:04 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 21:05:04 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 21:05:07 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:05:08 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+27/02/2017 21:05:08 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 21:05:08 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+27/02/2017 21:05:13 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:05:14 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+27/02/2017 21:12:15 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 21:12:15 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 21:12:16 [MESSAGE]:Solicitado informações sobre o Associado 
+27/02/2017 21:12:17 [DEBUG]:SELECT * FROM associado WHERE associado.id='71'
+27/02/2017 21:12:18 [MESSAGE]:Atualizando informações do Associado
+27/02/2017 21:12:18 [DEBUG]:UPDATE associado SET  createAt='2017-02-27 21:12:18', updateAt='2017-02-27 21:12:18', status='ATIVO', usuario_id='2' WHERE  id=71
+27/02/2017 21:12:18 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+27/02/2017 21:12:18 [DEBUG]:SELECT * FROM associado WHERE associado.status='APROVACAO'
+27/02/2017 21:12:20 [MESSAGE]:Listando Associados Em Espera
+27/02/2017 21:12:21 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+27/02/2017 21:12:21 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+27/02/2017 21:12:21 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'

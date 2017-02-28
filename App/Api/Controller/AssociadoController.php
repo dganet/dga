@@ -135,8 +135,8 @@ class AssociadoController implements Controller {
 			return $associado->select(array('inner' => 
 				array('vaga' => array('associado.id' => 'vaga.associado_id'),
 					'periodo' => array('vaga.periodo_id' => 'periodo.id')
-					
-					)
+					),
+				'where' => array('status' => 'APROVACAO')
 				)
 			);
 		}catch (Exeption $e){
