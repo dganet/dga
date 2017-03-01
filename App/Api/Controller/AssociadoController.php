@@ -74,7 +74,7 @@ class AssociadoController implements Controller {
 	//Update de cadastro
 	public function atulizaCadastro($data){
 		$associado = new Associado($data);
-		$associado->createAt = date('Y-m-d H:i:s');
+		$associado->updateAt = date('Y-m-d H:i:s');
 		try{
 			Log::Message("Atualizando informações do Associado");
 			return $associado->update();
@@ -87,7 +87,7 @@ class AssociadoController implements Controller {
 	public function inativar($id){
 		$associado = new Associado();
 		$associado->id = $id;
-		$associado->createAt = date('Y-m-d H:i:s');
+		$associado->updateAt = date('Y-m-d H:i:s');
 		$associado->status = 'INATIVO';
 		try{
 			Log::Message("Inativando Associado ".$id);
