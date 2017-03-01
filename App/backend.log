@@ -382,3 +382,8 @@
 27/02/2017 21:12:21 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
 27/02/2017 21:12:21 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
 >>>>>>> d731cfe71d1abba2c68b743437306631ba28fe8f
+
+28/02/2017 11:00:25 [MESSAGE]:Listando Associados Em Espera
+28/02/2017 11:00:26 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON vaga.associado.id=vaga.associado_id INNER JOIN periodo ON periodo.vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+28/02/2017 13:04:18 [MESSAGE]:Listando Associados Em Espera
+28/02/2017 13:04:18 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON vaga.associado.id=vaga.associado_id INNER JOIN periodo ON periodo.vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'

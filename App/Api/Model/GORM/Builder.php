@@ -51,7 +51,7 @@ trait Builder
             foreach ($inner as $table => $value) {
                 $temp .=  self::$inner.$table.self::$on;
                 foreach ($value as $key => $values) {
-                    $temp .= $key."=".$values;
+                    $temp .= $table.".".$key."=".$values;
                 }
             }
             

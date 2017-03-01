@@ -41,9 +41,9 @@ class Model{
 		$db                 = $con->getInstance();
 		try{
 			\Api\Controller\Log::Debug(Builder::$sql);
-			$consulta           = $db->query(Builder::$sql);
-			$r 		            = $consulta->fetchAll(PDO::FETCH_ASSOC);
-			return $r;
+			//$consulta           = $db->query(Builder::$sql);
+			//$r 		            = $consulta->fetchAll(PDO::FETCH_ASSOC);
+			//return $r;
 		}catch(PDOException $e){
 			Throw new Exception("Não foi possivel realizar a consulta ".$e->getMessage());
 		}
