@@ -7,7 +7,7 @@ class VagaController implements Controller{
 	public function cadastrar($data){
 		$vaga = new Vaga($data);
 		$vaga->status = "ATIVO";
-		$vaga->createAt =date('Y-m-d H:i:s');
+		$vaga->vagaCreateAt =date('Y-m-d H:i:s');
 		$associado = new Associado(array('id' => $data['associado_id'], 'status' => 'APROVACAO'));
 		$associado->update();
 		return $vaga->save();

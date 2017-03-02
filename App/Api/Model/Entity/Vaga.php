@@ -6,7 +6,7 @@ class Vaga extends \GORM\Model{
 	private $periodo_id;
 	private $associado_id;
 	private $usuario_id;
-	private $createAt;
+	private $vagavagaCreateAt;
 	private $updateAt;
 	private $status;
 
@@ -15,7 +15,7 @@ class Vaga extends \GORM\Model{
 		isset($data['periodo_id']) ? $this->periodo_id = $data['periodo_id'] : $this->periodo_id = null;
 		isset($data['associado_id']) ? $this->associado_id = $data['associado_id'] : $this->associado_id = null;
 		isset($data['usuario_id']) ? $this->usuario_id = $data['usuario_id'] : $this->usuario_id = null;
-		isset($data['createAt']) ? $this->createAt = $data['createAt'] : $this->createAt = null;
+		isset($data['vagaCreateAt']) ? $this->vagaCreateAt = $data['vagaCreateAt'] : $this->vagaCreateAt = null;
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null;
 		isset($data['status']) ? $this->status = $data['status'] : $this->status = null;
 		$this->class = $this;
@@ -37,7 +37,7 @@ class Vaga extends \GORM\Model{
 			'periodo_id' => $this->periodo_id,
 			'associado_id' => $this->associado_id,
 			'usuario_id' => $this->usuario_id,
-			'createAt' => $this->createAt,
+			'vagaCreateAt' => $this->vagaCreateAt,
 			'updateAt' => $this->updateAt,
 			'status'	=>	$this->status
 			);
