@@ -7,7 +7,7 @@
     // Enviando requisição via post no methodo Http
 		    
 		    $scope.logando = function (values , formAut){
-		    	
+		    
 				$http.post('../App/usuario/login', values).success(function(response){
 			 			      
 		    	if (response[0] == false){

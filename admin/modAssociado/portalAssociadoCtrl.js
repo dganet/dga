@@ -45,35 +45,15 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagem = true;
            },10000);
-    });
+
+    $scope.quatro = false;
 
     $http.get('../App/associado/list').success(function(data){
-		$scope.associados = data;
+    $scope.associados = data;
 
-	});
+       });
 
-	$scope.dados = function (values){
-
-	$scope.quatro = true;
-
-	var id = $scope.id = values;
-
-		$http.get('../App/associado/list/'+ id).success(function(data){
-		$scope.associado = data[0];
-		
-	});
-
-	}
-
-
-
-     //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.cliente = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
+  });
 
   };
 

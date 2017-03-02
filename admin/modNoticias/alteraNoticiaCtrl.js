@@ -51,35 +51,23 @@ $scope.dados = function (values){
                $scope.mensagem = true;
                console.log('funcao1');
            },10000);
-    });
 
     $http.get('../App/post/list').success(function(data){
-		$scope.posts = data;
+    $scope.posts = data;
 
-	});
+     });
+   $scope.quatro = false;
 
-	$scope.dados = function (values){
+  $scope.dados = function (values){
+  $scope.quatro = true;
+  var id = $scope.id = values;
 
-	$scope.quatro = true;
+    $http.get('../App/post/list/'+ id).success(function(data){
+    $scope.post = data[0];
+    });
+  };
 
-	var id = $scope.id = values;
-
-		$http.get('../App/post/list/'+ id).success(function(data){
-		$scope.post = data[0];
-		
-	});
-
-	}
-
-
-
-     //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.post = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
+    });
 
   };
 
@@ -100,22 +88,15 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagemDeleta = true;
            },10000);
-    });
-    
-    //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.post = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
-         
+   
 
     $http.get('../App/post/list').success(function(data){
     $scope.posts = data;
 
   });
 
+     $scope.quatro = false;
+    });      
   };
 
 });

@@ -48,12 +48,13 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagem = true;
            },10000);
-    });
+   $scope.quatro = false;
+
 
     $http.get('../App/usuario/list').success(function(data){
 		$scope.usuarios = data;
 
-	});
+	   });
 
 	$scope.dados = function (values){
 
@@ -68,15 +69,7 @@ $scope.dados = function (values){
 
 	}
 
-
-
-     //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.cliente = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
+   });
 
   };
 
@@ -95,17 +88,19 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagemDeleta = true;
            },10000);
-    });
+
+        $scope.quatro = false;
+
+ 
     
          
 
     $http.get('../App/usuario/list').success(function(data){
     $scope.usuarios = data;
 
-  });
-
-    $scope.quatro = false;
-
+      });
+   });
+  
   };
 
 });

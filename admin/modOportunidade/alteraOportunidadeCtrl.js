@@ -50,10 +50,14 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagem = true;
            },10000);
-    });
+
 
     $http.get('../App/oportunidade/list').success(function(data){
 		$scope.oportunidades = data;
+
+    //Oculta lado Direito
+    $scope.quatro = false;
+
 
 	});
 
@@ -66,19 +70,11 @@ $scope.dados = function (values){
 		$http.get('../App/oportunidade/list/'+ id).success(function(data){
 		$scope.oportunidade = data[0];
 		
-	});
+  	});
 
-	}
+  	}
 
-
-
-     //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.oportunidade = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
+    });
 
   };
 
@@ -99,22 +95,17 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagemDeleta = true;
            },10000);
-    });
-    
-    //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.oportunidade = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
-         
 
     $http.get('../App/oportunidade /list').success(function(data){
     $scope.oportunidades = data;
 
-  });
-$scope.quatro = false;
+    });
+
+    $scope.quatro = false;
+
+    });
+           
+
   };
 
 });

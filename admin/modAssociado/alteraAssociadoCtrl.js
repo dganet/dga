@@ -206,35 +206,16 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagem = true;
            },10000);
-    });
 
-    $http.get('../App/associado/list').success(function(data){
+	    $http.get('../App/associado/list').success(function(data){
 		$scope.associados = data;
+		});
+   
+	    $scope.quatro = false;
+   });
 
-	});
 
-	$scope.dados = function (values){
-
-	$scope.quatro = true;
-
-	var id = $scope.id = values;
-
-		$http.get('../App/associado/list/'+ id).success(function(data){
-		$scope.associado = data[0];
-		
-	});
-
-	}
-
-     //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.associado = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
-
-  };
+	};
 
 //*************DELETE ASSOCIADO *********************// 
 
@@ -252,23 +233,15 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagemDeleta = true;
            },10000);
-    });
-    
-    //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.post = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
          
-
     $http.get('../App/associado/list').success(function(data){
     $scope.associados = data;
+	});
 
-  });
+	 $scope.quatro = false;
 
-    $scope.quatro = false;
+    });
+     
 
   };
 

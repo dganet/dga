@@ -32,7 +32,7 @@ $scope.dados = function (values){
     //Ocultando o Alert Mensagem .
   $scope.mensagemDeleta = true;
 
-//*************UPDATE USUARIO *********************// 
+//*************UPDATE  *********************// 
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormPeriodo) {
@@ -50,12 +50,18 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagem = true;
            },10000);
+
+      //oculta lado direito
+       $scope.quatro = false;
+
+          $http.get('../App/periodo/list').success(function(data){
+          $scope.periodos = data;
+           });
+
+
     });
 
-    $http.get('../App/periodo/list').success(function(data){
-		$scope.periodos = data;
-
-	});
+////////////////////////////////////////////////////////////////////////////////
 
 	$scope.dados = function (values){
 

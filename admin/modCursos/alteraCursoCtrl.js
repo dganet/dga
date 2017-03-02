@@ -32,7 +32,7 @@ $scope.dados = function (values){
   //Ocultando o Alert Mensagem .
   $scope.mensagemDeleta = true;
 
-//*************UPDATE NOTICIA *********************// 
+//*************UPDATE CURSO *********************// 
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormNoticia) {
@@ -50,38 +50,30 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagem = true;
            },10000);
-    });
 
     $http.get('../App/curso/list').success(function(data){
-		$scope.cursos = data;
+    $scope.cursos = data;
+     });
 
-	});
+    // Seleciona o usuario e mostra do Lado. 
+$scope.dados = function (values){
 
-	$scope.dados = function (values){
+  $scope.quatro = true;
 
-	$scope.quatro = true;
+  var id = $scope.id = values;
 
-	var id = $scope.id = values;
+    $http.get('../App/curso/list/'+ id).success(function(data){
+    $scope.curso = data[0];
+    
+  });
 
-		$http.get('../App/curso/list/'+ id).success(function(data){
-		$scope.curso = data[0];
-		
-	});
+  }
 
-	}
+    $scope.quatro = false;
 
+  });
 
-
-     //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.curso = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
-
-  };
-
+};
 
 
 //*************DELETE NOTICIA *********************// 
@@ -99,24 +91,15 @@ $scope.dados = function (values){
       $timeout(function () {
                $scope.mensagemDeleta = true;
            },10000);
-    });
-    
-    //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.curso = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
-         
+
 
     $http.get('../App/curso/list').success(function(data){
     $scope.cursos = data;
 
-  });
+    });
 
-$scope.quatro = false;
-
+    $scope.quatro = false;
+    });
   };
 
 });
