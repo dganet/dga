@@ -34,16 +34,17 @@
 <div id="blocoEspera">	
 	<h4>Próximos se Associar Geral</h4>
 	<form>
-		<select class="form-control" ng-change="filtroLinha(l.linha)" ng-model="l.linha" ng-options=" l.linha as l.linha for l in linhas">
+		<select class="form-control" ng-model="l.linha" ng-options=" l.linha as l.linha for l in linhas">
 			<option value="">Filtre por Região</option>
 			<label>Lista Geral</label>
 		</select>
 	</form>
 
 	<table class="table .table-hover">
-		<tr ng-repeat="x in associados | filter : l.linha">
+		<tr ng-repeat="x in associados | filter : l.linha | orderBy: '+vagaCreateAt'">
 			<td>{{$index+1}}º</td>
 			<td>{{x.nome}}</td>
+			<td>{{x.vagaCreateAt}}</td>
 		</tr>
 
 

@@ -71,10 +71,6 @@ $http.get('App/post/list').success(function(data){
 
 });
 
-$scope.filtroLinha = function(values){
-	console.log(values);
-};
-
 //Lista todas as noticias
 $http.get('App/associado/listadeespera').success(function(data){
 	$scope.associados = data;
