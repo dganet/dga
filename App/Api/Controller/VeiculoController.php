@@ -11,6 +11,7 @@ class VeiculoController{
 	*/
 	public function cadastrar($data){
 		$veiculo = new Veiculo($data);
+
 		$veiculo->setCreateAt(date('Y-m-d H:i:s'));
 		$veiculo->setStatus('ATIVO');
 		return $veiculo->save();

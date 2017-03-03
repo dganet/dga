@@ -40,7 +40,7 @@ class AssociadoController implements Controller {
 		$associado->createAt = date('Y-m-d H:i:s');
 		try{
 			$associado->save();
-			Audit::audit(array('acao'=> var_dump($data), 'usuario_id' => $data['usuario_id']));
+			Audit::audit($data, "INSERT");
 			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
 			return true;
 		}catch (Exeption $e){

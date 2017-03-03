@@ -11,7 +11,7 @@ class Veiculo extends \GORM\Model{
 	private $createAt;
 	private $updateAt;
 	private $tipo;
-	private $statuc;
+	private $status;
 
 	//Contrutor da classe 
 	/**
@@ -20,15 +20,15 @@ class Veiculo extends \GORM\Model{
 	*/
 	public function __construct($data = []){
 		isset($data['id']) 				? $this->setId( $data['id']) 			: $this->setId( null);
-		isset($data['associado_id']) 	? $this->setAssociado_id( $data['id']) 	: $this->setAssociado_id( null);
-		isset($data['numVagas']) 		? $this->setNumVagas( $data['id']) 		: $this->setNumVagas( null);
-		isset($data['periodo']) 		? $this->setPeriodo( $data['id']) 		: $this->setPeriodo( null);
-		isset($data['destino']) 		? $this->setDestino( $data['id']) 		: $this->setDestino( null);
-		isset($data['nomeLinha']) 		? $this->setNomeLinha( $data['id']) 	: $this->setNomeLinha( null);
-		isset($data['createAt']) 		? $this->setCreateAt( $data['id']) 		: $this->setCreateAt( null);
-		isset($data['updateAt']) 		? $this->setUpdateAt( $data['id']) 		: $this->setUpdateAt( null);
-		isset($data['tipo']) 			? $this->setTipo( $data['id']) 			: $this->setTipo( null);
-		isset($data['statuc']) 			? $this->setStatus( $data['id']) 		: $this->setStatus( null);	
+		isset($data['associado_id']) 	? $this->setAssociado_id( $data['associado_id']) 	: $this->setAssociado_id( null);
+		isset($data['numVagas']) 		? $this->setNumVagas( $data['numVagas']) 		: $this->setNumVagas( null);
+		isset($data['periodo']) 		? $this->setPeriodo( $data['periodo']) 		: $this->setPeriodo( null);
+		isset($data['destino']) 		? $this->setDestino( $data['destino']) 		: $this->setDestino( null);
+		isset($data['nomeLinha']) 		? $this->setNomeLinha( $data['nomeLinha']) 	: $this->setNomeLinha( null);
+		isset($data['createAt']) 		? $this->setCreateAt( $data['createAt']) 		: $this->setCreateAt( null);
+		isset($data['updateAt']) 		? $this->setUpdateAt( $data['updateAt']) 		: $this->setUpdateAt( null);
+		isset($data['tipo']) 			? $this->setTipo( $data['tipo']) 			: $this->setTipo( null);
+		isset($data['statuc']) 			? $this->setStatus( $data['status']) 		: $this->setStatus( null);	
 		$this->class = $this;
 	}
 
