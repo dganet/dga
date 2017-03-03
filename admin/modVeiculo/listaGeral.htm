@@ -1,0 +1,68 @@
+
+<div class="acoes">
+  <i class="fa fa-bus" aria-hidden="true"></i>
+  <label>Alteração de Veiculo</label>
+</div>
+
+<hr>
+
+<div class="conteudo">
+
+  <div class="cinco">
+
+    <div class="row">
+
+     <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Nome da Linha</td>
+            <td>Destino</td>
+            <td>Periodo</td>
+            <td>Qtd Vagas</td>
+            <td>Ocupadas</td>
+            <td>Disponiveis</td>
+            <td>Associados</td>
+            <td>Aguardando</td>
+          </tr>
+        </thead>
+
+          <tbody>
+            <tr ng-repeat="x in veiculos">
+            <td>{{x.nomeLinha}}</td>
+            <td>{{x.destino}}</td>
+            <td>{{x.periodo}}</td>
+            <td>{{x.qtsVagas}}</td>
+            <td><a ng-click="ocupados(x.id)">Verificar</a></td>
+            <td>Disponiveis</td>
+            <td>Associados</td>
+            <td>Aguardando</td>
+          </tr>
+          </tbody>  
+
+      </table>
+    </div>
+
+
+  <div class="seis" ng-show="seis">
+    
+      <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo Usuario"><br>
+  
+     <table class="table table-condensed">
+        <thead>
+         <tr>
+            <td>Veiculos</td>
+         </tr>
+        </thead>
+
+        <tbody> 
+         <tr ng-repeat="x in veiculos | filter: busca">
+           <td> <a ui-sref="user.veiculos.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nomeLinha}}</a></td>
+         </tr>   
+        </tbody>
+     </table>
+
+
+  </div>
+
+</div>

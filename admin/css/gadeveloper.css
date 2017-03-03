@@ -193,6 +193,26 @@ color:white;
 	margin-bottom: 20px;
 }
 
+.cinco {
+	width: 80%;
+	margin-top: -20px;
+	padding-right: 20px;
+	border-right:1px solid #E6E6E6;
+	float: left;
+}
+
+.seis thead {
+	font-weight: bold;
+}
+
+
+.seies {
+	width: calc(20% - 20px);
+	float: left;
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
+
 .um ul li {
 	display: inline;
 	margin-left: -10px;

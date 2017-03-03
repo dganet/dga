@@ -54,6 +54,7 @@
     <a class="btn btn-default" role="button" ng-click="go('tab4')">Renda</a>
     <a class="btn btn-default" role="button" ng-click="go('tab5')">Dados Familiar</a>
     <a class="btn btn-default" role="button" ng-click="go('tab6')">Dados Universitario</a>
+    <a class="btn btn-default" role="button" ng-click="go('tab7')">Linha</a>
   </div>
   
 <form name="FormAssociado" ng-submit="add(associado)">
@@ -408,6 +409,17 @@
 
 
   </div>
+
+<div class="row" ng-show="tab7">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Linha</label>
+            <select class="form-control" ng-model="associado.nomeLinha" required="required" ng-options="x.id as x.nomeLinha for x in linhas">
+              <option value="">Selecione um Linha</option>
+            </select>
+        </div> 
+      </div>
+</div>
 <hr>
 
 <button type="submit" class="btn btn-warning">Atualizar</button>

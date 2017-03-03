@@ -18,7 +18,7 @@ app.controller("inseriVeiculoCtrl", function($scope, $http,$location , $timeout,
 
   //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormVeiculo) {
-console.log(values);
+
       //Enviado os valores em objetos para api/user do php/slim
       $http.post('../App/veiculo/save/' + idUsuario, values).success(function(){
         
