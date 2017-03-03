@@ -1,0 +1,91 @@
+<div class="alert alert-warning" ng-hide="mensagem">
+  <strong>Update!</strong> Atualização dos Dados foram inserido com sucesso.
+</div>
+
+<div class="alert alert-danger" ng-hide="mensagemDeleta">
+  <strong>Sucesso!</strong> Dados deletado com sucesso.
+</div>
+
+
+<div class="acoes">
+
+<i class="fa fa-bus" aria-hidden="true"></i>
+  <label>Alteração de Veiculo</label>
+
+</div>
+
+<hr>
+
+<div class="conteudo">
+   <div class="tres">
+     <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo Usuario"><br>
+  
+     <table class="table table-condensed">
+        <thead>
+         <tr>
+            <td>Veiculos</td>
+         </tr>
+        </thead>
+
+        <tbody> 
+         <tr ng-repeat="x in veiculos | filter: busca">
+           <td> <a ui-sref="user.veiculos.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nomeLinha}}</a></td>
+         </tr>   
+        </tbody>
+     </table>
+</div>
+
+
+<div class="quatro" ng-show="quatro">
+  
+  <h4>{{periodo.linha}}</h4><hr/>
+
+  <form name="FormVeiculo" ng-submit="update(veiculo)">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+                <label>Número da Linha</label>
+                <input type="text" class="form-control" ng-model="veiculo.nomeLinha">
+          </div>
+        </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Destino</label>
+            <select class="form-control" ng-model="veiculo.destino" required="required">
+              <option value="">Selecione uma Destino</option>
+              <option value="Guaruja">Guaruja</option>
+              <option value="Santos">Santos</option>
+              <option value="Mogi das Cruzes">Mogi das Cruzes</option>
+            </select>
+        </div> 
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Destino</label>
+            <select class="form-control" ng-model="veiculo.periodo" required="required">
+              <option value="">Selecione um Periodo</option>
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+            </select>
+        </div> 
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Quantidade de Vagas</label>
+            <input type="number" class="form-control" ng-model="veiculo.numVagas">
+        </div>
+      </div>
+
+    </div>
+      
+      <hr>
+        <button type="submit" class="btn btn-warning">Atualizar</button>
+         <button type="button" class="btn btn-danger" ng-click="deleta(veiculo.id)">Deletar</button>
+  </form>
+</div>
+
+</div>

@@ -2,427 +2,416 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
 
 
-  $stateProvider
-    .state('login', {
-      url: '/login',
-      templateUrl: 'login/home.htm',
-       controller:'loginCtrl',
-    })
+	$stateProvider
+		.state('login', {
+			url: '/login',
+			templateUrl: 'login/home.htm',
+			 controller:'loginCtrl',
+		})
 
-      .state('user', {
-      url: '/user',
-      templateUrl: 'painel/home.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-        
-         ncyBreadcrumb: {
-            label: 'Home'
-         }
-      
-    })
+			.state('user', {
+			url: '/user',
+			templateUrl: 'painel/home.htm',
+			resolve: { 
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){ 
+								$location.path('/login');
+						}
+				}
+		 
+			},
+				
+				 ncyBreadcrumb: {
+						label: 'Home'
+				 }
+			
+		})
 //############################################################################
 //############# **  MODULO ASSOCIADO ** ##########################################
 //############################################################################
 
-      .state('user.associado', {
-      url: '/associado',
-      templateUrl: 'modAssociado/Link.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-       ncyBreadcrumb: {
-            label: 'Associado'
-         }
-    })
+			.state('user.associado', {
+			url: '/associado',
+			templateUrl: 'modAssociado/Link.htm',
+			resolve: { 
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){ 
+								$location.path('/login');
+						}
+				}
+		 
+			},
+			 ncyBreadcrumb: {
+						label: 'Associado'
+				 }
+		})
 
 
-      .state('user.associado.inseri', {
-      url: '/inseri',
-      templateUrl: 'modAssociado/inseriAssociado.htm',
-      controller:'inseriAssociadoCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri'
-         }
-    })
+			.state('user.associado.inseri', {
+			url: '/inseri',
+			templateUrl: 'modAssociado/inseriAssociado.htm',
+			controller:'inseriAssociadoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Inseri'
+				 }
+		})
 
-      .state('user.associado.altera', {
-      url: '/altera',
-      templateUrl: 'modAssociado/alteraAssociado.htm',
-      controller:'alteraAssociadoCtrl',
-       ncyBreadcrumb: {
-            label: 'Altera Usuario'
-         }
-    })
+			.state('user.associado.altera', {
+			url: '/altera',
+			templateUrl: 'modAssociado/alteraAssociado.htm',
+			controller:'alteraAssociadoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera Usuario'
+				 }
+		})
 
-      .state('user.associado.altera.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-              ncyBreadcrumb: {
-            label: 'Altera'
-         }
-      })
+			.state('user.associado.altera.detalhes', {
+			url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							ncyBreadcrumb: {
+						label: 'Altera'
+				 }
+			})
 
-      .state('user.associado.portal', {
-      url: '/portal',
-      templateUrl: 'modAssociado/portalAssociado.htm',
-      controller:'portalAssociadoCtrl',
-       ncyBreadcrumb: {
-            label: 'Portal'
-         }
-    })
+			.state('user.associado.portal', {
+			url: '/portal',
+			templateUrl: 'modAssociado/portalAssociado.htm',
+			controller:'portalAssociadoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Portal'
+				 }
+		})
 
-      .state('user.associado.portal.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-            ncyBreadcrumb: {
-            label: 'Altera'
-         }
+			.state('user.associado.portal.detalhes', {
+			url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+						ncyBreadcrumb: {
+						label: 'Altera'
+				 }
 
-    })
+		})
 
-      .state('user.associado.del', {
-      url: '/del',
-      templateUrl: 'modAssociado/del.htm',
-      controller:'alteraAssociadoCtrl',
-       ncyBreadcrumb: {
-            label: 'Deleta'
-         }
-    })
+			.state('user.associado.del', {
+			url: '/del',
+			templateUrl: 'modAssociado/del.htm',
+			controller:'alteraAssociadoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Deleta'
+				 }
+		})
 
-      .state('user.associado.del.detalhes', {
-      url: '/:idAssociado',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.idAssociado;
-        }
-    })
+			.state('user.associado.del.detalhes', {
+			url: '/:idAssociado',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.idAssociado;
+				}
+		})
 
 
 //############################################################################
 //############# **  MODULO NOTICIAS ** ##########################################
 //############################################################################
-      .state('user.noticia', {
-      url: '/noticia',
-      templateUrl: 'modNoticias/Link.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-       ncyBreadcrumb: {
-            label: 'Noticias'
-         }
-    })
+			.state('user.noticia', {
+			url: '/noticia',
+			templateUrl: 'modNoticias/Link.htm',
+			resolve: { 
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){ 
+								$location.path('/login');
+						}
+				}
+		 
+			},
+			 ncyBreadcrumb: {
+						label: 'Noticias'
+				 }
+		})
 
 
-      .state('user.noticia.inseri', {
-      url: '/inseri',
-      templateUrl: 'modNoticias/inseriNoticia.htm',
-      controller:'inseriNoticiaCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri Noticia'
-         }
-    })
+			.state('user.noticia.inseri', {
+			url: '/inseri',
+			templateUrl: 'modNoticias/inseriNoticia.htm',
+			controller:'inseriNoticiaCtrl',
+			 ncyBreadcrumb: {
+						label: 'Inseri Noticia'
+				 }
+		})
 
-      .state('user.noticia.altera', {
-      url: '/altera',
-      templateUrl: 'modNoticias/alteraNoticia.htm',
-      controller:'alteraNoticiaCtrl',
-       ncyBreadcrumb: {
-            label: 'Altera'
-         }
-    })
-      .state('user.noticia.altera.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-               ncyBreadcrumb: {
-            label: 'Posts'
-         }
-    })
+			.state('user.noticia.altera', {
+			url: '/altera',
+			templateUrl: 'modNoticias/alteraNoticia.htm',
+			controller:'alteraNoticiaCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera'
+				 }
+		})
+			.state('user.noticia.altera.detalhes', {
+			url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							 ncyBreadcrumb: {
+						label: 'Posts'
+				 }
+		})
 
 //############################################################################
 //############# **  MODULO CURSOS ** ##########################################
 //############################################################################
-      .state('user.curso', {
-      url: '/curso',
-      templateUrl: 'modCursos/Link.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-       ncyBreadcrumb: {
-            label: 'Curso'
-         }
-    })
+			.state('user.curso', {
+			url: '/curso',
+			templateUrl: 'modCursos/Link.htm',
+			resolve: { 
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){ 
+								$location.path('/login');
+						}
+				}
+		 
+			},
+			 ncyBreadcrumb: {
+						label: 'Curso'
+				 }
+		})
 
 
-      .state('user.curso.inseri', {
-      url: '/inseri',
-      templateUrl: 'modCursos/inseriCurso.htm',
-      controller:'inseriCursoCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri'
-         }
-    })
+			.state('user.curso.inseri', {
+			url: '/inseri',
+			templateUrl: 'modCursos/inseriCurso.htm',
+			controller:'inseriCursoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Inseri'
+				 }
+		})
 
-      .state('user.curso.altera', {
-      url: '/altera',
-      templateUrl: 'modCursos/alteraCurso.htm',
-      controller:'alteraCursoCtrl',
-       ncyBreadcrumb: {
-            label: 'Altera'
-         }
-    })
+			.state('user.curso.altera', {
+			url: '/altera',
+			templateUrl: 'modCursos/alteraCurso.htm',
+			controller:'alteraCursoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera'
+				 }
+		})
 
-      .state('user.curso.altera.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-               ncyBreadcrumb: {
-            label: 'Cursos'
-         }
-    })
+			.state('user.curso.altera.detalhes', {
+			url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							 ncyBreadcrumb: {
+						label: 'Cursos'
+				 }
+		})
 
 //############################################################################
 //############# **  MODULO OPORTUNIDADE ** ##########################################
 //############################################################################
-      .state('user.oportunidade', {
-      url: '/oportunidade',
-      templateUrl: 'modOportunidade/oportunidadeLink.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-       ncyBreadcrumb: {
-            label: 'Oportunidade'
-         }
-    })
+			.state('user.oportunidade', {
+			url: '/oportunidade',
+			templateUrl: 'modOportunidade/oportunidadeLink.htm',
+			resolve: { 
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){ 
+								$location.path('/login');
+						}
+				}
+		 
+			},
+			 ncyBreadcrumb: {
+						label: 'Oportunidade'
+				 }
+		})
 
 
-      .state('user.oportunidade.inseri', {
-      url: '/inseri',
-      templateUrl: 'modOportunidade/inseriOportunidade.htm',
-      controller:'inseriOportunidadeCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri Oportunidade'
-         }
-    })
+			.state('user.oportunidade.inseri', {
+			url: '/inseri',
+			templateUrl: 'modOportunidade/inseriOportunidade.htm',
+			controller:'inseriOportunidadeCtrl',
+			 ncyBreadcrumb: {
+						label: 'Inseri Oportunidade'
+				 }
+		})
 
-      .state('user.oportunidade.altera', {
-      url: '/altera',
-      templateUrl: 'modOportunidade/alteraOportunidade.htm',
-      controller:'alteraOportunidadeCtrl',
-       ncyBreadcrumb: {
-            label: 'Altera Oportunidade'
-         }
-    })
+			.state('user.oportunidade.altera', {
+			url: '/altera',
+			templateUrl: 'modOportunidade/alteraOportunidade.htm',
+			controller:'alteraOportunidadeCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera Oportunidade'
+				 }
+		})
 
-      .state('user.oportunidade.altera.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-               ncyBreadcrumb: {
-            label: 'Oportunidades'
-         }
-    })
+			.state('user.oportunidade.altera.detalhes', {
+			url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							 ncyBreadcrumb: {
+						label: 'Oportunidades'
+				 }
+		})
 
 //############################################################################
 //############# **  MODULO USUARIO ** ##########################################
 //############################################################################
-      .state('user.usuario', {
-      url: '/usuario',
-      templateUrl: 'modUsuario/link.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-       ncyBreadcrumb: {
-            label: 'Usuario'
-         }
-    })
+			.state('user.usuario', {
+			url: '/usuario',
+			templateUrl: 'modUsuario/link.htm',
+			resolve: { 
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){ 
+								$location.path('/login');
+						}
+				}
+		 
+			},
+			 ncyBreadcrumb: {
+						label: 'Usuario'
+				 }
+		})
 
 
-      .state('user.usuario.inseri', {
-      url: '/inseri',
-      templateUrl: 'modUsuario/inseriUsuario.htm',
-      controller:'inseriUsuarioCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri Usuario'
-         }
-    })
+			.state('user.usuario.inseri', {
+			url: '/inseri',
+			templateUrl: 'modUsuario/inseriUsuario.htm',
+			controller:'inseriUsuarioCtrl',
+			 ncyBreadcrumb: {
+						label: 'Inseri Usuario'
+				 }
+		})
 
-      .state('user.usuario.altera', {
-      url: '/altera',
-      templateUrl: 'modUsuario/alteraUsuario.htm',
-      controller:'alteraUsuarioCtrl',
-       ncyBreadcrumb: {
-            label: 'Altera Usuario'
-         }
-    })
+			.state('user.usuario.altera', {
+			url: '/altera',
+			templateUrl: 'modUsuario/alteraUsuario.htm',
+			controller:'alteraUsuarioCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera Usuario'
+				 }
+		})
 
-      .state('user.usuario.altera.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-              ncyBreadcrumb: {
-            label: 'Altera'
-         }
+			.state('user.usuario.altera.detalhes', {
+			url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							ncyBreadcrumb: {
+						label: 'Altera'
+				 }
 
-    })
+		})
 //############################################################################
 //############# **  MODULO Periodo ** ##########################################
 //############################################################################
-      .state('user.periodo', {
-      url: '/periodo',
-      templateUrl: 'modPeriodo/periodoLink.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-       ncyBreadcrumb: {
-            label: 'Periodo'
-         }
-    })
+			.state('user.periodo', {
+			url: '/periodo',
+			templateUrl: 'modPeriodo/periodoLink.htm',
+			resolve: { 
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){ 
+								$location.path('/login');
+						}
+				}
+		 
+			},
+			 ncyBreadcrumb: {
+						label: 'Periodo'
+				 }
+		})
 
 
-      .state('user.periodo.inseri', {
-      url: '/inseri',
-      templateUrl: 'modPeriodo/inseriPeriodo.htm',
-      controller:'inseriPeriodoCtrl',
-       ncyBreadcrumb: {
-            label: 'Inseri Periodo'
-         }
-    })
+			.state('user.periodo.inseri', {
+			url: '/inseri',
+			templateUrl: 'modPeriodo/inseriPeriodo.htm',
+			controller:'inseriPeriodoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Inseri Periodo'
+				 }
+		})
 
-      .state('user.periodo.altera', {
-      url: '/altera',
-      templateUrl: 'modPeriodo/alteraPeriodo.htm',
-      controller:'alteraPeriodoCtrl',
-       ncyBreadcrumb: {
-            label: 'Altera Periodo'
-         }
-    })
+			.state('user.periodo.altera', {
+			url: '/altera',
+			templateUrl: 'modPeriodo/alteraPeriodo.htm',
+			controller:'alteraPeriodoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera Periodo'
+				 }
+		})
 
-      .state('user.periodo.altera.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-              ncyBreadcrumb: {
-            label: 'Altera'
-         }
+			.state('user.periodo.altera.detalhes', {
+			url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							ncyBreadcrumb: {
+						label: 'Altera'
+				 }
 
-    })
+		})
 
 
 //############################################################################
-//############# **  MODULO VAGAS ** ##########################################
+//############# **  MODULO VEICULOS ** ##########################################
 //############################################################################
-      .state('user.vaga', {
-      url: '/vaga',
-      templateUrl: 'modVagas/link.htm',
-      resolve: { 
-          function ($sessionStorage, $location){
-            if (sessionStorage.getItem('usuario.id') == null){ 
-                $location.path('/login');
-            }
-        }
-     
-      },
-       ncyBreadcrumb: {
-            label: 'Vagas'
-         }
-    })
-     
-      .state('user.vaga.aprova', {
-      url: '/aprova',
-      templateUrl: 'modVagas/listaAprovacao.htm',
-      controller:'listaAprovacaoCtrl',
-       ncyBreadcrumb: {
-            label: 'Aprova Associado'
-         }
-    })
+			.state('user.veiculo', {
+			url: '/veiculo',
+			templateUrl: 'modVeiculo/link.htm',
+			resolve: { 
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){ 
+								$location.path('/login');
+						}
+				}
+		 
+			},
+			 ncyBreadcrumb: {
+						label: 'Veiculo'
+				 }
+		})
 
-      .state('user.vaga.aprova.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-              ncyBreadcrumb: {
-            label: 'Inseri'
-         }
+			.state('user.veiculo.inseri', {
+			url: '/inseri',
+			templateUrl: 'modVeiculo/inseriVeiculo.htm',
+			controller:'inseriVeiculoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Novo Veiculo'
+				 }
+		})
 
-    })
-      .state('user.vaga.inseri', {
-      url: '/inseri',
-      templateUrl: 'modVagas/inseriVaga.htm',
-      controller:'inseriVagaCtrl',
-       ncyBreadcrumb: {
-            label: 'Lista de Espera'
-         }
-    })
+			.state('user.veiculo.altera', {
+			url: '/altera',
+			templateUrl: 'modVeiculo/alteraVeiculo.htm',
+			controller:'alteraVeiculoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera'
+				 }
+		})
 
 
-      .state('user.vaga.inseri.detalhes', {
-      url: '/:id',
-       controller: function($scope, $stateParams) {
-            // get the id
-            $scope.id = $stateParams.id;
-        },
-              ncyBreadcrumb: {
-            label: 'Inseri'
-         }
+			.state('user.veiculo.altera.detalhes', {
+			url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							ncyBreadcrumb: {
+						label: 'Altera'
+				 }
 
-    })
+		})
 
 //############################################################################
-        $urlRouterProvider.otherwise("/login");
-    
+				$urlRouterProvider.otherwise("/login");
+		
 });
