@@ -7,7 +7,7 @@ class Veiculo extends \GORM\Model{
 	private $numVagas;
 	private $periodo;
 	private $destino;
-	private $numLinha;
+	private $nomeLinha;
 	private $createAt;
 	private $updateAt;
 	private $tipo;
@@ -24,7 +24,7 @@ class Veiculo extends \GORM\Model{
 		isset($data['numVagas']) 		? $this->setNumVagas( $data['id']) 		: $this->setNumVagas( null);
 		isset($data['periodo']) 		? $this->setPeriodo( $data['id']) 		: $this->setPeriodo( null);
 		isset($data['destino']) 		? $this->setDestino( $data['id']) 		: $this->setDestino( null);
-		isset($data['numLinha']) 		? $this->setNumLinha( $data['id']) 		: $this->setNumLinha( null);
+		isset($data['nomeLinha']) 		? $this->setNomeLinha( $data['id']) 	: $this->setNomeLinha( null);
 		isset($data['createAt']) 		? $this->setCreateAt( $data['id']) 		: $this->setCreateAt( null);
 		isset($data['updateAt']) 		? $this->setUpdateAt( $data['id']) 		: $this->setUpdateAt( null);
 		isset($data['tipo']) 			? $this->setTipo( $data['id']) 			: $this->setTipo( null);
@@ -48,8 +48,8 @@ class Veiculo extends \GORM\Model{
 	public function getDestino(){
 		return $this->destino;
 	}
-	public function getNumLinha(){
-		return $this->numLinha;
+	public function getNomeLinha(){
+		return $this->nomeLinha;
 	}
 	public function getCreateAt(){
 		return $this->createAt;
@@ -79,8 +79,8 @@ class Veiculo extends \GORM\Model{
 	public function setDestino($value){
 		$this->destino = $value;
 	}
-	public function setNumLinha($value){
-		$this->numLinha = $value;
+	public function setNomeLinha($value){
+		$this->nomeLinha = $value;
 	}
 	public function setCreateAt($value){
 		$this->createAt = $value;
@@ -102,7 +102,7 @@ class Veiculo extends \GORM\Model{
 			"numVagas" 		=> $this->getNumVagas(),
 			"periodo" 		=> $this->getPeriodo(),
 			"destino" 		=> $this->getDestino(),
-			"numLinha" 		=> $this->getNumLinha(),
+			"nomeLinha" 	=> $this->getNomeLinha(),
 			"createAt" 		=> $this->getCreateAt(),
 			"updateAt" 		=> $this->getUpdateAt(),
 			"tipo" 			=> $this->getTipo(),

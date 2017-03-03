@@ -40,7 +40,7 @@ class AssociadoController implements Controller {
 		$associado->createAt = date('Y-m-d H:i:s');
 		try{
 			$associado->save();
-			Audit::audit(array('acao'=> 'Usuário '. $data['usuario_id']. ' cadastrou um novo associado com cpf '.$data['cpf']));
+			Audit::audit(array('acao'=> var_dump($data), 'usuario_id' => $data['usuario_id']));
 			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
 			return true;
 		}catch (Exeption $e){
