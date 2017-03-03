@@ -411,6 +411,15 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
 		})
 
+			.state('user.veiculo.listaGeral', {
+			url: '/listaGeral',
+			templateUrl: 'modVeiculo/listaGeral.htm',
+			controller:'listaGeralCtrl',
+			 ncyBreadcrumb: {
+						label: 'Lista Geral'
+				 }
+		})
+
 //############################################################################
 				$urlRouterProvider.otherwise("/login");
 		

@@ -19,12 +19,14 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
 
   // Seleciona o veiculo e mostra do Lado. 
   $scope.dados = function (values){
+
     //Mostra lado direito
     $scope.quatro = true;
     var id = $scope.id = values;
 
     $http.get('../App/veiculo/list/'+ id).success(function(data){
       $scope.veiculo = data[0];
+      console.log(data);
     });
   }
 
@@ -32,9 +34,10 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
 
 //Passa os valores do form em Objeto no "values"
   $scope.update = function(values, FormVeiculo) {
-      
+      //Pegando ID
+      var id = values.id;
       // Enviado os valores em objetos para api/user do php/slim
-      $http.put('../App/veiculo/update/'+ idUsuario, id, values).success(function(){
+      $http.put('../App/veiculo/update/'+ id, values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/veiculo/altera');         
       // Funcão de exibir a mensagem de sucesso em 5 segundos.

@@ -29,7 +29,7 @@
 
         <tbody> 
          <tr ng-repeat="x in veiculos | filter: busca">
-           <td> <a ui-sref="user.veiculos.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nomeLinha}}</a></td>
+           <td> <a ui-sref="user.veiculo.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nomeLinha}}</a></td>
          </tr>   
         </tbody>
      </table>
@@ -45,7 +45,7 @@
         <div class="col-md-3">
           <div class="form-group">
                 <label>Número da Linha</label>
-                <input type="text" class="form-control" ng-model="veiculo.nomeLinha">
+                <input type="text" class="form-control" ng-model="veiculo.nomeLinha" required="required">
           </div>
         </div>
 
@@ -76,7 +76,7 @@
       <div class="col-md-3">
         <div class="form-group">
           <label>Quantidade de Vagas</label>
-            <input type="number" class="form-control" ng-model="veiculo.numVagas">
+            <input type="number" class="form-control" ng-model="veiculo.numVagas" required="required">
         </div>
       </div>
 
