@@ -52,13 +52,34 @@
      <table class="table table-condensed">
         <thead>
          <tr>
-            <td>Veiculos</td>
+            <td>Associados</td>
          </tr>
         </thead>
 
         <tbody> 
          <tr ng-repeat="x in veiculos | filter: busca">
-           <td> <a ui-sref="user.veiculos.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nomeLinha}}</a></td>
+           <td>Associados {{$index +1}}</td>
+         </tr>   
+        </tbody>
+     </table>
+
+
+  </div>
+
+  <div class="seis" ng-show="sete">
+    
+      <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo Usuario"><br>
+  
+     <table class="table table-condensed">
+        <thead>
+         <tr>
+            <td>Pré-Associados</td>
+         </tr>
+        </thead>
+
+        <tbody> 
+         <tr ng-repeat="x in veiculos | filter: busca">
+           <td>Associados {{$index +1}}</td>
          </tr>   
         </tbody>
      </table>

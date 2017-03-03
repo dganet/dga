@@ -12,4 +12,10 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
 
   };
 
+    //Lista todos Associado vinculado neste veiculo
+  $scope.listaEspera = function(value){
+    $scope.sete = true;
+
+  };
+
 });
