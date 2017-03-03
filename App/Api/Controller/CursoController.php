@@ -1,6 +1,6 @@
 <?php 
 namespace Api\Controller;
-use \Api\Model\Entity\Curso;
+use \Api\Model\Entity\Curso, \Api\Controller\AuditController as Audit;
 
 class CursoController implements Controller {
 

@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Veiculo;
+use \Api\Model\Entity\Veiculo, \Api\Controller\AuditController as Audit;
 
 class VeiculoController{
 	
@@ -30,12 +30,12 @@ class VeiculoController{
 	// Liusta todos os usuario com status ATIVO
 	public function listaTudo(){
 		$veiculo = new Veiculo();
-		return $veiculo->select(array('WHERE' => array('status' => 'ATIVO')));
+		return $veiculo->select(array('where' => array('status' => 'ATIVO')));
 	}
 	// Lista todos os usuario com o id $id
 	public function listaPorId($id){
 		$veiculo = new Veiculo();
-		return $veiculo->select(array('WHERE' => array ('id' => $id, 'status' => 'ATIVO')));
+		return $veiculo->select(array('where' => array('id' => $id)));
 	}
 	// Lista todos os usuario com status INATIVO
 	public function listaInativo(){

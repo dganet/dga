@@ -33,7 +33,7 @@ $app->delete('/delete/{id}', function(Resquest $request, Response $response, $ar
 	$response = $response->withJson($controller->delete($args['id']));
 	return $response;
 });
-$app->get('/list{id}', function (Request $request, Response $response, $args){
+$app->get('/list/{id}', function (Request $request, Response $response, $args){
 	$controller = new VeiculoController();
 	$response = $response->withHeader('Content-type', 'application/json');
 	$response = $response->withJson($controller->listaPorId($args['id']));

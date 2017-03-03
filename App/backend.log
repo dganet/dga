@@ -526,3 +526,16 @@
 03/03/2017 0:18:56 [DEBUG]:INSERT INTO veiculo (id, associado_id, numVagas, periodo, destino, nomeLinha, createAt, updateAt, tipo, status)  values ('', '', '', '', '', '', '2017-03-03 00:18:56', '', '', 'ATIVO') 
 03/03/2017 0:19:52 [DEBUG]:INSERT INTO veiculo (id, associado_id, numVagas, periodo, destino, nomeLinha, createAt, updateAt, tipo, status)  values ('', '', '', '', '', '', '2017-03-03 00:19:52', '', '', 'ATIVO') 
 03/03/2017 0:23:20 [DEBUG]:INSERT INTO veiculo (id, associado_id, numVagas, periodo, destino, nomeLinha, createAt, updateAt, tipo, status)  values ('', '', '111', 'Tarde', 'Guaruja', 'Linha teste123', '2017-03-03 00:23:20', '', '', 'ATIVO') 
+03/03/2017 0:37:42 [DEBUG]:SELECT * FROM veiculo
+03/03/2017 0:37:49 [DEBUG]:SELECT * FROM veiculo
+03/03/2017 0:37:53 [DEBUG]:SELECT * FROM veiculo
+03/03/2017 0:39:32 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+03/03/2017 0:39:41 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nomeLinha => asdfdestino => Guarujaperiodo => TardenumVagas => 1111', '', 'veiculo', '2017-03-03 00:03:41') 
+03/03/2017 0:39:42 [DEBUG]:INSERT INTO veiculo (id, associado_id, numVagas, periodo, destino, nomeLinha, createAt, updateAt, tipo, status)  values ('', '', '1111', 'Tarde', 'Guaruja', 'asdf', '2017-03-03 00:39:41', '', '', 'ATIVO') 
+03/03/2017 0:39:48 [DEBUG]:SELECT * FROM veiculo
+03/03/2017 0:39:53 [DEBUG]:SELECT * FROM veiculo
+03/03/2017 0:39:56 [DEBUG]:SELECT * FROM veiculo
+03/03/2017 0:41:47 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'veiculo.status='ATIVO'
+03/03/2017 0:43:15 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+03/03/2017 0:43:19 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 0:43:22 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'

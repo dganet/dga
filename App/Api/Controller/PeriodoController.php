@@ -1,6 +1,6 @@
 <?php 
 namespace Api\Controller;
-use \Api\Model\Entity\Periodo;
+use \Api\Model\Entity\Periodo, \Api\Controller\AuditController as Audit;
 
 class PeriodoController implements Controller {
 

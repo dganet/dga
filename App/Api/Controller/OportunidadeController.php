@@ -1,6 +1,6 @@
 <?php 
 namespace Api\Controller;
-use \Api\Model\Entity\Oportunidade;
+use \Api\Model\Entity\Oportunidade, \Api\Controller\AuditController as Audit;
 
 class OportunidadeController implements Controller {
 

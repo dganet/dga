@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Post;
+use \Api\Model\Entity\Post, \Api\Controller\AuditController as Audit;
 
 class PostController implements Controller{
 

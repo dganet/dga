@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Usuario;
+use \Api\Model\Entity\Usuario, \Api\Controller\AuditController as Audit;
 
 class UsuarioController implements Controller{
 
