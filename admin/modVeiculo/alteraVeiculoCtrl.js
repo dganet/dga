@@ -26,7 +26,6 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
 
     $http.get('../App/veiculo/list/'+ id).success(function(data){
       $scope.veiculo = data[0];
-      console.log(data);
     });
   }
 
@@ -45,9 +44,8 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
       $timeout(function () {
                $scope.mensagem = true;
            },20000);
- 
-
-
+      //Oculta lado Direito
+      $scope.quatro = false;
       //Lista todos Veiculos
       $http.get('../App/veiculo/list').success(function(data){
         $scope.veiculos = data;
@@ -63,7 +61,7 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
   $scope.deleta = function(values) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.delete('../App/veiculo/delete/'+ values).success(function(){
+    $http.delete('../App/veiculo/inativa/'+ values).success(function(){
         // Depois mandando para mesma pagina  
         $scope.activePath = $location.path('/user/veiculo/altera'); 
        

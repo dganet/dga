@@ -3,8 +3,14 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
   var idUsuario = sessionStorage.getItem('usuario.id');
   //Lista todos Veiculos
   $http.get('../App/veiculo/list').success(function(data){
-    $scope.veiculos = data;
+    $scope.veiculos = data;    
   });
+
+  //Lista todos Veiculos
+  $http.get('../App/associado/listaguardando').success(function(data){
+    console.log($scope.teste = data);    
+  });
+
 
   //Lista todos Associado vinculado neste veiculo
   $scope.preAssociados = function(value){
