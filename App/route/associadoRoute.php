@@ -49,6 +49,13 @@ $app->post('/login', function(Request $request, Response $response){
 		$response = $response->withJson($associado);
 		return $response;
 	});
+	$app->get('/listaguardando/{id}', function(Request $request, Response $response, $args){
+		$associadoController = new \Api\Controller\AssociadoController();
+		$associado = $associadoController->listaAguardandoVagaId($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($associado);
+		return $response;
+	});
 	$app->get('/listaprovacao', function(Request $request, Response $response){
 		$associadoController = new \Api\Controller\AssociadoController();
 		$associado = $associadoController->listaAguardandoAprovacao();

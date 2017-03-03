@@ -115,7 +115,23 @@ class AssociadoController implements Controller {
 		$associado = new Associado();
 		try{
 			Log::Message("Listando Associados Aguardando uma vaga");
-			return $associado->select(array('where' => array('status' => 'AGUARDANDOVAGA')));
+			return $associado->select(
+				array(
+					'inner' => array('veiculo' => array('veiculo.id' => 'associado.veiculo_id')
+						),
+					'where' => array('status' => 'AGUARDANDOVAGA')
+					)
+			);
+		}catch (Exeption $e){
+			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma vaga ".$e);
+			return false;
+		}
+	}
+	public function ListaAguardandoVagaID($id){
+		$associado = new Associado();
+		try{
+			Log::Message("Listando Associados Aguardando uma vaga");
+			return $associado->select(array('where' => array('AND' => array('veiculo_id' => $id, 'status' => 'AGUARDANDOVAGA'))));
 		}catch (Exeption $e){
 			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma vaga ".$e);
 			return false;

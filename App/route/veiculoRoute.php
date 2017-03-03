@@ -14,11 +14,12 @@ $app->post('/save/{id}', function(Request $request, Response $response, $args){
 	return $response;
 });
 // Atualiza Veiculo
-$app->put('/update', function(Request $request, Response $response){
+$app->put('/update/{id}', function(Request $request, Response $response, $args){
 	$controller = new VeiculoController();
 	$post = json_decode($request->getBody(), true);
+	$post['usuario_id'] = $args['id'];
 	$response = $response->withHeader('Content-type', 'application/json');
-	$response = $response->withJson($controller->atulizaCadastro($post));
+	$response = $response->withJson($controller->atualizaCadastro($post));
 	return $response;
 });
 //Lista Veiculo

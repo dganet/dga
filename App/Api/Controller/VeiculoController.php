@@ -17,13 +17,16 @@ class VeiculoController{
 		Audit::audit($data, "INSERT", "veiculo");
 		return $veiculo->save();
 	}
+	public function preencherVaga($idAssociado){
+
+	}
 	/**
 	*	@param Array $data
 	*	Atualiza um cadastro conforme as informações contidas no array $data
 	*/
 	public function atualizaCadastro($data){
 		$veiculo = new Veiculo($data);
-		$veiculo->setUpdateAt(data('Y-m-d H:i:s'));
+		$veiculo->setUpdateAt(date('Y-m-d H:i:s'));
 		Audit::audit($data, "UPDATE", "veiculo");
 		$veiculo->update();
 	}
@@ -41,7 +44,7 @@ class VeiculoController{
 	// Lista todos os usuario com status INATIVO
 	public function listaInativo(){
 		$veiculo = new Veiculo();
-		return $veiculo->select(array('WHERE' => array ('status' => 'INATIVO')));
+		return $veiculo->select(array('WHERE' => array('status' => 'INATIVO')));
 	}
 	// Inativa um Veiculo
 	public function inativar($id){

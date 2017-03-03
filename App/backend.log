@@ -564,3 +564,83 @@
 03/03/2017 1:14:54 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
 03/03/2017 1:15:18 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
 03/03/2017 1:23:21 [DEBUG]:SELECT * FROM audit WHERE audit.tabela='veiculo'
+03/03/2017 1:27:47 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:27:49 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+03/03/2017 1:28:48 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:28:50 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+03/03/2017 1:29:49 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:29:52 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+03/03/2017 1:30:13 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:30:17 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+03/03/2017 1:30:19 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', '', '8', 'veiculo', '2017-03-03 01:03:19') 
+03/03/2017 1:30:20 [DEBUG]:UPDATE veiculo SET  numVagas='50', periodo='Manh?', destino='Guaruja', nomeLinha='Linha 101', createAt='2017-03-03 00:27:10', updateAt='2017-03-03 01:30:19' WHERE  id=8
+03/03/2017 1:30:21 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:30:24 [DEBUG]:SELECT * FROM audit WHERE audit.tabela='veiculo'
+03/03/2017 1:32:21 [DEBUG]:SELECT * FROM audit WHERE audit.tabela='veiculo'
+03/03/2017 1:32:29 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:32:30 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+03/03/2017 1:33:44 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:33:47 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+03/03/2017 1:33:49 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', '', '8', 'veiculo', '2017-03-03 01:03:49') 
+03/03/2017 1:33:49 [DEBUG]:UPDATE veiculo SET  numVagas='50', periodo='Manh?', destino='Guaruja', nomeLinha='Linha 101111', createAt='2017-03-03 00:27:10', updateAt='2017-03-03 01:33:49' WHERE  id=8
+03/03/2017 1:33:50 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:33:53 [DEBUG]:SELECT * FROM audit WHERE audit.tabela='veiculo'
+03/03/2017 1:34:34 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:34:39 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:37:49 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:38:57 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:38:58 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+03/03/2017 1:39:00 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 8associado_id => 0numVagas => 50periodo => Manh?destino => GuarujanomeLinha => Linha 1011111111createAt => 2017-03-03 00:27:10updateAt => 2017-03-03 01:33:49tipo => status => ', '8', 'veiculo', '2017-03-03 01:03:00') 
+03/03/2017 1:39:01 [DEBUG]:UPDATE veiculo SET  numVagas='50', periodo='Manh?', destino='Guaruja', nomeLinha='Linha 1011111111', createAt='2017-03-03 00:27:10', updateAt='2017-03-03 01:39:00' WHERE  id=8
+03/03/2017 1:39:02 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:39:04 [DEBUG]:SELECT * FROM audit WHERE audit.tabela='veiculo'
+03/03/2017 1:39:55 [DEBUG]:SELECT * FROM audit WHERE audit.tabela='veiculo'
+03/03/2017 1:40:33 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:46:25 [MESSAGE]:Listando Associados Em Espera
+03/03/2017 1:46:26 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+03/03/2017 1:46:29 [MESSAGE]:Listando Associados
+03/03/2017 1:46:30 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+03/03/2017 1:54:27 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:55:47 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 1:55:48 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 2:11:26 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 2:11:34 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO titulo => aaaachamada => aaaadescricao => aaaa', '1', 'post', '2017-03-03 02:03:34') 
+03/03/2017 2:11:35 [DEBUG]:INSERT INTO post (id, descricao, chamada, createAt, updateAt, titulo, imagem, status, usuario_id)  values ('', 'aaaa', 'aaaa', '2017-03-03 02:11:34', '', 'aaaa', '', 'ATIVO', '1') 
+03/03/2017 2:13:26 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 2:13:27 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 2:16:07 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nomeLinha => testedestino => Guarujaperiodo => TardenumVagas => 50', '1', 'veiculo', '2017-03-03 02:03:07') 
+03/03/2017 2:16:07 [DEBUG]:INSERT INTO veiculo (id, associado_id, numVagas, periodo, destino, nomeLinha, createAt, updateAt, tipo, status)  values ('', '', '50', 'Tarde', 'Guaruja', 'teste', '2017-03-03 02:16:07', '', '', 'ATIVO') 
+03/03/2017 2:16:09 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 2:25:57 [MESSAGE]:Listando Associados
+03/03/2017 2:25:58 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+03/03/2017 2:26:03 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:26:03 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON veiculo.id=id
+03/03/2017 2:26:48 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:26:49 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id
+03/03/2017 2:29:16 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:29:16 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA'
+03/03/2017 2:34:47 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:34:48 [DEBUG]:SELECT * FROM associado WHERE associado.veiculo_id=associado.status='AGUARDANDOVAGA'
+03/03/2017 2:35:30 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:35:32 [DEBUG]:SELECT * FROM associado WHERE associado.veiculo_id=associado.status='AGUARDANDOVAGA'
+03/03/2017 2:36:49 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:36:50 [DEBUG]:SELECT * FROM associado WHERE associado.veiculo_id='8'associado.status='AGUARDANDOVAGA'
+03/03/2017 2:36:59 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:37:00 [DEBUG]:SELECT * FROM associado WHERE associado.veiculo_id='8'associado.status='AGUARDANDOVAGA'
+03/03/2017 2:38:20 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:38:20 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+03/03/2017 2:38:37 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:38:38 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+03/03/2017 2:39:31 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 2:39:32 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='9' AND status='AGUARDANDOVAGA'
+03/03/2017 2:49:17 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+03/03/2017 2:49:20 [MESSAGE]:Listando Associados
+03/03/2017 2:49:20 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+03/03/2017 2:50:32 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+03/03/2017 2:50:58 [MESSAGE]:Listando Associados
+03/03/2017 2:50:59 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+03/03/2017 2:51:00 [MESSAGE]:Solicitado informações sobre o Associado 
+03/03/2017 2:51:00 [DEBUG]:SELECT * FROM associado WHERE associado.id='1'
+03/03/2017 2:51:34 [MESSAGE]:Listando Associados
+03/03/2017 2:51:35 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+03/03/2017 2:51:40 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
