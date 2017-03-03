@@ -8,6 +8,7 @@ class UsuarioController implements Controller{
 		$usuario = new Usuario($data);
 		$usuario->status = "ATIVO";
 		$usuario->createAt =date('Y-m-d H:i:s');
+		Audit::audit($data, "INSERT", "usuario");
 		return $usuario->save();
 	}
 
@@ -25,6 +26,7 @@ class UsuarioController implements Controller{
 	public function atulizaCadastro($data){
 		$usuario = new Usuario($data);
 		$usuario->updateAt =date('Y-m-d H:i:s');
+		Audit::audit($data, "UPDATE", "usuario");
 		return $usuario->update();
 	}
 	//Lista registros inativos
@@ -38,6 +40,7 @@ class UsuarioController implements Controller{
 		$usuario->status = "INATIVO";
 		$usuario->updateAt =date('Y-m-d H:i:s');
 		$usuario->id = $id;
+		Audit::audit($data, "UPDATE", "usuario");
 		return $usuario->update();
 	}
 	//Logar 

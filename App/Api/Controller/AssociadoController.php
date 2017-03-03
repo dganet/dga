@@ -40,7 +40,7 @@ class AssociadoController implements Controller {
 		$associado->createAt = date('Y-m-d H:i:s');
 		try{
 			$associado->save();
-			Audit::audit($data, "INSERT");
+			Audit::audit($data, "INSERT", "associado");
 			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
 			return true;
 		}catch (Exeption $e){
@@ -78,6 +78,7 @@ class AssociadoController implements Controller {
 		$associado->updateAt = date('Y-m-d H:i:s');
 		try{
 			Log::Message("Atualizando informações do Associado");
+			Audit::audit($data, "UPDATE", "associado");
 			return $associado->update();
 		}catch (Exception $e){
 			Log::Error("Não foi possivel atualizar o usuario ".$e);
@@ -92,6 +93,7 @@ class AssociadoController implements Controller {
 		$associado->status = 'INATIVO';
 		try{
 			Log::Message("Inativando Associado ".$id);
+			Audit::audit($data, "DELETE", "associado");
 			$associado->update();
 		}catch (Exception $e){
 			Log::Error("Não foi possivel inativar o Associado");

@@ -9,6 +9,7 @@ class PostController implements Controller{
 		$post = new Post($data);
 		$post->status = "ATIVO";
 		$post->createAt =date('Y-m-d H:i:s');
+		Audit::audit($data, "INSERT", "post");
 		return $post->save();
 	}
 	//Lista todos os POST
@@ -32,6 +33,7 @@ class PostController implements Controller{
 	public function atulizaCadastro($data){
 		$post = new Post($data);
 		$post->updateAt =date('Y-m-d H:i:s');
+		Audit::audit($data, "UPDATE", "post");
 		return $post->update();
 	}
 	
@@ -40,6 +42,7 @@ class PostController implements Controller{
 		$post->updateAt =date('Y-m-d H:i:s');
 		$post->id = $id;
 		$post->status = 'INATIVO';
+		Audit::audit($data, "DELETE", "post");
 		return $post->update();
 	}
 

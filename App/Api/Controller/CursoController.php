@@ -9,6 +9,7 @@ class CursoController implements Controller {
 		$curso = new Curso($data);
 		$curso->status = "ATIVO";
 		$curso->createAt =date('Y-m-d H:i:s');
+		Audit::audit($data, "INSERT", "curso");
 		return $curso->save();
 	}
 
@@ -26,6 +27,7 @@ class CursoController implements Controller {
 	public function atulizaCadastro($data){
 		$curso = new Curso($data);
 		$curso->createAt =date('Y-m-d H:i:s');
+		Audit::audit($data, "UPDATE", "curso");
 		return $curso->update();
 	}
 	//Desativa o cliente
@@ -34,6 +36,7 @@ class CursoController implements Controller {
 		$curso->id = $id;
 		$curso->createAt =date('Y-m-d H:i:s');
 		$curso->status = 'INATIVO';
+		Audit::audit($data, "UPDATE", "curso");
 		$curso->update();
 	}
 

@@ -9,6 +9,7 @@ class OportunidadeController implements Controller {
 		$oportunidade = new Oportunidade($data);	
 		$oportunidade->status = "ATIVO";
 		$oportunidade->createAt =date('Y-m-d H:i:s');
+		Audit::audit($data, "INSERT", "oportunidade");
 		return $oportunidade->save();
 	}
 
@@ -26,6 +27,7 @@ class OportunidadeController implements Controller {
 	public function atulizaCadastro($data){
 		$oportunidade = new Oportunidade($data);
 		$oportunidade->createAt =date('Y-m-d H:i:s');
+		Audit::audit($data, "UPDATE", "oportunidade");
 		return $oportunidade->update();
 	}
 	//Desativa o cliente
@@ -34,6 +36,7 @@ class OportunidadeController implements Controller {
 		$oportunidade->id = $id;
 		$oportunidade->updateAt =date('Y-m-d H:i:s');
 		$oportunidade->status = 'INATIVO';
+		Audit::audit($data, "DELETE", "oportunidade");
 		$oportunidade->update();
 	}
 

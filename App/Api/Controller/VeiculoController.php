@@ -14,6 +14,7 @@ class VeiculoController{
 
 		$veiculo->setCreateAt(date('Y-m-d H:i:s'));
 		$veiculo->setStatus('ATIVO');
+		Audit::audit($data, "INSERT", "veiculo");
 		return $veiculo->save();
 	}
 	/**
@@ -23,6 +24,7 @@ class VeiculoController{
 	public function atualizaCadastro($data){
 		$veiculo = new Veiculo($data);
 		$veiculo->setUpdateAt(data('Y-m-d H:i:s'));
+		Audit::audit($data, "UPDATE", "veiculo");
 		$veiculo->update();
 	}
 	// Liusta todos os usuario com status ATIVO
@@ -46,6 +48,7 @@ class VeiculoController{
 		$veiculo->setUpdateAt(data('Y-m-d H:i:s'));
 		$veiculo->setId($id);
 		$veiculo->setStatus('INATIVO');
+		Audit::audit($data, "DELETE", "veiculo");
 		return $veiculo->update();
 	}
 }
