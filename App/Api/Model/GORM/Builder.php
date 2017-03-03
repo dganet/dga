@@ -39,7 +39,7 @@ trait Builder
     }
 
     /**
-    *   Gera SQL para select com ou sem Where
+    *   Gera SQL para select 
     */
     public function makeSelect($class){
         $class = $class->toArray();
@@ -53,8 +53,7 @@ trait Builder
                 foreach ($value as $key => $values) {
                     $temp .= $key."=".$values;
                 }
-            }
-            
+            } 
         }
         // Monta um Where
         if (isset(self::$condition["where"])){

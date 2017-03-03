@@ -54,5 +54,11 @@ $app = new Slim\App([
 	$app->group('/oportunidade', function() use ($app){
 		require_once("route/oportunidadeRoute.php");
 	});
+	/**
+	* VEICULO
+	*/
+	$app->group('/veiculo', function () use ($app){
+		require_once("route/veiculoRoute.php");
+	});
 
 $app->run();
