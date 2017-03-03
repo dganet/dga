@@ -6,7 +6,7 @@ class Veiculo extends \GORM\Model{
 	private $associado_id;
 	private $numVagas;
 	private $periodo;
-	private $destido;
+	private $destino;
 	private $numLinha;
 	private $createAt;
 	private $updateAt;
@@ -23,7 +23,7 @@ class Veiculo extends \GORM\Model{
 		isset($data['associado_id']) 	? $this->setAssociado_id( $data['id']) 	: $this->setAssociado_id( null);
 		isset($data['numVagas']) 		? $this->setNumVagas( $data['id']) 		: $this->setNumVagas( null);
 		isset($data['periodo']) 		? $this->setPeriodo( $data['id']) 		: $this->setPeriodo( null);
-		isset($data['destido']) 		? $this->setDestido( $data['id']) 		: $this->setDestido( null);
+		isset($data['destino']) 		? $this->setDestino( $data['id']) 		: $this->setDestino( null);
 		isset($data['numLinha']) 		? $this->setNumLinha( $data['id']) 		: $this->setNumLinha( null);
 		isset($data['createAt']) 		? $this->setCreateAt( $data['id']) 		: $this->setCreateAt( null);
 		isset($data['updateAt']) 		? $this->setUpdateAt( $data['id']) 		: $this->setUpdateAt( null);
@@ -45,8 +45,8 @@ class Veiculo extends \GORM\Model{
 	public function getPeriodo(){
 		return $this->periodo;
 	}
-	public function getDestido(){
-		return $this->destido;
+	public function getDestino(){
+		return $this->destino;
 	}
 	public function getNumLinha(){
 		return $this->numLinha;
@@ -76,8 +76,8 @@ class Veiculo extends \GORM\Model{
 	public function setPeriodo($value){
 		$this->periodo = $value;
 	}
-	public function setDestido($value){
-		$this->destido = $value;
+	public function setDestino($value){
+		$this->destino = $value;
 	}
 	public function setNumLinha($value){
 		$this->numLinha = $value;
@@ -101,7 +101,7 @@ class Veiculo extends \GORM\Model{
 			"associado_id"  => $this->getAssociado_id(),
 			"numVagas" 		=> $this->getNumVagas(),
 			"periodo" 		=> $this->getPeriodo(),
-			"destido" 		=> $this->getDestido(),
+			"destino" 		=> $this->getDestino(),
 			"numLinha" 		=> $this->getNumLinha(),
 			"createAt" 		=> $this->getCreateAt(),
 			"updateAt" 		=> $this->getUpdateAt(),

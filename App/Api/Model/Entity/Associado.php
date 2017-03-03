@@ -113,7 +113,7 @@ class Associado extends \GORM\Model{
 		isset($data['status']) ? $this->status = $data['status'] : $this->status = null;
 		isset($data['senha']) ? $this->senha = md5($data['senha']) : $this->senha = null;
 		isset($data['veiculo_id']) ? $this->veiculo_id = $data['veiculo_id'] : $this->veiculo_id = null;
-
+		isset($data['usuario_id']) ? $this->usuario_id = $data['usuario_id'] : $this->usuario_id = null;
 		$this->class = $this;
 	}
 
@@ -180,7 +180,7 @@ class Associado extends \GORM\Model{
 			"updateAt"	=>	$this->updateAt,
 			"status"	=>	$this->status,
 			"senha"		=>  $this->senha,
-			"usuario_id"		=>  $this->usuario_id
+			"usuario_id"		=>  $this->usuario_id,
 			"veiculo_id"		=>  $this->veiculo_id
 			);
 	}

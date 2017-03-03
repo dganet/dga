@@ -4,7 +4,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use \Api\Controller\VeiculoController;
 
 // Cria um novo veiculo
-$app->post('/save', function(Request $request, Response $response){
+$app->post('/save/{id}', function(Request $request, Response $response, $args){
 	$post = json_decode($request->getBody(), true);
 	$controller = new VeiculoController();
 	$response = $response->withHeader('Content-type', 'application/json');

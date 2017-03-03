@@ -1,6 +1,6 @@
 <?php 
 namespace Api\Controller;
-use \Api\Model\Entity\Associado, \Api\Controller\Log;
+use \Api\Model\Entity\Associado, \Api\Controller\Log, \Api\Controller\AuditController as Audit;
 
 class AssociadoController implements Controller {
 
@@ -40,6 +40,7 @@ class AssociadoController implements Controller {
 		$associado->createAt = date('Y-m-d H:i:s');
 		try{
 			$associado->save();
+			Audit::audit(array('acao'=> 'Usuário '. $data['usuario_id']. ' cadastrou um novo associado com cpf '.$data['cpf']));
 			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
 			return true;
 		}catch (Exeption $e){
