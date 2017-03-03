@@ -6,6 +6,7 @@ use \Api\Controller\VeiculoController;
 // Cria um novo veiculo
 $app->post('/save/{id}', function(Request $request, Response $response, $args){
 	$post = json_decode($request->getBody(), true);
+	$post['usuario_id'] = $args['id'];
 	$controller = new VeiculoController();
 	$response = $response->withHeader('Content-type', 'application/json');
 	$response = $response->withJson($controller->cadastrar($post));

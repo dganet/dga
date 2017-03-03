@@ -40,7 +40,7 @@ class Veiculo extends \GORM\Model{
 		return $this->associado_id;
 	}
 	public function getNumVagas(){
-		return $this->numVagas;
+		return (int) $this->numVagas;
 	}
 	public function getPeriodo(){
 		return $this->periodo;
