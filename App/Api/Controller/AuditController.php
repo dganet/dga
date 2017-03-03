@@ -23,4 +23,9 @@ class AuditController{
 		$audit->setCreateAt(date("Y-m-d H:m:s"));
 		$audit->save();
 	}
+	public static final function listAudit($tabela){
+		$audit = new \Api\Model\Entity\Audit($data);
+		
+		return $audit->select(array('where' => array('tabela' => $tabela)));
+	}
 }

@@ -2,6 +2,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Api\Controller\VeiculoController;
+use \Api\Controller\AuditController as Audit;
 
 // Cria um novo veiculo
 $app->post('/save/{id}', function(Request $request, Response $response, $args){
@@ -38,5 +39,10 @@ $app->get('/list/{id}', function (Request $request, Response $response, $args){
 	$controller = new VeiculoController();
 	$response = $response->withHeader('Content-type', 'application/json');
 	$response = $response->withJson($controller->listaPorId($args['id']));
+	return $response;
+});
+$app->get('/audit', function (Request $request, Response $response, $args){
+	$response = $response->withHeader('Content-type', 'application/json');
+	$response = $response->withJson(Audit::listAudit('veiculo'));
 	return $response;
 });
