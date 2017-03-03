@@ -9,11 +9,14 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
   //Lista todos Associado vinculado neste veiculo
   $scope.preAssociados = function(value){
     $scope.seis = true;
+    $scope.sete = false;
+
 
   };
 
     //Lista todos Associado vinculado neste veiculo
   $scope.listaEspera = function(value){
+    $scope.seis = false;
     $scope.sete = true;
 
   };

@@ -165,6 +165,12 @@ $scope.go = function (dados){
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
 
+  //Pegando as linhas 
+  $http.get('../App/veiculo/list').success(function(data){
+  	$scope.veiculos = data;
+  	console.log(data);
+  });
+
 //*************CADASTRA NOVO CLIENTE *********************// 
 
 //Passa os valores do form em Objeto no "values"
