@@ -43,7 +43,12 @@ class Model{
 			\Api\Controller\Log::Debug(Builder::$sql);
 			$consulta           = $db->query(Builder::$sql);
 			$r 		            = $consulta->fetchAll(PDO::FETCH_ASSOC);
-			return $r;
+			$array;
+			foreach ($r as $key => $value) {
+				$obj = new $this->instance($value);
+				$array[$key] =$obj->toArray();
+			}
+			return $array;
 		}catch(PDOException $e){
 			Throw new Exception("Não foi possivel realizar a consulta ".$e->getMessage());
 		}

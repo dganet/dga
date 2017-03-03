@@ -31,6 +31,7 @@ class VeiculoController{
 	public function listaTudo(){
 		$veiculo = new Veiculo();
 		return $veiculo->select(array('where' => array('status' => 'ATIVO')));
+		
 	}
 	// Lista todos os usuario com o id $id
 	public function listaPorId($id){
