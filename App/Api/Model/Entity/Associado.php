@@ -128,7 +128,7 @@ class Associado extends \GORM\Model{
 	//METODO QUE TEM QUE SER IMPLEMENTADO PARA QUE O GORM FUNCTIONE CORRETAMENTE
 	public function toArray(){
 		
-		return array(
+		$array = array(
 			"id"	=>	$this->id,
 			"nome"	=>	$this->nome,
 			"cpf"	=>	$this->cpf,
@@ -183,6 +183,14 @@ class Associado extends \GORM\Model{
 			"usuario_id"		=>  $this->usuario_id,
 			"veiculo_id"		=>  $this->veiculo_id
 			);
+		// faz com que não se retorne valores nulos no array
+		$temp = $array;
+		foreach ($array as $key => $value) {
+			if($value == null){
+				unset($temp[$key]);
+			}
+		}
+		return $temp;
 	}
 
 }

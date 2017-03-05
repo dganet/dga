@@ -32,7 +32,7 @@ class Vaga extends \GORM\Model{
 		
 	}
 	public function toArray(){
-		return array(
+		$array = array(
 			'id' => $this->id,
 			'periodo_id' => $this->periodo_id,
 			'associado_id' => $this->associado_id,
@@ -41,6 +41,14 @@ class Vaga extends \GORM\Model{
 			'updateAt' => $this->updateAt,
 			'status'	=>	$this->status
 			);
+		// faz com que não se retorne valores nulos no array
+		$temp = $array;
+		foreach ($array as $key => $value) {
+			if($value == null){
+				unset($temp[$key]);
+			}
+		}
+		return $temp;
 	}
 
 }

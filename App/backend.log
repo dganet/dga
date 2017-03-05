@@ -644,3 +644,36 @@
 03/03/2017 2:51:34 [MESSAGE]:Listando Associados
 03/03/2017 2:51:35 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
 03/03/2017 2:51:40 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+03/03/2017 16:40:41 [MESSAGE]:Listando Associados Em Espera
+03/03/2017 16:40:41 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+03/03/2017 16:40:41 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+03/03/2017 16:40:42 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+03/03/2017 16:40:43 [MESSAGE]:Listando Associados Em Espera
+03/03/2017 16:40:44 [DEBUG]:SELECT * FROM associado INNER JOIN vaga ON associado.id=vaga.associado_id INNER JOIN periodo ON vaga.periodo_id=periodo.id WHERE associado.status='APROVACAO'
+03/03/2017 16:41:25 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 16:41:26 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA'
+03/03/2017 17:24:33 [MESSAGE]:Listando Associados Aguardando uma vaga
+03/03/2017 17:24:33 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA'
+03/03/2017 17:24:46 [MESSAGE]:Solicitado informações sobre o Associado 
+03/03/2017 17:24:46 [DEBUG]:SELECT * FROM associado WHERE associado.id='9'
+04/03/2017 23:41:49 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+04/03/2017 23:41:49 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+04/03/2017 23:42:37 [MESSAGE]:Listando Associados Em Espera
+04/03/2017 23:42:37 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:43:52 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:45:43 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:45:50 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:46:46 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:46:59 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:48:31 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:49:27 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:50:06 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:51:44 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:52:38 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:52:57 [DEBUG]:SELECT * FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:54:03 [DEBUG]:SELECT associado.status, veiculo.id FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='APROVACAO'
+04/03/2017 23:57:36 [DEBUG]:SELECT associado.status, veiculo.id FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE status='ATIVO'
+04/03/2017 23:57:57 [DEBUG]:SELECT associado.status, veiculo.id FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO'
+05/03/2017 0:02:18 [DEBUG]:SELECT associado.status, veiculo.id FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO'
+05/03/2017 0:04:24 [DEBUG]:SELECT associado.status, veiculo.id FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO'
+05/03/2017 0:10:31 [DEBUG]:SELECT associado.status, veiculo.id FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO'

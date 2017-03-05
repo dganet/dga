@@ -94,7 +94,7 @@ class Post extends \GORM\Model{
 		}
 	}
 	public function toArray(){
-		return array(
+		$array = array(
 			'id' => $this->id,
 			'descricao' => $this->descricao,
 			'chamada' => $this->chamada,
@@ -105,5 +105,13 @@ class Post extends \GORM\Model{
 			'status' => $this->status,
 			'usuario_id' => $this->usuario_id
 			);
+		// faz com que não se retorne valores nulos no array
+		$temp = $array;
+		foreach ($array as $key => $value) {
+			if($value == null){
+				unset($temp[$key]);
+			}
+		}
+		return $temp;
 	}
 }

@@ -96,7 +96,7 @@ class Veiculo extends \GORM\Model{
 	}
 
 	public function toArray(){
-		return array(
+		$array =  array(
 			"id" 			=> $this->getId(),
 			"associado_id"  => $this->getAssociado_id(),
 			"numVagas" 		=> $this->getNumVagas(),
@@ -108,5 +108,13 @@ class Veiculo extends \GORM\Model{
 			"tipo" 			=> $this->getTipo(),
 			"status" 		=> $this->getStatus()
 			);
+		// faz com que não se retorne valores nulos no array
+		$temp = $array;
+		foreach ($array as $key => $value) {
+			if($value == null){
+				unset($temp[$key]);
+			}
+		}
+		return $temp;
 	}
 }

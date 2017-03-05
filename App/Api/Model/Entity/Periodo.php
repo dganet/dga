@@ -97,7 +97,7 @@ class Periodo extends \GORM\Model{
 		}
 	}
 	public function toArray(){
-		return array(
+		$array = array(
 			'id' => $this->id,
 			'linha' => $this->linha,
 			'dataInicio' => $this->dataInicio,
@@ -108,5 +108,13 @@ class Periodo extends \GORM\Model{
 			'updateAt' => $this->updateAt,
 			'usuario_id' => $this->usuario_id
 			);
+		// faz com que não se retorne valores nulos no array
+		$temp = $array;
+		foreach ($array as $key => $value) {
+			if($value == null){
+				unset($temp[$key]);
+			}
+		}
+		return $temp;
 	}
 }

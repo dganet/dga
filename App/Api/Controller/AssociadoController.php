@@ -147,17 +147,21 @@ class AssociadoController implements Controller {
 			return false;
 		}
 	}
-	public function listaEsperaSite(){
+	public function listaGeral(){
 		$associado = new Associado();
 		try{
-			Log::Message("Listando Associados Em Espera");
-			return $associado->select(array('inner' => 
-				array('vaga' => array('associado.id' => 'vaga.associado_id'),
-					'periodo' => array('vaga.periodo_id' => 'periodo.id')
-					),
-				'where' => array('status' => 'APROVACAO')
+			return $associado->select(
+				array(
+					'select' 	=> "associado.status, veiculo.id",
+					'inner'		=>	array('veiculo' => array('associado.veiculo_id' => 'veiculo.id')),
+					'where' 	=> 
+						array(
+							'AND' =>array(
+								'associado.status' => 'APROVACAO',
+								'associado.status' => 'ATIVO'
+								)
 				)
-			);
+			));
 		}catch (Exeption $e){
 			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma aprovacao ".$e);
 			return false;

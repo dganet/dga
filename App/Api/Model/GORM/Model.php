@@ -42,12 +42,8 @@ class Model{
 		try{
 			\Api\Controller\Log::Debug(Builder::$sql);
 			$consulta           = $db->query(Builder::$sql);
-			$r 		            = $consulta->fetchAll(PDO::FETCH_ASSOC);
-			$array;
-			foreach ($r as $key => $value) {
-				$obj = new $this->instance($value);
-				$array[$key] =$obj->toArray();
-			}
+			$this->loadObject($consulta->fetchAll(PDO::FETCH_OBJ));
+			
 			return $array;
 		}catch(PDOException $e){
 			Throw new Exception("Não foi possivel realizar a consulta ".$e->getMessage());
@@ -74,5 +70,14 @@ class Model{
 		Builder::$table = explode('/', Builder::$table);
 		Builder::$table = Builder::$table[3];	
 
+	}
+	/**
+	* Retorna um ou mais objetos de seus respectivos tipos
+	*/
+	public function loadObject($return){
+		foreach ($r as $key => $value) {
+				$obj = new $this->instance($value);
+				$array[$key] =$obj->toArray();
+			}
 	}
 }

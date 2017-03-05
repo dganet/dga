@@ -42,6 +42,7 @@ $app->post('/login', function(Request $request, Response $response){
 		$response = $response->withJson($associado);
 		return $response;
 	});
+	//lista associados co status AGUARDANDOVAGA
 	$app->get('/listaguardando', function(Request $request, Response $response){
 		$associadoController = new \Api\Controller\AssociadoController();
 		$associado = $associadoController->listaAguardandoVaga();
@@ -49,6 +50,7 @@ $app->post('/login', function(Request $request, Response $response){
 		$response = $response->withJson($associado);
 		return $response;
 	});
+	//Lista associados com status AGUARDANDOVAGA e com ID {id}
 	$app->get('/listaguardando/{id}', function(Request $request, Response $response, $args){
 		$associadoController = new \Api\Controller\AssociadoController();
 		$associado = $associadoController->listaAguardandoVagaId($args['id']);
@@ -56,9 +58,18 @@ $app->post('/login', function(Request $request, Response $response){
 		$response = $response->withJson($associado);
 		return $response;
 	});
+	//Lista associados com status APROVACAO
 	$app->get('/listaprovacao', function(Request $request, Response $response){
 		$associadoController = new \Api\Controller\AssociadoController();
 		$associado = $associadoController->listaAguardandoAprovacao();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($associado);
+		return $response;
+	});
+	//Lista Geral
+	$app->get('/listageral', function(Request $request, Response $response){
+		$associadoController = new \Api\Controller\AssociadoController();
+		$associado = $associadoController->listaGeral();
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($associado);
 		return $response;
@@ -71,14 +82,6 @@ $app->post('/login', function(Request $request, Response $response){
 		$response = $response->withJson($associado);
 		return $response;
 	});
-	$app->get('/listadeespera', function(Request $request, Response $response, $args){
-		$associado = new \Api\Controller\AssociadoController();
-		$associado = $associado->listaEsperaSite($args['id']);
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($associado);
-		return $response;
-	});
-
 	//Lista os Associados Inativos
 	$app->get('/inativo', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();

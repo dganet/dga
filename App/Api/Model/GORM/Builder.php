@@ -44,7 +44,13 @@ trait Builder
     public function makeSelect($class){
         $class = $class->toArray();
         $temp = self::$select.self::$table;
-   
+        
+        //Insere o que voce quer procurar no seu select
+        if (isset(self::$condition['select'])){
+            $option = self::$condition['select'];
+            $temp = str_replace("*", $option, $temp);
+          
+        }
         //Faz um inner Join
         if (isset(self::$condition['inner'])){
             $inner = self::$condition['inner'];

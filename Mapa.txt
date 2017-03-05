@@ -26,7 +26,7 @@ App/periodo/update{id} 		------ Atualiza o associado     #	private $qtasVagas;		
 App/periodo/delete/{id}		------ Inativa um Associado     #	private $status;			#
 															#	private $usuario_id			#
 #############################################################################################
-##################### VAGA ##################################################################
+##################### VEICULO ##################################################################
 															#   private $id;				#
 App/vaga/save 				------ Salva um Associado 		#	private $periodo_id;		#
 App/vaga/list 				------ Lista todos Associados   #	private $usuario_id;		#
@@ -36,59 +36,19 @@ App/vaga/delete/{id}		------ Inativa um Associado     #								#
 															#								#
 #############################################################################################
 ##################### ASSOCIADO #############################################################
-															#								#
-App/associado/save/{id}										#								#
-App/associado/save/{id}		------ Salva um Associado 		#	private $nome;				#							
-App/associado/list 			------ Lista todos Associados   #	private $cpf;				#							
-App/associado/list/{id}		------ Lista associado por id	#	private $rg;				#							
-App/associado/update{id} 	------ Atualiza o associado     #	private $orgaoExpedidor;	#							
-App/associado/delete/{id}	------ Inativa um Associado     #	private $nomePai;			#							
-															#	private $nomeMae;			#							
-#############################################################	private $endereco;			#
-																private $numero;			#
-																private $bairro;			#
-																private $cidade;			#
-																private $cep;				#
-																private $telResidencial;	#
-																private $telCelular;		#
-																private $telComercial;		#
-																private $email;				#
-																private $senha;				#
-																private $profissao;			#
-																private $nomeEmpresa;		#
-																private $funcao;			#
-																private $salario;			#
-																private $outraRenda;		#
-																private $rendaExtra;		#
-																private $estadoCivil;		#
-																private $nomeConjuje;		#
-																private $qtdeFilhos;		#
-																private $idadeFilhos;		#
-																private $pessoasResidencia;	#
-																private $qtasPessoasTrab;	#
-																private $rendaFamiliar;		#
-																private $planoSaude;		#
-																private $planoEmpresa;		#
-																private $tipoSangue;		#
-																private $problemaSaude;		#
-																private $curso;				#
-																private $universidade;		#
-																private $semestreCursando;	#
-																private $aulaSabado;		#
-																private $duracaoCurso;		#
-																private $rgm;				#
-																private $valorMensalidade;	#
-																private $possuiBolsaFinCred;#
-																private $porcBolsaFinCred;	#
-																private $cursoUniversitario;#
-																private $cursoNome;			#
-																private $retidoFalta;		#
-																private $retidoMaisUmAno;	#
-																private $desistiuCursarAnoLetivo;				
-																private $createAt;			#
-																private $updateAt;			#
-																private $status;			#
-																private $usuario_id;		#
+
+App/associado/login					------ Loga um associado atraves de (CPF/SENHA)					#	
+App/associado/save/{id}				------ Salva um Associado 										#			
+App/associado/list 					------ Lista todos Associados   								#					
+App/associado/list/{id}				------ Lista associado por id									#
+App/associado/listaguardando		------ Lista associados com status AGUARDANDOVAGA					
+App/associado/listaguardando/{id} 	------ Lista associados com status AGUARDANDOVAGA com id {id}	#
+App/associado/listaprovacao			------ Lista associados com status APROVACAO
+App/associado/update{id} 			------ Atualiza o associado     								#							
+App/associado/delete/{id}			------ Inativa um Associado     								#							
+																									#							
+#############################################################################################
+
 
 																
 																

@@ -104,7 +104,7 @@ class Usuario extends \GORM\Model{
 		}
 	}
 	public function toArray(){
-		return array(
+		$array = array(
 			'id' => $this->id,
 			'email' => $this->email,
 			'senha' => $this->senha,
@@ -116,6 +116,14 @@ class Usuario extends \GORM\Model{
 			'createAt' => $this->createAt,
 			'updateAt' => $this->updateAt
 			);
+		// faz com que não se retorne valores nulos no array
+		$temp = $array;
+		foreach ($array as $key => $value) {
+			if($value == null){
+				unset($temp[$key]);
+			}
+		}
+		return $temp;
 	}
 
 }
