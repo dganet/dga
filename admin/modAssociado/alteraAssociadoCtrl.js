@@ -162,6 +162,12 @@ $scope.go = function (dados){
 
 $scope.quatro = false;
 
+  //Pegando as linhas 
+  $http.get('../App/veiculo/list').success(function(data){
+  	$scope.veiculos = data;
+
+  });
+
 //Lista os Usuarios
 	$http.get('../App/associado/list').success(function(data){
 		$scope.associados = data;
