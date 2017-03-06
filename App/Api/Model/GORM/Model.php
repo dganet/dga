@@ -42,8 +42,7 @@ class Model{
 		try{
 			\Api\Controller\Log::Debug(Builder::$sql);
 			$consulta           = $db->query(Builder::$sql);
-			$this->loadObject($consulta->fetchAll(PDO::FETCH_OBJ));
-			
+			$array = $this->loadObject($consulta->fetchAll(PDO::FETCH_ASSOC));
 			return $array;
 		}catch(PDOException $e){
 			Throw new Exception("Não foi possivel realizar a consulta ".$e->getMessage());
@@ -75,9 +74,10 @@ class Model{
 	* Retorna um ou mais objetos de seus respectivos tipos
 	*/
 	public function loadObject($return){
-		foreach ($r as $key => $value) {
+		foreach ($return as $key => $value) {
 				$obj = new $this->instance($value);
 				$array[$key] =$obj->toArray();
 			}
+		return $array;
 	}
 }

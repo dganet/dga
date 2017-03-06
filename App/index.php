@@ -66,8 +66,8 @@ $app = new Slim\App([
 	/**
 	* TESTE
 	*/
-	$app->group('/veiculo', function() use ($app){
-		require_once("route/teste.php");
+	$app->group('/teste', function() use ($app){
+		//require_once("route/teste.php");
 	});
 
 $app->run();
