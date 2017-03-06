@@ -1,7 +1,8 @@
 <?php
 /**
-*	Classe responsavel pelas rotas referente aos associados
-*
+*	Gerenciamento de rotas atraves do Framework Slim3
+*	@author Guilherme Brito
+*	@version 1.0
 */
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
