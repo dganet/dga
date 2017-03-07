@@ -2,8 +2,8 @@
 namespace Api\Model\Entity;
 
 class Associado extends \GORM\Model{
-	
-	private $id;						// Id de controle do associado	
+
+	private $id;						// Id de controle do associado
 	private $nome;						// Nome do associado
 	private $cpf;						// CPF do associado
 	private $rg;						// RG do associado
@@ -37,8 +37,8 @@ class Associado extends \GORM\Model{
 	private $planoEmpresa;				// Nome da Empresa do Plano de Saúde
 	private $tipoSangue;				// Tipo Sanguineo
 	private $problemaSaude;				// Possui algum problema de saúde, se sim, descreva
-	private $curso;						// Curso 
-	private $universidade;				// Nome da Universidade/Escola 
+	private $curso;						// Curso
+	private $universidade;				// Nome da Universidade/Escola
 	private $semestreCursando;			// Qual Semestre está Cursando
 	private $aulaSabado;				// Possui Aula Sabado Boolean
 	private $duracaoCurso;				// Qual Duração do curso
@@ -56,9 +56,9 @@ class Associado extends \GORM\Model{
 	private $status;					// Se o cadastro está ativo ou não
 	private $usuario_id;				// Chave estrangeira
 	private $veiculo_id;				// Chave estrangeira que ligará o usuario a sua linha
-	
 
-	
+
+
 	// adiciona uma instancia desta classe na classe GORM/MODEL
 	public function __construct($data = []){
 		isset($data['id']) ? $this->id = $data['id'] : $this->id = null;
@@ -125,9 +125,12 @@ class Associado extends \GORM\Model{
 		$this->$attr = $value;
 	}
 
-	//METODO QUE TEM QUE SER IMPLEMENTADO PARA QUE O GORM FUNCTIONE CORRETAMENTE
+/**
+ * Converte esta classe em um array
+ * @return Array 
+ */
 	public function toArray(){
-		
+
 		$array = array(
 			"id"	=>	$this->id,
 			"nome"	=>	$this->nome,

@@ -2,11 +2,10 @@
 namespace Api\Controller;
 
 class AuditController{
-	
+
 	/**
 	* @param Array $data
 	*
-		
 	*/
 	public static final function audit($array, $acao, $tabela){
 		$temp;
@@ -29,7 +28,7 @@ class AuditController{
 	}
 	public static final function listAudit($tabela){
 		$audit = new \Api\Model\Entity\Audit($data);
-		
+
 		return $audit->select(array('where' => array('tabela' => $tabela)));
 	}
 }
