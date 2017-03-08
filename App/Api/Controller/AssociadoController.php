@@ -49,9 +49,10 @@ class AssociadoController implements Controller {
 		$associado = new Associado($data);
 		$associado->status = "AGUARDANDOVAGA";
 		$associado->createAt = date('Y-m-d H:i:s');
+		$associado->rendaSerial = serialize($data['renda']);
 		try{
 			$associado->save();
-			Audit::audit($data, "INSERT", "associado");
+			Audit::audit($associado->toArray(), "INSERT", "associado");
 			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
 			return true;
 		}catch (Exeption $e){
