@@ -45,6 +45,7 @@ class Model{
 		$con  = new ConnectionFactory($this->db);
 		$db   = $con->getInstance();
 		$stmt = $db->prepare(Builder::$sql);
+		var_dump($this->class->toArray());
 		if ($stmt->execute()){
 			Utils::Debug(Builder::$sql);
 			return true;

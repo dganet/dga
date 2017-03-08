@@ -26,6 +26,7 @@ class Associado extends \GORM\Model{
 	private $salario;					// Salário do Associado
 	private $outraRenda;				// Se tem outra renda Boolean
 	private $rendaExtra;				// Se tiver outra renda, de onde ela é
+	private $rendaSerial;				// Serialização de informações da renda;
 	private $estadoCivil;				// Estado Civil
 	private $nomeConjuje;				// Se casado, Nome do Conjuje
 	private $qtdeFilhos;				// Numero de filhos
@@ -112,6 +113,7 @@ class Associado extends \GORM\Model{
 		isset($data['updateAt']) ? $this->updateAt = $data['updateAt'] : $this->updateAt = null;
 		isset($data['status']) ? $this->status = $data['status'] : $this->status = null;
 		isset($data['senha']) ? $this->senha = md5($data['senha']) : $this->senha = null;
+		isset($data['rendaSerial']) ? $this->rendaSerial = $data['rendaSerial'] : $this->rendaSerial = null;
 		isset($data['veiculo_id']) ? $this->veiculo_id = $data['veiculo_id'] : $this->veiculo_id = null;
 		isset($data['usuario_id']) ? $this->usuario_id = $data['usuario_id'] : $this->usuario_id = null;
 		$this->class = $this;
@@ -127,7 +129,7 @@ class Associado extends \GORM\Model{
 
 /**
  * Converte esta classe em um array
- * @return Array 
+ * @return Array
  */
 	public function toArray(){
 
@@ -161,6 +163,7 @@ class Associado extends \GORM\Model{
 			"pessoasResidencia"	=>	$this->pessoasResidencia,
 			"qtasPessoasTrab"	=>	$this->qtasPessoasTrab,
 			"rendaFamiliar"	=>	$this->rendaFamiliar,
+			"rendaSerial"					=> $this->rendaSerial,
 			"planoSaude"	=>	$this->planoSaude,
 			"planoEmpresa"	=>	$this->planoEmpresa,
 			"tipoSangue"	=>	$this->tipoSangue,
