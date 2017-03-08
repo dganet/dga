@@ -196,9 +196,8 @@ $scope.removeInput = function() {
   $scope.add = function(values, FormAssociado) {
 		var associado = values;
 		var associado = angular.merge(associado,renda);
-		console.log(associado);
     // Enviado os valores em objetos para api/user do php/slim
-/*
+
 		$http.post('../App/associado/save/'+ id, associado).success(function(response){
 
       // Depois mandando para mesma pagina
@@ -219,7 +218,7 @@ $scope.removeInput = function() {
     $scope.reset();
 
     });
-*/
+
   };
 
 });
