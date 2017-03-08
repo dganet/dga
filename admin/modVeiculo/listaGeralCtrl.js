@@ -2,15 +2,10 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
   //Pega o Id do Usuario Logado
   var idUsuario = sessionStorage.getItem('usuario.id');
   //Lista todos Veiculos
-  $http.get('../App/veiculo/list').success(function(data){
-    $scope.veiculos = data;    
-  });
+  $http.get('../App/Associado/listageral').success(function(data){
+    $scope.veiculos = data;
 
-  //Lista todos Veiculos
-  $http.get('../App/associado/listaguardando').success(function(data){
-    console.log($scope.teste = data);    
   });
-
 
   //Lista todos Associado vinculado neste veiculo
   $scope.preAssociados = function(value){

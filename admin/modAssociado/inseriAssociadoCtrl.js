@@ -19,7 +19,7 @@ $scope.go = function (dados){
 		$scope.tab8 = false;
 		$scope.tab9 = false;
 		$scope.tab10 = false;
-	
+
 	}
 
 	if (dados == 'tab2'){
@@ -33,7 +33,7 @@ $scope.go = function (dados){
 		$scope.tab8 = false;
 		$scope.tab9 = false;
 		$scope.tab10 = false;
-	
+
 
 	}
 
@@ -159,28 +159,50 @@ $scope.go = function (dados){
 	}
 
 
- 
+
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
 
-  //Pegando as linhas 
+  //Pegando as linhas
   $http.get('../App/veiculo/list').success(function(data){
   	$scope.veiculos = data;
-  	console.log(data);
-  });
 
-//*************CADASTRA NOVO CLIENTE *********************// 
+  });
+//*************MEDIA DA RENDA *********************//
+/*$scope.mediaRenda = function(value){
+var total = $scope.rendaParentesco;
+console.log(total);
+return $scope.associado.mediaRenda = total;
+}
+*/
+//*************NOVO INPUT RENDA *********************//
+var dados = $scope.renda = [];
+var renda = {renda:dados};
+
+$scope.addInput = function(){
+	var newInputs = $scope.renda.lenght+1;
+	$scope.renda.push({nomeParentesco:'',grauParentesco:'',rendaParentesco:''});
+};
+
+$scope.removeInput = function() {
+	 var lastItem = $scope.renda.length-1;
+	 $scope.renda.splice(lastItem);
+ };
+//*************CADASTRA NOVO CLIENTE *********************//
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormAssociado) {
-
+		var associado = values;
+		var associado = angular.merge(associado,renda);
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/associado/save/'+ id, values).success(function(response){
-      // Depois mandando para mesma pagina  
+
+		$http.post('../App/associado/save/'+ id, associado).success(function(response){
+
+      // Depois mandando para mesma pagina
       $scope.activePath = $location.path('/user/associado/inseri');
-         
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
       $timeout(function () {
@@ -189,14 +211,13 @@ $scope.go = function (dados){
 
     //Resentando os input do formulario .
     $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
+    // Copiando os valores vazio do scope.master
       $scope.associado = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
 
     });
-
 
   };
 
