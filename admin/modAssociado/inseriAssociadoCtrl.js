@@ -19,7 +19,7 @@ $scope.go = function (dados){
 		$scope.tab8 = false;
 		$scope.tab9 = false;
 		$scope.tab10 = false;
-	
+
 	}
 
 	if (dados == 'tab2'){
@@ -33,7 +33,7 @@ $scope.go = function (dados){
 		$scope.tab8 = false;
 		$scope.tab9 = false;
 		$scope.tab10 = false;
-	
+
 
 	}
 
@@ -159,28 +159,36 @@ $scope.go = function (dados){
 	}
 
 
- 
+
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
 
-  //Pegando as linhas 
+  //Pegando as linhas
   $http.get('../App/veiculo/list').success(function(data){
   	$scope.veiculos = data;
-  	console.log(data);
+
   });
 
-//*************CADASTRA NOVO CLIENTE *********************// 
+
+//*************NOVO INPUT RENDA *********************//
+$scope.associado = [];
+$scope.addInput = function(){
+	var newInputs = $scope.associado.lenght+1;
+	$scope.associado.push({nomeParentesco:'',grauParentesco:'',rendaParentesco:''});
+};
+//*************CADASTRA NOVO CLIENTE *********************//
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormAssociado) {
-
+console.log(values);
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/associado/save/'+ id, values).success(function(response){
-      // Depois mandando para mesma pagina  
+    /*
+		$http.post('../App/associado/save/'+ id, values).success(function(response){
+      // Depois mandando para mesma pagina
       $scope.activePath = $location.path('/user/associado/inseri');
-         
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
       $timeout(function () {
@@ -189,7 +197,7 @@ $scope.go = function (dados){
 
     //Resentando os input do formulario .
     $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
+    // Copiando os valores vazio do scope.master
       $scope.associado = angular.copy($scope.master);
     };
     // Ativando a função
@@ -197,7 +205,7 @@ $scope.go = function (dados){
 
     });
 
-
+*/
   };
 
 });
