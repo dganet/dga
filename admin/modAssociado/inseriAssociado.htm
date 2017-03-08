@@ -210,7 +210,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Renda do Associado</label>
-          <input type="text" class="form-control" ng-model="associado.renda" ui-money-mask="2" required="required">
+          <input type="text" class="form-control" ng-model="associado.rendaAssociado" ui-money-mask="2" required="required">
         </div>
       </div>
 
@@ -227,7 +227,7 @@
 
       <div class="col-md-3">
         <div class="form-group">
-          <label>Nome do Parentesco</label>
+          <label>Nome</label>
           <input type="text" class="form-control" ng-model="x.nomeParentesco">
         </div>
       </div>
@@ -237,9 +237,11 @@
           <label>Grau de Parentesco</label>
           <select class="form-control" ng-model="x.grauParentesco">
             <option value="">Selecione o Grau de Parentesco</option>
-            <option value="Mãe">Mãe</option>
+            <option value="Esposo">Esposo(a)</option>
+            <option value="Filho">Filho(a)</option>
+            <option value="Mae">Mãe</option>
             <option value="Pai">Pai</option>
-            <option value="Irmão">Irmão</option>
+            <option value="Irmao">Irmão</option>
             <option value="Tio">Tio</option>
             <option value="Primo">Primo</option>
             <option value="Cunhado">Cunhado</option>
