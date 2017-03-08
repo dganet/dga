@@ -210,13 +210,20 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Renda do Associado</label>
-          <input type="text" class="form-control" ng-model="associado.renda" ng-change="mediaRenda()" ui-money-mask="2">
+          <input type="text" class="form-control" ng-model="associado.renda" ui-money-mask="2" required="required">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Média da Renda</label>
+          <input type="text" class="form-control" ng-model="associado.mediaRenda" disabled="disabled">
         </div>
       </div>
 
     </div>
 
-    <div class="row" data-ng-repeat="x in associado">
+    <div class="row" data-ng-repeat="x in renda">
 
       <div class="col-md-4">
         <div class="form-group">
@@ -228,7 +235,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Grau de Parentesco</label>
-          <select class="form-control" ng-model="x.grauParentesco" required="required">
+          <select class="form-control" ng-model="x.grauParentesco">
             <option value="">Selecione o Grau de Parentesco</option>
             <option value="Mãe">Mãe</option>
             <option value="Pai">Pai</option>
@@ -245,7 +252,7 @@
      <div class="col-md-4">
        <div class="form-group">
           <label>Renda do Parentesco</label>
-          <input type="text" class="form-control" ng-model="x.rendaParentesco" ui-money-mask="2" ng-change="mediaRenda()">
+          <input type="text" class="form-control" ng-model="x.rendaParentesco" ui-money-mask="2">
         </div>
       </div>
 

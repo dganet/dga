@@ -170,22 +170,31 @@ $scope.go = function (dados){
   	$scope.veiculos = data;
 
   });
-
-
+//*************MEDIA DA RENDA *********************//
+/*$scope.mediaRenda = function(value){
+var total = $scope.rendaParentesco;
+console.log(total);
+return $scope.associado.mediaRenda = total;
+}
+*/
 //*************NOVO INPUT RENDA *********************//
-$scope.associado = [];
+var dados = $scope.renda = [];
+var renda = {renda:dados};
 $scope.addInput = function(){
-	var newInputs = $scope.associado.lenght+1;
-	$scope.associado.push({nomeParentesco:'',grauParentesco:'',rendaParentesco:''});
+	var newInputs = $scope.renda.lenght+1;
+	$scope.renda.push({nomeParentesco:'',grauParentesco:'',rendaParentesco:''});
 };
 //*************CADASTRA NOVO CLIENTE *********************//
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormAssociado) {
-console.log(values);
+		var associado = values;
+		var associado = angular.merge(associado,renda);
+		console.log(associado);
     // Enviado os valores em objetos para api/user do php/slim
-    /*
-		$http.post('../App/associado/save/'+ id, values).success(function(response){
+/*
+		$http.post('../App/associado/save/'+ id, associado).success(function(response){
+
       // Depois mandando para mesma pagina
       $scope.activePath = $location.path('/user/associado/inseri');
 
@@ -204,7 +213,6 @@ console.log(values);
     $scope.reset();
 
     });
-
 */
   };
 
