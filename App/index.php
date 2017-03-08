@@ -1,10 +1,13 @@
 <?php
+/**
+*	Gerenciamento de rotas atraves do Framework Slim3
+*	@author Guilherme Brito
+*	@version 1.0
+*/
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 require_once "vendor/autoload.php";
-
 date_default_timezone_set('America/Sao_Paulo');
-
 $app = new Slim\App([
     'settings' => [
         'displayErrorDetails' => true
@@ -61,6 +64,12 @@ $app = new Slim\App([
 	*/
 	$app->group('/veiculo', function () use ($app){
 		require_once("route/veiculoRoute.php");
+	});
+	/**
+	* TESTE
+	*/
+	$app->group('/teste', function() use ($app){
+		//require_once("route/teste.php");
 	});
 
 $app->run();

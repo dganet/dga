@@ -1,7 +1,8 @@
 <?php
 /**
-*	Classe responsavel pelas rotas referente aos associados
-*
+*	Gerenciamento de rotas atraves do Framework Slim3
+*	@author Guilherme Brito
+*	@version 1.0
 */
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -10,14 +11,8 @@ $app->post('/login', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();
 		$post = json_decode($request->getBody(), true);
 		$associado = $associado->logar($post);
-		if ($associado['check']){
-			unset($associado['check']);
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson($associado);
-		}else{
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([false]);
-		}
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($associado);
 		return $response;
 	});
 
@@ -25,13 +20,14 @@ $app->post('/login', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();
 		$post = json_decode($request->getBody(), true);
 		$post['usuario_id'] = $args['id'];
-		if ($associado->cadastrar($post)){
+		var_dump($post);
+		/*if ($associado->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-xtype', 'application/json');
 			$response = $response->withJson([false]);
-		}
+		}*/
 		return $response;
 	});
 	//Lista Todos os Associados
