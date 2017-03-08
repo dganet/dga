@@ -225,14 +225,14 @@
 
     <div class="row" data-ng-repeat="x in renda">
 
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Nome do Parentesco</label>
           <input type="text" class="form-control" ng-model="x.nomeParentesco">
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Grau de Parentesco</label>
           <select class="form-control" ng-model="x.grauParentesco">
@@ -249,15 +249,24 @@
         </div>
       </div>
 
-     <div class="col-md-4">
+     <div class="col-md-3">
        <div class="form-group">
           <label>Renda do Parentesco</label>
           <input type="text" class="form-control" ng-model="x.rendaParentesco" ui-money-mask="2">
         </div>
       </div>
 
+      <div class="col-md-1">
+        <div class="form-group">
+          <label ng-show="$last">Remover</label>
+          <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeInput()">x</button>
+        </div>
+      </div>
+
+
   </div>
   <button type="button" ng-click="addInput()">Adicionar Nova Renda</button>
+
 
   </div>
 

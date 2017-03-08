@@ -180,10 +180,16 @@ return $scope.associado.mediaRenda = total;
 //*************NOVO INPUT RENDA *********************//
 var dados = $scope.renda = [];
 var renda = {renda:dados};
+
 $scope.addInput = function(){
 	var newInputs = $scope.renda.lenght+1;
 	$scope.renda.push({nomeParentesco:'',grauParentesco:'',rendaParentesco:''});
 };
+
+$scope.removeInput = function() {
+	 var lastItem = $scope.renda.length-1;
+	 $scope.renda.splice(lastItem);
+ };
 //*************CADASTRA NOVO CLIENTE *********************//
 
 //Passa os valores do form em Objeto no "values"
