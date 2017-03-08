@@ -10,7 +10,9 @@ $app = new Slim\App([
         'displayErrorDetails' => true
     ]
 ]);
-
+/**
+ * 
+ */
 	// Rotas para o Sistema
 	$app->group('/associado', function() use ($app){
 		require_once("route/associadoRoute.php");
@@ -22,12 +24,12 @@ $app = new Slim\App([
 	$app->group('/post', function() use ($app){
 		require_once("route/postRoute.php");
 	});
-		
+
 	/**
 	*	USUARIO
 	*/
 	$app->group('/usuario', function() use ($app){
-		require_once("route/usuarioRoute.php");	
+		require_once("route/usuarioRoute.php");
 	});
 	/**
 	* VAGA
