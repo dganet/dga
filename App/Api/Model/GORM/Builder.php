@@ -9,9 +9,9 @@ trait Builder
 {
     /**
     *
-    * Conjunto de variavel que recebe os valores para se gerar um SQL 
+    * Conjunto de variavel que recebe os valores para se gerar um SQL
     * @access private
-    * @name $select 
+    * @name $select
     * @name $insert
     * @name $where
     * @name $update
@@ -26,17 +26,18 @@ trait Builder
     private static $set     = " SET ";
     private static $inner   = " INNER JOIN ";
     private static $on      = " ON ";
+    private static $group   = " GROUP BY ";
     /**
     * Variavel que recebe um array com as opções para gerar o SQL
     * @access public
-    * @name $condition 
+    * @name $condition
     * @example $condition = array('where' => array('campo' => 'valor'))
     */
     public static  $condition;
     /**
     * Recebe o nome da tabela da função Model::loadTable()
-    * @access public 
-    * @name $table 
+    * @access public
+    * @name $table
     */
     public static  $table;
     /**
@@ -45,7 +46,7 @@ trait Builder
     * @name $sql
     */
     public static  $sql;
-    
+
     /**
     * Função para gerar um Insert no banco de dados com base nas informações passadas no parametro
     * @param Object $class
@@ -55,8 +56,8 @@ trait Builder
         $array = $class->toArray();
         $size   = count($array);
         $i      = 0;
-        $chave  = "("; 
-        $valor  = "("; 
+        $chave  = "(";
+        $valor  = "(";
         foreach ($array as $key => $value) {
             $value = addslashes($value);
             if($i < ($size - 1) ){
@@ -75,9 +76,9 @@ trait Builder
     /**
     * Função gera um SQL com base nas informações passadas pela variavel self::$condition
     * possiveis posições para o Array:
-    * @example ['select' => 'nome,telefone'] 
+    * @example ['select' => 'nome,telefone']
     * ---- Modifica o SELECT * para SELECT nome,telefone
-    * @example ['inner' => array('nomeDaTabela' => array('nomeDoCampo1' => 'nomeDoCampo2'))] 
+    * @example ['inner' => array('nomeDaTabela' => array('nomeDoCampo1' => 'nomeDoCampo2'))]
     * ---- irá gerar algo como SELECT * FROM $TABELA INNER JOIN nomeDaTabela ON nomeDoCampo1=nomeDoCampo2
     * @example ['where' => array('nomeDocampo1' => 'nomeDoCampo2')]
     * ---- irá gerar algo como SELECT * FROM $TABELA WHERE cnomeDoCampo1=nomeDoCampo2
@@ -90,7 +91,7 @@ trait Builder
         //Converte a classe em Array
         $class = $class->toArray();
         $temp = self::$select.self::$table;
-        
+
         /**
         * Checa se a posição ['select'] existe
         */
@@ -108,7 +109,7 @@ trait Builder
                 foreach ($value as $key => $values) {
                     $temp .= $key."=".$values;
                 }
-            } 
+            }
         }
         /**
         * Checa se a posição ['where'] existe
@@ -117,13 +118,13 @@ trait Builder
             $where = self::$condition['where'];
             $temp .= self::$where;
             /**
-            * Percorre a primeira camada do array para checar se existe alguma clausula como 'AND' ou 'OR' 
+            * Percorre a primeira camada do array para checar se existe alguma clausula como 'AND' ou 'OR'
             */
             foreach ($where as $key => $value) {
                 // Faz as verificações para saber como a informação esta sendo passada
                 // se for apenas array('nomedocampo'), ele pega a propriedade do objeto com este nome
                 if (isset($where[0])){
-                    if (is_string($value)){ 
+                    if (is_string($value)){
                         $temp .= self::$table.".".$value."='".$class[$value]."'";
                     }else{
                         $temp .= self::$table.".".$value."=".$class[$value];
@@ -156,7 +157,7 @@ trait Builder
                     $count = count($where['OR']);
                      $i=0;
                     foreach ($value as $key => $values) {
-                        
+
                         $i++;
                         if($i<$count){
                             if (is_string($values)){
@@ -175,20 +176,23 @@ trait Builder
                 // Se tiver apenas array('key' => value) ele tambem aceita
                 }else{
                     if (is_string($value)){
-                        $temp .= self::$table.".".$key."='".$value."'";   
+                        $temp .= self::$table.".".$key."='".$value."'";
                     }else{
                         $temp .= self::$table.".".$key."=".$value;
                     }
                 }
             }
         }
+        if (isset(self::$condition["group"])){
+          $temp .= self::$group.self::$condition['group'];
+        }
         /**
         * Insere o SQL gerado na variavel self::$sql
         */
         self::$sql = $temp;
-        
+
     }
-    
+
     /**
     * Função para gerar um Update com base nas informações do OBJ
     * @param Object $class
@@ -209,6 +213,6 @@ trait Builder
         $temp = substr($temp, 0, -1);
         self::$sql = self::$update.self::$table.self::$set.$temp.self::$where." id=".$id;
     }
-    
-    
+
+
 }

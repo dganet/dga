@@ -1,9 +1,20 @@
-<?php 
+<?php
+/**
+ * Classe que gerencia as ações executadas pelo Associado
+ * @author Guilherme Brito
+ * @version 1.0
+ */
 namespace Api\Controller;
 use \Api\Model\Entity\Associado, \Api\Controller\Log, \Api\Controller\AuditController as Audit;
 
 class AssociadoController implements Controller {
 
+/**
+ * Loga um Associado
+ * @param  Array $data. Array contem as informações necessárias para logar o associado ['cpf','senha']
+ * @return Array ou false . Caso o Associado exista ele retorna um Array com as informações do associado
+ * Caso ele não exista ele retorna false
+ */
 	public function logar($data){
 		if(isset($data['cpf'])){
 			Log::Message("Tentando Logar o Associado: ".$data['cpf']);
@@ -32,7 +43,7 @@ class AssociadoController implements Controller {
 		}
 	}
 
-	// Salva as Informações do Associado
+
 	public function cadastrar($data){
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
 		$associado = new Associado($data);
@@ -63,7 +74,7 @@ class AssociadoController implements Controller {
 	//Lista Por Id
 	public function listaPorId($id){
 		$associado = new Associado();
-		
+
 		try{
 			Log::Message("Solicitado informações sobre o Associado ".$i);
 			return $associado->select(array('where' => array('id' => $id)));
@@ -100,7 +111,7 @@ class AssociadoController implements Controller {
 			return false;
 		}
 	}
-	
+
 	public function listaInativo(){
 		$associado = new Associado();
 		try{
@@ -149,27 +160,32 @@ class AssociadoController implements Controller {
 	}
 	public function listaGeral(){
 		$associado = new Associado();
-		try{
-			return $associado->select(
+
+		 $array = $associado->select(
 				array(
-					'select' 	=> "associado.status, veiculo.id",
+					'select' 	=> "count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas",
 					'inner'		=>	array('veiculo' => array('associado.veiculo_id' => 'veiculo.id')),
-					'where' 	=> 
+					'where' 	=>
 						array(
 							'AND' =>array(
 								'associado.status' => 'APROVACAO',
 								'associado.status' => 'ATIVO'
-								)
-				)
-			));
-		}catch (Exeption $e){
-			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma aprovacao ".$e);
-			return false;
-		}
-	}
-	
-	
+													)
+								),
+					'group' => 'associado.veiculo_id'
 
-	
+			), false);
+			foreach ($array as $key => $value) {
+					$value['disponivel'] = $value['numVagas'] - $value['ocupado'];
+					$array[$key] = $value;
+			}
+			return $array;
+
+
+	}
+
+
+
+
 
 }
