@@ -164,7 +164,7 @@ class AssociadoController implements Controller {
 
 		 $array = $associado->select(
 				array(
-					'select' 	=> "count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas",
+					'select' 	=> "count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo",
 					'inner'		=>	array('veiculo' => array('associado.veiculo_id' => 'veiculo.id')),
 					'where' 	=>
 						array(
