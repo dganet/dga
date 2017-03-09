@@ -49,5 +49,5 @@ trait Utils
 		fwrite($handle, "\n".$data." [DEBUG]:".$string);
 		//fecha o arquivo;
 		fclose($handle);
-	}	
+	}
 }

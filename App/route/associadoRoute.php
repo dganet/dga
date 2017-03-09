@@ -20,14 +20,13 @@ $app->post('/login', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();
 		$post = json_decode($request->getBody(), true);
 		$post['usuario_id'] = $args['id'];
-		var_dump($post);
-		/*if ($associado->cadastrar($post)){
+	  if ($associado->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson([true]);
 		}else{
 			$response = $response->withHeader('Content-xtype', 'application/json');
 			$response = $response->withJson([false]);
-		}*/
+		}
 		return $response;
 	});
 	//Lista Todos os Associados
