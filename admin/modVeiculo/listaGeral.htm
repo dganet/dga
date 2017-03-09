@@ -28,17 +28,17 @@
         </thead>
 
           <tbody>
-            <tr ng-repeat="x in teste">
+            <tr ng-repeat="x in veiculos">
             <td>{{x.nomeLinha}}</td>
             <td>{{x.destino}}</td>
             <td>{{x.periodo}}</td>
             <td>{{x.numVagas}}</td>
-            <td>Ocupadas</td>
-            <td>Disponiveis</td>
+            <td>{{x.ocupado}}</td>
+            <td>{{x.disponivel}}</td>
             <td><a onMouseOver="this.style.cursor='pointer'" ng-click="preAssociados(x.id)">Verificar</a></td>
             <td><a onMouseOver="this.style.cursor='pointer'" ng-click="listaEspera(x.id)">Verificar</a></td>
           </tr>
-          </tbody>  
+          </tbody>
 
       </table>
     </div>
@@ -46,9 +46,9 @@
 </div>
 
   <div class="seis" ng-show="seis">
-    
+
       <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo Usuario"><br>
-  
+
      <table class="table table-condensed">
         <thead>
          <tr>
@@ -56,10 +56,10 @@
          </tr>
         </thead>
 
-        <tbody> 
+        <tbody>
          <tr ng-repeat="x in veiculos | filter: busca">
            <td>Associados {{$index +1}}</td>
-         </tr>   
+         </tr>
         </tbody>
      </table>
 
@@ -67,9 +67,9 @@
   </div>
 
   <div class="seis" ng-show="sete">
-    
+
       <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo Usuario"><br>
-  
+
      <table class="table table-condensed">
         <thead>
          <tr>
@@ -77,10 +77,10 @@
          </tr>
         </thead>
 
-        <tbody> 
+        <tbody>
          <tr ng-repeat="x in veiculos | filter: busca">
            <td>Associados {{$index +1}}</td>
-         </tr>   
+         </tr>
         </tbody>
      </table>
 
