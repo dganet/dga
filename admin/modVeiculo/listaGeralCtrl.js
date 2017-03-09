@@ -7,11 +7,14 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
   });
 
   //Lista todos Associado vinculado neste veiculo
-  $scope.preAssociados = function(value){
+  $scope.associado = function(value){
     $scope.seis = true;
     $scope.sete = false;
-
-
+    var idVeiculo = value;
+    //Lista Associados vinculado a Linha
+    $http.get('../App/associado/listveiculo/' + idVeiculo).success(function(data){
+      $scope.associados = data;
+    });
   };
 
     //Lista todos Associado vinculado neste veiculo

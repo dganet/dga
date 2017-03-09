@@ -35,7 +35,7 @@
             <td>{{x.numVagas}}</td>
             <td>{{x.ocupado}}</td>
             <td>{{x.disponivel}}</td>
-            <td><a onMouseOver="this.style.cursor='pointer'" ng-click="preAssociados(x.id)">Verificar</a></td>
+            <td><a onMouseOver="this.style.cursor='pointer'" ng-click="associado(x.id)">Verificar</a></td>
             <td><a onMouseOver="this.style.cursor='pointer'" ng-click="listaEspera(x.id)">Verificar</a></td>
           </tr>
           </tbody>
@@ -57,8 +57,8 @@
         </thead>
 
         <tbody>
-         <tr ng-repeat="x in veiculos | filter: busca">
-           <td>Associados {{$index +1}}</td>
+         <tr ng-repeat="x in associados | filter: busca">
+           <td>{{x.nomeAssociado}}</td>
          </tr>
         </tbody>
      </table>

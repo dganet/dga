@@ -17,7 +17,7 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
     $scope.veiculos = data;
   });
 
-  // Seleciona o veiculo e mostra do Lado. 
+  // Seleciona o veiculo e mostra do Lado.
   $scope.dados = function (values){
 
     //Mostra lado direito
@@ -37,8 +37,8 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
       var id = values.id;
       // Enviado os valores em objetos para api/user do php/slim
       $http.put('../App/veiculo/update/'+ id, values).success(function(){
-      // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/veiculo/altera');         
+      // Depois mandando para mesma pagina
+      $scope.activePath = $location.path('/user/veiculo/altera');
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
       $timeout(function () {
@@ -50,7 +50,7 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
       $http.get('../App/veiculo/list').success(function(data){
         $scope.veiculos = data;
       });
-    
+
     });
 
   };
@@ -62,9 +62,9 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
 
     // Enviado os valores em objetos para api/user do php/slim
     $http.delete('../App/veiculo/inativa/'+ values).success(function(){
-        // Depois mandando para mesma pagina  
-        $scope.activePath = $location.path('/user/veiculo/altera'); 
-       
+        // Depois mandando para mesma pagina
+        $scope.activePath = $location.path('/user/veiculo/altera');
+
         // Funcão de exibir a mensagem de sucesso em 5 segundos.
           $scope.mensagemDeleta = false;
           $timeout(function () {
