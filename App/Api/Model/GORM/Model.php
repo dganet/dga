@@ -68,8 +68,10 @@ class Model{
 		$db                 = $con->getInstance();
 		$consulta           = $db->query(Builder::$sql);
 		if($bool){
+			Utils::Debug(Builder::$sql);
 			return $this->loadObject($consulta->fetchAll(PDO::FETCH_ASSOC));
 		}else{
+			Utils::Debug(Builder::$sql);
 			return $consulta->fetchAll(PDO::FETCH_ASSOC);
 		}
 	}
@@ -84,6 +86,7 @@ class Model{
 		$con                   = new ConnectionFactory($this->db);
 		$db                    = $con->getInstance();
 		$linha                 = $db->prepare(Builder::$sql);
+		Utils::Debug(Builder::$sql);
 		return $linha->execute();
 	}
 	/**

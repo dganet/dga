@@ -27,6 +27,7 @@ trait Builder
     private static $inner   = " INNER JOIN ";
     private static $on      = " ON ";
     private static $group   = " GROUP BY ";
+    private static $order   = " ORDER BY ";
     /**
     * Variavel que recebe um array com as opções para gerar o SQL
     * @access public
@@ -185,6 +186,9 @@ trait Builder
         }
         if (isset(self::$condition["group"])){
           $temp .= self::$group.self::$condition['group'];
+        }
+        if (isset(self::$condition["order"])){
+          $temp .= self::$order.self::$condition['order'];
         }
         /**
         * Insere o SQL gerado na variavel self::$sql

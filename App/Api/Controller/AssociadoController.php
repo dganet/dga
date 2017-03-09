@@ -127,13 +127,18 @@ class AssociadoController implements Controller {
 		$associado = new Associado();
 		try{
 			Log::Message("Listando Associados Aguardando uma vaga");
-			return $associado->select(
+			$array = $associado->select(
 				array(
+					'select'	=> "associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt",
 					'inner' => array('veiculo' => array('veiculo.id' => 'associado.veiculo_id')
 						),
-					'where' => array('status' => 'AGUARDANDOVAGA')
+					'where' => array('status' => 'AGUARDANDOVAGA'),
+					'order' => 'associado.createAt'
 					)
 			);
+			$novoArray = [];
+			var_dump($array);
+
 		}catch (Exeption $e){
 			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma vaga ".$e);
 			return false;
@@ -192,6 +197,8 @@ class AssociadoController implements Controller {
 				)
 			);
 	}
+
+
 
 
 

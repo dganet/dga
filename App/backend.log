@@ -690,3 +690,35 @@
 08/03/2017 23:09:08 [MESSAGE]:Atualizando informações do Associado
 08/03/2017 23:09:09 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 21 nome => Guilherme Lima de Brito cpf => 38729417805 rg => 156999212 orgaoExpedidor => ssp numero => 0 cep => 0 telResidencial => 0 telCelular => 0 telComercial => 0 salario => 0 outraRenda => 0 qtdeFilhos => 0 pessoasResidencia => 0 qtasPessoasTrab => 0 rendaFamiliar => 0 planoSaude => 0 aulaSabado => 0 duracaoCurso => 0 possuiBolsaFinCred => 0 porcBolsaFinCred => 0 cursoUniversitario => 0 retidoFalta => 0 retidoMaisUmAno => 0 desistiuCursarAnoLetivo => 0 createAt => 2017-03-03 00:16:16 updateAt => 2017-03-08 23:01:26 status => ATIVO senha => acb6b66483c612a15e2a18ff4651c18f veiculo_id => 13 renda => Array ', '1', 'associado', '2017-03-08 23:03:08') 
 08/03/2017 23:09:09 [MESSAGE]:Listando Associados
+09/03/2017 18:42:35 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:44:37 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:46:49 [MESSAGE]:Tentando Cadastrar o Associado Guilherme
+09/03/2017 18:46:50 [DEBUG]:INSERT INTO associado (nome, rendaSerial, createAt, status, usuario_id, veiculo_id)  values ('Guilherme', 'a:0:{}', '2017-03-09 18:46:49', 'AGUARDANDOVAGA', '1', '8') 
+09/03/2017 18:46:50 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => Guilherme rendaSerial => a:0:{} createAt => 2017-03-09 18:46:49 status => AGUARDANDOVAGA veiculo_id => 8 ', '1', 'associado', '2017-03-09 18:03:50') 
+09/03/2017 18:46:50 [MESSAGE]:Usuário Guilherme cadastrado com sucesso !
+09/03/2017 18:46:51 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:47:05 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:49:18 [MESSAGE]:Tentando Cadastrar o Associado Guilherme Brito
+09/03/2017 18:49:18 [DEBUG]:INSERT INTO associado (nome, cpf, rg, salario, rendaSerial, createAt, status, usuario_id)  values ('Guilherme Brito', '38729417805', '15699212', '2500', 'a:2:{i:0;a:3:{s:14:\"nomeParentesco\";s:8:\"Victoria\";s:14:\"grauParentesco\";s:6:\"Esposo\";s:15:\"rendaParentesco\";i:1000;}i:1;a:3:{s:14:\"nomeParentesco\";s:9:\"Nichollas\";s:14:\"grauParentesco\";s:5:\"Filho\";s:15:\"rendaParentesco\";i:0;}}', '2017-03-09 18:49:18', 'AGUARDANDOVAGA', '1') 
+09/03/2017 18:49:19 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => Guilherme Brito cpf => 38729417805 rg => 15699212 salario => 2500 rendaSerial => a:2:{i:0;a:3:{s:14:\"nomeParentesco\";s:8:\"Victoria\";s:14:\"grauParentesco\";s:6:\"Esposo\";s:15:\"rendaParentesco\";i:1000;}i:1;a:3:{s:14:\"nomeParentesco\";s:9:\"Nichollas\";s:14:\"grauParentesco\";s:5:\"Filho\";s:15:\"rendaParentesco\";i:0;}} createAt => 2017-03-09 18:49:18 status => AGUARDANDOVAGA ', '1', 'associado', '2017-03-09 18:03:18') 
+09/03/2017 18:49:19 [MESSAGE]:Usuário Guilherme Brito cadastrado com sucesso !
+09/03/2017 18:49:57 [MESSAGE]:Tentando Cadastrar o Associado Guilherme Brito
+09/03/2017 18:49:57 [DEBUG]:INSERT INTO associado (nome, salario, rendaSerial, createAt, status, usuario_id, veiculo_id)  values ('Guilherme Brito', '2500', 'a:2:{i:0;a:3:{s:14:\"nomeParentesco\";s:8:\"Victoria\";s:14:\"grauParentesco\";s:6:\"Esposo\";s:15:\"rendaParentesco\";i:1000;}i:1;a:3:{s:14:\"nomeParentesco\";s:9:\"Nichollas\";s:14:\"grauParentesco\";s:5:\"Filho\";s:15:\"rendaParentesco\";i:0;}}', '2017-03-09 18:49:57', 'AGUARDANDOVAGA', '1', '13') 
+09/03/2017 18:49:58 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => Guilherme Brito salario => 2500 rendaSerial => a:2:{i:0;a:3:{s:14:\"nomeParentesco\";s:8:\"Victoria\";s:14:\"grauParentesco\";s:6:\"Esposo\";s:15:\"rendaParentesco\";i:1000;}i:1;a:3:{s:14:\"nomeParentesco\";s:9:\"Nichollas\";s:14:\"grauParentesco\";s:5:\"Filho\";s:15:\"rendaParentesco\";i:0;}} createAt => 2017-03-09 18:49:57 status => AGUARDANDOVAGA veiculo_id => 13 ', '1', 'associado', '2017-03-09 18:03:57') 
+09/03/2017 18:49:58 [MESSAGE]:Usuário Guilherme Brito cadastrado com sucesso !
+09/03/2017 18:50:06 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:51:10 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:51:34 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:53:16 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:53:30 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:54:55 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:55:33 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:56:12 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:57:54 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:57:55 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' ORDER BY associado.createAt
+09/03/2017 18:58:27 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 18:58:28 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' ORDER BY associado.createAt
+09/03/2017 19:00:04 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 19:00:04 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' ORDER BY associado.createAt
+09/03/2017 19:02:00 [MESSAGE]:Listando Associados Aguardando uma vaga
+09/03/2017 19:02:01 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' ORDER BY associado.createAt
