@@ -182,9 +182,16 @@ class AssociadoController implements Controller {
 			}
 			return $array;
 
-
 	}
-
+	public function listaAssociadoVeiculo($id){
+		$associado = new Associado();
+		return $associado->select(
+			array(
+				'select'=> 'associado.nome',
+				'where' => array('veiculo_id' => $id)
+				)
+			);
+	}
 
 
 
