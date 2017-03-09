@@ -104,3 +104,10 @@ $app->post('/login', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();
 		return $associado->inativar($args['id']);
 	});
+	$app->get('/listveiculo/{id}', function(Request $request, Response $response, $args){
+		$associado = new \Api\Controller\AssociadoController();
+		$associado = $associado->listaAssociadoVeiculo($args['id']);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($associado);
+		return $response;
+	});
