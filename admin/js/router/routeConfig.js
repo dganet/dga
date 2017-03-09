@@ -12,19 +12,19 @@ app.config(function ($stateProvider, $urlRouterProvider){
 			.state('user', {
 			url: '/user',
 			templateUrl: 'painel/home.htm',
-			resolve: { 
+			resolve: {
 					function ($sessionStorage, $location){
-						if (sessionStorage.getItem('usuario.id') == null){ 
+						if (sessionStorage.getItem('usuario.id') == null){
 								$location.path('/login');
 						}
 				}
-		 
+
 			},
-				
+
 				 ncyBreadcrumb: {
 						label: 'Home'
 				 }
-			
+
 		})
 //############################################################################
 //############# **  MODULO ASSOCIADO ** ##########################################
@@ -33,13 +33,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
 			.state('user.associado', {
 			url: '/associado',
 			templateUrl: 'modAssociado/Link.htm',
-			resolve: { 
+			resolve: {
 					function ($sessionStorage, $location){
-						if (sessionStorage.getItem('usuario.id') == null){ 
+						if (sessionStorage.getItem('usuario.id') == null){
 								$location.path('/login');
 						}
 				}
-		 
+
 			},
 			 ncyBreadcrumb: {
 						label: 'Associado'
@@ -121,13 +121,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
 			.state('user.noticia', {
 			url: '/noticia',
 			templateUrl: 'modNoticias/Link.htm',
-			resolve: { 
+			resolve: {
 					function ($sessionStorage, $location){
-						if (sessionStorage.getItem('usuario.id') == null){ 
+						if (sessionStorage.getItem('usuario.id') == null){
 								$location.path('/login');
 						}
 				}
-		 
+
 			},
 			 ncyBreadcrumb: {
 						label: 'Noticias'
@@ -169,13 +169,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
 			.state('user.curso', {
 			url: '/curso',
 			templateUrl: 'modCursos/Link.htm',
-			resolve: { 
+			resolve: {
 					function ($sessionStorage, $location){
-						if (sessionStorage.getItem('usuario.id') == null){ 
+						if (sessionStorage.getItem('usuario.id') == null){
 								$location.path('/login');
 						}
 				}
-		 
+
 			},
 			 ncyBreadcrumb: {
 						label: 'Curso'
@@ -218,13 +218,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
 			.state('user.oportunidade', {
 			url: '/oportunidade',
 			templateUrl: 'modOportunidade/oportunidadeLink.htm',
-			resolve: { 
+			resolve: {
 					function ($sessionStorage, $location){
-						if (sessionStorage.getItem('usuario.id') == null){ 
+						if (sessionStorage.getItem('usuario.id') == null){
 								$location.path('/login');
 						}
 				}
-		 
+
 			},
 			 ncyBreadcrumb: {
 						label: 'Oportunidade'
@@ -266,14 +266,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //############################################################################
 			.state('user.usuario', {
 			url: '/usuario',
-			templateUrl: 'modUsuario/link.htm',
-			resolve: { 
+			templateUrl: 'modUsuario/linkUsuario.htm',
+			resolve: {
 					function ($sessionStorage, $location){
-						if (sessionStorage.getItem('usuario.id') == null){ 
+						if (sessionStorage.getItem('usuario.id') == null){
 								$location.path('/login');
 						}
 				}
-		 
+
 			},
 			 ncyBreadcrumb: {
 						label: 'Usuario'
@@ -310,19 +310,37 @@ app.config(function ($stateProvider, $urlRouterProvider){
 				 }
 
 		})
+
+		.state('user.permissao', {
+		url: '/permissao',
+		templateUrl: 'modUsuario/linkPermissao.htm',
+		controller:'inseriPermissaoCtrl',
+		 ncyBreadcrumb: {
+					label: 'Inseri Usuario'
+			 }
+	})
+
+	.state('user.permissao.inseri', {
+	url: '/inseri',
+	templateUrl: 'modUsuario/inseriPermissao.htm',
+	controller:'inseriPermissaoCtrl',
+	 ncyBreadcrumb: {
+				label: 'Novo Grupo'
+		 }
+})
 //############################################################################
 //############# **  MODULO Periodo ** ##########################################
 //############################################################################
 			.state('user.periodo', {
 			url: '/periodo',
 			templateUrl: 'modPeriodo/periodoLink.htm',
-			resolve: { 
+			resolve: {
 					function ($sessionStorage, $location){
-						if (sessionStorage.getItem('usuario.id') == null){ 
+						if (sessionStorage.getItem('usuario.id') == null){
 								$location.path('/login');
 						}
 				}
-		 
+
 			},
 			 ncyBreadcrumb: {
 						label: 'Periodo'
@@ -367,13 +385,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
 			.state('user.veiculo', {
 			url: '/veiculo',
 			templateUrl: 'modVeiculo/link.htm',
-			resolve: { 
+			resolve: {
 					function ($sessionStorage, $location){
-						if (sessionStorage.getItem('usuario.id') == null){ 
+						if (sessionStorage.getItem('usuario.id') == null){
 								$location.path('/login');
 						}
 				}
-		 
+
 			},
 			 ncyBreadcrumb: {
 						label: 'Veiculo'
@@ -422,5 +440,5 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
 //############################################################################
 				$urlRouterProvider.otherwise("/login");
-		
+
 });

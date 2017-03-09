@@ -8,7 +8,7 @@
 
 <div class="acoes">
 
-<i class="fa fa-users fa-lg aria-hidden="true"></i>
+<i class="fa fa-users fa-lg" aria-hidden="true"></i>
 
 	<label>Altera Usuários</label>
 </div>
@@ -16,7 +16,7 @@
 <hr>
 
 <div class="conteudo">
- 
+
  <div class="tres">
 
    <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo Usuario">
@@ -29,11 +29,11 @@
      </tr>
     </thead>
 
-    <tbody> 
+    <tbody>
      <tr ng-repeat="x in usuarios | filter: busca">
        <td> <a ui-sref="user.usuario.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
      </tr>
-   
+
     </tbody>
 
    </table>
@@ -41,44 +41,44 @@
   </div>
 
 <div class="quatro" ng-show="quatro">
- 
+
 <h4>{{usuario.nome}}</h4>
     <hr>
 
 <form name="FormUsuario" ng-submit="add(usuario)">
-  
+
   <div class="row">
 
   <div class="col-md-3">
     <div class="form-group">
     <label>E-mail</label>
-    <input type="text" class="form-control" ng-model="usuario.email"> 
-    </div> 
+    <input type="text" class="form-control" ng-model="usuario.email">
+    </div>
     </div>
 
     <div class="col-md-3">
     <div class="form-group">
     <label>Senha</label>
-    <input type="password" class="form-control" ng-model="usuario.senha"> 
-    </div> 
+    <input type="password" class="form-control" ng-model="usuario.senha">
+    </div>
     </div>
 
      <div class="col-md-3">
     <div class="form-group">
     <label>Nome</label>
-    <input type="text" class="form-control" ng-model="usuario.nome"> 
-    </div> 
+    <input type="text" class="form-control" ng-model="usuario.nome">
+    </div>
     </div>
 
   <div class="col-md-3">
     <div class="form-group">
     <label>CPF</label>
-    <input type="text" class="form-control" ng-model="usuario.cpf"> 
-    </div> 
+    <input type="text" class="form-control" ng-model="usuario.cpf">
+    </div>
     </div>
 
   </div>
-  
+
 <hr>
 
 <button type="submit" class="btn btn-warning">Atualizar</button>

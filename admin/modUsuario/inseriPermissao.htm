@@ -1,0 +1,57 @@
+<div class="alert alert-success" ng-hide="mensagem">
+  <strong>Sucesso!</strong> Dados cadastrado com sucesso.
+</div>
+
+<div class="acoes">
+
+<i class="fa fa-users" aria-hidden="true"></i>
+	<label>Cadatro de um Novo Grupo</label>
+
+</div>
+
+<hr>
+
+<div class="conteudo">
+  <div class="tres">
+    <table class="table-hover table">
+      <tr>
+        <td ng-click="tab('site')">Site</td>
+      </tr>
+      <tr>
+        <td ng-click="tab('portal')">Portal</td>
+      </tr>
+      <tr>
+        <td ng-click="tab('sistema')">Sistema</td>
+      </tr>
+      <tr>
+        <td ng-click="tab('config')">Configuraçoes</td>
+      </tr>
+    </table>
+  </div>
+
+<div class="quatro">
+
+  <form name="FormUsuario" ng-submit="add(usuario)">
+
+    <div ng-show="site">
+      menu Site
+    </div>
+
+    <div ng-show="portal">
+      menu Portal
+    </div>
+
+    <div ng-show="sistema">
+      menu Sitema
+    </div>
+
+    <div ng-show="config">
+      menu Configurações
+    </div>
+
+    <hr>
+    <button type="submit" class="btn btn-primary">Salvar Dados</button>
+  </form>
+</div>
+
+</div>
