@@ -136,8 +136,18 @@ class AssociadoController implements Controller {
 					'order' => 'associado.createAt'
 					)
 			);
-			$novoArray = [];
-			var_dump($array);
+			$renda =  unserialize($array[0]['rendaSerial']);
+			$array[0]['rendaSerial'] = unserialize($array[0]['rendaSerial']);
+			foreach ($renda as $key => $value) {
+				foreach ($value as $keys => $values) {
+					if ($keys == "rendaParentesco"){
+						$array[0]['rendaPerCapta'] = $array[0]['rendaPerCapta'] + $values;
+						$i++;
+					}
+				}
+			}
+			$array[0]['rendaPerCapta'] = $array[0]["rendaPerCapta"]/$i;
+			return $array;
 
 		}catch (Exeption $e){
 			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma vaga ".$e);
