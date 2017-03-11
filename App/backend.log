@@ -768,3 +768,21 @@
 10/03/2017 11:09:14 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
 10/03/2017 11:16:30 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
 10/03/2017 11:16:46 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+11/03/2017 12:18:35 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+11/03/2017 12:18:37 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+11/03/2017 12:18:57 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+11/03/2017 12:19:32 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+11/03/2017 12:19:41 [MESSAGE]:Tentando Cadastrar o Associado chupa gui
+11/03/2017 12:19:42 [DEBUG]:INSERT INTO associado (nome, rendaSerial, createAt, status, usuario_id, veiculo_id)  values ('chupa gui', 'a:0:{}', '2017-03-11 12:19:41', 'AGUARDANDOVAGA', '1', '8') 
+11/03/2017 12:19:42 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => chupa gui rendaSerial => a:0:{} createAt => 2017-03-11 12:19:41 status => AGUARDANDOVAGA veiculo_id => 8 ', '1', 'associado', '2017-03-11 12:03:42') 
+11/03/2017 12:19:42 [MESSAGE]:Usuário chupa gui cadastrado com sucesso !
+11/03/2017 12:19:47 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+11/03/2017 12:20:06 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+11/03/2017 12:20:14 [MESSAGE]:Tentando Cadastrar o Associado bianca
+11/03/2017 12:20:14 [DEBUG]:INSERT INTO associado (nome, rendaSerial, createAt, status, usuario_id, veiculo_id)  values ('bianca', 'a:0:{}', '2017-03-11 12:20:14', 'AGUARDANDOVAGA', '1', '13') 
+11/03/2017 12:20:14 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => bianca rendaSerial => a:0:{} createAt => 2017-03-11 12:20:14 status => AGUARDANDOVAGA veiculo_id => 13 ', '1', 'associado', '2017-03-11 12:03:14') 
+11/03/2017 12:20:14 [MESSAGE]:Usuário bianca cadastrado com sucesso !
+11/03/2017 12:20:18 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+11/03/2017 12:20:22 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+11/03/2017 12:23:33 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+11/03/2017 12:23:39 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'

@@ -11,6 +11,7 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
     $scope.seis = true;
     $scope.sete = false;
     var idVeiculo = value;
+    console.log(idVeiculo);
     //Lista Associados vinculado a Linha
     $http.get('../App/associado/listveiculo/' + idVeiculo).success(function(data){
       $scope.associados = data;
@@ -21,7 +22,12 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
   $scope.listaEspera = function(value){
     $scope.seis = false;
     $scope.sete = true;
-
+    var idVeiculo = value;
+    console.log(idVeiculo);
+    //Lista Associados vinculado a Linha
+    $http.get('../App/associado/listaaguardando/' + idVeiculo).success(function(data){
+      $scope.associados = data;
+    });
   };
 
 });
