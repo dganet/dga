@@ -185,7 +185,7 @@ class AssociadoController implements Controller {
 						array(
 							'AND' =>array(
 								'associado.status' => 'APROVACAO',
-								'associado.status' => 'ATIVO'
+								'associado.status' => 'AGUARDANDOVAGA'
 													)
 								),
 					'group' => 'associado.veiculo_id'
