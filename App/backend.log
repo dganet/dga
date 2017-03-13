@@ -786,3 +786,19 @@
 11/03/2017 12:20:22 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
 11/03/2017 12:23:33 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
 11/03/2017 12:23:39 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+11/03/2017 15:38:11 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+12/03/2017 22:52:04 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+12/03/2017 22:52:04 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+12/03/2017 22:52:12 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+12/03/2017 22:52:18 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+12/03/2017 22:52:22 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+12/03/2017 22:52:42 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+12/03/2017 23:54:23 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='AGUARDANDOVAGA' GROUP BY associado.veiculo_id
+12/03/2017 23:54:24 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='8'
+12/03/2017 23:54:27 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='9'
+12/03/2017 23:54:28 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+12/03/2017 23:54:34 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='8'
+12/03/2017 23:54:39 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='9'
+12/03/2017 23:54:42 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+12/03/2017 23:54:49 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='9'
+12/03/2017 23:54:52 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'

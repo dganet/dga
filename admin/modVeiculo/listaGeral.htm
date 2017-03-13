@@ -78,8 +78,8 @@
         </thead>
 
         <tbody>
-         <tr ng-repeat="x in veiculos | filter: busca">
-           <td>Associados {{$index +1}}</td>
+         <tr ng-repeat="x in associadosAguardando | filter: busca">
+           <td>{{x.nome}}</td>
          </tr>
         </tbody>
      </table>
