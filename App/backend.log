@@ -1142,3 +1142,4 @@
 13/03/2017 11:58:12 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' AND associado.id='13' ORDER BY associado.createAt
 13/03/2017 12:01:26 [MESSAGE]:Listando Associados Aguardando uma vaga
 13/03/2017 12:01:26 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' AND veiculo.id='13' ORDER BY associado.createAt
+13/03/2017 12:03:42 [MESSAGE]:Listando Associados Aguardando uma vaga
