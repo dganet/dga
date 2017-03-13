@@ -123,9 +123,10 @@ class AssociadoController implements Controller {
 			return false;
 		}
 	}
+
 	public function ListaAguardandoVaga(){
 		$associado = new Associado();
-		try{
+
 			Log::Message("Listando Associados Aguardando uma vaga");
 			$array = $associado->select(
 				array(
@@ -136,34 +137,77 @@ class AssociadoController implements Controller {
 					'order' => 'associado.createAt'
 					)
 			);
-			$renda =  unserialize($array[0]['rendaSerial']);
-			$array[0]['rendaSerial'] = unserialize($array[0]['rendaSerial']);
-			foreach ($renda as $key => $value) {
-				foreach ($value as $keys => $values) {
-					if ($keys == "rendaParentesco"){
-						$array[0]['rendaPerCapta'] = $array[0]['rendaPerCapta'] + $values;
-						$i++;
+			//$renda =  unserialize($array[0]['rendaSerial']);
+			//
+			foreach ($array as $key => $value) { //primeira posição de um vetor aponta para o array
+
+				foreach ($value as $keys => $values) { // segunda posição vai ate achar a key rendaSerial que é um array serializado
+					if($keys == "rendaSerial"){ // achando a posição des serializa e percorre este array
+						$array[$key]['rendaSerial'] = unserialize($values); // Desserializa tudo
 					}
 				}
 			}
-			$array[0]['rendaPerCapta'] = $array[0]["rendaPerCapta"]/$i;
-			return $array;
 
-		}catch (Exeption $e){
-			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma vaga ".$e);
-			return false;
+		foreach ($array as $x => $value) {
+				foreach ($value as $y => $v) {
+					if ($y == "rendaSerial"){
+					 $count = count($v)+1;
+						foreach ($v as $z => $values) {
+							foreach ($values as $w => $valor) {
+								if ($w == "rendaParentesco"){
+									$array[$x]["rendaPerCapta"] = $valor + $array[$x]["rendaPerCapta"];
+								}
+							}
+						}
+						$array[$x]["rendaPerCapta"] = $array[$x]["rendaPerCapta"]/$count;
+					}
+				}
 		}
+			return $array;
 	}
+
 	public function ListaAguardandoVagaID($id){
 		$associado = new Associado();
-		try{
+
 			Log::Message("Listando Associados Aguardando uma vaga");
-			return $associado->select(array('where' => array('AND' => array('veiculo_id' => $id, 'status' => 'AGUARDANDOVAGA'))));
-		}catch (Exeption $e){
-			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma vaga ".$e);
-			return false;
+			$array = $associado->select(
+				array(
+					'select'	=> "associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt",
+					'inner' => array('veiculo' => array('veiculo.id' => 'associado.veiculo_id')
+						),
+					'where' => array("AND" => array('associado.status' => 'AGUARDANDOVAGA', 'veiculo.id' => $id)),
+					'order' => 'associado.createAt'
+					)
+			);
+			//$renda =  unserialize($array[0]['rendaSerial']);
+			//
+			foreach ($array as $key => $value) { //primeira posição de um vetor aponta para o array
+
+				foreach ($value as $keys => $values) { // segunda posição vai ate achar a key rendaSerial que é um array serializado
+					if($keys == "rendaSerial"){ // achando a posição des serializa e percorre este array
+						$array[$key]['rendaSerial'] = unserialize($values); // Desserializa tudo
+					}
+				}
+			}
+
+		foreach ($array as $x => $value) {
+				foreach ($value as $y => $v) {
+					if ($y == "rendaSerial"){
+					 $count = count($v)+1;
+						foreach ($v as $z => $values) {
+							foreach ($values as $w => $valor) {
+								if ($w == "rendaParentesco"){
+									$array[$x]["rendaPerCapta"] = $valor + $array[$x]["rendaPerCapta"];
+								}
+							}
+						}
+						$array[$x]["rendaPerCapta"] = $array[$x]["rendaPerCapta"]/$count;
+					}
+				}
 		}
+			return $array;
 	}
+
 	public function listaAguardandoAprovacao(){
 		$associado = new Associado();
 		try{
@@ -174,6 +218,7 @@ class AssociadoController implements Controller {
 			return false;
 		}
 	}
+
 	public function listaGeral(){
 		$associado = new Associado();
 
@@ -184,8 +229,7 @@ class AssociadoController implements Controller {
 					'where' 	=>
 						array(
 							'AND' =>array(
-								'associado.status' => 'APROVACAO',
-								'associado.status' => 'AGUARDANDOVAGA'
+								'associado.status' => 'ATIVO',
 													)
 								),
 					'group' => 'associado.veiculo_id'
@@ -198,14 +242,20 @@ class AssociadoController implements Controller {
 			return $array;
 
 	}
+
 	public function listaAssociadoVeiculo($id){
 		$associado = new Associado();
 		return $associado->select(
 			array(
 				'select'=> 'associado.nome',
-				'where' => array('veiculo_id' => $id)
+				'where' =>
+					array('AND' =>
+						array('veiculo_id' => $id,
+									'status' => 'ATIVO'
+								)
 				)
-			);
+			)
+	);
 	}
 
 
