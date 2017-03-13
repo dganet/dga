@@ -802,3 +802,91 @@
 12/03/2017 23:54:42 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
 12/03/2017 23:54:49 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='9'
 12/03/2017 23:54:52 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+13/03/2017 11:48:24 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+13/03/2017 11:48:24 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+13/03/2017 11:48:32 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+13/03/2017 11:48:36 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='AGUARDANDOVAGA' GROUP BY associado.veiculo_id
+13/03/2017 11:48:38 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:48:39 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 11:48:40 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:48:41 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='9' AND status='AGUARDANDOVAGA'
+13/03/2017 11:48:42 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:48:42 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 11:48:45 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='13'
+13/03/2017 11:48:46 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:48:47 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:20 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:21 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='1' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:24 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:25 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='2' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:28 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:29 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='6' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:31 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:32 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='3' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:35 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:36 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='4' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:38 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:38 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='5' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:43 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:44 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:44 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:45 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:45 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:46 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='9' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:46 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:47 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='9' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:47 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:48 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='9' AND status='AGUARDANDOVAGA'
+13/03/2017 11:50:51 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:50:52 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='6' AND status='AGUARDANDOVAGA'
+13/03/2017 11:51:14 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:51:15 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 11:51:18 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:51:19 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 11:51:59 [DEBUG]:SELECT associado.nome FROM associado WHERE associado.veiculo_id='8'
+13/03/2017 11:51:59 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:52:00 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 11:52:03 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:52:04 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 11:52:35 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:52:36 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 11:52:36 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:52:37 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='9' AND status='AGUARDANDOVAGA'
+13/03/2017 11:52:38 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:52:39 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 11:52:42 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:52:43 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 11:52:46 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 11:52:47 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:18:52 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:18:53 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:18:55 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:18:56 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:05 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:05 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:05 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:06 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:06 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:06 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:06 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:06 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:06 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:07 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:09 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:10 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:12 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:13 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:19 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:19 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:31 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:32 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:33 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:34 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:34 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:35 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:37 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:38 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='8' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:47 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:47 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='7' AND status='AGUARDANDOVAGA'
+13/03/2017 12:19:51 [MESSAGE]:Listando Associados Aguardando uma vaga
+13/03/2017 12:19:52 [DEBUG]:SELECT * FROM associado WHERE veiculo_id='13' AND status='AGUARDANDOVAGA'
