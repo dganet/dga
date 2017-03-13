@@ -29,7 +29,7 @@ class Model{
 	*/
 	public 		$db = array(
 		"driver" 	=> "mysql",
-		"host"		=> "31.220.104.130",
+		"host"		=> "31.220.104.130",	//31.220.104.130
 		"dbname"	=> "u350275562_aetub", //u350275562_aetub
 		"user"		=> "u350275562_aetub", //u350275562_aetub
 		"pass"		=> "Z0kbFAWsap" //Z0kbFAWsap

@@ -44,6 +44,7 @@ $app->post('/login', function(Request $request, Response $response){
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($associado);
 		return $response;
+		print_r($associado[5]);
 	});
 	//Lista associados com status AGUARDANDOVAGA e com ID {id}
 	$app->get('/listaguardando/{id}', function(Request $request, Response $response, $args){
