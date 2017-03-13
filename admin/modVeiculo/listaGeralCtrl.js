@@ -25,7 +25,7 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
     var idVeiculo = value;
     console.log(idVeiculo);
     //Lista Associados vinculado a Linha
-    $http.get('../App/associado/listaaguardando/' + idVeiculo).success(function(data){
+    $http.get('../App/associado/listaguardando/' + idVeiculo).success(function(data){
       $scope.associadosAguardando = data;
     });
   };
