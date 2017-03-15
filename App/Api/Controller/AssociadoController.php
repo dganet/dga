@@ -46,19 +46,15 @@ class AssociadoController implements Controller {
 
 	public function cadastrar($data){
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
+
 		$associado = new Associado($data);
 		$associado->status = "AGUARDANDOVAGA";
 		$associado->createAt = date('Y-m-d H:i:s');
 		$associado->rendaSerial = serialize($data['renda']);
-		try{
-			$associado->save();
-			Audit::audit($associado->toArray(), "INSERT", "associado");
-			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
-			return true;
-		}catch (Exeption $e){
-			Log::Error("Exceção : ".$e->getMessage());
-			return false;
-		}
+		$associado->save();
+		Audit::audit($associado->toArray(), "INSERT", "associado");
+		Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
+		return true;
 	}
 
 	//Lista todos os associados
