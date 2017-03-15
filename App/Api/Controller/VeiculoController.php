@@ -25,7 +25,7 @@ class VeiculoController{
 	public function atualizaCadastro($data){
 		$veiculo = new Veiculo();
 		$vagas = $this->associadoXVeiculo($data['id']);
-		if($data['numVagas'] <= $vagas){
+		if($data['numVagas'] < $vagas){
 			return false;
 		}else{
 			$veiculo = new Veiculo($data);

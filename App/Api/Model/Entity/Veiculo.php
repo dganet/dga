@@ -13,10 +13,10 @@ class Veiculo extends \GORM\Model{
 	private $tipo;
 	private $status;
 
-	//Contrutor da classe 
+	//Contrutor da classe
 	/**
 	*	@param Array $data
-	*	Constroi um Objeto do tipo Veiculo com as informações contidas no array 
+	*	Constroi um Objeto do tipo Veiculo com as informações contidas no array
 	*/
 	public function __construct($data = []){
 		isset($data['id']) 				? $this->setId( $data['id']) 			: $this->setId( null);
@@ -28,7 +28,7 @@ class Veiculo extends \GORM\Model{
 		isset($data['createAt']) 		? $this->setCreateAt( $data['createAt']) 		: $this->setCreateAt( null);
 		isset($data['updateAt']) 		? $this->setUpdateAt( $data['updateAt']) 		: $this->setUpdateAt( null);
 		isset($data['tipo']) 			? $this->setTipo( $data['tipo']) 			: $this->setTipo( null);
-		isset($data['statuc']) 			? $this->setStatus( $data['status']) 		: $this->setStatus( null);	
+		isset($data['statuc']) 			? $this->setStatus( $data['status']) 		: $this->setStatus( null);
 		$this->class = $this;
 	}
 
@@ -63,7 +63,7 @@ class Veiculo extends \GORM\Model{
 	public function getStatus(){
 		return $this->status;
 	}
-	
+
 	public function setId($value){
 		$this->id = $value;
 	}
