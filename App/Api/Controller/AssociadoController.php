@@ -43,7 +43,11 @@ class AssociadoController implements Controller {
 		}
 	}
 
-
+	/**
+	 * Cadastra um novo Associado com as informações vindas em $data
+	 * @param  Array $data Informações para cadastrar o Associado
+	 * @return Bool       Retorna true ou false
+	 */
 	public function cadastrar($data){
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
 		$associado = new Associado($data);
@@ -56,8 +60,11 @@ class AssociadoController implements Controller {
 		return true;
 	}
 
-	//Lista todos os associados
-	public function listaTudo(){
+	/**
+	 * Lista todos os associados Ativos
+	 * @return Array Array com todos os associados Ativos
+	 */
+	public function listaAtivo(){
 		$associado = new Associado();
 		try{
 			Log::Message("Listando Associados");
@@ -67,19 +74,21 @@ class AssociadoController implements Controller {
 			return false;
 		}
 	}
-	//Lista Por Id
+	/**
+	 * Lista um Associado Pelo ID
+	 * @param  Int $id Id do associado a ser listado
+	 * @return Array    Array com as informações do associado
+	 */
 	public function listaPorId($id){
 		$associado = new Associado();
-
-		try{
-			Log::Message("Solicitado informações sobre o Associado ".$i);
-			return $associado->select(array('where' => array('id' => $id)));
-		}catch (Exception $e){
-			Log::Error("Não foi possivel entregar informações sobre o Associado ".$i);
-			return false;
-		}
+    Log::Message("Solicitado informações sobre o Associado ".$i);
+		return $associado->select(array('where' => array('id' => $id)));
 	}
-	//Update de cadastro
+	/**
+	 * Atualiza informaçoes do Associado
+	 * @param  Array $data Informações que serão atualizadas
+	 * @return Boolean 	True ou False
+	 */
 	public function atulizaCadastro($data){
 		$associado = new Associado($data);
 		$associado->updateAt = date('Y-m-d H:i:s');
@@ -92,36 +101,36 @@ class AssociadoController implements Controller {
 			return false;
 		}
 	}
-	//Desativa o cliente
+	/**
+	 * Inativa um cliente conforme o ID passado
+	 * @param  Int $id Id do associado a ser desativado
+	 * @return Boolean     True ou False
+	 */
 	public function inativar($id){
 		$associado = new Associado();
 		$associado->id = $id;
 		$associado->updateAt = date('Y-m-d H:i:s');
 		$associado->status = 'INATIVO';
-		try{
-			Log::Message("Inativando Associado ".$id);
-			Audit::audit($data, "DELETE", "associado");
-			$associado->update();
-		}catch (Exception $e){
-			Log::Error("Não foi possivel inativar o Associado");
-			return false;
-		}
+		Log::Message("Inativando Associado ".$id);
+		Audit::audit($data, "DELETE", "associado");
+		$associado->update();
 	}
-
+	/**
+	 * Lista todos os cliente inativos
+	 * @return Array Lista com todos os cliente inativos
+	 */
 	public function listaInativo(){
 		$associado = new Associado();
-		try{
-			Log::Message("Listando Associados Inativos");
-			return $associado->select(array('where' => array('status' => 'INATIVO')));
-		}catch (Exeption $e){
-			Log::Error("Não foi possivel entregar a lista de Associados Inativos ".$e);
-			return false;
-		}
+		Log::Message("Listando Associados Inativos");
+		return $associado->select(array('where' => array('status' => 'INATIVO')));
 	}
-
+	/**
+	 * Lista os associados que estão aguardando vagaga e os organiza conforme sua
+	 * renda e data de criação
+	 * PRECISA SER REFEITO
+	 */
 	public function ListaAguardandoVaga(){
 		$associado = new Associado();
-
 			Log::Message("Listando Associados Aguardando uma vaga");
 			$array = $associado->select(
 				array(
@@ -160,7 +169,10 @@ class AssociadoController implements Controller {
 		}
 			return $array;
 	}
-
+/**
+ * Lista os associados que estão com status AGUARDANDOVAGA
+ * @param [type] $id [description]
+ */
 	public function ListaAguardandoVagaID($id){
 		$associado = new Associado();
 

@@ -36,7 +36,8 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
       //Pegando ID
       var id = values.id;
       // Enviado os valores em objetos para api/user do php/slim
-      $http.put('../App/veiculo/update/'+ id, values).success(function(){
+      $http.put('../App/veiculo/update/'+ id, values).success(function(req, res){
+        console.log(req);
       // Depois mandando para mesma pagina
       $scope.activePath = $location.path('/user/veiculo/altera');
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
