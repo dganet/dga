@@ -35,9 +35,11 @@ class Associado extends \GORM\Model{
 	private $qtasPessoasTrab;			// Quantas pessoas trabalhan na residencia
 	private $rendaFamiliar;				// Renda Familiar
 	private $planoSaude;				// Possui plano de saude Bool
+	private $qualPlano; 				// Nome do Plano
 	private $planoEmpresa;				// Nome da Empresa do Plano de Saúde
 	private $tipoSangue;				// Tipo Sanguineo
-	private $problemaSaude;				// Possui algum problema de saúde, se sim, descreva
+	private $problemaSaude;				// Possui algum problema de saude? Boolean
+	private $quaisProblemas; 			// Quais problemas de saúde
 	private $curso;						// Curso
 	private $universidade;				// Nome da Universidade/Escola
 	private $semestreCursando;			// Qual Semestre está Cursando
@@ -52,12 +54,12 @@ class Associado extends \GORM\Model{
 	private $retidoFalta;				// Já foi retido por Falta Boolean
 	private $retidoMaisUmAno;			// Já foi retido mais de um ano letivo Boolean
 	private $desistiuCursarAnoLetivo;	// já desistiu de cursar o primeiro ano letivo? Boolean
+	private $porQueDesistiu; 			// Por que desistiu
 	private $createAt;					// Quando o cadastro foi Criado
 	private $updateAt;					// Quando o cadastro foi atualizado
 	private $status;					// Se o cadastro está ativo ou não
 	private $usuario_id;				// Chave estrangeira
 	private $veiculo_id;				// Chave estrangeira que ligará o usuario a sua linha
-
 
 
 	// adiciona uma instancia desta classe na classe GORM/MODEL
@@ -116,6 +118,9 @@ class Associado extends \GORM\Model{
 		isset($data['rendaSerial']) ? $this->rendaSerial = $data['rendaSerial'] : $this->rendaSerial = null;
 		isset($data['veiculo_id']) ? $this->veiculo_id = $data['veiculo_id'] : $this->veiculo_id = null;
 		isset($data['usuario_id']) ? $this->usuario_id = $data['usuario_id'] : $this->usuario_id = null;
+		isset($data['qualPlano']) ? $this->qualPlano = $data['qualPlano'] : $this->qualPlano = null;
+		isset($data['quaisProblemas']) ? $this->quaisProblemas = $data['quaisProblemas'] : $this->quaisProblemas = null;
+		isset($data['porQueDesistiu']) ? $this->porQueDesistiu = $data['porQueDesistiu'] : $this->porQueDesistiu = null;
 		$this->class = $this;
 	}
 
@@ -187,7 +192,10 @@ class Associado extends \GORM\Model{
 			"status"	=>	$this->status,
 			"senha"		=>  $this->senha,
 			"usuario_id"		=>  $this->usuario_id,
-			"veiculo_id"		=>  $this->veiculo_id
+			"veiculo_id"		=>  $this->veiculo_id,
+			"quaisProblemas"		=>  $this->quaisProblemas,
+			"qualPlano"		=>  $this->qualPlano,
+			"porQueDesistiu" => $this->porQueDesistiu
 			);
 		// faz com que não se retorne valores nulos no array
 		$temp = $array;
