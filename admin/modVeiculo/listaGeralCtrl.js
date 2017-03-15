@@ -1,6 +1,7 @@
-app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$sessionStorage){
+app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$sessionStorage, $filter){
   //Pega o Id do Usuario Logado
   var idUsuario = sessionStorage.getItem('usuario.id');
+
   //Lista todos Veiculos
   $http.get('../App/associado/listageral').success(function(data){
     $scope.veiculos = data;
@@ -11,10 +12,10 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
     $scope.seis = true;
     $scope.sete = false;
     var idVeiculo = value;
-    console.log(idVeiculo);
     //Lista Associados vinculado a Linha
     $http.get('../App/associado/listveiculo/' + idVeiculo).success(function(data){
-      $scope.associados = data;
+      var a = $scope.associados = data;
+      console.log(a);
     });
   };
 
@@ -23,10 +24,17 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
     $scope.seis = false;
     $scope.sete = true;
     var idVeiculo = value;
-    console.log(idVeiculo);
+
     //Lista Associados vinculado a Linha
     $http.get('../App/associado/listaguardando/' + idVeiculo).success(function(data){
-      $scope.associadosAguardando = data;
+
+
+    data.forEach(function(element) {
+     var dataformat = element['createAt'] =  new Date(element['createAt']);
+     var dataformat = element['createAt'] = $filter('date')(dataformat,'MMMM');
+     element = dataformat;
+       }, this);
+      $scope.associadosAguardando = data;    
     });
   };
 

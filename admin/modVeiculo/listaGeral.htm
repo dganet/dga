@@ -70,19 +70,20 @@
 
       <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo Usuario"><br>
 
-     <table class="table table-condensed">
-        <thead>
-         <tr>
-            <td>Pré-Associados</td>
-         </tr>
-        </thead>
+ <ul class="veiculo">
 
-        <tbody>
-         <tr ng-repeat="x in associadosAguardando | filter: busca">
-           <td>{{x.nome}}</td>
-         </tr>
-        </tbody>
-     </table>
+  <li ng-repeat="(key, value) in associadosAguardando | groupBy: 'createAt'">
+   Mês de {{ key }}
+    <ul>
+      <li ng-repeat="player in value | orderBy :'+rendaPerCapta' | filter:busca">
+       {{player.nome}}
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+
 
 
   </div>

@@ -10,6 +10,8 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
   $scope.mensagem = true;
     //Ocultando o Alert Mensagem .
   $scope.mensagemDeleta = true;
+      //Ocultando o Alert Mensagem .
+  $scope.mensagemVaga = true;
 
 
   //Lista todos Veiculos
@@ -36,7 +38,13 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
       //Pegando ID
       var id = values.id;
       // Enviado os valores em objetos para api/user do php/slim
-      $http.put('../App/veiculo/update/'+ id, values).success(function(){
+      $http.put('../App/veiculo/update/'+ id, values).success(function(req,res){
+      var retorno = req;
+      if (retorno == false){
+            $scope.mensagemVaga = false;
+            console.log('estou aqui fi de rapariga');
+      }else{
+
       // Depois mandando para mesma pagina
       $scope.activePath = $location.path('/user/veiculo/altera');
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -50,9 +58,9 @@ app.controller("alteraVeiculoCtrl", function($scope, $http,$location , $timeout,
       $http.get('../App/veiculo/list').success(function(data){
         $scope.veiculos = data;
       });
-
+     };
     });
-
+ 
   };
 
 /************* INATIVA OS VEICULOS  *********************/

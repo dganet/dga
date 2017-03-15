@@ -113,7 +113,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
 						$scope.id = $stateParams.idAssociado;
 				}
 		})
-
+			.state('user.associado.aprova', {
+			url: '/aprova',
+			templateUrl: 'modAssociado/aprovaAssociado.htm',
+			controller:'aprovaAssociadoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Aprova'
+				 }
+		})
 
 //############################################################################
 //############# **  MODULO NOTICIAS ** ##########################################
