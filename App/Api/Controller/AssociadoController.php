@@ -7,7 +7,7 @@
 namespace Api\Controller;
 use \Api\Model\Entity\Associado, \Api\Controller\Log, \Api\Controller\AuditController as Audit;
 
-class AssociadoController implements Controller {
+class AssociadoController {
 
 /**
  * Loga um Associado
@@ -54,10 +54,13 @@ class AssociadoController implements Controller {
 		$associado->status = "AGUARDANDOVAGA";
 		$associado->createAt = date('Y-m-d H:i:s');
 		$associado->rendaSerial = serialize($data['renda']);
-		$associado->save();
-		Audit::audit($associado->toArray(), "INSERT", "associado");
-		Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
-		return true;
+		if ($associado->save()){
+			Audit::audit($associado->toArray(), "INSERT", "associado");
+			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	/**
@@ -170,8 +173,9 @@ class AssociadoController implements Controller {
 			return $array;
 	}
 /**
- * Lista os associados que estão com status AGUARDANDOVAGA
- * @param [type] $id [description]
+ * Lista os associado que está com status AGUARDANDOVAGA
+ * @param Int $id Id do usuarioq ue sera mostrado
+ * NECESSITA SER REFEITO
  */
 	public function ListaAguardandoVagaID($id){
 		$associado = new Associado();
@@ -223,10 +227,13 @@ class AssociadoController implements Controller {
 		Log::Message("Listando Associados Aguardando uma aprovacao");
 		return $associado->select(array('where' => array('status' => 'AGUARDANDOVAGA')));
 	}
-
+	/**
+	 * Lista geral de Veiculos ?????????
+	 * @return Array Lista
+	 * NECESSITA SER REFEITO URGENTEEEE!!
+	 */
 	public function listaGeral(){
 		$associado = new Associado();
-
 		 $array = $associado->select(
 				array(
 					'select' 	=> "count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo",
@@ -247,7 +254,11 @@ class AssociadoController implements Controller {
 			return $array;
 
 	}
-
+/**
+ * Lista associados que estão em um determinado veiculo
+ * @param  Int $id id do veiculo
+ * @return Array     Associados que estão no veiculo $ID
+ */
 	public function listaAssociadoVeiculo($id){
 		$associado = new Associado();
 		return $associado->select(
@@ -262,7 +273,11 @@ class AssociadoController implements Controller {
 			)
 	);
 	}
-
+	/**
+	 * Ativa o cadastro de um associado somente se o veiculo ainda possuir vagas
+	 * @param  Int $id  Id do associado que será ativo
+	 * @return Boolean     True ou False
+	 */
 	public function ativaCadastro($id){
 		$associado = new Associado();
 		$ass = $associado->select(array('where' => array('id' => $id)));
@@ -282,7 +297,6 @@ class AssociadoController implements Controller {
 								)
 			),
 			 false);
-
 		if ($count[0]['quantidade'] < $veiculo[0]['numVagas']){
 			$associado->id = $ass[0]['id'];
 			$associado->status = "ATIVO";

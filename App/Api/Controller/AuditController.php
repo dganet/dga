@@ -8,7 +8,7 @@ class AuditController{
 	*
 	*/
 	public static final function audit($array, $acao, $tabela){
-		$temp;
+		$temp = null;
 		$data['usuario_id'] = $array['usuario_id'];
 		$data['tabela']		= $tabela;
 		unset($array['usuario_id']);

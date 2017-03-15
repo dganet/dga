@@ -28,7 +28,7 @@ $app->post('/login', function(Request $request, Response $response){
 	//Lista Todos os Associados
 	$app->get('/list', function(Request $request, Response $response){
 		$associadoController = new \Api\Controller\AssociadoController();
-		$associado = $associadoController->listaTudo();
+		$associado = $associadoController->listaAtivo();
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($associado);
 		return $response;
@@ -40,7 +40,6 @@ $app->post('/login', function(Request $request, Response $response){
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($associado);
 		return $response;
-		print_r($associado[5]);
 	});
 	//Lista associados com status AGUARDANDOVAGA e com ID {id}
 	$app->get('/listaguardando/{id}', function(Request $request, Response $response, $args){
@@ -108,6 +107,7 @@ $app->post('/login', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();
 		return $associado->inativar($args['id']);
 	});
+	//Lista Associados que estão em um determinado veiculo
 	$app->get('/listveiculo/{id}', function(Request $request, Response $response, $args){
 		$associado = new \Api\Controller\AssociadoController();
 		$associado = $associado->listaAssociadoVeiculo($args['id']);
