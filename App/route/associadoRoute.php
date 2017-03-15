@@ -95,7 +95,7 @@ $app->post('/login', function(Request $request, Response $response){
 		}
 		return $response;
 	});
-	$app->get('/ative/{id}', function(Request $request, Response $response, $args){
+	$app->put('/ative/{id}', function(Request $request, Response $response, $args){
 		$associado = new \Api\Controller\AssociadoController();
 		$associado = $associado->ativaCadastro($args['id']);
 		$response = $response->withHeader('Content-type', 'application/json');
