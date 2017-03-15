@@ -23,10 +23,17 @@ class VeiculoController{
 	*	Atualiza um cadastro conforme as informações contidas no array $data
 	*/
 	public function atualizaCadastro($data){
-		$veiculo = new Veiculo($data);
-		$veiculo->setUpdateAt(date('Y-m-d H:i:s'));
-		Audit::audit($data, "UPDATE", "veiculo");
-		$veiculo->update();
+		$veiculo = new Veiculo();
+		$vagas = $this->associadoXVeiculo($data['id']);
+		if($data['numVagas'] <= $vagas){
+			return false;
+		}else{
+			$veiculo = new Veiculo($data);
+			$veiculo->setUpdateAt(date('Y-m-d H:i:s'));
+			Audit::audit($data, "UPDATE", "veiculo");
+			$veiculo->update();
+			return true;
+		}
 	}
 	// Liusta todos os usuario com status ATIVO
 	public function listaTudo(){
@@ -52,5 +59,24 @@ class VeiculoController{
 		$veiculo->setStatus('INATIVO');
 		Audit::audit($data, "DELETE", "veiculo");
 		return $veiculo->update();
+	}
+	/**
+	 * Retorna a quantidade de associados que tem em um determinado veiculo
+	 * @param  Int $id Id do veiculo a ser consultado
+	 * @return Int Quantidade de vagas ocupadas no veiculo
+	 */
+	public function associadoXVeiculo($id){
+		$associado = new \Api\Model\Entity\Associado();
+		$veiculo = $associado->select(
+			array(
+				'select' => 'status',
+				'where' =>
+					array(
+						'AND' =>
+							array(
+								'veiculo_id' => $id,
+								'status'		 => 'ATIVO'
+							))));
+		return count($veiculo);
 	}
 }
