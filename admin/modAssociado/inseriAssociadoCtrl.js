@@ -164,20 +164,17 @@ $scope.go = function (dados){
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
+  $scope.mensagemNome = false;
+  $scope.mensagemCPF = false;
+  $scope.mensagemLinha = false;
 
   //Pegando as linhas
   $http.get('../App/veiculo/list').success(function(data){
   	$scope.veiculos = data;
 
   });
-//*************MEDIA DA RENDA *********************//
-/*$scope.mediaRenda = function(value){
-var total = $scope.rendaParentesco;
-console.log(total);
-return $scope.associado.mediaRenda = total;
-}
-*/
-//*************NOVO INPUT RENDA *********************//
+
+
 var dados = $scope.renda = [];
 var renda = {renda:dados};
 
@@ -196,9 +193,9 @@ $scope.removeInput = function() {
   $scope.add = function(values, FormAssociado) {
 		var associado = values;
 		var associado = angular.merge(associado,renda);
-    // Enviado os valores em objetos para api/user do php/slim
+    // Enviado os valores em objetos para api/user do php/slim 
+		$http.post('../App/associado/save/'+ id, associado).success(function(){
 
-		$http.post('../App/associado/save/'+ id, associado).success(function(response){
 
       // Depois mandando para mesma pagina
       $scope.activePath = $location.path('/user/associado/inseri');

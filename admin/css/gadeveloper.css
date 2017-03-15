@@ -1,6 +1,3 @@
-
-/* Desktop maiores */
-@media (min-width: 1200px) { 
 body, html,.corpo{
  	background: #E6E6E6;
  	margin: 0 auto;
@@ -265,9 +262,25 @@ h4 {
 	padding-left: 5px;
 }
 
-} 
 
-/* tables em formato porta retrato até os desktos no formato paisagem */
+.veiculo ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.veiculo ul li {
+	font-weight: bold;
+}
+.veiculo ul li li{
+	font-weight: normal;
+}
+
+
+/* 
+/* Desktop maiores */
+/*@media (min-width: 1200px) { 
+/*} 
+tables em formato porta retrato até os desktos no formato paisagem */
 /* @media (min-width: 768px) and (max-width: 1200px) {  }
 /*
 /* dispositivo em paisagem até os tablets em formato porta-retrato */
