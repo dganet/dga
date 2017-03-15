@@ -3,7 +3,7 @@ namespace Api\Controller;
 use \Api\Model\Entity\Veiculo, \Api\Controller\AuditController as Audit;
 
 class VeiculoController{
-	
+
 	/**
 	*	@param Array $data
 	*	Salva um veiculo, e recebe um array com as informações que serão
@@ -17,9 +17,7 @@ class VeiculoController{
 		Audit::audit($data, "INSERT", "veiculo");
 		return $veiculo->save();
 	}
-	public function preencherVaga($idAssociado){
 
-	}
 	/**
 	*	@param Array $data
 	*	Atualiza um cadastro conforme as informações contidas no array $data
@@ -34,7 +32,7 @@ class VeiculoController{
 	public function listaTudo(){
 		$veiculo = new Veiculo();
 		return $veiculo->select(array('where' => array('status' => 'ATIVO')));
-		
+
 	}
 	// Lista todos os usuario com o id $id
 	public function listaPorId($id){

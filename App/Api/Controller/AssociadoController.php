@@ -258,9 +258,33 @@ class AssociadoController implements Controller {
 	);
 	}
 
+	public function ativaCadastro($id){
+		$associado = new Associado();
+		$ass = $associado->select(array('where' => array('id' => $id)));
 
+		$veiculo = new \Api\Model\Entity\Veiculo();
+		$veiculo = $veiculo->select(array('where' => array('id' => $ass[0]["veiculo_id"])));
+		$count = $associado->select(
+			array(
+				'select' => 'count(veiculo_id) as quantidade',
+				'where' =>
+								array(
+									'AND' =>
+										array(
+											'veiculo_id' => $veiculo[0]['id'],
+											'status' => 'ATIVO'
+										)
+								)
+			),
+			 false);
 
-
-
-
+		if ($count[0]['quantidade'] < $veiculo[0]['numVagas']){
+			$associado->id = $ass[0]['id'];
+			$associado->status = "ATIVO";
+			$associado->update();
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
