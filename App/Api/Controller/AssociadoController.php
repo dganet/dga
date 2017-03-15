@@ -46,7 +46,6 @@ class AssociadoController implements Controller {
 
 	public function cadastrar($data){
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
-
 		$associado = new Associado($data);
 		$associado->status = "AGUARDANDOVAGA";
 		$associado->createAt = date('Y-m-d H:i:s');
@@ -203,16 +202,14 @@ class AssociadoController implements Controller {
 		}
 			return $array;
 	}
-
+	/**
+	 * Retorna uma lista dos associados que estão aguardando uma vaga no veiculo
+	 * @return Array Retorna um array com as informações descritas acima
+	 */
 	public function listaAguardandoAprovacao(){
 		$associado = new Associado();
-		try{
-			Log::Message("Listando Associados Aguardando uma aprovacao");
-			return $associado->select(array('where' => array('status' => 'APROVACAO')));
-		}catch (Exeption $e){
-			Log::Error("Não foi possivel entregar a lista de Associados aguardando uma aprovacao ".$e);
-			return false;
-		}
+		Log::Message("Listando Associados Aguardando uma aprovacao");
+		return $associado->select(array('where' => array('status' => 'AGUARDANDOVAGA')));
 	}
 
 	public function listaGeral(){
