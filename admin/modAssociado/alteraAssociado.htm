@@ -65,20 +65,21 @@
 <form name="FormAssociado" ng-submit="update(associado)" novalidate>
     <div class="row" ng-show="tab1">
 
-       <div class="col-md-6">
-
-        <div class="form-group">
-            <label>Nome Completo do Associado</label>
-            <input type="text" class="form-control" ng-model="associado.nome">
-          </div>
+     <div class="col-md-3">
+      <div class="form-group">
+          <label>Nome Completo do Associado</label>
+          <input type="text" class="form-control" ng-model="associado.nome">
         </div>
+      </div>
 
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>CPF</label>
-            <input type="text" class="form-control" ng-model="associado.cpf" ui-br-cpf-mask>
-          </div>
+
+     <div class="col-md-3">
+      <div class="form-group">
+          <label>E-mail</label>
+          <input type="text" class="form-control" ng-model="associado.email">
         </div>
+      </div>
+
 
 
         <div class="col-md-2">

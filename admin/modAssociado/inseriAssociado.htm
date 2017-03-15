@@ -30,13 +30,22 @@
 <form name="FormAssociado" ng-submit="add(associado)" novalidate>
   <div class="row" ng-show="tab1">
 
-     <div class="col-md-6">
-
+     <div class="col-md-3">
       <div class="form-group">
           <label>Nome Completo do Associado</label>
           <input type="text" class="form-control" ng-model="associado.nome">
         </div>
       </div>
+
+
+     <div class="col-md-3">
+      <div class="form-group">
+          <label>E-mail</label>
+          <input type="text" class="form-control" ng-model="associado.email">
+        </div>
+      </div>
+
+      
 
       <div class="col-md-2">
         <div class="form-group">
@@ -56,7 +65,35 @@
       <div class="col-md-2">
         <div class="form-group">
           <label>Orgão Expedidor</label>
-          <input type="text" class="form-control" ng-model="associado.orgaoExpedidor">
+          <select class="form-control" ng-model="associado.orgaoExpedidor">
+          <option value="">Selecione o Orgão</option> 
+         	<option value="SSP-AC">SSP-AC</option> 
+          <option value="SSP-AL">SSP-AL</option> 
+          <option value="SSP-AM">SSP-AM</option> 
+          <option value="SSP-AP">SSP-AP</option> 
+          <option value="SSP-BA">SSP-BA</option> 
+          <option value="SSP-CE">SSP-CE</option> 
+          <option value="SSP-DF">SSP-DF</option> 
+          <option value="SSP-ES">SSP-ES</option> 
+          <option value="SSP-GO">SSP-GO</option> 
+          <option value="SSP-MA">SSP-MA</option> 
+          <option value="SSP-MT">SSP-MT</option> 
+          <option value="SSP-MS">SSP-MS</option> 
+          <option value="SSP-MG">SSP-MG</option> 
+          <option value="SSP-PA">SSP-PA</option> 
+          <option value="SSP-PB">SSP-PB</option> 
+          <option value="SSP-PR">SSP-PR</option> 
+          <option value="SSP-PE">SSP-PE</option> 
+          <option value="SSP-PI">SSP-PI</option> 
+          <option value="SSP-RJ">SSP-RJ</option> 
+          <option value="SSP-RN">SSP-RN</option> 
+          <option value="SSP-RO">SSP-RO</option> 
+          <option value="SSP-RS">SSP-RS</option> 
+          <option value="SSP-RR">SSP-RR</option> 
+          <option value="SSP-SC">SSP-SC</option> 
+          <option value="SSP-SE">SSP-SE</option> 
+          <option value="SSP-SP">SSP-SP</option> 
+          </select>
         </div>
       </div>
 
@@ -92,13 +129,15 @@
      <div class="col-md-2">
         <div class="form-group">
           <label>Estado Civil</label>
-          <input type="text" class="form-control" ng-model="associado.estadoCivil" >
+            <select class="form-control" ng-model="associado.estadoCivil" ng-change="civil(associado.estadoCivil)">
+            <option value="">Selecione Estado Civil</option>
+            <option value="solteiro">Solteiro</option>
+            <option value="casado">Casado</option>
+          </select>
         </div>
       </div>
 
-
-
-      <div class="col-md-2">
+      <div class="col-md-2" ng-show="campoConjuge">
         <div class="form-group">
           <label>Nome do Conjuje</label>
          <input type="text" class="form-control" ng-model="associado.nomeConjuje">
@@ -107,31 +146,54 @@
 
       <div class="col-md-2">
         <div class="form-group">
-          <label>Plano de Saude</label>
-          <input type="text" class="form-control" ng-model="associado.planoSaude">
-        </div>
-      </div>
-
-      <div class="col-md-2">
-        <div class="form-group">
-          <label>Plano Empresa</label>
-          <input type="text" class="form-control" ng-model="associado.planoEmpresa">
-        </div>
-      </div>
-
-      <div class="col-md-2">
-        <div class="form-group">
           <label>Tipo de Sangue</label>
-          <input type="text" class="form-control" ng-model="associado.tipoSangue">
+          <select class="form-control" ng-model="associado.tipoSangue">
+            <option value="A+">A+</option>
+            <option value="B+">B+</option>
+            <option value="AB+">AB+</option>
+            <option value="A-">A-</option>
+            <option value="B-">B-</option>
+            <option value="AB-">AB-</option>
+            <option value="O-">O-</option>
+          </select>
         </div>
       </div>
 
       <div class="col-md-2">
         <div class="form-group">
-          <label>Possui Problema de Saude</label>
-          <input type="text" class="form-control" ng-model="associado.problemaSaude">
+          <label>Plano de Saude</label>
+          <select class="form-control" ng-model="associado.planoSaude" ng-change="plano(associado.planoSaude)">
+            <option value="">Tem Plano ? </option>
+            <option value="simPlano">Sim</option>
+            <option value="naoPlano">Não</option>
+          </select>
         </div>
       </div>
+
+      <div class="col-md-2" ng-show="campoQualPlano">
+        <div class="form-group">
+          <label>Qual Plano ?</label>
+         <input type="text" class="form-control" ng-model="associado.qualPlano">
+        </div>
+      </div>      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Problema de Saude</label>
+          <select class="form-control" ng-model="associado.problemaSaude" ng-change="problema(associado.problemaSaude)">
+            <option value="">Problema de Saude ? </option>
+            <option value="simProblema">Sim</option>
+            <option value="naoProblema">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-2" ng-show="campoProblema">
+        <div class="form-group">
+          <label>Qual Problema?</label>
+         <input type="text" class="form-control" ng-model="associado.qualPlano">
+        </div>
+      </div>   
 
   </div>
 
@@ -165,14 +227,14 @@
       <div class="col-md-2">
         <div class="form-group">
           <label>Cidade</label>
-          <input type="text" class="form-control" ng-model="associado.cidade">
+          <input type="text" class="form-control" disabled  ng-model="associado.cidade">
         </div>
       </div>
 
      <div class="col-md-2">
         <div class="form-group">
           <label>CEP</label>
-          <input type="text" class="form-control" ng-model="associado.cep" ui-br-cep-mask>
+          <input type="text" class="form-control" disabled ng-model="associado.cep" ui-br-cep-mask>
         </div>
       </div>
 
@@ -211,8 +273,7 @@
 
       <div class="col-md-4">
         <div class="form-group">
-          <label>Renda do Associado</label>
-          
+          <label>Renda do Associado</label>          
           <input type="text" class="form-control" ng-model="associado.salario" ui-money-mask="2" required="required">
         </div>
       </div>
@@ -330,21 +391,49 @@
       <div class="col-md-2">
         <div class="form-group">
           <label>Semestre Cursando</label>
-          <input type="text" class="form-control" ng-model="associado.semestreCursando">
+          <select class="form-control" ng-model="associado.semestreCursando">
+            <option value="">Qual Semestre ? </option>
+            <option value="1º ano / 1º semestre"> 1º ano / 1º semestre</option>
+            <option value="1º ano / 2º semestre"> 1º ano / 2º semestre</option>
+            <option value="2º ano / 1º semestre"> 2º ano / 1º semestre</option>
+            <option value="2º ano / 2º semestre"> 2º ano / 2º semestre</option>
+            <option value="3º ano / 1º semestre"> 3º ano / 1º semestre</option>
+            <option value="3º ano / 2º semestre"> 3º ano / 2º semestre</option>
+            <option value="4º ano / 1º semestre"> 4º ano / 1º semestre</option>
+            <option value="4º ano / 2º semestre"> 4º ano / 2º semestre</option>
+            <option value="5º ano / 1º semestre"> 5º ano / 1º semestre</option>
+            <option value="5º ano / 2º semestre"> 5º ano / 2º semestre</option>
+          </select>
         </div>
       </div>
 
       <div class="col-md-2">
         <div class="form-group">
           <label>Aula Sabado</label>
-          <input type="text" class="form-control" ng-model="associado.aulaSabado">
+          <select class="form-control" ng-model="associado.aulaSabado">
+            <option value="">Aula de Sabado ? </option>
+            <option value="simAula">Sim</option>
+            <option value="naoAula">Não</option>
+          </select>
         </div>
       </div>
 
       <div class="col-md-2">
         <div class="form-group">
-          <label>Duranção de Curso</label>
-          <input type="text" class="form-control" ng-model="associado.duracaoCurso">
+          <label>Duração de Curso</label>
+          <select class="form-control" ng-model="associado.duracaoCurso">
+            <option value="">Selecione a Duração</option>
+            <option value="1º Semestre">1º Semestre</option>
+            <option value="2º Semestre">2º Semestre</option>
+            <option value="3º Semestre">3º Semestre</option>
+            <option value="4º Semestre">4º Semestre</option>
+            <option value="5º Semestre">5º Semestre</option>
+            <option value="6º Semestre">6º Semestre</option>
+            <option value="7º Semestre">7º Semestre</option>
+            <option value="8º Semestre">8º Semestre</option>
+            <option value="9º Semestre">9º Semestre</option>
+            <option value="10º Semestr">10º Semestre</option>
+          </select>
         </div>
       </div>
 
@@ -359,35 +448,43 @@
 
       <div class="form-group">
           <label>Valor Mensalidade</label>
-          <input type="text" class="form-control" ng-model="associado.valorMensalidade">
+          <input type="text" class="form-control" ng-model="associado.valorMensalidade" ui-money-mask="2">
         </div>
       </div>
 
       <div class="col-md-2">
         <div class="form-group">
           <label>Possui Bolsa</label>
-          <input type="text" class="form-control" ng-model="associado.possuiBolsaFinCred">
+          <select class="form-control" ng-model="associado.possuiBolsaFinCred" ng-change="bolsa(associado.possuiBolsaFinCred)">
+            <option value="">Possui Bolsa ? </option>
+            <option value="simBolsa">Sim</option>
+            <option value="naoBolsa">Não</option>
+          </select>
         </div>
       </div>
 
 
-      <div class="col-md-2">
+      <div class="col-md-2" ng-show="campoBolsa">
         <div class="form-group">
           <label>% Bolsa</label>
           <input type="text" class="form-control" ng-model="associado.porcBolsaFinCred">
         </div>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Possui Curso Universitario</label>
-          <input type="text" class="form-control" ng-model="associado.cursoUniversitario">
+          <select class="form-control" ng-model="associado.cursoUniversitario" ng-change="curso(associado.cursoUniversitario)">
+            <option value="">Possui curso ? </option>
+            <option value="simCurso">Sim</option>
+            <option value="naoCurso">Não</option>
+           </select>
         </div>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-2" ng-show="campoCurso">
         <div class="form-group">
-          <label>Nome do Curso</label>
+          <label>Qual Curso ?</label>
           <input type="text" class="form-control" ng-model="associado.cursoNome">
         </div>
       </div>
@@ -395,7 +492,11 @@
       <div class="col-md-2">
         <div class="form-group">
           <label>Retido por Falta</label>
-          <input type="text" class="form-control" ng-model="associado.retidoFalta">
+          <select class="form-control" ng-model="associado.retidoFalta">
+            <option value="">Retido por falta ?</option>
+            <option value="simRetido">Sim</option>
+            <option value="naoRetido">Não</option>
+          </select>
         </div>
       </div>
 
@@ -403,16 +504,32 @@
 
       <div class="form-group">
           <label>Retido no Ano</label>
-          <input type="text" class="form-control" ng-model="associado.retidoMaisUmAno">
+          <select class="form-control" ng-model="associado.retidoMaisUmAno">
+            <option value="">Retido no ano</option>
+            <option value="simRetido">Sim</option>
+            <option value="naoRetido">Não</option>
+          </select>
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="form-group">
           <label>Já Desistiu de cursar o ano letivo ?</label>
-          <input type="text" class="form-control" ng-model="associado.desistiuCursarAnoLetivo">
+          <select class="form-control" ng-model="associado.desistiuCursarAnoLetivo" ng-change="desistiu(associado.desistiuCursarAnoLetivo)">
+            <option value=""></option>
+            <option value="simDesistiu">Sim</option>
+            <option value="naoDesistiu">Não</option>
+          </select>
         </div>
       </div>
+
+      <div class="col-md-2" ng-show="campoDesistiu">
+        <div class="form-group">
+          <label>Porque Desistu ?</label>
+          <input type="text" class="form-control" ng-model="associado.cursoNome">
+        </div>
+      </div>
+
 </div>
 
 <div class="row" ng-show="tab7">
