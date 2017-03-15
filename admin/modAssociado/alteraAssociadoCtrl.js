@@ -195,6 +195,11 @@ $scope.dados = function (values){
   $scope.mensagem = true;
   //Ocultando o Alert Mensagem .
   $scope.mensagemDeleta = true;
+  $scope.mensagemObrigatorio = false;
+
+  $scope.associado = {
+	salario: '0,00',
+}
 
 	//*************NOVO INPUT RENDA *********************//
 	var dados = $scope.renda = [];
@@ -214,8 +219,19 @@ $scope.dados = function (values){
 
 //Passa os valores do form em Objeto no "values"
   $scope.update = function(values, FormAssociado) {
+	  console.log(values.nome);
 		var associado = values;
 		var associado = angular.merge(associado,renda);
+	    if (values.nome == '' || values.cpf == '' || values.salario == '' || values.veiculo_id == ''){
+		    
+			$scope.mensagemObrigatorio = true;
+			    $timeout(function () {
+               $scope.mensagemObrigatorio = false;
+           },5000);
+	
+
+			
+		}else{
     // Enviado os valores em objetos para api/user do php/slim
 	 $http.put('../App/associado/update/'+ id , associado).success(function(response){
 
@@ -234,7 +250,7 @@ $scope.dados = function (values){
 
 	    $scope.quatro = false;
    });
-
+		}
 
 	};
 

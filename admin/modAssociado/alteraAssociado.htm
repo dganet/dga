@@ -1,6 +1,11 @@
-<div class="alert alert-warning" ng-hide="mensagem">
-  <strong>Update!</strong> Atualização dos Dados foram inserido com sucesso.
+<div class="alert alert-success" ng-hide="mensagem">
+  <strong>Sucesso!</strong> Dados cadastrado com sucesso.
 </div>
+
+<div class="alert alert-danger" ng-show="mensagemObrigatorio">
+  <strong>Atenção!</strong> Preencha os campos obrigatorio , Nome , CPF , Salario e LINHA.
+</div>
+
 
 <div class="alert alert-danger" ng-hide="mensagemDeleta">
   <strong>Sucesso!</strong> Dados deletado com sucesso.
@@ -32,7 +37,7 @@
     <tbody>
      <tr ng-repeat="x in associados | filter: busca">
        <td>{{x.id}}</td>
-       <td> <a ui-sref="user.associado.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
+       <td><a ui-sref="user.associado.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
      </tr>
 
     </tbody>

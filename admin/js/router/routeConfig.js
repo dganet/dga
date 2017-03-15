@@ -121,7 +121,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
 						label: 'Aprova'
 				 }
 		})
-
+			.state('user.associado.aprova.detalhes', {
+			url: '/:idAssociado',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.idAssociado;
+				}
+		})
 //############################################################################
 //############# **  MODULO NOTICIAS ** ##########################################
 //############################################################################

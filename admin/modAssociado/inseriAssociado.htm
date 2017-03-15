@@ -1,16 +1,9 @@
 <div class="alert alert-success" ng-hide="mensagem">
   <strong>Sucesso!</strong> Dados cadastrado com sucesso.
 </div>
-<div class="alert alert-danger" ng-show="mensagemNome">
-  <strong>Nome!</strong> Dados cadastrado com sucesso.
+<div class="alert alert-danger" ng-show="mensagemObrigatorio">
+  <strong>Atenção!</strong> Preencha os campos obrigatorio , Nome , CPF , Salario e LINHA.
 </div>
-<div class="alert alert-danger" ng-show="mensagemCPF">
-  <strong>CPF!</strong> Dados cadastrado com sucesso.
-</div>
-<div class="alert alert-danger" ng-show="mensagemLinha">
-  <strong>Linha!</strong> Dados cadastrado com sucesso.
-</div>
-
 
 <div class="acoes">
 
@@ -256,7 +249,7 @@
 
      <div class="col-md-3">
        <div class="form-group">
-          <label>Renda do Parentesco</label>
+          <label>Renda</label>
           <input type="text" class="form-control" ng-model="x.rendaParentesco" ui-money-mask="2">
         </div>
       </div>

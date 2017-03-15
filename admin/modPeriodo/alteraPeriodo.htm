@@ -53,7 +53,7 @@
   <div class="col-md-3">
     <div class="form-group">
     <label>Linha</label>
-    <select class="form-control" ng-model="periodo.linha" required="required">
+    <select class="form-control" ng-model="periodo.linha" required>
       <option value="">Selecione uma Linha</option>
       <option value="linha Guaruja">Linha Guaruja</option>
       <option value="linha Santos">Linha Santos</option>
@@ -65,21 +65,21 @@
  <div class="col-md-2">
       <div class="form-group">
             <label>Quantidade de Vagas</label>
-            <input type="number" class="form-control" ng-model="periodo.qtasVagas">
+            <input type="number" class="form-control" ng-model="periodo.qtasVagas" required>
        </div>
      </div>
 
      <div class="col-md-3">
       <div class="form-group">
             <label>Data Inicial</label>
-            <input type="date" class="form-control" ng-model="periodo.dataInicio">
+            <input type="date" class="form-control" ng-model="periodo.dataInicio" required>
        </div>
      </div>
 
      <div class="col-md-3">
       <div class="form-group">
             <label>Data Final</label>
-            <input type="date" class="form-control" ng-model="periodo.dataFinal">
+            <input type="date" class="form-control" ng-model="periodo.dataFinal" required>
        </div>
      </div>
 

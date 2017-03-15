@@ -164,9 +164,11 @@ $scope.go = function (dados){
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagem = true;
-  $scope.mensagemNome = false;
-  $scope.mensagemCPF = false;
-  $scope.mensagemLinha = false;
+  $scope.mensagemObrigatorio = false;
+
+$scope.associado = {
+	salario: '0,00',
+}
 
   //Pegando as linhas
   $http.get('../App/veiculo/list').success(function(data){
@@ -193,6 +195,16 @@ $scope.removeInput = function() {
   $scope.add = function(values, FormAssociado) {
 		var associado = values;
 		var associado = angular.merge(associado,renda);
+	    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.veiculo_id == undefined){
+
+			$scope.mensagemObrigatorio = true;
+			    $timeout(function () {
+               $scope.mensagemObrigatorio = false;
+           },10000);
+	
+
+			
+		}else{
     // Enviado os valores em objetos para api/user do php/slim 
 		$http.post('../App/associado/save/'+ id, associado).success(function(){
 
@@ -215,7 +227,7 @@ $scope.removeInput = function() {
     $scope.reset();
 
     });
-
+   };
   };
 
 });
