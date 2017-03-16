@@ -73,7 +73,7 @@
   </div>
 
 <form name="FormAssociado" ng-submit="update(associado)" novalidate>
-    <div class="row" ng-show="tab1">
+  <div class="row" ng-show="tab1">
 
      <div class="col-md-3">
       <div class="form-group">
@@ -90,386 +90,509 @@
         </div>
       </div>
 
+      
 
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>RG</label>
-            <input type="text" class="form-control" ng-model="associado.rg">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Orgão Expedidor</label>
-            <input type="text" class="form-control" ng-model="associado.orgaoExpedidor">
-          </div>
-        </div>
-
-       <div class="col-md-4">
-         <div class="form-group">
-            <label>Nome Completo do Pai</label>
-            <input type="text" class="form-control" ng-model="associado.nomePai">
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Nome Completo Mãe</label>
-            <input type="text" class="form-control" ng-model="associado.nomeMae">
-          </div>
-        </div>
-
-
-       <div class="col-md-2">
-          <div class="form-group">
-            <label>Telefone Residencial</label>
-            <input type="text" class="form-control" ng-model="associado.telResidencial" ui-br-phone-number>
-          </div>
-        </div>
-
-       <div class="col-md-2">
-          <div class="form-group">
-            <label>Telefone Celular</label>
-            <input type="text" class="form-control" ng-model="associado.telCelular" ui-br-phone-number>
-          </div>
-        </div>
-
-       <div class="col-md-2">
-          <div class="form-group">
-            <label>Estado Civil</label>
-            <input type="text" class="form-control" ng-model="associado.estadoCivil" >
-          </div>
-        </div>
-
-
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Nome do Conjuje</label>
-           <input type="text" class="form-control" ng-model="associado.nomeConjuje">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Plano de Saude</label>
-            <input type="text" class="form-control" ng-model="associado.planoSaude">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Plano Empresa</label>
-            <input type="text" class="form-control" ng-model="associado.planoEmpresa">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Tipo de Sangue</label>
-            <input type="text" class="form-control" ng-model="associado.tipoSangue">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Possui Problema de Saude</label>
-            <input type="text" class="form-control" ng-model="associado.problemaSaude">
-          </div>
-        </div>
-
-    </div>
-
-
-
-    <div class="row" ng-show="tab2">
-
-
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Endereço</label>
-            <input type="text" class="form-control" ng-model="associado.endereco">
-          </div>
-        </div>
-
-       <div class="col-md-1">
+      <div class="col-md-2">
         <div class="form-group">
-            <label>Número</label>
-            <input type="text" class="form-control" ng-model="associado.numero">
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Bairro</label>
-            <input type="text" class="form-control" ng-model="associado.bairro">
-          </div>
-        </div>
-
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Cidade</label>
-            <input type="text" class="form-control" ng-model="associado.cidade">
-          </div>
-        </div>
-
-       <div class="col-md-2">
-          <div class="form-group">
-            <label>CEP</label>
-            <input type="text" class="form-control" ng-model="associado.cep" ui-br-cep-mask>
-          </div>
-        </div>
-
-    </div>
-
-    <div class="row" ng-show="tab3">
-
-       <div class="col-md-2">
-
-        <div class="form-group">
-            <label>Profissão</label>
-            <input type="text" class="form-control" ng-model="associado.profissao">
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Nome da Empresa</label>
-            <input type="text" class="form-control" ng-model="associado.nomeEmpresa">
-          </div>
-        </div>
-
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Função</label>
-            <input type="text" class="form-control" ng-model="associado.funcao">
-          </div>
-        </div>
-
-    </div>
-
-    <div ng-show="tab4">
-
-      <div class="row">
-
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Renda</label>
-
-            <input type="text" class="form-control" ng-model="associado.salario" ui-money-mask="2" required="required">
-          </div>
+          <label>CPF</label>
+          <input type="text" class="form-control" ng-model="associado.cpf" ui-br-cpf-mask>
         </div>
       </div>
 
-      <div class="row" data-ng-repeat="x in renda">
 
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Nome</label>
-            <input type="text" class="form-control" ng-model="x.nomeParentesco">
-          </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>RG</label>
+          <input type="text" class="form-control" ng-model="associado.rg">
         </div>
+      </div>
 
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Grau de Parentesco</label>
-            <select class="form-control" ng-model="x.grauParentesco">
-              <option value="">Selecione o Grau de Parentesco</option>
-              <option value="Esposo">Esposo(a)</option>
-              <option value="Filho">Filho(a)</option>
-              <option value="Mae">Mãe</option>
-              <option value="Pai">Pai</option>
-              <option value="Irmao">Irmão</option>
-              <option value="Tio">Tio</option>
-              <option value="Primo">Primo</option>
-              <option value="Cunhado">Cunhado</option>
-              <option value="Sogro">Sogro</option>
-              <option value="Outros">Outros</option>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Orgão Expedidor</label>
+          <select class="form-control" ng-model="associado.orgaoExpedidor">
+          <option value="">Selecione o Orgão</option> 
+         	<option value="SSP-AC">SSP-AC</option> 
+          <option value="SSP-AL">SSP-AL</option> 
+          <option value="SSP-AM">SSP-AM</option> 
+          <option value="SSP-AP">SSP-AP</option> 
+          <option value="SSP-BA">SSP-BA</option> 
+          <option value="SSP-CE">SSP-CE</option> 
+          <option value="SSP-DF">SSP-DF</option> 
+          <option value="SSP-ES">SSP-ES</option> 
+          <option value="SSP-GO">SSP-GO</option> 
+          <option value="SSP-MA">SSP-MA</option> 
+          <option value="SSP-MT">SSP-MT</option> 
+          <option value="SSP-MS">SSP-MS</option> 
+          <option value="SSP-MG">SSP-MG</option> 
+          <option value="SSP-PA">SSP-PA</option> 
+          <option value="SSP-PB">SSP-PB</option> 
+          <option value="SSP-PR">SSP-PR</option> 
+          <option value="SSP-PE">SSP-PE</option> 
+          <option value="SSP-PI">SSP-PI</option> 
+          <option value="SSP-RJ">SSP-RJ</option> 
+          <option value="SSP-RN">SSP-RN</option> 
+          <option value="SSP-RO">SSP-RO</option> 
+          <option value="SSP-RS">SSP-RS</option> 
+          <option value="SSP-RR">SSP-RR</option> 
+          <option value="SSP-SC">SSP-SC</option> 
+          <option value="SSP-SE">SSP-SE</option> 
+          <option value="SSP-SP">SSP-SP</option> 
+          </select>
+        </div>
+      </div>
+
+     <div class="col-md-4">
+       <div class="form-group">
+          <label>Nome Completo do Pai</label>
+          <input type="text" class="form-control" ng-model="associado.nomePai">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Nome Completo Mãe</label>
+          <input type="text" class="form-control" ng-model="associado.nomeMae">
+        </div>
+      </div>
+
+
+     <div class="col-md-2">
+        <div class="form-group">
+          <label>Telefone Residencial</label>
+          <input type="text" class="form-control" ng-model="associado.telResidencial" ui-br-phone-number>
+        </div>
+      </div>
+
+     <div class="col-md-2">
+        <div class="form-group">
+          <label>Telefone Celular</label>
+          <input type="text" class="form-control" ng-model="associado.telCelular" ui-br-phone-number>
+        </div>
+      </div>
+
+     <div class="col-md-2">
+        <div class="form-group">
+          <label>Estado Civil</label>
+            <select class="form-control" ng-model="associado.estadoCivil" ng-change="civil(associado.estadoCivil)">
+            <option value="">Selecione Estado Civil</option>
+            <option value="solteiro">Solteiro</option>
+            <option value="casado">Casado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-2" ng-show="campoConjuge">
+        <div class="form-group">
+          <label>Nome do Conjuje</label>
+         <input type="text" class="form-control" ng-model="associado.nomeConjuje">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Tipo de Sangue</label>
+          <select class="form-control" ng-model="associado.tipoSangue">
+            <option value="">Selecione o tipo ?</option>
+            <option value="A+">A+</option>
+            <option value="B+">B+</option>
+            <option value="AB+">AB+</option>
+            <option value="A-">A-</option>
+            <option value="B-">B-</option>
+            <option value="AB-">AB-</option>
+            <option value="O-">O-</option>
+            <option value="O+">O+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Plano de Saude</label>
+          <select class="form-control" ng-model="associado.planoSaude" ng-change="plano(associado.planoSaude)">
+            <option value="">Tem Plano ? </option>
+            <option value="simPlano">Sim</option>
+            <option value="naoPlano">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-2" ng-show="campoQualPlano">
+        <div class="form-group">
+          <label>Qual Plano ?</label>
+         <input type="text" class="form-control" ng-model="associado.qualPlano">
+        </div>
+      </div>      
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Problema de Saude</label>
+          <select class="form-control" ng-model="associado.problemaSaude" ng-change="problema(associado.problemaSaude)">
+            <option value="">Problema de Saude ? </option>
+            <option value="simProblema">Sim</option>
+            <option value="naoProblema">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-2" ng-show="campoProblema">
+        <div class="form-group">
+          <label>Qual Problema?</label>
+         <input type="text" class="form-control" ng-model="associado.quaisProblemas">
+        </div>
+      </div>   
+
+  </div>
+
+
+
+  <div class="row" ng-show="tab2">
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Endereço</label>
+          <input type="text" class="form-control" ng-model="associado.endereco">
+        </div>
+      </div>
+
+     <div class="col-md-1">
+      <div class="form-group">
+          <label>Número</label>
+          <input type="text" class="form-control" ng-model="associado.numero">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Bairro</label>
+          <input type="text" class="form-control" ng-model="associado.bairro">
+        </div>
+      </div>
+
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Cidade</label>
+          <input type="text" class="form-control" disabled  ng-model="associado.cidade">
+        </div>
+      </div>
+
+     <div class="col-md-2">
+        <div class="form-group">
+          <label>CEP</label>
+          <input type="text" class="form-control" disabled ng-model="associado.cep" ui-br-cep-mask>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="row" ng-show="tab3">
+
+     <div class="col-md-2">
+
+      <div class="form-group">
+          <label>Profissão</label>
+          <input type="text" class="form-control" ng-model="associado.profissao">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Nome da Empresa</label>
+          <input type="text" class="form-control" ng-model="associado.nomeEmpresa">
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Função</label>
+          <input type="text" class="form-control" ng-model="associado.funcao">
+        </div>
+      </div>
+
+  </div>
+
+  <div ng-show="tab4">
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Renda do Associado</label>          
+          <input type="text" class="form-control" ng-model="associado.salario" ui-money-mask="2" required="required">
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="row" data-ng-repeat="x in renda">
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" class="form-control" ng-model="x.nomeParentesco">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Grau de Parentesco</label>
+          <select class="form-control" ng-model="x.grauParentesco">
+            <option value="">Selecione o Grau de Parentesco</option>
+            <option value="Esposo">Esposo(a)</option>
+            <option value="Filho">Filho(a)</option>
+            <option value="Mae">Mãe</option>
+            <option value="Pai">Pai</option>
+            <option value="Irmao">Irmão</option>
+            <option value="Tio">Tio</option>
+            <option value="Primo">Primo</option>
+            <option value="Cunhado">Cunhado</option>
+            <option value="Sogro">Sogro</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+      </div>
+
+     <div class="col-md-3">
+       <div class="form-group">
+          <label>Renda</label>
+          <input type="text" class="form-control" ng-model="x.rendaParentesco" ui-money-mask="2">
+        </div>
+      </div>
+
+      <div class="col-md-1">
+        <div class="form-group">
+          <label ng-show="$last">Remover</label>
+          <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeInput()">x</button>
+        </div>
+      </div>
+
+
+  </div>
+  <button type="button" ng-click="addInput()">Adicionar Nova Renda</button>
+
+
+  </div>
+
+
+  <div class="row" ng-show="tab5">
+
+       <div class="col-md-2">
+        <div class="form-group">
+          <label>Quantidades de Filho</label>
+          <input type="text" class="form-control" ng-model="associado.qtdeFilhos">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Idades dos Filhos</label>
+          <input type="text" class="form-control" ng-model="associado.idadeFilhos">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Qtd Pesssoas Reside</label>
+          <input type="text" class="form-control" ng-model="associado.pessoasResidencia">
+        </div>
+      </div>
+
+     <div class="col-md-2">
+      <div class="form-group">
+          <label>Pessoas que trabalham</label>
+          <input type="text" class="form-control" ng-model="associado.qtasPessoasTrab">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Renda Familiar</label>
+          <input type="text" class="form-control" ng-model="associado.rendaFamiliar">
+        </div>
+      </div>
+
+
+  </div>
+
+<div class="row" ng-show="tab6">
+
+     <div class="col-md-3">
+
+      <div class="form-group">
+          <label>Curso</label>
+          <select class="form-control" ng-model="associado.curso"  ng-options="x.id as x.nome for x in cursos">
+              <option value="">Selecione um Curso</option>
+           </select>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Universidade</label>
+           <select class="form-control" ng-model="associado.universidade"  ng-options="x.id as x.nome for x in universidades">
+              <option value="">Selecione uma Universidade</option>
+           </select>
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Semestre Cursando</label>
+          <select class="form-control" ng-model="associado.semestreCursando">
+            <option value="">Qual Semestre ? </option>
+            <option value="1º ano 1 semestre">1º ano 1 semestre</option>
+            <option value="1º ano 2 semestre">1º ano 2 semestre</option>
+            <option value="2º ano 3 semestre">2º ano 3 semestre</option>
+            <option value="2º ano 4 semestre">2º ano 4 semestre</option>
+            <option value="3º ano 5 semestre">3º ano 5 semestre</option>
+            <option value="3º ano 6 semestre">3º ano 6 semestre</option>
+            <option value="4º ano 7 semestre">4º ano 7 semestre</option>
+            <option value="4º ano 8 semestre">4º ano 8 semestre</option>
+            <option value="5º ano 9 semestre">5º ano 9 semestre</option>
+            <option value="5º ano 10 semestre">5º ano 10 semestre</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Aula Sabado</label>
+          <select class="form-control" ng-model="associado.aulaSabado">
+            <option value="">Aula de Sabado ? </option>
+            <option value="simAula">Sim</option>
+            <option value="naoAula">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Duração de Curso</label>
+          <select class="form-control" ng-model="associado.duracaoCurso">
+            <option value="">Selecione a Duração</option>
+            <option value="1º ano 1 semestre">1º ano 1 semestre</option>
+            <option value="1º ano 2 semestre">1º ano 2 semestre</option>
+            <option value="2º ano 3 semestre">2º ano 3 semestre</option>
+            <option value="2º ano 4 semestre">2º ano 4 semestre</option>
+            <option value="3º ano 5 semestre">3º ano 5 semestre</option>
+            <option value="3º ano 6 semestre">3º ano 6 semestre</option>
+            <option value="4º ano 7 semestre">4º ano 7 semestre</option>
+            <option value="4º ano 8 semestre">4º ano 8 semestre</option>
+            <option value="5º ano 9 semestre">5º ano 9 semestre</option>
+            <option value="5º ano 10 semestre">5º ano 10 semestre</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>RGM</label>
+          <input type="text" class="form-control" ng-model="associado.rgm">
+        </div>
+      </div>
+
+     <div class="col-md-3">
+
+      <div class="form-group">
+          <label>Valor Mensalidade</label>
+          <input type="text" class="form-control" ng-model="associado.valorMensalidade" ui-money-mask="2">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Possui Bolsa</label>
+          <select class="form-control" ng-model="associado.possuiBolsaFinCred" ng-change="bolsa(associado.possuiBolsaFinCred)">
+            <option value="">Possui Bolsa ? </option>
+            <option value="simBolsa">Sim</option>
+            <option value="naoBolsa">Não</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="col-md-2" ng-show="campoBolsa">
+        <div class="form-group">
+          <label>% Bolsa</label>
+          <input type="text" class="form-control" ng-model="associado.porcBolsaFinCred">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Possui Curso Universitario</label>
+          <select class="form-control" ng-model="associado.cursoUniversitario" ng-change="curso(associado.cursoUniversitario)">
+            <option value="">Possui curso ? </option>
+            <option value="simCurso">Sim</option>
+            <option value="naoCurso">Não</option>
+           </select>
+        </div>
+      </div>
+
+      <div class="col-md-2" ng-show="campoCurso">
+        <div class="form-group">
+          <label>Qual Curso ?</label>
+          <input type="text" class="form-control" ng-model="associado.cursoNome">
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Retido por Falta</label>
+          <select class="form-control" ng-model="associado.retidoFalta">
+            <option value="">Retido por falta ?</option>
+            <option value="simRetido">Sim</option>
+            <option value="naoRetido">Não</option>
+          </select>
+        </div>
+      </div>
+
+     <div class="col-md-2">
+
+      <div class="form-group">
+          <label>Retido no Ano</label>
+          <select class="form-control" ng-model="associado.retidoMaisUmAno">
+            <option value="">Retido no ano ?</option>
+            <option value="simRetido">Sim</option>
+            <option value="naoRetido">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Já Desistiu de cursar o ano letivo ?</label>
+          <select class="form-control" ng-model="associado.desistiuCursarAnoLetivo" ng-change="desistiu(associado.desistiuCursarAnoLetivo)">
+            <option value=""></option>
+            <option value="simDesistiu">Sim</option>
+            <option value="naoDesistiu">Não</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-2" ng-show="campoDesistiu">
+        <div class="form-group">
+          <label>Porque Desistu ?</label>
+          <input type="text" class="form-control" ng-model="associado.cursoNome">
+        </div>
+      </div>
+
+</div>
+
+<div class="row" ng-show="tab7">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Linha</label>
+            <select class="form-control" ng-model="associado.veiculo_id"  ng-options="x.id as x.nomeLinha for x in veiculos">
+              <option value="">Selecione um Linha</option>
             </select>
-          </div>
         </div>
-
-       <div class="col-md-3">
-         <div class="form-group">
-            <label>Renda do Parentesco</label>
-            <input type="text" class="form-control" ng-model="x.rendaParentesco" ui-money-mask="2">
-          </div>
-        </div>
-
-        <div class="col-md-1">
-          <div class="form-group">
-            <label ng-show="$last">Remover</label>
-            <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeInput()">x</button>
-          </div>
-        </div>
-
-
-    </div>
-    <button type="button" ng-click="addInput()">Adicionar Nova Renda</button>
-
-
-    </div>
-
-
-    <div class="row" ng-show="tab5">
-
-         <div class="col-md-2">
-          <div class="form-group">
-            <label>Quantidades de Filho</label>
-            <input type="text" class="form-control" ng-model="associado.qtdeFilhos">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Idades dos Filhos</label>
-            <input type="text" class="form-control" ng-model="associado.idadeFilhos">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Qtd Pesssoas Reside</label>
-            <input type="text" class="form-control" ng-model="associado.pessoasResidencia">
-          </div>
-        </div>
-
-       <div class="col-md-2">
-        <div class="form-group">
-            <label>Pessoas que trabalham</label>
-            <input type="text" class="form-control" ng-model="associado.qtasPessoasTrab">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Renda Familiar</label>
-            <input type="text" class="form-control" ng-model="associado.rendaFamiliar">
-          </div>
-        </div>
-
-
-    </div>
-
-  <div class="row" ng-show="tab6">
-
-       <div class="col-md-2">
-
-        <div class="form-group">
-            <label>Curso</label>
-            <input type="text" class="form-control" ng-model="associado.curso">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Universidade</label>
-            <input type="text" class="form-control" ng-model="associado.universidade">
-          </div>
-        </div>
-
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Semestre Cursando</label>
-            <input type="text" class="form-control" ng-model="associado.semestreCursando">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Aula Sabado</label>
-            <input type="text" class="form-control" ng-model="associado.aulaSabado">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Duranção de Curso</label>
-            <input type="text" class="form-control" ng-model="associado.duracaoCurso">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>RGM</label>
-            <input type="text" class="form-control" ng-model="associado.rgm">
-          </div>
-        </div>
-
-       <div class="col-md-2">
-
-        <div class="form-group">
-            <label>Valor Mensalidade</label>
-            <input type="text" class="form-control" ng-model="associado.valorMensalidade">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Possui Bolsa</label>
-            <input type="text" class="form-control" ng-model="associado.possuiBolsaFinCred">
-          </div>
-        </div>
-
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>% Bolsa</label>
-            <input type="text" class="form-control" ng-model="associado.porcBolsaFinCred">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Possui Curso Universitario</label>
-            <input type="text" class="form-control" ng-model="associado.cursoUniversitario">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Nome do Curso</label>
-            <input type="text" class="form-control" ng-model="associado.cursoNome">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Retido por Falta</label>
-            <input type="text" class="form-control" ng-model="associado.retidoFalta">
-          </div>
-        </div>
-
-       <div class="col-md-2">
-
-        <div class="form-group">
-            <label>Retido no Ano</label>
-            <input type="text" class="form-control" ng-model="associado.retidoMaisUmAno">
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Já Desistiu de cursar o ano letivo ?</label>
-            <input type="text" class="form-control" ng-model="associado.desistiuCursarAnoLetivo">
-          </div>
-        </div>
-  </div>
-
-  <div class="row" ng-show="tab7">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label>Linha</label>
-              <select class="form-control" ng-model="associado.veiculo_id" required="required" ng-options="x.id as x.nomeLinha for x in veiculos">
-                <option value="">Selecione um Linha</option>
-              </select>
-          </div>
-        </div>
-  </div>
+      </div>
+</div>
 <hr>
 
 <button type="submit" class="btn btn-warning">Atualizar</button>

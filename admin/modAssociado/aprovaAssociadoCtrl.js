@@ -163,12 +163,85 @@ $scope.quatro = false;
     $http.get('../App/associado/listaprovacao').success(function(data){
       $scope.associados = data;  
     });
+	
+    //scope.master vazio;
+  $scope.master = {};
+  //Ocultando o Alert Mensagem .
+  $scope.mensagem = true;
+  $scope.mensagemObrigatorio = false;
 
-	  //Pegando as linhas
+$scope.associado = {
+	cep: '11250-000',
+	cidade: 'Bertioga'
+}
+$scope.civil = function (dados) {
+	if (dados == 'casado'){
+	$scope.campoConjuge = true;
+	} 
+	if (dados == 'solteiro' || dados == ''){
+	$scope.campoConjuge = false;
+	} 
+
+};
+$scope.plano = function (dados) {
+	if (dados == 'simPlano'){
+	$scope.campoQualPlano = true;
+	} 
+	if (dados == 'naoPlano' || dados == ''){
+	$scope.campoQualPlano = false;
+	} 
+};
+$scope.problema = function (dados) {
+	if (dados == 'simProblema'){
+	$scope.campoProblema = true;
+	} 
+	if (dados == 'naoProblema' || dados == ''){
+	$scope.campoProblema = false;
+	} 
+};
+
+$scope.bolsa = function (dados) {
+	if (dados == 'simBolsa'){
+	$scope.campoBolsa = true;
+	} 
+	if (dados == 'naoBolsa' || dados == ''){
+	$scope.campoBolsa = false;
+	} 
+};
+$scope.curso = function (dados) {
+	if (dados == 'simCurso'){
+	$scope.campoCurso = true;
+	} 
+	if (dados == 'naoCurso' || dados == ''){
+	$scope.campoCurso = false;
+	} 
+};
+$scope.desistiu = function (dados) {
+	if (dados == 'simDesistiu'){
+	$scope.campoDesistiu = true;
+	} 
+	if (dados == 'naoDesistiu' || dados == ''){
+	$scope.campoDesistiu = false;
+	} 
+};
+
+  //Pegando as linhas
   $http.get('../App/veiculo/list').success(function(data){
   	$scope.veiculos = data;
 
   });
+    //Pegando as Cursos
+  $http.get('../App/cursofaculdade/list').success(function(data){
+  	$scope.cursos = data;
+
+  });
+      //Pegando as Universidades
+  $http.get('../App/universidade/list').success(function(data){
+  	$scope.universidades = data;
+
+  });
+
+
 
 // Seleciona o usuario e mostra do Lado.
 $scope.dados = function (values){

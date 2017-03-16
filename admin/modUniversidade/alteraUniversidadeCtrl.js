@@ -84,7 +84,7 @@ $scope.dados = function (values){
     // Enviado os valores em objetos para api/user do php/slim
     $http.delete('../App/universidade/delete/'+ idUsuario, values).success(function(){
     // Depois mandando para mesma pagina  
-    $scope.activePath = $location.path('/user/universiadade/altera');
+    $scope.activePath = $location.path('/user/universidade/altera');
    
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagemDeleta = false;
