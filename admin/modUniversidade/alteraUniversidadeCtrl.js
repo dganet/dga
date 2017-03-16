@@ -1,12 +1,12 @@
-app.controller("alteraCursoCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
+app.controller("alteraUniversidadeCtrl", function($scope, $http,$location , $timeout, $sessionStorage ){
 //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
 
 $scope.quatro = false;
 
 //Lista os Usuarios
-	$http.get('../App/curso/list').success(function(data){
-		$scope.cursos = data;
+	$http.get('../App/universidade/list').success(function(data){
+		$scope.universidades = data;
 
 	});
 
@@ -17,8 +17,8 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		$http.get('../App/curso/list/'+ id).success(function(data){
-		$scope.curso = data[0];
+		$http.get('../App/universidade/list/'+ id).success(function(data){
+		$scope.universidade = data[0];
 		
 	});
 
@@ -35,15 +35,15 @@ $scope.dados = function (values){
 //*************UPDATE CURSO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormNoticia) {
+  $scope.add = function(values, FormUniversidade) {
 
 	 $scope.dados = values;
 	 var id = $scope.dados.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.put('../App/curso/update/'+ idUsuario , values).success(function(){
+    $http.put('../App/universidade/update/'+ idUsuario , values).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/curso/altera');
+      $scope.activePath = $location.path('/user/universidade/altera');
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
@@ -51,7 +51,7 @@ $scope.dados = function (values){
                $scope.mensagem = true;
            },10000);
 
-    $http.get('../App/curso/list').success(function(data){
+    $http.get('../App/universidade/list').success(function(data){
     $scope.cursos = data;
      });
 
@@ -62,7 +62,7 @@ $scope.dados = function (values){
 
   var id = $scope.id = values;
 
-    $http.get('../App/curso/list/'+ id).success(function(data){
+    $http.get('../App/universidade/list/'+ id).success(function(data){
     $scope.curso = data[0];
     
   });
@@ -82,9 +82,9 @@ $scope.dados = function (values){
   $scope.deleta = function(values) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.delete('../App/curso/delete/'+ values).success(function(){
+    $http.delete('../App/universidade/delete/'+ values).success(function(){
     // Depois mandando para mesma pagina  
-    $scope.activePath = $location.path('/user/curso/altera');
+    $scope.activePath = $location.path('/user/universiadade/altera');
    
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagemDeleta = false;
@@ -93,7 +93,7 @@ $scope.dados = function (values){
            },10000);
 
 
-    $http.get('../App/curso/list').success(function(data){
+    $http.get('../App/universidade/list').success(function(data){
     $scope.cursos = data;
 
     });

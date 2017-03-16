@@ -6,9 +6,7 @@ $scope.quatro = false;
 
 //Lista os Cursos
 	$http.get('../App/cursofaculdade/list').success(function(data){
-		console.log($scope.cursos = data);
-    
-
+		$scope.cursos = data;
 	});
 
 // Seleciona o usuario e mostra do Lado. 
@@ -36,13 +34,13 @@ $scope.dados = function (values){
 //*************UPDATE CURSO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormNoticia) {
+  $scope.add = function(values, FormCurso) {
 
 	 $scope.dados = values;
 	 var id = $scope.dados.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.put('../App/curso/update/'+ idUsuario , values).success(function(){
+    $http.put('../App/cursofaculdade/update/'+ idUsuario , values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/curso/altera');
          
@@ -52,7 +50,7 @@ $scope.dados = function (values){
                $scope.mensagem = true;
            },10000);
 
-    $http.get('../App/curso/list').success(function(data){
+    $http.get('../App/cursofaculdade/list').success(function(data){
     $scope.cursos = data;
      });
 
@@ -63,7 +61,7 @@ $scope.dados = function (values){
 
   var id = $scope.id = values;
 
-    $http.get('../App/curso/list/'+ id).success(function(data){
+    $http.get('../App/cursofaculdade/list/'+ id).success(function(data){
     $scope.curso = data[0];
     
   });
@@ -83,7 +81,7 @@ $scope.dados = function (values){
   $scope.deleta = function(values) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.delete('../App/curso/delete/'+ values).success(function(){
+    $http.delete('../App/cursofaculdade/delete/'+ values).success(function(){
     // Depois mandando para mesma pagina  
     $scope.activePath = $location.path('/user/curso/altera');
    
@@ -94,7 +92,7 @@ $scope.dados = function (values){
            },10000);
 
 
-    $http.get('../App/curso/list').success(function(data){
+    $http.get('../App/cursofaculdade/list').success(function(data){
     $scope.cursos = data;
 
     });

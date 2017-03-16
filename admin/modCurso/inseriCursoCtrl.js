@@ -11,8 +11,6 @@ var idUsuario = sessionStorage.getItem('usuario.id');
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormCurso) {
-  console.log(values);
-
     // Enviado os valores em objetos para api/user do php/slim
     $http.post('../App/cursofaculdade/save/'+ idUsuario, values).success(function(){
       // Depois mandando para mesma pagina  

@@ -228,7 +228,7 @@ $scope.desistiu = function (dados) {
 
   });
     //Pegando as Cursos
-  $http.get('../App/curso/list').success(function(data){
+  $http.get('../App/cursofaculdade/list').success(function(data){
   	$scope.cursos = data;
 
   });
