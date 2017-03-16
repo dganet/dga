@@ -1,0 +1,66 @@
+<div class="alert alert-success" ng-hide="mensagem">
+  <strong>Sucesso!</strong> Dados alterado com sucesso.
+</div>
+
+<div class="alert alert-danger" ng-hide="mensagemDeleta">
+  <strong>Sucesso!</strong> Dados deletado com sucesso.
+</div>
+
+<div class="acoes">
+
+<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+  <label>Alteraração dos Cursos</label>
+</div>
+
+<hr>
+
+<div class="conteudo">
+ 
+ <div class="tres">
+
+   <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo titulo">
+   <br>
+
+   <table class="table table-condensed">
+    <thead>
+     <tr>
+        <td>Cursos</td>
+     </tr>
+    </thead>
+
+    <tbody> 
+     <tr ng-repeat="x in cursos | filter: busca  ">
+       <td> <a ui-sref="user.curso.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
+     </tr>
+   
+    </tbody>
+
+   </table>
+
+  </div>
+
+  <div class="quatro" ng-show="quatro">
+<h4>{{curso.titulo}}</h4>
+    <hr>
+
+
+<form name="FormCurso" ng-submit="add(curso)">
+  
+  <div class="row">
+
+  <div class="col-md-12">
+    <div class="form-group">
+    <label>Nome do Curso</label>
+    <input type="text" class="form-control" ng-model="curso.nome" required> 
+    </div> 
+    </div>
+
+    </div>
+  
+<hr>
+<button type="submit" class="btn btn-primary">Salvar Dados</button> 
+<button type="button" class="btn btn-danger" ng-click="deleta(curso.id)">Deletar</button>
+</form>
+
+  </div>
+</div>

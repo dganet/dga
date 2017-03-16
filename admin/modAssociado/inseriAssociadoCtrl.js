@@ -227,6 +227,17 @@ $scope.desistiu = function (dados) {
   	$scope.veiculos = data;
 
   });
+    //Pegando as Cursos
+  $http.get('../App/curso/list').success(function(data){
+  	$scope.cursos = data;
+
+  });
+      //Pegando as Universidades
+  $http.get('../App/universidade/list').success(function(data){
+  	$scope.universidades = data;
+
+  });
+
 
 
 var dados = $scope.renda = [];

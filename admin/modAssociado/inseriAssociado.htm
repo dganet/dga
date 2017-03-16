@@ -148,6 +148,7 @@
         <div class="form-group">
           <label>Tipo de Sangue</label>
           <select class="form-control" ng-model="associado.tipoSangue">
+            <option value="">Selecione o tipo ?</option>
             <option value="A+">A+</option>
             <option value="B+">B+</option>
             <option value="AB+">AB+</option>
@@ -155,6 +156,7 @@
             <option value="B-">B-</option>
             <option value="AB-">AB-</option>
             <option value="O-">O-</option>
+            <option value="O+">O+</option>
           </select>
         </div>
       </div>
@@ -191,7 +193,7 @@
       <div class="col-md-2" ng-show="campoProblema">
         <div class="form-group">
           <label>Qual Problema?</label>
-         <input type="text" class="form-control" ng-model="associado.qualPlano">
+         <input type="text" class="form-control" ng-model="associado.quaisProblemas">
         </div>
       </div>   
 
@@ -372,42 +374,46 @@
 
 <div class="row" ng-show="tab6">
 
-     <div class="col-md-2">
+     <div class="col-md-3">
 
       <div class="form-group">
           <label>Curso</label>
-          <input type="text" class="form-control" ng-model="associado.curso">
+          <select class="form-control" ng-model="associado.curso"  ng-options="x.id as x.nome for x in cursos">
+              <option value="">Selecione um Curso</option>
+           </select>
         </div>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Universidade</label>
-          <input type="text" class="form-control" ng-model="associado.universidade">
+           <select class="form-control" ng-model="associado.universidade"  ng-options="x.id as x.nome for x in universidades">
+              <option value="">Selecione uma Universidade</option>
+           </select>
         </div>
       </div>
 
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Semestre Cursando</label>
           <select class="form-control" ng-model="associado.semestreCursando">
             <option value="">Qual Semestre ? </option>
-            <option value="1º ano / 1º semestre"> 1º ano / 1º semestre</option>
-            <option value="1º ano / 2º semestre"> 1º ano / 2º semestre</option>
-            <option value="2º ano / 1º semestre"> 2º ano / 1º semestre</option>
-            <option value="2º ano / 2º semestre"> 2º ano / 2º semestre</option>
-            <option value="3º ano / 1º semestre"> 3º ano / 1º semestre</option>
-            <option value="3º ano / 2º semestre"> 3º ano / 2º semestre</option>
-            <option value="4º ano / 1º semestre"> 4º ano / 1º semestre</option>
-            <option value="4º ano / 2º semestre"> 4º ano / 2º semestre</option>
-            <option value="5º ano / 1º semestre"> 5º ano / 1º semestre</option>
-            <option value="5º ano / 2º semestre"> 5º ano / 2º semestre</option>
+            <option value="1º ano 1 semestre">1º ano 1 semestre</option>
+            <option value="1º ano 2 semestre">1º ano 2 semestre</option>
+            <option value="2º ano 3 semestre">2º ano 3 semestre</option>
+            <option value="2º ano 4 semestre">2º ano 4 semestre</option>
+            <option value="3º ano 5 semestre">3º ano 5 semestre</option>
+            <option value="3º ano 6 semestre">3º ano 6 semestre</option>
+            <option value="4º ano 7 semestre">4º ano 7 semestre</option>
+            <option value="4º ano 8 semestre">4º ano 8 semestre</option>
+            <option value="5º ano 9 semestre">5º ano 9 semestre</option>
+            <option value="5º ano 10 semestre">5º ano 10 semestre</option>
           </select>
         </div>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <div class="form-group">
           <label>Aula Sabado</label>
           <select class="form-control" ng-model="associado.aulaSabado">
@@ -423,16 +429,16 @@
           <label>Duração de Curso</label>
           <select class="form-control" ng-model="associado.duracaoCurso">
             <option value="">Selecione a Duração</option>
-            <option value="1º Semestre">1º Semestre</option>
-            <option value="2º Semestre">2º Semestre</option>
-            <option value="3º Semestre">3º Semestre</option>
-            <option value="4º Semestre">4º Semestre</option>
-            <option value="5º Semestre">5º Semestre</option>
-            <option value="6º Semestre">6º Semestre</option>
-            <option value="7º Semestre">7º Semestre</option>
-            <option value="8º Semestre">8º Semestre</option>
-            <option value="9º Semestre">9º Semestre</option>
-            <option value="10º Semestr">10º Semestre</option>
+            <option value="1º ano 1 semestre">1º ano 1 semestre</option>
+            <option value="1º ano 2 semestre">1º ano 2 semestre</option>
+            <option value="2º ano 3 semestre">2º ano 3 semestre</option>
+            <option value="2º ano 4 semestre">2º ano 4 semestre</option>
+            <option value="3º ano 5 semestre">3º ano 5 semestre</option>
+            <option value="3º ano 6 semestre">3º ano 6 semestre</option>
+            <option value="4º ano 7 semestre">4º ano 7 semestre</option>
+            <option value="4º ano 8 semestre">4º ano 8 semestre</option>
+            <option value="5º ano 9 semestre">5º ano 9 semestre</option>
+            <option value="5º ano 10 semestre">5º ano 10 semestre</option>
           </select>
         </div>
       </div>
@@ -444,7 +450,7 @@
         </div>
       </div>
 
-     <div class="col-md-2">
+     <div class="col-md-3">
 
       <div class="form-group">
           <label>Valor Mensalidade</label>
@@ -505,7 +511,7 @@
       <div class="form-group">
           <label>Retido no Ano</label>
           <select class="form-control" ng-model="associado.retidoMaisUmAno">
-            <option value="">Retido no ano</option>
+            <option value="">Retido no ano ?</option>
             <option value="simRetido">Sim</option>
             <option value="naoRetido">Não</option>
           </select>
