@@ -182,8 +182,27 @@ $scope.dados = function (values){
 	var id = $scope.id = values;
 
 		$http.get('../App/associado/list/'+ id).success(function(data){
-		$scope.associado = data[0];
+		var associado = $scope.associado = data[0];
+		if( associado.desistiuCursarAnoLetivo == 0){
+			$scope.campoDesistiu = false}else{$scope.campoDesistiu = true};
+			
+		if( associado.cursoUniversitario == 0){
+			$scope.campoCurso = false}else{$scope.campoCurso = true};	
 
+		if( associado.possuiBolsaFinCred == 0){
+			$scope.campoBolsa = false}else{$scope.campoBolsa = true};
+
+		if( associado.problemaSaude == 0){
+			$scope.campoProblema = false}else{$scope.campoProblema = true};
+
+		if( associado.planoSaude == 0){
+			$scope.campoQualPlano = false}else{$scope.campoQualPlano = true};
+
+		if( associado.planoSaude == 0){
+			$scope.campoQualPlano = false}else{$scope.campoQualPlano = true};	
+
+		if( associado.estadoCivil == 0){
+			$scope.campoConjuge = false}else{$scope.campoConjuge = true};						
 	});
 
 	}
@@ -203,55 +222,127 @@ $scope.dados = function (values){
 
 $scope.associado = {
 	cep: '11250-000',
-	cidade: 'Bertioga'
+	cidade: 'Bertioga',
 }
+$scope.boleano = [
+	{label:'Sim',b:"1"},{label: 'Não', b:"0"}
+];
+$scope.bosta = [
+	{id:'1',label:"Solteiro(a)"},
+	{id:'2',label:"Casado(a)"}
+];
+
+$scope.duracaoDeCurso = [
+	{value:'1º ano 1 semestre',label:"1º ano 1 semestre"},
+	{value:'1º ano 2 semestre',label:"1º ano 2 semestre"},
+	{value:'2º ano 3 semestre',label:"2º ano 3 semestre"},
+	{value:'2º ano 4 semestre',label:"2º ano 4 semestre"},
+	{value:'3º ano 5 semestre',label:"3º ano 5 semestre"},
+	{value:'3º ano 6 semestre',label:"3º ano 6 semestre"},
+	{value:'4º ano 7 semestre',label:"4º ano 7 semestre"},
+	{value:'4º ano 8 semestre',label:"4º ano 8 semestre"},
+	{value:'5º ano 9 semestre',label:"5º ano 9 semestre"},
+	{value:'5º ano 10 semestre',label:"5º ano 10 semestre"},
+];
+$scope.tipoSanguineo = [
+	{value:"A+",label:"A+"},
+	{value:"B+",label:"B+"},
+	{value:"AB+",label:"AB+"},
+	{value:"A-",label:"A-"},
+	{value:"B-",label:"B-"},
+	{value:"AB-",label:"AB-"},
+	{value:"0-",label:"0-"},
+	{value:"0+",label:"0+"}
+];
+$scope.orgaos = [
+          {value:"SSP-AC", label:"SSP-AC"}, 
+          {value:"SSP-AL", label:"SSP-AL"}, 
+          {value:"SSP-AM", label:"SSP-AM"}, 
+          {value:"SSP-AP", label:"SSP-AP"}, 
+          {value:"SSP-BA", label:"SSP-BA"}, 
+          {value:"SSP-CE", label:"SSP-CE"}, 
+          {value:"SSP-DF", label:"SSP-DF"}, 
+          {value:"SSP-ES", label:"SSP-ES"}, 
+          {value:"SSP-GO", label:"SSP-GO"}, 
+          {value:"SSP-MA", label:"SSP-MA"}, 
+          {value:"SSP-MT", label:"SSP-MT"}, 
+          {value:"SSP-MS", label:"SSP-MS"}, 
+          {value:"SSP-MG", label:"SSP-MG"}, 
+          {value:"SSP-PA", label:"SSP-PA"}, 
+          {value:"SSP-PB", label:"SSP-PB"}, 
+          {value:"SSP-PR", label:"SSP-PR"}, 
+          {value:"SSP-PE", label:"SSP-PE"}, 
+          {value:"SSP-PI", label:"SSP-PI"}, 
+          {value:"SSP-RJ", label:"SSP-RJ"}, 
+          {value:"SSP-RN", label:"SSP-RN"}, 
+          {value:"SSP-RO", label:"SSP-RO"}, 
+          {value:"SSP-RS", label:"SSP-RS"}, 
+          {value:"SSP-RR", label:"SSP-RR"}, 
+          {value:"SSP-SC", label:"SSP-SC"}, 
+          {value:"SSP-SE", label:"SSP-SE"}, 
+          {value:"SSP-SP", label:"SSP-SP"}
+];
+
+$scope.parentescos = [
+	        {value:"Esposo(a)", label:"Esposo(a)"},
+            {value:"Filho(a)", label:"Filho(a)"},
+            {value:"Mae", label:"Mãe"},
+            {value:"Pai", label:"Pai"},
+            {value:"Irmao", label:"Irmão"},
+            {value:"Tio", label:"Tio"},
+            {value:"Primo", label:"Primo"},
+            {value:"Cunhado", label:"Cunhado"},
+            {value:"Sogro", label:"Sogro"},
+            {value:"Outros", label:"Outros"}
+];
+
 $scope.civil = function (dados) {
-	if (dados == 'casado'){
+	if (dados == '2'){
 	$scope.campoConjuge = true;
 	} 
-	if (dados == 'solteiro' || dados == ''){
+	if (dados == '1' || dados == null){
 	$scope.campoConjuge = false;
 	} 
 
 };
 $scope.plano = function (dados) {
-	if (dados == 'simPlano'){
+	if (dados == '1'){
 	$scope.campoQualPlano = true;
 	} 
-	if (dados == 'naoPlano' || dados == ''){
+	if (dados == '0' || dados == null){
 	$scope.campoQualPlano = false;
 	} 
 };
 $scope.problema = function (dados) {
-	if (dados == 'simProblema'){
+	if (dados == '1'){
 	$scope.campoProblema = true;
 	} 
-	if (dados == 'naoProblema' || dados == ''){
+	if (dados == '0' || dados == null){
 	$scope.campoProblema = false;
 	} 
 };
 
 $scope.bolsa = function (dados) {
-	if (dados == 'simBolsa'){
+	if (dados == '1'){
 	$scope.campoBolsa = true;
 	} 
-	if (dados == 'naoBolsa' || dados == ''){
+	if (dados == '0' || dados == null){
 	$scope.campoBolsa = false;
 	} 
 };
 $scope.curso = function (dados) {
-	if (dados == 'simCurso'){
+	if (dados == '1'){
 	$scope.campoCurso = true;
 	} 
-	if (dados == 'naoCurso' || dados == ''){
+	if (dados == '0' || dados == null){
 	$scope.campoCurso = false;
 	} 
 };
 $scope.desistiu = function (dados) {
-	if (dados == 'simDesistiu'){
+	if (dados == '1'){
 	$scope.campoDesistiu = true;
 	} 
-	if (dados == 'naoDesistiu' || dados == ''){
+	if (dados == '0' || dados == null){
 	$scope.campoDesistiu = false;
 	} 
 };
@@ -291,7 +382,7 @@ $scope.desistiu = function (dados) {
 
 //Passa os valores do form em Objeto no "values"
   $scope.update = function(values, FormAssociado) {
-	  console.log(values.nome);
+	  console.log(values.porQueDesistiu);
 		var associado = values;
 		var associado = angular.merge(associado,renda);
 	    if (values.nome == '' || values.cpf == '' || values.salario == '' || values.veiculo_id == ''){
