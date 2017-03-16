@@ -228,7 +228,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //############# **  MODULO UNIVERSIDADE ** ##########################################
 //############################################################################
 			.state('user.universidade', {
-			url: '/Universidade',
+			url: '/universidade',
 			templateUrl: 'modUniversidade/linkUniversidade.htm',
 			resolve: {
 					function ($sessionStorage, $location){
@@ -239,7 +239,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
 			},
 			 ncyBreadcrumb: {
-						label: 'Curso'
+						label: 'Universidade'
 				 }
 		})
 
@@ -247,7 +247,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 			.state('user.universidade.inseri', {
 			url: '/inseri',
 			templateUrl: 'modUniversidade/inseriUniversidade.htm',
-			controller:'inseriCursoCtrl',
+			controller:'inseriUniversidadeCtrl',
 			 ncyBreadcrumb: {
 						label: 'Inseri'
 				 }
@@ -256,7 +256,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 			.state('user.universidade.altera', {
 			url: '/altera',
 			templateUrl: 'modUniversidade/alteraUniversidade.htm',
-			controller:'alteraCursoCtrl',
+			controller:'alteraUniversidadeCtrl',
 			 ncyBreadcrumb: {
 						label: 'Altera'
 				 }
