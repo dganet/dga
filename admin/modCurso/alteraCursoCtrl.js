@@ -5,7 +5,7 @@ var idUsuario = sessionStorage.getItem('usuario.id');
 $scope.quatro = false;
 
 //Lista os Cursos
-	$http.get('../App/curso/list').success(function(data){
+	$http.get('../App/cursofaculdade/list').success(function(data){
 		console.log($scope.cursos = data);
     
 
@@ -18,7 +18,7 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		$http.get('../App/curso/list/'+ id).success(function(data){
+		$http.get('../App/cursofaculdade/list/'+ id).success(function(data){
 		$scope.curso = data[0];
 		
 	});

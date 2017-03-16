@@ -1,4 +1,4 @@
-app.controller("inseriCursoCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
+app.controller("inseriUniversidadeCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
   //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
 
@@ -13,9 +13,9 @@ var idUsuario = sessionStorage.getItem('usuario.id');
   $scope.add = function(values, FormCurso) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/curso/save/'+ idUsuario , values).success(function(){
+    $http.post('../App/universidade/save/'+ values).success(function(){
       // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/curso/inseri');
+      $scope.activePath = $location.path('/user/universidade/inseri');
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
