@@ -179,16 +179,16 @@ $scope.bosta = [
 ];
 
 $scope.duracaoDeCurso = [
-	{value:'1º ano 1 semestre',label:"1º ano 1 semestre"},
-	{value:'1º ano 2 semestre',label:"1º ano 2 semestre"},
-	{value:'2º ano 3 semestre',label:"2º ano 3 semestre"},
-	{value:'2º ano 4 semestre',label:"2º ano 4 semestre"},
-	{value:'3º ano 5 semestre',label:"3º ano 5 semestre"},
-	{value:'3º ano 6 semestre',label:"3º ano 6 semestre"},
-	{value:'4º ano 7 semestre',label:"4º ano 7 semestre"},
-	{value:'4º ano 8 semestre',label:"4º ano 8 semestre"},
-	{value:'5º ano 9 semestre',label:"5º ano 9 semestre"},
-	{value:'5º ano 10 semestre',label:"5º ano 10 semestre"},
+	{value:'1º semestre',label:"1º semestre"},
+	{value:'2º semestre',label:"2º semestre"},
+	{value:'3º semestre',label:"3º semestre"},
+	{value:'4º semestre',label:"4º semestre"},
+	{value:'5º semestre',label:"5º semestre"},
+	{value:'6º semestre',label:"6º semestre"},
+	{value:'7º semestre',label:"7º semestre"},
+	{value:'8º semestre',label:"8º semestre"},
+	{value:'9º semestre',label:"9º semestre"},
+	{value:'10º semestre',label:"10º semestre"},
 ];
 $scope.tipoSanguineo = [
 	{value:"A+",label:"A+"},
