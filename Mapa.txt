@@ -8,10 +8,10 @@ App/post/delete/{id}		------ Inativa um Associado     #								#
 															#								#
 #############################################################################################
 ##################### USUARIO ###############################################################
-															#	private $id;				#	
+															#	private $id;				#
 App/usuario/save 			------ Salva um Associado 		#	private $email				#
-App/usuario/login			------ Loga um usuario 			#	private $senha;				#	
-App/usuario/list 			------ Lista todos Associados   #	private $nome;				#	
+App/usuario/login			------ Loga um usuario 			#	private $senha;				#
+App/usuario/list 			------ Lista todos Associados   #	private $nome;				#
 App/usuario/list/{id}		------ Lista associado por id	#	private $cargo;				#
 App/usuario/update{id} 		------ Atualiza o associado     #	private $imagem;			#
 App/usuario/delete/{id}		------ Inativa um Associado     #	private $cpf;				#
@@ -20,7 +20,7 @@ App/usuario/delete/{id}		------ Inativa um Associado     #	private $cpf;				#
 ##################### PERIODO ###############################################################
 															#	private $id;				#
 App/periodo/save/{id}		------ Salva um Associado 		#	private $linha;				#
-App/periodo/list 			------ Lista todos Associados   #	private $dataInicio;		#	
+App/periodo/list 			------ Lista todos Associados   #	private $dataInicio;		#
 App/periodo/list/{id}		------ Lista associado por id	#	private $dataFinal;			#
 App/periodo/update{id} 		------ Atualiza o associado     #	private $qtasVagas;			#
 App/periodo/delete/{id}		------ Inativa um Associado     #	private $status;			#
@@ -37,24 +37,19 @@ App/vaga/delete/{id}		------ Inativa um Associado     #								#
 #############################################################################################
 ##################### ASSOCIADO #############################################################
 
-App/associado/login					------ Loga um associado atraves de (CPF/SENHA)					#	
-App/associado/save/{id}				------ Salva um Associado 										#			
-App/associado/list 					------ Lista todos Associados   								#					
+App/associado/login					------ Loga um associado atraves de (CPF/SENHA)					#
+App/associado/save/{id}				------ Salva um Associado 										#
+App/associado/list 					------ Lista todos Associados   								#
 App/associado/list/{id}				------ Lista associado por id									#
-App/associado/listaguardando		------ Lista associados com status AGUARDANDOVAGA					
+App/associado/listaguardando		------ Lista associados com status AGUARDANDOVAGA
 App/associado/listaguardando/{id} 	------ Lista associados com status AGUARDANDOVAGA com id {id}	#
 App/associado/listaprovacao			------ Lista associados com status APROVACAO
-App/associado/update{id} 			------ Atualiza o associado     								#							
-App/associado/delete/{id}			------ Inativa um Associado     								#							
-																									#							
+App/associado/update{id} 			------ Atualiza o associado     								#
+App/associado/delete/{id}			------ Inativa um Associado     								#
+																									#
 #############################################################################################
-
-
-																
-																
-																
-																
-																
-																
-																
-																
+POST App/curso/save/{id}
+PUT App/curso/update/{id}
+GET App/curso/list
+GET App/curso/list/{id}
+DELETE App/curso/delete/{id}
