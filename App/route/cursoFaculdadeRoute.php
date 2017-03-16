@@ -2,7 +2,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 $app->post('/save/{id}', function(Request $request, Response $response, $args){
-		$curso = new \Api\Controller\CursoController();
+		$curso = new \Api\Controller\CursoFaculdadeController();
 		$post = json_decode($request->getBody(), true);
 		if ($curso->cadastrar($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
@@ -15,7 +15,7 @@ $app->post('/save/{id}', function(Request $request, Response $response, $args){
 	});
 	//lista todos os curso
 	$app->get('/list', function(Request $request, Response $response){
-		$curso = new \Api\Controller\CursoController();
+		$curso = new \Api\Controller\CursoFaculdadeController();
 		$curso = $curso->listaTudo();
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($curso);
@@ -23,7 +23,7 @@ $app->post('/save/{id}', function(Request $request, Response $response, $args){
 	});
 	//Lista curso por Id
 	$app->get('/list/{id}', function(Request $request, Response $response, $args){
-		$curso = new \Api\Controller\CursoController();
+		$curso = new \Api\Controller\CursoFaculdadeController();
 		$curso = $curso->listaPorId($args['id']);
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($curso);
@@ -31,7 +31,7 @@ $app->post('/save/{id}', function(Request $request, Response $response, $args){
 	});
 	//Lista registros inativos
 	$app->get('/inativo', function(Request $request, Response $response){
-		$curso = new \Api\Controller\CursoController();
+		$curso = new \Api\Controller\CursoFaculdadeController();
 		$curso = $curso->listaInativo();
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($curso);
@@ -40,7 +40,7 @@ $app->post('/save/{id}', function(Request $request, Response $response, $args){
 	//Atualiza cadastro
 	$app->put('/update/{id}', function(Request $request, Response $response, $args){
 		$post = json_decode($request->getBody(), true);
-		$curso = new \Api\Controller\CursoController();
+		$curso = new \Api\Controller\CursoFaculdadeController();
 		if ($curso->atulizaCadastro($post)){
 			$response = $response->withHeader('Content-type', 'application/json');
 			$response = $response->withJson([true]);
@@ -52,7 +52,7 @@ $app->post('/save/{id}', function(Request $request, Response $response, $args){
 	});
 	//Inativa um curso
 	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
-		$curso = new \Api\Controller\CursoController();
+		$curso = new \Api\Controller\CursoFaculdadeController();
 		$curso =  $curso->inativar($args['id']);
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($curso);

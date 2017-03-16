@@ -38,7 +38,7 @@ class Curso extends \GORM\Model {
 			case 'status':
 				return $this->status;
 				break;
-			
+
 			default:
 				# code...
 				break;
@@ -65,7 +65,7 @@ class Curso extends \GORM\Model {
 			case 'status':
 				$this->status = $value;
 				break;
-			
+
 			default:
 				# code...
 				break;

@@ -43,7 +43,7 @@ $app = new Slim\App([
 	});
 
 	/**
-	* CURSO
+	* POSTCURSO
 	*/
 	$app->group('/curso', function() use ($app){
 		require_once("route/cursoRoute.php");
@@ -66,5 +66,11 @@ $app = new Slim\App([
    $app->group('/universidade', function () use ($app){
  		require_once("route/universidadeRoute.php");
  	});
+  /**
+	* CURSOFACULDADE
+	*/
+	$app->group('/cursofaculdade', function() use ($app){
+		require_once("route/cursoFaculdadeRoute.php");
+	});
 
 $app->run();
