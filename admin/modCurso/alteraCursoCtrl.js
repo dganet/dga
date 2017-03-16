@@ -7,11 +7,11 @@ $scope.quatro = false;
 //Lista os Cursos
 	$http.get('../App/cursofaculdade/list').success(function(data){
 		console.log($scope.cursos = data);
-    
+
 
 	});
 
-// Seleciona o usuario e mostra do Lado. 
+// Seleciona o usuario e mostra do Lado.
 $scope.dados = function (values){
 
 	$scope.quatro = true;
@@ -20,11 +20,11 @@ $scope.dados = function (values){
 
 		$http.get('../App/cursofaculdade/list/'+ id).success(function(data){
 		$scope.curso = data[0];
-		
+
 	});
 
 	}
-//	
+//
 
   //scope.master vazio;
   $scope.master = {};
@@ -33,7 +33,7 @@ $scope.dados = function (values){
   //Ocultando o Alert Mensagem .
   $scope.mensagemDeleta = true;
 
-//*************UPDATE CURSO *********************// 
+//*************UPDATE CURSO *********************//
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormNoticia) {
@@ -42,21 +42,21 @@ $scope.dados = function (values){
 	 var id = $scope.dados.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.put('../App/curso/update/'+ idUsuario , values).success(function(){
-      // Depois mandando para mesma pagina  
+    $http.put('../App/cursofaculdade/update/'+ idUsuario , values).success(function(){
+      // Depois mandando para mesma pagina
       $scope.activePath = $location.path('/user/curso/altera');
-         
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
       $timeout(function () {
                $scope.mensagem = true;
            },10000);
 
-    $http.get('../App/curso/list').success(function(data){
+    $http.get('../App/cursofaculdade/list').success(function(data){
     $scope.cursos = data;
      });
 
-    // Seleciona o usuario e mostra do Lado. 
+    // Seleciona o usuario e mostra do Lado.
 $scope.dados = function (values){
 
   $scope.quatro = true;
@@ -65,7 +65,7 @@ $scope.dados = function (values){
 
     $http.get('../App/curso/list/'+ id).success(function(data){
     $scope.curso = data[0];
-    
+
   });
 
   }
@@ -77,16 +77,16 @@ $scope.dados = function (values){
 };
 
 
-//*************DELETE NOTICIA *********************// 
+//*************DELETE NOTICIA *********************//
 
 //Passa os valores do form em Objeto no "values"
   $scope.deleta = function(values) {
 
     // Enviado os valores em objetos para api/user do php/slim
     $http.delete('../App/curso/delete/'+ values).success(function(){
-    // Depois mandando para mesma pagina  
+    // Depois mandando para mesma pagina
     $scope.activePath = $location.path('/user/curso/altera');
-   
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagemDeleta = false;
       $timeout(function () {

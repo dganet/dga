@@ -41,13 +41,9 @@ $app->post('/save/{id}', function(Request $request, Response $response, $args){
 	$app->put('/update/{id}', function(Request $request, Response $response, $args){
 		$post = json_decode($request->getBody(), true);
 		$curso = new \Api\Controller\CursoFaculdadeController();
-		if ($curso->atulizaCadastro($post)){
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([true]);
-		}else{
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([false]);
-		}
+		$curso = $curso->atulizaCadastro($post);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($curso);
 		return $response;
 	});
 	//Inativa um curso
