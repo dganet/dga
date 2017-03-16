@@ -6,13 +6,7 @@ $scope.quatro = false;
 
 //Lista os Cursos
 	$http.get('../App/cursofaculdade/list').success(function(data){
-<<<<<<< HEAD
-		$scope.cursos = data;
-=======
-		console.log($scope.cursos = data);
-
-
->>>>>>> ce6805f8989cd6ea8bb8448eabc11a00298d719d
+   $scope.cursos = data;
 	});
 
 // Seleciona o usuario e mostra do Lado.
@@ -47,11 +41,7 @@ $scope.dados = function (values){
 
     // Enviado os valores em objetos para api/user do php/slim
     $http.put('../App/cursofaculdade/update/'+ idUsuario , values).success(function(){
-<<<<<<< HEAD
       // Depois mandando para mesma pagina  
-=======
-      // Depois mandando para mesma pagina
->>>>>>> ce6805f8989cd6ea8bb8448eabc11a00298d719d
       $scope.activePath = $location.path('/user/curso/altera');
 
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -91,13 +81,9 @@ $scope.dados = function (values){
   $scope.deleta = function(values) {
 
     // Enviado os valores em objetos para api/user do php/slim
-<<<<<<< HEAD
     $http.delete('../App/cursofaculdade/delete/'+ values).success(function(){
     // Depois mandando para mesma pagina  
-=======
-    $http.delete('../App/curso/delete/'+ values).success(function(){
-    // Depois mandando para mesma pagina
->>>>>>> ce6805f8989cd6ea8bb8448eabc11a00298d719d
+
     $scope.activePath = $location.path('/user/curso/altera');
 
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
