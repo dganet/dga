@@ -33,7 +33,7 @@ class UniversidadeController implements Controller {
 	//Desativa o cliente
 	public function inativar($id){
 		$curso = new Universidade();
-		$curso->id = $id;
+		$curso->setId($id);
 		$curso->setUpdateAt(date('Y-m-d H:i:s'));
 		$curso->setStatus("INATIVO");
 		Audit::audit($data, "UPDATE", "curso");
