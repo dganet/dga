@@ -21,7 +21,13 @@ class CursoFaculdadeController implements Controller {
 	//Lista Por Id
 	public function listaPorId($id){
 		$curso = new Cursofaculdade();
-		return $curso->select(array('where' => array('id' => $id)));
+		return $curso->select(
+			array(
+				'inner' => array(
+					'associado' => array('associado.curso' => 'cursofaculdade.id') 
+					) 
+				)
+			);
 	}
 	//Update de cadastro
 	public function atulizaCadastro($data){

@@ -40,7 +40,7 @@ class Associado extends \GORM\Model{
 	private $tipoSangue;				// Tipo Sanguineo
 	private $problemaSaude;				// Possui algum problema de saude? Boolean
 	private $quaisProblemas; 			// Quais problemas de saúde
-	private $curso;						// Curso
+	private $curso;						// Curso id
 	private $universidade;				// Nome da Universidade/Escola
 	private $semestreCursando;			// Qual Semestre está Cursando
 	private $aulaSabado;				// Possui Aula Sabado Boolean
