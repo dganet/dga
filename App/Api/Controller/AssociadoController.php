@@ -5,7 +5,10 @@
  * @version 1.0
  */
 namespace Api\Controller;
-use \Api\Model\Entity\Associado, \Api\Controller\Log, \Api\Controller\AuditController as Audit;
+use \Api\Model\Entity\Associado,
+ \Api\Controller\Log,
+ \Api\Controller\AuditController as Audit,
+ \Api\Controller\ImageController;
 
 class AssociadoController {
 
@@ -50,6 +53,10 @@ class AssociadoController {
 	 */
 	public function cadastrar($data){
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
+		$img = ImageController::save();
+		if($img[flag]){
+			$data['foto'] = $img['name'];
+		}
 		$associado = new Associado($data);
 		$associado->status = "AGUARDANDOVAGA";
 		$associado->createAt = date('Y-m-d H:i:s');
@@ -93,6 +100,10 @@ class AssociadoController {
 	 * @return Boolean 	True ou False
 	 */
 	public function atulizaCadastro($data){
+		$img = ImageController::save();
+		if($img[flag]){
+			$data['foto'] = $img['name'];
+		}
 		$associado = new Associado($data);
 		$associado->updateAt = date('Y-m-d H:i:s');
 		try{
