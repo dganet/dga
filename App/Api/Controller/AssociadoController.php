@@ -78,7 +78,12 @@ class AssociadoController {
 		$associado = new Associado();
 		try{
 			Log::Message("Listando Associados");
-			return $associado->select(array('where' => array('status' => 'ATIVO')));
+			$associado = $associado->select(array('where' => array('status' => 'ATIVO')));
+			foreach ($associado as $key => $value) {
+				$associado[$key]['rendaSerial'] = unserialize($associado[$key]['rendaSerial']);
+			}
+			return $associado;
+
 		}catch (Exeption $e){
 			Log::Error("Não foi possivel entregar a lista de Associados ".$e);
 			return false;
@@ -92,7 +97,11 @@ class AssociadoController {
 	public function listaPorId($id){
 		$associado = new Associado();
     Log::Message("Solicitado informações sobre o Associado ".$i);
-		return $associado->select(array('where' => array('id' => $id)));
+		$associado =  $associado->select(array('where' => array('id' => $id)));
+		foreach ($associado as $key => $value) {
+				$associado[$key]['rendaSerial'] = unserialize($associado[$key]['rendaSerial']);
+			}
+			return $associado;
 	}
 	/**
 	 * Atualiza informaçoes do Associado
@@ -136,7 +145,8 @@ class AssociadoController {
 	public function listaInativo(){
 		$associado = new Associado();
 		Log::Message("Listando Associados Inativos");
-		return $associado->select(array('where' => array('status' => 'INATIVO')));
+		$associado  = $associado->select(array('where' => array('status' => 'INATIVO')));
+
 	}
 	/**
 	 * Lista os associados que estão aguardando vagaga e os organiza conforme sua
@@ -317,4 +327,12 @@ class AssociadoController {
 			return false;
 		}
 	}
+  /**
+   * Lista os associados em um determinado curso
+   * @return Array  Informações dos associados no curso
+   */
+  public function listAssociadoCurso($id){
+    $associado = new Associado();
+    return $associado->select(array('where' => array('curso' => $id)));
+  }
 }
