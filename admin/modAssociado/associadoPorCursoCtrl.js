@@ -18,7 +18,7 @@ $scope.quatro = true;
 
 		$http.get('../App/cursofaculdade/list/'+ id).success(function(data){
 		$scope.associados = data;
-        console.log($scope.total = $scope.associados.length);
+        $scope.total = $scope.associados.length;
  
 	});
 

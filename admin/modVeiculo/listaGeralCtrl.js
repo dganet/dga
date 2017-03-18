@@ -35,6 +35,7 @@ app.controller("listaGeralCtrl", function($scope, $http,$location , $timeout,$se
      element = dataformat;
        }, this);
       $scope.associadosAguardando = data;    
+      $scope.total =  $scope.associadosAguardando.length;    
     });
   };
 

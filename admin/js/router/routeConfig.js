@@ -149,6 +149,35 @@ app.config(function ($stateProvider, $urlRouterProvider){
 		})
 
 //############################################################################
+//############# **  MODULO BANNER ** ##########################################
+//############################################################################		
+
+	.state('user.banner', {
+			url: '/banner',
+			templateUrl: 'modBanner/linkBanner.htm',
+			resolve: {
+					function ($sessionStorage, $location){
+						if (sessionStorage.getItem('usuario.id') == null){
+								$location.path('/login');
+						}
+				}
+
+			},
+			 ncyBreadcrumb: {
+						label: 'banner'
+				 }
+		})
+
+			.state('user.banner.um', {
+			url: '/bannerUm',
+			templateUrl: 'modBanner/bannerUm.htm',
+			controller:'alteraBannerCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera Banner UM'
+				 }
+		})
+
+//############################################################################
 //############# **  MODULO NOTICIAS ** ##########################################
 //############################################################################
 			.state('user.noticia', {

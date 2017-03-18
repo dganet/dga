@@ -74,13 +74,16 @@
 
   <li ng-repeat="(key, value) in associadosAguardando | groupBy: 'createAt'">
    Mês de {{ key }}
+   <span style="color:red; float:right;">Renda</span>
     <ul>
       <li ng-repeat="player in value | orderBy :'+rendaPerCapta' | filter:busca">
-       {{player.nome}}
+       {{player.nome}}<span style="color:red; float:right;">{{player.rendaPerCapta}}</span>
       </li>
     </ul>
   </li>
 </ul>
+<hr>
+Total de : {{total}}
 
 
 

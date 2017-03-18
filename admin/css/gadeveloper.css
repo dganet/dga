@@ -191,7 +191,7 @@ color:white;
 }
 
 .cinco {
-	width: 80%;
+	width: 65%;
 	margin-top: -20px;
 	padding-right: 20px;
 	border-right:1px solid #E6E6E6;
@@ -204,7 +204,7 @@ color:white;
 
 
 .seis {
-	width: calc(20% - 20px);
+	width: calc(35% - 20px);
 	float: left;
 	padding-left: 20px;
 	margin-bottom: 20px;
