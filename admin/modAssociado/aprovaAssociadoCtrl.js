@@ -450,4 +450,31 @@ $scope.dados = function (values){
 };
 
 
+//*************DELETE ASSOCIADO *********************//
+
+//Passa os valores do form em Objeto no "values"
+  $scope.deleta = function(values) {
+    // Enviado os valores em objetos para api/user do php/slim
+    $http.delete('../App/associado/delete/'+ values).success(function(){
+      // Depois mandando para mesma pagina
+      $scope.activePath = $location.path('/user/associado/aprova');
+
+
+      // Funcão de exibir a mensagem de sucesso em 5 segundos.
+      $scope.mensagemDeleta = false;
+      $timeout(function () {
+               $scope.mensagemDeleta = true;
+           },10000);
+
+    $http.get('../App/associado/list').success(function(data){
+    $scope.associados = data;
+	});
+
+	 $scope.quatro = false;
+
+    });
+
+
+  };
+
 });
