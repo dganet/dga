@@ -21,6 +21,14 @@ $app->post('/save/{id}', function(Request $request, Response $response, $args){
 		$response = $response->withJson($curso);
 		return $response;
 	});
+	//lista os cursos e os associados em cada curso
+	$app->get('/listplus', function(Request $request, Response $response){
+		$curso = new \Api\Controller\CursoFaculdadeController();
+		$curso = $curso->listaTudoPlus();
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($curso);
+		return $response;
+	});
 	//Lista Associados que estão em um determinado curso
 	$app->get('/list/{id}', function(Request $request, Response $response, $args){
 		$curso = new \Api\Controller\CursoFaculdadeController();

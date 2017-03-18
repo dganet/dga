@@ -18,6 +18,16 @@ class CursoFaculdadeController implements Controller {
 		$curso = new Cursofaculdade();
 		return $curso->select(array('where' => array('status' => 'ATIVO')));
 	}
+	public function listaTudoPlus(){
+		$cursos = $this->listaTudo();
+		
+		foreach ($cursos as $key => $value) {
+			$nomeCurso  = $cursos[$key]['nome'];
+			$id 		= $cursos[$key]['id'];
+			$cursosplus[$nomeCurso] = $this->listaPorId($id);
+		}
+		//print_r($cursosplus);
+	}
 	//Lista Por Id
 	public function listaPorId($id){
 		$curso = new Cursofaculdade();
