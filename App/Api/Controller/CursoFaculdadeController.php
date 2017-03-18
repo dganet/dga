@@ -20,13 +20,17 @@ class CursoFaculdadeController implements Controller {
 	}
 	public function listaTudoPlus(){
 		$cursos = $this->listaTudo();
-		
+		$associado = new \Api\Controller\AssociadoController();
 		foreach ($cursos as $key => $value) {
 			$nomeCurso  = $cursos[$key]['nome'];
 			$id 		= $cursos[$key]['id'];
-			$cursosplus[$nomeCurso] = $this->listaPorId($id);
+			$associadocurso = $associado->listAssociadoCurso($id);
+			if ($associadocurso != null){
+				$cursosplus[$nomeCurso] = $associadocurso;	
+			}
+
 		}
-		//print_r($cursosplus);
+		print_r($cursosplus);
 	}
 	//Lista Por Id
 	public function listaPorId($id){
@@ -34,8 +38,8 @@ class CursoFaculdadeController implements Controller {
 		return $curso->select(
 			array(
 				'inner' => array(
-					'associado' => array('associado.curso' => 'cursofaculdade.id') 
-					) 
+					'associado' => array('associado.curso' => $id)
+					)
 				)
 			);
 	}

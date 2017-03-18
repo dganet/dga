@@ -80,7 +80,7 @@ class AssociadoController {
 			Log::Message("Listando Associados");
 			$associado = $associado->select(array('where' => array('status' => 'ATIVO')));
 			foreach ($associado as $key => $value) {
-				$associado[$key]['rendaSerial'] = unserialize($associado[$key]['rendaSerial']); 
+				$associado[$key]['rendaSerial'] = unserialize($associado[$key]['rendaSerial']);
 			}
 			return $associado;
 
@@ -99,7 +99,7 @@ class AssociadoController {
     Log::Message("Solicitado informações sobre o Associado ".$i);
 		$associado =  $associado->select(array('where' => array('id' => $id)));
 		foreach ($associado as $key => $value) {
-				$associado[$key]['rendaSerial'] = unserialize($associado[$key]['rendaSerial']); 
+				$associado[$key]['rendaSerial'] = unserialize($associado[$key]['rendaSerial']);
 			}
 			return $associado;
 	}
@@ -146,7 +146,7 @@ class AssociadoController {
 		$associado = new Associado();
 		Log::Message("Listando Associados Inativos");
 		$associado  = $associado->select(array('where' => array('status' => 'INATIVO')));
-		
+
 	}
 	/**
 	 * Lista os associados que estão aguardando vagaga e os organiza conforme sua
@@ -327,4 +327,12 @@ class AssociadoController {
 			return false;
 		}
 	}
+  /**
+   * Lista os associados em um determinado curso
+   * @return Array  Informações dos associados no curso
+   */
+  public function listAssociadoCurso($id){
+    $associado = new Associado();
+    return $associado->select(array('where' => array('curso' => $id)));
+  }
 }
