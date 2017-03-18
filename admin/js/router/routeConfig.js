@@ -128,6 +128,26 @@ app.config(function ($stateProvider, $urlRouterProvider){
 						$scope.id = $stateParams.idAssociado;
 				}
 		})
+
+			.state('user.associado.curso', {
+			url: '/cursos',
+			templateUrl: 'modAssociado/associadoPorCurso.htm',
+			controller:'associadoPorCursoCtrl',
+			 ncyBreadcrumb: {
+						label: 'Associada Por Curso'
+				 }
+		})
+			.state('user.associado.curso.detalhes', {
+			url: '/:idAssociado',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.idAssociado;
+				},
+				ncyBreadcrumb: {
+						label: 'Lista de Associados'
+				 }
+		})
+
 //############################################################################
 //############# **  MODULO NOTICIAS ** ##########################################
 //############################################################################

@@ -212,16 +212,16 @@ color:white;
 
 .um ul li {
 	display: inline;
-	margin-left: -10px;
 	width: 100%;
 }
 .um ul li a {
-	width: 90%;
+	width: 100%;
 	padding: 10px;
 	display: inline-block;
 	/* visual do link */
 	text-decoration: none;
 	color: gray;
+	margin-left: -20px;
 }
 
 .um a:hover {
@@ -275,7 +275,9 @@ h4 {
 	font-weight: normal;
 }
 
-
+.table a:link{
+	text-decoration: none;
+}
 /* 
 /* Desktop maiores */
 /*@media (min-width: 1200px) { 
