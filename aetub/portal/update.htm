@@ -7,53 +7,12 @@
 	<h4>Atualização de Dados</h4>
 	
 	<div class="bloco-update-foto">
-		<form name="formAssociado" ng-submit="add(associado)">
+		<form name="formAssociado" ng-submit="update(associado)">
 			
 			<div class="col-md-12">
        			<div class="form-group">
-          			<label>Nome Completo</label>
-          			<input type="text" class="form-control" ng-model="associado.nome">
-        		</div>
-      		</div>
-
-
-			<div class="col-md-4">
-       			<div class="form-group">
-          			<label>Endereço</label>
-          			<input type="text" class="form-control" ng-model="associado.endereco">
-        		</div>
-      		</div>
-
-
-			<div class="col-md-3">
-       			<div class="form-group">
-          			<label>Bairro</label>
-          			<input type="text" class="form-control" ng-model="associado.bairro">
-        		</div>
-      		</div>
-
-
-			<div class="col-md-3">
-       			<div class="form-group">
-          			<label>Cidade</label>
-          			<input type="text" class="form-control" ng-model="associado.cidade">
-        		</div>
-      		</div>
-
-
-
-			<div class="col-md-2">
-       			<div class="form-group">
-          			<label>CEP</label>
-          			<input type="text" class="form-control" ng-model="associado.cep">
-        		</div>
-      		</div>
-
-
-			<div class="col-md-12">
-       			<div class="form-group">
           			<label>Foto</label>
-          			<input type="file" class="form-control" ng-model="associado.foto">
+          		<input type="file" ng-file-model="associado.picture" />
         		</div>
       		</div>
 

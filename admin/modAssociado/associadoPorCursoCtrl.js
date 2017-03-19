@@ -1,11 +1,11 @@
-app.controller("associadoPorCursoCtrl", function($scope, $http,$location , $timeout, $sessionStorage , $filter ){
+app.controller("associadoPorCursoCtrl", function($scope, $http,$location , $timeout, $sessionStorage , $filter){
 //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
 
 $scope.quatro = false;
 
 //Lista os Cursos
-	$http.get('../App/cursofaculdade/list').success(function(data){
+	$http.get('../App/cursofaculdade/listplus').success(function(data){
    $scope.cursos = data;
 	});
 

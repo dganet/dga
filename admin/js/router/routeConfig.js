@@ -177,6 +177,23 @@ app.config(function ($stateProvider, $urlRouterProvider){
 				 }
 		})
 
+			.state('user.banner.dois', {
+			url: '/bannerDois',
+			templateUrl: 'modBanner/bannerDois.htm',
+			controller:'alteraBannerCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera Banner Dois'
+				 }
+		})
+
+			.state('user.banner.tres', {
+			url: '/bannerTres',
+			templateUrl: 'modBanner/bannerTres.htm',
+			controller:'alteraBannerCtrl',
+			 ncyBreadcrumb: {
+						label: 'Altera Banner Tres'
+				 }
+		})
 //############################################################################
 //############# **  MODULO NOTICIAS ** ##########################################
 //############################################################################
