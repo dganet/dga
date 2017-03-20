@@ -1,10 +1,10 @@
 <?php
 namespace Api\Model\Entity;
+use \Api\Model\Entity\Imagem;
 
 class Associado extends \GORM\Model{
     
     private $id;						// Id de controle do associado
-    private $foto;						// Caminho para foto do cliente
     private $nome;						// Nome do associado
     private $cpf;						// CPF do associado
     private $rg;						// RG do associado
@@ -61,6 +61,7 @@ class Associado extends \GORM\Model{
     private $status;					// Se o cadastro está ativo ou não
     private $usuario_id;				// Chave estrangeira
     private $veiculo_id;				// Chave estrangeira que ligará o usuario a sua linha
+    private $imagem_id;					// Id da Imagem
     
     
     // adiciona uma instancia desta classe na classe GORM/MODEL
@@ -137,7 +138,7 @@ class Associado extends \GORM\Model{
     public function __set($attr, $value){
         switch ($attr) {
 			case 'foto':
-				echo "estou na foto" . $value;	
+				$this->$attr = $value;	
 				break;
 			
 			default:
@@ -153,64 +154,64 @@ class Associado extends \GORM\Model{
     public function toArray(){
         
         $array = array(
-        "id"	=>	$this->id,
-        "foto"  =>  $this->foto,
-        "nome"	=>	$this->nome,
-        "cpf"	=>	$this->cpf,
-        "rg"	=>	$this->rg,
-        "orgaoExpedidor"	=>	$this->orgaoExpedidor,
-        "nomePai"	=>	$this->nomePai,
-        "nomeMae"	=>	$this->nomeMae,
-        "endereco"	=>	$this->endereco,
-        "numero"	=>	$this->numero,
-        "bairro"	=>	$this->bairro,
-        "cidade"	=>	$this->cidade,
-        "cep"	=>	$this->cep,
-        "telResidencial"	=>	$this->telResidencial,
-        "telCelular"	=>	$this->telCelular,
-        "telComercial"	=>	$this->telComercial,
-        "email"	=>	$this->email,
-        "profissao"	=>	$this->profissao,
-        "nomeEmpresa"	=>	$this->nomeEmpresa,
-        "funcao"	=>	$this->funcao,
-        "salario"	=>	$this->salario,
-        "outraRenda"	=>	$this->outraRenda,
-        "rendaExtra"	=>	$this->rendaExtra,
-        "estadoCivil"	=>	$this->estadoCivil,
-        "nomeConjuje"	=>	$this->nomeConjuje,
-        "qtdeFilhos"	=>	$this->qtdeFilhos,
-        "idadeFilhos"	=>	$this->idadeFilhos,
-        "pessoasResidencia"	=>	$this->pessoasResidencia,
-        "qtasPessoasTrab"	=>	$this->qtasPessoasTrab,
-        "rendaFamiliar"	=>	$this->rendaFamiliar,
-        "rendaSerial"					=> $this->rendaSerial,
-        "planoSaude"	=>	$this->planoSaude,
-        "planoEmpresa"	=>	$this->planoEmpresa,
-        "tipoSangue"	=>	$this->tipoSangue,
-        "problemaSaude"	=>	$this->problemaSaude,
-        "curso"	=>	$this->curso,
-        "universidade"	=>	$this->universidade,
-        "semestreCursando"	=>	$this->semestreCursando,
-        "aulaSabado"	=>	$this->aulaSabado,
-        "duracaoCurso"	=>	$this->duracaoCurso,
-        "rgm"	=>	$this->rgm,
-        "valorMensalidade"	=>	$this->valorMensalidade,
-        "possuiBolsaFinCred"	=>	$this->possuiBolsaFinCred,
-        "porcBolsaFinCred"	=>	$this->porcBolsaFinCred,
-        "cursoUniversitario"	=>	$this->cursoUniversitario,
-        "cursoNome"	=>	$this->cursoNome,
-        "retidoFalta"	=>	$this->retidoFalta,
-        "retidoMaisUmAno"	=>	$this->retidoMaisUmAno,
-        "desistiuCursarAnoLetivo"	=>	$this->desistiuCursarAnoLetivo,
-        "createAt"	=>	$this->createAt,
-        "updateAt"	=>	$this->updateAt,
-        "status"	=>	$this->status,
-        "senha"		=>  $this->senha,
-        "usuario_id"		=>  $this->usuario_id,
-        "veiculo_id"		=>  $this->veiculo_id,
-        "quaisProblemas"		=>  $this->quaisProblemas,
-        "qualPlano"		=>  $this->qualPlano,
-        "porQueDesistiu" => $this->porQueDesistiu
+        "id"	=>	$this->__get('id'),
+        "imagem_id"  =>  $this->__get('foto'),
+        "nome"	=>	$this->__get('nome'),
+        "cpf"	=>	$this->__get('cpf'),
+        "rg"	=>	$this->__get('rg'),
+        "orgaoExpedidor"	=>	$this->__get('orgaoExpedidor'),
+        "nomePai"	=>	$this->__get('nomePai'),
+        "nomeMae"	=>	$this->__get('nomeMae'),
+        "endereco"	=>	$this->__get('endereco'),
+        "numero"	=>	$this->__get('numero'),
+        "bairro"	=>	$this->__get('bairro'),
+        "cidade"	=>	$this->__get('cidade'),
+        "cep"	=>	$this->__get('cep'),
+        "telResidencial"	=>	$this->__get('telResidencial'),
+        "telCelular"	=>	$this->__get('telCelular'),
+        "telComercial"	=>	$this->__get('telComercial'),
+        "email"	=>	$this->__get('email'),
+        "profissao"	=>	$this->__get('profissao'),
+        "nomeEmpresa"	=>	$this->__get('nomeEmpresa'),
+        "funcao"	=>	$this->__get('funcao'),
+        "salario"	=>	$this->__get('salario'),
+        "outraRenda"	=>	$this->__get('outraRenda'),
+        "rendaExtra"	=>	$this->__get('rendaExtra'),
+        "estadoCivil"	=>	$this->__get('estadoCivil'),
+        "nomeConjuje"	=>	$this->__get('nomeConjuje'),
+        "qtdeFilhos"	=>	$this->__get('qtdeFilhos'),
+        "idadeFilhos"	=>	$this->__get('idadeFilhos'),
+        "pessoasResidencia"	=>	$this->__get('pessoasResidencia'),
+        "qtasPessoasTrab"	=>	$this->__get('qtasPessoasTrab'),
+        "rendaFamiliar"	=>	$this->__get('rendaFamiliar'),
+        "rendaSerial"					=> $this->__get('rendaSerial'),
+        "planoSaude"	=>	$this->__get('planoSaude'),
+        "planoEmpresa"	=>	$this->__get('planoEmpresa'),
+        "tipoSangue"	=>	$this->__get('tipoSangue'),
+        "problemaSaude"	=>	$this->__get('problemaSaude'),
+        "curso"	=>	$this->__get('curso'),
+        "universidade"	=>	$this->__get('universidade'),
+        "semestreCursando"	=>	$this->__get('semestreCursando'),
+        "aulaSabado"	=>	$this->__get('aulaSabado'),
+        "duracaoCurso"	=>	$this->__get('duracaoCurso'),
+        "rgm"	=>	$this->__get('rgm'),
+        "valorMensalidade"	=>	$this->__get('valorMensalidade'),
+        "possuiBolsaFinCred"	=>	$this->__get('possuiBolsaFinCred'),
+        "porcBolsaFinCred"	=>	$this->__get('porcBolsaFinCred'),
+        "cursoUniversitario"	=>	$this->__get('cursoUniversitario'),
+        "cursoNome"	=>	$this->__get('cursoNome'),
+        "retidoFalta"	=>	$this->__get('retidoFalta'),
+        "retidoMaisUmAno"	=>	$this->__get('retidoMaisUmAno'),
+        "desistiuCursarAnoLetivo"	=>	$this->__get('desistiuCursarAnoLetivo'),
+        "createAt"	=>	$this->__get('createAt'),
+        "updateAt"	=>	$this->__get('updateAt'),
+        "status"	=>	$this->__get('status'),
+        "senha"		=>  $this->__get('senha'),
+        "usuario_id"		=>  $this->__get('usuario_id'),
+        "veiculo_id"		=>  $this->__get('veiculo_id'),
+        "quaisProblemas"		=>  $this->__get('quaisProblemas'),
+        "qualPlano"		=>  $this->__get('qualPlano'),
+        "porQueDesistiu" => $this->__get('porQueDesistiu')
         );
         // faz com que não se retorne valores nulos no array
         $temp = $array;

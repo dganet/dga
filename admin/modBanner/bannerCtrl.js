@@ -6,8 +6,7 @@ $scope.mensagem = true;
 
     //Upload Primeiro Banner 1
     $scope.upload1 = function(values){
-            console.log(values);
-        $http.put('../App/Caminho/'+ 1).success(function(data){
+        $http.post('../App/imagem/save', values).success(function(data){
             
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagem = false;
@@ -20,8 +19,7 @@ $scope.mensagem = true;
 
     //Upload Primeiro Banner 2
     $scope.upload2= function(values){
-                  console.log(values);
-        $http.put('../App/Caminho/'+ 2).success(function(data){
+        $http.put('../App/imagem/save', values).success(function(data){
             
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagem = false;
@@ -34,8 +32,7 @@ $scope.mensagem = true;
 
     //Upload Primeiro Banner 3
     $scope.upload3 = function(values){
-                  console.log(values);
-        $http.put('../App/Caminho/'+ 3).success(function(data){
+        $http.put('../App/imagem/save', values).success(function(data){
             
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagem = false;

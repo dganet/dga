@@ -55,7 +55,7 @@ class AssociadoController {
 		Log::Message("Tentando Cadastrar o Associado ". $data['nome']);
 		$img = ImageController::save();
 		if($img[flag]){
-			$data['foto'] = $img['name'];
+			$data['imagem_id'] = $img['id'];
 		}
 		$associado = new Associado($data);
 		$associado->status = "AGUARDANDOVAGA";
@@ -111,7 +111,7 @@ class AssociadoController {
 	public function atulizaCadastro($data){
 		$img = ImageController::save();
 		if($img[flag]){
-			$data['foto'] = $img['name'];
+			$data['imagem_id'] = $img['id'];
 		}
 		$associado = new Associado($data);
 		$associado->updateAt = date('Y-m-d H:i:s');

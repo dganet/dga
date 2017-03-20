@@ -9,7 +9,6 @@ use PDO;
 class Model{
 	use Builder;
 	use Utils;
-
 	/**
 	*	Variavel recebe uma instancia das classes filhas
 	*   @access protected
@@ -31,15 +30,15 @@ class Model{
 		"driver" 	=> "mysql",
 		"host"		=> "31.220.104.130",		//31.220.104.130 mysql.hostinger.com.br
 		"dbname"	=> "u350275562_aetub", 		//u350275562_aetub u849106042_aetub
-		"user"		=> "u350275562_aetub", 			//u350275562_aetub u849106042_aetub
-		"pass"		=> "Z0kbFAWsap" 				//Z0kbFAWsap w8IJkSw25j8x
+		"user"		=> "u350275562_aetub", 		//u350275562_aetub u849106042_aetub
+		"pass"		=> "Z0kbFAWsap" 			//Z0kbFAWsap w8IJkSw25j8x
 	);
 
 	/**
 	*	Função para Salvar uma informação no banco de dados
 	*	@return 	true ou fasle
 	*/
-	public function save(){
+	public function save($lastId = false){
 		$this->loadTable();
 		$sql  = Builder::makeInsert($this->class);
 		$con  = new ConnectionFactory($this->db);
@@ -47,11 +46,16 @@ class Model{
 		$stmt = $db->prepare(Builder::$sql);
 		if ($stmt->execute()){
 			Utils::Debug(Builder::$sql);
-			return true;
+			if ($lastId == true){
+				return $db->lastInsertId();
+			}else{
+				return true;
+			}
 		}else{
 			Utils::Debug(Builder::$sql);
 			return false;
 		}
+		
 	}
 	/**
 	*	Função para fazer um Select no banco de dados

@@ -13,14 +13,14 @@
 
 <div class="conteudo">
 
-<form name="FormBanner" ng-submit="upload1(foto)">
+<form name="FormBanner" ng-submit="upload1(foto)" method="post">
 	
 	<div class="row">
 
 	<div class="col-md-12">
 		<div class="form-group">
 		<label>Foto do Banner</label>
-		<input type="file" ng-file-model="foto.banner1" />
+		<input type="file" ng-file-model="foto.banner1" name="arquivo"/>
     </div> 
     </div>
 
