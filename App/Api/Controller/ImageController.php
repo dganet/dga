@@ -1,6 +1,7 @@
 <?php
 namespace Api\Controller;
 use Api\Model\Entity\Imagem;
+use Api\Controller\AuditController as Audit;
 class ImageController{
     
     /**
@@ -8,33 +9,51 @@ class ImageController{
      * 
      * @return Array Com as informações do resultado
      */
-    public function cadastrar($img = [], $type = null){
+    public function cadastrar($img = [], $update = null){
         //extrai o array
-        foreach ($img as $key => $value) {
-            $img = $value;
-        }
+            echo "estou aqui 6";
+            foreach ($img as $key => $value) {
+                $img = $value;
+            }
 
         $destino = dirname(dirname(__FILE__)).'/upload/';
         if ($img != null || $img != ''){
+            echo "estou aqui 7";
             if($img['size'] < 1000000){
                 $name       = $img['name'];
                 $extensao   = $img['type'];
                 $extensao   = strtolower($extensao);
                 $extensao   = explode("/", $extensao);
+                var_dump($img);
                 if(strstr('jpg;jpeg;gif;png' , $extensao[1])){
+                    echo "estou aqui 8";
                     $newName    = uniqid(time()).".".$extensao[1];
                     $handle     = fopen($destino.$newName, 'x');
                     if($handle){
-                    $data       = explode(',',$img['data']);
-                    fwrite($handle, base64_decode($data[1]));
-                    fclose($handle);
-                    // Salva no Banco de dados
-                     $imagem = new Imagem();
-                     $imagem->path = $destino;
-                     $imagem->nome = $newName;
-                     $imagem->tipo = $type;
-                     $imagem->status = 'ATIVO';
-                     $id = $imagem->save(true); //return  Last Id Isert
+                        echo "estou aqui 9";
+                        $data       = explode(',',$img['data']);
+                        fwrite($handle, base64_decode($data[1]));
+                        fclose($handle);
+                        // Salva no Banco de dados
+                        $imagem = new Imagem();
+                        echo "estou aqui 3";
+                        if($update){
+                            echo "estou aqui 1";
+                            $imagem->id   = $img['id'];
+                            $imagem->path = $destino;
+                            $imagem->nome = $newName;
+                            $imagem->updateAt = date('Y-m-d H:i:s');
+                            $imagem->tipo = $img['tipo'];
+                            $imagem->update();
+                        }else{
+                            echo "estou aqui 2";
+                            $imagem->path = $destino;
+                            $imagem->nome = $newName;
+                            $imagem->tipo = $img['tipo'];
+                            $imagem->createAt = date('Y-m-d H:i:s');
+                            $imagem->status = 'ATIVO';
+                            $id = $imagem->save(true); //return  Last Id Isert
+                        }
                      // Com as informações
                       return array(
                             flag    => true,
@@ -43,7 +62,7 @@ class ImageController{
                             path    => $destino,
                             name    => $newName
                         );
-                }else{
+                    }else{
                     return array(
                         flag    => false,
                         message => "Imagem não pode ser salva. Aparentemente é um problema de escrita"
@@ -103,7 +122,7 @@ class ImageController{
   public function listaPorId($id){
      $img = new Imagem();
      return $img->select(array(
-         'where' => array(
+	 'where' => array(
              'id' => $id
             )
         )
@@ -131,12 +150,5 @@ class ImageController{
     $img->update();
     return true;
   } 
-
-  public function atulizaCadastro($data){
-		$img = new Imagem($data);
-		$img->createAt =date('Y-m-d H:i:s');
-		Audit::audit($data, "UPDATE", "img");
-		return $img->update();
-	}
 	
 }

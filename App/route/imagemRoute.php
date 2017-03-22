@@ -2,12 +2,43 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 $app->post('/save', function(Request $request, Response $response, $args){
-		$img = new \Api\Controller\ImageController();
-		$post = json_decode($request->getBody(), true);
-		$img = $img->cadastrar($post);
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($img);
-		return $request;
+		$img = new \Api\Controller\ImageController;
+		$post = json_decode($request->getBody(),true);
+		if (isset($post['banner1'])){
+			$flag = $img->listaPorTipo('banner1');
+		if (isset($flag[0]['id'])){
+			
+			$post['banner1']['id'] = $flag[0]['id'];
+			$post['banner1']['tipo'] = 'banner1';
+			$img = $img->cadastrar($post, true);
+		}else{
+			$post['banner1']['tipo'] = 'banner1';
+			$img = $img->cadastrar($post);
+		}
+		}
+		if (isset($post['banner2'])){
+			$flag = $img->listaPorTipo('banner2');
+		if (isset($flag[0]['id'])){
+			
+			$post['banner2']['id'] = $flag[0]['id'];
+			$post['banner2']['tipo'] = 'banner2';
+			$img = $img->cadastrar($post, true);
+		}else{
+			$post['banner2']['tipo'] = 'banner2';
+			$img = $img->cadastrar($post);
+		}
+		}
+		if (isset($post['banner3'])){
+			$flag = $img->listaPorTipo('banner3');
+		if (isset($flag[0]['id'])){
+			$post['banner3']['id'] = $flag[0]['id'];
+			$post['banner3']['tipo'] = 'banner3';
+			$img = $img->cadastrar($post, true);
+		}else{
+			$post['banner3']['tipo'] = 'banner3';
+			$img = $img->cadastrar($post);
+			}
+		}
 	});
 	//lista todos os img
 	$app->get('/list', function(Request $request, Response $response){

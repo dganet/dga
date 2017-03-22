@@ -35,7 +35,7 @@ $scope.mensagem = true;
 
     //Upload Primeiro Banner 3
     $scope.upload3 = function(values){
-        $http.put('../App/imagem/save', values).success(function(data){
+        $http.post('../App/imagem/save', values).success(function(data){
             
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagem = false;
