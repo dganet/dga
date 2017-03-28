@@ -2,8 +2,8 @@ app.config(function ($stateProvider, $urlRouterProvider){
   
   $stateProvider
     .state('login', {
-      url: '/login',
-      templateUrl: 'view/login/home.htm',
+      url: '/site',
+      templateUrl: 'view/site/home.htm',
          controller:'homeCtrl'
     })
 
@@ -201,7 +201,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //|############# **  FIM DOS MODULOS ** ##################|
 //|#######################################################|
 
-  $urlRouterProvider.otherwise("/login");
+  $urlRouterProvider.otherwise("/site");
 
 
 

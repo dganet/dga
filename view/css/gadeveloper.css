@@ -6,49 +6,6 @@ body, html,.corpo{
  	margin: 0 auto;
 }
 
-/*  PAINEL LOGIN  */
-.blocoHome {
-	width: 100%;
-	display: table;
-}
-.gadeveloper {
-  background: #1C4A4A;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width:70%;
-}
-
-.logo {
-	top: 40%;
-	margin:0 auto;
-	width: 70%;
-	height: 50px;
-	position: absolute;
-	left: 25%;
-}
-
-.blocoLogin {
-	background: #F3F3F3;
- 	position: absolute;
- 	top: 0;
-  	left: 70%;
-  	bottom: 0;
-  	width: 30%;
-	}
-
-.login {
-	top: 35%;
-	margin:0 auto;
-	width: 70%;
-	height: 50px;
-	position: absolute;
-	left: 15%;
-}
-
-
-/*  PAINEL PAINEL  */
-
 /*  topo  */
 #topo {
 	width: 100%;
