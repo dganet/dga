@@ -31,7 +31,14 @@ class Usuario extends \GORM\Model{
      * @param String $value
      */
     public function __set($attr, $value){
-        $this->$attr = $value;
+        switch ($attr) {
+            case 'senhaUsuario':
+                $this->$attr = md5($value);
+                break;
+            default:
+                $this->$attr = $value;
+                break;
+        }
     }
     /**
      * Metodo Getters 
@@ -48,10 +55,15 @@ class Usuario extends \GORM\Model{
                 return $permissao;
                 break;
             case 'Agenda':
-                $idAgenda       = (int) $this->fkAgenda;
-                $agenda         = new Agenda();
-                $agenda         = $agenda->find($idAgenda);
-                return $agenda->toString(); 
+                if($this->fkAgenda == null){
+                    return null;
+                }else{
+                    $idAgenda       = (int) $this->fkAgenda;
+                    $agenda         = new Agenda();
+                    $agenda         = $agenda->find($idAgenda);
+                    return $agenda;
+                }
+                break;
             default:
                 return $this->$attr;
                 break;
