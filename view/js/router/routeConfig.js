@@ -1,10 +1,21 @@
 app.config(function ($stateProvider, $urlRouterProvider){
   
   $stateProvider
+//|#######################################################|
+//|############# **  SITE ** ###################|
+//|#######################################################|
     .state('login', {
       url: '/site',
       templateUrl: 'view/site/home.htm',
          controller:'homeCtrl'
+    })
+      .state('conta', {
+      url: '/criar',
+      templateUrl: 'view/site/createCount.htm',
+         controller:'homeCtrl',
+         ncyBreadcrumb: {
+            label: 'Home'
+         }
     })
 
       .state('user', {

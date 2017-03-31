@@ -52,8 +52,8 @@ aside{
     top: 110px;
     left: calc(15% + 60px);
     padding: 20px;
+    overflow: scroll;
 }
-
 .bloco-imoveis-site {
     float: left;
     margin: 20px 20px;
@@ -82,4 +82,30 @@ aside{
 }
 .localizacao-site{
     float: right;
+}
+/*Pagina do Formulario de Nova Conta*/
+.pg-conta{
+    background-color: white;
+    width:calc(85% - 15%);
+    position: fixed;
+    bottom: 0px;
+    top: 110px;
+    left: calc(15%);
+    padding: 20px;
+}
+.bloco-form-conta{
+    margin:0 auto; 
+    width: 50%;
+    border: 1px solid #C6C6C6;
+    padding: 20px;
+}
+.tituloConta {
+    font-size: 16px;
+    font-weight: bold;
+    border-left: 10px solid #C6C6C6;
+    padding-left: 5px;
+    margin-bottom: 25px;
+}
+.termos {
+    margin-bottom: 20px;
 }
