@@ -1,11 +1,15 @@
 <?php
 namespace Api\Model\Entity;
 
-class Agenda extends \GORM\Model{
-    private $idAgenda;
-    private $nomeAgenda;
-    private $telefones;
-    /**
+class Telefone extends \GORM\Model{
+    private $idTelefone;
+    private $numeroTelefone;
+    private $descricaoTelefone;
+    private $createAtTelefone;
+    private $updateAtTelefone;
+    private $statusTelefone;
+    private $fkAgenda;
+     /**
      * Construtor
      * 
      * @param Array $data
@@ -32,15 +36,7 @@ class Agenda extends \GORM\Model{
      * @return String
      */
     public function __get($attr){
-        switch ($attr) {
-           case 'Telefone':
-            $telefone = new Telefone();
-            $telefone = $telefone->find('where fkAgenda='.$this->idAgenda);
-            return $telefone;
-            default:
-                return $this->$attr;
-                break;
-        }
+        return $this->$attr;
     }
     /**
      * Converte o Objeto para um array
@@ -49,8 +45,13 @@ class Agenda extends \GORM\Model{
      */
     public function toArray(): Array {
         $temp = array(
-           'idAgenda'   => $this->__get('idAgenda'),
-           'nomeAgenda' => $this->__get('nomeAgenda')
+           'idTelefone'     => $this->__get('idTelefone'),
+           'numeroTelefone'=> $this->__get('numeroTelefone'),
+           'descricaoTelefone'=> $this->__get('descricaoTelefone'),
+           'createAtTelefone'=> $this->__get('createAtTelefone'),
+           'updateAtTelefone'=> $this->__get('updateAtTelefone'),
+           'statusTelefone'=> $this->__get('statusTelefone'),
+           'fkAgenda'=> $this->__get('fkAgenda')
         );
         foreach ($temp as $key => $value) {
             if($value == null){
