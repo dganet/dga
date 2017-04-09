@@ -1,0 +1,655 @@
+
+14/03/2017 22:03:06 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+14/03/2017 22:03:06 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+14/03/2017 22:03:10 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+14/03/2017 22:03:29 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:03:31 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 22:07:36 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO ', '1', 'veiculo', '2017-03-14 22:03:35') 
+14/03/2017 22:07:36 [DEBUG]:UPDATE veiculo SET  updateAt='2017-03-14 22:07:35' WHERE  id=
+14/03/2017 22:13:57 [DEBUG]:SELECT numVagas FROM veiculo WHERE veiculo.id='1'
+14/03/2017 22:14:06 [DEBUG]:SELECT numVagas FROM veiculo WHERE veiculo.id='1'
+14/03/2017 22:14:10 [DEBUG]:SELECT numVagas FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:14:17 [DEBUG]:SELECT numVagas FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:17:08 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+14/03/2017 22:17:12 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:17:14 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 22:17:37 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:17:39 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 22:25:21 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='9'
+14/03/2017 22:25:24 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='11'
+14/03/2017 22:25:35 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+14/03/2017 22:25:46 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:25:48 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:29:53 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:29:53 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:30:07 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 22:30:08 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 22:30:10 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:30:11 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:30:20 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:30:20 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:30:24 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:30:25 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:30:35 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:30:36 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:33:53 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+14/03/2017 22:33:56 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:33:58 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:34:16 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 22:34:33 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='12'
+14/03/2017 22:35:44 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:35:46 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:35:48 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:35:52 [DEBUG]:SELECT count(veiculo_id) as quantidade FROM associado WHERE associado.veiculo_id='13'
+14/03/2017 22:35:52 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 1 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-07 22:47:36 ', '13', 'veiculo', '2017-03-14 22:03:52') 
+14/03/2017 22:35:52 [DEBUG]:UPDATE veiculo SET  numVagas='1', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:35:52' WHERE  id=13
+14/03/2017 22:35:53 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:36:05 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:36:12 [DEBUG]:SELECT count(veiculo_id) as quantidade FROM associado WHERE associado.veiculo_id='13'
+14/03/2017 22:36:12 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:35:52 ', '13', 'veiculo', '2017-03-14 22:03:12') 
+14/03/2017 22:36:12 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:36:12' WHERE  id=13
+14/03/2017 22:36:13 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:37:00 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:37:02 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:37:06 [DEBUG]:SELECT count(veiculo_id) as quantidade FROM associado WHERE associado.veiculo_id='13'
+14/03/2017 22:37:06 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 1 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:36:12 ', '13', 'veiculo', '2017-03-14 22:03:06') 
+14/03/2017 22:37:06 [DEBUG]:UPDATE veiculo SET  numVagas='1', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:37:06' WHERE  id=13
+14/03/2017 22:39:09 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:39:10 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:39:15 [DEBUG]:SELECT count(veiculo_id) as quantidade FROM associado WHERE associado.veiculo_id='13'
+14/03/2017 22:39:15 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:37:06 ', '13', 'veiculo', '2017-03-14 22:03:15') 
+14/03/2017 22:39:15 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:39:15' WHERE  id=13
+14/03/2017 22:40:10 [DEBUG]:SELECT count(veiculo_id) as quantidade FROM associado WHERE associado.veiculo_id='13'
+14/03/2017 22:40:11 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:37:06 ', '13', 'veiculo', '2017-03-14 22:03:10') 
+14/03/2017 22:40:11 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:40:10' WHERE  id=13
+14/03/2017 22:41:46 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:41:49 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:41:51 [DEBUG]:SELECT nome, veiculo_id FROM associado WHERE associado.veiculo_id='13'
+14/03/2017 22:41:51 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:40:10 ', '13', 'veiculo', '2017-03-14 22:03:51') 
+14/03/2017 22:41:51 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:41:51' WHERE  id=13
+14/03/2017 22:42:09 [DEBUG]:SELECT nome, status, veiculo_id FROM associado WHERE associado.veiculo_id='13'
+14/03/2017 22:42:09 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:40:10 ', '13', 'veiculo', '2017-03-14 22:03:09') 
+14/03/2017 22:42:09 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:42:09' WHERE  id=13
+14/03/2017 22:42:11 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:42:13 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:42:15 [DEBUG]:SELECT nome, status, veiculo_id FROM associado WHERE associado.veiculo_id='13'
+14/03/2017 22:42:15 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:42:09 ', '13', 'veiculo', '2017-03-14 22:03:15') 
+14/03/2017 22:42:15 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:42:15' WHERE  id=13
+14/03/2017 22:44:20 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:44:21 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:44:23 [DEBUG]:SELECT nome, status, count(veiculo_id) as quantidade FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 22:44:23 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:42:15 ', '13', 'veiculo', '2017-03-14 22:03:23') 
+14/03/2017 22:44:23 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:44:23' WHERE  id=13
+14/03/2017 22:44:53 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:44:55 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:44:57 [DEBUG]:SELECT count(status) as quantidade FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 22:44:57 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:44:23 ', '13', 'veiculo', '2017-03-14 22:03:57') 
+14/03/2017 22:44:57 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:44:57' WHERE  id=13
+14/03/2017 22:45:05 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:45:07 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 22:45:10 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:45:12 [DEBUG]:SELECT count(status) FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 22:45:12 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:44:57 ', '13', 'veiculo', '2017-03-14 22:03:12') 
+14/03/2017 22:45:12 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:45:12' WHERE  id=13
+14/03/2017 22:45:20 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:45:22 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:45:25 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 22:45:25 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:45:12 ', '13', 'veiculo', '2017-03-14 22:03:25') 
+14/03/2017 22:45:25 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:45:25' WHERE  id=13
+14/03/2017 22:45:48 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:45:50 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:45:51 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 22:45:51 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:45:25 ', '13', 'veiculo', '2017-03-14 22:03:51') 
+14/03/2017 22:45:51 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:45:51' WHERE  id=13
+14/03/2017 22:46:21 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:46:32 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:46:36 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 22:46:37 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:46:41 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:46:45 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 22:46:45 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 4 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 22:45:51 ', '13', 'veiculo', '2017-03-14 22:03:45') 
+14/03/2017 22:46:45 [DEBUG]:UPDATE veiculo SET  numVagas='4', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 22:46:45' WHERE  id=13
+14/03/2017 22:46:46 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:46:53 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:46:57 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 22:46:58 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:47:02 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 22:53:30 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:54:17 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:54:32 [MESSAGE]:Tentando Cadastrar o Associado qqq
+14/03/2017 22:54:44 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 22:54:45 [MESSAGE]:Tentando Cadastrar o Associado qqqq
+14/03/2017 22:57:53 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:02:32 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:02:36 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:04:09 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:05:11 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:05:42 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:05:43 [MESSAGE]:Tentando Cadastrar o Associado qwerqwer
+14/03/2017 23:06:37 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:06:38 [MESSAGE]:Tentando Cadastrar o Associado asdfasdf
+14/03/2017 23:06:44 [MESSAGE]:Tentando Cadastrar o Associado asdfasdf
+14/03/2017 23:06:52 [MESSAGE]:Tentando Cadastrar o Associado 12341234
+14/03/2017 23:07:03 [MESSAGE]:Listando Associados
+14/03/2017 23:07:03 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+14/03/2017 23:07:46 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+14/03/2017 23:07:58 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+14/03/2017 23:08:04 [MESSAGE]:Listando Associados Aguardando uma vaga
+14/03/2017 23:08:04 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' AND veiculo.id='13' ORDER BY associado.createAt
+14/03/2017 23:08:06 [DEBUG]:SELECT associado.nome FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:08:11 [MESSAGE]:Listando Associados Aguardando uma vaga
+14/03/2017 23:08:12 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' AND veiculo.id='13' ORDER BY associado.createAt
+14/03/2017 23:08:13 [DEBUG]:SELECT associado.nome FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:08:16 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:08:19 [MESSAGE]:Listando Associados
+14/03/2017 23:08:20 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+14/03/2017 23:08:20 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:08:20 [MESSAGE]:Listando Associados
+14/03/2017 23:08:21 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+14/03/2017 23:11:20 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+14/03/2017 23:11:21 [MESSAGE]:Listando Associados Aguardando uma vaga
+14/03/2017 23:11:22 [DEBUG]:SELECT associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt FROM associado INNER JOIN veiculo ON veiculo.id=associado.veiculo_id WHERE associado.status='AGUARDANDOVAGA' AND veiculo.id='13' ORDER BY associado.createAt
+14/03/2017 23:11:25 [DEBUG]:SELECT associado.nome FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:12:11 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:12:12 [MESSAGE]:Tentando Cadastrar o Associado aaaaa
+14/03/2017 23:12:13 [DEBUG]:INSERT INTO associado (nome, rendaSerial, createAt, status, usuario_id)  values ('aaaaa', 'a:0:{}', '2017-03-14 23:12:12', 'AGUARDANDOVAGA', '1') 
+14/03/2017 23:12:13 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => aaaaa rendaSerial => a:0:{} createAt => 2017-03-14 23:12:12 status => AGUARDANDOVAGA ', '1', 'associado', '2017-03-14 23:03:13') 
+14/03/2017 23:12:13 [MESSAGE]:Usuário aaaaa cadastrado com sucesso !
+14/03/2017 23:14:38 [MESSAGE]:Listando Associados
+14/03/2017 23:14:39 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+14/03/2017 23:16:22 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+14/03/2017 23:20:10 [MESSAGE]:Listando Associados Aguardando uma aprovacao
+14/03/2017 23:20:11 [DEBUG]:SELECT * FROM associado WHERE associado.status='AGUARDANDOVAGA'
+14/03/2017 23:24:15 [DEBUG]:SELECT * FROM periodo WHERE periodo.id='1'
+14/03/2017 23:24:22 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:24:25 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+14/03/2017 23:24:32 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:24:33 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 23:24:37 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:24:42 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:24:43 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:24:46 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:28:47 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:28:48 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:28:59 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:28:59 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 23:01:11 ', '13', 'veiculo', '2017-03-14 23:03:59') 
+14/03/2017 23:28:59 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 23:28:59' WHERE  id=13
+14/03/2017 23:29:00 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:29:04 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:29:07 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:29:07 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:29:19 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:29:20 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='10'
+14/03/2017 23:29:23 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='10' AND status='ATIVO'
+14/03/2017 23:29:23 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 10 associado_id => 0 numVagas => 49 periodo => Manhã destino => Mogi das Cruzes nomeLinha => Linha 03 createAt => 2017-03-03 00:55:51 updateAt => 0000-00-00 00:00:00 ', '10', 'veiculo', '2017-03-14 23:03:23') 
+14/03/2017 23:29:23 [DEBUG]:UPDATE veiculo SET  numVagas='49', periodo='Manhã', destino='Mogi das Cruzes', nomeLinha='Linha 03', createAt='2017-03-03 00:55:51', updateAt='2017-03-14 23:29:23' WHERE  id=10
+14/03/2017 23:29:24 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:29:26 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:29:29 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:29:29 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 23:28:59 ', '13', 'veiculo', '2017-03-14 23:03:29') 
+14/03/2017 23:29:29 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 23:29:29' WHERE  id=13
+14/03/2017 23:29:30 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:29:31 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:29:34 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:29:35 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:29:36 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:29:39 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:29:40 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:29:41 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:29:44 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:29:44 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 3 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 23:29:29 ', '13', 'veiculo', '2017-03-14 23:03:44') 
+14/03/2017 23:29:44 [DEBUG]:UPDATE veiculo SET  numVagas='3', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 23:29:44' WHERE  id=13
+14/03/2017 23:29:45 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:31:55 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:31:57 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='11'
+14/03/2017 23:31:59 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='11' AND status='ATIVO'
+14/03/2017 23:31:59 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 11 associado_id => 0 numVagas => 50 periodo => Tarde destino => Guaruja nomeLinha => Linha 04 createAt => 2017-03-03 02:16:07 updateAt => 2017-03-03 15:12:56 ', '11', 'veiculo', '2017-03-14 23:03:59') 
+14/03/2017 23:31:59 [DEBUG]:UPDATE veiculo SET  numVagas='50', periodo='Tarde', destino='Guaruja', nomeLinha='Linha 04', createAt='2017-03-03 02:16:07', updateAt='2017-03-14 23:31:59' WHERE  id=11
+14/03/2017 23:32:00 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:46:36 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:46:46 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:46:50 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:47:45 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+14/03/2017 23:47:51 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:47:52 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='8'
+14/03/2017 23:47:56 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:47:58 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:48:10 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:48:16 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:48:16 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 4 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 23:29:44 ', '13', 'veiculo', '2017-03-14 23:03:16') 
+14/03/2017 23:48:16 [DEBUG]:UPDATE veiculo SET  numVagas='4', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 23:48:16' WHERE  id=13
+14/03/2017 23:48:17 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:48:19 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.id='13'
+14/03/2017 23:48:21 [DEBUG]:SELECT status FROM associado WHERE veiculo_id='13' AND status='ATIVO'
+14/03/2017 23:48:21 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 13 associado_id => 0 numVagas => 5 periodo => Manhã destino => Santos nomeLinha => Linha 06 createAt => 2017-03-14 19:35:14 updateAt => 2017-03-14 23:48:16 ', '13', 'veiculo', '2017-03-14 23:03:21') 
+14/03/2017 23:48:21 [DEBUG]:UPDATE veiculo SET  numVagas='5', periodo='Manhã', destino='Santos', nomeLinha='Linha 06', createAt='2017-03-14 19:35:14', updateAt='2017-03-14 23:48:21' WHERE  id=13
+14/03/2017 23:48:23 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+14/03/2017 23:51:41 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+15/03/2017 0:00:01 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+15/03/2017 0:01:35 [DEBUG]:SELECT count(associado.status) as ocupado, veiculo.id, veiculo.nomeLinha, veiculo.destino, veiculo.numVagas, veiculo.periodo FROM associado INNER JOIN veiculo ON associado.veiculo_id=veiculo.id WHERE associado.status='ATIVO' GROUP BY associado.veiculo_id
+15/03/2017 0:03:27 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+15/03/2017 0:05:31 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+15/03/2017 0:05:55 [MESSAGE]:Tentando Cadastrar o Associado lahsldfjlaskjh
+15/03/2017 0:05:55 [DEBUG]:INSERT INTO associado (nome, rg, orgaoExpedidor, nomePai, nomeMae, telResidencial, estadoCivil, nomeConjuje, rendaSerial, planoSaude, planoEmpresa, tipoSangue, problemaSaude, createAt, status, usuario_id, veiculo_id)  values ('lahsldfjlaskjh', '3232323', '3232132321', '321321321321', '321321321321', '32132321321', '323213213213232', '323232132', 'a:0:{}', '332321321', '321321321321', '32132321321', '32132321', '2017-03-15 00:05:55', 'AGUARDANDOVAGA', '1', '8') 
+15/03/2017 0:05:56 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => lahsldfjlaskjh rg => 3232323 orgaoExpedidor => 3232132321 nomePai => 321321321321 nomeMae => 321321321321 telResidencial => 32132321321 estadoCivil => 323213213213232 nomeConjuje => 323232132 rendaSerial => a:0:{} planoSaude => 332321321 planoEmpresa => 321321321321 tipoSangue => 32132321321 problemaSaude => 32132321 createAt => 2017-03-15 00:05:55 status => AGUARDANDOVAGA veiculo_id => 8 ', '1', 'associado', '2017-03-15 00:03:55') 
+15/03/2017 0:05:56 [MESSAGE]:Usuário lahsldfjlaskjh cadastrado com sucesso !
+15/03/2017 20:53:19 [MESSAGE]:Listando Associados
+15/03/2017 21:04:27 [DEBUG]:SELECT * FROM universidade WHERE universidade.id='1'
+15/03/2017 21:04:44 [DEBUG]:SELECT * FROM universidade WHERE universidade.status='ATIVO'
+15/03/2017 21:05:12 [DEBUG]:SELECT * FROM universidade WHERE universidade.status='ATIVO'
+15/03/2017 21:05:18 [DEBUG]:SELECT * FROM universidade WHERE universidade.id='1'
+15/03/2017 21:43:33 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+15/03/2017 21:43:33 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+15/03/2017 21:43:39 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+15/03/2017 21:43:48 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO titulo => AAGAGAGAG descricao => aaaaa ', '', 'curso', '2017-03-15 21:03:48') 
+15/03/2017 21:43:49 [DEBUG]:INSERT INTO curso (descricao, titulo, createAt, status)  values ('aaaaa', 'AAGAGAGAG', '2017-03-15 21:43:48', 'ATIVO') 
+15/03/2017 21:43:50 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 21:44:41 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 21:44:49 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO ', '', 'curso', '2017-03-15 21:03:49') 
+15/03/2017 21:44:49 [DEBUG]:INSERT INTO curso (createAt, status)  values ('2017-03-15 21:44:49', 'ATIVO') 
+15/03/2017 21:44:51 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 21:44:57 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO ', '', 'curso', '2017-03-15 21:03:56') 
+15/03/2017 21:44:57 [DEBUG]:INSERT INTO curso (createAt, status)  values ('2017-03-15 21:44:56', 'ATIVO') 
+15/03/2017 21:47:29 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 21:48:15 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+15/03/2017 22:00:32 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:03:14 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:24:53 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => asdfasd ', '', 'curso', '2017-03-15 22:03:52') 
+15/03/2017 22:24:53 [DEBUG]:INSERT INTO cursofaculdade (nome, createAt, status)  values ('asdfasd', '2017-03-15 22:24:52', 'ATIVO') 
+15/03/2017 22:24:56 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:24:57 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:25:01 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 1 nome => asdfasdaaaa createAt => 2017-03-15 22:24:52 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:00') 
+15/03/2017 22:25:01 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:25:00', updateAt='0000-00-00 00:00:00', status='ATIVO' WHERE  id=1
+15/03/2017 22:25:02 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:25:07 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:25:09 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:25:11 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 1 nome => asdfasd1 createAt => 2017-03-15 22:24:52 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:10') 
+15/03/2017 22:25:11 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:25:10', updateAt='0000-00-00 00:00:00', status='ATIVO' WHERE  id=1
+15/03/2017 22:25:12 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:25:16 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:25:17 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:27:30 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:27:32 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:27:34 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 1 nome => asdfasdqqqq createAt => 2017-03-15 22:24:52 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:33') 
+15/03/2017 22:27:34 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:27:33', updateAt='0000-00-00 00:00:00', status='ATIVO' WHERE  id=1
+15/03/2017 22:27:35 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:28:31 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:28:33 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:28:34 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 1 nome => asdfasd1111 createAt => 2017-03-15 22:24:52 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:34') 
+15/03/2017 22:28:34 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:28:34', updateAt='0000-00-00 00:00:00', status='ATIVO' WHERE  id=1
+15/03/2017 22:28:35 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:29:03 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:29:10 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:29:11 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 1 nome => asdfasd1 createAt => 2017-03-15 22:24:52 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:11') 
+15/03/2017 22:29:11 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:29:11', updateAt='0000-00-00 00:00:00', status='ATIVO' WHERE  id=1
+15/03/2017 22:29:12 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:29:19 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:29:37 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+15/03/2017 22:29:42 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:29:43 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:29:45 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 1 nome => asdfasd1 createAt => 2017-03-15 22:24:52 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:44') 
+15/03/2017 22:29:45 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:29:44', updateAt='0000-00-00 00:00:00', status='ATIVO' WHERE  id=1
+15/03/2017 22:29:46 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:29:51 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:29:53 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:29:56 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 1 nome => 1 createAt => 2017-03-15 22:24:52 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:55') 
+15/03/2017 22:29:56 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:29:55', updateAt='0000-00-00 00:00:00', status='ATIVO' WHERE  id=1
+15/03/2017 22:29:57 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:30:33 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:30:35 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='1'
+15/03/2017 22:30:37 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 1 nome => asdfasd1 createAt => 2017-03-15 22:24:52 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:36') 
+15/03/2017 22:30:37 [DEBUG]:UPDATE cursofaculdade SET  nome='asdfasd1', createAt='2017-03-15 22:24:52', updateAt='2017-03-15 22:30:36', status='ATIVO' WHERE  id=1
+15/03/2017 22:30:38 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:42:52 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+15/03/2017 22:43:01 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+15/03/2017 22:43:26 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+15/03/2017 22:43:36 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => bbbb ', '', 'curso', '2017-03-15 22:03:35') 
+15/03/2017 22:43:36 [DEBUG]:INSERT INTO cursofaculdade (nome, createAt, status)  values ('bbbb', '2017-03-15 22:43:35', 'ATIVO') 
+15/03/2017 22:43:38 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:43:39 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='2'
+15/03/2017 22:43:41 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 2 nome => bbbbaaaa createAt => 2017-03-15 22:43:35 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:40') 
+15/03/2017 22:43:41 [DEBUG]:UPDATE cursofaculdade SET  nome='bbbbaaaa', createAt='2017-03-15 22:43:35', updateAt='2017-03-15 22:43:40', status='ATIVO' WHERE  id=2
+15/03/2017 22:43:42 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:43:46 [DEBUG]:SELECT * FROM curso WHERE curso.id='2'
+15/03/2017 22:43:55 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => 1 ', '', 'curso', '2017-03-15 22:03:54') 
+15/03/2017 22:43:55 [DEBUG]:INSERT INTO cursofaculdade (nome, createAt, status)  values ('1', '2017-03-15 22:43:54', 'ATIVO') 
+15/03/2017 22:43:56 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:43:58 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='3'
+15/03/2017 22:44:00 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO id => 3 nome => 12 createAt => 2017-03-15 22:43:54 updateAt => 0000-00-00 00:00:00 status => ATIVO ', '', 'curso', '2017-03-15 22:03:59') 
+15/03/2017 22:44:00 [DEBUG]:UPDATE cursofaculdade SET  nome='12', createAt='2017-03-15 22:43:54', updateAt='2017-03-15 22:43:59', status='ATIVO' WHERE  id=3
+15/03/2017 22:44:01 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:44:23 [DEBUG]:SELECT * FROM curso WHERE curso.id='3'
+15/03/2017 22:44:24 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO ', '', 'curso', '2017-03-15 22:03:23') 
+15/03/2017 22:44:24 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:44:23', status='INATIVO' WHERE  id=3
+15/03/2017 22:44:25 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:44:36 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:45:40 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='3'
+15/03/2017 22:45:42 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO ', '', 'curso', '2017-03-15 22:03:41') 
+15/03/2017 22:45:42 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:45:41', status='INATIVO' WHERE  id=3
+15/03/2017 22:45:43 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:45:57 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:45:58 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='3'
+15/03/2017 22:45:59 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO ', '', 'curso', '2017-03-15 22:03:58') 
+15/03/2017 22:45:59 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:45:58', status='INATIVO' WHERE  id=undefined
+15/03/2017 22:47:11 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:47:17 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'INSERINDO INFORMAÇÃO nome => aa ', '', 'curso', '2017-03-15 22:03:16') 
+15/03/2017 22:47:17 [DEBUG]:INSERT INTO cursofaculdade (nome, createAt, status)  values ('aa', '2017-03-15 22:47:16', 'ATIVO') 
+15/03/2017 22:47:19 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 22:47:21 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.id='4'
+15/03/2017 22:47:22 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO ', '', 'curso', '2017-03-15 22:03:21') 
+15/03/2017 22:47:22 [DEBUG]:UPDATE curso SET  createAt='2017-03-15 22:47:21', status='INATIVO' WHERE  id=4
+15/03/2017 22:47:23 [DEBUG]:SELECT * FROM curso WHERE curso.status='ATIVO'
+15/03/2017 22:47:26 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 23:00:51 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 23:00:55 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+15/03/2017 23:00:59 [DEBUG]:SELECT * FROM universidade WHERE universidade.status='ATIVO'
+15/03/2017 23:01:01 [DEBUG]:SELECT * FROM universidade WHERE universidade.id='2'
+15/03/2017 23:01:46 [DEBUG]:SELECT * FROM universidade WHERE universidade.status='ATIVO'
+15/03/2017 23:01:48 [DEBUG]:SELECT * FROM universidade WHERE universidade.id='2'
+15/03/2017 23:01:50 [DEBUG]:INSERT INTO audit (id, acao, usuario_id, tabela, createAt)  values ('', 'ATUALIZANDO INFORMAÇÃO ', '', 'curso', '2017-03-15 23:03:49') 
+15/03/2017 23:01:50 [DEBUG]:UPDATE universidade SET  status='INATIVO', updateAt='2017-03-15 23:01:49' WHERE  id=1
+15/03/2017 23:01:51 [DEBUG]:SELECT * FROM universidade WHERE universidade.status='ATIVO'
+15/03/2017 23:01:54 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+15/03/2017 23:01:58 [DEBUG]:SELECT * FROM universidade WHERE universidade.status='ATIVO'
+15/03/2017 23:06:13 [MESSAGE]:Listando Associados
+15/03/2017 23:06:14 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+15/03/2017 23:06:14 [DEBUG]:SELECT * FROM associado WHERE associado.status='ATIVO'
+15/03/2017 23:06:15 [DEBUG]:SELECT * FROM veiculo WHERE veiculo.status='ATIVO'
+15/03/2017 23:06:15 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+15/03/2017 23:06:15 [DEBUG]:SELECT * FROM universidade WHERE universidade.status='ATIVO'
+18/03/2017 18:46:13 [DEBUG]:SELECT * FROM post WHERE post.status='ATIVO'
+18/03/2017 18:46:15 [DEBUG]:SELECT * FROM periodo WHERE periodo.status='ATIVO'
+18/03/2017 18:46:43 [DEBUG]:SELECT * FROM usuario WHERE email='admin' AND senha='21232f297a57a5a743894a0e4a801fc3' AND status='ATIVO'
+18/03/2017 18:47:36 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+18/03/2017 18:47:38 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id
+18/03/2017 18:47:41 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id
+18/03/2017 18:47:42 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id
+18/03/2017 18:47:43 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id
+18/03/2017 18:47:43 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id
+18/03/2017 18:51:50 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+18/03/2017 18:51:59 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id
+18/03/2017 18:55:46 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id WHERE cursofaculdade.id='11'
+18/03/2017 18:57:32 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id WHERE cursofaculdade.id='11'
+18/03/2017 18:57:36 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=cursofaculdade.id WHERE cursofaculdade.id='10'
+18/03/2017 18:57:48 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+18/03/2017 18:57:49 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=10
+18/03/2017 18:57:49 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=11
+18/03/2017 18:57:49 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=12
+18/03/2017 18:57:49 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=13
+18/03/2017 18:57:49 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=14
+18/03/2017 18:57:49 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=15
+18/03/2017 18:57:49 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=16
+18/03/2017 18:57:50 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=17
+18/03/2017 18:57:50 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=18
+18/03/2017 18:57:50 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=19
+18/03/2017 18:57:50 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=20
+18/03/2017 18:57:50 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=21
+18/03/2017 18:57:51 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=22
+18/03/2017 18:57:51 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=23
+18/03/2017 18:57:51 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=24
+18/03/2017 18:57:51 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=25
+18/03/2017 18:57:51 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=26
+18/03/2017 18:57:51 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=27
+18/03/2017 18:57:51 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=28
+18/03/2017 18:57:52 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=29
+18/03/2017 18:57:52 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=30
+18/03/2017 18:57:52 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=31
+18/03/2017 18:57:52 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=32
+18/03/2017 18:57:52 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=33
+18/03/2017 18:57:52 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=34
+18/03/2017 18:57:53 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=35
+18/03/2017 18:57:53 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=36
+18/03/2017 18:57:53 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=37
+18/03/2017 18:57:53 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=38
+18/03/2017 18:57:53 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=39
+18/03/2017 18:57:53 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=40
+18/03/2017 18:57:53 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=41
+18/03/2017 18:57:54 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=42
+18/03/2017 18:57:54 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=43
+18/03/2017 18:57:54 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=44
+18/03/2017 18:57:54 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=45
+18/03/2017 18:57:54 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=46
+18/03/2017 18:57:55 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=47
+18/03/2017 18:57:55 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=48
+18/03/2017 18:57:55 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=49
+18/03/2017 18:57:55 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=50
+18/03/2017 18:57:56 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=51
+18/03/2017 18:57:56 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=52
+18/03/2017 18:57:56 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=53
+18/03/2017 18:57:56 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=54
+18/03/2017 18:57:56 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=55
+18/03/2017 18:57:56 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=56
+18/03/2017 18:57:57 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=57
+18/03/2017 18:57:57 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=58
+18/03/2017 18:57:57 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=59
+18/03/2017 18:57:57 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=60
+18/03/2017 18:57:57 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=61
+18/03/2017 18:57:57 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=62
+18/03/2017 19:00:18 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=3
+18/03/2017 19:00:23 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=51
+18/03/2017 19:05:35 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=51
+18/03/2017 19:05:38 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+18/03/2017 19:06:10 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+18/03/2017 19:06:13 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+18/03/2017 19:06:14 [DEBUG]:SELECT * FROM associado WHERE associado.curso='10'
+18/03/2017 19:06:14 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=10
+18/03/2017 19:06:15 [DEBUG]:SELECT * FROM associado WHERE associado.curso='11'
+18/03/2017 19:06:15 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=11
+18/03/2017 19:06:15 [DEBUG]:SELECT * FROM associado WHERE associado.curso='12'
+18/03/2017 19:06:15 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=12
+18/03/2017 19:06:15 [DEBUG]:SELECT * FROM associado WHERE associado.curso='13'
+18/03/2017 19:06:16 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=13
+18/03/2017 19:06:16 [DEBUG]:SELECT * FROM associado WHERE associado.curso='14'
+18/03/2017 19:06:16 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=14
+18/03/2017 19:06:16 [DEBUG]:SELECT * FROM associado WHERE associado.curso='15'
+18/03/2017 19:06:16 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=15
+18/03/2017 19:06:16 [DEBUG]:SELECT * FROM associado WHERE associado.curso='16'
+18/03/2017 19:06:16 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=16
+18/03/2017 19:06:17 [DEBUG]:SELECT * FROM associado WHERE associado.curso='17'
+18/03/2017 19:06:17 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=17
+18/03/2017 19:06:17 [DEBUG]:SELECT * FROM associado WHERE associado.curso='18'
+18/03/2017 19:06:17 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=18
+18/03/2017 19:06:17 [DEBUG]:SELECT * FROM associado WHERE associado.curso='19'
+18/03/2017 19:06:18 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=19
+18/03/2017 19:06:18 [DEBUG]:SELECT * FROM associado WHERE associado.curso='20'
+18/03/2017 19:06:18 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=20
+18/03/2017 19:06:18 [DEBUG]:SELECT * FROM associado WHERE associado.curso='21'
+18/03/2017 19:06:18 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=21
+18/03/2017 19:06:18 [DEBUG]:SELECT * FROM associado WHERE associado.curso='22'
+18/03/2017 19:06:19 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=22
+18/03/2017 19:06:19 [DEBUG]:SELECT * FROM associado WHERE associado.curso='23'
+18/03/2017 19:06:19 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=23
+18/03/2017 19:06:19 [DEBUG]:SELECT * FROM associado WHERE associado.curso='24'
+18/03/2017 19:06:19 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=24
+18/03/2017 19:06:19 [DEBUG]:SELECT * FROM associado WHERE associado.curso='25'
+18/03/2017 19:06:19 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=25
+18/03/2017 19:06:20 [DEBUG]:SELECT * FROM associado WHERE associado.curso='26'
+18/03/2017 19:06:20 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=26
+18/03/2017 19:06:20 [DEBUG]:SELECT * FROM associado WHERE associado.curso='27'
+18/03/2017 19:06:20 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=27
+18/03/2017 19:06:20 [DEBUG]:SELECT * FROM associado WHERE associado.curso='28'
+18/03/2017 19:06:20 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=28
+18/03/2017 19:06:20 [DEBUG]:SELECT * FROM associado WHERE associado.curso='29'
+18/03/2017 19:06:21 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=29
+18/03/2017 19:06:21 [DEBUG]:SELECT * FROM associado WHERE associado.curso='30'
+18/03/2017 19:06:21 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=30
+18/03/2017 19:06:21 [DEBUG]:SELECT * FROM associado WHERE associado.curso='31'
+18/03/2017 19:06:21 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=31
+18/03/2017 19:06:21 [DEBUG]:SELECT * FROM associado WHERE associado.curso='32'
+18/03/2017 19:06:22 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=32
+18/03/2017 19:06:22 [DEBUG]:SELECT * FROM associado WHERE associado.curso='33'
+18/03/2017 19:06:22 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=33
+18/03/2017 19:06:22 [DEBUG]:SELECT * FROM associado WHERE associado.curso='34'
+18/03/2017 19:06:22 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=34
+18/03/2017 19:06:22 [DEBUG]:SELECT * FROM associado WHERE associado.curso='35'
+18/03/2017 19:06:22 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=35
+18/03/2017 19:06:23 [DEBUG]:SELECT * FROM associado WHERE associado.curso='36'
+18/03/2017 19:06:23 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=36
+18/03/2017 19:06:23 [DEBUG]:SELECT * FROM associado WHERE associado.curso='37'
+18/03/2017 19:06:23 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=37
+18/03/2017 19:06:23 [DEBUG]:SELECT * FROM associado WHERE associado.curso='38'
+18/03/2017 19:06:23 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=38
+18/03/2017 19:06:23 [DEBUG]:SELECT * FROM associado WHERE associado.curso='39'
+18/03/2017 19:06:24 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=39
+18/03/2017 19:06:24 [DEBUG]:SELECT * FROM associado WHERE associado.curso='40'
+18/03/2017 19:06:24 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=40
+18/03/2017 19:06:24 [DEBUG]:SELECT * FROM associado WHERE associado.curso='41'
+18/03/2017 19:06:24 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=41
+18/03/2017 19:06:24 [DEBUG]:SELECT * FROM associado WHERE associado.curso='42'
+18/03/2017 19:06:25 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=42
+18/03/2017 19:06:25 [DEBUG]:SELECT * FROM associado WHERE associado.curso='43'
+18/03/2017 19:06:25 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=43
+18/03/2017 19:06:25 [DEBUG]:SELECT * FROM associado WHERE associado.curso='44'
+18/03/2017 19:06:25 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=44
+18/03/2017 19:06:25 [DEBUG]:SELECT * FROM associado WHERE associado.curso='45'
+18/03/2017 19:06:25 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=45
+18/03/2017 19:06:26 [DEBUG]:SELECT * FROM associado WHERE associado.curso='46'
+18/03/2017 19:06:26 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=46
+18/03/2017 19:06:26 [DEBUG]:SELECT * FROM associado WHERE associado.curso='47'
+18/03/2017 19:06:26 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=47
+18/03/2017 19:06:26 [DEBUG]:SELECT * FROM associado WHERE associado.curso='48'
+18/03/2017 19:06:26 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=48
+18/03/2017 19:06:26 [DEBUG]:SELECT * FROM associado WHERE associado.curso='49'
+18/03/2017 19:06:27 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=49
+18/03/2017 19:06:27 [DEBUG]:SELECT * FROM associado WHERE associado.curso='50'
+18/03/2017 19:06:27 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=50
+18/03/2017 19:06:27 [DEBUG]:SELECT * FROM associado WHERE associado.curso='51'
+18/03/2017 19:06:27 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=51
+18/03/2017 19:06:28 [DEBUG]:SELECT * FROM associado WHERE associado.curso='52'
+18/03/2017 19:06:28 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=52
+18/03/2017 19:06:28 [DEBUG]:SELECT * FROM associado WHERE associado.curso='53'
+18/03/2017 19:06:28 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=53
+18/03/2017 19:06:28 [DEBUG]:SELECT * FROM associado WHERE associado.curso='54'
+18/03/2017 19:06:28 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=54
+18/03/2017 19:06:28 [DEBUG]:SELECT * FROM associado WHERE associado.curso='55'
+18/03/2017 19:06:29 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=55
+18/03/2017 19:06:29 [DEBUG]:SELECT * FROM associado WHERE associado.curso='56'
+18/03/2017 19:06:29 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=56
+18/03/2017 19:06:29 [DEBUG]:SELECT * FROM associado WHERE associado.curso='57'
+18/03/2017 19:06:29 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=57
+18/03/2017 19:06:29 [DEBUG]:SELECT * FROM associado WHERE associado.curso='58'
+18/03/2017 19:06:29 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=58
+18/03/2017 19:06:30 [DEBUG]:SELECT * FROM associado WHERE associado.curso='59'
+18/03/2017 19:06:30 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=59
+18/03/2017 19:06:30 [DEBUG]:SELECT * FROM associado WHERE associado.curso='60'
+18/03/2017 19:06:30 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=60
+18/03/2017 19:06:30 [DEBUG]:SELECT * FROM associado WHERE associado.curso='61'
+18/03/2017 19:06:30 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=61
+18/03/2017 19:06:30 [DEBUG]:SELECT * FROM associado WHERE associado.curso='62'
+18/03/2017 19:06:31 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=62
+18/03/2017 19:07:31 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+18/03/2017 19:07:31 [DEBUG]:SELECT * FROM associado WHERE associado.curso='10'
+18/03/2017 19:07:31 [DEBUG]:SELECT * FROM associado WHERE associado.curso='11'
+18/03/2017 19:07:32 [DEBUG]:SELECT * FROM associado WHERE associado.curso='12'
+18/03/2017 19:07:32 [DEBUG]:SELECT * FROM associado WHERE associado.curso='13'
+18/03/2017 19:07:33 [DEBUG]:SELECT * FROM associado WHERE associado.curso='14'
+18/03/2017 19:07:33 [DEBUG]:SELECT * FROM associado WHERE associado.curso='15'
+18/03/2017 19:07:33 [DEBUG]:SELECT * FROM associado WHERE associado.curso='16'
+18/03/2017 19:07:33 [DEBUG]:SELECT * FROM associado WHERE associado.curso='17'
+18/03/2017 19:07:34 [DEBUG]:SELECT * FROM associado WHERE associado.curso='18'
+18/03/2017 19:07:34 [DEBUG]:SELECT * FROM associado WHERE associado.curso='19'
+18/03/2017 19:07:34 [DEBUG]:SELECT * FROM associado WHERE associado.curso='20'
+18/03/2017 19:07:34 [DEBUG]:SELECT * FROM associado WHERE associado.curso='21'
+18/03/2017 19:07:34 [DEBUG]:SELECT * FROM associado WHERE associado.curso='22'
+18/03/2017 19:07:34 [DEBUG]:SELECT * FROM associado WHERE associado.curso='23'
+18/03/2017 19:07:35 [DEBUG]:SELECT * FROM associado WHERE associado.curso='24'
+18/03/2017 19:07:35 [DEBUG]:SELECT * FROM associado WHERE associado.curso='25'
+18/03/2017 19:07:35 [DEBUG]:SELECT * FROM associado WHERE associado.curso='26'
+18/03/2017 19:07:35 [DEBUG]:SELECT * FROM associado WHERE associado.curso='27'
+18/03/2017 19:07:35 [DEBUG]:SELECT * FROM associado WHERE associado.curso='28'
+18/03/2017 19:07:36 [DEBUG]:SELECT * FROM associado WHERE associado.curso='29'
+18/03/2017 19:07:36 [DEBUG]:SELECT * FROM associado WHERE associado.curso='30'
+18/03/2017 19:07:36 [DEBUG]:SELECT * FROM associado WHERE associado.curso='31'
+18/03/2017 19:07:37 [DEBUG]:SELECT * FROM associado WHERE associado.curso='32'
+18/03/2017 19:07:37 [DEBUG]:SELECT * FROM associado WHERE associado.curso='33'
+18/03/2017 19:07:38 [DEBUG]:SELECT * FROM associado WHERE associado.curso='34'
+18/03/2017 19:07:38 [DEBUG]:SELECT * FROM associado WHERE associado.curso='35'
+18/03/2017 19:07:38 [DEBUG]:SELECT * FROM associado WHERE associado.curso='36'
+18/03/2017 19:07:38 [DEBUG]:SELECT * FROM associado WHERE associado.curso='37'
+18/03/2017 19:07:38 [DEBUG]:SELECT * FROM associado WHERE associado.curso='38'
+18/03/2017 19:07:38 [DEBUG]:SELECT * FROM associado WHERE associado.curso='39'
+18/03/2017 19:07:39 [DEBUG]:SELECT * FROM associado WHERE associado.curso='40'
+18/03/2017 19:07:40 [DEBUG]:SELECT * FROM associado WHERE associado.curso='41'
+18/03/2017 19:07:40 [DEBUG]:SELECT * FROM associado WHERE associado.curso='42'
+18/03/2017 19:07:40 [DEBUG]:SELECT * FROM associado WHERE associado.curso='43'
+18/03/2017 19:07:40 [DEBUG]:SELECT * FROM associado WHERE associado.curso='44'
+18/03/2017 19:07:40 [DEBUG]:SELECT * FROM associado WHERE associado.curso='45'
+18/03/2017 19:07:40 [DEBUG]:SELECT * FROM associado WHERE associado.curso='46'
+18/03/2017 19:07:40 [DEBUG]:SELECT * FROM associado WHERE associado.curso='47'
+18/03/2017 19:07:41 [DEBUG]:SELECT * FROM associado WHERE associado.curso='48'
+18/03/2017 19:07:41 [DEBUG]:SELECT * FROM associado WHERE associado.curso='49'
+18/03/2017 19:07:41 [DEBUG]:SELECT * FROM associado WHERE associado.curso='50'
+18/03/2017 19:07:41 [DEBUG]:SELECT * FROM associado WHERE associado.curso='51'
+18/03/2017 19:07:41 [DEBUG]:SELECT * FROM associado WHERE associado.curso='52'
+18/03/2017 19:07:41 [DEBUG]:SELECT * FROM associado WHERE associado.curso='53'
+18/03/2017 19:07:42 [DEBUG]:SELECT * FROM associado WHERE associado.curso='54'
+18/03/2017 19:07:42 [DEBUG]:SELECT * FROM associado WHERE associado.curso='55'
+18/03/2017 19:07:42 [DEBUG]:SELECT * FROM associado WHERE associado.curso='56'
+18/03/2017 19:07:42 [DEBUG]:SELECT * FROM associado WHERE associado.curso='57'
+18/03/2017 19:07:42 [DEBUG]:SELECT * FROM associado WHERE associado.curso='58'
+18/03/2017 19:07:43 [DEBUG]:SELECT * FROM associado WHERE associado.curso='59'
+18/03/2017 19:07:43 [DEBUG]:SELECT * FROM associado WHERE associado.curso='60'
+18/03/2017 19:07:44 [DEBUG]:SELECT * FROM associado WHERE associado.curso='61'
+18/03/2017 19:07:44 [DEBUG]:SELECT * FROM associado WHERE associado.curso='62'
+18/03/2017 19:10:00 [DEBUG]:SELECT * FROM cursofaculdade WHERE cursofaculdade.status='ATIVO'
+18/03/2017 19:10:00 [DEBUG]:SELECT * FROM associado WHERE associado.curso='10'
+18/03/2017 19:10:01 [DEBUG]:SELECT * FROM associado WHERE associado.curso='11'
+18/03/2017 19:10:01 [DEBUG]:SELECT * FROM associado WHERE associado.curso='12'
+18/03/2017 19:10:02 [DEBUG]:SELECT * FROM associado WHERE associado.curso='13'
+18/03/2017 19:10:02 [DEBUG]:SELECT * FROM associado WHERE associado.curso='14'
+18/03/2017 19:10:02 [DEBUG]:SELECT * FROM associado WHERE associado.curso='15'
+18/03/2017 19:10:02 [DEBUG]:SELECT * FROM associado WHERE associado.curso='16'
+18/03/2017 19:10:02 [DEBUG]:SELECT * FROM associado WHERE associado.curso='17'
+18/03/2017 19:10:03 [DEBUG]:SELECT * FROM associado WHERE associado.curso='18'
+18/03/2017 19:10:03 [DEBUG]:SELECT * FROM associado WHERE associado.curso='19'
+18/03/2017 19:10:03 [DEBUG]:SELECT * FROM associado WHERE associado.curso='20'
+18/03/2017 19:10:03 [DEBUG]:SELECT * FROM associado WHERE associado.curso='21'
+18/03/2017 19:10:03 [DEBUG]:SELECT * FROM associado WHERE associado.curso='22'
+18/03/2017 19:10:04 [DEBUG]:SELECT * FROM associado WHERE associado.curso='23'
+18/03/2017 19:10:04 [DEBUG]:SELECT * FROM associado WHERE associado.curso='24'
+18/03/2017 19:10:04 [DEBUG]:SELECT * FROM associado WHERE associado.curso='25'
+18/03/2017 19:10:04 [DEBUG]:SELECT * FROM associado WHERE associado.curso='26'
+18/03/2017 19:10:04 [DEBUG]:SELECT * FROM associado WHERE associado.curso='27'
+18/03/2017 19:10:04 [DEBUG]:SELECT * FROM associado WHERE associado.curso='28'
+18/03/2017 19:10:05 [DEBUG]:SELECT * FROM associado WHERE associado.curso='29'
+18/03/2017 19:10:05 [DEBUG]:SELECT * FROM associado WHERE associado.curso='30'
+18/03/2017 19:10:05 [DEBUG]:SELECT * FROM associado WHERE associado.curso='31'
+18/03/2017 19:10:05 [DEBUG]:SELECT * FROM associado WHERE associado.curso='32'
+18/03/2017 19:10:05 [DEBUG]:SELECT * FROM associado WHERE associado.curso='33'
+18/03/2017 19:10:05 [DEBUG]:SELECT * FROM associado WHERE associado.curso='34'
+18/03/2017 19:10:06 [DEBUG]:SELECT * FROM associado WHERE associado.curso='35'
+18/03/2017 19:10:06 [DEBUG]:SELECT * FROM associado WHERE associado.curso='36'
+18/03/2017 19:10:06 [DEBUG]:SELECT * FROM associado WHERE associado.curso='37'
+18/03/2017 19:10:06 [DEBUG]:SELECT * FROM associado WHERE associado.curso='38'
+18/03/2017 19:10:06 [DEBUG]:SELECT * FROM associado WHERE associado.curso='39'
+18/03/2017 19:10:07 [DEBUG]:SELECT * FROM associado WHERE associado.curso='40'
+18/03/2017 19:10:07 [DEBUG]:SELECT * FROM associado WHERE associado.curso='41'
+18/03/2017 19:10:07 [DEBUG]:SELECT * FROM associado WHERE associado.curso='42'
+18/03/2017 19:10:07 [DEBUG]:SELECT * FROM associado WHERE associado.curso='43'
+18/03/2017 19:10:07 [DEBUG]:SELECT * FROM associado WHERE associado.curso='44'
+18/03/2017 19:10:08 [DEBUG]:SELECT * FROM associado WHERE associado.curso='45'
+18/03/2017 19:10:08 [DEBUG]:SELECT * FROM associado WHERE associado.curso='46'
+18/03/2017 19:10:08 [DEBUG]:SELECT * FROM associado WHERE associado.curso='47'
+18/03/2017 19:10:08 [DEBUG]:SELECT * FROM associado WHERE associado.curso='48'
+18/03/2017 19:10:08 [DEBUG]:SELECT * FROM associado WHERE associado.curso='49'
+18/03/2017 19:10:08 [DEBUG]:SELECT * FROM associado WHERE associado.curso='50'
+18/03/2017 19:10:09 [DEBUG]:SELECT * FROM associado WHERE associado.curso='51'
+18/03/2017 19:10:09 [DEBUG]:SELECT * FROM associado WHERE associado.curso='52'
+18/03/2017 19:10:10 [DEBUG]:SELECT * FROM associado WHERE associado.curso='53'
+18/03/2017 19:10:10 [DEBUG]:SELECT * FROM associado WHERE associado.curso='54'
+18/03/2017 19:10:10 [DEBUG]:SELECT * FROM associado WHERE associado.curso='55'
+18/03/2017 19:10:10 [DEBUG]:SELECT * FROM associado WHERE associado.curso='56'
+18/03/2017 19:10:11 [DEBUG]:SELECT * FROM associado WHERE associado.curso='57'
+18/03/2017 19:10:11 [DEBUG]:SELECT * FROM associado WHERE associado.curso='58'
+18/03/2017 19:10:11 [DEBUG]:SELECT * FROM associado WHERE associado.curso='59'
+18/03/2017 19:10:11 [DEBUG]:SELECT * FROM associado WHERE associado.curso='60'
+18/03/2017 19:10:12 [DEBUG]:SELECT * FROM associado WHERE associado.curso='61'
+18/03/2017 19:10:12 [DEBUG]:SELECT * FROM associado WHERE associado.curso='62'
+18/03/2017 20:22:42 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=10
+18/03/2017 20:22:43 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=59
+18/03/2017 20:22:46 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=59
+18/03/2017 20:22:48 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=10
+18/03/2017 20:22:51 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=59
+18/03/2017 20:22:54 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=45
+18/03/2017 20:22:56 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=51
+18/03/2017 20:23:09 [DEBUG]:SELECT * FROM cursofaculdade INNER JOIN associado ON associado.curso=10
