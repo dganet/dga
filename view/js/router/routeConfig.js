@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
     .state('login', {
       url: '/site',
       templateUrl: 'view/site/home.htm',
-         controller:'homeCtrl'
+         controller:'painelCtrl'
     })
       .state('conta', {
       url: '/criar',
