@@ -10,7 +10,7 @@ class Agenda extends \GORM\Model{
      * 
      * @param Array $data
      */
-    public function __construct(Array $data = []){
+    public function __construct($data = []){
         foreach ($data as $key => $value) {
             $this->__set($key,$value);
         }
@@ -33,10 +33,14 @@ class Agenda extends \GORM\Model{
      */
     public function __get($attr){
         switch ($attr) {
-           case 'Telefone':
-            $telefone = new Telefone();
-            $telefone = $telefone->find('where fkAgenda='.$this->idAgenda);
-            return $telefone;
+            case 'Telefone':
+                $telefone = new Telefone();
+                $telefone = $telefone->find('where fkAgenda='.$this->idAgenda);
+                return $telefone;
+            case 'Telefones':
+                $telefone = new Telefone();
+                $telefone = $telefone->select('where fkAgenda='.$this->idAgenda);
+                return $telefone;
             default:
                 return $this->$attr;
                 break;
@@ -58,5 +62,13 @@ class Agenda extends \GORM\Model{
             }
         }
         return $temp;
+    }
+    /**
+     * Retorna as propriedades da classe
+     * 
+     * @return string
+     */
+    public function __toString(){
+        return var_dump($this->toArray());
     }
 }

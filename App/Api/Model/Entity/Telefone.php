@@ -14,7 +14,7 @@ class Telefone extends \GORM\Model{
      * 
      * @param Array $data
      */
-    public function __construct(Array $data = []){
+    public function __construct($data = []){
         foreach ($data as $key => $value) {
             $this->__set($key,$value);
         }
@@ -36,7 +36,14 @@ class Telefone extends \GORM\Model{
      * @return String
      */
     public function __get($attr){
-        return $this->$attr;
+        switch ($attr) {
+            case is_int():
+                echo "inteiro";
+                break;
+            default:
+                return $this->$attr;
+                break;
+        }
     }
     /**
      * Converte o Objeto para um array
@@ -59,5 +66,13 @@ class Telefone extends \GORM\Model{
             }
         }
         return $temp;
+    }
+   /**
+     * Retorna os valores das propriedades da classe
+     * 
+     * @return string
+     */
+    public function __toString(){
+        return var_dump($this->toArray());
     }
 }

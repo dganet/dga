@@ -11,7 +11,7 @@ $app = new Slim\App([
 /**
  * Lista todos os usuarios
  */
-$app->get('/usuario/list', \Api\Controller\UsuarioController::class . ':save');
+$app->get('/usuario/list', \Api\Controller\UsuarioController::class . ':list');
 $app->post('/usuario/save', \Api\Controller\UsuarioController::class . ':save');
 $app->put('/usuario/update{id}', \Api\Controller\UsuarioController::class . ':update');
 $app->delete('/usuario/delete{id}', \Api\Controller\UsuarioController::class . ':delete');

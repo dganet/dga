@@ -10,7 +10,7 @@ class Permissao extends \GORM\Model{
      * 
      * @param Array $data
      */
-    public function __construct(Array $data = []){
+    public function __construct($data = []){
         foreach ($data as $key => $value) {
             $this->__set($key,$value);
         }
@@ -50,5 +50,13 @@ class Permissao extends \GORM\Model{
             }
         }
         return $temp;
+    }
+    /**
+     * Retorna os valores das propriedades da classe
+     * 
+     * @return string
+     */
+    public function __toString(){
+        return var_dump($this->toArray());
     }
 }
