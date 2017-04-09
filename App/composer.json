@@ -2,7 +2,7 @@
 	 "autoload":{
                 "psr-4":{
                         "Api\\" : "Api/",
-			"GORM\\" : "Api/Model/GORM"
+			"GORM\\" : "Api/Model/GORM/src"
                 }
         },
         "require": {
