@@ -9,10 +9,15 @@ app.config(function ($stateProvider, $urlRouterProvider){
       templateUrl: 'view/site/home.htm',
          controller:'painelCtrl'
     })
-      .state('conta', {
+    .state('login.inicio', {
+      url: '/inicio',
+      templateUrl: 'view/site/inicio.htm',
+         controller:'painelCtrl'
+    })
+      .state('login.conta', {
       url: '/criar',
       templateUrl: 'view/site/createCount.htm',
-         controller:'homeCtrl',
+         controller:'painelCtrl',
          ncyBreadcrumb: {
             label: 'Home'
          }
@@ -212,7 +217,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //|############# **  FIM DOS MODULOS ** ##################|
 //|#######################################################|
 
-  $urlRouterProvider.otherwise("/site");
+  $urlRouterProvider.otherwise("/site/inicio");
 
 
 
