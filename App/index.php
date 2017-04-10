@@ -9,12 +9,18 @@ $app = new Slim\App([
     ]
 ]);
 /**
- * Lista todos os usuarios
+ * USUARIOS
  */
+//Lista todos os usuarios
 $app->get('/usuario/list', \Api\Controller\UsuarioController::class . ':list');
+//Lista os usuarios atraves do ID
+$app->get('/usuario/list/{id}', \Api\Controller\UsuarioController::class . ':listById');
+//Salva um novo usuario
 $app->post('/usuario/save', \Api\Controller\UsuarioController::class . ':save');
-$app->put('/usuario/update{id}', \Api\Controller\UsuarioController::class . ':update');
-$app->delete('/usuario/delete{id}', \Api\Controller\UsuarioController::class . ':delete');
+//Atualiza as informações do usuario
+$app->put('/usuario/update/{id}', \Api\Controller\UsuarioController::class . ':update');
+//Inativa um Usuario
+$app->delete('/usuario/delete/{id}', \Api\Controller\UsuarioController::class . ':delete');
 //FIM USUARIOS
 
 $app->run();
