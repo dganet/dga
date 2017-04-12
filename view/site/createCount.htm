@@ -5,13 +5,13 @@
          <div class="bloco-form-conta">
            <div class="tituloConta">Nova Conta</div>
            
-          <form>
+          <form name="formUsuario" ng-submit="add(usuario)">
 
                <div class="row">
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" ng-model="usuario.nomeUsuario">
                    </div>
               </div>
               </div>
@@ -20,7 +20,7 @@
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>E-mail</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" ng-model="usuario.emailUsuario">
                    </div>
               </div>
               </div>
@@ -29,7 +29,7 @@
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>Senha</label>
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" ng-model="usuario.senhaUsuario" ng-change="senhaOriginal(senhaUsuario)">
                    </div>
               </div>
               </div>
@@ -38,16 +38,16 @@
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>Confirma Senha</label>
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" ng-model="senhaConfirma" ng-change="checkSenha(senhaConfirma)">
                    </div>
               </div>
               </div>
 
 <div class="termos">
- <input type="checkbox"> Eu li e concordo com os termos de uso da <a ui-sref="">Politica de Privacidade</a>.
+ <input type="checkbox" ng-model="usuario.termoUsuario"> Eu li e concordo com os termos de uso da Politica de Privacidade</a>.
 </div>
 
-<button type="śubmit" class="btn btn-primary">Salvar Dados</button>
+<button type="submit" class="btn btn-primary">Salvar Dados</button>
 
           </form>
 

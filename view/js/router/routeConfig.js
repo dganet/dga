@@ -18,9 +18,6 @@ app.config(function ($stateProvider, $urlRouterProvider){
       url: '/criar',
       templateUrl: 'view/site/createCount.htm',
          controller:'painelCtrl',
-         ncyBreadcrumb: {
-            label: 'Home'
-         }
     })
 
       .state('user', {
