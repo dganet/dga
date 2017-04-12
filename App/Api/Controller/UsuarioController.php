@@ -25,7 +25,7 @@ class UsuarioController {
     public function listById($request,$response,$args){
         $id = $args['id'];
         $usuario = new Usuario();
-        return $response->withJson($usuario->find($id));
+        return $response->withJson($usuario->find($id)->toArray());
     }
     /**
      * Salva um Usuario e cria sua agenda de telefones

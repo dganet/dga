@@ -4,14 +4,30 @@
         <div class="pg-conta">
          <div class="bloco-form-conta">
            <div class="tituloConta">Nova Conta</div>
-           
+
+            <div class="alert alert-danger" ng-show="mensagemSenha">
+            <strong>Senhas!</strong> estão diferentes.
+            </div>
+
+            <div class="alert alert-success" ng-show="mensagemSucesso">
+            <strong>Sucesso!</strong> Dados Cadastrado com Sucesso , enviado um e-mail para ativação do seu cadastro.
+            </div>
           <form name="formUsuario" ng-submit="add(usuario)">
 
                <div class="row">
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>Nome</label>
-                        <input type="text" class="form-control" ng-model="usuario.nomeUsuario">
+                        <input type="text" class="form-control" ng-model="usuario.nomeUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+               <div class="row">
+                   <div class="col-md-12">
+                   <div class="form-group">
+                        <label>Sobre Nome</label>
+                        <input type="text" class="form-control" ng-model="usuario.sobrenomeUsuario" required>
                    </div>
               </div>
               </div>
@@ -20,7 +36,16 @@
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>E-mail</label>
-                        <input type="text" class="form-control" ng-model="usuario.emailUsuario">
+                        <input type="text" class="form-control" ng-model="usuario.emailUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+              <div class="row">
+                   <div class="col-md-12">
+                   <div class="form-group">
+                        <label>Creci</label>
+                        <input type="text" class="form-control" ng-model="usuario.creciUsuario" required>
                    </div>
               </div>
               </div>
@@ -29,7 +54,7 @@
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>Senha</label>
-                        <input type="password" class="form-control" ng-model="usuario.senhaUsuario" ng-change="senhaOriginal(senhaUsuario)">
+                        <input type="password" class="form-control" ng-model="usuario.senhaUsuario" required>
                    </div>
               </div>
               </div>
@@ -38,7 +63,7 @@
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>Confirma Senha</label>
-                        <input type="password" class="form-control" ng-model="senhaConfirma" ng-change="checkSenha(senhaConfirma)">
+                        <input type="password" class="form-control" ng-model="usuario.senha">
                    </div>
               </div>
               </div>
