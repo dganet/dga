@@ -43,9 +43,9 @@ class UsuarioController {
         $agenda->nomeAgenda = "Agenda ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
         $usuario->fkAgenda = $agenda->save(true); 
         if ($usuario->save()){
-            return $request->withJson(['message' => 'Usuario cadastrado com sucesso!', flag => true]);
+            return $response->withJson(['message' => 'Usuario cadastrado com sucesso!', flag => true]);
         }else{
-            return $request->withJson(['message' => 'Ocorreu um problema ao cadastrar o usuário!', flag => false]);
+            return $response->withJson(['message' => 'Ocorreu um problema ao cadastrar o usuário!', flag => false]);
         }
     }
     /**
@@ -61,9 +61,9 @@ class UsuarioController {
         $post = json_decode($request->getbody());
         $usuario = new Usuario($post);
         if ($usuario->update()){
-            return $request->withJson(['message' => 'Usuario atualizado com sucesso!', flag => true]);
+            return $response->withJson(['message' => 'Usuario atualizado com sucesso!', flag => true]);
         }else{
-            return $request->withJson(['message' => 'Ocorreu um problema na atualização do usuario', flag => false]);
+            return $response->withJson(['message' => 'Ocorreu um problema na atualização do usuario', flag => false]);
         }
     }
     /**
@@ -80,9 +80,9 @@ class UsuarioController {
         $usuario->idUsuario = $id;
         $usuario->status = 'INATIVO';
         if($usuario->update()){
-            return $request->withJson(['message' => 'Usuario removido com sucesso!', flag => true]);
+            return $response->withJson(['message' => 'Usuario removido com sucesso!', flag => true]);
         }else{
-            return $request->withJson(['message' => 'Ocorreu um problema na remoção do usuario', flag => false]);
+            return $response->withJson(['message' => 'Ocorreu um problema na remoção do usuario', flag => false]);
         }   
     }
 }
