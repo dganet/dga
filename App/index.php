@@ -27,5 +27,6 @@ $app->delete('/usuario/delete/{id}', \Api\Controller\UsuarioController::class . 
  */
 //Lista todos os Imoveis
 $app->get('/imovel/list', \Api\Controller\ImovelController::class . ':list');
-
+//Lista Imoveis atraves do ID
+$app->get('/imovel/list/{id}', \Api\Controller\ImovelController::class . ':listById');
 $app->run();
