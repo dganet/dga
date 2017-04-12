@@ -96,12 +96,15 @@ aside{
     top: 110px;
     left: calc(15%);
     padding: 20px;
+    overflow: scroll;
+
 }
 .bloco-form-conta{
     margin:0 auto; 
     width: 50%;
     border: 1px solid #C6C6C6;
     padding: 20px;
+
 }
 .tituloConta {
     font-size: 16px;
