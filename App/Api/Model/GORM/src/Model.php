@@ -28,7 +28,7 @@ class Model{
 	*/
 	public 		$db = array(
 		"driver" 	=> "mysql",
-		"host"		=> "localhost",		//31.220.104.130 mysql.hostinger.com.br
+		"host"		=> "31.220.104.130",		//31.220.104.130 mysql.hostinger.com.br
 		"dbname"	=> "u172775243_imobi", 		//u172775243_imobi
 		"user"		=> "u172775243_imobi", 		//u172775243_imobi
 		"pass"		=> "im98yp121556" 			//im98yp121556
