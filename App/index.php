@@ -22,5 +22,10 @@ $app->put('/usuario/update/{id}', \Api\Controller\UsuarioController::class . ':u
 //Inativa um Usuario
 $app->delete('/usuario/delete/{id}', \Api\Controller\UsuarioController::class . ':delete');
 //FIM USUARIOS
+/**
+ * IMOVEIS
+ */
+//Lista todos os Imoveis
+$app->get('/imovel/list', \Api\Controller\ImovelController::class . ':list');
 
 $app->run();
