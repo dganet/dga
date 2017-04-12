@@ -38,6 +38,7 @@ class UsuarioController {
     public function save($request, $response, $args){
         $post = json_decode($request->getBody());
         $usuario = new Usuario($post);
+        $usuario->createAtUsuario = date("Y-m-d H:i:s");
         $usuario->fkPermissao = 1;
         $agenda  = new Agenda();
         $agenda->nomeAgenda = "Agenda ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
