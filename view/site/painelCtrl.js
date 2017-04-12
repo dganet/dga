@@ -24,7 +24,7 @@
   $scope.add = function(values, formUsuario) {
       console.log(values);
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/usuario/save/', values).success(function(){
+    $http.post('App/usuario/save/', values).success(function(){
 
       });
   };
