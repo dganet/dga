@@ -1,4 +1,4 @@
- app.controller("painelCtrl", function($scope, $http, $timeout , $location){
+ app.controller("painelCtrl", function($scope, $http, $timeout , $location, $sessionStorage){
           //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
@@ -7,22 +7,22 @@
 		    $scope.logando = function (values , formAut){
 
                     $http.post('App/usuario/login', values).success(function(response){
-                    if (response[0] == false){
+                        var auth = response.flag;
+
+                    if (auth == false){
                         // Exibi a mensagem  				    
-                        $scope.mensagemErroSenha = false;
+                        $scope.mensagemErroSenha = true;
                         // Depois de 5 segundos some a mensagem
                         $timeout(function () {
-                        $scope.mensagemErroSenha = true;
+                        $scope.mensagemErroSenha = false;
                     },10000);
 
                     } else {
-                        
                     // Se for verdadeiro manda pra Home 
-                    /*
                     $scope.activePath = $location.path('/user');
-                    sessionStorage.setItem('usuario.id', response[0].id);
-                    sessionStorage.setItem('usuario.nome', response[0].nome);
-                    */
+                    sessionStorage.setItem('usuario.id', response.id);
+                    sessionStorage.setItem('usuario.nome', response.nome);
+                    sessionStorage.setItem('usuario.token', response.token);
                 }
                 
 
