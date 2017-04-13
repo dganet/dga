@@ -6,7 +6,7 @@
            <div class="tituloConta">Nova Conta</div>
 
             <div class="alert alert-danger" ng-show="mensagemSenha">
-            <strong>Senhas!</strong> estão diferentes.
+            <strong>Senhas!</strong> não estão iguais.
             </div>
 
             <div class="alert alert-success" ng-show="mensagemSucesso">
@@ -36,7 +36,7 @@
                    <div class="col-md-12">
                    <div class="form-group">
                         <label>E-mail</label>
-                        <input type="text" class="form-control" ng-model="usuario.emailUsuario" required>
+                        <input type="email" class="form-control" ng-model="usuario.emailUsuario" required>
                    </div>
               </div>
               </div>

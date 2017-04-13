@@ -1,6 +1,35 @@
  app.controller("painelCtrl", function($scope, $http, $timeout , $location){
-     //Oculata Mensagens
+          //Oculata Mensagens
     $scope.mensagemSenha = false;
+    $scope.mensagemErroSenha = false;
+     //Autentinca o Usuario e loga no sistema
+     		    
+		    $scope.logando = function (values , formAut){
+
+                    $http.post('App/usuario/login', values).success(function(response){
+                    if (response[0] == false){
+                        // Exibi a mensagem  				    
+                        $scope.mensagemErroSenha = false;
+                        // Depois de 5 segundos some a mensagem
+                        $timeout(function () {
+                        $scope.mensagemErroSenha = true;
+                    },10000);
+
+                    } else {
+                        
+                    // Se for verdadeiro manda pra Home 
+                    /*
+                    $scope.activePath = $location.path('/user');
+                    sessionStorage.setItem('usuario.id', response[0].id);
+                    sessionStorage.setItem('usuario.nome', response[0].nome);
+                    */
+                }
+                
+
+                });
+            };
+
+
     //Mostra o Link Nova Conta
     $scope.newcount = true;
     $scope.login = true;
@@ -10,7 +39,9 @@
         $scope.newcount = true;
         $scope.login = false;
     };
-    
+
+
+
 
 
 //*************CADASTRA NOVO USUARIO *********************// 
