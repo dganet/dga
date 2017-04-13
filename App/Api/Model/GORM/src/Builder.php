@@ -203,7 +203,7 @@ trait Builder
         }
         //Checa se é uma String
         if(is_string($value)){
-
+            $temp .= " ".$value;
         }
         return $temp;
     }

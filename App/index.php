@@ -23,6 +23,14 @@ $app->put('/usuario/update/{id}', \Api\Controller\UsuarioController::class . ':u
 $app->delete('/usuario/delete/{id}', \Api\Controller\UsuarioController::class . ':delete');
 //FIM USUARIOS
 /**
+ * AUTENTICACAO
+ */
+//Loga usuario
+$app->post('/usuario/login', \Api\Controller\AuthController::class . ':logar');
+//Verifica o usuario Logado
+$app->get('/usuario/login/{token}', \Api\Controller\AuthController::class . ':checkLogin');
+//FIM AUTENTICACAO
+/**
  * IMOVEIS
  */
 //Lista todos os Imoveis
