@@ -59,7 +59,16 @@ class Imovel extends \GORM\Model{
      * @return String
      */
     public function __get($attr){
-        return $this->$attr;
+        switch ($attr) {
+            case 'Proprietario':
+                $proprietario = new Proprietario();
+                $proprietario = $proprietario->find($this->fkProprietario);
+                return $proprietario;
+                break;
+            default:
+                return $this->$attr;
+                break;
+        }
     }
     /**
      * Converte o Objeto para um array

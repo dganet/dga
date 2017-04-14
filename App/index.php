@@ -35,6 +35,6 @@ $app->get('/usuario/login/{token}', \Api\Controller\AuthController::class . ':ch
  */
 //Lista todos os Imoveis
 $app->get('/imovel/list', \Api\Controller\ImovelController::class . ':list');
-//Lista Imoveis atraves do ID
-$app->get('/imovel/list/{id}', \Api\Controller\ImovelController::class . ':listById');
+// Salva imovel, se o token for válido
+$app->post('/imovel/save/{token}', \Api\Controller\ImovelController::class . ':save');
 $app->run();
