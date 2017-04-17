@@ -43,8 +43,13 @@ class Imagem extends \GORM\Model{
 
     public function toArray(){
         return [
-            'idGaleria'     => $this->__get('idGaleria'),
-            'nomeGaleria'   => $this->__get('nomeGaleria')
+            'idImagem'     => $this->__get('idImagem'),
+            'caminhoImagem'   => $this->__get('caminhoImagem'),
+            'nomeImagem'     => $this->__get('nomeImagem'),
+            'statusImagem'   => $this->__get('statusImagem'),
+            'createAtImagem'     => $this->__get('createAtImagem'),
+            'updateAtImagem'   => $this->__get('updateAtImagem'),
+            'fkGaleria'     => $this->__get('fkGaleria')
         ];
     }
 

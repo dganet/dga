@@ -18,9 +18,9 @@ $app->get('/usuario/list/{id}', \Api\Controller\UsuarioController::class . ':lis
 //Salva um novo usuario
 $app->post('/usuario/save', \Api\Controller\UsuarioController::class . ':save');
 //Atualiza as informações do usuario
-$app->put('/usuario/update/{id}', \Api\Controller\UsuarioController::class . ':update');
+$app->put('/usuario/update/{id}/{token}', \Api\Controller\UsuarioController::class . ':update');
 //Inativa um Usuario
-$app->delete('/usuario/delete/{id}', \Api\Controller\UsuarioController::class . ':delete');
+$app->delete('/usuario/delete/{id}/{token}', \Api\Controller\UsuarioController::class . ':delete');
 //FIM USUARIOS
 /**
  * AUTENTICACAO
@@ -33,8 +33,19 @@ $app->get('/usuario/login/{token}', \Api\Controller\AuthController::class . ':ch
 /**
  * IMOVEIS
  */
-//Lista todos os Imoveis
-$app->get('/imovel/list', \Api\Controller\ImovelController::class . ':list');
-// Salva imovel, se o token for válido
-$app->post('/imovel/save/{token}', \Api\Controller\ImovelController::class . ':save');
+//FIM IMOVEIS
+/**
+ * Proprietario
+ */
+//Lista todos os proprietario
+$app->get('/proprietario/list', \Api\Controller\ProprietarioController::class . ':list');
+//Lista os proprietarios atraves do ID
+$app->get('/proprietario/list/{id}', \Api\Controller\ProprietarioController::class . ':listById');
+//Salva um novo proprietario
+$app->post('/proprietario/save/{token}', \Api\Controller\ProprietarioController::class . ':save');
+//Atualiza as informações do proprietario
+$app->put('/proprietario/update/{id}/{token}', \Api\Controller\ProprietarioController::class . ':update');
+//Inativa um proprietario
+$app->delete('/proprietario/delete/{id}/{token}', \Api\Controller\ProprietarioController::class . ':delete');
+//FIM Proprietario
 $app->run();

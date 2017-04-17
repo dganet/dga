@@ -1,20 +1,16 @@
 <?php
 namespace Api\Model\Entity;
 
-class Proprietario extends \GORM\Model{
-    private $idProprietario;
-    private $nomeProprietario;
-    private $sobrenomeProprietario;
-    private $emailProprietario;
-    private $statusProprietario;
-    private $createAtProprietario;
-    private $updateAtProprietario;
+class Cliente extends \GORM\Model{
+    private $idCliente;
+    private $nomeCliente;
+    private $emailCliente;
+    private $enderecoCliente;
+    private $createAtCliente;
+    private $updateAtCliente;
+    private $statusCliente;
     private $fkAgenda;
-    /**
-     * Contrutor
-     *
-     * @param array $data
-     */
+
     public function __construct($data = []){
         foreach ($data as $key => $value) {
             $this->__set($key,$value);
@@ -60,13 +56,13 @@ class Proprietario extends \GORM\Model{
      */
     public function toArray(): Array {
         $temp = array(
-           'idProprietario'   => $this->__get('idProprietario'),
-           'nomeProprietario' => $this->__get('nomeProprietario'),
-           'sobrenomeProprietario'   => $this->__get('sobrenomeProprietario'),
-           'emailProprietario' => $this->__get('emailProprietario'),
-           'statusProprietario'   => $this->__get('statusProprietario'),
-           'createAtProprietario' => $this->__get('createAtProprietario'),
-           'updateAtProprietario'   => $this->__get('updateAtProprietario'),
+           'idCliente'   => $this->__get('idCliente'),
+           'nomeCliente' => $this->__get('nomeCliente'),
+           'emailCliente'   => $this->__get('emailCliente'),
+           'enderecoCliente' => $this->__get('enderecoCliente'),
+           'createAtCliente'   => $this->__get('createAtCliente'),
+           'updateAtCliente' => $this->__get('updateAtCliente'),
+           'statusCliente'   => $this->__get('statusCliente'),
            'fkAgenda' => $this->__get('fkAgenda')
            
         );
@@ -84,19 +80,5 @@ class Proprietario extends \GORM\Model{
      */
     public function __toString(){
         return var_dump($this->toArray());
-    }
-    /**
-     * Verifica se o priprietário tem pelo menos 1 Imovel ativo
-     *
-     * @return boolean
-     */
-    private function hasImovel(){
-        $imovel = new Imovel();
-        $imovel = $imovel->find('where fkProprietario='. $this->idProprietario." AND statusImovel='ATIVO'");
-        if ($imovel->idImovel==null){
-            return false;
-        }else{
-            return true;
-        }
     }
 }
