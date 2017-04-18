@@ -14,7 +14,7 @@ $scope.master = {};
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, formCliente) {
             // Enviado os valores em objetos para api/user do php/slim
-            $http.post('App/cliente/save', + token , values).success(function(){
+            $http.post('App/cliente/save/'+ token , values).success(function(){
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagemSucesso = true;
                 $timeout(function () {

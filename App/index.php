@@ -48,4 +48,18 @@ $app->put('/proprietario/update/{id}/{token}', \Api\Controller\ProprietarioContr
 //Inativa um proprietario
 $app->delete('/proprietario/delete/{id}/{token}', \Api\Controller\ProprietarioController::class . ':delete');
 //FIM Proprietario
+/**
+ * CLIENTE
+ */
+//Lista todos clientes
+$app->get('/cliente/list', \Api\Controller\ClienteController::class . ':list');
+//Lista cliente atraves do Id
+$app->get('/cliente/list/{id}', \Api\Controller\ClienteController::class . ':listById');
+//Salva um novo cliente
+$app->post('/cliente/save/{token}', \Api\Controller\ClienteController::class . ':save');
+// Atualiza as informações do cliente
+$app->put('/cliente/update/{id}/{token}', \Api\Controller\ClienteController::class . ':update');
+//Inativa o cliente
+$app->get('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::class . ':delete');
+// FIM CLIENTE
 $app->run();
