@@ -1,4 +1,4 @@
- app.controller("painelCtrl", function($scope, $http, $timeout , $location, $sessionStorage){
+ app.controller("siteCtrl", function($scope, $http, $timeout , $location, $sessionStorage){
           //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
@@ -20,8 +20,9 @@
                     } else {
                     // Se for verdadeiro manda pra Home 
                     $scope.activePath = $location.path('/user');
-                    sessionStorage.setItem('usuario.id', response.id);
-                    sessionStorage.setItem('usuario.nome', response.nome);
+                    sessionStorage.setItem('usuario.id', response.idUsuario);
+                    sessionStorage.setItem('usuario.nome', response.nomeUsuario);
+                    sessionStorage.setItem('usuario.sobrenome', response.sobrenomeUsuario);
                     sessionStorage.setItem('usuario.token', response.token);
                 }
                 

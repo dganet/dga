@@ -19,10 +19,18 @@ body, html,.corpo{
 	margin-top: -3px;
 	float: left;
 	margin-left: 20px;
+	width: 500px;
 }
-
-#logo {
-
+#blocoLogo > img {
+	height: 60px;
+	margin-top: 3px;
+	margin-right: 20px;
+	float: left;
+}
+.nomeUsuario{
+	color: white;
+	font-size: 16px;
+	padding: 22px 15px;
 }
 
 .dropbtn {

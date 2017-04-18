@@ -7,23 +7,23 @@ app.config(function ($stateProvider, $urlRouterProvider){
     .state('login', {
       url: '/site',
       templateUrl: 'view/site/home.htm',
-         controller:'painelCtrl'
+         controller:'siteCtrl'
     })
     .state('login.inicio', {
       url: '/inicio',
       templateUrl: 'view/site/inicio.htm',
-         controller:'painelCtrl'
+         controller:'siteCtrl'
     })
       .state('login.conta', {
       url: '/criar',
       templateUrl: 'view/site/createCount.htm',
-         controller:'painelCtrl',
+         controller:'siteCtrl',
     })
 
       .state('user', {
       url: '/user',
       templateUrl: 'view/painel/home.htm',
-         controller:'homeCtrl',
+         controller:'painelCtrl',
          ncyBreadcrumb: {
             label: 'Home'
          }
@@ -46,6 +46,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.cliente.new', {
       url: '/inseri',
       templateUrl: 'view/modCliente/newCliente.htm',
+      controller : 'clienteCtrl',
        ncyBreadcrumb: {
             label: 'Novo Cliente'
          }
@@ -54,6 +55,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.cliente.update', {
       url: '/update',
       templateUrl: 'view/modCliente/updateCliente.htm',
+      controller : 'clienteCtrl',
        ncyBreadcrumb: {
             label: 'Atualiza Cliente'
          }
@@ -78,6 +80,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
     })
 
+      .state('user.imovel.newProprietario', {
+      url: '/inseri',
+      templateUrl: 'view/modImovel/newProprietario.htm',
+       ncyBreadcrumb: {
+            label: 'Novo Proprietario'
+         }
+    })
       .state('user.imovel.update', {
       url: '/update',
       templateUrl: 'view/modImoveil/updateImoveil.htm',
