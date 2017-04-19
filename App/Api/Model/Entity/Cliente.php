@@ -6,10 +6,13 @@ class Cliente extends \GORM\Model{
     private $nomeCliente;
     private $emailCliente;
     private $enderecoCliente;
+    private $telComercialCLiente;
+    private $telFixoCliente;
+    private $telCelularCliente;
     private $createAtCliente;
     private $updateAtCliente;
     private $statusCliente;
-    private $fkAgenda;
+    private $fkCarteiraCliente;
 
     public function __construct($data = []){
         foreach ($data as $key => $value) {
@@ -33,21 +36,7 @@ class Cliente extends \GORM\Model{
      * @return String
      */
     public function __get($attr){
-      switch ($attr) {
-          case 'Agenda':
-            if($this->fkAgenda == null){
-                return null;
-            }else{
-                $idAgenda       = (int) $this->fkAgenda;
-                $agenda         = new Agenda();
-                $agenda         = $agenda->find($idAgenda);
-                return $agenda;
-            }
-            break;
-          default:
-            return $this->$attr;
-              break;
-      }
+        return $this->$attr;
     }
     /**
      * Converte o Objeto para um array
@@ -60,10 +49,13 @@ class Cliente extends \GORM\Model{
            'nomeCliente' => $this->__get('nomeCliente'),
            'emailCliente'   => $this->__get('emailCliente'),
            'enderecoCliente' => $this->__get('enderecoCliente'),
+           'telComercialCLiente' => $this->__get('telComercialCLiente'),
+           'telFixoCliente' => $this->__get('telFixoCliente'),
+           'telCelularCliente' => $this->__get('telCelularCliente'),
            'createAtCliente'   => $this->__get('createAtCliente'),
            'updateAtCliente' => $this->__get('updateAtCliente'),
            'statusCliente'   => $this->__get('statusCliente'),
-           'fkAgenda' => $this->__get('fkAgenda')
+           'fkCarteiraCliente' => $this->__get('fkCarteiraCliente')
            
         );
         foreach ($temp as $key => $value) {

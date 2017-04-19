@@ -1,10 +1,10 @@
 <?php
 namespace Api\Model\Entity;
 
-class Agenda extends \GORM\Model{
-    private $idAgenda;
-    private $nomeAgenda;
-    private $telefones;
+class CarteiraCliente extends \GORM\Model{
+    private $idCarteiraCliente;
+    private $nomeCarteiraCliente;
+    private $carteira;
     /**
      * Construtor
      * 
@@ -33,14 +33,11 @@ class Agenda extends \GORM\Model{
      */
     public function __get($attr){
         switch ($attr) {
-            case 'Telefone':
-                $telefone = new Telefone();
-                $telefone = $telefone->find('where fkAgenda='.$this->idAgenda);
-                return $telefone;
-            case 'Telefones':
-                $telefone = new Telefone();
-                $telefone = $telefone->select('where fkAgenda='.$this->idAgenda);
-                return $telefone;
+            case 'Carteira':
+                $this->carteira = new Cliente();
+                $this->carteira = $this->carteira->select('where fkCarteiraCliente='.$this->idCarteiraCliente);
+                return $this->carteira;
+                break;
             default:
                 return $this->$attr;
                 break;
@@ -53,8 +50,9 @@ class Agenda extends \GORM\Model{
      */
     public function toArray(): Array {
         $temp = array(
-           'idAgenda'   => $this->__get('idAgenda'),
-           'nomeAgenda' => $this->__get('nomeAgenda')
+           'idCarteiraCliente'   => $this->__get('idCarteiraCliente'),
+           'nomeCarteiraCliente' => $this->__get('nomeCarteiraCliente'),
+           'carteira'   => $this->__get('carteira')
         );
         foreach ($temp as $key => $value) {
             if($value == null){

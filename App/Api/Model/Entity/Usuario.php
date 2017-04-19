@@ -8,11 +8,15 @@ class Usuario extends \GORM\Model{
     private $nomeUsuario;
     private $sobrenomeUsuario;
     private $creciUsuario;
+    private $telComercialUsuario;
+    private $telCelularUsuario;
+    private $telFixoUsuario;
     private $createAtUsuario;
     private $updateAtUsuario;
     private $statusUsuario;
     private $fkPermissao;
-    private $fkAgenda;
+    private $fkCarteiraImovel;
+    private $fkCarteiraCliente;
     /**
      * Construtor
      * 
@@ -54,14 +58,13 @@ class Usuario extends \GORM\Model{
                 $permissao      = $permissao->find($idPermissao);
                 return $permissao;
                 break;
-            case 'Agenda':
-                if($this->fkAgenda == null){
+            case 'CarteiraCliente':
+                if($this->fkCarteiraCliente == null){
                     return null;
                 }else{
-                    $idAgenda       = (int) $this->fkAgenda;
-                    $agenda         = new Agenda();
-                    $agenda         = $agenda->find($idAgenda);
-                    return $agenda;
+                    $CarteiraCliente = new CarteiraCliente();
+                    $CarteiraCliente->idCarteiraCliente = $this->fkCarteiraCliente;
+                    return $CarteiraCliente->carteira;
                 }
                 break;
             default:
@@ -81,12 +84,17 @@ class Usuario extends \GORM\Model{
             'senhaUsuario'  => $this->__get('senhaUsuario'),          
             'nomeUsuario'   => $this->__get('nomeUsuario'),           
             'sobrenomeUsuario'  => $this->__get('sobrenomeUsuario'),          
-            'creciUsuario'  => $this->__get('creciUsuario'),          
+            'creciUsuario'  => $this->__get('creciUsuario'),
+            'telComercialUsuario' =>$this->__get('telComercialUsuario'),
+            'telCelularUsuario' =>$this->__get('telCelularUsuario'),
+            'telFixoUsuario' =>$this->__get('telFixoUsuario'),          
             'createAtUsuario'   => $this->__get('createAtUsuario'),           
             'updateAtUsuario'   => $this->__get('updateAtUsuario'),           
             'statusUsuario' => $this->__get('statusUsuario'),         
             'fkPermissao'   => $this->__get('fkPermissao'),
-            'fkAgenda'   => $this->__get('fkAgenda')         
+            'fkAgenda'   => $this->__get('fkAgenda'),
+            'fkCarteiraImovel' => $this->__get('fkCarteiraImovel'),
+            'fkCarteiraCliente' => $this->__get('fkCarteiraCliente')        
         );
         foreach ($temp as $key => $value) {
             if($value == null){
