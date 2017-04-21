@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Usuario,\Api\Model\Entity\Agenda;
+use \Api\Model\Entity\Usuario,\Api\Model\Entity\CarteiraImovel,\Api\Model\Entity\CarteiraCliente;
 class UsuarioController {
     /**
      * Lista todos os Usuarios
@@ -40,9 +40,12 @@ class UsuarioController {
         $usuario = new Usuario($post);
         $usuario->createAtUsuario = date("Y-m-d H:i:s");
         $usuario->fkPermissao = 1;
-        $agenda  = new Agenda();
-        $agenda->nomeAgenda = "Agenda ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
-        $usuario->fkAgenda = $agenda->save(true); 
+        $imovel = new CarteiraImovel();
+        $cliente = new CarteiraCliente();
+        $imovel->nomeCarteiraImovel = "Carteira de Imovel de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
+        $cliente->nomeCarteiraCliente = "Carteira de Cliente de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
+        $usuario->fkCarteiraImovel = $imovel->save(true);
+        $usuario->fkCarteiraCliente = $cliente->save(true);
         if ($usuario->save()){
             return $response->withJson(['message' => 'Usuario cadastrado com sucesso!', flag => true]);
         }else{
