@@ -25,12 +25,19 @@ function confirmEmail($email,$user,$creci){
     $mail->isHTML(true);
     //#########################
     //Informações do email
-    $mail->Subject = 'Confirmação de cadastro';
+    $mail->Subject = 'Cadastro Imobiliar ';
     $mail->Body = "
-    Olá Sr".$user."<br>
+    <html>
+    <head>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    </head>
+    <body>
+    Olá Sr ".$user."<br>
     O seu cadastro está quase completo, para confirmar o seu email precisamos que clique no link abaixo<br> 
-    <a href='http://localhost/gadeveloper/App/usuario/confirm/$creci'> CLIQUE AQUI PARA CONFIRMAR SEU EMAIL!</a>";
-
+    <a href='http://localhost/gadeveloper/App/usuario/confirm/$creci'> CLIQUE AQUI PARA CONFIRMAR SEU EMAIL!</a>
+    </body>
+    </html>
+    ";
     $mail->AltBody = 'Mensagem para cliente não HTML';
 
     $isSend = $mail->send();

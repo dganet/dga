@@ -23,7 +23,9 @@ class ClienteController{
      * @return MixedJson
      */
     public function list($request, $response, $args){
-        return $response->withJson($this->cliente->all());
+        $token = $args['token'];
+        $user = Auth::_getTokenInfo($token);
+        return $response->withJson($this->cliente->select('where fkCarteiraCliente='.$user['obj']['fkCarteiraCliente']));
     }
     /**
      * Lista de cliente por id

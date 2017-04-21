@@ -54,7 +54,7 @@ $app->delete('/proprietario/delete/{id}/{token}', \Api\Controller\ProprietarioCo
  * CLIENTE
  */
 //Lista todos clientes
-$app->get('/cliente/list', \Api\Controller\ClienteController::class . ':list');
+$app->get('/cliente/list/{token}', \Api\Controller\ClienteController::class . ':list');
 //Lista cliente atraves do Id
 $app->get('/cliente/list/{id}', \Api\Controller\ClienteController::class . ':listById');
 //Salva um novo cliente
@@ -64,5 +64,4 @@ $app->put('/cliente/update/{id}/{token}', \Api\Controller\ClienteController::cla
 //Inativa o cliente
 $app->get('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::class . ':delete');
 // FIM CLIENTE
-$app->get('/teste', \Api\Test\Teste::class . ':main');
 $app->run();
