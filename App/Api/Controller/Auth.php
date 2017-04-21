@@ -20,7 +20,7 @@ class Auth{
             return ['message' => 'Por favor informe um usuário e senha', 'flag' => false];
         }else{
             $usuario = new Usuario();
-            $usuario = $usuario->find("where emailUsuario='".$array['emailUsuario']."' AND senhaUsuario='".md5($array['senhaUsuario'])."'");
+            $usuario = $usuario->find("where emailUsuario='".$array['emailUsuario']."' AND senhaUsuario='".md5($array['senhaUsuario'])."' AND statusUsuario='ATIVO'");
             //Verifica se existe alguma coisa em $usuario
             if (!$usuario->idUsuario == null){
                 $hash = md5($usuario->emailUsuario.time());

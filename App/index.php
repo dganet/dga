@@ -8,7 +8,6 @@ $app = new Slim\App([
         'displayErrorDetails' => true
     ]
 ]);
-$app->get('/usuario/email', \Api\Controller\UsuarioController::class . ':testeEmail');
 /**
  * USUARIOS
  */
@@ -22,6 +21,8 @@ $app->post('/usuario/save', \Api\Controller\UsuarioController::class . ':save');
 $app->put('/usuario/update/{id}/{token}', \Api\Controller\UsuarioController::class . ':update');
 //Inativa um Usuario
 $app->delete('/usuario/delete/{id}/{token}', \Api\Controller\UsuarioController::class . ':delete');
+//Confirma o email do usuairo
+$app->get('/usuario/confirm/{creci}', \Api\Controller\UsuarioController::class . ':confirm');
 //FIM USUARIOS
 /**
  * AUTENTICACAO

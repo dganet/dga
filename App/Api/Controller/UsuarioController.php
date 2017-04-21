@@ -43,6 +43,7 @@ class UsuarioController {
         $usuario = new Usuario($post);
         $usuario->createAtUsuario = date("Y-m-d H:i:s");
         $usuario->fkPermissao = 1;
+        $usuario->statusUsuario = 'AGUARDANDOCONFIRMACAOEMAIL';
         $imovel = new CarteiraImovel();
         $cliente = new CarteiraCliente();
         $imovel->nomeCarteiraImovel = "Carteira de Imovel de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
@@ -50,7 +51,8 @@ class UsuarioController {
         $usuario->fkCarteiraImovel = $imovel->save(true);
         $usuario->fkCarteiraCliente = $cliente->save(true);
         if ($usuario->save()){
-            
+            require "MailController.php";
+            confirmEmail($usuario->emailUsuario,$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario, $usuario->creciUsuario);
             return $response->withJson(['message' => 'Usuario cadastrado com sucesso!', flag => true]);
 
         }else{
@@ -94,9 +96,20 @@ class UsuarioController {
             return $response->withJson(['message' => 'Ocorreu um problema na remoção do usuario', flag => false]);
         }   
     }
-    public function testeEmail($request, $response, $args){
-      require dirname(dirname(__DIR__))."/vendor/phpmailer/phpmailer/PHPMailerAutoload.php";
-      PHPMailerAutoload(PHPMailer);
-      $mail = PHPMailer();
+    public function confirm($request, $response, $args){
+      $usuario = new Usuario();
+      $usuario = $usuario->find('where creciUsuario='.$args['creci']);
+      $usuario->statusUsuario = 'ATIVO';
+      if ($usuario->update()){
+          return $response->withJson([
+            'message' => 'Usuario Confirmado com sucesso!',
+            'flag'  => true
+          ]);
+      }else{
+          return $response->withJson([
+              'message' => 'Não foi possivel confirmar seu email, procure um administrador para ajudar com o problema',
+              'flag' => flase
+          ]);
+      }
     }
 }
