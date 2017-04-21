@@ -1,6 +1,9 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Usuario,\Api\Model\Entity\CarteiraImovel,\Api\Model\Entity\CarteiraCliente;
+use \Api\Model\Entity\Usuario,
+\Api\Model\Entity\CarteiraImovel,
+\Api\Model\Entity\CarteiraCliente;
+
 class UsuarioController {
     /**
      * Lista todos os Usuarios
@@ -47,7 +50,9 @@ class UsuarioController {
         $usuario->fkCarteiraImovel = $imovel->save(true);
         $usuario->fkCarteiraCliente = $cliente->save(true);
         if ($usuario->save()){
+            
             return $response->withJson(['message' => 'Usuario cadastrado com sucesso!', flag => true]);
+
         }else{
             return $response->withJson(['message' => 'Ocorreu um problema ao cadastrar o usuário!', flag => false]);
         }
@@ -88,5 +93,10 @@ class UsuarioController {
         }else{
             return $response->withJson(['message' => 'Ocorreu um problema na remoção do usuario', flag => false]);
         }   
+    }
+    public function testeEmail($request, $response, $args){
+      require dirname(dirname(__DIR__))."/vendor/phpmailer/phpmailer/PHPMailerAutoload.php";
+      PHPMailerAutoload(PHPMailer);
+      $mail = PHPMailer();
     }
 }

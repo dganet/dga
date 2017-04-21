@@ -20,6 +20,10 @@ class ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda
         array (
             'Psr\\Http\\Message\\' => 17,
         ),
+        'M' => 
+        array (
+            'Mail\\' => 5,
+        ),
         'I' => 
         array (
             'Interop\\Container\\' => 18,
@@ -51,6 +55,10 @@ class ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+        'Mail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer',
+        ),
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
@@ -79,12 +87,24 @@ class ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda
         ),
     );
 
+    public static $classMap = array (
+        'EasyPeasyICS' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
+        'PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
+        'PHPMailerOAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauth.php',
+        'PHPMailerOAuthGoogle' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauthgoogle.php',
+        'POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.pop3.php',
+        'SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.smtp.php',
+        'ntlm_sasl_client_class' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/ntlm_sasl_client.php',
+        'phpmailerException' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda::$classMap;
 
         }, null, ClassLoader::class);
     }

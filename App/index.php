@@ -8,6 +8,7 @@ $app = new Slim\App([
         'displayErrorDetails' => true
     ]
 ]);
+$app->get('/usuario/email', \Api\Controller\UsuarioController::class . ':testeEmail');
 /**
  * USUARIOS
  */

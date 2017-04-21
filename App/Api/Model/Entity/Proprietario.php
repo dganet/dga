@@ -9,7 +9,6 @@ class Proprietario extends \GORM\Model{
     private $statusProprietario;
     private $createAtProprietario;
     private $updateAtProprietario;
-    private $fkAgenda;
     /**
      * Contrutor
      *
@@ -66,8 +65,7 @@ class Proprietario extends \GORM\Model{
            'emailProprietario' => $this->__get('emailProprietario'),
            'statusProprietario'   => $this->__get('statusProprietario'),
            'createAtProprietario' => $this->__get('createAtProprietario'),
-           'updateAtProprietario'   => $this->__get('updateAtProprietario'),
-           'fkAgenda' => $this->__get('fkAgenda')
+           'updateAtProprietario'   => $this->__get('updateAtProprietario')
            
         );
         foreach ($temp as $key => $value) {

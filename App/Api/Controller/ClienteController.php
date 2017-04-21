@@ -47,9 +47,12 @@ class ClienteController{
     public function save($request, $response, $args){
         $token = $args['token'];
         if (Auth::_isLoggedIn($token)){
+            $user = Auth::_getTokenInfo($token);
             $post = json_decode($request->getBody(), true);
             $this->cliente = $this->cliente->load($post);
-            if($this->cliente->save()){
+            $this->cliente->fkCarteiraCliente = $user['obj']['fkCarteiraCliente'];
+            $this->cliente->createAt = date("Y-m-d H:i:s");
+           if($this->cliente->save()){
                 return $response->withJson([
                     'message' => 'Cliente salvo com sucesso!',
                     'flag'    => true
@@ -81,6 +84,7 @@ class ClienteController{
             $post = json_decode($request->getBody(),true);
             $this->cliente->load($post);
             $this->cliente->idCliente = $args['id']; 
+            $this->cliente->updateAt = date("Y-m-d H:i:s");
             if ($this->cliente->update()){
                 return $response->withJson([
                     'message' => 'Informações do cliente atualizadas com sucesso',
