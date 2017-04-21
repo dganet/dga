@@ -32,4 +32,12 @@ $scope.master = {};
 
   };
 
+  //*************UPDATE CLIENTE *********************// 
+
+  //Seleciona todos os clientes
+    $http.get('App/cliente/list/'+ token).success(function(data){
+        $scope.clientes = data;
+    });
+
+
  });//END do controller

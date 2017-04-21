@@ -4,44 +4,59 @@
 
 <div class="acoes">
 
-<i class="fa fa-users" aria-hidden="true"></i>
-	<label>Atualização do Cliente</label>
-
+<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+  <label>Alteraração dos Clientes</label>
 </div>
 
 <hr>
 
 <div class="conteudo">
+ 
+ <div class="tres">
 
-<form name="FormCliente" ng-submit="add(cliente)">
-	
-	<div class="row">
+   <input type="text" class="form-control" ng-model="busca" placeholder="Nome do Cliente">
+   <br>
 
-	<div class="col-md-12">
-		<div class="form-group">
-		<label>Nome Completo</label>
-		<input type="text" class="form-control" ng-model="cliente.nomeCliente" required> 
+   <table class="table table-condensed">
+    <thead>
+     <tr>
+        <td>Clientes{{clientes}}</td>
+     </tr>
+    </thead>
+
+    <tbody> 
+     <tr ng-repeat="x in clientes | filter: busca  ">
+       <td> <a ui-sref="user.curso.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nomeCliente}}</a></td>
+     </tr>
+   
+    </tbody>
+
+   </table>
+
+  </div>
+
+  <div class="quatro" ng-show="quatro">
+<h4>{{curso.nome}}</h4>
+    <hr>
+
+
+<form name="FormCurso" ng-submit="add(curso)">
+  
+  <div class="row">
+
+  <div class="col-md-12">
+    <div class="form-group">
+    <label>Nome do Curso</label>
+    <input type="text" class="form-control" ng-model="curso.nome" required> 
     </div> 
     </div>
 
-	<div class="col-md-12">
-		<div class="form-group">
-		<label>E-mail</label>
-		<input type="email" class="form-control" ng-model="cliente.emailCliente" required> 
-    </div> 
     </div>
-
-	<div class="col-md-12">
-		<div class="form-group">
-		<label>Endereço</label>
-		<input type="text" class="form-control" ng-model="cliente.enderecoCliente" required> 
-    </div> 
-    </div>
-
-    </div>
-	
+  
 <hr>
 <button type="submit" class="btn btn-primary">Salvar Dados</button> 
+<button type="button" class="btn btn-danger" ng-click="deleta(curso.id)">Deletar</button>
 </form>
 
+  </div>
 </div>
