@@ -44,6 +44,7 @@ class UsuarioController {
         $usuario->createAtUsuario = date("Y-m-d H:i:s");
         $usuario->fkPermissao = 1;
         $usuario->statusUsuario = 'AGUARDANDOCONFIRMACAOEMAIL';
+        $usuario->senhaUsuario = md5($usuario->senhaUsuario);
         $imovel = new CarteiraImovel();
         $cliente = new CarteiraCliente();
         $imovel->nomeCarteiraImovel = "Carteira de Imovel de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
@@ -108,7 +109,7 @@ class UsuarioController {
       }else{
           return $response->withJson([
               'message' => 'Não foi possivel confirmar seu email, procure um administrador para ajudar com o problema',
-              'flag' => flase
+              'flag' => false
           ]);
       }
     }

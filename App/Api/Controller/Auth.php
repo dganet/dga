@@ -23,7 +23,7 @@ class Auth{
             $usuario = $usuario->find("where emailUsuario='".$array['emailUsuario']."' AND senhaUsuario='".md5($array['senhaUsuario'])."' AND statusUsuario='ATIVO'");
             //Verifica se existe alguma coisa em $usuario
             if (!$usuario->idUsuario == null){
-                $hash = md5($usuario->emailUsuario.time());
+                $hash = md5($usuario->emailUsuario."|".time());
                 apcu_add($hash, ['obj' => $usuario->toArray(), 'createAt' => date("Y-m-d H:i:s")]);
                 $user = $usuario->toArray();
                 $user['token'] = $hash;
