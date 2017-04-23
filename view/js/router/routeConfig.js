@@ -135,11 +135,11 @@ app.config(function ($stateProvider, $urlRouterProvider){
 //|#######################################################|
 //|############# **  MODULO ESTATICA ** ##################|
 //|#######################################################|
-      .state('user.estastitica', {
-      url: '/conta',
-      templateUrl: 'view/modEstastitica/linkEstastitica.htm',
+      .state('user.estatistica', {
+      url: '/estatistica',
+      templateUrl: 'view/modEstastitica/linkEstatistica.htm',
        ncyBreadcrumb: {
-            label: 'Modulo Estastitica'
+            label: 'Modulo Estatistica'
          }
     })
 
@@ -183,7 +183,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
       .state('user.conta.faturas', {
       url: '/inseri',
-      templateUrl: 'view/modConta/contaFatura.htm',
+      templateUrl: 'view/modConta/fatura.htm',
        ncyBreadcrumb: {
             label: 'Fatura'
          }
