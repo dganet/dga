@@ -14,6 +14,7 @@ class Auth{
      * @return void
      */
     public function login(Array $array = []){
+        $cache = new Cache();
         //Verifica se o array está vazio, se sim retorna uma mensagem de errro
         //Caso contratio ele gera um objeto do tipo usuario e o armazena dentro de um array
         if($array == []){
@@ -24,7 +25,7 @@ class Auth{
             //Verifica se existe alguma coisa em $usuario
             if (!$usuario->idUsuario == null){
                 $hash = md5($usuario->emailUsuario."|".time());
-                apcu_add($hash, ['obj' => $usuario->toArray(), 'createAt' => date("Y-m-d H:i:s")]);
+                $cache->save($hash, $usuario->toArray());
                 $user = $usuario->toArray();
                 $user['token'] = $hash;
                 $user['flag'] = true;
@@ -41,10 +42,12 @@ class Auth{
      * @return mixed
      */
     public static function _isLoggedIn($token){
-        if (apcu_exists($token)){
-            return ['message' => 'Usuario está logado!', 'flag' => true, 'user' => apcu_fetch($token) ];
+        $cache = new Cache();
+        $user = $this->cache->read($token);
+        if (!$user == false){
+            return ['message' => 'Usuario está logado!', 'flag' => true, 'user' => $user];
         }else{
-            return ['message' => 'Usuario não está logado', 'flag' => false];
+            return ['message' => 'Usuario não está logado', 'flag' => false, 'user' => $user];
         }
     }
     /**
@@ -54,12 +57,15 @@ class Auth{
      * @return mixed
      */
     public static function _getTokenInfo($token){
+        $cache = new Cache();
+         $user = $cache->read($token);
         // Checa se o usuario está logado, se sim retorna as informações dele
         // se não retorna mensagem de erro
-        if (self::_isLoggedIn($token)['flag']){
-            return apcu_fetch($token);
+       /* if (!$user == false){
+            return $user;
         }else{
-            return ['message' => 'Usuario não está logado', 'flag' => false];
-        }
+            return ['message' => 'Usuario não está logado', 'flag' => false, 'user' => $user];
+        }*/
+        return $user;
     }
 }

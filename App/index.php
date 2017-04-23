@@ -64,4 +64,9 @@ $app->put('/cliente/update/{id}/{token}', \Api\Controller\ClienteController::cla
 //Inativa o cliente
 $app->get('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::class . ':delete');
 // FIM CLIENTE
+/**
+ * TESTE
+ */
+$app->get('/teste/cache/{token}', \Api\Test\Teste::class . ':main');
+//##################################################################
 $app->run();
