@@ -46,9 +46,10 @@ $scope.master = {};
   //Pega o ID
 	var id = $scope.id = values;
   //Pega os Dados do Cliente selecionado.
-		$http.get('/App/cliente/list/'+ id).success(function(data){
-		$scope.cliente = data[0];
 
+		$http.get('App/cliente/listId/'+ id + '/'+ token).success(function(data){
+      console.log(data);
+		$scope.cliente = data[0];
 	});
 
 	}
