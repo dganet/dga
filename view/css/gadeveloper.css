@@ -22,21 +22,20 @@ body, html,{
 }
 
 #blocoLogo {
-	margin-top: -3px;
 	float: left;
 	padding-left: 20px;
 	width: 25%;
 }
 #blocoLogo > img {
 	height: 60px;
-	margin-top: 3px;
 	margin-right: 20px;
 	float: left;
+	margin-bottom: -3px;
 }
 .nomeUsuario{
 	color: white;
 	font-size: 16px;
-	padding: 22px 15px;
+	padding: 19px 15px;
 	font-weight: bold;
 }
 
@@ -68,7 +67,6 @@ body, html,{
 .bloco-menu {
 	float: right;
 	width: 70%;
-	border:1px solid red;
     }
 .menu {
 	float: right;
