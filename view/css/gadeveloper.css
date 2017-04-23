@@ -18,13 +18,15 @@ body, html,{
 	background: #008f8f;
 	height: 60px;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+	display: table;
 }
 
 #blocoLogo {
 	margin-top: -3px;
 	float: left;
-	margin-left: 20px;
-	width: 500px;
+	padding-left: 20px;
+	width: 25%;
+	border: 1px solid red;
 }
 #blocoLogo > img {
 	height: 60px;
@@ -64,10 +66,14 @@ body, html,{
 	color: white;
 	text-decoration: none;
 }
+.bloco-menu {
+	float: right;
+	width: 70%;
+	border:1px solid red;
+    }
 .menu {
 	float: right;
-    margin-right: 60px;
-    }
+}
 .menu .dropdown {
     position: relative;
     display: inline-block;

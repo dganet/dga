@@ -14,11 +14,6 @@ app.config(function ($stateProvider, $urlRouterProvider){
       templateUrl: 'view/site/inicio.htm',
          controller:'siteCtrl'
     })
-      .state('login.conta', {
-      url: '/criar',
-      templateUrl: 'view/site/createCount.htm',
-         controller:'siteCtrl',
-    })
 
       .state('user', {
       url: '/user',
