@@ -25,7 +25,7 @@ class ClienteController{
     public function list($request, $response, $args){
         $token = $args['token'];
         $user = Auth::_getTokenInfo($token);
-        return $response->withJson($this->cliente->select('where fkCarteiraCliente='.$user['obj']['fkCarteiraCliente']));
+        return $response->withJson($this->cliente->select('where fkCarteiraCliente='.$user['conteudo']['fkCarteiraCliente']));
     }
     /**
      * Lista de cliente por id
@@ -52,7 +52,7 @@ class ClienteController{
             $user = Auth::_getTokenInfo($token);
             $post = json_decode($request->getBody(), true);
             $this->cliente = $this->cliente->load($post);
-            $this->cliente->fkCarteiraCliente = $user['obj']['fkCarteiraCliente'];
+            $this->cliente->fkCarteiraCliente = $user['conteudo']['fkCarteiraCliente'];
             $this->cliente->createAt = date("Y-m-d H:i:s");
            if($this->cliente->save()){
                 return $response->withJson([

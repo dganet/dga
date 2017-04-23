@@ -43,11 +43,11 @@ class Auth{
      */
     public static function _isLoggedIn($token){
         $cache = new Cache();
-        $user = $this->cache->read($token);
+        $user = $cache->read($token);
         if (!$user == false){
-            return ['message' => 'Usuario está logado!', 'flag' => true, 'user' => $user];
+           return true;
         }else{
-            return ['message' => 'Usuario não está logado', 'flag' => false, 'user' => $user];
+            return false;
         }
     }
     /**
@@ -61,11 +61,11 @@ class Auth{
          $user = $cache->read($token);
         // Checa se o usuario está logado, se sim retorna as informações dele
         // se não retorna mensagem de erro
-       /* if (!$user == false){
+        if (!$user == false){
             return $user;
         }else{
             return ['message' => 'Usuario não está logado', 'flag' => false, 'user' => $user];
-        }*/
+        }
         return $user;
     }
 }
