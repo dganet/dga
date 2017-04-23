@@ -26,7 +26,6 @@ body, html,{
 	float: left;
 	padding-left: 20px;
 	width: 25%;
-	border: 1px solid red;
 }
 #blocoLogo > img {
 	height: 60px;
