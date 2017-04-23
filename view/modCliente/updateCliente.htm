@@ -3,60 +3,56 @@
 </div>
 
 <div class="acoes">
-
-<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
-  <label>Alteraração dos Clientes</label>
+    <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+    <label>Alteraração dos Clientes</label>
 </div>
 
 <hr>
 
 <div class="conteudo">
  
- <div class="tres">
+ <div class="modeloA3">
 
-   <input type="text" class="form-control" ng-model="busca" placeholder="Nome do Cliente">
+   <input type="text" class="form-control" ng-model="busca" placeholder="Procure pelo Nome">
    <br>
 
-   <table class="table table-condensed">
-    <thead>
-     <tr>
-        <td>Clientes{{clientes}}</td>
-     </tr>
-    </thead>
+   <i class="fa fa-tags" aria-hidden="true"></i>
+   <label class="tableList">Clientes</label>
+   <table class="table table-condensed linkList ">
 
-    <tbody> 
-     <tr ng-repeat="x in clientes | filter: busca  ">
-       <td> <a ui-sref="user.curso.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nomeCliente}}</a></td>
-     </tr>
-   
-    </tbody>
+      <tbody> 
+        <tr ng-repeat="x in clientes | filter: busca  ">
+          <td><a ui-sref="user.cliente.update.detalhes({id: x.idCliente})" ng-click="janela(x.idCliente)">{{x.nomeCliente}}</a></td>
+        </tr>    
+      </tbody>
 
    </table>
 
-  </div>
+</div>
 
-  <div class="quatro" ng-show="quatro">
+<div class="modeloA4" ng-show="modeloA4">
 <h4>{{curso.nome}}</h4>
     <hr>
 
 
 <form name="FormCurso" ng-submit="add(curso)">
-  
-  <div class="row">
 
-  <div class="col-md-12">
-    <div class="form-group">
-    <label>Nome do Curso</label>
-    <input type="text" class="form-control" ng-model="curso.nome" required> 
-    </div> 
-    </div>
+    <div class="row">
 
-    </div>
-  
-<hr>
-<button type="submit" class="btn btn-primary">Salvar Dados</button> 
-<button type="button" class="btn btn-danger" ng-click="deleta(curso.id)">Deletar</button>
+    <div class="col-md-12">
+      <div class="form-group">
+      <label>Nome do Curso</label>
+      <input type="text" class="form-control" ng-model="curso.nome" required> 
+      </div> 
+      </div>
+
+      </div>
+    
+  <hr>
+  <button type="submit" class="btn btn-primary">Salvar Dados</button> 
+  <button type="button" class="btn btn-danger" ng-click="deleta(curso.id)">Deletar</button>
 </form>
 
   </div>
-</div>
+
+</div><!-- fecha div conteudo -->

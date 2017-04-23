@@ -1,9 +1,10 @@
 header {
     width: 100%;
-    height: 110px;
-    border-bottom: 50px solid #51a8b1;
+    height: 85px;
+    border-bottom: 25px solid #51a8b1;
     background-color: white;
     padding: 0px 50px;
+        box-shadow: 5px 5px 15px black;
 }
 
 .logo-site {
@@ -38,9 +39,26 @@ header {
     padding: 10px 30px 0px 0px;
     float: left;    
 }
-section {
-    padding: 0px 50px;
-    width: 100%
+.karaio {
+    width: 100%; 
+    height: 100%;
+    top: 0;
+    bottom: 0;
+
+}
+.bg {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%; 
+    height: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.8;
+}
+#fb-root{
+    padding: 20px;
 }
 .bloco-filtro-site {
     background-color:white;
@@ -104,10 +122,14 @@ aside{
 
 }
 .bloco-form-conta{
-    margin:0 auto; 
-    width: 50%;
+    float: right;
+    margin-right: 100px;
+    width: 400px;
     border: 1px solid #C6C6C6;
     padding: 20px;
+    background: white;
+    box-shadow: 2px 5px 15px black;
+
 
 }
 .tituloConta {

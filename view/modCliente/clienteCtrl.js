@@ -34,10 +34,22 @@ $scope.master = {};
 
   //*************UPDATE CLIENTE *********************// 
 
-  //Seleciona todos os clientes
+  //Lista todos os clientes
     $http.get('App/cliente/list/'+ token).success(function(data){
         $scope.clientes = data;
     });
 
+  // Seleciona o usuario e mostra do Lado.
+    $scope.janela = function (values){
+  //Show na div modeloA
+    $scope.modeloA4 = true;
+  //Pega o ID
+	var id = $scope.id = values;
+  //Pega os Dados do Cliente selecionado.
+		$http.get('/App/cliente/list/'+ id).success(function(data){
+		$scope.cliente = data[0];
 
+	});
+
+	}
  });//END do controller

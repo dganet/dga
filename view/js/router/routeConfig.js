@@ -61,6 +61,17 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
     })
 
+      .state('user.cliente.update.detalhes', {
+		 	 url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							ncyBreadcrumb: {
+						label: 'Altera'
+				 }
+		})
+
 //|#######################################################|
 //|############# **  MODULO IMOVEIS ** ###################|
 //|#######################################################|

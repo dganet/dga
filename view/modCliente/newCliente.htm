@@ -22,21 +22,45 @@
 		<label>Nome Completo</label>
 		<input type="text" class="form-control" ng-model="cliente.nomeCliente" required> 
     </div> 
-    </div>
+  </div>
 
 	<div class="col-md-12">
 		<div class="form-group">
 		<label>E-mail</label>
 		<input type="email" class="form-control" ng-model="cliente.emailCliente" required> 
     </div> 
-    </div>
+  </div>
 
 	<div class="col-md-12">
 		<div class="form-group">
 		<label>Endereço</label>
 		<input type="text" class="form-control" ng-model="cliente.enderecoCliente" required> 
     </div> 
-    </div>
+  </div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+		<label>Telefone Fixo:</label>
+		<input type="text" class="form-control" ng-model="cliente.telFixoCliente" ui-br-phone-number > 
+    </div> 
+  </div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+		<label>Telefone Celular:</label>
+		<input type="text" class="form-control" ng-model="cliente.telCelularCliente" ui-br-phone-number required> 
+    </div> 
+  </div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+		<label>Telefone Comercial:</label>
+		<input type="text" class="form-control" ng-model="cliente.telComercialCliente" ui-br-phone-number required> 
+    </div> 
+  </div>
+
+
+
 
     </div>
 	

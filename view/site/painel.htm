@@ -10,16 +10,9 @@
 
     <!--Parte de Criar Conta e Realizar Login-->
     <div class="bloco-login-conta">
-         <!--Parte de Criar Conta-->         
-        <div class="conta" ng-show="newcount">
-            <a ui-sref="login.conta">Criar Conta</a>
-        </div>
-         <!--Link Login-->
-        <div class="login" ng-show="login">
-            <a ng-click="loginAction()">Login</a>
-        </div>
+
         <!--Autenticacao-->
-        <div class="autenticacao" ng-show="autentication">
+        <div class="autenticacao">
             <form class="form-inline" name="formAut" ng-submit="logando(user)">
             <div class="form-group">
             

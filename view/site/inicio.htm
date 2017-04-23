@@ -1,24 +1,101 @@
-<section>
-
-    <div class="saudacoes">
-
-        Obrigado a todos os <span style="font-size:20px; font-weigth:bold;">1248</span> corretores que agreditam nesse projeto ! </br></br>       
+<div class="karaio">
+    <img src="view/imagens/bkg.jpg" class="bg" alt="">
 
 <!-- Pluing de Curtir do Facebook-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9&appId=110006319561262";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<div id="fb-root">
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9&appId=110006319561262";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<div class="fb-like" data-href="https://www.facebook.com/imobiliar.net/" data-width="480px" 
-data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true">
+  <div class="fb-like" data-href="https://www.facebook.com/imobiliar.net.br/" data-width="480px" 
+  data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true">
+  </div>
+
 </div>
 
+<form action="">
+  <select name="" id="">
+    <option value="">São Paulo</option>
+    <option value="">Mina Gerais</option>
+  </select>
+</form>
+
+
+<div class="bloco-form-conta">
+           <div class="tituloConta">Nova Conta</div>
+
+            <div class="alert alert-danger" ng-show="mensagemSenha">
+            <strong>Senhas!</strong> não estão iguais.
+            </div>
+
+            <div class="alert alert-success" ng-show="mensagemSucesso">
+            <strong>Sucesso!</strong> Dados Cadastrado com Sucesso , enviado um e-mail para ativação do seu cadastro.
+            </div>
+          <form name="formUsuario" ng-submit="add(usuario)">
+
+               <div class="row">
+                   <div class="col-md-5">
+                   <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" ng-model="usuario.nomeUsuario" required>
+                   </div>
+              </div>
+
+                   <div class="col-md-7">
+                   <div class="form-group">
+                        <label>Sobrenome</label>
+                        <input type="text" class="form-control" ng-model="usuario.sobrenomeUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+               <div class="row">
+                   <div class="col-md-8">
+                   <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" class="form-control" ng-model="usuario.emailUsuario" required>
+                   </div>
+              </div>
+
+                   <div class="col-md-4">
+                   <div class="form-group">
+                        <label>Creci</label>
+                        <input type="text" class="form-control" ng-model="usuario.creciUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+               <div class="row">
+                   <div class="col-md-12">
+                   <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" ng-model="usuario.senhaUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+               <div class="row">
+                   <div class="col-md-12">
+                   <div class="form-group">
+                        <label>Confirma Senha</label>
+                        <input type="password" class="form-control" ng-model="usuario.senha">
+                   </div>
+              </div>
+              </div>
+
+<div class="termos">
+ <input type="checkbox" ng-model="usuario.termoUsuario"> Eu li e concordo com os termos de uso da Politica de Privacidade</a>.
 </div>
 
-</section>
+<button type="submit" class="btn btn-primary">Salvar Dados</button>
+
+          </form>
+
+       </div>
+
+</div>

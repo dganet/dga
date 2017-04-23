@@ -1,9 +1,15 @@
 
 /* Desktop maiores */
 @media (min-width: 1200px) { 
-body, html,.corpo{
- 	background: #E6E6E6;
+body, html,{
  	margin: 0 auto;
+}
+.bodyPainelAdm{
+		padding-top: 10px;
+	 	background: #E6E6E6;
+		height: 100%;
+		position: fixed;
+		width: 100%;
 }
 
 /*  topo  */
@@ -11,7 +17,6 @@ body, html,.corpo{
 	width: 100%;
 	background: #008f8f;
 	height: 60px;
-	margin-top: 20px;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 
@@ -131,7 +136,7 @@ background:#007f7f;
 
 
 /*  Primeiro Layout  */
-.primeiroLayout {
+.modeloA {
 	background: white;
 	width: 15%;
 	position: fixed;
@@ -141,7 +146,7 @@ background:#007f7f;
 	padding-top: 20px;
 
 }
-.segundoLayout {
+.modeloA2 {
 	background: white;
 	width: calc(85% - 30px);
 	position: fixed;
@@ -150,6 +155,47 @@ background:#007f7f;
 	left: calc(15% + 20px);
 	overflow: auto;
 	}
+
+.modeloA3 {
+	width: 20%;
+	margin-top: -20px;
+	padding-right: 20px;
+	border-right:1px solid #E6E6E6;
+	float: left;
+}
+
+.tres thead {
+	font-weight: bold;
+}
+
+
+.modeloA4 {
+	width: calc(80% - 20px);
+	float: left;
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
+.tableList {
+	font-weight: bold;
+}
+.linkList a {
+	width: 100%;
+	padding: 10px;
+	display: inline-block;
+	/* visual do link */
+	text-decoration: none;
+	color: gray;
+}
+.linkList a:hover {
+	text-decoration: none;
+	background: #F3F3F3;
+}
+.linkList a:active {
+	text-decoration: none;
+}
+.linkList a:visited {
+	text-decoration: none;
+}
 
 /*  SECTION  */
 

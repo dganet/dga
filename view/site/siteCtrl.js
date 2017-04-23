@@ -31,20 +31,6 @@
             };
 
 
-    //Mostra o Link Nova Conta
-    $scope.newcount = true;
-    $scope.login = true;
-    //Oculta o Link Nova Conta e Mostra o Form de Autenticação
-    $scope.loginAction = function (){
-        $scope.autentication = true; 
-        $scope.newcount = true;
-        $scope.login = false;
-    };
-
-
-
-
-
 //*************CADASTRA NOVO USUARIO *********************// 
 
 //Passa os valores do form em Objeto no "values"
