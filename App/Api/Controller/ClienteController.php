@@ -36,7 +36,7 @@ class ClienteController{
      * @return MixedJson
      */
     public function listById($request, $response, $args){
-        return $response->withJson($this->cliente->find($args['id']));
+        return $response->withJson($this->cliente->select( (int) $args['id'] ));
     }
     /**
      * Salva um novo cliente
