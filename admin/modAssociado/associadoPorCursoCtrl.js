@@ -5,7 +5,7 @@ var id = sessionStorage.getItem('usuario.id');
 $scope.quatro = false;
 
 //Lista os Cursos
-	$http.get('../App/cursofaculdade/listplus').success(function(data){
+	$http.get('../App/cursofaculdade/list').success(function(data){
    $scope.cursos = data;
 	});
 
@@ -16,7 +16,8 @@ $scope.nomeCurso = nomeCurso;
 var id = values.id;
 $scope.quatro = true;
 
-		$http.get('../App/cursofaculdade/list/'+ id).success(function(data){
+		$http.get('../App/cursofaculdade/listplus/'+ id).success(function(data){
+			console.log(data);
 		$scope.associados = data;
         $scope.total = $scope.associados.length;
  
