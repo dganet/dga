@@ -1,6 +1,4 @@
- app.controller("clienteCtrl", function($scope, $http, $timeout , $location, $sessionStorage){
-//Pegando Token
- var token = sessionStorage.getItem('usuario.token');
+ app.controller("clienteCtrl", function($scope, $http, $timeout , $location, restful){
 
 //Oculta a Mensagem de sucesso
 $scope.mensagemSucesso = false;
@@ -14,7 +12,7 @@ $scope.master = {};
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, formCliente) {
             // Enviado os valores em objetos para api/user do php/slim
-            $http.post('App/cliente/save/'+ token , values).success(function(){
+            restful.postCliente(values).success(function(){
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagemSucesso = true;
                 $timeout(function () {
@@ -35,7 +33,7 @@ $scope.master = {};
   //*************UPDATE CLIENTE *********************// 
 
   //Lista todos os clientes
-    $http.get('App/cliente/list/'+ token).success(function(data){
+    restful.getClientes().success(function(data){
         $scope.clientes = data;
     });
 
@@ -47,7 +45,7 @@ $scope.master = {};
 	var id = $scope.id = values;
   //Pega os Dados do Cliente selecionado.
 
-		$http.get('App/cliente/listId/'+ id + '/'+ token).success(function(data){
+ restful.getCliente(id).success(function(data){
       console.log(data);
 		$scope.cliente = data[0];
 	});

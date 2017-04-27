@@ -1,4 +1,4 @@
- app.controller("siteCtrl", function($scope, $http, $timeout , $location, $sessionStorage){
+ app.controller("siteCtrl", function($scope, $http, $timeout , $location, $sessionStorage, restful){
           //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
@@ -6,7 +6,7 @@
      		    
 		    $scope.logando = function (values , formAut){
 
-                    $http.post('App/usuario/login', values).success(function(response){
+                    restful.postUsuario().success(function(response){
                         var auth = response.flag;
 
                     if (auth == false){
@@ -41,7 +41,7 @@
 
       if ( senhaUsuario == senha){
             // Enviado os valores em objetos para api/user do php/slim
-            $http.post('App/usuario/save', values).success(function(){
+            restful.postUsuario(values).success(function(){
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagemSucesso = true;
                 $timeout(function () {
