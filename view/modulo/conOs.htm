@@ -1,0 +1,30 @@
+<div class='conteudo'>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Ordens de Serviços</div>
+
+        <!-- Table -->
+        <table class="table">
+            <tr>
+            <td> <b>Protocolo</b></td>
+                <td> <b>Codigo Assinante</b> </td>
+                <td> <b>Tipo de Internet </b></td>
+                <td> <b>Bairro </b></td>
+                <td> <b>Nome do Assinante </b></td>
+                <td> <b>Opções</b> </td>
+            </tr>
+            <tr ng-repeat="os in oss">
+                <td>{{os.protocolo}}</td>
+                <td>{{os.codAssinante}}</td>
+                <td>{{os.tipoInternet}}</td>
+                <td>{{os.fkBairro}}</td>
+                <td>{{os.nomeAssinante}}</td>
+                <td>
+                    <spam class="glyphicon glyphicon-calendar" ng-click="agendar(os)" title="Agendar"></spam>
+                    <spam class="glyphicon glyphicon-pencil" ng-click="editar(os)" title="Editar"></spam>
+                    <spam class="glyphicon glyphicon-save-file" ng-click="baixar(os)" title="Baixar"></spam>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="conteudo">
+<div class="alert alert-danger" role="alert" ng-hide={{error}}>Não foi possivel cadastrar a Ordem de Servico!</div>
+<div class="alert alert-success" role="alert" ng-hide={{success}}>Ordem Cadastrada com sucesso!</div>
+
+
+	<form method="post" ng-submit="addOs(os)"> 
+		
+	  <div class="form-group">
+        <div class="col-lg-2">
+	        <label for="dataAbertura">Data da OS</label>
+	        <input type="date" class="form-control" id="dataAbertura" ng-model="os.dataAbertura">
+        </div>
+
+		<div class='col-lg-2'>
+			<label for="dataRecebimento">Data da Recebimento</label>
+	        <input type="date" class="form-control" id="dataRecebimento" ng-model="os.dataRecebimento">
+		</div>
+
+        <div class='col-lg-2'>
+        	<label for="protocolo">Protocolo</label>
+	        <input type="text" class="form-control" id="protocolo" ng-model="os.protocolo">
+        </div>
+
+				<div class='col-lg-2'>
+					<label for="codAssinante">Cod Assinante</label>
+	        <input type="text" class="form-control" id="codAssinante" ng-model="os.codAssinante">
+				</div>
+				
+				<div class='col-lg-2'>	
+					<label for='fk4'>Bairro</label>
+					<select class='form-control' id='fkBairro' ng-model="os.fkBairro" ng-click="loadBairros()">
+						<option ng-repeat="bairro in bairros" value="{{bairro.idBairro}}">{{bairro.nomeBairro}}</option>
+					</select> 
+				</div>
+
+				<div class='col-lg-6'>
+					<label for="nomeAssinante">Nome do Assinante</label>
+	        <input type="text" class="form-control" id="nomeAssinante" ng-model="os.nomeAssinante">
+				</div>
+
+				<div class="col-lg-3">
+					<label>Setor</label>
+					<select class="form-control" id="setor" ng-model="os.setor" >
+						<option value=1>Setor 1</option>
+						<option value=2>Setor 2</option>
+						<option value=3>Setor 3</option>
+						<option value=4>Setor 4</option>
+					</select>
+				</div>
+
+				<div class="col-lg-3">
+					<label>Tipo</label>
+					<select class="form-control" id="tipoInternet" ng-model="os.tipoInternet" >
+						<option value="Fibra">Fibra</option>
+						<option value="Rádio">Rádio</option>
+						<option value="Adsl">Adsl</option>
+					</select>
+				</div>
+
+				
+				<div class="col-lg-3">
+					<label>Servico</label>
+					<select class="form-control" id="fkServico" ng-model="os.fkServico" ng-click="loadServicos()">
+						<option ng-repeat="servico in servicos" value="{{servico.idServico}}">{{servico.nomeServico}}</option>
+					</select>
+				</div>
+
+				<div class="col-lg-12">
+				<label></label>
+				</div>
+				<div class="col-lg-2">
+					<button type="submit" class="btn btn-primary">Salvar</button>
+				</div>
+		</div>
+	</form>
+
+</div>
