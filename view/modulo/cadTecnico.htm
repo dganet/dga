@@ -1,0 +1,25 @@
+<div class="acoes">
+
+	<a><i class="fa fa-user-plus fa-lg" aria-hidden="true"></i></a>
+	<a><i class="fa fa-check fa-lg" aria-hidden="true" ng-click="addTecnico()"></i></a>
+
+</div>
+
+<hr>
+
+<div class="conteudo">
+	
+	<form method="post" ng-submit="addTecnico(tec)">
+	  <div class="col-lg-6">
+	  	<label> Nome do Tecnico </label>
+      	<input type="text" ng-model="tec.nomeTecnico" class="form-control">
+      </div>
+	<div class="col-lg-12">
+		<label></label>
+	</div>
+	<div class="col-lg-2">
+		<button type="submit" class="btn btn-primary">Salvar</button>
+	</div>
+	</form>
+
+</div>
