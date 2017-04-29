@@ -28,10 +28,10 @@ class Model{
 	*/
 	public 		$db = array(
 		"driver" 	=> "mysql",
-		"host"		=> "localhost",		
-		"dbname"	=> "linkfort", 		
-		"user"		=> "linkfort", 		
-		"pass"		=> "linkfortpass" 			
+		"host"		=> "138.97.220.62",		
+		"dbname"	=> "linkfort_erp", 		
+		"user"		=> "root", 		
+		"pass"		=> "Supereng" 			
 	);
 	/**
     * Recebe o nome da tabela da função Model::loadTable()
