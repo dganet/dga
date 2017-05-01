@@ -76,6 +76,18 @@ $http.get('App/associado/listadeespera').success(function(data){
 	$scope.associados = data;
 });
 
+//Pega a foto do Banner 1
+        $http.get('App/imagem/list').success(function(data){
+				  $scope.banner1 = data[0];    
+        });
 
+//Pega a foto do Banner 2
+        $http.get('App/imagem/list').success(function(data){
+                 $scope.banner2 = data[1];      
+        });
 
+//Pega a foto do Banner 3
+        $http.get('App/imagem/list').success(function(data){
+                  $scope.banner3 = data[2];      
+        });
 });
