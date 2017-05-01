@@ -6,7 +6,7 @@
      		    
 		    $scope.logando = function (values , formAut){
 
-                    restful.postUsuario().success(function(response){
+                    restful.usuarioLogin().success(function(response){
                         var auth = response.flag;
 
                     if (auth == false){
@@ -41,7 +41,7 @@
 
       if ( senhaUsuario == senha){
             // Enviado os valores em objetos para api/user do php/slim
-            restful.postUsuario(values).success(function(){
+            restful.usuarioSave(values).success(function(){
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagemSucesso = true;
                 $timeout(function () {

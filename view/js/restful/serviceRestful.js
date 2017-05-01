@@ -4,16 +4,24 @@ app.service('restful', function ($http,$sessionStorage) {
 
 //REQUISICOES DO BACK-END 
    
+   //Classes Usuario
+   $usuarioLogin = '../App/usuario/login';
+   $usuarioSave =  '../App/usuario/save';
+   //Classes Cliente
+   $clienteSave = '../App/cliente/save';
+   $clienteList = '../App/cliente/list';
+  
+
 //|#######################################################|
 //|############# **  MODULO USUARIOS ** ##################|
 //|#######################################################|
    //Logando
-    var _postLogando = function (values){
-        return  $http.post('App/usuario/login', values);
+    var _usuarioLogin = function (values){
+        return  $http.post($usuarioLogin , values);
     };
-   //Inseri novo Usuario
-    var _postUsuario = function (values){
-        return  $http.post('App/usuario/save', values);
+   //Salva novo Usuario
+    var _usuarioSave = function (values){
+        return  $http.post($usuarioSave, values);
     };
 
 //|#######################################################|
@@ -48,8 +56,10 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  RETURNS ** ##########################|
 //|#######################################################|
     return {
-        postLogando : _postLogando,
-        postUsuario: _postUsuario,
+        //Return do Usuario
+        usuarioLogin : _usuarioLogin,
+        usuarioSave: _usuarioSave,
+        //Return do Cliente
         postCliente : _postCliente,
         getClientes : _getClientes,
         getCliente : _getCliente,
