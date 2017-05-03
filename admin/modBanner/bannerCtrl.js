@@ -5,8 +5,8 @@ var idUsuario = sessionStorage.getItem('usuario.id');
 $scope.mensagem = true;
 
         $http.get('../App/imagem/list').success(function(data){
-                 $scope.banner1 = data[0];  
-                 console.log(data);                  
+                 $scope.foto = data[0];  
+                 console.log(data);                
         });
 
         $http.get('../App/imagem/list').success(function(data){
