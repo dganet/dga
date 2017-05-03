@@ -1,0 +1,21 @@
+<div id="blocoNoticiasPortal">	
+	
+	<h4>Cursos</h4>
+
+		<div ng-repeat="x in posts" ng-show="leiaMais">
+		
+		<div class="tituloPortal">{{x.titulo}}</div>
+		<div class="chamadaPortal">{{x.chamada}}</div>
+		<div class="leiamaisPortal"><a ui-sref="portal.cursos.detalhes({id: x.id})" ng-click="dados(x.id)">Leia Mais</a></div>
+		<hr class="linhaPortal">
+		</div>
+
+		<div ng-show="Noticia">
+			<div class="tituloPortal">{{post.titulo}}</div>
+			<div class="chamadaLeiaMaisPortal">{{post.chamada}}</div>
+			<div class="descricaoPortal">{{post.descricao}}</div>
+			<hr>
+			<a ng-click="voltar()"><button type="button" class="btn btn-danger">Voltar</button></a>
+		</div>
+
+	</div>

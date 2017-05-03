@@ -39,6 +39,14 @@ app.config(function ($stateProvider, $urlRouterProvider){
       controller: 'noticiasCtrl',
 
     })
+
+    .state('portal.ticket', {
+      url:'/noticias',
+      templateUrl: 'aetub/portal/noticias.htm',
+      controller: 'noticiasCtrl',
+
+    })
+
     .state('portal.noticias.detalhes', {
       url: '/:id',
        controller: function($scope, $stateParams) {
