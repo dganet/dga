@@ -2,19 +2,23 @@ app.service('restful', function ($http,$sessionStorage) {
  //Pegando Token
  var token = sessionStorage.getItem('usuario.token');
 
-//REQUISICOES DO BACK-END 
+//REQUISICOES DO BACK-END CAMINHOS
    
    //Classes Usuario
-   $usuarioLogin = '../App/usuario/login';
-   $usuarioSave =  '../App/usuario/save';
+   $usuarioLogin = '../App/usuario/login'; // loga o usuario
+   $usuarioSave =  '../App/usuario/save'; // Salva Usuario
    //Classes Cliente
-   $clienteSave = '../App/cliente/save';
-   $clienteList = '../App/cliente/list';
+   $clienteSave = '../App/cliente/save'; // Salva Cliente
+   $clienteList = '../App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
+   $clienteListId = '../App/cliente/listId/'; // Lista unico cliente referente ao ID + token
+   //Classes Estados e Cidades
+   $
   
 
 //|#######################################################|
 //|############# **  MODULO USUARIOS ** ##################|
 //|#######################################################|
+
    //Logando
     var _usuarioLogin = function (values){
         return  $http.post($usuarioLogin , values);
@@ -28,16 +32,16 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  MODULO CLIENTE ** ###################|
 //|#######################################################|
    //Inseri novo Cliente
-    var _postCliente = function (values){
-        return  $http.post('App/cliente/save/'+ token , values);
+    var _clienteSave = function (values){
+        return  $http.post($clienteSave + token , values);
     };
    //Lista todos os Clientes
-    var _getClientes = function (dados){
-        return  $http.get('App/cliente/list/' + token);
+    var _clienteList = function (dados){
+        return  $http.get($clienteList + token);
     };
    //Lista informação de apenas um cliente referente ao ID 
-    var _getCliente = function (id){
-        return  $http.get('App/cliente/listId/'+ id + '/'+ token );
+    var _clienteListId = function (id){
+        return  $http.get($clienteListId + id + '/'+ token );
     };
 
 //|#######################################################|
@@ -55,14 +59,18 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 //|############# **  RETURNS ** ##########################|
 //|#######################################################|
+   
     return {
         //Return do Usuario
         usuarioLogin : _usuarioLogin,
         usuarioSave: _usuarioSave,
+
         //Return do Cliente
-        postCliente : _postCliente,
-        getClientes : _getClientes,
-        getCliente : _getCliente,
+        clienteSave : _clienteSave,
+        clienteList : _clienteList,
+        clienteListId : _clienteListId,
+
+        //Return Estados e Cidades
         getEstados : _getEstados,
         getCidades : _getCidades
     }
