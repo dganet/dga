@@ -13,12 +13,6 @@ class ImageController{
         //extrai o array
             echo "estou aqui 6";
             var_dump($img);
-            $link = $img['link'];
-            unset($img['link']);
-            foreach ($img as $key => $value) {
-                $img = $value;
-            }
-            $img['link'] = $link;
         $destino = dirname(dirname(__FILE__)).'/upload/';
         if ($img != null || $img != ''){
             echo "estou aqui 7";

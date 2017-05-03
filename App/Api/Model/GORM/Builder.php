@@ -136,7 +136,7 @@ trait Builder
                 }elseif(isset($where["AND"])){
                     $count = count($where['AND']);
                     foreach ($value as $key => $values) {
-                        $i++;
+                        $i = $i+1;
                         if($i < $count){
                             if (is_string($values)){
                                 $temp .= $key."='".$values."' AND ";
@@ -194,7 +194,7 @@ trait Builder
         * Insere o SQL gerado na variavel self::$sql
         */
         self::$sql = $temp;
-
+        
     }
 
     /**
