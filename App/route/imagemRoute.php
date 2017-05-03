@@ -6,37 +6,36 @@ $app->post('/save', function(Request $request, Response $response, $args){
 		$post = json_decode($request->getBody(),true);
 		if (isset($post['banner1'])){
 			$flag = $img->listaPorTipo('banner1');
-		if (isset($flag[0]['id'])){
-			
-			$post['banner1']['id'] = $flag[0]['id'];
-			$post['banner1']['tipo'] = 'banner1';
-			$img = $img->cadastrar($post, true);
-		}else{
-			$post['banner1']['tipo'] = 'banner1';
-			$img = $img->cadastrar($post);
-		}
+			if (isset($flag[0]['id'])){
+				$post['banner1']['id'] = $flag[0]['id'];
+				$post['banner1']['tipo'] = 'banner1';
+				$img = $img->cadastrar($post, true);
+			}else{
+				$post['banner1']['tipo'] = 'banner1';
+				$img = $img->cadastrar($post);
+			}
 		}
 		if (isset($post['banner2'])){
 			$flag = $img->listaPorTipo('banner2');
-		if (isset($flag[0]['id'])){
-			
-			$post['banner2']['id'] = $flag[0]['id'];
-			$post['banner2']['tipo'] = 'banner2';
-			$img = $img->cadastrar($post, true);
-		}else{
-			$post['banner2']['tipo'] = 'banner2';
-			$img = $img->cadastrar($post);
-		}
+			if (isset($flag[0]['id'])){
+				
+				$post['banner2']['id'] = $flag[0]['id'];
+				$post['banner2']['tipo'] = 'banner2';
+				$img = $img->cadastrar($post, true);
+			}else{
+				$post['banner2']['tipo'] = 'banner2';
+				$img = $img->cadastrar($post);
+			}
 		}
 		if (isset($post['banner3'])){
 			$flag = $img->listaPorTipo('banner3');
-		if (isset($flag[0]['id'])){
-			$post['banner3']['id'] = $flag[0]['id'];
-			$post['banner3']['tipo'] = 'banner3';
-			$img = $img->cadastrar($post, true);
-		}else{
-			$post['banner3']['tipo'] = 'banner3';
-			$img = $img->cadastrar($post);
+			if (isset($flag[0]['id'])){
+				$post['banner3']['id'] = $flag[0]['id'];
+				$post['banner3']['tipo'] = 'banner3';
+				$img = $img->cadastrar($post, true);
+			}else{
+				$post['banner3']['tipo'] = 'banner3';
+				$img = $img->cadastrar($post);
 			}
 		}
 	});

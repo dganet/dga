@@ -216,6 +216,7 @@ trait Builder
         }
         $temp = substr($temp, 0, -1);
         self::$sql = self::$update.self::$table.self::$set.$temp.self::$where." id=".$id;
+        echo self::$sql;
     }
 
 

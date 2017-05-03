@@ -11,6 +11,7 @@ class Imagem Extends \GORM\Model {
     private $path;
     private $nome;
     private $tipo;
+    private $link;
     private $status;
     private $createAt;
     private $updateAt;
@@ -35,6 +36,7 @@ class Imagem Extends \GORM\Model {
             'path'      => $this->__get('path'),
             'nome'      => $this->__get('nome'),
             'tipo'      => $this->__get('tipo'),
+            'link'      => $this->__get('link'),
             'status'    => $this->__get('status'),
             'createAt'  => $this->__get('createAt'),
             'updateAt'  => $this->__get('updateAt')
@@ -45,6 +47,9 @@ class Imagem Extends \GORM\Model {
         foreach ($data as $key => $value) {
             $this->__set($key, $value);
         }
+    }
+    public function __toString(){
+        return var_dump($this->toArray());
     }
     
 }

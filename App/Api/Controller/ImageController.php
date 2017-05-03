@@ -12,23 +12,29 @@ class ImageController{
     public function cadastrar($img = [], $update = null){
         //extrai o array
             echo "estou aqui 6";
+            var_dump($img);
+            $link = $img['link'];
+            unset($img['link']);
             foreach ($img as $key => $value) {
                 $img = $value;
             }
-
+            $img['link'] = $link;
         $destino = dirname(dirname(__FILE__)).'/upload/';
         if ($img != null || $img != ''){
             echo "estou aqui 7";
+        
+            //Verifica o Tamanho do arquivo
             if($img['size'] < 1000000){
                 $name       = $img['name'];
                 $extensao   = $img['type'];
                 $extensao   = strtolower($extensao);
                 $extensao   = explode("/", $extensao);
-                var_dump($img);
+                //Verifica as extenções permitidas
                 if(strstr('jpg;jpeg;gif;png' , $extensao[1])){
                     echo "estou aqui 8";
                     $newName    = uniqid(time()).".".$extensao[1];
                     $handle     = fopen($destino.$newName, 'x');
+                    var_dump($destino);
                     if($handle){
                         echo "estou aqui 9";
                         $data       = explode(',',$img['data']);
@@ -44,6 +50,7 @@ class ImageController{
                             $imagem->nome = $newName;
                             $imagem->updateAt = date('Y-m-d H:i:s');
                             $imagem->tipo = $img['tipo'];
+                            $imagem->link = $img['link'];
                             $imagem->update();
                         }else{
                             echo "estou aqui 2";
@@ -52,6 +59,7 @@ class ImageController{
                             $imagem->tipo = $img['tipo'];
                             $imagem->createAt = date('Y-m-d H:i:s');
                             $imagem->status = 'ATIVO';
+                            $imagem->link = $img['link'];
                             $id = $imagem->save(true); //return  Last Id Isert
                         }
                      // Com as informações
