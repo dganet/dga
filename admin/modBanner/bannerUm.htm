@@ -13,21 +13,21 @@
 
 <div class="conteudo">
 
-<form name="FormBanner" ng-submit="upload1(foto)" method="post">
+<form name="FormBanner" ng-submit="upload1(banner1)" method="post">
 	
 	<div class="row">
 
 	<div class="col-md-12">
 		<div class="form-group">
 		<label>Foto do Banner</label>
-		<input type="file" ng-file-model="foto.banner1" name="arquivo"/ class="form-control">
+		<input type="file" ng-file-model="banner1.banner1" name="arquivo"/ class="form-control">
     </div> 
     </div>
 
 	<div class="col-md-12">
 		<div class="form-group">
 		<label>Link do Banner</label>
-		<input type="text" ng-model="foto.link" name="arquivo"/ class="form-control">
+		<input type="text" ng-model="banner1.link" name="arquivo"/ class="form-control">
     </div> 
     </div>
 
@@ -35,7 +35,7 @@
     </div>
 
 <label>Banner Atual</label>
-	<img src="../App/Api/upload/{{foto.nome}}"  width="200px" height="200px">
+	<img src="../App/Api/upload/{{banner1.nome}}"  width="200px" height="200px">
 
 <hr>
 <button type="submit" class="btn btn-primary">Salvar Dados</button> 
