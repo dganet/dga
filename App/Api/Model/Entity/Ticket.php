@@ -14,7 +14,7 @@ class Ticket extends \GORM\Model{
     /**
      * Classe Construtora
      */
-    public function __construct($array = [])
+    public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
 			$this->__set($key, $value);
@@ -45,8 +45,8 @@ class Ticket extends \GORM\Model{
      * @param [type] $attr
      * @param [type] $values
      */
-    public function __set($attr, $values){
-        $this->$attr = $values;
+    public function __set($attr, $value){
+        $this->$attr = $value;
     }
     /**
      * Metodo para converter o objeto em array
@@ -59,7 +59,6 @@ class Ticket extends \GORM\Model{
             'descricaoTicket' =>  $this->__get('descricaoTicket'),
             'fkAssociado' =>  $this->__get('fkAssociado'),
             'statusTicket' =>  $this->__get('statusTicket'),
-            'messages'  => $this->__get('messages'),
             'createAtTicket' =>  $this->__get('createAtTicket'),
             'updateAtTicket' =>  $this->__get('updateAtTicket'),
             'closedAtTicket' =>  $this->__get('closedAtTicket')

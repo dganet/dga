@@ -35,7 +35,7 @@ $scope.go = function (dados){
 $scope.add = function (values,FormTicket){
     console.log(values);
         // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/ticket/save/'+ id , values).success(function(){
+    $http.post('App/ticket/save/'+ id , values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/portal/ticket');
          

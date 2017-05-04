@@ -18,7 +18,6 @@ class Site extends \GORM\Model{
 
      public function __get($attr){
         return $this->$attr;   
-        echo $attr;
     }
     public function __set($attr, $value){
         $this->$attr = $value;
