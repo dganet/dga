@@ -41,9 +41,9 @@ app.config(function ($stateProvider, $urlRouterProvider){
     })
 
     .state('portal.ticket', {
-      url:'/noticias',
-      templateUrl: 'aetub/portal/noticias.htm',
-      controller: 'noticiasCtrl',
+      url:'/ticket',
+      templateUrl: 'aetub/portal/ticket.htm',
+      controller: 'ticketCtrl',
 
     })
 

@@ -9,10 +9,10 @@
     // Enviando requisição via post no methodo Http
 		    
 		    $scope.logando = function (values , formAut){
-		    	console.log(values);
+		    	
 				$http.post('App/associado/login', values).success(function(response){
-		
-		    	if (response[0] == false){
+					
+		    	if (response.check == false){
 		    		// Exibi a mensagem  				    
 				    $scope.mensagem = false;
 				    // Depois de 5 segundos some a mensagem
@@ -24,6 +24,7 @@
 		      		
 		      	// Se for verdadeiro manda pra Home 
 			    $scope.activePath = $location.path('/portal');
+
 			    sessionStorage.setItem('usuario.id', response[0].id);
 			    sessionStorage.setItem('usuario.nome', response[0].nome);
 			    sessionStorage.setItem('usuario.endereco', response[0].endereco);

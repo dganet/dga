@@ -1,21 +1,49 @@
-<div id="blocoNoticiasPortal">	
+<div id="blocoNoticiasPortal">
+
+<div class="alert alert-success" ng-hide="mensagem">
+  <strong>Sucesso!</strong> Abertura de chamado concluida, aguarde o retorno da Administração.
+</div>
 	
-	<h4>Cursos</h4>
+	<h4>Sistema de Gereciamento de Ticket</h4>
 
-		<div ng-repeat="x in posts" ng-show="leiaMais">
-		
-		<div class="tituloPortal">{{x.titulo}}</div>
-		<div class="chamadaPortal">{{x.chamada}}</div>
-		<div class="leiamaisPortal"><a ui-sref="portal.cursos.detalhes({id: x.id})" ng-click="dados(x.id)">Leia Mais</a></div>
-		<hr class="linhaPortal">
+  <div class="navTabs">
+    <a class="btn btn-default" role="button" ng-click="go('tab1')">Novo Ticket</a>
+    <a class="btn btn-default" role="button" ng-click="go('tab2')">Em Andamento</a>
+    <a class="btn btn-default" role="button" ng-click="go('tab3')">Finalizados</a>
+  </div>
+
+<div class="row" ng-show="tab1">
+
+	<form name="FormTicket" ng-submit="add(ticket)">
+		<div class="col-md-12">
+      		<div class="form-group">
+				<select class="form-control" ng-model="ticket.assuntoTicket">
+					<option value="">Selecione um Assunto</option>
+					<option value="Segunda Via de Boleto">Segunda Via de Boleto</option>
+					<option value="Mudança de Onibus">Mudança de Onibus</option>
+				</select>
+      		</div>
 		</div>
 
-		<div ng-show="Noticia">
-			<div class="tituloPortal">{{post.titulo}}</div>
-			<div class="chamadaLeiaMaisPortal">{{post.chamada}}</div>
-			<div class="descricaoPortal">{{post.descricao}}</div>
-			<hr>
-			<a ng-click="voltar()"><button type="button" class="btn btn-danger">Voltar</button></a>
+		<div class="col-md-12">
+      		<div class="form-group">
+				<textarea class="form-control" ng-model="ticket.descricaoTicket" rows="10" required></textarea>
+      		</div>
 		</div>
+
+		<hr>	
+		<div class="col-md-12">
+      		<div class="form-group">
+				<button type="submit" class="btn btn-primary">Abrir Ticket</button> 
+      		</div>
+		</div>
+	</form>
+</div>
+
+<div class="row" ng-show="tab2">
+</div>
+
+<div class="row" ng-show="tab3">
+</div>
 
 	</div>
