@@ -19,6 +19,7 @@ class AssociadoController {
  * Caso ele não exista ele retorna false
  */
 	public function logar($data){
+		
 		if(isset($data['cpf'])){
 			Log::Message("Tentando Logar o Associado: ".$data['cpf']);
 			$associado = new Associado();
@@ -31,6 +32,7 @@ class AssociadoController {
 									)
 								)
 							);
+		
 		if (count($flag)==0){
 			$flag['check'] = false;
 			Log::Error("Cpf ou senha invalidos");
@@ -39,11 +41,8 @@ class AssociadoController {
 			$flag['check'] = true;
 			Log::Message("Associado logado com sucesso!");
 			return $flag;
-			}
-		}else{
-			Log::Error('CPF inválido!');
-			return false;
 		}
+	  }
 	}
 
 	/**

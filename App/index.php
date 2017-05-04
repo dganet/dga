@@ -84,5 +84,11 @@ $app = new Slim\App([
 	$app->group('/imagem', function() use ($app){
 		require_once("route/imagemRoute.php");
 	});
+	/**
+	* TICKET
+	*/
+	$app->group('/ticket', function() use ($app){
+		require_once("route/ticketRoute.php");
+	});
 
 $app->run();
