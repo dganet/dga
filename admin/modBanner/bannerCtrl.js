@@ -17,8 +17,9 @@ $scope.mensagem = true;
         });
     //Upload Primeiro Banner 1
     $scope.upload1 = function(values){
+
         $http.post('../App/imagem/save', values).success(function(data){
-                
+        
              // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagem = false;
                 $timeout(function () {
@@ -30,6 +31,7 @@ $scope.mensagem = true;
 
     //Upload Primeiro Banner 2
     $scope.upload2= function(values){
+
         $http.post('../App/imagem/save', values).success(function(data){
             
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
