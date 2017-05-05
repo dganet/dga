@@ -1,7 +1,7 @@
 app.controller('ticketCtrl', function($scope, $http,$location , $timeout , $sessionStorage){
   //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
-console.log(id);
+
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -32,8 +32,8 @@ $scope.go = function (dados){
 
 	}
 
+//Abrindo Novo Ticket
 $scope.add = function (values,FormTicket){
-    console.log(values);
         // Enviado os valores em objetos para api/user do php/slim
     $http.post('App/ticket/save/'+ id , values).success(function(){
       // Depois mandando para mesma pagina  
@@ -56,5 +56,14 @@ $scope.add = function (values,FormTicket){
     });
 
   };
-
+//Listando todos os tickets 
+  $http.get('App/ticket/listByAssoc/' + id).success(function(dados){
+    $scope.tickets = dados;
+  });
+//Abrindo Mensagens do Ticket
+  $scope.showMensagem = function (dados){
+    console.log(dados);
+    var valor = dados;
+    $scope.showDialogo = valor;
+  };
 });
