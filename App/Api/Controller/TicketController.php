@@ -15,6 +15,10 @@ class TicketController{
         $ticket->createAt = date('Y-m-d H:i:s');
         return $ticket->save();
     }
+    public function listaMessage($id){
+        $ticket = new TicketMessage();
+        return $ticket->select(array('where' => array('fkTicket' => $id)));
+    }
 	public function listaTudo(){
         $ticket = new Ticket();
         return $ticket->select(array('where' => array('statusTicket' => 'ATIVO')));

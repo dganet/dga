@@ -55,6 +55,7 @@ class Ticket extends \GORM\Model{
      */
     public function toArray(){
         return array(
+            'idTicket' =>  $this->__get('idTicket'),
             'assuntoTicket' =>  $this->__get('assuntoTicket'),
             'descricaoTicket' =>  $this->__get('descricaoTicket'),
             'fkAssociado' =>  $this->__get('fkAssociado'),

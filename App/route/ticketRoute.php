@@ -11,6 +11,16 @@ $app->get('/listByAssoc/{id}', function(Request $request, Response $response, $a
     $ticketController = new TicketController();
     return $response->withJson($ticketController->listaPorAssociado($args['id']));
 });
+$app->get('/listTicketMessage/{id}', function(Request $request, Response $response, $args){
+    $ticketController = new TicketController();
+    return $response->withJson($ticketController->listaMessage($args['id']));
+});
+$app->post('/newMessage/{id}', function(Request $request, Response $response, $args){
+    $ticketController = new TicketController();
+    $post = json_decode($request->getBody(), true);
+    $post['fkTicket'] = $args['id'];
+    return $response->withJson($ticketController->newMessage($post));
+});
 $app->post('/save/{id}', function(Request $request, Response $response, $args){
     $ticketController = new TicketController();
     $post = json_decode($request->getBody(), true);
