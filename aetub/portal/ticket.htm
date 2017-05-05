@@ -14,6 +14,8 @@
 
 <div class="row" ng-show="tab1">
 
+<!-- ############################################################################################## -->
+
 	<form name="FormTicket" ng-submit="add(ticket)">
 		<div class="col-md-12">
       		<div class="form-group">
@@ -40,8 +42,23 @@
 	</form>
 </div>
 
+<!-- ############################################################################################## -->
+<br />
+{{tickets}}
 <div class="row" ng-show="tab2">
+		<div class="col-md-12">
+			<label class="form-control">titulo<span style="float:right"> <i class="fa fa-comments" aria-hidden="true" ng-click="showMensagem('teste')"></i></span></a></label>
+		</div>
+		<div class="col-md-12" ng-hide=teste != {{showDialogo}}>
+			<legend>teste show {{showDialogo}}</legend>
+		</div>
+		<div class="col-md-12" ng-hide=teste2 != showDialogo>
+			<legend>teste show 2{{showDialogo}}</legend>
+		</div>
 </div>
+
+
+<!-- ############################################################################################## -->
 
 <div class="row" ng-show="tab3">
 </div>
