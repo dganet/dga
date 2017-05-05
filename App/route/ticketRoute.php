@@ -6,6 +6,10 @@ use \Api\Controller\TicketController;
 $app->get('/list', function(Request $request, Response $response){
     $ticketController = new TicketController();
     return $response->withJson($ticketController->listaTudo());
+});                         
+$app->get('/listByAssoc/{id}', function(Request $request, Response $response, $args){
+    $ticketController = new TicketController();
+    return $response->withJson($ticketController->listaPorAssociado($args['id']));
 });
 $app->post('/save/{id}', function(Request $request, Response $response, $args){
     $ticketController = new TicketController();
