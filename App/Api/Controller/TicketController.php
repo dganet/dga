@@ -6,6 +6,7 @@ class TicketController{
 
     public function cadastrar($data = []){
         $ticket = new Ticket($data);
+        $ticket->statusTicket = 'ATIVO';
         $ticket->createAt = date('Y-m-d H:i:s');
         return $ticket->save();
     }
@@ -18,9 +19,9 @@ class TicketController{
         $ticket = new Ticket();
         return $ticket->select(array('where' => array('statusTicket' => 'ATIVO')));
     }
-	public function listaPorId($id){
+	public function listaPorAssociado($id){
          $ticket = new Ticket();
-        return $ticket->select(array('where' => array('idTicket' => $id)));
+        return $ticket->select(array('where' => array('fkAssociado' => $id)));
     }
 	public function listaInativo(){
         
