@@ -44,18 +44,51 @@
 
 <!-- ############################################################################################## -->
 <br />
-{{tickets}}
-<div class="row" ng-show="tab2">
-		<div class="col-md-12">
-			<label class="form-control">titulo<span style="float:right"> <i class="fa fa-comments" aria-hidden="true" ng-click="showMensagem('teste')"></i></span></a></label>
+
+	<div class="row" ng-show="tab2">
+
+		<div ng-repeat="x in tickets">
+			
+			<div class="col-md-12">
+				<label class="form-control">{{x.assuntoTicket}}
+					<span style="float:right"> <i class="fa fa-comments" aria-hidden="true" ng-click="showMensagem(x.idTicket)"></i></span></a>
+					<span style="float:right; margin-right:20px;"> <i class="fa fa-eye-slash" aria-hidden="true" ng-click="hideMensagem(x.idTicket)"></i></span></a>
+				</label>
+			</div>
+	
+			<div class="col-md-12" ng-show="{{x.idTicket +'teste'}}">
+				<div class="col-md-12">
+					<div class="form-group">
+						<div class="janela-chat">
+							Conteudo do Bate Papo
+						</div>
+					</div>
+				</div>
+
+				<div class="acoes-chat">
+					<div class="col-md-10">
+							<div class="form-group">
+							<form>
+								<input type="text" class="form-control">
+							</div>
+							</div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+								<button type="submit" class="btn btn-primary">Enviar</button> 
+								</div>
+							</div>
+							</div>
+							</form>
+				</div>
+			</div>
+
+
+			
+			</div>
 		</div>
-		<div class="col-md-12" ng-hide=teste != {{showDialogo}}>
-			<legend>teste show {{showDialogo}}</legend>
-		</div>
-		<div class="col-md-12" ng-hide=teste2 != showDialogo>
-			<legend>teste show 2{{showDialogo}}</legend>
-		</div>
-</div>
+
+
 
 
 <!-- ############################################################################################## -->

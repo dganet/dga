@@ -156,3 +156,14 @@
 hr.linhaPortal {
 		border-top: 1px solid #b6b6b6;
 }
+
+.janela-chat {
+	height: 300px;
+	width: 100%;
+	border: 1px solid #D3D3D3;
+	margin-top: -6px;
+}
+.acoes-chat {
+	margin-bottom: 20px;
+	height: 50px;
+}

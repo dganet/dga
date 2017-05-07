@@ -58,12 +58,54 @@ $scope.add = function (values,FormTicket){
   };
 //Listando todos os tickets 
   $http.get('App/ticket/listByAssoc/' + id).success(function(dados){
-    $scope.tickets = dados;
-  });
+    //Arryar de Letras referente aos números
+    var letra = {1:'a',2:'b',3:'c',4:'d',5:'e',6:'f',7:'g',8:'h',9:'i',0:'j'};
+    //Dados do Ticket
+    var valores = dados;
+    
+     //Percorre os dados no array
+      valores.forEach(function(element){
+
+        //Pega o ID ao Clicar
+        var id = element['idTicket'];
+        //Separar os número em array , exemplo: se o ID for igual a 1234 , separa o numero em array , ex = [1,2,3,4]
+        var id = id.split("");
+            //Array em branco esperando receber o novo array codificado
+        var codificado = [];
+       //Pecorre o Arrya  VALOR 
+        id.forEach(function(element){
+        // Pecorre o array letras na posição referente o arrya valor , exemplo:  letras[1], letra[2].
+        var letras = letra[element];
+        // Adicionar no nova variavel codificado
+        codificado.push(letras);  
+    }, this);
+   
+        // Altera o idTicket numero em idTicket Letra
+        var letras = element['idTicket'] = letra[id];
+        element = letras;        
+
+      },this);
+      
+      $scope.tickets = valores;
+});
+
 //Abrindo Mensagens do Ticket
   $scope.showMensagem = function (dados){
-    console.log(dados);
-    var valor = dados;
-    $scope.showDialogo = valor;
+   
+    var idTicket = dados + 'teste';
+
+    $scope[idTicket] = true;
+
   };
+
+  //Ocultando Mensagens do Ticket
+  $scope.hideMensagem = function (dados){
+   
+    var idTicket = dados + 'teste';
+
+    $scope[idTicket] = false;
+
+  };
+
+  
 });
