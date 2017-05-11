@@ -34,6 +34,7 @@ $scope.go = function (dados){
 
 //Abrindo Novo Ticket
 $scope.add = function (values,FormTicket){
+
         // Enviado os valores em objetos para api/user do php/slim
     $http.post('App/ticket/save/'+ id , values).success(function(){
       // Depois mandando para mesma pagina  
@@ -56,13 +57,16 @@ $scope.add = function (values,FormTicket){
     });
 
   };
+
 //Listando todos os tickets 
   $http.get('App/ticket/listByAssoc/' + id).success(function(dados){
+    console.log(dados);
     //Arryar de Letras referente aos números
     var letra = {1:'a',2:'b',3:'c',4:'d',5:'e',6:'f',7:'g',8:'h',9:'i',0:'j'};
     //Dados do Ticket
     var valores = dados;
     
+ 
      //Percorre os dados no array
       valores.forEach(function(element){
 
@@ -72,7 +76,7 @@ $scope.add = function (values,FormTicket){
         var id = id.split("");
         //Array em branco esperando receber o novo array codificado
         var codificado = [];
-        //Pecorre o Arrya  VALOR 
+       //Pecorre o Array  VALOR 
         id.forEach(function(element){
         // Pecorre o array letras na posição referente o arrya valor , exemplo:  letras[1], letra[2].
         var letras = letra[element];
@@ -80,32 +84,53 @@ $scope.add = function (values,FormTicket){
         codificado.push(letras);  
     }, this);
    
-        // Altera o idTicket numero em idTicket Letra
-        var letras = element['idTicket'] = letra[id];
-        element = letras;        
+        // Criar um novo Objeto chamado idTicketCodificado
+        var letras = element.idTicketCodificado = letra[id];
+        element = letras; 
 
       },this);
       
-      $scope.tickets = dados;
+     $scope.tickets = valores;
 });
 
 //Abrindo Mensagens do Ticket
-  $scope.showMensagem = function (dados){
-    console.log(dados);
-    var idTicket = dados + 'teste';
+  $scope.showMensagem = function (dados){ 
+    var idTicketCodificado = dados + 'teste';
 
-    $scope[idTicket] = true;
+    $scope[idTicketCodificado] = true;
 
   };
 
   //Ocultando Mensagens do Ticket
   $scope.hideMensagem = function (dados){
    
-    var idTicket = dados + 'teste';
+    var idTicketCodificado = dados + 'teste';
 
-    $scope[idTicket] = false;
+    $scope[idTicketCodificado] = false;
 
   };
 
-  
+$scope.teste = 'merda';
+  //Abrindo Novo Ticket
+  $scope.newmensagem = function (values,FormChat){
+    console.log(values);
+
+        // Enviado os valores em objetos para api/user do php/slim
+      /*
+    $http.post('App//newMessage/'+ id , values).success(function(){
+         
+     //Resentando os input do formulario .
+    $scope.reset = function() {
+    // Copiando os valores vazio do scope.master 
+      $scope.ticket = angular.copy($scope.master);
+    };
+    // Ativando a função
+    $scope.reset();
+
+    });
+    */
+  };
+
+
+
 });
