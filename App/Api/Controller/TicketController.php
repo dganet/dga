@@ -7,7 +7,7 @@ class TicketController{
     public function cadastrar($data = []){
         $ticket = new Ticket($data);
         $ticket->statusTicket = 'ATIVO';
-        $ticket->createAt = date('Y-m-d H:i:s');
+        $ticket->createAtTicket = date('Y-m-d H:i:s');
         return $ticket->save();
     }
     public function newMessage($data = []){

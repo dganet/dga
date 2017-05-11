@@ -15,10 +15,10 @@ $app->get('/listTicketMessage/{id}', function(Request $request, Response $respon
     $ticketController = new TicketController();
     return $response->withJson($ticketController->listaMessage($args['id']));
 });
-$app->post('/newMessage/{id}', function(Request $request, Response $response, $args){
+$app->post('/newMessage/{idTicket}', function(Request $request, Response $response, $args){
     $ticketController = new TicketController();
     $post = json_decode($request->getBody(), true);
-    $post['fkTicket'] = $args['id'];
+    $post['fkTicket'] = $args['idTicket'];
     return $response->withJson($ticketController->newMessage($post));
 });
 $app->post('/save/{id}', function(Request $request, Response $response, $args){

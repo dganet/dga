@@ -30,8 +30,8 @@ class Ticket extends \GORM\Model{
     public function __get($attr){
         switch ($attr) {
             case 'messages':
-                $messages = new TicketMessage();
-                $message = $message->select(array('where' => array('fkTicket' =>$this->idTicket)));
+                $message = new TicketMessage();
+                $message = $message->select(array('where' => array('fkTicket' => $this->idTicket)));
                 return $message;
                 break;
             default:

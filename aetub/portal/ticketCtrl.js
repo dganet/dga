@@ -70,9 +70,9 @@ $scope.add = function (values,FormTicket){
         var id = element['idTicket'];
         //Separar os número em array , exemplo: se o ID for igual a 1234 , separa o numero em array , ex = [1,2,3,4]
         var id = id.split("");
-            //Array em branco esperando receber o novo array codificado
+        //Array em branco esperando receber o novo array codificado
         var codificado = [];
-       //Pecorre o Arrya  VALOR 
+        //Pecorre o Arrya  VALOR 
         id.forEach(function(element){
         // Pecorre o array letras na posição referente o arrya valor , exemplo:  letras[1], letra[2].
         var letras = letra[element];
@@ -86,12 +86,12 @@ $scope.add = function (values,FormTicket){
 
       },this);
       
-      $scope.tickets = valores;
+      $scope.tickets = dados;
 });
 
 //Abrindo Mensagens do Ticket
   $scope.showMensagem = function (dados){
-   
+    console.log(dados);
     var idTicket = dados + 'teste';
 
     $scope[idTicket] = true;

@@ -4,7 +4,9 @@ namespace Api\Model\Entity;
 class TicketMessage extends \GORM\Model{
     private $idTicketMessage;
     private $mensagemTicketMessage;
+    private $isAssoc;
     private $fkTicket;
+    private $idRemetente;
     private $createAtTicket;
     /**
      * Classe Construtora
@@ -23,7 +25,23 @@ class TicketMessage extends \GORM\Model{
      * @return void
      */
     public function __get($attr){
-        return $this->$attr;
+        switch ($attr) {
+            case 'idRemetente':
+                if ($isAssoc){
+                    $assoc = new Associado();
+                    $assoc = $assoc->load($this->idRemetente);
+                    return $assoc;
+                }else{
+                    $user = new Usuario();
+                    $user = $user->load($this->idRemetente);
+                    return $user;
+                }
+                break;
+            default:
+                return $this->$attr;
+                break;
+        }
+        
     }
     /**
      * Setter
@@ -42,6 +60,8 @@ class TicketMessage extends \GORM\Model{
     public function toArray(){
         return array(
             'mensagemTicketMessage' =>  $this->__get('mensagemTicketMessage'),
+            'isAssoc'       => $this->__get('isAssoc'),
+            'idRemetente'    => $this->__get('idRemetente'),
             'fkTicket' =>  $this->__get('fkTicket'),
             'createAtTicket' =>  $this->__get('createAtTicket')
         );

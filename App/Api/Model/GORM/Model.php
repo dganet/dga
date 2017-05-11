@@ -116,4 +116,16 @@ class Model{
 			}
 		return $array;
 	}
+
+	public function load($attr){
+		if (is_array($attr)){
+			$cls = get_called_class($attr);
+			return $cls;
+		}
+		if (is_int($attr)){
+			$cls = get_called_class();
+			$obj = new $cls();
+			return $obj->select(array('where'=> array('id' => $attr)));
+		}
+	}
 }

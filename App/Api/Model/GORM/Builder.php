@@ -92,7 +92,7 @@ trait Builder
         //Converte a classe em Array
         $class = $class->toArray();
         $temp = self::$select.self::$table;
-
+        
         /**
         * Checa se a posição ['select'] existe
         */
@@ -194,7 +194,7 @@ trait Builder
         * Insere o SQL gerado na variavel self::$sql
         */
         self::$sql = $temp;
-       
+      
     }
 
     /**
