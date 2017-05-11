@@ -113,8 +113,12 @@ $scope.add = function (values,FormTicket){
 
   //Abrindo Novo Ticket
   $scope.newmensagem = function (values,FormChat){
-    var id = values.idTicket;
-    
+
+  var array = [values];
+
+  array.forEach(function(element) {
+    var fkTicket = element.fkTicket = element.idTicket;
+  }, this);
    // Enviado os valores em objetos para api/user do php/slim 
      $http.post('App/newMessage/'+ id , values).success(function(){
          
@@ -127,7 +131,6 @@ $scope.add = function (values,FormTicket){
     $scope.reset();
 
     });
-    
   };
 
 
