@@ -60,7 +60,7 @@ $scope.add = function (values,FormTicket){
 
 //Listando todos os tickets 
   $http.get('App/ticket/listByAssoc/' + id).success(function(dados){
-    console.log(dados);
+
     //Arryar de Letras referente aos números
     var letra = {1:'a',2:'b',3:'c',4:'d',5:'e',6:'f',7:'g',8:'h',9:'i',0:'j'};
     //Dados do Ticket
@@ -111,14 +111,12 @@ $scope.add = function (values,FormTicket){
 
   };
 
-$scope.teste = 'merda';
   //Abrindo Novo Ticket
   $scope.newmensagem = function (values,FormChat){
-    console.log(values);
-
-        // Enviado os valores em objetos para api/user do php/slim
-      /*
-    $http.post('App//newMessage/'+ id , values).success(function(){
+    var id = values.idTicket;
+    
+   // Enviado os valores em objetos para api/user do php/slim 
+     $http.post('App/newMessage/'+ id , values).success(function(){
          
      //Resentando os input do formulario .
     $scope.reset = function() {
@@ -129,7 +127,7 @@ $scope.teste = 'merda';
     $scope.reset();
 
     });
-    */
+    
   };
 
 
