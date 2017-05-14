@@ -138,9 +138,7 @@ $scope.add = function (values,FormTicket){
   //Pegar Mensagens
   $http.get('App/ticket/listTicketMessage/'+id).success(function(dados){
     $scope.mensagens = dados;
-
     console.log(dados);
-
   });
 
 
