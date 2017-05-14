@@ -119,7 +119,6 @@ $scope.add = function (values,FormTicket){
     var fkTicket = element.fkTicket = element.idTicket;
   }, this);
    // Enviado os valores em objetos para api/user do php/slim 
-      //######### BY Gui =) #############//
       // adiciona ao objeto o campo isAssoc e informa que é um associado;
       values.isAssoc = true;
       //#################################//
@@ -135,6 +134,14 @@ $scope.add = function (values,FormTicket){
 
     });
   };
+
+  //Pegar Mensagens
+  $http.get('App/ticket/listTicketMessage/'+id).success(function(dados){
+    $scope.mensagens = dados;
+
+    console.log(dados);
+
+  });
 
 
 

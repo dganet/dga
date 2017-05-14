@@ -167,3 +167,21 @@ hr.linhaPortal {
 	margin-bottom: 20px;
 	height: 50px;
 }
+.mensagemAssociado {
+	width: 80%;
+	height: auto; 
+	border-radius: 20px;
+	background:#8DEEEE;
+	margin: 10px;
+	padding: 5px;
+	float:right ;
+}
+.mensagemAetub{
+	width: 80%;
+	height: auto; 
+	border-radius: 20px;
+	background: #9BCD9B;
+	margin: 10px;
+	padding: 5px;
+	float: left;
+}
