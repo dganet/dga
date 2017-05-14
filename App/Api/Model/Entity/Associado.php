@@ -164,5 +164,9 @@ class Associado extends \GORM\Model{
         }
         return $temp;
     }
+
+    public function __toString(){
+        return var_dump($this->toArray());
+    }
     
 }

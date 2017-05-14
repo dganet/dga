@@ -31,7 +31,6 @@
 			    sessionStorage.setItem('usuario.bairro', response[0].bairro);
 			    sessionStorage.setItem('usuario.cidade', response[0].cidade);
 			    sessionStorage.setItem('usuario.cep', response[0].cep);
-
   				 
 		      }
 		     

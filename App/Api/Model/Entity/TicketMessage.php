@@ -13,7 +13,7 @@ class TicketMessage extends \GORM\Model{
      */
     public function __construct($array = [])
     {
-        foreach ($data as $key => $value) {
+        foreach ($array as $key => $value) {
 			$this->__set($key, $value);
         }
         $this->class = $this;
@@ -26,10 +26,10 @@ class TicketMessage extends \GORM\Model{
      */
     public function __get($attr){
         switch ($attr) {
-            case 'idRemetente':
-                if ($isAssoc){
+            case 'Remetente':
+                if ($this->isAssoc){
                     $assoc = new Associado();
-                    $assoc = $assoc->load($this->idRemetente);
+                    $assoc = $assoc->load((int)$this->idRemetente);
                     return $assoc;
                 }else{
                     $user = new Usuario();

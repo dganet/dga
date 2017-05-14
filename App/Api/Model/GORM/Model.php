@@ -119,8 +119,9 @@ class Model{
 
 	public function load($attr){
 		if (is_array($attr)){
-			$cls = get_called_class($attr);
-			return $cls;
+			$cls = get_called_class();
+			$obj = new $cls($attr);
+			return $obj;
 		}
 		if (is_int($attr)){
 			$cls = get_called_class();

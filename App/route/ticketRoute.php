@@ -19,7 +19,6 @@ $app->post('/newMessage/{idRemetente}', function(Request $request, Response $res
     $ticketController = new TicketController();
     $post = json_decode($request->getBody(), true);
     $post['idRemetente'] = $args['idRemetente'];
-    
     return $response->withJson($ticketController->newMessage($post));
 });
 $app->post('/save/{id}', function(Request $request, Response $response, $args){

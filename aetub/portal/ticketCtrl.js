@@ -1,7 +1,7 @@
 app.controller('ticketCtrl', function($scope, $http,$location , $timeout , $sessionStorage){
   //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
-
+$scope.idAssoc = "teste";
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -119,7 +119,11 @@ $scope.add = function (values,FormTicket){
     var fkTicket = element.fkTicket = element.idTicket;
   }, this);
    // Enviado os valores em objetos para api/user do php/slim 
-     $http.post('App/newMessage/'+ id , values).success(function(){
+      //######### BY Gui =) #############//
+      // adiciona ao objeto o campo isAssoc e informa que é um associado;
+      values.isAssoc = true;
+      //#################################//
+     $http.post('App/ticket/newMessage/'+ id , values).success(function(){
          
      //Resentando os input do formulario .
     $scope.reset = function() {
