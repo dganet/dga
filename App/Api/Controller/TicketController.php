@@ -12,15 +12,12 @@ class TicketController{
     }
     public function newMessage($data = []){
         $ticket = new TicketMessage($data);
-        var_dump($ticket->idRemetente);
         $ticket->createAt = date('Y-m-d H:i:s');
         return $ticket->save();
     }
     public function listaMessage($id){
         $ticket = new TicketMessage();
         $message = $ticket->select(array('where' => array('fkTicket' => $id)));
-        var_dump($message);
-        
         foreach ($message as $key => $value) {
             $ticket = $ticket->load($message[$key]);
             $message[$key]['idRemetente'] = $ticket->Remetente;
