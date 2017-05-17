@@ -95,10 +95,42 @@ $scope.add = function (values,FormTicket){
 
 //Abrindo Mensagens do Ticket
   $scope.showMensagem = function (dados){ 
-    var idTicketCodificado = dados + 'teste';
+      var merda = $scope.tickets;
 
+   //loop que da falso.
+   merda.forEach(function(element){
+     var idTicketCodificado = element.idTicketCodificado + 'teste';
+    $scope[idTicketCodificado] = false;
+    
+   });
+
+
+ //Resentando os input do formulario .
+    $scope.reset = function() {
+    // Copiando os valores vazio do scope.master 
+      $scope.mensagens = angular.copy($scope.master);
+    };
+    // Ativando a função
+    $scope.reset();
+
+     var idTicket = dados.idTicket;
+      //Pega o id Codifificado
+     var idTicketCodificado = dados.idTicketCodificado + 'teste';
+    //Mostra a DIV chat das mensagens
     $scope[idTicketCodificado] = true;
+    //Pega as mensagens e mostra
+     $http.get('App/ticket/listTicketMessage/'+idTicket).success(function(response){
+      var dadosMensagem = response;
+    
+    //Arryar de Letras referente aos números
+    var letras = {1:'mensagemAssociado',0:'mensagemAetub'};
 
+    dadosMensagem.forEach(function(element){
+      var letra = element.isAssocCodificado = letras[element.isAssoc];
+    })
+    $scope.mensagens = dadosMensagem;
+       
+    });
   };
 
   //Ocultando Mensagens do Ticket
@@ -113,33 +145,44 @@ $scope.add = function (values,FormTicket){
   //Abrindo Novo Ticket
   $scope.newmensagem = function (values,FormChat){
 
-  var array = [values];
+        var array = [values];
+        var idTicket = values.idTicket;
 
-  array.forEach(function(element) {
-    var fkTicket = element.fkTicket = element.idTicket;
-  }, this);
-   // Enviado os valores em objetos para api/user do php/slim 
-      // adiciona ao objeto o campo isAssoc e informa que é um associado;
-      values.isAssoc = true;
-      //#################################//
+      array.forEach(function(element) {
+        var fkTicket = element.fkTicket = element.idTicket;
+      }, this);
+      // Enviado os valores em objetos para api/user do php/slim 
+          // adiciona ao objeto o campo isAssoc e informa que é um associado;
+          values.isAssoc = true;
+
      $http.post('App/ticket/newMessage/'+ id , values).success(function(){
-         
-     //Resentando os input do formulario .
-    $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
-      $scope.ticket = angular.copy($scope.master);
-    };
-    // Ativando a função
-    $scope.reset();
 
+                    //Pega as mensagens e mostra
+                $http.get('App/ticket/listTicketMessage/'+idTicket).success(function(response){
+                  var dadosMensagem = response;
+                
+                //Arryar de Letras referente aos números
+                var letras = {1:'mensagemAssociado',0:'mensagemAetub'};
+
+                dadosMensagem.forEach(function(element){
+                  var letra = element.isAssocCodificado = letras[element.isAssoc];
+                })
+                $scope.mensagens = dadosMensagem;
+
+                //Resentando os input do formulario .
+                $scope.reset = function() {
+                // Copiando os valores vazio do scope.master 
+                  $scope.mensagemTicketMessage = angular.copy($scope.master);
+                };
+                // Ativando a função
+                $scope.reset();
+                  
+                });
     });
+
+
   };
 
-  //Pegar Mensagens
-  $http.get('App/ticket/listTicketMessage/'+id).success(function(dados){
-    $scope.mensagens = dados;
-    console.log(dados);
-  });
 
 
 

@@ -158,10 +158,11 @@ hr.linhaPortal {
 }
 
 .janela-chat {
-	height: 300px;
+	height: auto;
 	width: 100%;
 	border: 1px solid #D3D3D3;
 	margin-top: -6px;
+	display: table;
 }
 .acoes-chat {
 	margin-bottom: 20px;

@@ -51,7 +51,7 @@
 			
 			<div class="col-md-12">
 				<label class="form-control">{{x.assuntoTicket}}
-					<span style="float:right"> <i class="fa fa-comments" aria-hidden="true" ng-click="showMensagem(x.idTicketCodificado)"></i></span></a>
+					<span style="float:right"> <i class="fa fa-comments" aria-hidden="true" ng-click="showMensagem(x)"></i></span></a>
 					<span style="float:right; margin-right:20px;"> <i class="fa fa-eye-slash" aria-hidden="true" ng-click="hideMensagem(x.idTicketCodificado)"></i></span></a>
 				</label>
 			</div>
@@ -61,10 +61,7 @@
 					<div class="form-group">
 						<div class="janela-chat">
 							<div ng-repeat="y in mensagens">
-
-							<div class="mensagemAetub"><strong>AETUB diz:</strong>{{y.mensagemTicketMessage}}</div>
-
-							<div class="mensagemAssociado"><strong>Associado diz:</strong> {{y.mensagemTicketMessage}}</div>
+							<div class="{{y.isAssocCodificado}}"><strong>Aetub diz:</strong>{{y.mensagemTicketMessage}}</div>
 							</div>
 
 						</div>
