@@ -427,6 +427,56 @@
       </div>
 </div>
 
+ <div ng-show="tab8">
+
+    <div class="row">
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label>Tipo de Documento</label>          
+          <input type="text" class="form-control" ng-model="associado.tipoDocumento" required="required">
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Anexar o Documento</label>          
+          <input type="file" class="form-control" ng-model="associado.anexoDocumento">
+        </div>
+      </div>      
+      
+    </div>
+
+    <div class="row" data-ng-repeat="x in documento">
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" class="form-control" ng-model="x.tipoDocumento">
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Anexar Documento</label>
+          <input type="file" class="form-control" ng-model="x.anexoDocumento">
+        </div>
+      </div>
+
+      <div class="col-md-1">
+        <div class="form-group">
+          <label ng-show="$last">Remover</label>
+          <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDocumento()">x</button>
+        </div>
+      </div>
+
+
+  </div>
+  <button type="button" ng-click="addDocumento()">Adicionar Novo Documento</button>
+
+
+  </div>
+
 <hr>
 <button type="śubmit" class="btn btn-primary">Salvar Dados</button>
 </form>

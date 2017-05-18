@@ -311,6 +311,8 @@ $scope.desistiu = function (dados) {
 
 var dados = $scope.renda = [];
 var renda = {renda:dados};
+var dadosDoc = $scope.documento = [];
+var documento = {documento:dadosDoc};
 
 $scope.addInput = function(){
 	var newInputs = $scope.renda.lenght+1;
@@ -320,6 +322,16 @@ $scope.addInput = function(){
 $scope.removeInput = function() {
 	 var lastItem = $scope.renda.length-1;
 	 $scope.renda.splice(lastItem);
+ };
+
+ $scope.addDocumento = function(){
+	var newInputs = $scope.documento.lenght+1;
+	$scope.documento.push({tipoDocumento:'',anexoDocumento:''});
+};
+
+$scope.removeDocumento = function() {
+	 var lastItem = $scope.documento.length-1;
+	 $scope.documento.splice(lastItem);
  };
 //*************CADASTRA NOVO CLIENTE *********************//
 
