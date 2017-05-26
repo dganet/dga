@@ -441,7 +441,7 @@
       <div class="col-md-5">
         <div class="form-group">
           <label>Anexar o Documento</label>          
-          <input type="file" class="form-control" ng-model="associado.anexoDocumento">
+          <input type="file" ng-file-model="x.anexoDocumento" name="arquivo"/ class="form-control">
         </div>
       </div>      
       
@@ -453,13 +453,14 @@
         <div class="form-group">
           <label>Nome</label>
           <input type="text" class="form-control" ng-model="x.tipoDocumento">
+          
         </div>
       </div>
 
       <div class="col-md-5">
         <div class="form-group">
           <label>Anexar Documento</label>
-          <input type="file" class="form-control" ng-model="x.anexoDocumento">
+          <input type="file" ng-file-model="x.anexoDocumento" name="arquivo"/ class="form-control">
         </div>
       </div>
 

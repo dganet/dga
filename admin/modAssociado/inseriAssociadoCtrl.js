@@ -338,7 +338,7 @@ $scope.removeDocumento = function() {
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormAssociado) {
 		var associado = values;
-		var associado = angular.merge(associado,renda);
+		var associado = angular.merge(associado,renda,documento);
 	    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.veiculo_id == undefined){
 
 			$scope.mensagemObrigatorio = true;
@@ -349,6 +349,7 @@ $scope.removeDocumento = function() {
 
 			
 		}else{
+		console.log(associado);
     // Enviado os valores em objetos para api/user do php/slim 
 		$http.post('../App/associado/save/'+ id, associado).success(function(){
 
