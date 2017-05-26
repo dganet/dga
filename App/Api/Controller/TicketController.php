@@ -32,6 +32,11 @@ class TicketController{
          $ticket = new Ticket();
         return $ticket->select(array('where' => array('fkAssociado' => $id)));
     }
+    //Lista os tickets ativos de todos associados;
+    public function listaPorAssociadoAtivo(){
+        $ticket = new Ticket();
+        return $ticket->select(array('where' => array('statusTicket' => 'ATIVO')));
+    }
 	public function listaInativo(){
         
     }

@@ -20,7 +20,8 @@ $app->post('/login', function(Request $request, Response $response){
 		$associado = new \Api\Controller\AssociadoController();
 		$post = json_decode($request->getBody(), true);
 		$post['usuario_id'] = $args['id'];
-	  $associado = $associado->cadastrar($post);
+	  	//$associado = $associado->cadastrar($post);
+		var_dump($post);
 		$response = $response->withHeader('Content-type', 'application/json');
 		$response = $response->withJson($associado);
 		return $response;

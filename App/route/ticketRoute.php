@@ -15,6 +15,10 @@ $app->get('/listTicketMessage/{id}', function(Request $request, Response $respon
     $ticketController = new TicketController();
     return $response->withJson($ticketController->listaMessage($args['id']));
 });
+$app->get('/listTicketAssoc', function(Request $request, Response $response){
+    $ticketController = new TicketController();
+    return $response->withJson($ticketController->listaPorAssociadoAtivo());
+});
 $app->post('/newMessage/{idRemetente}', function(Request $request, Response $response, $args){
     $ticketController = new TicketController();
     $post = json_decode($request->getBody(), true);
