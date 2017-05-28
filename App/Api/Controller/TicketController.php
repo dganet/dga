@@ -39,6 +39,8 @@ class TicketController{
         $associado = new \Api\Model\Entity\Associado;
         foreach ($ticket as $key => $value) {
             $assoc[$key] =  $associado->load( (int) $ticket[$key]['fkAssociado']);
+            $assoc[$key] = $assoc[$key][0];
+            unset($assoc[$key][0]);
         }
         return $assoc;
     }
