@@ -15,12 +15,12 @@ trait Utils
 	 */
 	public function Error($string){
 		//Cria o arquivo se ele não existir
-		$handle = fopen("backend.log", "a");
+		//$handle = fopen("backend.log", "a");
 		//Escrevo no arquivo aberto
-		$data = date('d/m/Y G:i:s');
-		fwrite($handle, "\n".$data." [ERROR]: ".$string);
+		//$data = date('d/m/Y G:i:s');
+		//fwrite($handle, "\n".$data." [ERROR]: ".$string);
 		//fecha o arquivo;
-		fclose($handle);
+		//fclose($handle);
 	}
 	/**
 	 *  Função para gerar logs das informações passadas como parametro
@@ -29,12 +29,12 @@ trait Utils
 	 */
 	public function Message($string){
 		//Cria o arquivo se ele não existir
-		$handle = fopen("backend.log", "a");
+		//$handle = fopen("backend.log", "a");
 		//Escrevo no arquivo aberto
-		$data = date('d/m/Y G:i:s');
-		fwrite($handle, "\n".$data." [MESSAGE]:".$string);
+		//$data = date('d/m/Y G:i:s');
+		//f/write($handle, "\n".$data." [MESSAGE]:".$string);
 		//fecha o arquivo;
-		fclose($handle);
+		//fclose($handle);
 	}
 	/**
 	 *  Função para gerar logs das informações passadas como parametro
@@ -43,11 +43,11 @@ trait Utils
 	 */
 	public function Debug($string){
 		//Cria o arquivo se ele não existir
-		$handle = fopen("backend.log", "a");
+		//$handle = fopen("backend.log", "a");
 		//Escrevo no arquivo aberto
-		$data = date('d/m/Y G:i:s');
-		fwrite($handle, "\n".$data." [DEBUG]:".$string);
+		//$data = date('d/m/Y G:i:s');
+		//fwrite($handle, "\n".$data." [DEBUG]:".$string);
 		//fecha o arquivo;
-		fclose($handle);
+		//fclose($handle);
 	}
 }

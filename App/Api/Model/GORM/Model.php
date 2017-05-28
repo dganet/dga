@@ -129,4 +129,16 @@ class Model{
 			return $obj->select(array('where'=> array('id' => $attr)));
 		}
 	}
+	public function find($attr){
+		if (is_array($attr)){
+			$cls = get_called_class();
+			$obj = new $cls($attr);
+			return $obj;
+		}
+		if (is_int($attr)){
+			$cls = get_called_class();
+			$obj = new $cls();
+			return $obj->select(array('where'=> array('id' => $attr)));
+		}
+	}
 }

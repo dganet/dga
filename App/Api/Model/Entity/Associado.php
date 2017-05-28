@@ -75,13 +75,14 @@ class Associado extends \GORM\Model{
     }
     
     public function __get($attr){
-        return $this->$attr;   
+        switch ($attr) {
+            default:
+                return $this->$attr;   
+                break;
+        }
     }
     public function __set($attr, $value){
         switch ($attr) {
-			case 'foto':
-				$this->$attr = $value;	
-				break;
 			case 'senha':
                 $this->$attr = md5($value);
                 break;
@@ -99,7 +100,6 @@ class Associado extends \GORM\Model{
         
         $array = array(
         "id"	=>	$this->__get('id'),
-        "imagem_id"  =>  $this->__get('foto'),
         "nome"	=>	$this->__get('nome'),
         "cpf"	=>	$this->__get('cpf'),
         "rg"	=>	$this->__get('rg'),

@@ -181,8 +181,8 @@ class ImageController{
         )
      );
     $img = $img[0];
-      unset($img[0]);
-      return $img;
+    unset($img[0]);
+    return $img;
   }
   /**
    * Função  que inativa e deleta a foto

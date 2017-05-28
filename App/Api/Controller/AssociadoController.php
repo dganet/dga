@@ -350,6 +350,7 @@ class AssociadoController {
 	$assoc = new Associado();
 	$array = $assoc->load((int)$post['idAssoc']);
 	$array = $array[0];
+	unset($array['senha']);
 	$associado = new Associado($array);
 	if ($associado->foto == null){
 		$imagem = new \Api\Model\Entity\Imagem();
@@ -369,5 +370,6 @@ class AssociadoController {
 		$image->update();
 	}
 	return $associado->update();
+	print_r($associado);
   }
 }
