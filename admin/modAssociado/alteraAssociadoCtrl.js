@@ -171,7 +171,6 @@ $scope.quatro = false;
 //Lista os Usuarios
 	$http.get('../App/associado/list').success(function(data){
 		$scope.associados = data;
-
 	});
 
 // Seleciona o usuario e mostra do Lado.
@@ -382,7 +381,6 @@ $scope.desistiu = function (dados) {
 
 //Passa os valores do form em Objeto no "values"
   $scope.update = function(values, FormAssociado) {
-	  console.log(values.porQueDesistiu);
 		var associado = values;
 		var associado = angular.merge(associado,renda);
 	    if (values.nome == '' || values.cpf == '' || values.salario == '' || values.veiculo_id == ''){

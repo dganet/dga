@@ -168,22 +168,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-		.state('user.ticket.tickets', {
-			url: '/tickets',
+		.state('user.ticket.altera', {
+			url: '/altera',
 			templateUrl: 'modTicket/allTickets.htm',
 			controller: 'allTicketCtrl',
 			ncyBreadcrumb: {
 				label: 'Todos Tickets'
 			}
 		})
-		.state('user.ticket.altera', {
-			url: '/altera',
-			templateUrl: 'modTicket/allTickets.htm',
-			controller: 'allTicketCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera'
-			}
-		})
+
 		.state('user.ticket.altera.detalhes', {
 			url: '/:id',
 			controller: function ($scope, $stateParams) {
