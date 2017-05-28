@@ -11,6 +11,7 @@
 		    $scope.logando = function (values , formAut){
 		    	
 				$http.post('App/associado/login', values).success(function(response){
+
 					
 		    	if (response.check == false){
 		    		// Exibi a mensagem  				    
@@ -27,6 +28,7 @@
 
 			    sessionStorage.setItem('usuario.id', response[0].id);
 			    sessionStorage.setItem('usuario.nome', response[0].nome);
+				 sessionStorage.setItem('usuario.foto', response[0].foto);
 			    sessionStorage.setItem('usuario.endereco', response[0].endereco);
 			    sessionStorage.setItem('usuario.bairro', response[0].bairro);
 			    sessionStorage.setItem('usuario.cidade', response[0].cidade);

@@ -8,11 +8,18 @@ var bairro = sessionStorage.getItem('usuario.bairro');
 var cidade = sessionStorage.getItem('usuario.cidade');
 var cep = sessionStorage.getItem('usuario.cep');
 
+
 $scope.nome = nome;
-$scope.foto = foto;
 $scope.endereco = endereco;
 $scope.bairro = bairro;
 $scope.cidade = cidade;
 $scope.cep = cep ;
+
+console.log(foto);
+
+		$http.get('./App/imagem/list/'+ foto).success(function(data){
+            $scope.foto = data.nome;
+	
+	});
 
 });
