@@ -169,15 +169,17 @@ $scope.add = function (values,FormTicket){
                 })
                 $scope.mensagens = dadosMensagem;
 
-                //Resentando os input do formulario .
+
+                  
+                });
+
+                                //Resentando os input do formulario .
                 $scope.reset = function() {
                 // Copiando os valores vazio do scope.master 
                   $scope.mensagemTicketMessage = angular.copy($scope.master);
                 };
                 // Ativando a função
                 $scope.reset();
-                  
-                });
     });
 
 
