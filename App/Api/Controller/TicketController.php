@@ -38,7 +38,6 @@ class TicketController{
         $ticket = $ticket->select(array('where' => array('statusTicket' => 'ATIVO')));
         $associado = new \Api\Model\Entity\Associado;
         foreach ($ticket as $key => $value) {
-            echo $ticket[$key]['fkAssociado'];
             $assoc[$key] =  $associado->load( (int) $ticket[$key]['fkAssociado']);
         }
         return $assoc;
