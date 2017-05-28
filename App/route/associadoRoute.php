@@ -115,3 +115,12 @@ $app->post('/login', function(Request $request, Response $response){
 		$response = $response->withJson($associado);
 		return $response;
 	});
+	$app->post('/picture/{id}', function(Request $request, Response $response, $args){
+		$associado = new \Api\Controller\AssociadoController();
+		$post = json_decode($request->getBody(), true);
+		$post['idAssoc'] = $args['id'];
+		$associado = $associado->picture($post);
+		$response = $response->withHeader('Content-type', 'application/json');
+		$response = $response->withJson($associado);
+		return $response;
+	});

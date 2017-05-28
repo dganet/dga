@@ -341,4 +341,33 @@ class AssociadoController {
     $associado = new Associado();
     return $associado->select(array('where' => array('curso' => $id)));
   }
+  //Gerencia a imagem de perfil do associado
+  public function picture($post){
+	$img = new ImageController();
+	$post['picture']['tipo'] = 'foto';
+	$r = $img->upload($post['picture']);
+	//Associado
+	$assoc = new Associado();
+	$array = $assoc->load((int)$post['idAssoc']);
+	$array = $array[0];
+	$associado = new Associado($array);
+	if ($associado->foto == null){
+		$imagem = new \Api\Model\Entity\Imagem();
+		$imagem->path = $r['path'];
+        $imagem->nome = $r['name'];
+        $imagem->tipo = 'foto';
+        $imagem->createAt = date('Y-m-d H:i:s');
+        $imagem->status = 'ATIVO';
+        $id = $imagem->save(true);
+		$associado->foto = $id;
+	}else{
+		$image = new \Api\Model\Entity\Imagem($img->listaPorId($associado->foto));
+		$nameOld = $image->nome;
+		unlink($r['path'].$nameOld);
+		$image->nome = $r['name'];
+		$image->updateAt = date('Y-m-d H:i:s');
+		$image->update();
+	}
+	return $associado->update();
+  }
 }

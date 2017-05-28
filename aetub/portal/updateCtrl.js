@@ -6,8 +6,7 @@ var idUsuario = sessionStorage.getItem('usuario.id');
 	$scope.mensagem = true;
 
 $scope.update = function(values){
-        console.log(values);
-        $http.put('../App/Caminho/' + idUsuario).success(function(data){
+        $http.post('App/associado/picture/' + idUsuario, values).success(function(data){
             
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagem = false;

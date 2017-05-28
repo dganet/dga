@@ -11,10 +11,10 @@ class ImageController{
      */
     public function cadastrar($img = [], $update = null){
         //extrai o array
-            echo "estou aqui 6";
+
         $destino = dirname(dirname(__FILE__)).'/upload/';
         if ($img != null || $img != ''){
-            echo "estou aqui 7";
+
         
             //Verifica o Tamanho do arquivo
             if($img['size'] < 1000000){
@@ -24,19 +24,19 @@ class ImageController{
                 $extensao   = explode("/", $extensao);
                 //Verifica as extenções permitidas
                 if(strstr('jpg;jpeg;gif;png' , $extensao[1])){
-                    echo "estou aqui 8";
+        
                     $newName    = uniqid(time()).".".$extensao[1];
                     $handle     = fopen($destino.$newName, 'x');
                     if($handle){
-                        echo "estou aqui 9";
+            
                         $data       = explode(',',$img['data']);
                         fwrite($handle, base64_decode($data[1]));
                         fclose($handle);
                         // Salva no Banco de dados
                         $imagem = new Imagem();
-                        echo "estou aqui 3";
+            
                         if($update){
-                            echo "estou aqui 1";
+                
                             $imagem->id   = $img['id'];
                             $imagem->path = $destino;
                             $imagem->nome = $newName;
@@ -45,7 +45,7 @@ class ImageController{
                             $imagem->link = $img['link'];
                             $imagem->update();
                         }else{
-                            echo "estou aqui 2";
+                
                             $imagem->path = $destino;
                             $imagem->nome = $newName;
                             $imagem->tipo = $img['tipo'];
@@ -83,6 +83,57 @@ class ImageController{
     }
   }
 
+  public function upload($img = [], $update = null){
+        //extrai o array
+
+        $destino = dirname(dirname(__FILE__)).'/upload/';
+        if ($img != null || $img != ''){
+
+        
+            //Verifica o Tamanho do arquivo
+            if($img['size'] < 1000000){
+                $name       = $img['name'];
+                $extensao   = $img['type'];
+                $extensao   = strtolower($extensao);
+                $extensao   = explode("/", $extensao);
+                //Verifica as extenções permitidas
+                if(strstr('jpg;jpeg;gif;png' , $extensao[1])){
+        
+                    $newName    = uniqid(time()).".".$extensao[1];
+                    $handle     = fopen($destino.$newName, 'x');
+                    if($handle){
+            
+                        $data       = explode(',',$img['data']);
+                        fwrite($handle, base64_decode($data[1]));
+                        fclose($handle);
+                     // Com as informações
+                      return array(
+                            flag    => true,
+                            id      => $id,
+                            message => "Imagem salva com sucesso",
+                            path    => $destino,
+                            name    => $newName
+                        );
+                    }else{
+                    return array(
+                        flag    => false,
+                        message => "Imagem não pode ser salva. Aparentemente é um problema de escrita"
+                    );
+                }
+            }else{
+                return array(
+                    flag    => false,
+                    message => "Extensão não permitida. Somente as seguintes extensões são permitidas: JPG, JPEG, GIF, PNG"
+                );
+            }
+        }else{
+            return array(
+                flag    => false,
+                message => "Tamanho do arquivo exede o permitido"
+            );
+        }
+    }
+  }
   /**
    * Função que lista todas as imagens conforme os parametros.
    * 
@@ -91,7 +142,7 @@ class ImageController{
    */
   public function listaPorTipo($type){
       $img = new Imagem();
-      return $img->select(
+      $img = $img->select(
             array(
                 'where' => array(
                     'AND' => array(
@@ -101,6 +152,9 @@ class ImageController{
                 )
             )
       );
+      $img = $img[0];
+      unset($img[0]);
+      return $img;
   }
   public function listaTudo(){
       $img = new Imagem();
@@ -121,12 +175,15 @@ class ImageController{
    */
   public function listaPorId($id){
      $img = new Imagem();
-     return $img->select(array(
+     $img = $img->select(array(
 	 'where' => array(
              'id' => $id
             )
         )
      );
+    $img = $img[0];
+      unset($img[0]);
+      return $img;
   }
   /**
    * Função  que inativa e deleta a foto
@@ -136,19 +193,20 @@ class ImageController{
    */
   public function inativar($id){
     $img = new imagem();
+    $img = $img->load((int)$id);
     $origem = dirname(dirname(__FILE__)).'/upload/'.$img['nome'];
-    $imagem = $img->select(array(
-            'where' => array(
-                'id' => $id
-            )
-        )
-    );
+    $imagem = $this->listaPorID($img['id']);
     unlink($origem);
     $img->load($imagem);
     $img->status = 'INATIVO';
     $img->updateAt = date('Y-m-d H:i:s');
     $img->update();
     return true;
+  }
+
+  public function updatePicture($img){
+    $image = new Imagem($img);
+    
   } 
 	
 }

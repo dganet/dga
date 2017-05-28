@@ -63,6 +63,7 @@ class Associado extends \GORM\Model{
     private $veiculo_id;				// Chave estrangeira que ligará o usuario a sua linha
     private $imagem_id;					// Id da Imagem
     private $documento;                 //Campo que recebe o array com os documentos
+    private $foto;                      //Campo responsável pela foto do associado
     
     
     // adiciona uma instancia desta classe na classe GORM/MODEL
@@ -155,7 +156,8 @@ class Associado extends \GORM\Model{
         "quaisProblemas"		=>  $this->__get('quaisProblemas'),
         "qualPlano"		=>  $this->__get('qualPlano'),
         "porQueDesistiu" => $this->__get('porQueDesistiu'),
-        "documento" => $this->__get('documento')
+        "documento" => $this->__get('documento'),
+        "foto"  => $this->__get('foto')
         );
         // faz com que não se retorne valores nulos no array
         $temp = $array;
