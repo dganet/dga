@@ -123,7 +123,7 @@ $scope.add = function (values,FormTicket){
       var dadosMensagem = response;
     
     //Arryar de Letras referente aos números
-    var letras = {1:'mensagemAssociado',0:'mensagemAetub'};
+    var letras = {1:'Eu',0:'Aetub'};
 
     dadosMensagem.forEach(function(element){
       var letra = element.isAssocCodificado = letras[element.isAssoc];
@@ -162,7 +162,7 @@ $scope.add = function (values,FormTicket){
                   var dadosMensagem = response;
                 
                 //Arryar de Letras referente aos números
-                var letras = {1:'mensagemAssociado',0:'mensagemAetub'};
+                var letras = {1:'Eu',0:'Aetub'};
 
                 dadosMensagem.forEach(function(element){
                   var letra = element.isAssocCodificado = letras[element.isAssoc];

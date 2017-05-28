@@ -278,6 +278,36 @@ h4 {
 .table a:link{
 	text-decoration: none;
 }
+.janela-chat {
+	height: 500px;
+	width: 100%;
+	border: 1px solid #b6b6b6;
+	margin-top: -6px;
+	overflow: auto;
+}
+.acoes-chat {
+	margin-bottom: 20px;
+	height: 50px;
+}
+.Eu {
+	width: 80%;
+	height: auto; 
+	border-radius: 20px;
+	background:#8DEEEE;
+	margin: 10px;
+	padding: 5px;
+	float:right ;
+}
+.Aetub{
+	width: 80%;
+	height: auto; 
+	border-radius: 20px;
+	background: #9BCD9B;
+	margin: 10px;
+	padding: 5px;
+	float: left;
+}
+
 /* 
 /* Desktop maiores */
 /*@media (min-width: 1200px) { 

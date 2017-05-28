@@ -24,14 +24,15 @@
    <table class="table table-condensed">
     <thead>
      <tr>
-        <td>Cursos</td>
+        <td>Associados</td>
      </tr>
     </thead>
 
     <tbody> 
-      {{associados}}
-     <tr ng-repeat="x in associados | filter: busca  ">
-       <td> <a ui-sref="user.ticket.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nomeAssociado}}</a></td>
+
+     <tr ng-repeat="x in associados | filter: busca ">
+       {{x}}
+       <td> <a ui-sref="user.ticket.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
      </tr>
    
     </tbody>
@@ -41,27 +42,55 @@
   </div>
 
   <div class="quatro" ng-show="quatro">
-<h4>{{curso.nome}}</h4>
+<h4>{{x.nome}}</h4>
     <hr>
 
 
-<form name="FormCurso" ng-submit="add(curso)">
-  
-  <div class="row">
+	<div class="row">
 
-  <div class="col-md-12">
-    <div class="form-group">
-    <label>Nome do Curso</label>
-    <input type="text" class="form-control" ng-model="curso.nome" required> 
-    </div> 
-    </div>
+		<div ng-repeat="x in tickets">
+			
+			<div class="col-md-12">
+				<label class="form-control">{{x.assuntoTicket}}
+					<span style="float:right"> <i class="fa fa-comments" aria-hidden="true" ng-click="showMensagem(x)"></i></span></a>
+					<span style="float:right; margin-right:20px;"> <i class="fa fa-eye-slash" aria-hidden="true" ng-click="hideMensagem(x.idTicketCodificado)"></i></span></a>
+				</label>
+			</div>
+	
+			<div class="col-md-12" ng-show="{{x.idTicketCodificado +'teste'}}">
+				<div class="col-md-12">
+					<div class="form-group">
+						<div class="janela-chat">
+							<div ng-repeat="y in mensagens">
 
-    </div>
-  
-<hr>
-<button type="submit" class="btn btn-primary">Salvar Dados</button> 
-<button type="button" class="btn btn-danger" ng-click="deleta(curso.id)">Deletar</button>
-</form>
+							<div class="{{y.isAssocCodificado}}"><strong>{{y.isAssocCodificado}} :</strong>{{y.mensagemTicketMessage}}</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="acoes-chat">
+					<form name="FormChat" ng-submit="newmensagem(x)">
+					<div class="col-md-10">
+							<div class="form-group">
+							   <input type="text" class="form-control"  ng-model="x.mensagemTicketMessage">	   
+							</div>
+					</div>
+
+					 <div class="col-md-2">
+								<div class="form-group">
+								<button type="submit" class="btn btn-primary">Enviar</button> 
+								</div>
+					 </div>
+							</div>
+							</form>
+				</div>
+			</div>
+
+
+			
+			</div>
 
   </div>
 </div>

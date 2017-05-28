@@ -176,7 +176,24 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 				label: 'Todos Tickets'
 			}
 		})
-
+		.state('user.ticket.altera', {
+			url: '/altera',
+			templateUrl: 'modTicket/allTickets.htm',
+			controller: 'allTicketCtrl',
+			ncyBreadcrumb: {
+				label: 'Altera'
+			}
+		})
+		.state('user.ticket.altera.detalhes', {
+			url: '/:id',
+			controller: function ($scope, $stateParams) {
+				// get the id
+				$scope.id = $stateParams.id;
+			},
+			ncyBreadcrumb: {
+				label: 'Ticktes'
+			}
+		})
 
 		//############################################################################
 		//############# **  MODULO BANNER ** ##########################################
