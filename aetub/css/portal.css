@@ -17,7 +17,7 @@
 
 .bloco_dois {
     background: white;
-	width: 724px;
+	width: 1024px;
 	position: fixed;
 	bottom: 10px;
 	top:10px;
@@ -158,11 +158,11 @@ hr.linhaPortal {
 }
 
 .janela-chat {
-	height: auto;
+	height: 500px;
 	width: 100%;
-	border: 1px solid #D3D3D3;
+	border: 1px solid #b6b6b6;
 	margin-top: -6px;
-	display: table;
+	overflow: auto;
 }
 .acoes-chat {
 	margin-bottom: 20px;
