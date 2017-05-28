@@ -56,6 +56,17 @@ class AssociadoController {
 		$associado->status = "AGUARDANDOVAGA";
 		$associado->createAt = date('Y-m-d H:i:s');
 		$associado->rendaSerial = serialize($data['renda']);
+		//Faz upload das imagens
+		$img = new ImageController();
+		$documento = $data['documento'];
+		$docSerial= [];
+		foreach ($documento as $key => $value) {
+			$documento[$key]['anexoDocumento']['tipo'] = $documento[$key]['tipoDocumento']; 
+			$return = $img->cadastrar($documento[$key]['anexoDocumento']);
+			array_push($docSerial, $return['id']);
+			
+		}
+		$associado->documento = serialize($docSerial);
 		if ($associado->save()){
 			Audit::audit($associado->toArray(), "INSERT", "associado");
 			Log::Message("Usuário ". $data['nome'] ." cadastrado com sucesso !");
@@ -76,6 +87,7 @@ class AssociadoController {
 			$associado = $associado->select(array('where' => array('status' => 'ATIVO')));
 			foreach ($associado as $key => $value) {
 				$associado[$key]['rendaSerial'] = unserialize($associado[$key]['rendaSerial']);
+				$associado[$key]['documento'] = unserialize($associado[$key]['documento']);
 			}
 			return $associado;
 
@@ -95,6 +107,7 @@ class AssociadoController {
 		$associado =  $associado->select(array('where' => array('id' => $id)));
 		foreach ($associado as $key => $value) {
 				$associado[$key]['rendaSerial'] = unserialize($associado[$key]['rendaSerial']);
+				$associado[$key]['documento'] = unserialize($associado[$key]['documento']);
 			}
 			return $associado;
 	}
@@ -163,6 +176,7 @@ class AssociadoController {
 				foreach ($value as $keys => $values) { // segunda posição vai ate achar a key rendaSerial que é um array serializado
 					if($keys == "rendaSerial"){ // achando a posição des serializa e percorre este array
 						$array[$key]['rendaSerial'] = unserialize($values); // Desserializa tudo
+						$associado[$key]['documento'] = unserialize($associado[$key]['documento']);
 					}
 				}
 			}
@@ -209,6 +223,7 @@ class AssociadoController {
 				foreach ($value as $keys => $values) { // segunda posição vai ate achar a key rendaSerial que é um array serializado
 					if($keys == "rendaSerial"){ // achando a posição des serializa e percorre este array
 						$array[$key]['rendaSerial'] = unserialize($values); // Desserializa tudo
+						$associado[$key]['documento'] = unserialize($associado[$key]['documento']);
 					}
 				}
 			}

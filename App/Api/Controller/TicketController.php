@@ -35,7 +35,13 @@ class TicketController{
     //Lista os tickets ativos de todos associados;
     public function listaPorAssociadoAtivo(){
         $ticket = new Ticket();
-        return $ticket->select(array('where' => array('statusTicket' => 'ATIVO')));
+        $ticket = $ticket->select(array('where' => array('statusTicket' => 'ATIVO')));
+        $associado = new \Api\Model\Entity\Associado;
+        foreach ($ticket as $key => $value) {
+            echo $ticket[$key]['fkAssociado'];
+            $assoc[$key] =  $associado->load( (int) $ticket[$key]['fkAssociado']);
+        }
+        return $assoc;
     }
 	public function listaInativo(){
         

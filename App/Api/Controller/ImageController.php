@@ -12,7 +12,6 @@ class ImageController{
     public function cadastrar($img = [], $update = null){
         //extrai o array
             echo "estou aqui 6";
-            var_dump($img);
         $destino = dirname(dirname(__FILE__)).'/upload/';
         if ($img != null || $img != ''){
             echo "estou aqui 7";
@@ -28,7 +27,6 @@ class ImageController{
                     echo "estou aqui 8";
                     $newName    = uniqid(time()).".".$extensao[1];
                     $handle     = fopen($destino.$newName, 'x');
-                    var_dump($destino);
                     if($handle){
                         echo "estou aqui 9";
                         $data       = explode(',',$img['data']);

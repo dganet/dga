@@ -9,30 +9,30 @@ class Log {
 	 */
 	public static final function Error($string){
 		//Cria o arquivo se ele não existir
-		$handle = fopen("backend.log", "a");
+		//$handle = fopen("backend.log", "a");
 		//Escrevo no arquivo aberto
-		$data = date('d/m/Y G:i:s');
-		fwrite($handle, "\n".$data." [ERROR]: ".$string);
+		//$data = date('d/m/Y G:i:s');
+		//fwrite($handle, "\n".$data." [ERROR]: ".$string);
 		//fecha o arquivo;
-		fclose($handle);
+		//fclose($handle);
 	}
 	
 	public static final function Message($string){
 		//Cria o arquivo se ele não existir
-		$handle = fopen("backend.log", "a");
+		//$handle = fopen("backend.log", "a");
 		//Escrevo no arquivo aberto
-		$data = date('d/m/Y G:i:s');
-		fwrite($handle, "\n".$data." [MESSAGE]:".$string);
+		//$data = date('d/m/Y G:i:s');
+		//fwrite($handle, "\n".$data." [MESSAGE]:".$string);
 		//fecha o arquivo;
-		fclose($handle);
+		//fclose($handle);
 	}
 	public static final function Debug($string){
 		//Cria o arquivo se ele não existir
-		$handle = fopen("backend.log", "a");
+		//$handle = fopen("backend.log", "a");
 		//Escrevo no arquivo aberto
-		$data = date('d/m/Y G:i:s');
-		fwrite($handle, "\n".$data." [DEBUG]:".$string);
+		//$data = date('d/m/Y G:i:s');
+		//fwrite($handle, "\n".$data." [DEBUG]:".$string);
 		//fecha o arquivo;
-		fclose($handle);
+		//fclose($handle);
 	}
 }
