@@ -4,7 +4,6 @@ use \Psr\Http\Message\ResponseInterface as Response;
 $app->post('/save', function(Request $request, Response $response, $args){
 		$img = new \Api\Controller\ImageController;
 		$post = json_decode($request->getBody(),true);
-		echo "aqui fora";
 		if (!isset($post['banner3']) && !isset($post['banner2']) && !isset($post['banner1'])){
 			$flag = $img->listaPorTipo($post['tipo']);
 			$imagem = new \Api\Model\Entity\Imagem($flag[0]);
