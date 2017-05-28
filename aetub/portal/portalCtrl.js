@@ -15,8 +15,6 @@ $scope.bairro = bairro;
 $scope.cidade = cidade;
 $scope.cep = cep ;
 
-console.log(foto);
-
 		$http.get('./App/imagem/list/'+ foto).success(function(data){
             $scope.foto = data.nome;
 	
