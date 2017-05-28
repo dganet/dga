@@ -42,6 +42,15 @@ class TicketController{
             $assoc[$key] = $assoc[$key][0];
             unset($assoc[$key][0]);
         }
+        foreach ($assoc as $key => $value) {
+            $check = $assoc[$key];
+            foreach ($assoc as $keys => $values) {
+                if($check['id'] == $assoc[$keys]['id']){
+                    unset($assoc[$keys]);
+                }
+            }
+             $assoc[$key] = $check;
+        }
         return $assoc;
     }
 	public function listaInativo(){
