@@ -109,7 +109,6 @@ class ImageController{
                      // Com as informações
                       return array(
                             flag    => true,
-                            id      => $id,
                             message => "Imagem salva com sucesso",
                             path    => $destino,
                             name    => $newName
