@@ -13,14 +13,15 @@ class AuthController{
      */
     public function logar($request, $response, $args){
         $post = json_decode($request->getBody(), true);
+        var_dump($post);
         $auth =  new Auth();
-        $auth = $auth->login($post);
+        /*$auth = $auth->login($post);
         if ($auth[flag]){
             unset($auth['flag']);
             return $response->withJson($auth);
        }else{
             return $response->withJson($auth);
-       } 
+       } */
     }
     /**
      * Checa se há um usuario logado com um determinato token

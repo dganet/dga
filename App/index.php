@@ -67,6 +67,6 @@ $app->get('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::cla
 /**
  * TESTE
  */
-$app->get('/teste/cache/{token}', \Api\Test\Teste::class . ':main');
+$app->get('/teste', \Api\Test\Teste::class . ':main');
 //##################################################################
 $app->run();
