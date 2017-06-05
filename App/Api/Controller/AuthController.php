@@ -13,7 +13,6 @@ class AuthController{
      */
     public function logar($request, $response, $args){
         $post = json_decode($request->getBody(), true);
-        var_dump($post);
         $auth =  new Auth();
         $auth = $auth->login($post);
         if ($auth[flag]){
