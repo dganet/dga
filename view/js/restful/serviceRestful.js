@@ -5,12 +5,17 @@ app.service('restful', function ($http,$sessionStorage) {
 //REQUISICOES DO BACK-END CAMINHOS
    
    //Classes Usuario
+<<<<<<< HEAD
    $usuarioLogin = '../dga/App/usuario/login'; // loga o usuario
    $usuarioSave =  '../dga/App/usuario/save'; // Salva Usuario
+=======
+   $usuarioLogin = 'App/usuario/login'; // loga o usuario
+   $usuarioSave =  'App/usuario/save'; // Salva Usuario
+>>>>>>> c7ee6b941a740754dd703bf3105716f1bd58d34e
    //Classes Cliente
-   $clienteSave = '../App/cliente/save'; // Salva Cliente
-   $clienteList = '../App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
-   $clienteListId = '../App/cliente/listId/'; // Lista unico cliente referente ao ID + token
+   $clienteSave = 'App/cliente/save'; // Salva Cliente
+   $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
+   $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    //Classes Estados e Cidades
   
 
@@ -22,6 +27,7 @@ app.service('restful', function ($http,$sessionStorage) {
     var _usuarioLogin = function (values){
         console.log(values);
         return  $http.post($usuarioLogin , values);
+     
     };
    //Salva novo Usuario
     var _usuarioSave = function (values){

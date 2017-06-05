@@ -23,8 +23,8 @@ $scope.FBLogin = function (){
      //Autentinca o Usuario e loga no sistema
      		    
 		    $scope.logando = function (values , formAut){
-                
-                    restful.usuarioLogin().success(function(response){
+                    restful.usuarioLogin(values).success(function(response){
+
                         var auth = response.flag;
 
                     if (auth == false){
