@@ -7,13 +7,25 @@
 $scope.FBLogin = function (){
     FB.login(function(response) {
     if (response.authResponse) {
-     console.log('Welcome!  Fetching your information.... ');
      FB.api('/me', function(response) {
-       console.log('Good to see you, ' + response.name + '.');
-       console.log(response);
-       var accessToken = FB.getAuthResponse();
-       console.log(accessToken);
-    
+
+         restful.usuarioLoginFB(response.id).success(function(response){
+             var auth = response.flag;
+             if(auth == false){
+                    
+             }else{
+
+                    // Se for verdadeiro manda pra Home 
+                    $scope.activePath = $location.path('/user');
+                    sessionStorage.setItem('usuario.id', response.idUsuario);
+                    sessionStorage.setItem('usuario.nome', response.nomeUsuario);
+                    sessionStorage.setItem('usuario.sobrenome', response.sobrenomeUsuario);
+                    sessionStorage.setItem('usuario.token', response.token);
+             }
+
+
+         });
+
      });
     } else {
      console.log('User cancelled login or did not fully authorize.');
