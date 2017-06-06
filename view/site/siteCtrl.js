@@ -21,7 +21,7 @@ $scope.FBLogin = function (){
                     sessionStorage.setItem('usuario.nome', response.nomeUsuario);
                     sessionStorage.setItem('usuario.sobrenome', response.sobrenomeUsuario);
                     sessionStorage.setItem('usuario.token', response.token);
-             }
+             };
 
 
          });
