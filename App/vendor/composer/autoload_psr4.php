@@ -9,6 +9,7 @@ return array(
     'Slim\\Views\\' => array($vendorDir . '/slim/php-view/src'),
     'Slim\\' => array($vendorDir . '/slim/slim/Slim'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
+    'PagSeguro\\' => array($vendorDir . '/pagseguro/php3/source', $vendorDir . '/pagseguro/php3/source'),
     'Mail\\' => array($vendorDir . '/phpmailer/phpmailer'),
     'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
     'GORM\\' => array($baseDir . '/Api/Model/GORM/src'),

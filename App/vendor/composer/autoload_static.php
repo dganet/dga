@@ -19,6 +19,7 @@ class ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
+            'PagSeguro\\' => 10,
         ),
         'M' => 
         array (
@@ -54,6 +55,11 @@ class ComposerStaticInitb313d8fbbb61f1041f8ac5b0176edcda
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'PagSeguro\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pagseguro/php3/source',
+            1 => __DIR__ . '/..' . '/pagseguro/php3/source',
         ),
         'Mail\\' => 
         array (

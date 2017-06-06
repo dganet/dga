@@ -46,6 +46,29 @@ class Model{
 	 */
 	private static $primaryKey = null;
 	/**
+	 * Variavel que habilita o DEBUG quando setada como true
+	 * 
+	 * @var boolean
+	 */
+	private static $debug = false;
+	/**
+	 * Set a value for debug
+	 * 
+	 * @param [type] $value
+	 * @return void
+	 */
+	public function _setDebug($value){
+		$this->debug = $value;
+	}
+	/**
+	 * Get the value for the variable debug
+	 * 
+	 * @return Bool
+	 */
+	public function _getDebug(){
+		return $this->debug;
+	}
+	/**
 	 * Get PrimaryKey
 	 * 
 	 * @return String

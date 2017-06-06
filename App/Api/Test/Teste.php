@@ -6,8 +6,12 @@ use \Api\Controller\Cache;
 class Teste{
 
     public function main($request, $response, $args){
-       $cache = new Cache();
-       return $cache->createFileLocation($args['token']);
-
+       echo "
+       <form method='post' action='/App/usuario/login/forgot'>
+        <input type='text' name='email'>
+        <input type='submit'>
+       </form>
+       ";
+       
     }
 }

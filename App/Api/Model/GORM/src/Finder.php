@@ -31,6 +31,9 @@ trait Finder
     public function find($value){
         self::loadTable();
         $sql        = self::makeSelect($value);
+        if (self::_getDebug()){
+            print_r($sql);
+        }
         $con        = new ConnectionFactory($this->db);
         $db         = $con->getInstance();
         $consulta   = $db->query($sql);
