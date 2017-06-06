@@ -19,6 +19,7 @@ header {
 /*Bloco de Login e Conta */
 .bloco-login-conta {
     font-size: 24px;
+    width: 665px;
     float: right;
 }
 .erroSenha{
@@ -33,11 +34,19 @@ header {
     float: left;
     padding: 12px 0px 0px 30px;
 }
+
 .autenticacao {
-    width: 700px;
+    width: 530px;
     height: 50px;
-    padding: 10px 30px 0px 0px;
-    float: left;    
+    padding: 10px 0px 0px 0px;
+    float: left;
+
+}
+.botaoFB {
+    width: 130px;
+    height: 25px;
+    float: left;
+    margin: 10px 0px 0px -40px;
 }
 .bkg-fundo {
     width: 100%; 

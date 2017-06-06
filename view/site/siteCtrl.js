@@ -32,6 +32,7 @@ $scope.FBLogin = function (){
     }
 });
 };
+
      //Autentinca o Usuario e loga no sistema
      		    
 		    $scope.logando = function (values , formAut){
