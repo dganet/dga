@@ -35,7 +35,15 @@ class Usuario extends \GORM\Model{
      * @param String $value
      */
     public function __set($attr, $value){ 
-        $this->$attr = $value;
+        switch ($attr) {
+            case 'senhaUsuario':
+                $this->$attr = md5($value);
+                break;
+            
+            default:
+                $this->$attr = $value;
+                break;
+        }
     }
     /**
      * Metodo Getters 

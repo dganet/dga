@@ -8,6 +8,8 @@ $app = new Slim\App([
         'displayErrorDetails' => true
     ]
 ]);
+unset($app->getContainer()['errorHandler']);
+unset($app->getContainer()['phpErrorHandler']);
 /**
  * USUARIOS
  */
@@ -29,8 +31,12 @@ $app->delete('/usuario/delete/{id}/{token}', \Api\Controller\UsuarioController::
  */
 //Loga usuario
 $app->post('/usuario/login', \Api\Controller\AuthController::class . ':logar');
+//Loga Com Facebook
+$app->post('/usuario/login/facebook', \Api\Controller\AuthController::class . ':facebookLogin');
 //Verifica o usuario Logado
 $app->get('/usuario/login/{token}', \Api\Controller\AuthController::class . ':checkLogin');
+//Esqueci a senha
+$app->post('/usuario/login/forgot', \Api\Controller\AuthController::class . ':forgotPass');
 //FIM AUTENTICACAO
 /**
  * IMOVEIS

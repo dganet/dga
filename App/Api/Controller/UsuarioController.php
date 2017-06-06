@@ -44,7 +44,7 @@ class UsuarioController {
         $usuario->createAtUsuario = date("Y-m-d H:i:s");
         $usuario->fkPermissao = 1;
         $usuario->statusUsuario = 'AGUARDANDOCONFIRMACAOEMAIL';
-        $usuario->senhaUsuario = md5($usuario->senhaUsuario);
+        $usuario->senhaUsuario = $usuario->senhaUsuario;
         $imovel = new CarteiraImovel();
         $cliente = new CarteiraCliente();
         $imovel->nomeCarteiraImovel = "Carteira de Imovel de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
@@ -112,5 +112,17 @@ class UsuarioController {
               'flag' => false
           ]);
       }
+    }
+    /**
+     * Checa se existe algum usuario com o email informado
+     * 
+     * @param String $email
+     * @return Object
+     */
+    public static function forgot($email){
+        $usuario = new Usuario();
+        $usuario->email = $email;
+        $usuario = $usuario->find("where emailUsuario = '".$email."'");
+        return $usuario;
     }
 }
