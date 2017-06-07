@@ -55,7 +55,7 @@
 </div>
 
 <!-- Nova Conta do Site-->
-<div class="bloco-form-conta">
+<div class="bloco-form-conta" ng-hide="formConta">
            <div class="tituloConta">Nova Conta</div>
 
             <div class="alert alert-danger" ng-show="mensagemSenha">
@@ -127,5 +127,118 @@
           </form>
 
        </div>
+
+
+<!-- FORM CONTA FACEBBOK-->
+
+<div class="bloco-form-conta-facebook" ng-show="formContaFB">
+
+<!-- NOVA CONTA NO SITE COM FACEBOOK-->
+
+          Olá, <strong>{{nomeFacebook}}</strong>, já possui cadastro e nosso site ? 
+          <br><br>
+
+          <center>
+              <button ng-click="contaSim()">SIM</button> 
+              <button ng-click="contaNao()">NÃO</button> 
+          </center>
+
+          <div ng-show="formMigraFacebook">
+             <br><br>
+          <strong>Sim</strong>, preecha seu e-mail e senha para vincular a sua conta no facebook.
+          <br><br>
+          <!-- MIGRAR PARA FACEBOOK -->
+
+          <form name="formUsuario" ng-submit="migrar(usuario)">
+
+               <div class="row">
+                   <div class="col-md-12">
+                   <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" class="form-control" ng-model="usuario.emailUsuario" required>
+                   </div>
+              </div>
+               </div>
+
+               <div class="row">
+                   <div class="col-md-12">
+                   <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" ng-model="usuario.senhaUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+          <button type="submit" class="btn btn-primary">Migrar</button>
+
+          </form>
+          </div>
+
+          <div ng-show="formContaFacebook">
+          <br>
+          <strong>Não</strong>, crie uma conta com seus dados do Facebbok.
+          <br> <br>
+          <form name="formUsuario" ng-submit="addFB(usuario)">
+
+               <div class="row">
+                   <div class="col-md-5">
+                   <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" ng-model="usuario.nomeUsuario" required>
+                   </div>
+              </div>
+
+                   <div class="col-md-7">
+                   <div class="form-group">
+                        <label>Sobrenome</label>
+                        <input type="text" class="form-control" ng-model="usuario.sobrenomeUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+               <div class="row">
+                   <div class="col-md-8">
+                   <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" class="form-control" ng-model="usuario.emailUsuario" required>
+                   </div>
+              </div>
+
+                   <div class="col-md-4">
+                   <div class="form-group">
+                        <label>Creci</label>
+                        <input type="text" class="form-control" ng-model="usuario.creciUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+               <div class="row">
+                   <div class="col-md-12">
+                   <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" ng-model="usuario.senhaUsuario" required>
+                   </div>
+              </div>
+              </div>
+
+               <div class="row">
+                   <div class="col-md-12">
+                   <div class="form-group">
+                        <label>Confime a Senha</label>
+                        <input type="password" class="form-control" ng-model="usuario.senha" required>
+                   </div>
+              </div>
+              </div>
+
+              <div class="termos">
+              <input type="checkbox" ng-model="usuario.termoUsuario"> Eu li e concordo com os termos de uso da Politica de Privacidade</a>.
+              </div>
+
+              <button type="submit" class="btn btn-primary">Salvar Dados</button>
+
+          </form>
+
+  </div>
+ </div>
 
 </div>

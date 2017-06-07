@@ -1,18 +1,32 @@
  app.controller("siteCtrl", function($scope, $http, $timeout , $location, $sessionStorage, restful){
-          //Oculata Mensagens
+    //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
+
+    //Questionário SIM ou NAO da Conta do facebook
+    $scope.contaSim = function (){  
+        $scope.formMigraFacebook = true; 
+        $scope.formContaFacebook = false;  
+
+    }
+    $scope.contaNao = function (){  
+        $scope.formContaFacebook = true;   
+        $scope.formMigraFacebook = false;          
+    }
 
     //CONFIGURAÇÕES PLUGIN FACEBBOK
 $scope.FBLogin = function (){
     FB.login(function(response) {
     if (response.authResponse) {
      FB.api('/me', function(response) {
-console.log(response);
+        
+        console.log($scope.nomeFacebook = response.name);
+
          restful.usuarioLoginFB(response.id).success(function(response){
              var auth = response.flag;
              if(auth == false){
-                    
+                    $scope.formContaFB = true;
+                    $scope.formConta = true;
              }else{
 
                     // Se for verdadeiro manda pra Home 

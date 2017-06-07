@@ -94,8 +94,15 @@ header {
     padding: 20px;
     background: white;
     box-shadow: 2px 5px 15px black;
-
-
+}
+.bloco-form-conta-facebook{
+    float: right;
+    margin-right: 100px;
+    width: 400px;
+    border: 1px solid #C6C6C6;
+    padding: 20px;
+    background: white;
+    box-shadow: 2px 5px 15px black;
 }
 .tituloConta {
     font-size: 16px;
@@ -112,4 +119,68 @@ header {
     float: left;
     margin-top:200px;
     font-size: 16px;
+}
+
+/* MODAL */ 
+.container {width: 500px; margin: 50px auto}
+
+.open-modal {
+  background-color:#38ddf7;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  outline: none;
+  padding: 20px 40px;
+  text-transform: uppercase
+}
+
+.open-modal:hover {background-color: #bff2e5}
+
+.modal {
+  background-color: #dbd9d9;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  margin-left: -200px;
+  margin-top: -150px;
+  padding: 50px;
+  border-radius: 5px;
+  z-index: 10;
+  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.7);
+}
+
+.close-modal {
+  color:  #000;
+  text-decoration: none;
+  float: right;
+  position: absolute;
+  top: 10px;
+  right: 20px
+}
+
+@media (max-width : 37.500rem) {
+
+  .modal {
+  	top: 0;
+  	left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 1.250rem
+  }
+  
+  .close-modal{
+    display: block;
+   position: relative;
+   padding: 5px 10px 20px 0
+  }
+  
+  .modal-content{
+    clear: both;
+    padding-right: 1.25rem
+  }
+  
 }
