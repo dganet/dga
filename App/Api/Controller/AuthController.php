@@ -25,20 +25,36 @@ class AuthController{
     /**
      * Checa se há um usuario logado com um determinato token
      * 
-     * @param [type] $request
-     * @param [type] $response
-     * @param [type] $args
+     * @param Request $request
+     * @param Response $response
+     * @param Argumento $args
      * @return void
      */
     public function checkLogin($request, $response, $args){
         $token = $args['token'];
         return $response->withJson(Auth::_getTokenInfo($token));
     }
-    
+    /**
+     * Verifica e faz login se o usuario tiver conta do facebook vinculada ao Imobiliar
+     * 
+     * @param Request $request
+     * @param Response $response
+     * @param Argumento $args
+     * @return void
+     */
     public function facebookLogin($request, $response, $args){
-        $post = json_decode($request->getBody(), true);
-        var_dump($post);
+       $post = json_decode($request->getBody(),true);
+       $usuario = UsuarioController::checkFaceLogin($post);
+       return $response->withJson($usuario);
     }
+    /**
+     * Função para recuperação e envio de senha para o email cadastrado de senha
+     * 
+     * @param Request $request
+     * @param Response $response
+     * @param Argumento $args
+     * @return void
+     */
     public function forgotPass($request, $response, $args){
         $post = json_decode($request->getBody(),true);
         $usuario = UsuarioController::forgot($post);
