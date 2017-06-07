@@ -8,7 +8,7 @@ $scope.FBLogin = function (){
     FB.login(function(response) {
     if (response.authResponse) {
      FB.api('/me', function(response) {
-
+console.log(response);
          restful.usuarioLoginFB(response.id).success(function(response){
              var auth = response.flag;
              if(auth == false){

@@ -6,7 +6,7 @@ app.service('restful', function ($http,$sessionStorage) {
    
    //Classes Usuario
    $usuarioLogin = 'App/usuario/login'; // loga o usuario
-   $usuarioLoginFB = ' App/usuario/login/facebook'; // loga o usuario Plugin Facebook
+   $usuarioLoginFB = '../App/usuario/login/facebook'; // loga o usuario Plugin Facebook
    $usuarioSave =  'App/usuario/save'; // Salva Usuario
    //Classes Cliente
    $clienteSave = 'App/cliente/save'; // Salva Cliente
