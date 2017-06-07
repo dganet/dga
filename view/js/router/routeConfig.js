@@ -8,11 +8,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
       url: '/site',
       templateUrl: 'view/site/home.htm',
          controller:'siteCtrl'
+         
     })
     .state('login.inicio', {
       url: '/inicio',
       templateUrl: 'view/site/inicio.htm',
-         controller:'siteCtrl'
+      controller:'siteCtrl',
     })
 
       .state('user', {

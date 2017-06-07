@@ -8,6 +8,8 @@ app.service('restful', function ($http,$sessionStorage) {
    $usuarioLogin = 'App/usuario/login'; // loga o usuario
    $usuarioLoginFB = 'App/usuario/login/facebook'; // loga o usuario Plugin Facebook
    $usuarioSave =  'App/usuario/save'; // Salva Usuario
+   $usuarioSaveMigraFB =  'App/usuario/'; // Migra usuário com Dados do Facebook
+
    //Classes Cliente
    $clienteSave = 'App/cliente/save'; // Salva Cliente
    $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
@@ -25,13 +27,16 @@ app.service('restful', function ($http,$sessionStorage) {
     };
    //Logando Via Facebbok
     var _usuarioLoginFB= function (values){
-                console.log(values);
         return  $http.post($usuarioLoginFB , {'userId': values});
      
     };
    //Salva novo Usuario
     var _usuarioSave = function (values){
         return  $http.post($usuarioSave, values);
+    };
+   //Migra Usuario com Dados do Facebook
+    var _usuarioSaveMigraFB = function (values){
+        return  $http.put($usuarioSaveMigraFB, values);
     };
 
 //|#######################################################|
@@ -71,6 +76,7 @@ app.service('restful', function ($http,$sessionStorage) {
         usuarioLogin : _usuarioLogin,
         usuarioLoginFB : _usuarioLoginFB,
         usuarioSave: _usuarioSave,
+        usuarioSaveMigraFB: _usuarioSaveMigraFB,
 
         //Return do Cliente
         clienteSave : _clienteSave,

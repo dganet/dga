@@ -135,7 +135,7 @@
 
 <!-- NOVA CONTA NO SITE COM FACEBOOK-->
 
-          Olá, <strong>{{nomeFacebook}}</strong>, já possui cadastro e nosso site ? 
+          Olá, <strong>{{nomeFacebook}}</strong>, possui cadastro em nosso site ? 
           <br><br>
 
           <center>
@@ -148,6 +148,10 @@
           <strong>Sim</strong>, preecha seu e-mail e senha para vincular a sua conta no facebook.
           <br><br>
           <!-- MIGRAR PARA FACEBOOK -->
+
+            <div class="alert alert-success" ng-show="mensagemSucesso">
+            <strong>Sucesso!</strong> Dados Cadastrado com Sucesso , enviado um e-mail para ativação do seu cadastro.
+            </div>
 
           <form name="formUsuario" ng-submit="migrar(usuario)">
 
@@ -178,7 +182,12 @@
           <br>
           <strong>Não</strong>, crie uma conta com seus dados do Facebbok.
           <br> <br>
+
           <form name="formUsuario" ng-submit="addFB(usuario)">
+{{mensagemSenha}}
+            <div class="alert alert-danger" ng-show="mensagemSenha">
+            <strong>Senhas!</strong> não estão iguais.
+            </div>
 
                <div class="row">
                    <div class="col-md-5">
