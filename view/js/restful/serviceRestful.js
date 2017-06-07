@@ -26,7 +26,7 @@ app.service('restful', function ($http,$sessionStorage) {
    //Logando Via Facebbok
     var _usuarioLoginFB= function (values){
                 console.log(values);
-        return  $http.post($usuarioLoginFB , values);
+        return  $http.post($usuarioLoginFB , {'userId': values});
      
     };
    //Salva novo Usuario

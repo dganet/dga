@@ -3,6 +3,7 @@ namespace Api\Model\Entity;
 
 class Usuario extends \GORM\Model{
     private $idUsuario;
+    private $facebookId;
     private $emailUsuario;
     private $senhaUsuario;
     private $nomeUsuario;
