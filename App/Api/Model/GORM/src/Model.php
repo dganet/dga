@@ -57,7 +57,7 @@ class Model{
 	 * @param [type] $value
 	 * @return void
 	 */
-	public function _setDebug($value){
+	public function _setDebug($value = false){
 		$this->debug = $value;
 	}
 	/**

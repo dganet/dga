@@ -25,6 +25,8 @@ $app->post('/usuario/save', \Api\Controller\UsuarioController::class . ':save');
 $app->put('/usuario/update/{id}/{token}', \Api\Controller\UsuarioController::class . ':update');
 //Inativa um Usuario
 $app->delete('/usuario/delete/{id}/{token}', \Api\Controller\UsuarioController::class . ':delete');
+//Vincula a conta do facebook com a conta do imobiliar
+$app->put('/usuario/migrate', \Api\Controller\UsuarioController::class . ':migrate');
 //FIM USUARIOS
 /**
  * AUTENTICACAO

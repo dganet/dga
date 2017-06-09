@@ -33,13 +33,13 @@ trait Finder
         $sql        = self::makeSelect($value);
         if (self::_getDebug()){
             print_r($sql);
+        }else{
+            $con        = new ConnectionFactory($this->db);
+            $db         = $con->getInstance();
+            $consulta   = $db->query($sql);
+            $consulta   = $consulta->fetch(PDO::FETCH_ASSOC);
+            $cls        =  get_called_class();
+            return new $cls($consulta);
         }
-        $con        = new ConnectionFactory($this->db);
-        $db         = $con->getInstance();
-        $consulta   = $db->query($sql);
-        $consulta   = $consulta->fetch(PDO::FETCH_ASSOC);
-        $cls        =  get_called_class();
-        return new $cls($consulta);
-
     }
 }

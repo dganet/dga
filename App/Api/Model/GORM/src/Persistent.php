@@ -33,9 +33,13 @@ trait Persistent
   public function update(){
     $this->loadTable();
     $sql                   = $this->makeUpdate($this->class);
-    $con                   = new ConnectionFactory($this->db);
-    $db                    = $con->getInstance();
-    $linha                 = $db->prepare($sql);
-    return $linha->execute();
+    if (self::_getDebug()){
+            print_r($sql);
+    }else{
+      $con                   = new ConnectionFactory($this->db);
+      $db                    = $con->getInstance();
+      $linha                 = $db->prepare($sql);
+      return $linha->execute();
+    }
   }
 }

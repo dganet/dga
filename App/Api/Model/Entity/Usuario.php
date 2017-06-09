@@ -3,7 +3,7 @@ namespace Api\Model\Entity;
 
 class Usuario extends \GORM\Model{
     private $idUsuario;
-    private $facebookId;
+    private $idFacebook;
     private $emailUsuario;
     private $senhaUsuario;
     private $nomeUsuario;
@@ -38,7 +38,7 @@ class Usuario extends \GORM\Model{
     public function __set($attr, $value){ 
         switch ($attr) {
             case 'senhaUsuario':
-                $this->$attr = md5($value);
+                $this->$attr = $value;
                 break;
             
             default:
@@ -52,7 +52,7 @@ class Usuario extends \GORM\Model{
      * @param String $attr
      * @return String
      */
-    public function __get($attr){
+    public function __get($attr = null){
         switch ($attr) {
             case 'Permissao':
                 $idPermissao    = (int) $this->fkPermissao;
@@ -82,6 +82,7 @@ class Usuario extends \GORM\Model{
     public function toArray(): Array {
         $temp = array(
             'idUsuario' => $this->__get('idUsuario'),         
+            'idFacebook' => $this->__get('idFacebook'),
             'emailUsuario'  => $this->__get('emailUsuario'),          
             'senhaUsuario'  => $this->__get('senhaUsuario'),          
             'nomeUsuario'   => $this->__get('nomeUsuario'),           
