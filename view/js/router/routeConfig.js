@@ -188,11 +188,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
          }
     })
 
-      .state('user.conta.faturas', {
+      .state('user.conta.planos', {
       url: '/inseri',
-      templateUrl: 'view/modConta/fatura.htm',
+      templateUrl: 'view/modConta/planos.htm',
+      controller: 'planosCtrl',
        ncyBreadcrumb: {
-            label: 'Fatura'
+            label: 'Planos'
          }
     })
 //|#######################################################|
