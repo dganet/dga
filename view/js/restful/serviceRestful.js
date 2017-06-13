@@ -62,7 +62,7 @@ app.service('restful', function ($http,$sessionStorage) {
 
    //Update Picture
     var _updatePicture = function (values){
-        return  $http.put($updatePicture, values);
+        return  $http.put($updatePicture, values + token);
     };
 
 //|#######################################################|
