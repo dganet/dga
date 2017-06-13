@@ -1,0 +1,73 @@
+<div class="alert alert-success" ng-show="mensagemSucesso">
+  <strong>Sucesso!</strong> Dados cadastrado com sucesso.
+</div>
+
+<div class="acoes">
+
+<i class="fa fa-home" aria-hidden="true"></i>
+	<label>Cadastrar Imovel</label>
+
+</div>
+
+<hr>
+
+<div class="conteudo">
+
+    <div class="bloco-passo">
+
+    <div class="passo1" ng->
+    Passo 01
+    </div>
+
+    <div class="passo2">
+    Passo 02
+    </div>
+
+    <div class="passo3">
+    Passo 03
+    </div>
+
+    <div class="passo4">
+    Passo 04
+    </div>
+
+    <div class="passo5">
+    Passo 05
+    </div>
+</div>
+
+<div class="bloco-imovel">
+    <form name="first" ng-submit="first(proprietario)">
+        
+        <div class="row">
+
+        <div class="col-md-12">
+            <div class="form-group">
+            <label>Nome Completo</label>
+            <input type="text" class="form-control" ng-model="proprietario.nomeCliente" required> 
+        </div> 
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" class="form-control" ng-model="proprietario.emailCliente" required> 
+        </div> 
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+            <label>Endereço</label>
+            <input type="text" class="form-control" ng-model="proprietario.enderecoCliente" required> 
+        </div> 
+        </div>
+
+        </div>
+        
+    <hr>
+    <button type="submit" class="btn btn-primary">Avançar</button> 
+    </form>
+
+</div>
+
+</div>

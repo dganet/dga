@@ -32,4 +32,7 @@ $scope.master = {};
 
   };
 
+//*************CADASTRA IMOVEL *********************// 
+    $scope.passo1Style = 'passoSelecionado';
+
  });//END do controller
