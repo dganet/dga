@@ -14,8 +14,9 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteSave = 'App/cliente/save'; // Salva Cliente
    $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
-   //Classes Estados e Cidades
-  
+   //MODULO PEFIL
+   $updatePicture = 'caminho'; //Update Foto
+     
 
 //|#######################################################|
 //|############# **  MODULO USUARIOS ** ##################|
@@ -56,17 +57,14 @@ app.service('restful', function ($http,$sessionStorage) {
     };
 
 //|#######################################################|
-//|############# **  ESTADOS / CIDADES ** ################|
+//|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
 
-   //Lista todos os Estados
-    var _getEstados = function (dados){
-        return  $http.get('');
+   //Update Picture
+    var _updatePicture = function (values){
+        return  $http.put($updatePicture, values);
     };
-   //Lista todas as Cidades
-    var _getCidades = function (dados){
-        return  $http.get('');
-    };
+
 //|#######################################################|
 //|############# **  RETURNS ** ##########################|
 //|#######################################################|
@@ -83,9 +81,8 @@ app.service('restful', function ($http,$sessionStorage) {
         clienteList : _clienteList,
         clienteListId : _clienteListId,
 
-        //Return Estados e Cidades
-        getEstados : _getEstados,
-        getCidades : _getCidades
+        //Return Modulo Cliente
+        updatePicture : _updatePicture,
     }
 
 });

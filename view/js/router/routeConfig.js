@@ -209,6 +209,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.perfil.picture', {
       url: '/imagem',
       templateUrl: 'view/modPerfil/picturePerfil.htm',
+      controller:'picturePerfilCtrl',
        ncyBreadcrumb: {
             label: 'Mudar Imagem do Perfil'
          }
