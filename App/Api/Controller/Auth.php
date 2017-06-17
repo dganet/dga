@@ -7,6 +7,7 @@ class Auth{
      */
     public function __construct(){
     }
+    
     /**
      * Função para fazer o login na aplicação
      * 

@@ -97,6 +97,14 @@ class UsuarioController {
             return $response->withJson(['message' => 'Ocorreu um problema na remoção do usuario', flag => false]);
         }   
     }
+    /**
+     * Metodo para verificação de email apos o cadastro
+     * 
+     * @param Request $request
+     * @param Response $response
+     * @param Array $args
+     * @return mixedJson
+     */
     public function confirm($request, $response, $args){
       $usuario = new Usuario();
       $usuario = $usuario->find('where creciUsuario='.$args['creci']);
@@ -159,7 +167,14 @@ class UsuarioController {
             }
         }
     }
-
+    /**
+     * Metodo para vincular as informações do usuario com as informações do facebook do mesmo.
+     * 
+     * @param Request $request
+     * @param Response $response
+     * @param Array $args
+     * @return mixedJson
+     */
     public function migrate($request, $response, $args){
         $post = json_decode($request->getBody(), true);
         $usuario = new Usuario();
@@ -182,4 +197,5 @@ class UsuarioController {
             ]);
         }
     }
+    
 }

@@ -4,6 +4,7 @@ namespace Api\Model\Entity;
 class Imagem extends \GORM\Model{
     private $idImagem;
     private $caminhoImagem;
+    private $tipoImagem;
     private $nomeImagem;
     private $statusImagem;
     private $createAtImagem;

@@ -73,8 +73,13 @@ $app->put('/cliente/update/{id}/{token}', \Api\Controller\ClienteController::cla
 $app->get('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::class . ':delete');
 // FIM CLIENTE
 /**
+ * IMAGEM
+ */
+$app->put('/imagem', \Api\Controller\ImageController::class . ':main');
+//FIM IMAGEM
+/**
  * TESTE
  */
-$app->get('/teste', \Api\Test\Teste::class . ':main');
+$app->get('/teste', \Api\Utils\Image::class . ':main');
 //##################################################################
 $app->run();

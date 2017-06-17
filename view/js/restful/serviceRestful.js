@@ -15,7 +15,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    //MODULO PEFIL
-   $updatePicture = 'caminho'; //Update Foto
+   $updatePicture = 'App/imagem'; //Update Foto
      
 
 //|#######################################################|
