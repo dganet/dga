@@ -15,11 +15,11 @@
 
     <div class="bloco-passo">
 
-    <div class="passo1" ng->
+    <div class="passo1" style="{{passo1}}">
     Passo 01
     </div>
 
-    <div class="passo2">
+    <div class="passo2" style="{{passo2}}">
     Passo 02
     </div>
 
@@ -36,37 +36,82 @@
     </div>
 </div>
 
+<!-- PASSO 1 -->
+
 <div class="bloco-imovel">
-    <form name="first" ng-submit="first(proprietario)">
+        <!-- FORMULARIO QUE CHECK O CPF -->
+        <div class="row" ng-if="formCPF == 'ativo'">
+            <form name="FormCPF" ng-submit=checkCPF(proprietario)>                
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <label>CPF</label>
+                    <input type="text" class="form-control" ng-model="proprietario.CPFproprietario" ui-br-cpf-mask required>                     
+                </div> 
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search" aria-hidden="true"></i></button>                  
+                </div> 
+                </div>
+            </form>
+
+        </div>
         
+
+
+    <!-- AO VERIFICAR O CPF PRINTA NA TELA O DADOS DO PROPRIETARIO OU FORMULARIO EM BRANCO -->
+    <div ng-if="formProprietario == 'ativo'">
         <div class="row">
-
-        <div class="col-md-12">
-            <div class="form-group">
-            <label>Nome Completo</label>
-            <input type="text" class="form-control" ng-model="proprietario.nomeCliente" required> 
-        </div> 
-        </div>
-
-        <div class="col-md-12">
-            <div class="form-group">
-            <label>E-mail</label>
-            <input type="email" class="form-control" ng-model="proprietario.emailCliente" required> 
-        </div> 
-        </div>
-
-        <div class="col-md-12">
-            <div class="form-group">
-            <label>Endereço</label>
-            <input type="text" class="form-control" ng-model="proprietario.enderecoCliente" required> 
-        </div> 
-        </div>
-
-        </div>
+             <form name="first" ng-submit="primeiroPasso(proprietario)">
         
-    <hr>
-    <button type="submit" class="btn btn-primary">Avançar</button> 
-    </form>
+            <div class="alert alert-success">
+                <strong>Novo Proprietário!</strong> Não foi encontrado nenhum proprietário nos seus registro com este cpf , deseja realmente criar um novo ?
+            </div>
+                             
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" ng-model="proprietario.nomeProprietario" required>                     
+                </div> 
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>CPF</label>
+                    <input type="text" class="form-control" ng-model="proprietario.CPFproprietario" disabled ui-br-cpf-mask required>                     
+                </div> 
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" ng-model="proprietario.emailProprietario" required>                     
+                </div> 
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" ng-model="proprietario.telefoneProprietario" ui-br-phone-number required>                     
+                </div> 
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                <hr>
+                
+                <button type="submit" class="btn btn-primary">Avançar</button>  
+                <button ng-click="back('cpf')" class="btn btn-danger">Voltar</button>                    
+                </div> 
+                </div>
+              
+                  
+                  
+         </form>
+               </div><!-- row -->
+
+     </div>  
 
 </div>
 

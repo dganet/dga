@@ -1,6 +1,4 @@
 
-/* Desktop maiores */
-@media (min-width: 1200px) { 
 body, html,{
  	margin: 0 auto;
 }
@@ -218,11 +216,11 @@ background:#007f7f;
 }
 
 .bloco-passo {
-	width: 150px;
+	width: 15%;
 	float: left;
 }
 .bloco-imovel {
-	width: 1000px;
+	width: 85%;
 	float: left;
 }
 .passo1 {
@@ -272,6 +270,3 @@ background:#007f7f;
 }
 /*  FIM  */
 
-
-
-} 
