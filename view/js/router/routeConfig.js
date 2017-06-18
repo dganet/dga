@@ -82,6 +82,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.imovel.new', {
       url: '/inseri',
       templateUrl: 'view/modImovel/newImovel.htm',
+      controller: 'imovelCtrl',
        ncyBreadcrumb: {
             label: 'Novo Imovel'
          }

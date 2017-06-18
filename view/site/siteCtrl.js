@@ -16,15 +16,15 @@
 
     //CONFIGURAÇÕES PLUGIN FACEBBOK
 $scope.FBLogin = function (){
-    FB.login(function(response) {
-    if (response.authResponse) {
+    FB.login(function(dados) {
+    if (dados.authResponse) {
      FB.api('/me', function(response) {
         // Pega o Nome do Facebook Logado   
         $scope.nomeFacebook = response.name;
         //VARIAVEL ID do facebook
-        var idFacebook = response.id;
+        var values  = dados.authResponse;
         //Seviço executado
-         restful.usuarioLoginFB(idFacebook).success(function(response){
+         restful.usuarioLoginFB(values).success(function(response){
              //Retorno do Back
              var auth = response.flag;
              // IF
