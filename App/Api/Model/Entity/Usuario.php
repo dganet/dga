@@ -95,7 +95,6 @@ class Usuario extends \GORM\Model{
             'updateAtUsuario'   => $this->__get('updateAtUsuario'),           
             'statusUsuario' => $this->__get('statusUsuario'),         
             'fkPermissao'   => $this->__get('fkPermissao'),
-            'fkAgenda'   => $this->__get('fkAgenda'),
             'fkCarteiraImovel' => $this->__get('fkCarteiraImovel'),
             'fkCarteiraCliente' => $this->__get('fkCarteiraCliente')        
         );

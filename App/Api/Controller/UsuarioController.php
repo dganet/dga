@@ -141,8 +141,9 @@ class UsuarioController {
      */
     public static function checkFaceLogin($post){
         $usuario = new Usuario();
+        $cache = new Cache();
         $usuario->_setDebug(false);
-        $usuario = $usuario->find("where idFacebook='".$post['userId']."' OR emailUsuario='".$post['emailUsuario']."'");
+        $usuario = $usuario->find("where idFacebook='".$post['userID']."'");
         if (is_null($usuario->emailUsuario)){
             //então o cara não tem cadastro vinculado com facebook.
             return 
@@ -155,7 +156,7 @@ class UsuarioController {
             if(is_null($usuario->idFacebook)){
                 // Caso o usuario não possua o facebook ID e tenha o email do facebook igual
                 // ao email cadastrado no imobiliar, então, ele vincula as duas informações de forma automatica
-                $usuario->idFacebook = $post['userId'];
+                $usuario->idFacebook = $post['userID'];
                 $usuario->update();
                 return 
                 [
@@ -163,6 +164,7 @@ class UsuarioController {
                     'message ' => 'Email do usuario já cadastrado no Imobiliar, anexando facebook a sua conta cadastrada'
                 ];
             }else{
+                $cache->save($post['accessToken'], $usuario->toArray());
                 return $usuario->toArray();    
             }
         }

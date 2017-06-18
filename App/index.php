@@ -80,6 +80,6 @@ $app->put('/imagem', \Api\Controller\ImageController::class . ':main');
 /**
  * TESTE
  */
-$app->get('/teste', \Api\Utils\Image::class . ':main');
+$app->get('/teste', \Api\Test\Teste::class . ':main');
 //##################################################################
 $app->run();

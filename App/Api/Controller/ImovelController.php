@@ -44,10 +44,27 @@ class ImovelController {
             unset($post['proprietario']);
             $galeria = Galeria($post['galeria']);
             unset($post['galeria']);
-            $imovel = new Imovel($post);
+            $imovel = new Imovel($post['imovel']);
             $imovel->fkGaleria = $galeria->save(true);
             $imovel->fkProprietario = $proprietario->save(true);
-            $proprietario->save();
+            $r = $imovel->save();
+            if ($r){
+                return $response->withJson([
+                    'flag' => true,
+                    'message' => 'Imovel salvo com sucesso!'
+                ]);
+            }else{
+                return $response->withJson([
+                    'flag' => false,
+                    'message' => 'Não foi possivel salvar o imovel'
+                ]);
+            }
+
+        }else{
+            return $response->withJson([
+                'flag' => false,
+                'message' => 'Não há uma sessão valida aberta, ou a sessão atual expirou'
+            ]);
         }
     }
 

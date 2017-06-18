@@ -32,14 +32,14 @@ class ImageController{
         //#######
         //Verifica se tem alguma imagem
         if(is_null($data)){
-            return [
+            return $response->withJson([
               'flag' => false,
               'message' => 'Não há imagens para serem carregadas'  
-            ];
+            ]);
         }else{
             //verifica qual é o tipo da imagem 
             if ($this->tipo == 'II'){
-
+                
             }
             //Foto do cliente
             if ($this->tipo == 'FC'){
