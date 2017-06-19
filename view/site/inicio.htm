@@ -20,26 +20,25 @@
 <!-- Seach do Site-->
 <div class="bloco-search">
   <label>Procure o seu Ímovel</label>
-<form action="">
+<form action="#/corretor">
 
   <div class="row">
     <div class="col-md-5">
       <div class="form-group">
-        <select> 
-          <option value="">Selecione o Estado</option>
-          <option value="">São Paulo</option>
-          <option value="">Mina Gerais</option>
+        <select ng-change="executeCidade(imovel.id)" 
+          ng-options="imovel.id as imovel.nome for imovel in estados track by imovel.id" 
+          ng-model="imovel.id">
+
+            <option value="">Selecione Estado</option>
         </select>
        </div>
       </div>
 
     <div class="col-md-5">
       <div class="form-group">
-        <select> 
-          <option value="">Selecione a Cidade</option>
-          <option value="">São Paulo</option>
-          <option value="">Mina Gerais</option>
-        </select>
+<select ng-change="executeBairro(imovel.idCidade)" ng-disabled="!imovel.id" ng-options="c.id as c.nome for c in cidades | filter: {estado: imovel.id}" ng-model="imovel.idCidade">
+<option value="">Selecione Cidade</option>
+</select>
         </div>
     </div>
 

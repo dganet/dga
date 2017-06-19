@@ -47,7 +47,7 @@ $scope.master = {};
         // Cria a variavel com o CPF
         var cpf = value;
         //Consula no Back-end se existe o cpf
-        $http.get('App/usuario/login/facebook',9999).success(function(response){
+        $http.get('caminho').success(function(response){
             $scope.formCPF = 'inativo';
             var flag = response.flag;
                 //Se não existir
@@ -77,6 +77,7 @@ $scope.master = {};
             $scope.passo1 = {};
             $scope.passo2 = 'background:gray; color:white';
             $scope.formProprietario = 'inativo';
+            
             
         };
  });//END do controller

@@ -1,7 +1,17 @@
- app.controller("siteCtrl", function($scope, $http, $timeout , $location, $sessionStorage, restful){
+ app.controller("siteCtrl", function($scope, $http, $timeout , $location, $sessionStorage, restful, serviceEnderecos){
     //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
+    //Endereços Estado / Cidade
+    	serviceEnderecos.getEstados().success(function (response){
+		$scope.estados = response;
+	});
+    //Pega a cidade referente o ID da escolha
+     $scope.executeCidade = function (id){
+         serviceEnderecos.getCidades(id).success(function (response){
+         $scope.cidades = response;                    
+        });
+      };
 
     //Questionário SIM ou NAO da Conta do facebook
     $scope.contaSim = function (){  

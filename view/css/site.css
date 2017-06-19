@@ -4,7 +4,7 @@ header {
     border-bottom: 25px solid #51a8b1;
     background-color: white;
     padding: 0px 50px;
-        box-shadow: 5px 5px 15px black;
+    box-shadow: 5px 5px 15px black;
 }
 
 .logo-site {
@@ -121,66 +121,101 @@ header {
     font-size: 16px;
 }
 
-/* MODAL */ 
-.container {width: 500px; margin: 50px auto}
+/* SITE CORRETOR */
 
-.open-modal {
-  background-color:#38ddf7;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  outline: none;
-  padding: 20px 40px;
-  text-transform: uppercase
-}
-
-.open-modal:hover {background-color: #bff2e5}
-
-.modal {
-  background-color: #dbd9d9;
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  height: 200px;
-  margin-left: -200px;
-  margin-top: -150px;
-  padding: 50px;
-  border-radius: 5px;
-  z-index: 10;
-  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.7);
-}
-
-.close-modal {
-  color:  #000;
-  text-decoration: none;
-  float: right;
-  position: absolute;
-  top: 10px;
-  right: 20px
-}
-
-@media (max-width : 37.500rem) {
-
-  .modal {
-  	top: 0;
-  	left: 0;
+.corpo-corretor{
+    margin: 0 auto;
     width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 1.250rem
-  }
-  
-  .close-modal{
-    display: block;
-   position: relative;
-   padding: 5px 10px 20px 0
-  }
-  
-  .modal-content{
-    clear: both;
-    padding-right: 1.25rem
-  }
-  
+    position: fixed;
 }
+
+.topo-corretor{
+    width: 100%;
+    height: 50px;
+    background: #51A8B1;
+    box-shadow: 1px 1px 5px black; 
+}
+
+.topo-conteudo {
+    margin: 0 auto;
+    height: 50px;
+    width: 1024px;
+}
+
+.logo-imobiliar{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 0px 0px 0px;
+}
+.corretor {
+    float: right;
+    margin: -40px 0px 0px 0px;  
+
+}
+
+.nome-corretor {
+    color: white;
+    font-weight: bold;
+    float: right;
+    padding: 15px 20px 0px 0px;
+}
+.foto-corretor {
+    float: right;
+}
+.bloco-conteudo {
+    width: 100%;
+    position: fixed;
+	bottom: 10px;
+	top:50px;
+    overflow: auto;
+    margin-top: 5px;    
+}
+.conteudo-corretor{
+	width: 1024px;
+    margin: 0 auto;
+}
+
+.filtro-corretor-imovel{
+    margin-top: 25px;
+    padding: 15px;
+    background:#DEEEFF;
+}
+.section-corretor{
+    width: 800px;
+    margin-top: 20px;
+    padding: 20px;
+    background: #DEEEFF;
+    display: table;
+    float: left;
+
+}
+.bloco-corretor-imoveis{
+    width: 240px;
+    background:#FFFEFE;
+    font-size: 16px;
+    float: left;
+    padding: 10px;
+    margin-right: 13px;
+    margin-bottom:10px;
+}
+.corretor-ref {
+    padding:10px 0px 0px 0px;
+}
+.corretor-valor{
+    padding:10px 0px 0px 0px;
+}
+.corretor-regiao {
+    padding:10px 0px 10px 0px;
+}
+.corretor-detalhes {
+    margin:0 auto;
+}
+.aside-corretor{
+    float: right;
+    width: 204px;
+    margin-left:10px;
+    margin-top:20px;
+}
+.footer{}
+        

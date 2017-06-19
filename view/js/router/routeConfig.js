@@ -10,10 +10,16 @@ app.config(function ($stateProvider, $urlRouterProvider){
          controller:'siteCtrl'
          
     })
+
     .state('login.inicio', {
       url: '/inicio',
       templateUrl: 'view/site/inicio.htm',
       controller:'siteCtrl',
+    })
+
+    .state('corretor', {
+      url: '/corretor',
+      templateUrl: 'view/site/corretor.htm',
     })
 
       .state('user', {
