@@ -39,7 +39,8 @@ trait Finder
             $consulta   = $db->query($sql);
             $consulta   = $consulta->fetch(PDO::FETCH_ASSOC);
             $cls        =  get_called_class();
-            return new $cls($consulta);
+            $cls = $cls::getInstance();
+            return  $cls->load($consulta);
         }
     }
 }

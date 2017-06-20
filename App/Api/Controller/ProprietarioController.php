@@ -107,7 +107,7 @@ class ProprietarioController{
     public function update($request, $responsem ,$args){
         $token = $args['token'];
         if (Auth::_isLoggedIn($token)){
-            $this->proprietario->load(json_decode($request->getBody()));
+            $this->proprietario->load(json_decode($request->getBody(), true));
             if($this->proprietario->update()){
                 return $request->withJson([
                     'message' => 'Proprietario atualizado com sucesso!',
@@ -119,6 +119,20 @@ class ProprietarioController{
                     'flag' => false
                 ]);
             }
+        }
+    }
+
+    public function cpfCheck($request, $response, $args){
+        $token = $args['token'];
+        if (Auth::_isLoggedIn($token)){
+            $post = json_decode($request->getBody(), true);
+            $this->proprietario = $this->proprietario->find('where cpfProprietario='.$post['cpfProprietario']);
+            return $response->withJson($this->proprietario->toArray());
+        }else{
+            return $response->withJson([
+                'flag' => false,
+                'message' => 'Não foi possivel verificar o CPF do proprietario pois o usuario aparentemente não está logado e/ou a sessão expirou'
+            ]);
         }
     }
 }

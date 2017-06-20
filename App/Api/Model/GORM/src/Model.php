@@ -50,7 +50,51 @@ class Model{
 	 * 
 	 * @var boolean
 	 */
-	private static $debug = false;
+	private $debug = false;
+	/**
+     * Retorna uma instância única de uma classe.
+     *
+     * @staticvar Singleton $instance A instância única dessa classe.
+     *
+     * @return Singleton A Instância única.
+     */
+    public static function getInstance()
+    {
+        static $instance = null;
+        if (null === $instance) {
+            $instance = new static();
+        }
+
+        return $instance;
+    }
+	/**
+     * Construtor do tipo protegido previne que uma nova instância da
+     * Classe seja criada através do operador `new` de fora dessa classe.
+     */
+    protected function __construct()
+    {
+		return $this->getInstance();
+    }
+
+    /**
+     * Método clone do tipo privado previne a clonagem dessa instância
+     * da classe
+     *
+     * @return void
+     */
+    private function __clone()
+    {
+    }
+
+    /**
+     * Método unserialize do tipo privado para prevenir a desserialização
+     * da instância dessa classe.
+     *
+     * @return void
+     */
+    private function __wakeup()
+    {
+    }
 	/**
 	 * Set a value for debug
 	 * 
@@ -91,10 +135,10 @@ class Model{
 	 * @param Array $array
 	 * @return Object
 	 */
-	public function load(Array $array = []){
-		$cls = get_called_class();
-		return new $cls($array);
-	}	
+	//public function load(Array $array = []){
+	//	$cls = get_called_class();
+	//	return  $cls($array);
+	//}	
 	/**
 	*	Carrega a Tabela na variavel dentro da trait Builder::$table
 	*	@return void

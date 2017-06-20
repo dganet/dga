@@ -5,6 +5,7 @@ class Proprietario extends \GORM\Model{
     private $idProprietario;
     private $nomeProprietario;
     private $sobrenomeProprietario;
+    private $cpfProprietario;
     private $emailProprietario;
     private $statusProprietario;
     private $createAtProprietario;

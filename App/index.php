@@ -78,6 +78,34 @@ $app->get('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::cla
 $app->put('/imagem', \Api\Controller\ImageController::class . ':main');
 //FIM IMAGEM
 /**
+ * PROPRIETARIO
+ */
+$app->post('/proprietario/cpf/{token}', \Api\Controller\ProprietarioController::class . ':cpfCheck');
+// FIM PROPRIETARIO
+/**
+ * ENDERECOS
+ */
+//Retorna os paises cadastrados
+$app->get('/pais', \Api\Controller\EnderecoController::class . ':getPais');
+//Retorna os Estados cadastrados
+$app->get('/estado', \Api\Controller\EnderecoController::class . ':getEstado');
+//Retorna as Cidades Cadastradas 
+$app->get('/cidade', \Api\Controller\EnderecoController::class . ':getCidade');
+//Retorna os bairros cadastrados
+$app->get('/bairro', \Api\Controller\EnderecoController::class . ':getBairro');
+//Retorna Pais por id
+$app->get('/pais/{id}', \Api\Controller\EnderecoController::class . ':getPaisById');
+//Retorna os Estados por id
+$app->get('/estado/{id}', \Api\Controller\EnderecoController::class . ':getEstadoById');
+//Retorna as Cidades por id 
+$app->get('/cidade/{id}', \Api\Controller\EnderecoController::class . ':getCidadeById');
+//Retorna os bairros por id
+$app->get('/bairro/{id}', \Api\Controller\EnderecoController::class . ':getBairroById');
+
+//Insere Novo bairro
+$app->post('/bairro/save', \Api\Controller\EnderecoController::class . ':setBairro');
+
+/**
  * TESTE
  */
 $app->get('/teste', \Api\Test\Teste::class . ':main');

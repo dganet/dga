@@ -87,7 +87,6 @@ trait Builder
     */
     public function makeSelect($value){
         $temp = self::$select.$this->table;
-
         //Checa se é um array
         if(is_array($value)){
             // Converte a Classe para um array
