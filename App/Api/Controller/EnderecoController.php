@@ -6,6 +6,19 @@ use \Api\Model\Entity\Pais,
 \Api\Model\Entity\Bairro; 
 class EnderecoController{
 
+    private $pais;
+    private $estado;
+    private $cidade;
+    private $bairro;
+    
+    public function __construct(){
+        $this->pais   = Pais::getInstance();
+        $this->estado = Estado::getInstance(); 
+        $this->cidade = Cidade::getInstance();
+        $this->bairro = Bairro::getInstance();
+    }
+    
+    
     /**
      * Retorna todos os paises cadastrados
      * 
@@ -15,8 +28,7 @@ class EnderecoController{
      * @return Json
      */
     public function getPais($request, $response, $args){
-        $pais = new Pais();
-        return $response->withJson($pais->all());
+        return $response->withJson($this->pais->all());
     }
     /**
      * Retorna todos os estados cadastrados
@@ -27,9 +39,8 @@ class EnderecoController{
      * @return Json
      */
      public function getEstado($request, $response, $args){
-        $estado = new Estado();
-        $estado->recursive = false;
-        return $response->withJson($estado->all());
+        $this->estado->recursive = false;
+        return $response->withJson($this->estado->all());
 
     }
     /**
@@ -41,8 +52,7 @@ class EnderecoController{
      * @return Json
      */
      public function getCidade($request, $response, $args){
-        $cidade = Cidade::getInstance();
-        return $response->withJson($cidade->all());
+        return $response->withJson($this->cidade->all());
     }
     /**
      * Retorna todos os Bairros cadastrados
@@ -53,8 +63,7 @@ class EnderecoController{
      * @return Json
      */
      public function getBairro($request, $response, $args){
-        $bairro = new Bairro();
-        return $response->withJson($bairro->all());
+        return $response->withJson($this->bairro->all());
     }
     /**
      * Retona o Pais conforme o id
@@ -65,9 +74,8 @@ class EnderecoController{
      * @return Json
      */
     public function getPaisById($request, $response, $args){
-        $pais = Pais::getInstance();
-        $pais->find('where id='.$args['id']);
-        return $response->withJson($pais->toArray());
+        $this->pais->find('where id='.$args['id']);
+        return $response->withJson($this->pais->toArray());
     }
     /**
      * Retorna o Estado conforme o ID em modo cascata
@@ -78,10 +86,9 @@ class EnderecoController{
      * @return Json
      */
     public function getEstadoById($request, $response, $args){
-        $estado = Estado::getInstance();
-        $estado->recursive=true;
-        $estado->find('where id='.$args['id']);
-        return $response->withJson($estado->toArray());
+        $this->estado->recursive=true;
+        $this->estado->find('where id='.$args['id']);
+        return $response->withJson($this->estado->toArray());
     }
     /**
      * Retorna a cidade conforme o ID em modo cascata
@@ -92,10 +99,9 @@ class EnderecoController{
      * @return Json
      */
     public function getCidadeById($request, $response, $args){
-        $cidade = Cidade::getInstance();
-        $cidade->recursive = true;
-        $cidade->find('where id='.$args['id']);
-        return $response->withJson($cidade->toArray());
+        $this->cidade->recursive = true;
+        $this->cidade->find('where id='.$args['id']);
+        return $response->withJson($this->cidade->toArray());
     }
     /**
      * Retorna o bairro conforme o ID em modo cascata
@@ -106,9 +112,41 @@ class EnderecoController{
      * @return Json
      */
     public function getBairroById($request, $response, $args){
-        $bairro = Bairro::getInstance();
-        $bairro->recursive= true;
-        $bairro->find('where id='.$args['id']);
-        return $response->withJson($bairro->toArray());
+        $this->bairro->recursive= true;
+        $this->bairro->find('where id='.$args['id']);
+        return $response->withJson($this->bairro->toArray());
+    }
+    /**
+     * Retorna todos os bairros de uma determinada cidade(ID)
+     * 
+     * @param Request $request
+     * @param Response $response
+     * @param Mixed $args
+     * @return Json
+     */
+    public function getBairroByCidade($request, $response, $args){
+        return $response->withJson($this->bairro->select('where cidade='.$args['id']));
+    }
+    /**
+     * Retorna todas as cidades de um determinado estado
+     * 
+     * @param Request $request
+     * @param Response $response
+     * @param Mixed $args
+     * @return Json
+     */
+     public function getCidadeByEstado($request, $response, $args){
+        return $response->withJson($this->cidade->select('where estado='.$args['id']));
+    }
+    /**
+     * Retorna todos os estados de um determinado pais
+     * 
+     * @param Request $request
+     * @param Response $response
+     * @param Mixed $args
+     * @return Json
+     */
+     public function getEstadoByPais($request, $response, $args){
+        return $response->withJson($this->estado->select('where pais='.$args['id']));
     }
 }

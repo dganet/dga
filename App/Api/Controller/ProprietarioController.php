@@ -12,7 +12,7 @@ class ProprietarioController{
      * Construtor
      */
     public function __construct(){
-        $this->proprietario = new Proprietario();
+        $this->proprietario = Proprietario::getInstance();
     }
     /**
      * Lista todos os proprietarios

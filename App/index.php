@@ -101,7 +101,12 @@ $app->get('/estado/{id}', \Api\Controller\EnderecoController::class . ':getEstad
 $app->get('/cidade/{id}', \Api\Controller\EnderecoController::class . ':getCidadeById');
 //Retorna os bairros por id
 $app->get('/bairro/{id}', \Api\Controller\EnderecoController::class . ':getBairroById');
-
+//Retorna um todos os bairros de uma cidade (ID referente a cidade)
+$app->get('/bairro/cidade/{id}', \Api\Controller\EnderecoController::class . ':getBairroByCidade');
+//Retorna um todas as cidades de um estado (ID referente a estado)
+$app->get('/cidade/estado/{id}', \Api\Controller\EnderecoController::class . ':getCidadeByEstado');
+//Retorna um todos os estados de um pais (ID referente a pais)
+$app->get('/estado/pais/{id}', \Api\Controller\EnderecoController::class . ':getEstadoByPais');
 //Insere Novo bairro
 $app->post('/bairro/save', \Api\Controller\EnderecoController::class . ':setBairro');
 

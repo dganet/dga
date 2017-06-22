@@ -113,4 +113,10 @@ class Usuario extends \GORM\Model{
     public function __toString(){
         return var_dump($this->toArray());
     }
+
+    public function load($data){
+        foreach ($data as $key => $value) {
+            $this->__set($key,$value);
+        }
+    }
 }

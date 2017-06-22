@@ -14,11 +14,15 @@ trait Finder
     public function select($array = []){
         self::loadTable();
         $sql        = self::makeSelect($array);
-        $con        = new ConnectionFactory($this->db);
-        $db         = $con->getInstance();
-        $consulta   = $db->query($sql);
-        $consulta   = $consulta->fetchAll(PDO::FETCH_ASSOC);
-        return $consulta;
+        if (self::_getDebug()){
+            print_r($sql);
+        }else{
+            $con        = new ConnectionFactory($this->db);
+            $db         = $con->getInstance();
+            $consulta   = $db->query($sql);
+            $consulta   = $consulta->fetchAll(PDO::FETCH_ASSOC);
+            return $consulta;
+        }
     }
     /**
      * Procura no banco de dados por 1 registro conforme o tipo de dado enviado

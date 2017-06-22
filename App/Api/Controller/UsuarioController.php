@@ -27,7 +27,7 @@ class UsuarioController {
      */
     public function listById($request,$response,$args){
         $id = $args['id'];
-        $usuario = new Usuario();
+        $usuario = Usuario::getInstance();
         return $response->withJson($usuario->find($id)->toArray());
     }
     /**
@@ -40,13 +40,14 @@ class UsuarioController {
      */
     public function save($request, $response, $args){
         $post = json_decode($request->getBody());
-        $usuario = new Usuario($post);
+        $usuario = Usuario::getInstance();
+        $usuario->load($post);
         $usuario->createAtUsuario = date("Y-m-d H:i:s");
         $usuario->fkPermissao = 1;
         $usuario->statusUsuario = 'AGUARDANDOCONFIRMACAOEMAIL';
         $usuario->senhaUsuario = md5($usuario->senhaUsuario);
-        $imovel = new CarteiraImovel();
-        $cliente = new CarteiraCliente();
+        $imovel =  CarteiraImovel::getInstance();
+        $cliente = CarteiraCliente::getInstance();
         $imovel->nomeCarteiraImovel = "Carteira de Imovel de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
         $cliente->nomeCarteiraCliente = "Carteira de Cliente de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
         $usuario->fkCarteiraImovel = $imovel->save(true);
@@ -71,7 +72,8 @@ class UsuarioController {
     public function update($request, $response, $args){
         $id = $args['id'];
         $post = json_decode($request->getbody());
-        $usuario = new Usuario($post);
+        $usuario = Usuario::getInstance();
+        $usuario->load($post);
         if ($usuario->update()){
             return $response->withJson(['message' => 'Usuario atualizado com sucesso!', flag => true]);
         }else{
@@ -88,7 +90,7 @@ class UsuarioController {
      */
     public function delete($request, $response, $args){
         $id = $args['id'];
-        $usuario = new Usuario();
+        $usuario = Usuario::getInstance();
         $usuario->idUsuario = $id;
         $usuario->status = 'INATIVO';
         if($usuario->update()){
@@ -106,8 +108,8 @@ class UsuarioController {
      * @return mixedJson
      */
     public function confirm($request, $response, $args){
-      $usuario = new Usuario();
-      $usuario = $usuario->find('where creciUsuario='.$args['creci']);
+      $usuario = Usuario::getInstance();
+      $usuario->find('where creciUsuario='.$args['creci']);
       $usuario->statusUsuario = 'ATIVO';
       if ($usuario->update()){
           return $response->withJson([
@@ -128,9 +130,9 @@ class UsuarioController {
      * @return Object
      */
     public static function forgot($email){
-        $usuario = new Usuario();
+        $usuario = Usuario::getInstance();
         $usuario->email = $email;
-        $usuario = $usuario->find("where emailUsuario = '".$email."'");
+        $usuario->find("where emailUsuario = '".$email."'");
         return $usuario;
     }
     /**
@@ -140,10 +142,10 @@ class UsuarioController {
      * @return void
      */
     public static function checkFaceLogin($post){
-        $usuario = new Usuario();
+        $usuario = Usuario::getInstance();
         $cache = new Cache();
         $usuario->_setDebug(false);
-        $usuario = $usuario->find("where idFacebook='".$post['userID']."'");
+        $usuario->find("where idFacebook='".$post['userID']."'");
         if (is_null($usuario->emailUsuario)){
             //então o cara não tem cadastro vinculado com facebook.
             return 
@@ -179,9 +181,9 @@ class UsuarioController {
      */
     public function migrate($request, $response, $args){
         $post = json_decode($request->getBody(), true);
-        $usuario = new Usuario();
+        $usuario = Usuario::getInstance();
         $usuario->_setDebug(false);
-        $usuario = $usuario->find("where emailUsuario='".$post['emailUsuario']."' AND senhaUsuario='".md5($post['senhaUsuario'])."'");
+        $usuario->find("where emailUsuario='".$post['emailUsuario']."' AND senhaUsuario='".md5($post['senhaUsuario'])."'");
         if (is_null($usuario->emailUsuario)){
             return $response->withJson(
             [
