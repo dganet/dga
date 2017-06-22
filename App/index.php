@@ -45,7 +45,7 @@ $app->post('/usuario/login/forgot', \Api\Controller\AuthController::class . ':fo
  */
 //FIM IMOVEIS
 /**
- * Proprietario
+ * PROPRIETARIO
  */
 //Lista todos os proprietario
 $app->get('/proprietario/list', \Api\Controller\ProprietarioController::class . ':list');
@@ -57,6 +57,8 @@ $app->post('/proprietario/save/{token}', \Api\Controller\ProprietarioController:
 $app->put('/proprietario/update/{id}/{token}', \Api\Controller\ProprietarioController::class . ':update');
 //Inativa um proprietario
 $app->delete('/proprietario/delete/{id}/{token}', \Api\Controller\ProprietarioController::class . ':delete');
+//Verifica se o proprietario foi inserido na casteira de cliente do usuario
+$app->post('/proprietario/cpf/{token}', \Api\Controller\ProprietarioController::class . ':cpfCheck');
 //FIM Proprietario
 /**
  * CLIENTE
@@ -77,11 +79,6 @@ $app->get('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::cla
  */
 $app->put('/imagem', \Api\Controller\ImageController::class . ':main');
 //FIM IMAGEM
-/**
- * PROPRIETARIO
- */
-$app->post('/proprietario/cpf/{token}', \Api\Controller\ProprietarioController::class . ':cpfCheck');
-// FIM PROPRIETARIO
 /**
  * ENDERECOS
  */
@@ -109,7 +106,6 @@ $app->get('/cidade/estado/{id}', \Api\Controller\EnderecoController::class . ':g
 $app->get('/estado/pais/{id}', \Api\Controller\EnderecoController::class . ':getEstadoByPais');
 //Insere Novo bairro
 $app->post('/bairro/save', \Api\Controller\EnderecoController::class . ':setBairro');
-
 /**
  * TESTE
  */

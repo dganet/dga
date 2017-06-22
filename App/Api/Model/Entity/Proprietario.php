@@ -98,4 +98,9 @@ class Proprietario extends \GORM\Model{
             return true;
         }
     }
+    public function load($data){
+        foreach ($data as $key => $value) {
+            $this->__set($key,$value);
+        }
+    }
 }

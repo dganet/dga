@@ -40,7 +40,6 @@ class Usuario extends \GORM\Model{
             case 'senhaUsuario':
                 $this->$attr = $value;
                 break;
-            
             default:
                 $this->$attr = $value;
                 break;
@@ -61,13 +60,14 @@ class Usuario extends \GORM\Model{
                 return $permissao;
                 break;
             case 'CarteiraCliente':
-                if($this->fkCarteiraCliente == null){
-                    return null;
-                }else{
-                    $CarteiraCliente = new CarteiraCliente();
-                    $CarteiraCliente->idCarteiraCliente = $this->fkCarteiraCliente;
-                    return $CarteiraCliente->carteira;
-                }
+                $carteiraCliente = CarteiraCliente::getInstance();
+                $carteiraCliente->find((int) $this->fkCarteiraCliente);
+                return $carteiraCliente->Carteira;
+                break;
+            case 'CarteiraImovel':
+                $carteiraImovel = CarteiraImovel::getInstance();
+                $carteiraImovel->find((int) $this->fkCarteiraImovel);
+                return $carteiraImovel; 
                 break;
             default:
                 return $this->$attr;

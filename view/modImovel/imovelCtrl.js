@@ -14,7 +14,7 @@ $scope.master = {};
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, formProprietario) {
             // Enviado os valores em objetos para api/user do php/slim
-            $http.post('App/cliente/save', + token , values).success(function(){
+            $http.post('App/cliente/save' + token , values).success(function(){
                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
                 $scope.mensagemSucesso = true;
                 $timeout(function () {
@@ -47,7 +47,8 @@ $scope.master = {};
         // Cria a variavel com o CPF
         var cpf = value;
         //Consula no Back-end se existe o cpf
-        $http.get('caminho').success(function(response){
+        $http.post('App/proprietario/cpf/'+ token, value).success(function(response){
+            console.log(value);
             $scope.formCPF = 'inativo';
             var flag = response.flag;
                 //Se não existir

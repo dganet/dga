@@ -3,6 +3,7 @@ namespace Api\Test;
 use \Api\Model\Entity\Usuario;
 use \Api\Model\Entity\CarteiraCliente;
 use \Api\Controller\Cache;
+use \Api\Controller\Auth;
 class Teste{
 
     /**
@@ -18,23 +19,12 @@ class Teste{
      * @return void
      */
     public function main($request, $response, $args){
-       $sql = 'SELECT * FROM ';
-       $post['table'] = 'usuario';
-       $post['conditions'] = 'WHERE';
-       $post['operator'] = 'AND';
-       $post['values'] = 'nomeUsuario=Guilherme';
-       //$post = json_decode($request->getBody(), true);
-       if (isset($post['field'])){
-           $sql .= '('.$post['field'].')';
-       }
-       $sql .= $post['table'];
-       $sql .= ' '.$post['conditions'];
-       $sql .= ' '.$post['values'];
-
-       echo $sql;
-
-       //echo str_replace('*', 'teste', $sql);
-       
-       
+        
+       /*echo "
+        <form method='post' action='/App/proprietario/cpf/$token'>
+            <input type='text' name='cpfProprietario'>
+            <input type='submit'>
+        </form>
+       ";*/
     }
 }
