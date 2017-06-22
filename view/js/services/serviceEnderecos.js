@@ -1,11 +1,11 @@
 app.factory("serviceEnderecos", function($http, $stateParams){
  	
  	 	var _getEstados = function () {
- 		return  $http.get('caminho');
+ 		return  $http.get('App/estado');
  	};
 
  	 	var _getCidades = function (id) {
- 		return $http.get('caminho' + id);
+ 		return $http.get('/App/cidade/estado/' + id);
  	
  	};
  	 	var _getBairros = function (id) {

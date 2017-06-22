@@ -1,7 +1,6 @@
  app.controller("imovelCtrl", function($scope, $http, $timeout , $location, $sessionStorage,$kookies){
 //Pegando Token
  var token = sessionStorage.getItem('usuario.token');
-
 //Oculta a Mensagem de sucesso
 $scope.mensagemSucesso = false;
 
@@ -45,9 +44,10 @@ $scope.master = {};
     //função para verificar cpf
     $scope.checkCPF = function (value){
         // Cria a variavel com o CPF
+        console.log(token);
         var cpf = value;
         //Consula no Back-end se existe o cpf
-        $http.get('caminho').success(function(response){
+        $http.get('token').success(function(response){
             $scope.formCPF = 'inativo';
             var flag = response.flag;
                 //Se não existir

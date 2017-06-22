@@ -6,11 +6,20 @@
     	serviceEnderecos.getEstados().success(function (response){
 		$scope.estados = response;
 	});
-    //Pega a cidade referente o ID da escolha
-     $scope.executeCidade = function (id){
-         serviceEnderecos.getCidades(id).success(function (response){
-         $scope.cidades = response;                    
-        });
+
+
+      $scope.teste = function(dados){
+          // Pega o id da Cidade escolhida
+          var idCidade = dados;
+          // Pega os dados da Cidade
+         serviceEnderecos.getCidades(idCidade).success(function (response){
+         $scope.cidades = response;    
+         console.log(response);
+         sessionStorage.setItem('cidade.nome', response.nome);
+         $scope.activePath = $location.path('/cidade/' + idCidade);                                             
+
+         });
+ 
       };
 
     //Questionário SIM ou NAO da Conta do facebook
@@ -197,4 +206,6 @@ $scope.FBLogin = function (){
        };
 
   };
+
+  
  });

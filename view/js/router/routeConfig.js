@@ -22,6 +22,24 @@ app.config(function ($stateProvider, $urlRouterProvider){
       templateUrl: 'view/site/corretor.htm',
     })
 
+    .state('cidade', {
+      url: '/cidade',
+      templateUrl: 'view/site/cidade.htm',
+      controller:'cidadeCtrl',
+    })
+
+
+      .state('cidade.detalhes', {
+		 	 url: '/:id',
+			 controller: function($scope, $stateParams) {
+						// get the id
+						$scope.id = $stateParams.id;
+				},
+							ncyBreadcrumb: {
+						label: 'Altera'
+				 }
+		})
+
       .state('user', {
       url: '/user',
       templateUrl: 'view/painel/home.htm',
