@@ -47,16 +47,8 @@ $scope.master = {};
         console.log(token);
         var cpf = value;
         //Consula no Back-end se existe o cpf
-<<<<<<< HEAD
-<<<<<<< HEAD
         $http.post('App/proprietario/cpf/'+ token, value).success(function(response){
-            console.log(value);
-=======
-        $http.get('token').success(function(response){
->>>>>>> 151d9c8bb670484a61b8b9da8cc2a601190fe903
-=======
-        $http.get('token').success(function(response){
->>>>>>> 151d9c8bb670484a61b8b9da8cc2a601190fe903
+
             $scope.formCPF = 'inativo';
             var flag = response.flag;
                 //Se não existir
