@@ -45,6 +45,7 @@ class AuthController{
     public function facebookLogin($request, $response, $args){
        $post = json_decode($request->getBody(),true);
        $usuario = UsuarioController::checkFaceLogin($post);
+       $usuario['token'] = $post['accessToken'];
        return $response->withJson($usuario);
     }
     /**

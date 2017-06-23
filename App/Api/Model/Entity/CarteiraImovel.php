@@ -33,9 +33,9 @@ class CarteiraImovel extends \GORM\Model{
      */
     public function __get($attr){
         switch ($attr) {
-            case 'Carteira':
-                $this->carteira = new Imovel();
-                $this->carteira = $this->carteira->select('where fkCarteiraImovel='.$this->idCarteiraCliente);
+            case 'Imovel':
+                $this->carteira = Imovel::getInstance();
+                $this->carteira = $this->carteira->select('where fkCarteiraImovel='.$this->idCarteiraImovel);
                 return $this->carteira;
                 break;
             default:
@@ -68,5 +68,10 @@ class CarteiraImovel extends \GORM\Model{
      */
     public function __toString(){
         return var_dump($this->toArray());
+    }
+    public function load($data){
+        foreach ($data as $key => $value) {
+            $this->__set($key,$value);
+        }
     }
 }

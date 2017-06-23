@@ -163,7 +163,7 @@ class UsuarioController {
                 return 
                 [
                     'flag' => true,
-                    'message ' => 'Email do usuario já cadastrado no Imobiliar, anexando facebook a sua conta cadastrada'
+                    'message ' => 'Email do usuario já cadastrado no Imobiliar, anexando facebook a sua conta cadastrada',
                 ];
             }else{
                 $cache->save($post['accessToken'], $usuario->toArray());

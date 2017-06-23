@@ -12,7 +12,7 @@ class ClienteController{
      * Construtor
      */
     public function __construct(){
-        $this->cliente = new Cliente();
+        $this->cliente = Cliente::getInstance();
     }
     /**
      * Lista todos os clientes

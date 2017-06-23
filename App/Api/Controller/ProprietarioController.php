@@ -1,6 +1,7 @@
 <?php
 namespace Api\Controller;
 use \Api\Model\Entity\Proprietario;
+use \Api\Model\Entity\Usuario;
 class ProprietarioController{
     /**
      * Variavel que receberá a instancia do model proprietario
@@ -34,7 +35,7 @@ class ProprietarioController{
      * @return MixidJson
      */
     public function listById($request, $response, $args){
-        return $response->withJson($this->proprietario->find($args['id']));
+        return $response->withJson($this->proprietario->find($args['id'])->toArray());
     }
     /**
      * Salva as informações do Proprietário
@@ -126,8 +127,18 @@ class ProprietarioController{
         $token = $args['token'];
         if (Auth::_isLoggedIn($token)){
             $post = json_decode($request->getBody(), true);
-            $this->proprietario = $this->proprietario->find('where cpfProprietario='.$post['cpfProprietario']);
-            return $response->withJson($this->proprietario->toArray());
+            $tokeninf = Auth::_getTokenInfo($token);
+            $usuario = Usuario::getInstance();
+            $usuario->load($tokeninf['conteudo']);
+            $imoveis = $usuario->CarteiraImovel->Imovel;
+            foreach ($imoveis as $key => $value) {
+                $this->proprietario->find((int) $imoveis[$key]['fkProprietario']);
+                if ($this->proprietario->cpfProprietario == $post['cpfProprietario']){
+                    return $response->withJson($this->proprietario->toArray());
+                    break;
+                } 
+            }
+            return $response->withJson(['flag' => false]);
         }else{
             return $response->withJson([
                 'flag' => false,
