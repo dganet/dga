@@ -5,6 +5,7 @@ app.factory("serviceEnderecos", function($http, $stateParams){
  	};
 
  	 	var _getCidades = function (id) {
+			  console.log(id);
  		return $http.get('/App/cidade/estado/' + id);
  	
  	};

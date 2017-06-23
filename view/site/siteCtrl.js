@@ -7,6 +7,15 @@
 		$scope.estados = response;
 	});
 
+$scope.executeCidade = function (id){
+
+		serviceEnderecos.getCidades(id).success(function (response){
+            console.log(response);
+			$scope.cidades = response;
+			
+		});
+
+	};
 
       $scope.teste = function(dados){
           // Pega o id da Cidade escolhida
