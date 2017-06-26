@@ -1,1 +1,1 @@
-var app = angular.module('myApp',['ui.router','ncy-angular-breadcrumb','ngStorage','ui.utils.masks','ng-file-model','ngKookies','ui.bootstrap']);
+var app = angular.module('myApp',['ui.router','ncy-angular-breadcrumb','ngStorage','ng-file-model','ui.utils.masks']);

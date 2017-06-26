@@ -9,7 +9,7 @@
 
 $scope.executeCidade = function (id){
 
-		serviceEnderecos.getCidades(id).success(function (response){
+		serviceEnderecos.getCidadesEstado(id).success(function (response){
 			$scope.cidades = response;
 			
 		});
