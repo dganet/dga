@@ -1,4 +1,4 @@
- app.controller("imovelCtrl", function($scope, $http, $timeout , $location, $sessionStorage,$kookies){
+ app.controller("imovelCtrl", function($scope, $http, $timeout , $location, $sessionStorage, serviceEnderecos){
 //Pegando Token
  var token = sessionStorage.getItem('usuario.token');
 //Oculta a Mensagem de sucesso
@@ -32,6 +32,7 @@ $scope.master = {};
   };
 
 //*************CADASTRA IMOVEL *********************// 
+    var p = $scope.proprietario = {};
 
     //Mudar o Css do Processo em ativo
     $scope.passo1 = 'background:gray; color:white';
@@ -44,19 +45,10 @@ $scope.master = {};
     //função para verificar cpf
     $scope.checkCPF = function (value){
         // Cria a variavel com o CPF
-        console.log(token);
         var cpf = value;
         //Consula no Back-end se existe o cpf
-<<<<<<< HEAD
-<<<<<<< HEAD
         $http.post('App/proprietario/cpf/'+ token, value).success(function(response){
-            console.log(value);
-=======
-        $http.get('token').success(function(response){
->>>>>>> 151d9c8bb670484a61b8b9da8cc2a601190fe903
-=======
-        $http.get('token').success(function(response){
->>>>>>> 151d9c8bb670484a61b8b9da8cc2a601190fe903
+            
             $scope.formCPF = 'inativo';
             var flag = response.flag;
                 //Se não existir
@@ -74,19 +66,58 @@ $scope.master = {};
 
         //função de voltar
         $scope.back = function (value){
-          if (value == 'cpf'){ $scope.formCPF = 'ativo';$scope.formProprietario = 'inativo';}  
-        };
+                if (value == 'cpf'){
+                $scope.formCPF = 'ativo';
+                $scope.formProprietario = 'inativo';
+                }
+
+                if (value == 'proprietario'){
+                $scope.formCPF = 'inativo';
+                $scope.formEndereco = 'inativo';  
+                $scope.passo1 = 'background:gray; color:white'; 
+                $scope.passo2 = {};
+                $scope.formProprietario = 'ativo';
+                }
+            };
 
         //Primeiro Passo 
-        $scope.primeiroPasso = function(dados){
+            $scope.primeiroPasso = function(dados){
             //, Coleta dados do proprietario
-            $scope.proprietario = dados;
-            //Segundo Passo 
-                
+           $scope.proprietario.push = dados;
+            //Segundo Passo                 
             $scope.passo1 = {};
             $scope.passo2 = 'background:gray; color:white';
             $scope.formProprietario = 'inativo';
             
+            // Ativa o Formulario do Segundo Passo     
+            $scope.formEndereco = 'ativo';      
+
+            // Load Estados
+            serviceEnderecos.getEstados().success(function (response){
+            $scope.estados = response;
+            });
+            // Load Cidades referente ao Estado
+            $scope.executeCidade = function (id){
+                    serviceEnderecos.getCidadesEstado(id).success(function (response){
+                    $scope.cidades = response;
+                });
+            };
+            // Load Bairros referente a Cidade
+            $scope.executeBairro = function (id){
+                 serviceEnderecos.getBairros(id).success(function (response){
+                $scope.bairros = response;			
+	        });
+
+            $scope.teste = function(){
+                console.log('chupa');
+            };
+
+            };
+        };
+        
+
+        $scope.segundoPasso = function (values){
+            console.log(p);
             
         };
  });//END do controller

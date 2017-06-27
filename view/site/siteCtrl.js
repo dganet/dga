@@ -7,14 +7,21 @@
 		$scope.estados = response;
 	});
 
+$scope.executeCidade = function (id){
 
-      $scope.teste = function(dados){
+		serviceEnderecos.getCidadesEstado(id).success(function (response){
+			$scope.cidades = response;
+			
+		});
+
+	};
+
+      $scope.formCidade = function(dados){
           // Pega o id da Cidade escolhida
           var idCidade = dados;
           // Pega os dados da Cidade
-         serviceEnderecos.getCidades(idCidade).success(function (response){
+         serviceEnderecos.getCidade(idCidade).success(function (response){
          $scope.cidades = response;    
-         console.log(response);
          sessionStorage.setItem('cidade.nome', response.nome);
          $scope.activePath = $location.path('/cidade/' + idCidade);                                             
 

@@ -45,7 +45,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                     <label>CPF</label>
-                    <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" ui-br-cpf-mask required>                     
+                    <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" required>          
                 </div> 
                 </div>
 
@@ -79,7 +79,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>CPF</label>
-                    <input type="text" class="form-control" ng-model="proprietario.CPFproprietario" disabled ui-br-cpf-mask required>                     
+                    <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" disabled ui-br-cpf-mask required>                     
                 </div> 
                 </div>
 
@@ -112,6 +112,68 @@
                </div><!-- row -->
 
      </div>  
+
+
+    <!-- Formulario dos Endereçocs -->
+    <div ng-if="formEndereco == 'ativo'">
+        <div class="row">
+             <form name="first" ng-submit="segundoPasso(imovel)">
+
+            <div class="alert alert-info">
+                <strong>Endereço!</strong> qual o endereço do imovel ? 
+            </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Estado</label>
+                        <select class="form-control" ng-change="executeCidade(imovel.id)" 
+                        ng-options="imovel.id as imovel.nome for imovel in estados track by imovel.id" 
+                        ng-model="imovel.id">
+                        <option value="">Selecione Estado</option>
+                        </select>                 
+                </div> 
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Cidade</label>
+                        <select class="form-control" ng-change="executeBairro(imovel.idCidade)" ng-disabled="!imovel.id" 
+                        ng-options="c.id as c.nome for c in cidades | filter: {estado: imovel.id}"
+                         ng-model="imovel.idCidade">
+                        <option value="">Selecione Cidade</option>
+                        </select>                               
+                </div> 
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Bairro</label>
+                        <select required class="form-control" ng-disabled="!imovel.idCidade"
+                         ng-options="b.idBairro as b.nomeBairro for b in bairros | filter: {idEstado: imovel.idEstado} | filter: {idCidade: imovel.idCidade}" 
+                         ng-model="imovel.idBairro">
+                        <option value="">Selecione Bairro</option>
+                        </select>                        
+                </div> 
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                <hr>
+                
+                <button type="submit" class="btn btn-primary">Avançar</button>  
+                <button ng-click="back('proprietario')" class="btn btn-danger">Voltar</button>                    
+                </div> 
+                </div>
+              
+                  
+                  
+         </form>
+               </div><!-- row -->
+
+     </div>  
+
 
 </div>
 
