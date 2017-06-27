@@ -125,7 +125,13 @@ class EnderecoController{
      * @return Json
      */
     public function getBairroByCidade($request, $response, $args){
-        return $response->withJson($this->bairro->select('where cidade='.$args['id']));
+        $r = $this->bairro->select('where cidade='.$args['id']);
+        if(empty($r)){
+            return $response->withJson(['flag' => false, "message" => 'Não há bairros cadastrados para está cidade']);
+        }else{
+            return $response->withJson($r);
+        }
+        
     }
     /**
      * Retorna todas as cidades de um determinado estado
