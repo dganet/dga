@@ -2,7 +2,7 @@
 namespace Api\Model\Entity;
 
 class Pais extends \GORM\Model{
-    private $id;
+    private $idPais;
     private $nome;
     private $sigla;
     /**
@@ -41,7 +41,7 @@ class Pais extends \GORM\Model{
      */
     public function toArray(): Array {
         $temp = array(
-           'id' => $this->__get('id'),
+           'idPais' => $this->__get('idPais'),
            'nome' => $this->__get('nome'),
            'sigla' => $this->__get('sigla')
         );

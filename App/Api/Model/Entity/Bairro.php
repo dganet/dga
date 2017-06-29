@@ -2,9 +2,9 @@
 namespace Api\Model\Entity;
 
 class Bairro extends \GORM\Model{
-    private $id;
+    private $idBairro;
     private $nome;
-    private $cidade;
+    private $cidadeId;
     /**
      * Construtor
      * 
@@ -33,11 +33,11 @@ class Bairro extends \GORM\Model{
      */
     public function __get($attr){
         switch ($attr) {
-            case 'cidade':
+            case 'cidadeId':
                 if ($this->recursive){ 
                     $cidade = Cidade::getInstance();
                     $cidade->recursive=true;
-                    $cidade->find('where id='.$this->$attr);
+                    $cidade->find('where idCidade='.$this->$attr);
                     return $cidade->toArray();
                 }else{
                     return $this->$attr;
@@ -55,9 +55,9 @@ class Bairro extends \GORM\Model{
      */
     public function toArray(): Array {
         $temp = array(
-           'id' => $this->__get('id'),
+           'idBairro' => $this->__get('idBairro'),
            'nome' => $this->__get('nome'),
-           'cidade' => $this->__get('cidade')
+           'cidadeId' => $this->__get('cidadeId')
         );
         foreach ($temp as $key => $value) {
             if($value == null){

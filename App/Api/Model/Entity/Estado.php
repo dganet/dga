@@ -2,10 +2,10 @@
 namespace Api\Model\Entity;
 
 class Estado extends \GORM\Model{
-    private $id;
+    private $idEstado;
     private $nome;
     private $uf;
-    private $pais;
+    private $paisId;
     /**
      * Construtor
      * 
@@ -34,10 +34,10 @@ class Estado extends \GORM\Model{
      */
     public function __get($attr){
         switch ($attr) {
-            case 'pais':
+            case 'paisId':
                 if ($this->recursive){ 
                     $pais = Pais::getInstance();
-                    $pais->find('where id='.$this->$attr);
+                    $pais->find('where idPais='.$this->$attr);
                     return $pais->toArray();
                 }else{ 
                     return $this->$attr;  
@@ -55,10 +55,10 @@ class Estado extends \GORM\Model{
      */
     public function toArray(): Array {
         $temp = array(
-           'id' => $this->__get('id'),
+           'idEstado' => $this->__get('idEstado'),
            'nome' => $this->__get('nome'),
            'uf' => $this->__get('uf'),
-           'pais' => $this->__get('pais')
+           'paisId' => $this->__get('paisId')
         );
         foreach ($temp as $key => $value) {
             if($value == null){
