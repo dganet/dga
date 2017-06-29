@@ -126,9 +126,9 @@
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Estado</label>
-                        <select class="form-control" ng-change="executeCidade(imovel.id)" 
-                        ng-options="imovel.id as imovel.nome for imovel in estados track by imovel.id" 
-                        ng-model="imovel.id">
+                        <select class="form-control" ng-change="executeCidade(imovel.idEstado)" 
+                        ng-options="imovel.idEstado as imovel.nome for imovel in estados track by imovel.idEstado" 
+                        ng-model="imovel.idEstado">
                         <option value="">Selecione Estado</option>
                         </select>                 
                 </div> 
@@ -137,8 +137,8 @@
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Cidade</label>
-                        <select class="form-control" ng-change="executeBairro(imovel.idCidade)" ng-disabled="!imovel.id" 
-                        ng-options="c.id as c.nome for c in cidades | filter: {estado: imovel.id}"
+                        <select class="form-control" ng-change="executeBairro(imovel.idCidade)" ng-disabled="!imovel.idEstado" 
+                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: imovel.idEstado}"
                          ng-model="imovel.idCidade">
                         <option value="">Selecione Cidade</option>
                         </select>                               
@@ -149,14 +149,31 @@
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Bairro</label>
+
+                        <!-- InputBairro novo Bairro -->
+                        <input type="text" class="form-control" ng-model="imovel.bairro" ng-show="inputBairro" placeholder="Novo Bairro">
+                       
+                       <!-- Select de Bairros -->
                         <select required class="form-control" ng-disabled="!imovel.idCidade"
-                         ng-options="b.idBairro as b.nomeBairro for b in bairros | filter: {idEstado: imovel.idEstado} | filter: {idCidade: imovel.idCidade}" 
-                         ng-model="imovel.idBairro">
+                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: imovel.idCidade}" 
+                         ng-model="imovel.idBairro"
+                         ng-show="selectBairro">
                         <option value="">Selecione Bairro</option>
-                        </select>                        
+                        </select> 
                 </div> 
                 </div>
 
+                <div class="col-md-3" ng-show="btnNewBairro">
+                <div class="form-group">
+                       <span style="margin-top:25px;" <button type="submit" class="btn btn-primary" ng-click="newBairro()">Sim</button>
+                </div> 
+                </div>
+
+                <div class="col-md-3" ng-show="btnNewBairroBack">
+                <div class="form-group">
+                       <span style="margin-top:25px;" <button type="submit" class="btn btn-danger" ng-click="NewBairroBack()">Voltar</button>
+                </div> 
+                </div>
 
                 <div class="col-md-12">
                     <div class="form-group">

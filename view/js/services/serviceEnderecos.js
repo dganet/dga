@@ -40,7 +40,7 @@ POST App/bairro/save -> salva um novo bairro
  	};
 	 	// Load Bairros referente uma Cidade
  	 	var _getBairros = function (id) {
- 		return $http.get('App/bairro/cidade/' + id );
+ 		return $http.get('App/bairro/cidade/' + id);
  	
  	};
 

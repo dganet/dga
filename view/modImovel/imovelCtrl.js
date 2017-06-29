@@ -88,6 +88,9 @@ $scope.master = {};
             $scope.passo1 = {};
             $scope.passo2 = 'background:gray; color:white';
             $scope.formProprietario = 'inativo';
+            $scope.selectBairro = true;
+            $scope.btnNewBairro = false;
+            $scope.btnNewBairroBack = false;
             
             // Ativa o Formulario do Segundo Passo     
             $scope.formEndereco = 'ativo';      
@@ -98,23 +101,40 @@ $scope.master = {};
             });
             // Load Cidades referente ao Estado
             $scope.executeCidade = function (id){
-                    serviceEnderecos.getCidadesEstado(id).success(function (response){
+                    serviceEnderecos.getCidadesEstado(id).success(function(response){
                     $scope.cidades = response;
                 });
             };
-            // Load Bairros referente a Cidade
+
+         
+             // Load Bairros referente a Cidade
             $scope.executeBairro = function (id){
-                 serviceEnderecos.getBairros(id).success(function (response){
-                $scope.bairros = response;			
-	        });
+                 serviceEnderecos.getBairros(id).success(function(response){ 
+                     var flag = response.flag;
+                     if (flag == false ){
+                         $scope.inputBairro = true;
+                         $scope.selectBairro = false;
+                     }else {       
+                     $scope.bairros = response;   
+                     $scope.btnNewBairro = true;
+                     };
+                 });
 
-            $scope.teste = function(){
-                console.log('chupa');
             };
 
+            $scope.newBairro = function(){
+                $scope.inputBairro = true;
+                $scope.btnNewBairroBack = true;
+                $scope.selectBairro = false;
+                $scope.btnNewBairro = false;
+            }
+            $scope.NewBairroBack = function(){
+                $scope.inputBairro = false;
+                $scope.btnNewBairroBack = false;
+                $scope.selectBairro = true;
+                $scope.btnNewBairro = true;
             };
-        };
-        
+        };     
 
         $scope.segundoPasso = function (values){
             console.log(p);
