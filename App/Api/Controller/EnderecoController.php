@@ -155,4 +155,10 @@ class EnderecoController{
      public function getEstadoByPais($request, $response, $args){
         return $response->withJson($this->estado->select('where paisId='.$args['id']));
     }
+    
+    public function setBairro($request,$response,$args){
+        $post = decode_json($resquest->getBody(),true);
+        $this->bairro->load($post);
+        return $response->withJson($this->bairro->save());
+    }
 }
