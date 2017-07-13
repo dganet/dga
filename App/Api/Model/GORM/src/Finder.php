@@ -27,9 +27,9 @@ trait Finder
     /**
      * Procura no banco de dados por 1 registro conforme o tipo de dado enviado
      * se enviado um int ele entenderá que é um id e ira procurar por id, se for
-     * uma string ele entenderá que é um fim de query e deverá conter campo=valor 
+     * uma string ele entenderá que é um fim de query e deverá conter campo=valor
      * desejado.
-     * 
+     *
      * @return Object
      */
     public function find($value){
