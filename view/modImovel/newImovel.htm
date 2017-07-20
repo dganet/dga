@@ -23,7 +23,7 @@
     Passo 02
     </div>
 
-    <div class="passo3">
+    <div class="passo3" style="{{passo3}}">
     Passo 03
     </div>
 
@@ -117,12 +117,17 @@
     <!-- Formulario dos Endereçocs -->
     <div ng-if="formEndereco == 'ativo'">
         <div class="row">
-             <form name="first" ng-submit="segundoPasso(imovel)">
+             <form name="second" ng-submit="segundoPasso(imovel)">
 
             <div class="alert alert-info">
                 <strong>Endereço!</strong> qual o endereço do imovel ? 
             </div>
-
+                 <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input type="text" class="form-control" ng-model="imovel.enderecoImovel">
+                     </div>
+                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Estado</label>
@@ -145,16 +150,16 @@
                 </div> 
                 </div>
 
-
                 <div class="col-md-3">
                     <div class="form-group">
-                    <label>Bairro</label>
-
-                        <!-- InputBairro novo Bairro -->
-                        <input type="text" class="form-control" ng-model="imovel.bairro" ng-show="inputBairro" placeholder="Novo Bairro">
-                       
+                        <label>Bairro</label>
+                         <!-- InputBairro novo Bairro -->
+                        <div ng-show="inputBairro">
+                        <input type="text" class="form-control" ng-model="imovel.idBairro" placeholder="Novo Bairro" required>
+                        </div>
+                        
                        <!-- Select de Bairros -->
-                        <select required class="form-control" ng-disabled="!imovel.idCidade"
+                        <select class="form-control" ng-disabled="!imovel.idCidade"
                          ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: imovel.idCidade}" 
                          ng-model="imovel.idBairro"
                          ng-show="selectBairro">
@@ -162,16 +167,17 @@
                         </select> 
                 </div> 
                 </div>
-
+                
+                       
                 <div class="col-md-3" ng-show="btnNewBairro">
                 <div class="form-group">
-                       <span style="margin-top:25px;" <button type="submit" class="btn btn-primary" ng-click="newBairro()">Sim</button>
+                    <span style="margin-top:25px; float:left;"> <button type="submit" class="btn btn-primary" ng-click="newBairro()">Novo Bairro</button></span>
                 </div> 
                 </div>
 
-                <div class="col-md-3" ng-show="btnNewBairroBack">
+                <div class="col-md-3" ng-show="btnBairroBack">
                 <div class="form-group">
-                       <span style="margin-top:25px;" <button type="submit" class="btn btn-danger" ng-click="NewBairroBack()">Voltar</button>
+                    <span style="margin-top:25px;float:left;"><button type="submit" class="btn btn-danger" ng-click="backBairro('bairro')">Voltar</button></span>
                 </div> 
                 </div>
 
@@ -179,7 +185,7 @@
                     <div class="form-group">
                 <hr>
                 
-                <button type="submit" class="btn btn-primary">Avançar</button>  
+                <button type="submit" id="segundoPasso" class="btn btn-primary">Avançar</button>  
                 <button ng-click="back('proprietario')" class="btn btn-danger">Voltar</button>                    
                 </div> 
                 </div>
@@ -187,11 +193,184 @@
                   
                   
          </form>
+            
                </div><!-- row -->
 
      </div>  
 
+    <!-- Formulario dos Endereçocs -->
+    <div ng-if="formImovel == 'ativo'">
+        <div class="row">
+             <form name="terceiro" ng-submit="terceiroPasso(imovel)">
+                
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Qual Operação ? </label>
+                    <select class="form-control" 
+                                ng-options="op.nomeOperacao as op.nomeOperacao for op in operacoes"
+                                ng-model="imovel.tipoOperacaoImovel"
+                                ng-change="selectOperation(imovel.tipoOperacaoImovel)">  
+                                <option value="">Selecione a Operação</option>
+                    </select>
+                
+                </div> 
+                </div>
+                 
+                <div class="col-md-3" ng-if="operacao == 'ativo'">
+                <div class="form-group">
+                    <label>Selecione o Tipo</label>
+                    <select class="form-control" 
+                            ng-model="imovel.tipoImovel"
+                            ng-options ="t.tipoImovel as t.tipoImovel for t in tipos"
+                            ng-change="selectTipo(imovel.tipoImovel)"
+                            >
+                        <option value="">Tipo de Imovel</option>
+                    </select>
+    
+                </div> 
+                </div>
+                 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Valor da Locação</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>
+                 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Valor da Venda</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>                
+                    
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Iptu</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>
 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Condominio</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>
+                 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Idade do Imovel</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>                
+                
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Suite(s)</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>  
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Copa</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div> 
+                 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Garagem Coberta</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>     
+                 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Banheiros</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>  
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Sala de Jantar</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div> 
+                 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Mobilado</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div> 
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Aréa Construida</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>   
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Aréa do terreno</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>   
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Elevador</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>  
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Aréa Util</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>  
+                 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Andar do Imovel</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>  
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Aréa do total do Imovel</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div>  
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Outros Dados</label>
+                    <input type="text" class="form-control">
+                </div>                      
+                </div> 
+                 
+                <div class="col-md-12">
+                    <div class="form-group">
+                <hr>
+                
+                <button type="submit" id="segundoPasso" class="btn btn-primary">Avançar</button>  
+                <button ng-click="back('proprietario')" class="btn btn-danger">Voltar</button>                    
+                </div> 
+                </div>
+              
+                  
+
+             </form>
+
+        </div><!-- row -->
+    </div>
+            
 </div>
 
 </div>
