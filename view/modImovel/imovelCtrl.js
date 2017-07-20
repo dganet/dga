@@ -33,15 +33,23 @@ $scope.master = {};
 
 //*************CADASTRA IMOVEL *********************// 
     var p = $scope.proprietario = {};
+    var i = $scope.imovel = {};
 
     //Mudar o Css do Processo em ativo
     $scope.passo1 = 'background:gray; color:white';
     //Ativar o Form do Check CPF
-    $scope.formCPF = 'ativo';
+    $scope.formCPF = 'inativo';
+    $scope.formImovel = 'ativo';
 
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
-
+    
+    // 
+    // 
+    // PRIMEIRO PASSO
+    //
+    // 
+     
     //função para verificar cpf
     $scope.checkCPF = function (value){
         // Cria a variavel com o CPF
@@ -66,6 +74,7 @@ $scope.master = {};
 
         //função de voltar
         $scope.back = function (value){
+            
                 if (value == 'cpf'){
                 $scope.formCPF = 'ativo';
                 $scope.formProprietario = 'inativo';
@@ -78,19 +87,27 @@ $scope.master = {};
                 $scope.passo2 = {};
                 $scope.formProprietario = 'ativo';
                 }
+                
             };
-
-        //Primeiro Passo 
+        //
+        //
+        //    
+        //SEGUNDO PASSO
+        //
+        //
+        //
             $scope.primeiroPasso = function(dados){
             //, Coleta dados do proprietario
-           $scope.proprietario.push = dados;
+             $scope.proprietario.push = dados;
+             $scope.inputBairro = false;
+           
             //Segundo Passo                 
             $scope.passo1 = {};
             $scope.passo2 = 'background:gray; color:white';
             $scope.formProprietario = 'inativo';
             $scope.selectBairro = true;
             $scope.btnNewBairro = false;
-            $scope.btnNewBairroBack = false;
+            $scope.btnBairroBack = false;
             
             // Ativa o Formulario do Segundo Passo     
             $scope.formEndereco = 'ativo';      
@@ -103,17 +120,29 @@ $scope.master = {};
             $scope.executeCidade = function (id){
                     serviceEnderecos.getCidadesEstado(id).success(function(response){
                     $scope.cidades = response;
+                $scope.selectBairro = true;
+                $scope.btnBairroBack = false;
+                $scope.inputBairro = false;
                 });
             };
 
          
              // Load Bairros referente a Cidade
             $scope.executeBairro = function (id){
+                var idCidade = id;
                  serviceEnderecos.getBairros(id).success(function(response){ 
                      var flag = response.flag;
                      if (flag == false ){
                          $scope.inputBairro = true;
                          $scope.selectBairro = false;
+                         $scope.btnBairroBack = true;
+                         $scope.btnNewBairro = false;
+                         //Salva um novo Bairro
+                         $scope.bairro = function(values){
+                            values['cidadeId'] = idCidade;    
+                            $http.post('App/bairro/save', values).success(function(response){
+                            });
+                         }
                      }else {       
                      $scope.bairros = response;   
                      $scope.btnNewBairro = true;
@@ -121,23 +150,73 @@ $scope.master = {};
                  });
 
             };
-
-            $scope.newBairro = function(){
-                $scope.inputBairro = true;
-                $scope.btnNewBairroBack = true;
+                
+               $scope.newBairro = function(){
                 $scope.selectBairro = false;
                 $scope.btnNewBairro = false;
-            }
-            $scope.NewBairroBack = function(){
-                $scope.inputBairro = false;
-                $scope.btnNewBairroBack = false;
+                $scope.btnBairroBack = true;
+                $scope.inputBairro = true;
+               };
+
+                $scope.backBairro = function(){
                 $scope.selectBairro = true;
                 $scope.btnNewBairro = true;
-            };
+                $scope.btnBairroBack = false;
+                $scope.inputBairro = false;
+               };
         };     
-
+     //
+     //
+     // TERCEIRO PASSO
+     //
+     //
         $scope.segundoPasso = function (values){
-            console.log(p);
+            $scope.imovel.push = values;
+            $scope.passo1 = {};
+            $scope.passo2 = {};
+            $scope.passo3 = 'background:gray; color:white';
+            $scope.formEndereco = false;
+            // Ativa o Formulario do Segundo Passo     
+            $scope.formImovel = 'ativo';   
+ 
             
         };
+            //Operaçoes
+           $scope.operacoes =   [
+                {"idOperacao":1,"nomeOperacao":'Locacao'},
+                {"idOperacao":2,"nomeOperacao":'Venda'}
+            ];
+                   
+            //Função que Seleciona os tipos 
+            $scope.selectOperation = function (value){
+        
+                if (value == null){
+                    $scope.operacao = 'inativo';
+                };
+                
+                if (value == "Locacao"){
+                    $scope.operacao = 'ativo';
+                    $scope.tipos = [
+                    {"idTipo":1,"tipoImovel":'Apartamento'},
+                    {"idTipo":2,"tipoImovel":'Casa'},
+                   ];
+                };
+                
+                if(value == "Venda"){
+                    $scope.operacao = 'ativo';
+                    $scope.tipos = [
+                    {"idTipo":1,"tipoImovel":'Apartamento'},
+                    {"idTipo":2,"tipoImovel":'Casa'},
+                    {"idTipo":3,"tipoImovel":'Terreno'},
+                   ];
+                };
+                
+            };
+     
+     $scope.selectTipo = function(values){
+        if(value == "Apartamento"){
+            //Ativar todos os Inputs
+            $scope.elevador = true;
+        }    
+     }
  });//END do controller

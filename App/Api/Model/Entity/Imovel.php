@@ -3,6 +3,7 @@ namespace Api\Model\Entity;
 
 class Imovel extends \GORM\Model{
     private $idImovel;
+    private $tipoOperacaoImovel;
     private $enderecoImovel;
     private $bairroImovel;
     private $cidadeImovel;
@@ -78,6 +79,7 @@ class Imovel extends \GORM\Model{
     public function toArray(): Array {
         $temp =  array(
             'idImovel' => $this->__get('idImovel'),
+            'tipoOperacaoImovel' => __get('tipoOperacaoImovel'),
             'enderecoImovel' => $this->__get('enderecoImovel'),
             'bairroImovel' => $this->__get('bairroImovel'),
             'cidadeImovel' => $this->__get('cidadeImovel'),
