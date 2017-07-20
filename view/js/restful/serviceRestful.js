@@ -3,7 +3,7 @@ app.service('restful', function ($http,$sessionStorage) {
  var token = sessionStorage.getItem('usuario.token');
 
 //REQUISICOES DO BACK-END CAMINHOS
-   
+
    //Classes Usuario
    $usuarioLogin = 'App/usuario/login'; // loga o usuario
    $usuarioLoginFB = 'App/usuario/login/facebook'; // loga o usuario Plugin Facebook
@@ -16,7 +16,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    //MODULO PEFIL
    $updatePicture = 'App/imagem'; //Update Foto
-     
+
 
 //|#######################################################|
 //|############# **  MODULO USUARIOS ** ##################|
@@ -29,7 +29,7 @@ app.service('restful', function ($http,$sessionStorage) {
    //Logando Via Facebbok
     var _usuarioLoginFB= function (values){
         return  $http.post($usuarioLoginFB , values);
-     
+
     };
    //Salva novo Usuario
     var _usuarioSave = function (values){
@@ -51,7 +51,7 @@ app.service('restful', function ($http,$sessionStorage) {
     var _clienteList = function (dados){
         return  $http.get($clienteList + token);
     };
-   //Lista informação de apenas um cliente referente ao ID 
+   //Lista informação de apenas um cliente referente ao ID
     var _clienteListId = function (id){
         return  $http.get($clienteListId + id + '/'+ token );
     };
@@ -68,7 +68,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 //|############# **  RETURNS ** ##########################|
 //|#######################################################|
-   
+
     return {
         //Return do Usuario
         usuarioLogin : _usuarioLogin,
