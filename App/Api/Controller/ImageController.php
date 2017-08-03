@@ -7,6 +7,8 @@ class ImageController{
     /**
      * Metodo que gerencia o armazenamento de imagens
      * 
+     * @param Array $img
+     * @param Boolean $update 
      * @return Array Com as informações do resultado
      */
     public function cadastrar($img = [], $update = null){
@@ -82,14 +84,17 @@ class ImageController{
         }
     }
   }
-
+  /**
+   * Função que faz somenteo o upload da imagem 
+   *
+   * @param Array $img
+   * @param Boolean $update
+   * @return OBJ de Image
+   */
   public function upload($img = [], $update = null){
         //extrai o array
-
         $destino = dirname(dirname(__FILE__)).'/upload/';
         if ($img != null || $img != ''){
-
-        
             //Verifica o Tamanho do arquivo
             if($img['size'] < 1000000){
                 $name       = $img['name'];
@@ -106,29 +111,36 @@ class ImageController{
                         $data       = explode(',',$img['data']);
                         fwrite($handle, base64_decode($data[1]));
                         fclose($handle);
+                    /**
+                     * Cria e carrega as informações do objeto para retornar o mesmo
+                     */
+                    $image = Imagem::getInstance();
+                    $image->nome = $newName;
+                    $image->path = $destino;
+                    $image->status = 'ATIVO';
+                    $image->createAt = date('Y-m-d H:i:s');
                      // Com as informações
                       return array(
-                            flag    => true,
-                            message => "Imagem salva com sucesso",
-                            path    => $destino,
-                            name    => $newName
+                            'flag'    => true,
+                            'message' => "Imagem salva com sucesso",
+                            'obj'     => $image
                         );
                     }else{
                     return array(
-                        flag    => false,
-                        message => "Imagem não pode ser salva. Aparentemente é um problema de escrita"
+                        'flag'    => false,
+                        'message' => "Imagem não pode ser salva. Aparentemente é um problema de escrita"
                     );
                 }
             }else{
                 return array(
-                    flag    => false,
-                    message => "Extensão não permitida. Somente as seguintes extensões são permitidas: JPG, JPEG, GIF, PNG"
+                    'flag'    => false,
+                    'message' => "Extensão não permitida. Somente as seguintes extensões são permitidas: JPG, JPEG, GIF, PNG"
                 );
             }
         }else{
             return array(
-                flag    => false,
-                message => "Tamanho do arquivo exede o permitido"
+                'flag'    => false,
+                'message' => "Tamanho do arquivo exede o permitido"
             );
         }
     }

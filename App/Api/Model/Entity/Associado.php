@@ -4,173 +4,101 @@ use \Api\Model\Entity\Imagem;
 
 class Associado extends \GORM\Model{
     
-    private $id;						// Id de controle do associado
-    private $nome;						// Nome do associado
-    private $cpf;						// CPF do associado
-    private $rg;						// RG do associado
-    private $orgaoExpedidor;			// orgao expedidor do rg do associado
-    private $nomePai;					// nome do pai do associado
-    private $nomeMae;					// Nome da Mãe do Associado
-    private $endereco;					// Endereço do Associado
-    private $numero;					// Numero da casa do Assicoado
-    private $bairro;					// Bairro do Associado
-    private $cidade;					// Cidade do Associado
-    private $cep;						// CEP do Associado
-    private $telResidencial;			// Telefone Residencial
-    private $telCelular;				// Telefone Celular
-    private $telComercial;				// Telefone Comercial
-    private $email;						// Email que sera usado para login
-    private $senha;						// Senha para acesso do Associado
-    private $profissao;					// Profissão do Associado
-    private $nomeEmpresa;				// Nome da Empresa onde o Associado trabalha
-    private $funcao;					// Cargo do Associado
-    private $salario;					// Salário do Associado
-    private $outraRenda;				// Se tem outra renda Boolean
-    private $rendaExtra;				// Se tiver outra renda, de onde ela é
-    private $rendaSerial;				// Serialização de informações da renda;
-    private $estadoCivil;				// Estado Civil
-    private $nomeConjuje;				// Se casado, Nome do Conjuje
-    private $qtdeFilhos;				// Numero de filhos
-    private $idadeFilhos;				// Idade dos filhos
-    private $pessoasResidencia;			// Quantidade de pessoas na residencia
-    private $qtasPessoasTrab;			// Quantas pessoas trabalhan na residencia
-    private $rendaFamiliar;				// Renda Familiar
-    private $planoSaude;				// Possui plano de saude Bool
-    private $qualPlano; 				// Nome do Plano
-    private $planoEmpresa;				// Nome da Empresa do Plano de Saúde
-    private $tipoSangue;				// Tipo Sanguineo
-    private $problemaSaude;				// Possui algum problema de saude? Boolean
-    private $quaisProblemas; 			// Quais problemas de saúde
-    private $curso;						// Curso id
-    private $universidade;				// Nome da Universidade/Escola
-    private $semestreCursando;			// Qual Semestre está Cursando
-    private $aulaSabado;				// Possui Aula Sabado Boolean
-    private $duracaoCurso;				// Qual Duração do curso
-    private $rgm;						// RA do Associado
-    private $valorMensalidade;			// Mensalidade da faculdade
-    private $possuiBolsaFinCred;		// Possui Bolsa Financiamento ou Credito Estudantil Boolean
-    private $porcBolsaFinCred;			// porcentagem da Bolsa Financeamento ou Credito Estudantil
-    private $cursoUniversitario;		// Possui Curso Universitario Boolean
-    private $cursoNome;					// Nome do Curso
-    private $retidoFalta;				// Já foi retido por Falta Boolean
-    private $retidoMaisUmAno;			// Já foi retido mais de um ano letivo Boolean
-    private $desistiuCursarAnoLetivo;	// já desistiu de cursar o primeiro ano letivo? Boolean
-    private $porQueDesistiu; 			// Por que desistiu
-    private $createAt;					// Quando o cadastro foi Criado
-    private $updateAt;					// Quando o cadastro foi atualizado
-    private $status;					// Se o cadastro está ativo ou não
-    private $usuario_id;				// Chave estrangeira
-    private $veiculo_id;				// Chave estrangeira que ligará o usuario a sua linha
-    private $imagem_id;					// Id da Imagem
-    private $documento;                 //Campo que recebe o array com os documentos
-    private $foto;                      //Campo responsável pela foto do associado
-    
-    
-    // adiciona uma instancia desta classe na classe GORM/MODEL
-    public function __construct($data = []){
-        foreach ($data as $key => $value) {
-			$this->__set($key, $value);
-        }
-        $this->class = $this;
-    }
-    
-    public function __get($attr){
-        switch ($attr) {
-            default:
-                return $this->$attr;   
-                break;
-        }
-    }
-    public function __set($attr, $value){
-        switch ($attr) {
-			case 'senha':
-                $this->$attr = md5($value);
-                break;
-			default:
-				$this->$attr = $value;
-				break;
-		}
-    }
-    
+    public $id;						// Id de controle do associado
+    public $nome;						// Nome do associado
+    public $cpf;						// CPF do associado
+    public $rg;						// RG do associado
+    public $orgaoExpedidor;			// orgao expedidor do rg do associado
+    public $nomePai;					// nome do pai do associado
+    public $nomeMae;					// Nome da Mãe do Associado
+    public $endereco;					// Endereço do Associado
+    public $numero;					// Numero da casa do Assicoado
+    public $bairro;					// Bairro do Associado
+    public $cidade;					// Cidade do Associado
+    public $cep;						// CEP do Associado
+    public $telResidencial;			// Telefone Residencial
+    public $telCelular;				// Telefone Celular
+    public $telComercial;				// Telefone Comercial
+    public $email;						// Email que sera usado para login
+    public $senha;						// Senha para acesso do Associado
+    public $profissao;					// Profissão do Associado
+    public $nomeEmpresa;				// Nome da Empresa onde o Associado trabalha
+    public $funcao;					// Cargo do Associado
+    public $salario;					// Salário do Associado
+    public $outraRenda;				// Se tem outra renda Boolean
+    public $rendaExtra;				// Se tiver outra renda, de onde ela é
+    public $rendaSerial;				// Serialização de informações da renda;
+    public $estadoCivil;				// Estado Civil
+    public $nomeConjuje;				// Se casado, Nome do Conjuje
+    public $qtdeFilhos;				// Numero de filhos
+    public $idadeFilhos;				// Idade dos filhos
+    public $pessoasResidencia;			// Quantidade de pessoas na residencia
+    public $qtasPessoasTrab;			// Quantas pessoas trabalhan na residencia
+    public $rendaFamiliar;				// Renda Familiar
+    public $planoSaude;				// Possui plano de saude Bool
+    public $qualPlano; 				// Nome do Plano
+    public $planoEmpresa;				// Nome da Empresa do Plano de Saúde
+    public $tipoSangue;				// Tipo Sanguineo
+    public $problemaSaude;				// Possui algum problema de saude? Boolean
+    public $quaisProblemas; 			// Quais problemas de saúde
+    public $curso;						// Curso id
+    public $universidade;				// Nome da Universidade/Escola
+    public $semestreCursando;			// Qual Semestre está Cursando
+    public $aulaSabado;				// Possui Aula Sabado Boolean
+    public $duracaoCurso;				// Qual Duração do curso
+    public $rgm;						// RA do Associado
+    public $valorMensalidade;			// Mensalidade da faculdade
+    public $possuiBolsaFinCred;		// Possui Bolsa Financiamento ou Credito Estudantil Boolean
+    public $porcBolsaFinCred;			// porcentagem da Bolsa Financeamento ou Credito Estudantil
+    public $cursoUniversitario;		// Possui Curso Universitario Boolean
+    public $cursoNome;					// Nome do Curso
+    public $retidoFalta;				// Já foi retido por Falta Boolean
+    public $retidoMaisUmAno;			// Já foi retido mais de um ano letivo Boolean
+    public $desistiuCursarAnoLetivo;	// já desistiu de cursar o primeiro ano letivo? Boolean
+    public $porQueDesistiu; 			// Por que desistiu
+    public $createAt;					// Quando o cadastro foi Criado
+    public $updateAt;					// Quando o cadastro foi atualizado
+    public $status;					// Se o cadastro está ativo ou não
+    public $usuario_id;				// Chave estrangeira
+    public $veiculo_id;				// Chave estrangeira que ligará o usuario a sua linha
+    public $imagem_id;					// Id da Imagem
+    public $documento;                 //Campo que recebe o array com os documentos
+    public $foto;                      //Campo responsável pela foto do associado
     /**
-    * Converte esta classe em um array
-    * @return Array
-    */
-    public function toArray(){
-        
-        $array = array(
-        "id"	=>	$this->__get('id'),
-        "nome"	=>	$this->__get('nome'),
-        "cpf"	=>	$this->__get('cpf'),
-        "rg"	=>	$this->__get('rg'),
-        "orgaoExpedidor"	=>	$this->__get('orgaoExpedidor'),
-        "nomePai"	=>	$this->__get('nomePai'),
-        "nomeMae"	=>	$this->__get('nomeMae'),
-        "endereco"	=>	$this->__get('endereco'),
-        "numero"	=>	$this->__get('numero'),
-        "bairro"	=>	$this->__get('bairro'),
-        "cidade"	=>	$this->__get('cidade'),
-        "cep"	=>	$this->__get('cep'),
-        "telResidencial"	=>	$this->__get('telResidencial'),
-        "telCelular"	=>	$this->__get('telCelular'),
-        "telComercial"	=>	$this->__get('telComercial'),
-        "email"	=>	$this->__get('email'),
-        "profissao"	=>	$this->__get('profissao'),
-        "nomeEmpresa"	=>	$this->__get('nomeEmpresa'),
-        "funcao"	=>	$this->__get('funcao'),
-        "salario"	=>	$this->__get('salario'),
-        "outraRenda"	=>	$this->__get('outraRenda'),
-        "rendaExtra"	=>	$this->__get('rendaExtra'),
-        "estadoCivil"	=>	$this->__get('estadoCivil'),
-        "nomeConjuje"	=>	$this->__get('nomeConjuje'),
-        "qtdeFilhos"	=>	$this->__get('qtdeFilhos'),
-        "idadeFilhos"	=>	$this->__get('idadeFilhos'),
-        "pessoasResidencia"	=>	$this->__get('pessoasResidencia'),
-        "qtasPessoasTrab"	=>	$this->__get('qtasPessoasTrab'),
-        "rendaFamiliar"	=>	$this->__get('rendaFamiliar'),
-        "rendaSerial"					=> $this->__get('rendaSerial'),
-        "planoSaude"	=>	$this->__get('planoSaude'),
-        "planoEmpresa"	=>	$this->__get('planoEmpresa'),
-        "tipoSangue"	=>	$this->__get('tipoSangue'),
-        "problemaSaude"	=>	$this->__get('problemaSaude'),
-        "curso"	=>	$this->__get('curso'),
-        "universidade"	=>	$this->__get('universidade'),
-        "semestreCursando"	=>	$this->__get('semestreCursando'),
-        "aulaSabado"	=>	$this->__get('aulaSabado'),
-        "duracaoCurso"	=>	$this->__get('duracaoCurso'),
-        "rgm"	=>	$this->__get('rgm'),
-        "valorMensalidade"	=>	$this->__get('valorMensalidade'),
-        "possuiBolsaFinCred"	=>	$this->__get('possuiBolsaFinCred'),
-        "porcBolsaFinCred"	=>	$this->__get('porcBolsaFinCred'),
-        "cursoUniversitario"	=>	$this->__get('cursoUniversitario'),
-        "cursoNome"	=>	$this->__get('cursoNome'),
-        "retidoFalta"	=>	$this->__get('retidoFalta'),
-        "retidoMaisUmAno"	=>	$this->__get('retidoMaisUmAno'),
-        "desistiuCursarAnoLetivo"	=>	$this->__get('desistiuCursarAnoLetivo'),
-        "createAt"	=>	$this->__get('createAt'),
-        "updateAt"	=>	$this->__get('updateAt'),
-        "status"	=>	$this->__get('status'),
-        "senha"		=>  $this->__get('senha'),
-        "usuario_id"		=>  $this->__get('usuario_id'),
-        "veiculo_id"		=>  $this->__get('veiculo_id'),
-        "quaisProblemas"		=>  $this->__get('quaisProblemas'),
-        "qualPlano"		=>  $this->__get('qualPlano'),
-        "porQueDesistiu" => $this->__get('porQueDesistiu'),
-        "documento" => $this->__get('documento'),
-        "foto"  => $this->__get('foto')
-        );
-        // faz com que não se retorne valores nulos no array
-        $temp = $array;
-        foreach ($array as $key => $value) {
-            if($value == null){
-                unset($temp[$key]);
-            }
+     * Des serializa uma informação do objeto
+     *
+     * @return void
+     */
+    public function desSerialize(){
+        $this->documento = unserialize($this->documento);
+        $this->rendaSerial= unserialize($this->rendaSerial);
+    }
+    /**
+     * Serializa as informações necessárias para salvar no banco de dados
+     *
+     * @return void
+     */
+    public function serializeField(){
+        $this->documento = serialize($this->documento);
+        $this->rendaSerial= serialize($this->rendaSerial);
+    }
+    /**
+     * Gera renda perCapta do associado 
+     *
+     * @return void
+     */
+    public function getRendaPerCapta(){
+        if (!is_array($this->rendaSerial)){
+            $this->desSerialize();
         }
-        return $temp;
+        $perCapta = null;
+        foreach ($this->rendaSerial as $key => $value) {
+            $perCapta +=  $value['rendaParentesco'];
+        }
+        $this->rendaSerial['rendaPercapta'] = ($this->salario+$perCapta)/(count($this->rendaSerial)+1);
     }
-
-    public function __toString(){
-        return var_dump($this->toArray());
+    public function beforeSave(){
+        $this->createAt = date('Y-m-d H:i:s');
+        $this->serializeField();
     }
-    
 }

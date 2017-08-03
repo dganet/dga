@@ -167,7 +167,7 @@ $scope.go = function (dados){
   $scope.mensagemObrigatorio = false;
 
 $scope.associado = {
-	cep: '11250-000',
+	cep: '11250000',
 	cidade: 'Bertioga',
 }
 $scope.boleano = [
@@ -339,7 +339,7 @@ $scope.removeDocumento = function() {
   $scope.add = function(values, FormAssociado) {
 		var associado = values;
 		var associado = angular.merge(associado,renda,documento);
-	    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.veiculo_id == undefined){
+	   // if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.veiculo_id == undefined){
 
 			$scope.mensagemObrigatorio = true;
 			    $timeout(function () {
@@ -348,7 +348,7 @@ $scope.removeDocumento = function() {
 	
 
 			
-		}else{
+		//}else{
 		console.log(associado);
     // Enviado os valores em objetos para api/user do php/slim 
 		$http.post('../App/associado/save/'+ id, associado).success(function(){
@@ -373,6 +373,6 @@ $scope.removeDocumento = function() {
 
     });
    };
-  };
+  //};
 
 });

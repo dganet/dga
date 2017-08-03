@@ -1,68 +1,115 @@
 <?php
+/**
+ * API para controle de Usuários
+ * 
+ * @version 1.0.0
+ * @author Guilherme Brito
+ */
 namespace Api\Controller;
-use \Api\Model\Entity\Usuario, \Api\Controller\AuditController as Audit;
-
-class UsuarioController implements Controller{
-
-	public function cadastrar($data){
-		$usuario = new Usuario($data);
+use \Api\Model\Entity\Usuario, 
+	\Api\Controller\AuditController as Audit;
+class UsuarioController{
+	/**
+	 * Cadastra um Usuario
+	 *
+	 * @param Mixed $data
+	 * @return void
+	 */
+	public function cadastrar($request, $response, $args){
+		$data = json_decode($request->getBody(),true);
+		$usuario = Usuario::getInstance();
+		$usuario->load($data);
 		$usuario->status = "ATIVO";
-		$usuario->createAt =date('Y-m-d H:i:s');
-		Audit::audit($data, "INSERT", "usuario");
-		return $usuario->save();
+		$usuario->createAt = date('Y-m-d H:i:s');
+		return $response->WithJson($usuario->save());
 	}
-
-	//Lista todos os associados
-	public function listaTudo(){
-		$usuario = new Usuario();
-		return $usuario->select(array('where' => array('status' => 'ATIVO')));
+	/**
+	 * Lista todos os usuarios
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixes $args
+	 * @return Json
+	 */
+	public function listaTudo($request,$response,$args){
+		$usuario = Usuario::getInstance();
+		$usuario->makeSelect()->where("status='ATIVO'");
+		$collection = $usuario->execute();
+		return $response->WithJson($collection->getAll());
 	}
-	//Lita usuario pelo ID
-	public function listaPorId($id){
-		$usuario = new Usuario();
-		return $usuario->select(array('where' => array('id' => $id)));
+	/**
+	 * Lista Usuarios por ID
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixes $args
+	 * @return Json
+	 */
+	public function listaPorId($request, $response, $args){
+		$usuario = Usuario::getInstance();
+		$usuario->makeSelect()->where("id=".$args['id']);
+		$collection = $usuario->execute();
+		return $response->WithJson($collection->getAll());
 	}
-	//Update de cadastro
-	public function atulizaCadastro($data){
-		$usuario = new Usuario($data);
-		$usuario->updateAt =date('Y-m-d H:i:s');
-		Audit::audit($data, "UPDATE", "usuario");
-		return $usuario->update();
+	/**
+	 * Atualiza informações do Usuario
+	 * 
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixes $args
+	 * @return Json
+	 */
+	public function atulizaCadastro($request, $response, $args){
+		$data = json_decode($request->getBody(), true);
+		$usuario = Usuario::getInstance();
+		$usuario->load($data);
+		$usuario->id = $args['id'];
+		$usuario->updateAt = date('Y-m-d H:i:s');
+		return $response->WithJson($usuario->update());
 	}
-	//Lista registros inativos
-	public function listaInativo(){
-		$usuario = new Usuario();
-		return $usuario->select(array('where' => array('status' => 'INATIVO')));
+	/**
+	 * Lista todos os Usuarios inativos
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixes $args
+	 * @return Json
+	 */
+	public function listaInativo($request, $response, $args){
+		$usuario = Usuario::getInstance();
+		$usuario->makeSelect()->where("status='INATIVO'");
+		$collection = $usuario->execute();
+		return $response->WithJson($collection->getAll());
 	}
-	//Desativa o cliente
-	public function inativar($id){
-		$usuario = new Usuario();
+	/**
+	 * Inativa um usuario
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixes $args
+	 * @return Json
+	 */
+	public function inativar($request, $response, $args){
+		$usuario = Usuario::getInstance();
 		$usuario->status = "INATIVO";
 		$usuario->updateAt =date('Y-m-d H:i:s');
-		$usuario->id = $id;
-		Audit::audit($data, "UPDATE", "usuario");
-		return $usuario->update();
+		$usuario->id = $args['id'];
+		return $response->WithJson($usuario->update());
 	}
-	//Logar 
-	public function login($data){
-		$usuario = new Usuario();
-		$flag =  $usuario->select(array('where' => array(
-								'AND' => array(
-										'email'  => $data['login'],
-										'senha'  => md5($data['senha']),
-										'status' => 'ATIVO'
-												)
-									)
-								)
-							);
-		if (count($flag)==0){
-			$flag['check'] = false;
-		}else{
-			$flag['check'] = true;
-		}
-		return $flag;
-
-
+	/**
+	 * Loga um Usuario conforme as informações inseridas no formulário
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixes $args
+	 * @return Json
+	 */ 
+	public function login($request, $response, $args){
+		$data = json_decode($request->getBody(), true);
+		$usuario = Usuario::getInstance();
+		$usuario->makeSelect()->where("email='".$data['login']."'")->and("senha='".md5($data['senha'])."'")->and("status='ATIVO'");
+		$collection = $usuario->execute();
+		return $response->WithJson($collection->getAll());
 	}
 
 }
