@@ -38,8 +38,7 @@ $scope.master = {};
     //Mudar o Css do Processo em ativo
     $scope.passo1 = 'background:gray; color:white';
     //Ativar o Form do Check CPF
-    $scope.formCPF = 'inativo';
-    $scope.formImovel = 'ativo';
+    $scope.formCPF = 'ativo';
 
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
