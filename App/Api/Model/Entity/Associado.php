@@ -97,6 +97,11 @@ class Associado extends \GORM\Model{
         }
         $this->rendaSerial['rendaPercapta'] = ($this->salario+$perCapta)/(count($this->rendaSerial)+1);
     }
+    /**
+     * Executa antes de ser salvo
+     *
+     * @return void
+     */
     public function beforeSave(){
         $this->createAt = date('Y-m-d H:i:s');
         $this->serializeField();
