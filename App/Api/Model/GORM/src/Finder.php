@@ -11,7 +11,7 @@ trait Finder{
         try{
             $cls = get_called_class();
             $stmt = $this::getConnection()->prepare($this->configuration['sql']);
-            $stmt->execute();
+            $stmt->execute(); 
             $line = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $collection = new \GORM\Collection\Collection();
             foreach ($line as $key => $value) {

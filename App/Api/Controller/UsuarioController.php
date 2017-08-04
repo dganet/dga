@@ -108,8 +108,8 @@ class UsuarioController{
 		$data = json_decode($request->getBody(), true);
 		$usuario = Usuario::getInstance();
 		$usuario->makeSelect()->where("email='".$data['login']."'")->and("senha='".md5($data['senha'])."'")->and("status='ATIVO'");
-		$collection = $usuario->execute();
-		return $response->WithJson($collection->getAll());
+		$collection = $usuario->execute(); 
+        return $response->WithJson($collection->getAll());
 	}
 
 }
