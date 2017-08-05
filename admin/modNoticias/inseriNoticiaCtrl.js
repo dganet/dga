@@ -1,4 +1,4 @@
-app.controller("inseriNoticiaCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
+app.controller("inseriNoticiaCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
   //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
 
@@ -14,7 +14,7 @@ var id = sessionStorage.getItem('usuario.id');
 
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/post/save/'+ id , values).success(function(){
+    restful.noticiaSave(values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/noticia/inseri');
          

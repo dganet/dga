@@ -7,48 +7,32 @@ body, html,.corpo{
 /*  PAINEL LOGIN  */
 .blocoHome {
 	width: 100%;
-	display: table;
+	background: #006FBD;
+	top:0;
+ 	bottom:0;
+ 	height: 100%;
+ 	position: absolute;
 }
-.gadeveloper {
-  background: #1C4A4A;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width:70%;
-}
+
 
 .titulo_login{
 	text-align: center;
 	font-size: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 30px;	
 }
 
-.logo {
-	top: 40%;
-	margin:0 auto;
-	width: 70%;
-	height: 50px;
-	position: absolute;
-	left: 25%;
-}
 
 .blocoLogin {
 	background: #F3F3F3;
+ 	margin: 0 auto;
+ 	width: 35%;
+ 	padding: 5%;
+ 	top:0;
+ 	bottom:0;
  	position: absolute;
- 	top: 0;
-  	left: 70%;
-  	bottom: 0;
-  	width: 30%;
-	}
-
-.login {
-	top: calc(35% - 30px);
-	margin:0 auto;
-	width: 70%;
-	height: 50px;
-	position: absolute;
-	left: 15%;
-}
+ 	left: 30%;
+ 	box-shadow: 2px 5px 15px rgba(0,0,0,0.5);
+  	}
 
 
 /*  PAINEL PAINEL  */
@@ -56,10 +40,11 @@ body, html,.corpo{
 /*  topo  */
 #topo {
 	width: 100%;
-	background: #1C4A4A;
-	height: 60px;
-	margin-top: 20px;
+	background: #006FBD;
+	height: 40px;
+	margin-top: 5px;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
 }
 
 #blocoLogo {
@@ -68,15 +53,10 @@ body, html,.corpo{
 	margin-left: 20px;
 }
 
-#logo {
-
-}
-
-
 .dropbtn {
-    background-color:#1C4A4A;
+    background-color:#006FBD;
     color: white;
-    padding: 19px 30px;
+    padding: 10px 15px;
     border: none;
     cursor: pointer;
 }
@@ -129,7 +109,7 @@ body, html,.corpo{
 }
 
 .menu .dropdown:hover .dropbtn {
-background:#365E5E; 
+background:#006FBD; 
 color:white; 
 -moz-box-shadow:0 3px 10px 0 #CCC; 
 -webkit-box-shadow:0 3px 10px 0 #ccc; 
@@ -140,7 +120,7 @@ color:white;
 /*  breadcrumb   */
 .breadcrumb {
 	background: white;
-	margin:20px 10px 0px 10px;
+	margin:10px 10px 0px 10px;
 	width: calc(100% - 20px);
 	height: 40px;
 	color: #336699;
@@ -155,7 +135,7 @@ color:white;
 	width: 15%;
 	position: fixed;
 	bottom: 10px;
-	top:150px;
+	top:105px;
 	left: 10px;
 	padding-top: 20px;
 
@@ -165,7 +145,7 @@ color:white;
 	width: calc(85% - 30px);
 	position: fixed;
 	bottom: 10px;
-	top:150px;
+	top:105px;
 	left: calc(15% + 20px);
 	overflow: auto;
 	}
@@ -221,7 +201,7 @@ color:white;
 	/* visual do link */
 	text-decoration: none;
 	color: gray;
-	margin-left: -20px;
+	margin-left: -30px;
 }
 
 .um a:hover {
@@ -233,8 +213,8 @@ color:white;
 
 .acoes {
 	width: 100%; 
-	height: 50px;
-	padding: 25px 20px 0px 30px;
+	height: 20px;
+	padding: 10px 20px 0px 30px;
 }
 
 .acoes a {
@@ -242,7 +222,7 @@ color:white;
 	padding-left: 10px;
 }
 .conteudo {
-	padding: 25px 30px 0px 30px;
+	padding: 10px 30px 0px 30px;
 	margin-bottom: 20px;
 
 }
