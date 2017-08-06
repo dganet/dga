@@ -74,15 +74,6 @@ class Associado extends \GORM\Model{
         $this->rendaSerial= unserialize($this->rendaSerial);
     }
     /**
-     * Serializa as informações necessárias para salvar no banco de dados
-     *
-     * @return void
-     */
-    public function serializeField(){
-        $this->documento = serialize($this->documento);
-        $this->rendaSerial= serialize($this->rendaSerial);
-    }
-    /**
      * Gera renda perCapta do associado 
      *
      * @return void
@@ -104,6 +95,7 @@ class Associado extends \GORM\Model{
      */
     public function beforeSave(){
         $this->createAt = date('Y-m-d H:i:s');
-        $this->serializeField();
+        $this->documento = serialize($this->documento);
+        $this->rendaSerial= serialize($this->rendaSerial);
     }
 }
