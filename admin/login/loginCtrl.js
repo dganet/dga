@@ -1,5 +1,5 @@
 
-    app.controller("loginCtrl", function($scope, $timeout , $location,  $sessionStorage,restful){
+    app.controller("loginCtrl", function($scope, restful, $timeout , $location,  $sessionStorage){
 
     $scope.mensagem = true;
 	 
@@ -9,7 +9,7 @@
 		    $scope.logando = function (values , formAut){
 		    
 				restful.usuarioLogin(values).success(function(response){
-              	 			      
+			 			      
 		    	if (response[0] == false){
 		    		// Exibi a mensagem  				    
 				    $scope.mensagem = false;
