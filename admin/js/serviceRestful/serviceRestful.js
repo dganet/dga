@@ -5,12 +5,8 @@ app.service('restful', function ($http,$sessionStorage) {
 //REQUISICOES DO BACK-END CAMINHOS
 
    //Classes Usuario
-<<<<<<< HEAD
    $usuarioLogin = '/dga/App/usuario/login'; // loga o usuario
    $usuarioLoginFB = 'App/usuario/login/facebook'; // loga o usuario Plugin Facebook
-=======
-   $usuarioLogin = '../App/usuario/login'; // loga o usuario
->>>>>>> e5208f0d59ee5169ce3292e2349786e3e53f6bef
    $usuarioSave =  'App/usuario/save'; // Salva Usuario
    //Classes Cliente
    $noticiaSave = '../App/post/save/'; // Salva Cliente
