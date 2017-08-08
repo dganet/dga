@@ -10,7 +10,8 @@ app.service('restful', function ($http,$sessionStorage) {
    //Classes Associado
    $associadoSave = '../App/associado/save/'; // Salva Associado
    $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
- 
+    //Classes Universidade
+   $universidadeSave = '../App/universidade/save/'; // Salva Associado
    //Classes Cliente
    $noticiaSave = '../App/post/save/'; // Salva Cliente
    $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
@@ -47,6 +48,14 @@ app.service('restful', function ($http,$sessionStorage) {
     var _clienteListId = function (id){
         return  $http.get($clienteListId + id + '/'+ token );
     };
+//|#######################################################|
+//|############# **  MODULO UNIVERSIDADE ** ###################|
+//|#######################################################|
+   //Inseri novo Cliente
+    var _universidadeSave = function (values){
+        return  $http.post($universidadeSave + token , values);
+    };
+
 
 //|#######################################################|
 //|############# **  MODULO NOTICIAS ** ###################|
@@ -83,7 +92,8 @@ app.service('restful', function ($http,$sessionStorage) {
         usuarioSave: _usuarioSave,
         //Return do Associado
         associadoSave : _associadoSave,
-
+        //Return da Universidade
+        universidadeSave : _universidadeSave,
         //Return do Cliente
         noticiaSave : _noticiaSave,
         clienteList : _clienteList,

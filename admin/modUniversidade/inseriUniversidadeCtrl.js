@@ -1,4 +1,4 @@
-app.controller("inseriUniversidadeCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
+app.controller("inseriUniversidadeCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
   //Pega o Id do Usuario Logado
 var idUsuario = sessionStorage.getItem('usuario.id');
 
@@ -13,7 +13,7 @@ var idUsuario = sessionStorage.getItem('usuario.id');
   $scope.add = function(values, FormUniversidade) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.post('../App/universidade/save/'+ idUsuario, values).success(function(){
+    restful.universidadeSave(values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/universidade/inseri');
          
