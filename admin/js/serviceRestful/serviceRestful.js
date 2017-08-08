@@ -5,14 +5,15 @@ app.service('restful', function ($http,$sessionStorage) {
 //REQUISICOES DO BACK-END CAMINHOS
 
    //Classes Usuario
-   $usuarioLogin = '/App/usuario/login'; // loga o usuario
-   $usuarioLoginFB = '/App/usuario/login/facebook'; // loga o usuario Plugin Facebook
+   $usuarioLogin = '../App/usuario/login'; // loga o usuario
    $usuarioSave =  '/App/usuario/save'; // Salva Usuario
    //Classes Associado
    $associadoSave = '/App/associado/save/'; // Salva Associado
    $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
     //Classes Universidade
-   $universidadeSave = '/App/universidade/save'; // Salva Associado
+   $universidadeSave = '../App/universidade/save'; // Salva Associado
+   $universidadeList = '../App/universidade/list'; // Lista todas Universades
+   $universidadeListId = '../App/universidade/list/'; // Lista Universidade referente ao ID
    //Classes Cliente
    $noticiaSave = '/App/post/save/'; // Salva Cliente
    $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
@@ -56,6 +57,14 @@ app.service('restful', function ($http,$sessionStorage) {
     var _universidadeSave = function (values){
         return  $http.post($universidadeSave , values);
     };
+    //Lista todas Universidades
+    var _universidadeList = function (values){
+        return  $http.get($universidadeList);
+    };
+    //Lista Universidade referente ao ID
+    var _universidadeListId = function (id){
+          return  $http.get($universidadeListId + id);
+    };
 //|#######################################################|
 //|############# **  MODULO NOTICIAS ** ###################|
 //|#######################################################|
@@ -93,6 +102,8 @@ app.service('restful', function ($http,$sessionStorage) {
         associadoSave : _associadoSave,
         //Return da Universidade
         universidadeSave : _universidadeSave,
+        universidadeList : _universidadeList,
+        universidadeListId : _universidadeListId,
         //Return do Cliente
         noticiaSave : _noticiaSave,
         clienteList : _clienteList,
