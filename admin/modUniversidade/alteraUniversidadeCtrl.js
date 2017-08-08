@@ -1,9 +1,11 @@
-app.controller("alteraUniversidadeCtrl", function($scope, restful,$location , $timeout, $sessionStorage ){
+app.controller("alteraUniversidadeCtrl", function($scope, $http, restful, $location , $timeout, $sessionStorage ){
+  //Pega o Id do Usuario Logado
+  var idUsuario = sessionStorage.getItem('usuario.id');
 
 $scope.quatro = false;
 
 //Lista os Usuarios
-	restful.universidadesList().success(function(data){
+	restful.universidadeList().success(function(data){
 		$scope.universidades = data;
 
 	});
@@ -15,12 +17,12 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		restful.universidadesListId(id).success(function(data){
+		restful.universidadeList(id).success(function(data){
 		$scope.universidade = data[0];
 		
 	});
 
-	}
+	};
 //	
 
   //scope.master vazio;

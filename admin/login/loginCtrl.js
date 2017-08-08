@@ -7,10 +7,7 @@
     // Enviando requisição via post no methodo Http
 		    
 		    $scope.logando = function (values , formAut){
-				restful.usuarioLogin(values).success(function(response){
-
-
-              	 		 
+				restful.usuarioLogin(values).success(function(response){            	 		 
 		    	if (response.flag == false){
 		    		// Exibi a mensagem  				    
 				    $scope.mensagem = false;
