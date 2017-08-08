@@ -3,6 +3,19 @@ namespace GORM;
 use PDO, PDOException;
 trait Finder{
     /**
+     * Encontra uma tupla atraves do ID fornecido
+     *
+     * @param int $id
+     * @return void
+     */
+    public function find($id){
+        $this->makeSelect()->where("id=".$id);
+        $stmt = $this::getConnection()->prepare($this->configuration['sql']);
+        $stmt->execute(); 
+        $line = $stmt->fetch(PDO::FETCH_ASSOC);
+        $this->load($line);
+    }
+    /**
      * Executa a busca do Select que estiver na variavel this
      *
      * @return Collection
