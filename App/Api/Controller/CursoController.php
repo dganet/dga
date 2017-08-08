@@ -1,19 +1,28 @@
 <?php 
 namespace Api\Controller;
 use \Api\Model\Entity\Curso, \Api\Controller\AuditController as Audit;
-
+/**
+ * Oportunidade de Curso
+ */
 class CursoController {
 
-	// Salva as Informações do curso
-	public function cadastrar($data){
-		$curso = new Curso($data);
+	/**
+	 * Cadastra uma oportunidade 
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function cadastrar($request, $response, $args){
+		$curso = Curso::getInstance();
+		$data = json_decode($resquest->getBody(),true);
+		$curso->load($data);
 		$curso->status = "ATIVO";
-		$curso->createAt =date('Y-m-d H:i:s');
-		Audit::audit($data, "INSERT", "curso");
-		return $curso->save();
+		return $response->WithJson($curso->save());
 	}
 	/**
-	 * Undocumented function
+	 * Lista todos os cursos
 	 *
 	 * @param Request $request
 	 * @param Response $response
@@ -24,34 +33,75 @@ class CursoController {
 		$curso = Curso::getInstance();
 		$curso->makeSelect()->where("status='ATIVO'");
 		$collection = $curso->execute();
-		return $response->WithJson($collection->getAll());
+		if($collection->length() > 0){
+			return $response->WithJson($collection->getAll());
+		}else{
+			return $response->WithJson([]);
+		}
 	}
-	//Lista Por Id
-	public function listaPorId($id){
-		$curso = new Curso();
-		return $curso->select(array('where' => array('id' => $id)));
+	/**
+	 * Lista todos os cursos por ID
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function listaPorId($request, $response, $args){
+		$curso = Curso::getInstance();
+		$curso->makeSelect()->where("status='ATIVO'")->and("id=".$args['id']);
+		$collection = $curso->execute();
+		if($collection->length() > 0){
+			return $response->WithJson($collection->getAll());
+		}else{
+			return $response->WithJson([]);
+		}
 	}
-	//Update de cadastro
-	public function atulizaCadastro($data){
-		$curso = new Curso($data);
-		$curso->createAt =date('Y-m-d H:i:s');
-		Audit::audit($data, "UPDATE", "curso");
-		return $curso->update();
+	/**
+	 * Atualiza as informações do curso
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function atulizaCadastro($request, $response, $args){
+		$data = json_decode($request->getBody(), true);
+		$curso = Curso::getInstance();
+		$curso->load($data);
+		return $response->WithJson($curso->update());
 	}
-	//Desativa o cliente
-	public function inativar($id){
-		$curso = new Curso();
-		$curso->id = $id;
-		$curso->createAt =date('Y-m-d H:i:s');
+	/**
+	 * Desativa um curso
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function inativar($request, $response, $args){
+		$curso = Curso::getInstance();
+		$curso->id = $args['id'];
 		$curso->status = 'INATIVO';
-		Audit::audit($data, "UPDATE", "curso");
-		$curso->update();
+		return $response->WithJson($curso->update());
 	}
-
-
-	public function listaInativo(){
-		$curso = new Curso();
-		return $curso->select(array('where' => array('status' => 'INATIVO')));
+	/**
+	 * Lista cursos Inativos
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function listaInativo($request, $response, $args){
+		$curso = Curso::getInstance();
+		$curso->makeSelect()->where("status='INATIVO'");
+		$collection = $curso->execute();
+		if($collection->length() > 0){
+			return $response->WithJson($collection->getAll());
+		}else{
+			return $response->WithJson([]);
+		}
 	}
 
 }
