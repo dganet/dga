@@ -1,4 +1,4 @@
-app.controller("inseriAssociadoCtrl",function($scope, $http,$location , $timeout , $sessionStorage){
+app.controller("inseriAssociadoCtrl",function($scope, restful,$http,$location , $timeout , $sessionStorage){
 
 //Pega o Id do Usuario Logado
 var id = sessionStorage.getItem('usuario.id');
@@ -349,9 +349,9 @@ $scope.removeDocumento = function() {
 
 			
 		//}else{
-		console.log(associado);
+	
     // Enviado os valores em objetos para api/user do php/slim 
-		$http.post('../App/associado/save/'+ id, associado).success(function(){
+		restful.associadoSave(associado).success(function(){
 
 
       // Depois mandando para mesma pagina
