@@ -94,8 +94,10 @@ class Associado extends \GORM\Model{
      * @return void
      */
     public function beforeSave(){
+        $this->status = "AGUARDANDOVAGA";
         $this->createAt = date('Y-m-d H:i:s');
         $this->documento = serialize($this->documento);
         $this->rendaSerial= serialize($this->rendaSerial);
     }
+   
 }

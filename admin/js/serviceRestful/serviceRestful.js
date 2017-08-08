@@ -5,20 +5,20 @@ app.service('restful', function ($http,$sessionStorage) {
 //REQUISICOES DO BACK-END CAMINHOS
 
    //Classes Usuario
-   $usuarioLogin = '/dga/App/usuario/login'; // loga o usuario
-   $usuarioLoginFB = 'App/usuario/login/facebook'; // loga o usuario Plugin Facebook
-   $usuarioSave =  'App/usuario/save'; // Salva Usuario
+   $usuarioLogin = '/App/usuario/login'; // loga o usuario
+   $usuarioLoginFB = '/App/usuario/login/facebook'; // loga o usuario Plugin Facebook
+   $usuarioSave =  '/App/usuario/save'; // Salva Usuario
    //Classes Associado
-   $associadoSave = '../App/associado/save/'; // Salva Associado
-   $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
+   $associadoSave = '/App/associado/save/'; // Salva Associado
+   $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
     //Classes Universidade
-   $universidadeSave = '../App/universidade/save/'; // Salva Associado
+   $universidadeSave = '/App/universidade/save'; // Salva Associado
    //Classes Cliente
-   $noticiaSave = '../App/post/save/'; // Salva Cliente
-   $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
-   $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
+   $noticiaSave = '/App/post/save/'; // Salva Cliente
+   $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
+   $clienteListId = '/App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    //MODULO PEFIL
-   $updatePicture = 'App/imagem'; //Update Foto
+   $updatePicture = '/App/imagem'; //Update Foto
 
 
 //|#######################################################|
@@ -52,12 +52,10 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 //|############# **  MODULO UNIVERSIDADE ** ###################|
 //|#######################################################|
-   //Inseri novo Cliente
+   //Inseri nova Universiade
     var _universidadeSave = function (values){
-        return  $http.post($universidadeSave + token , values);
+        return  $http.post($universidadeSave , values);
     };
-
-
 //|#######################################################|
 //|############# **  MODULO NOTICIAS ** ###################|
 //|#######################################################|

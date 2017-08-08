@@ -49,9 +49,11 @@ trait Persistent
         }else if ($this->configuration['mode'] == 'production'){
             $this->makeInsert();
             try{
+                $this->beforSave();
                 if (!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
                     throw new Exception("Não foi possivel inserir a informação no banco de dados", 004);
                 }else{
+                    $this->afterSave();
                     return [
                         'flag' => true, 
                         'message' => 'Dados inseridos no Banco de dados com sucesso!'];
@@ -79,9 +81,11 @@ trait Persistent
         if ($this->configuration['mode'] == 'devel'){
             $this->makeUpdate();
             try{
+                $this->beforeUpdate();
                 if(!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
                     throw new Exception("Não foi posivel fazer o update das informações", 005);
                 }else{
+                    $this->afterUpdate();
                     return [
                         'flag' => true,
                         'message' => 'Update efetuado com sucesso',
@@ -102,9 +106,11 @@ trait Persistent
         }else if ($this->configuration['mode'] == 'production'){
             $this->makeUpdate();
             try{
+            $this->beforeUpdate();
             if(!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
                 throw new Exception("Não foi posivel fazer o update das informações", 006);
             }else{
+                $this->afterUpdate();
                 return [
                     'flag' => true,
                     'message' => 'Update efetuado com sucesso'
@@ -127,17 +133,33 @@ trait Persistent
      * É executado antes de salvar uma informação no banco de dados e pode
      * ser sobrescrito quando necessário
      *
-     * 
+     * @return void
      */
     public function beforSave(){
-        
+        $this->createAt = date('Y-m-d H:i:s');
     }
     /**
      * É executado depois de salvar uma informação no banco de dados e pode
      * ser sobrescrito quando necessário
      *
+     * @return void
      */
     public function afterSave(){
 
+    }
+    /**
+     * Executa antes de ser atualizado
+     *
+     * @return void
+     */
+    public function beforeUpdate(){
+        $this->updateAt = date('Y-m-d H:i:s');
+    }
+    /**
+     * Executa depois de ser atualizado
+     *
+     * @return void
+     */
+    public function afterUpdate(){
     }
 }

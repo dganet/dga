@@ -63,7 +63,7 @@ unset($app->getContainer()['phpErrorHandler']);
 //    * UNIVERSIDADE
 //    */
 //    $app->group('/universidade', function () use ($app){
-//  		require_once("route/universidadeRoute.php");
+  		require_once("route/universidadeRoute.php");
 //  	});
 //   /**
 // 	* CURSOFACULDADE

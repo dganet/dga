@@ -109,7 +109,15 @@ class UsuarioController{
 		$usuario = Usuario::getInstance();
 		$usuario->makeSelect()->where("email='".$data['login']."'")->and("senha='".md5($data['senha'])."'")->and("status='ATIVO'");
 		$collection = $usuario->execute(); 
-        return $response->WithJson($collection->getAll());
+		if ($collection->exists(0)){
+        	return $response->WithJson($collection->getAll());
+		}else{
+			return $response->WithJson(
+			[
+				'flag' => false,
+				'message' => 'Usuário ou senha invalidos'
+			]);
+		}
 	}
 
 }

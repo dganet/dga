@@ -12,38 +12,26 @@ use \Api\Model\Entity\Associado,
 
 class AssociadoController {
 
-// /**
-//  * Loga um Associado
-//  * @param  Array $data. Array contem as informações necessárias para logar o associado ['cpf','senha']
-//  * @return Array ou false . Caso o Associado exista ele retorna um Array com as informações do associado
-//  * Caso ele não exista ele retorna false
-//  */
-// 	public function logar($data){
-		
-// 		if(isset($data['cpf'])){
-// 			Log::Message("Tentando Logar o Associado: ".$data['cpf']);
-// 			$associado = new Associado();
-// 			$flag =  $associado->select(array('where' => array(
-// 								'AND' => array(
-// 										'cpf' => $data['cpf'],
-// 										'senha' => md5($data['senha']),
-// 										'status' => 'ATIVO'
-// 												)
-// 									)
-// 								)
-// 							);
-		
-// 		if (count($flag)==0){
-// 			$flag['check'] = false;
-// 			Log::Error("Cpf ou senha invalidos");
-// 			return $flag;
-// 		}else{
-// 			$flag['check'] = true;
-// 			Log::Message("Associado logado com sucesso!");
-// 			return $flag;
-// 		}
-// 	  }
-// 	}
+	/**
+	 * Loga um Associado
+	 * 
+	 * @param [type] $request
+	 * @param [type] $response
+	 * @param [type] $args
+	 * @return void
+	 */
+	public function logar($request, $response, $args){
+		$associado = Associado::getInstance();
+		$data = json_decode($request->getBody, true);
+		$associado->makeSelect()->where("cpf=".$data['cpd'])->and("senha=".md5($data['senha']))
+		->and("status='ATIVO'");
+		$collection = $associado->execute();
+		if($collection != null){
+			return $response->WithJson($collection->getAll());
+		}else{
+			return false;
+		}
+	}
 	/**
 	 * Cadastra um novo associado no banco de dados
 	 *
@@ -56,7 +44,6 @@ class AssociadoController {
 		//Recupera as informações trazidas pelo request,e as insere dentro do objeto
 		$data = json_decode($request->getBody(),true);
 		$associado = Associado::getInstance();
-		$associado->status = "AGUARDANDOVAGA";
 		$associado->rendaSerial = $data['renda'];
 		unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
 		$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
@@ -75,7 +62,7 @@ class AssociadoController {
 			}
 		}
 		//Serializa os campos necessários e salva no banco de dados
-		return $response->WithJson(var_dump($associado->save()));
+		return $response->WithJson($associado->save());
 	}
 	/**
 	 * Lista todos os associados que estão ativos no sistema
@@ -107,37 +94,34 @@ class AssociadoController {
 		$collection = $associado->execute();
 		return $response->Withjson($collection->getAll());
 	}
-// 	/**
-// 	 * Atualiza informaçoes do Associado
-// 	 * @param  Array $data Informações que serão atualizadas
-// 	 * @return Boolean 	True ou False
-// 	 */
-// 	public function atulizaCadastro($data){
-// 		$associado = new Associado($data);
-// 		$associado->updateAt = date('Y-m-d H:i:s');
-// 		try{
-// 			Log::Message("Atualizando informações do Associado");
-// 			Audit::audit($data, "UPDATE", "associado");
-// 			return $associado->update();
-// 		}catch (Exception $e){
-// 			Log::Error("Não foi possivel atualizar o usuario ".$e);
-// 			return false;
-// 		}
-// 	}
-// 	/**
-// 	 * Inativa um cliente conforme o ID passado
-// 	 * @param  Int $id Id do associado a ser desativado
-// 	 * @return Boolean     True ou False
-// 	 */
-// 	public function inativar($id){
-// 		$associado = new Associado();
-// 		$associado->id = $id;
-// 		$associado->updateAt = date('Y-m-d H:i:s');
-// 		$associado->status = 'INATIVO';
-// 		Log::Message("Inativando Associado ".$id);
-// 		Audit::audit($data, "DELETE", "associado");
-// 		$associado->update();
-// 	}
+	/**
+	 * Atualiza informaçoes do Associado
+	 * 
+	 * @param [type] $request
+	 * @param [type] $response
+	 * @param [type] $args
+	 * @return void
+	 */
+	public function atulizaCadastro($request, $response, $args){
+		$data = json_decode($request->getBody(),true);
+		$associado = Associado::getInstance();
+		$associado->load($data);
+		return $response->WithJson($associado->update());
+	}
+	/**
+	 * Inativa um cliente conforme o ID passado
+	 * 
+	 * @param [type] $request
+	 * @param [type] $response
+	 * @param [type] $args
+	 * @return void
+	 */
+	public function inativar($request, $response, $args){
+		$associado = Associado::getInstance();
+		$associado->id = $args['id'];
+		$associado->status = 'INATIVO';
+		return $response->WithJson($associado->update());
+	}
 	/**
 	 * Retorna uma lista com os associados com status INATIVO
 	 *
@@ -168,9 +152,9 @@ class AssociadoController {
 		->inner('veiculo', 'veiculo.id = associado.veiculo_id')
 			->where("associado.status='AGUARDANDOVAGA'")->order('associado.createAt');
 		$collection = $associado->execute();
+		$associado->getRendaPerCapta();
 		return $response->WithJson($collection->getAll());
 		
-		$associado->getRendaPerCapta();
 	}
 	/**
 	 * Lista Associado referente a um id e que está com o status AGUGARDANDOVAGA 
@@ -188,23 +172,6 @@ class AssociadoController {
 			->where("associado.status='AGUARDANDOVAGA'")->and('associado.id='.$args['id'])->order('associado.createAt');
 		$collection = $associado->execute();
 		return $response->WithJson($collection->getAll());
-
-		// foreach ($array as $x => $value) {
-		// 		foreach ($value as $y => $v) {
-		// 			if ($y == "rendaSerial"){
-		// 			 $count = count($v)+1;
-		// 				foreach ($v as $z => $values) {
-		// 					foreach ($values as $w => $valor) {
-		// 						if ($w == "rendaParentesco"){
-		// 							$array[$x]["rendaPerCapta"] = $valor + $array[$x]["rendaPerCapta"];
-		// 						}
-		// 					}
-		// 				}
-		// 				$array[$x]["rendaPerCapta"] = $array[$x]["rendaPerCapta"]/$count;
-		// 			}
-		// 		}
-		// }
-		// 	return $array;
 	}
 	/**
 	 * Retorna uma lista com os associados que estão com status AGUARDANDOVAGA
@@ -259,39 +226,33 @@ class AssociadoController {
 		$collection = $associado->execute();
 		return $response->WithJson($collection->getAll());
 	}
-// 	/**
-// 	 * Ativa o cadastro de um associado somente se o veiculo ainda possuir vagas
-// 	 * @param  Int $id  Id do associado que será ativo
-// 	 * @return Boolean     True ou False
-// 	 */
-// 	public function ativaCadastro($id){
-// 		$associado = new Associado();
-// 		$ass = $associado->select(array('where' => array('id' => $id)));
-
-// 		$veiculo = new \Api\Model\Entity\Veiculo();
-// 		$veiculo = $veiculo->select(array('where' => array('id' => $ass[0]["veiculo_id"])));
-// 		$count = $associado->select(
-// 			array(
-// 				'select' => 'count(veiculo_id) as quantidade',
-// 				'where' =>
-// 								array(
-// 									'AND' =>
-// 										array(
-// 											'veiculo_id' => $veiculo[0]['id'],
-// 											'status' => 'ATIVO'
-// 										)
-// 								)
-// 			),
-// 			 false);
-// 		if ($count[0]['quantidade'] < $veiculo[0]['numVagas']){
-// 			$associado->id = $ass[0]['id'];
-// 			$associado->status = "ATIVO";
-// 			$associado->update();
-// 			return true;
-// 		}else {
-// 			return false;
-// 		}
-// 	}
+	/**
+	 * Ativa o cadastro de um associado somente se o veiculo ainda possuir vagas
+	 * 
+	 * @param [type] $request
+ 	 * @param [type] $response
+	 * @param [type] $args
+	 * @return void
+	 */
+	// public function ativaCadastro($request, $response, $args){
+	// 	$associado = Associado::getInstance();
+	// 	$associado->makeSelect()->where("id=".$args['id']);
+	// 	$collection = $associado->execute();
+	// 	$associado->
+	// 	//Veiculo
+	// 	$veiculo = \Api\Model\Entity\Veiculo::getInstance();
+	// 	$veiculo = $associado->veiculo_id;
+	// 	if($veiculo->getVagas() > 0){
+	// 		$associado->status = "ATIVO";
+	// 		return $response->WithJson($associado->update());
+	// 	}else{
+	// 		return $response->WithJson(
+	// 		[
+	// 			'falg' => false,
+	// 			'message' => 'Não há vagas disponiveis'
+	// 		]);
+	// 	}
+	// }
 /**
  * Lista todos associados em um determinado curso
  *
