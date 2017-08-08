@@ -13,7 +13,7 @@ app.service('restful', function ($http,$sessionStorage) {
     //Classes Universidade
    $universidadeSave = '../App/universidade/save'; // Salva Associado
    $universidadeList = '../App/universidade/list'; // Lista todas Universades
-   $universidadeListId = '../App/universidade/listId/';// Lista Universidade referente ao ID
+   $universidadeListId = '../App/universidade/list/';// Lista Universidade referente ao ID
    //Classes Cliente
    $noticiaSave = '/App/post/save/'; // Salva Cliente
    $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
@@ -63,7 +63,6 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Lista Universidade referente ao ID
     var _universidadeListId = function (id){
-      console.log(id);
           return  $http.get($universidadeListId + id);
     };
 //|#######################################################|
