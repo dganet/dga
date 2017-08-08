@@ -1,6 +1,4 @@
 app.controller("inseriNoticiaCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
-  //Pega o Id do Usuario Logado
-var id = sessionStorage.getItem('usuario.id');
 
   //scope.master vazio;
   $scope.master = {};
@@ -11,8 +9,6 @@ var id = sessionStorage.getItem('usuario.id');
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormNoticia) {
-
-
     // Enviado os valores em objetos para api/user do php/slim
     restful.noticiaSave(values).success(function(){
       // Depois mandando para mesma pagina  

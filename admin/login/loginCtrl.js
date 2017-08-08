@@ -9,7 +9,7 @@
 		    $scope.logando = function (values , formAut){
 		    
 				restful.usuarioLogin(values).success(function(response){						
-              	 			    console.log(response);  
+              	 		 
 		    	if (response[0] == false){
 		    		// Exibi a mensagem  				    
 				    $scope.mensagem = false;

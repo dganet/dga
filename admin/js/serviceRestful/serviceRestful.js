@@ -1,12 +1,16 @@
 app.service('restful', function ($http,$sessionStorage) {
- //Pegando Token
- var token = sessionStorage.getItem('usuario.token');
+ //Pega o id do usuario logado
+ var token = sessionStorage.getItem('usuario.id');
 
 //REQUISICOES DO BACK-END CAMINHOS
 
    //Classes Usuario
    $usuarioLogin = '../App/usuario/login'; // loga o usuario
    $usuarioSave =  'App/usuario/save'; // Salva Usuario
+   //Classes Associado
+   $associadoSave = '../App/associado/save/'; // Salva Associado
+   $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
+ 
    //Classes Cliente
    $noticiaSave = '../App/post/save/'; // Salva Cliente
    $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
@@ -29,11 +33,26 @@ app.service('restful', function ($http,$sessionStorage) {
     };
 
 //|#######################################################|
-//|############# **  MODULO CLIENTE ** ###################|
+//|############# **  MODULO ASSOCIADOS ** ###################|
+//|#######################################################|
+   //Inseri novo Cliente
+    var _associadoSave = function (values){
+        return  $http.post($associadoSave + token , values);
+    };
+   //Lista todos os Clientes
+    var _clienteList = function (dados){
+        return  $http.get($clienteList + token);
+    };
+   //Lista informação de apenas um cliente referente ao ID
+    var _clienteListId = function (id){
+        return  $http.get($clienteListId + id + '/'+ token );
+    };
+
+//|#######################################################|
+//|############# **  MODULO NOTICIAS ** ###################|
 //|#######################################################|
    //Inseri novo Cliente
     var _noticiaSave = function (values){
-      console.log(values);
         return  $http.post($noticiaSave + token , values);
     };
    //Lista todos os Clientes
@@ -62,6 +81,8 @@ app.service('restful', function ($http,$sessionStorage) {
         //Return do Usuario
         usuarioLogin : _usuarioLogin,
         usuarioSave: _usuarioSave,
+        //Return do Associado
+        associadoSave : _associadoSave,
 
         //Return do Cliente
         noticiaSave : _noticiaSave,
