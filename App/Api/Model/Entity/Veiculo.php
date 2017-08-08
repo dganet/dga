@@ -15,7 +15,10 @@ class Veiculo extends \GORM\Model{
 	public $status;
 
 	public function getVagas(){
-		
+		$associado = \Api\Model\Entity\Associado::getInstance();
+		$associado->makeSelect()->where('veiculo_id='.$this->id);
+		$collection = $associado->execute();
+		return $collection->length() - $this->numVagas ;
 	}
 	// //Contrutor da classe
 	// /**

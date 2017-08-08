@@ -57,7 +57,7 @@ unset($app->getContainer()['phpErrorHandler']);
 // 	* VEICULO
 // 	*/
 // 	$app->group('/veiculo', function () use ($app){
-// 		require_once("route/veiculoRoute.php");
+ 		require_once("route/veiculoRoute.php");
 // 	});
 //   /**
 //    * UNIVERSIDADE

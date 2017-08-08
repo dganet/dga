@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 app.controller("alteraUniversidadeCtrl", function($scope, $http, restful, $location , $timeout, $sessionStorage ){
   //Pega o Id do Usuario Logado
   var idUsuario = sessionStorage.getItem('usuario.id');
+=======
+app.controller("alteraUniversidadeCtrl", function($scope,$http, restful,$location , $timeout, $sessionStorage ){
+>>>>>>> aef9e87ba2696419e7de96a1711bdaa3c865be49
 
 $scope.quatro = false;
 
@@ -17,7 +21,11 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
+<<<<<<< HEAD
 		restful.universidadeList(id).success(function(data){
+=======
+		restful.universidadeListId(id).success(function(data){
+>>>>>>> aef9e87ba2696419e7de96a1711bdaa3c865be49
 		$scope.universidade = data[0];
 		
 	});

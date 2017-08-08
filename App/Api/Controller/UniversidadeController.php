@@ -47,7 +47,7 @@ class UniversidadeController {
 	 */
 	public function listaPorId($request, $response, $args){
 		$curso = Universidade::getInstance();
-		$curso->makeSelect()->where("status='ATIVO")->and("id=".$args['id']);
+		$curso->makeSelect()->where("status='ATIVO'")->and("id=".$args['id']);
 		$collection = $curso->execute();
 		if ($collection->exists(0)){
 			return $response->WithJson($collection->getAll());
