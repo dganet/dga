@@ -7,16 +7,17 @@
     // Enviando requisição via post no methodo Http
 		    
 		    $scope.logando = function (values , formAut){
-		    
-				restful.usuarioLogin(values).success(function(response){						
+				restful.usuarioLogin(values).success(function(response){
+
+
               	 		 
-		    	if (response[0] == false){
+		    	if (response.flag == false){
 		    		// Exibi a mensagem  				    
 				    $scope.mensagem = false;
 				    // Depois de 5 segundos some a mensagem
 			        $timeout(function () {
 		               $scope.mensagem = true;
-		           },10000);
+		           },5000);
 
 		      	} else {
 		      		

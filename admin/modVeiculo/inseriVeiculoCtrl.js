@@ -1,7 +1,4 @@
-app.controller("inseriVeiculoCtrl", function($scope, $http,$location , $timeout,$sessionStorage){
-  
-  //Pega o Id do Usuario Logado
-  var idUsuario = sessionStorage.getItem('usuario.id');
+app.controller("inseriVeiculoCtrl", function($scope, $http,$location ,restful ,$timeout,$sessionStorage){
 
   //Oculta lado Direito
   $scope.quatro = false;
@@ -13,6 +10,11 @@ app.controller("inseriVeiculoCtrl", function($scope, $http,$location , $timeout,
   $scope.mensagem = true;
     //Ocultando o Alert Mensagem .
   $scope.mensagemDeleta = true;
+
+  //Lista de Universidades
+    restful.universidadeList().success(function(response){
+      $scope.universidades = response;
+  });
 
   /************* INSERI NOVO VEICULO  *********************/
 

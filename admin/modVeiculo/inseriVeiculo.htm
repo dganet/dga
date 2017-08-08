@@ -17,6 +17,17 @@
   
   <div class="row">
 
+ <div class="col-md-3">
+      <div class="form-group">
+            <label>Escolha a Universidade</label>
+                 <!-- Select de Bairros -->
+                      <select class="form-control"
+                        ng-options="b.id as b.nome for b in universidades"
+                        ng-model="veiculo.id">
+                        <option value="">Selecione Universidade</option>
+                        </select>
+       </div>
+     </div>
 
  <div class="col-md-3">
       <div class="form-group">

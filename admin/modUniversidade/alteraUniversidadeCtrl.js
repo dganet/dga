@@ -15,7 +15,7 @@ $scope.dados = function (values){
 
 	var id = $scope.id = values;
 
-		restful.universidadesListId(id)success(function(data){
+		restful.universidadesListId(id).success(function(data){
 		$scope.universidade = data[0];
 		
 	});
