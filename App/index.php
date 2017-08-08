@@ -45,7 +45,7 @@ unset($app->getContainer()['phpErrorHandler']);
 // 	* POSTCURSO
 // 	*/
 // 	$app->group('/curso', function() use ($app){
-// 		require_once("route/cursoRoute.php");
+ 		require_once("route/cursoRoute.php");
 // 	});
 // 	/**
 // 	* OPORTUNIDADE

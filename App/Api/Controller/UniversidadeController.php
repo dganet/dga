@@ -102,5 +102,4 @@ class UniversidadeController {
 			return $response->WithJson([]);
 		}
 	}
-
 }

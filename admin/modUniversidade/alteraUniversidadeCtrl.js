@@ -1,5 +1,7 @@
 app.controller("alteraUniversidadeCtrl", function($scope,$http, restful,$location , $timeout, $sessionStorage ){
-
+ //Pega o id do usuario logado
+ var token = sessionStorage.getItem('usuario.id');
+ 
 $scope.quatro = false;
 
 //Lista os Usuarios
@@ -16,7 +18,8 @@ $scope.dados = function (values){
 	var id = $scope.id = values;
 
 		restful.universidadeListId(id).success(function(data){
-		$scope.universidade = data[0];
+     
+      $scope.universidade = data[0];
 		
 	});
 

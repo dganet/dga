@@ -2,7 +2,7 @@
 namespace Api\Controller;
 use \Api\Model\Entity\Curso, \Api\Controller\AuditController as Audit;
 
-class CursoController implements Controller {
+class CursoController {
 
 	// Salva as Informações do curso
 	public function cadastrar($data){
@@ -12,11 +12,19 @@ class CursoController implements Controller {
 		Audit::audit($data, "INSERT", "curso");
 		return $curso->save();
 	}
-
-	//Lista todos os curso
-	public function listaTudo(){
-		$curso = new Curso();
-		return $curso->select(array('where' => array('status' => 'ATIVO')));
+	/**
+	 * Undocumented function
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function listaTudo($request, $response, $args){
+		$curso = Curso::getInstance();
+		$curso->makeSelect()->where("status='ATIVO'");
+		$collection = $curso->execute();
+		return $response->WithJson($collection->getAll());
 	}
 	//Lista Por Id
 	public function listaPorId($id){
