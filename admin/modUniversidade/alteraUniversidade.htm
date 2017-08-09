@@ -30,7 +30,7 @@
 
     <tbody> 
      <tr ng-repeat="x in universidades | filter: busca  ">
-       <td> <a ui-sref="user.universidade.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
+       <td class="teste"> <a ui-sref="user.universidade.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
      </tr>
    
     </tbody>
@@ -44,7 +44,7 @@
     <hr>
 
 
-<form name="FormUniversidade" ng-submit="add(universidade)">
+<form name="FormUniversidade" ng-submit="put(universidade)">
   
   <div class="row">
 
@@ -59,7 +59,7 @@
   
 <hr>
 <button type="submit" class="btn btn-primary">Salvar Dados</button> 
-<button type="button" class="btn btn-danger" ng-click="deleta(universidade.id)">Deletar</button>
+<button type="button" class="btn btn-danger" ng-click="del(universidade.id)">Deletar</button>
 </form>
 
   </div>
