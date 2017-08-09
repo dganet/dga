@@ -1,64 +1,25 @@
 <?php
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-$app->post('/save/{id}', function(Request $request, Response $response, $args){
-		$curso = new \Api\Controller\CursoFaculdadeController();
-		$post = json_decode($request->getBody(), true);
-		if ($curso->cadastrar($post)){
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([true]);
-		}else{
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([false]);
-		}
-		return $response;
-	});
-	//lista todos os curso
-	$app->get('/list', function(Request $request, Response $response){
-		$curso = new \Api\Controller\CursoFaculdadeController();
-		$curso = $curso->listaTudo();
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($curso);
-		return $response;
-	});
-	//lista os cursos e os associados em cada curso
-	$app->get('/listplus', function(Request $request, Response $response){
-		$curso = new \Api\Controller\CursoFaculdadeController();
-		$curso = $curso->listaTudoPlus();
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($curso);
-		return $response;
-	});
-	//Lista Associados que estão em um determinado curso
-	$app->get('/list/{id}', function(Request $request, Response $response, $args){
-		$curso = new \Api\Controller\CursoFaculdadeController();
-		$curso = $curso->listaPorId($args['id']);
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($curso);
-		return $response;
-	});
-	//Lista registros inativos
-	$app->get('/inativo', function(Request $request, Response $response){
-		$curso = new \Api\Controller\CursoFaculdadeController();
-		$curso = $curso->listaInativo();
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($curso);
-		return $response;
-	});
-	//Atualiza cadastro
-	$app->put('/update/{id}', function(Request $request, Response $response, $args){
-		$post = json_decode($request->getBody(), true);
-		$curso = new \Api\Controller\CursoFaculdadeController();
-		$curso = $curso->atulizaCadastro($post);
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($curso);
-		return $response;
-	});
-	//Inativa um curso
-	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
-		$curso = new \Api\Controller\CursoFaculdadeController();
-		$curso =  $curso->inativar($args['id']);
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($curso);
-		return $response;
-	});
+
+// Cadastra um novo curso
+$app->post('/cursofaculdade/save', \Api\Controller\CursoFaculdadeController::class . ':cadastrar');
+
+// 	//lista todos os curso
+$app->get('/cursofaculdade/list', \Api\Controller\CursoFaculdadeController::class . ':listaTudo');
+
+// 	//lista os cursos e os associados em cada curso
+$app->get('/cursofaculdade/listplus', \Api\Controller\CursoFaculdadeController::class . ':listaTudoPlus');
+
+// 	//Lista Associados que estão em um determinado curso
+$app->get('/cursofaculdade/list/{id}', \Api\Controller\CursoFaculdadeController::class . ':listaPorId');
+
+// 	//Lista registros inativos
+$app->get('/cursofaculdade/inativo', \Api\Controller\CursoFaculdadeController::class . ':listaInativo');
+
+// 	//Atualiza cadastro
+$app->put('/cursofaculdade/update/{id}', \Api\Controller\CursoFaculdadeController::class . ':atualizaCadastro');
+
+// 	//Inativa um curso
+$app->delete('/cursofaculdade/delete/{id}', \Api\Controller\CursoFaculdadeController::class . ':inativar');
+

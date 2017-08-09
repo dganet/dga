@@ -69,7 +69,7 @@ unset($app->getContainer()['phpErrorHandler']);
 // 	* CURSOFACULDADE
 // 	*/
 // 	$app->group('/cursofaculdade', function() use ($app){
-// 		require_once("route/cursoFaculdadeRoute.php");
+ 		require_once("route/cursoFaculdadeRoute.php");
 // 	});
 // 	/**
 // 	* TESTE
