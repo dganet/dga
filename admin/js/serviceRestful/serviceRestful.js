@@ -8,7 +8,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $usuarioLogin = '../App/usuario/login'; // loga o usuario
    $usuarioSave =  '/App/usuario/save'; // Salva Usuario
    //Classes Associado
-   $associadoSave = '/App/associado/save/'; // Salva Associado
+   $associadoSave = '../App/associado/save/'; // Salva Associado
    $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
     //Classes Universidade
    $universidadeSave = '../App/universidade/save'; // Salva Associado

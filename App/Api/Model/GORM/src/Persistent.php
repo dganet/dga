@@ -13,12 +13,12 @@ trait Persistent
     public function save($lastId = false){
         // Mode de Desenvolvimento
         if($this->configuration['mode'] == 'devel'){
-            $this->makeInsert();
+            /**
+            * BEFORE SAVE
+            */
+            $this->beforeSave();
             try{
-                /**
-                * BEFORE SAVE
-                */
-                $this->beforSave();
+                $this->makeInsert();
                 if (!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
                     throw new Exception("Não foi possivel inserir a informação no banco de dados", 003);
                 }else{
@@ -47,9 +47,9 @@ trait Persistent
             }
             //Modo de Produção
         }else if ($this->configuration['mode'] == 'production'){
-            $this->makeInsert();
+            $this->beforeSave();
             try{
-                $this->beforSave();
+                $this->makeInsert();
                 if (!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
                     throw new Exception("Não foi possivel inserir a informação no banco de dados", 004);
                 }else{
@@ -79,9 +79,9 @@ trait Persistent
     public function update(){
         // Modo de Desenvolvimento
         if ($this->configuration['mode'] == 'devel'){
-            $this->makeUpdate();
+            $this->beforeUpdate();
             try{
-                $this->beforeUpdate();
+                $this->makeUpdate();
                 if(!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
                     throw new Exception("Não foi posivel fazer o update das informações", 005);
                 }else{
@@ -104,9 +104,9 @@ trait Persistent
             }
         // Modo de Produção
         }else if ($this->configuration['mode'] == 'production'){
-            $this->makeUpdate();
-            try{
             $this->beforeUpdate();
+            try{
+            $this->makeUpdate();
             if(!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
                 throw new Exception("Não foi posivel fazer o update das informações", 006);
             }else{
@@ -135,7 +135,7 @@ trait Persistent
      *
      * @return void
      */
-    public function beforSave(){
+    public function beforeSave(){
         $this->createAt = date('Y-m-d H:i:s');
     }
     /**

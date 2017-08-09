@@ -74,7 +74,6 @@ class AssociadoController {
 	 */
 	public function listaAtivo($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->serializable = true;
 		$associado->makeSelect()->where("status='ATIVO'");
 		$collection = $associado->execute();
 		return $response->Withjson($collection->getAll());
@@ -89,7 +88,6 @@ class AssociadoController {
 	 */
 	public function listaPorId($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->serializable = true;
 		$associado->makeSelect()->where("id=".$args['id']);
 		$collection = $associado->execute();
 		return $response->Withjson($collection->getAll());
@@ -105,6 +103,8 @@ class AssociadoController {
 	public function atulizaCadastro($request, $response, $args){
 		$data = json_decode($request->getBody(),true);
 		$associado = Associado::getInstance();
+		$associado->rendaSerial = $data['renda'];
+		unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
 		$associado->load($data);
 		return $response->WithJson($associado->update());
 	}
@@ -132,7 +132,6 @@ class AssociadoController {
 	 */
 	public function listaInativo($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->serializable = true;
 		$associado->makeSelect()->where("status='INATIVO'");
 		$collection = $associado->execute();
 		return $response->WithJson($collection->getAll());
@@ -147,7 +146,6 @@ class AssociadoController {
 	 */
 	public function ListaAguardandoVaga($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->serializable = true;
 		$associado->makeSelect("associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt")
 		->inner('veiculo', 'veiculo.id = associado.veiculo_id')
 			->where("associado.status='AGUARDANDOVAGA'")->order('associado.createAt');
@@ -166,7 +164,6 @@ class AssociadoController {
 	 */
 	public function ListaAguardandoVagaID($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->serializable = true;
 		$associado->makeSelect("associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt")
 		->inner('veiculo', 'veiculo.id = associado.veiculo_id')
 			->where("associado.status='AGUARDANDOVAGA'")->and('associado.id='.$args['id'])->order('associado.createAt');
@@ -183,7 +180,6 @@ class AssociadoController {
 	 */
 	public function listaAguardandoAprovacao($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->serializable = true;
 		$associado->makeSelect()->where("status='AGUARDANDOVAGA'");
 		$collection = $associado->execute();
 		return $response->WithJson($collection->getAll());
@@ -221,7 +217,6 @@ class AssociadoController {
 	 */
 	public function listaAssociadoVeiculo($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->serializable = true;
 		$associado->makeSelect('nome')->where("veiculo_id=".$args['id'])->and("status='ATIVO");
 		$collection = $associado->execute();
 		return $response->WithJson($collection->getAll());
@@ -263,7 +258,7 @@ class AssociadoController {
  */
 //   public function listAssociadoCurso($request, $response, $args){
 //     $associado = Associado::getInstance();
-// 	$associado->serializable = true;
+
 // 	$collection = $associado->makeSelect()->where("curso=".$args['id'])->execute();
 //     return $response->WithJson($collection->getAll());
 //   }

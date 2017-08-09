@@ -69,10 +69,10 @@ class Associado extends \GORM\Model{
      *
      * @return void
      */
-    public function desSerialize(){
-        $this->documento = unserialize($this->documento);
-        $this->rendaSerial= unserialize($this->rendaSerial);
-    }
+    // public function desSerialize(){
+    //     $this->documento = unserialize($this->documento);
+    //     $this->rendaSerial= unserialize($this->rendaSerial);
+    // }
     /**
      * Gera renda perCapta do associado 
      *
@@ -99,5 +99,23 @@ class Associado extends \GORM\Model{
         $this->documento = serialize($this->documento);
         $this->rendaSerial= serialize($this->rendaSerial);
     }
-   
+    /**
+     * Executa antes de atualizar
+     *
+     * @return void
+     */
+    public function beforeUpdate(){
+       $this->documento = serialize($this->documento);
+       $this->rendaSerial = serialize($this->rendaSerial);
+    }
+    /**
+     * Executa depois do Select
+     *
+     * @return void
+     */
+    public function beforeCollection(){
+        $this->documento = unserialize($this->documento);
+        $this->rendaSerial = unserialize($this->rendaSerial);
+        
+    }
 }

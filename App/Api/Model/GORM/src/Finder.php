@@ -23,13 +23,14 @@ trait Finder{
     public function execute($needArray = false){
         try{
             $cls = get_called_class();
+            $this->beforeSelect();
             $stmt = $this::getConnection()->prepare($this->configuration['sql']);
             $stmt->execute(); 
             $line = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $this->afterSelect();
             $collection = new \GORM\Collection\Collection();
             foreach ($line as $key => $value) {
                 $cls = new $cls();
-                $cls->serializable = $this->serializable;
                 $cls->load($value);
                 //Antes de adcionar na coleção 
                 $cls->beforeCollection();
@@ -71,5 +72,20 @@ trait Finder{
     public function afterCollection(){
 
     }
-   
+    /**
+     * Executa antes de fazer o select
+     *
+     * @return void
+     */
+   public function beforeSelect(){
+
+   }
+   /**
+    * Executa depois de fazer o select
+    *
+    * @return void
+    */
+   public function afterSelect(){
+
+   }
 }

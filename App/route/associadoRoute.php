@@ -24,7 +24,7 @@ $app->get('/associado/list/{id}', \Api\Controller\AssociadoController::class . '
 //Lista os Associados Inativos
 $app->get('/associado/inativo', \Api\Controller\AssociadoController::class . ':listaInativo');
 //Atualiza os Associados
-$app->put('/associado/update', \Api\Controller\AssociadoController::class . ':atulizaCadastro');
+$app->put('/associado/update/{id}', \Api\Controller\AssociadoController::class . ':atulizaCadastro');
 $app->put('/associado/ative/{id}', \Api\Controller\AssociadoController::class . ':ativaCadastro');
 //Inativa um Associado
 $app->delete('/associado/delete/{id}', \Api\Controller\AssociadoController::class . ':inativar');

@@ -19,12 +19,6 @@ use Database, Init, Persistent, Builder, Finder;
      */
     private $configuration;
     /**
-     * Variavel para verificar se há algum campo a ser serializado ou desserializado
-     *
-     * @var boolean
-     */
-    public $serializable = false;
-    /**
      * Metodo que implementa o metodo Singleton
      *
      * @return Instancia 
@@ -117,9 +111,6 @@ use Database, Init, Persistent, Builder, Finder;
     public function load($array = []){
         foreach ($array as $key => $value) {
             $this->$key = $value;
-        }
-        if($this->serializable){
-            $this->desSerialize();
         }
     }
    
