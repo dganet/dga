@@ -6,9 +6,7 @@ app.controller("universidadeCtrl",function($scope, restful,$location , $timeout 
     
   //Lista todas Universidades
 	restful.universidadeList().success(function(data){
-        console.log(data);
 		$scope.universidades = data;       
-
 	});
 
 // Show modal
@@ -24,8 +22,12 @@ $scope.dados = function (id){
     // Enviado os valores em objetos para api/user do php/slim
     restful.universidadeSave(values).success(function(){
       // Depois mandando para mesma pagina  
-      $('bs-example-modal-lg-post').modal('hide');
-         
+      $('#teste').modal('hide');
+        
+    restful.universidadeList().success(function(data){
+		$scope.universidades = data;       
+	});
+        
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagem = false;
       $timeout(function () {
