@@ -31,15 +31,15 @@
       </div>
         
         <div class="col col-md-4">
-               		<div class="input-group margin-bottom-sm">
-			  			<span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-			  			<input class="form-control" type="text" ng-model="busca" placeholder="Procure pelo titulo" required="required">
-					</div>
+            <div class="input-group margin-bottom-sm">
+			 <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+			 <input class="form-control" type="text" ng-model="busca" placeholder="Procure pelo nome" required="required">
+			</div>
         </div>
 
        <div class="col col-md-4">
         <div class="acaoTemplate">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg-post">Novo <i class="fa fa-file-o" aria-hidden="true"></i></button>
+            <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-post">Novo <i class="fa fa-file-o" aria-hidden="true"></i></button>
        </div>
 
     </div>
@@ -62,14 +62,23 @@
 
             <tbody> 
              <tr ng-repeat="x in universidades | filter: busca  ">
+               
                <td class="centro">{{x.id}}</td>
                <td><a ui-sref="user.universidade.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
+               
+               <td class="centro">
+                   <a class="btn btn-default"><i ng-click="dados(x.id)" class="fa fa-address-card-o"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></i></a>
+               </td>
+                 
+               <td class="centro">
+                   <a class="btn btn-warning"><i ng-click="dados(x.id)" class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"></i></a>
+               </td>
+               
                  <td class="centro">
-                     <i ng-click="dados(x.id)" class="fa fa-address-card-o fa-lg"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></i>
-                 </td>
-               <td class="centro"><i ng-click="dados(x.id)" class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"></i></td>
-               <td class="centro"><i ng-click="dados(x.id)" class="fa fa-trash-o fa-lg" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-delete"></i></td>
-             </tr>
+                     <a class="btn btn-danger"><i ng-click="dados(x.id)" class="fa fa-trash-o " aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-delete"></i></a>
+               </td>
+             
+                </tr>
             </tbody>
                 
             </table>
@@ -110,45 +119,6 @@
     </div>
   </div>
 </div>   
-    
-<!-- Modal Detalhes -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Detalhes {{universidade.nome}}</h4>
-      </div>
-        
-    <div class="modal-body">
-            <table class="table table-hover corpoTableTemplate">
-              <tbody>
-                <tr>
-                  <td>id</td>
-                  <td>{{universidade.id}}</td>
-                </tr>
-                <tr>
-                  <td>Nome</td>
-                  <td>{{universidade.nome}}</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>{{universidade.status}}</td>
-                </tr>
-              </tbody>
-        </table>
-      </div>
-        
-     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-      </div>
-        
-        
-    </div>
-  </div>
-</div>
-    
     
 <!-- Modal Update -->
 <div class="modal fade bs-example-modal-lg-update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdate">
@@ -209,6 +179,42 @@
   </div>
 </div>
 
+<!-- Modal Detalhes -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
 
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Detalhes {{universidade.nome}}</h4>
+      </div>
+        
+    <div class="modal-body">
+            <table class="table table-hover corpoTableTemplate">
+              <tbody>
+                <tr>
+                  <td>id</td>
+                  <td>{{universidade.id}}</td>
+                </tr>
+                <tr>
+                  <td>Nome</td>
+                  <td>{{universidade.nome}}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>{{universidade.status}}</td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+        
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+        
+        
+    </div>
+  </div>
+</div>
 
 </div><!-- End Template ->

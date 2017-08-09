@@ -351,35 +351,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-
-		.state('user.universidade.inseri', {
-			url: '/inseri',
-			templateUrl: 'modUniversidade/inseriUniversidade.htm',
-			controller: 'inseriUniversidadeCtrl',
-			ncyBreadcrumb: {
-				label: 'Inseri'
-			}
-		})
-
-		.state('user.universidade.altera', {
-			url: '/altera',
-			templateUrl: 'modUniversidade/alteraUniversidade.htm',
-			controller: 'alteraUniversidadeCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera'
-			}
-		})
-
-		.state('user.universidade.altera.detalhes', {
-			url: '/:id',
-			controller: function ($scope, $stateParams) {
-				// get the id
-				$scope.id = $stateParams.id;
-			},
-			ncyBreadcrumb: {
-				label: 'Universidade'
-			}
-		})
 		//############################################################################
 		//############# **  MODULO CURSO ** ##########################################
 		//############################################################################

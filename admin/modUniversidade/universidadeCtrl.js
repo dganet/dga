@@ -10,9 +10,21 @@ app.controller("universidadeCtrl",function($scope, restful,$location , $timeout 
 	restful.universidadeList().success(function(data){
 		$scope.universidades = data;       
 	});
-
-// Show modal
+//Novo registro. zera todas informaçoes do objeto
+    $scope.novo = function(){
+      $scope.universidade = {};  
+    };
+    
+// Show modaais de detalhes, alterar e deletar.
 $scope.dados = function (id){
+    //Resentando 
+    $scope.reset = function() {
+    // Copiando os valores vazio do scope.master 
+      $scope.universidade = angular.copy($scope.master);
+    };
+    // Ativando a função
+    $scope.reset();
+        //Pega as info da universidade selecionada
 		restful.universidadeListId(id).success(function(data){
 		$scope.universidade = data[0];	
         });
