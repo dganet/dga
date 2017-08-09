@@ -69,8 +69,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Universidade
     var _universidadeDel = function (values){
-      console.log(values);
-          return  $http.del($universidadeDel + token , values);
+          return  $http.delete($universidadeDel + values);
     };
 //|#######################################################|
 //|############# **  MODULO NOTICIAS ** ###################|

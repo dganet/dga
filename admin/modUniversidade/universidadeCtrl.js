@@ -2,7 +2,9 @@ app.controller("universidadeCtrl",function($scope, restful,$location , $timeout 
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
-  $scope.mensagem = true;
+  $scope.mensagemSucesso = true;
+  $scope.mensagemAtualizado = true;
+  $scope.mensagemDelete = true;
     
   //Lista todas Universidades
 	restful.universidadeList().success(function(data){
@@ -21,18 +23,19 @@ $scope.dados = function (id){
   $scope.add = function(values, FormUniversidade) {
     // Enviado os valores em objetos para api/user do php/slim
     restful.universidadeSave(values).success(function(){
-      // Depois mandando para mesma pagina  
-      $('#teste').modal('hide');
-        
+      // Fecha o Modal
+      $('#closeModalPost').modal('hide');
+    
+    //Lista todas Universidades
     restful.universidadeList().success(function(data){
 		$scope.universidades = data;       
 	});
         
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
-      $scope.mensagem = false;
+      $scope.mensagemSucesso = false;
       $timeout(function () {
-               $scope.mensagem = true;
-           },20000);
+               $scope.mensagemSucesso = true;
+           },10000);
     });
      //Resentando os input do formulario .
     $scope.reset = function() {
@@ -48,18 +51,22 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormUniversidade) {
-
 	 var id = values.id;
 
     // Enviado os valores em objetos para api/user do php/slim
     restful.universidadePut(id,values).success(function(){
-      // Depois mandando para mesma pagina  
-      $scope.activePath = $location.path('/user/universidade');
+     // Fecha o Modal
+      $('#closeModalUpdate').modal('hide');
+
+        //Lista todas Universidades
+        restful.universidadeList().success(function(data){
+            $scope.universidades = data;       
+        });
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
-      $scope.mensagem = false;
+      $scope.mensagemAtualizado = false;
       $timeout(function () {
-               $scope.mensagem = true;
+               $scope.mensagemAtualizado = true;
            },10000);
 
     });
@@ -70,20 +77,23 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
-      console.log('chupa');
-
     // Enviado os valores em objetos para api/user do php/slim
-    //restful.universidadeDel(values).success(function(){
-    // Depois mandando para mesma pagina  
-    $scope.activePath = $location.path('/user/universidade');
-   
+    restful.universidadeDel(values).success(function(){
+    // Fecha o Modal
+      $('#closeModalDel').modal('hide');
+        
+     //Lista todas Universidades
+        restful.universidadeList().success(function(data){
+            $scope.universidades = data;       
+        });
+        
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
-      $scope.mensagemDeleta = false;
+      $scope.mensagemDelete = false;
       $timeout(function () {
-               $scope.mensagemDeleta = true;
+               $scope.mensagemDelete = true;
            },10000);
 
-   // });
+    });
   };
     
 });
