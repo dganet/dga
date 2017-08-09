@@ -335,7 +335,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		//############################################################################
 		.state('user.universidade', {
 			url: '/universidade',
-			templateUrl: 'modUniversidade/linkUniversidade.htm',
+			// templateUrl: 'modUniversidade/linkUniversidade.htm',
+			templateUrl: 'modUniversidade/universidade.htm',
+			controller: 'universidadeCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
 					if (sessionStorage.getItem('usuario.id') == null) {

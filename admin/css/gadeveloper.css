@@ -128,6 +128,29 @@ color:white;
 }
 
 /*  TEMPLATES  */
+.template {
+	background: white;
+	width: calc(100% - 20px );
+	position: absolute;
+	top:105px;
+	left: 10px;
+	bottom: 10px;
+	padding: 20px;
+    overflow: auto;
+}
+.labelTemplate {
+    padding-top: 10px;
+}
+.acaoTemplate {
+    padding-top: -20px;
+    float: right;
+}
+.corpoTemplate {
+    margin-top: 30px;
+}
+.corpoTemplate .corpoTableTemplate .centro {
+    text-align: center;
+}
 
 /*  TEMPLATE UM  */
 .um {
@@ -208,13 +231,24 @@ color:white;
 	text-decoration: none;
 	background: #F3F3F3;
 }
-
+table tbody tr .teste a{
+	width: 100%;
+	padding: 10px;
+	display: inline-block;
+	/* visual do link */
+	text-decoration: none;
+	color: gray;
+}
+table tbody tr .teste a:hover{
+	text-decoration: none;
+	background: #F3F3F3;
+}
 /*  SECTION  */
 
 .acoes {
 	width: 100%; 
 	height: 20px;
-	padding: 10px 20px 0px 30px;
+	padding: 0px 20px 0px 30px;
 }
 
 .acoes a {

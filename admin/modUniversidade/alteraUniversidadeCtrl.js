@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-app.controller("alteraUniversidadeCtrl", function($scope,$http, restful,$location , $timeout, $sessionStorage ){
+app.controller("alteraUniversidadeCtrl", function($scope,$http, restful, $location , $timeout, $sessionStorage ){
  //Pega o id do usuario logado
  var token = sessionStorage.getItem('usuario.id');
- 
-=======
-app.controller("alteraUniversidadeCtrl", function($scope, $http, restful, $location , $timeout, $sessionStorage ){
-  //Pega o Id do Usuario Logado
-  var idUsuario = sessionStorage.getItem('usuario.id');
 
->>>>>>> dfcbe6d2652c22aea00251a831b3b90fb2334482
 $scope.quatro = false;
 
 //Lista os Usuarios
@@ -18,22 +11,10 @@ $scope.quatro = false;
 	});
 
 // Seleciona o usuario e mostra do Lado. 
-$scope.dados = function (values){
-
-	$scope.quatro = true;
-
-	var id = $scope.id = values;
-<<<<<<< HEAD
-
+$scope.dados = function (id){
+    $scope.quatro = true;
 		restful.universidadeListId(id).success(function(data){
-     
-      $scope.universidade = data[0];
-=======
-		restful.universidadeList(id).success(function(data){
-      console.log(data);
-		$scope.universidade = data[0];
->>>>>>> dfcbe6d2652c22aea00251a831b3b90fb2334482
-		
+		$scope.universidade = data[0];	
 	});
 
 	};
@@ -49,13 +30,12 @@ $scope.dados = function (values){
 //*************UPDATE CURSO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormUniversidade) {
+  $scope.put = function(values, FormUniversidade) {
 
-	 $scope.dados = values;
-	 var id = $scope.dados.id;
+	 var id = values.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.put('../App/universidade/update/'+ idUsuario , values).success(function(){
+    restful.universidadePut(id,values).success(function(){
       // Depois mandando para mesma pagina  
       $scope.activePath = $location.path('/user/universidade/altera');
          
@@ -73,11 +53,10 @@ $scope.dados = function (values){
 $scope.dados = function (values){
 
   $scope.quatro = true;
+  var id = values;
 
-  var id = $scope.id = values;
-
-    $http.get('../App/universidade/list/'+ id).success(function(data){
-    $scope.curso = data[0];
+   restful.universidadeListId(id).success(function(data){
+   $scope.curso = data[0];
     
   });
 
@@ -93,10 +72,10 @@ $scope.dados = function (values){
 //*************DELETE NOTICIA *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.deleta = function(values) {
+  $scope.del = function(values) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    $http.delete('../App/universidade/delete/'+ idUsuario, values).success(function(){
+    restful.universidadeDel(values).success(function(){
     // Depois mandando para mesma pagina  
     $scope.activePath = $location.path('/user/universidade/altera');
    
@@ -107,7 +86,7 @@ $scope.dados = function (values){
            },10000);
 
 
-    $http.get('../App/universidade/list').success(function(data){
+    restful.universidadeList().success(function(data){
     $scope.cursos = data;
 
     });
