@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-app.controller("alteraUniversidadeCtrl", function($scope, $http, restful, $location , $timeout, $sessionStorage ){
-  //Pega o Id do Usuario Logado
-  var idUsuario = sessionStorage.getItem('usuario.id');
-=======
 app.controller("alteraUniversidadeCtrl", function($scope,$http, restful, $location , $timeout, $sessionStorage ){
  //Pega o id do usuario logado
  var token = sessionStorage.getItem('usuario.id');
->>>>>>> 36d1712c3aef5793b644474abedf4c3f9e11131a
 
 $scope.quatro = false;
 
@@ -17,22 +11,10 @@ $scope.quatro = false;
 	});
 
 // Seleciona o usuario e mostra do Lado. 
-<<<<<<< HEAD
-$scope.dados = function (values){
-
-	$scope.quatro = true;
-
-	var id = $scope.id = values;
-		restful.universidadeList(id).success(function(data){
-      console.log(data);
-		$scope.universidade = data[0];
-		
-=======
 $scope.dados = function (id){
     $scope.quatro = true;
 		restful.universidadeListId(id).success(function(data){
 		$scope.universidade = data[0];	
->>>>>>> 36d1712c3aef5793b644474abedf4c3f9e11131a
 	});
 
 	};
