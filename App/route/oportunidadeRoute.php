@@ -1,61 +1,16 @@
 <?php 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-$app->post('/save/{id}', function(Request $request, Response $response, $args){
-		$oportunidade = new \Api\Controller\OportunidadeController();
-		$post = json_decode($request->getBody(), true);
-		$post['usuario_id'] = $args['id'];
-		if ($oportunidade->cadastrar($post)){
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([true]);
-		}else{
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([false]);
-		}
-		return $response;
-	});
-	//lista todos os oportunidade
-	$app->get('/list', function(Request $request, Response $response){
-		$oportunidade = new \Api\Controller\OportunidadeController();
-		$oportunidade = $oportunidade->listaTudo();
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($oportunidade);
-		return $response;
-	});
-	//Lista oportunidade por Id
-	$app->get('/list/{id}', function(Request $request, Response $response, $args){
-		$oportunidade = new \Api\Controller\OportunidadeController();
-		$oportunidade = $oportunidade->listaPorId($args['id']);
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($oportunidade);
-		return $response;
-	});
-	//Lista registros inativos
-	$app->get('/inativo', function(Request $request, Response $response){
-		$oportunidade = new \Api\Controller\OportunidadeController();
-		$oportunidade = $oportunidade->listaInativo();
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($oportunidade);
-		return $response;
-	});
-	//Atualiza cadastro
-	$app->put('/update/{id}', function(Request $request, Response $response, $args){
-		$post = json_decode($request->getBody(), true);
-		$oportunidade = new \Api\Controller\OportunidadeController();
-		if ($oportunidade->atulizaCadastro($post)){
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([true]);
-		}else{
-			$response = $response->withHeader('Content-type', 'application/json');
-			$response = $response->withJson([false]);
-		}
-		return $response;
-	});
-	//Inativa um oportunidade
-	$app->delete('/delete/{id}', function (Request $request, Response $response, $args){
-		$oportunidade = new \Api\Controller\OportunidadeController();
-		$oportunidade =  $oportunidade->inativar($args['id']);
-		$response = $response->withHeader('Content-type', 'application/json');
-		$response = $response->withJson($oportunidade);
-		return $response;
-	});
+
+
+$app->post('/oportunidade/save', \Api\Controller\OportunidadeController::class . ':cadastrar');
+// 	//lista todos os curso
+$app->get('/oportunidade/list', \Api\Controller\OportunidadeController::class . ':listaTudo');
+// 	//Lista curso por Id
+$app->get('/oportunidade/list/{id}', \Api\Controller\OportunidadeController::class . ':listaPorId');
+// 	//Lista registros inativos
+$app->get('/oportunidade/inativo', \Api\Controller\OportunidadeController::class . ':listaInativo');
+// 	//Atuza cadastro
+$app->put('/oportunidade/update/{id}', \Api\Controller\OportunidadeController::class . ':atualizaCadastro');
+// 	//Inativa um curso
+$app->delete('/oportunidade/delete/{id}', \Api\Controller\OportunidadeController::class . ':inativar');

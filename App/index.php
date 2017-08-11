@@ -51,7 +51,7 @@ unset($app->getContainer()['phpErrorHandler']);
 // 	* OPORTUNIDADE
 // 	*/
 // 	$app->group('/oportunidade', function() use ($app){
-// 		require_once("route/oportunidadeRoute.php");
+		require_once("route/oportunidadeRoute.php");
 // 	});
 // 	/**
 // 	* VEICULO
