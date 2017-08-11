@@ -1,47 +1,47 @@
-app.controller("universidadeCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
+app.controller("associadoCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
   $scope.mensagemSucesso = true;
   $scope.mensagemAtualizado = true;
   $scope.mensagemDelete = true;
-
-    //Novo registro. zera todas informaçoes do objeto
+    
+//Novo registro. zera todas informaçoes do objeto
     $scope.novo = function(){
-      $scope.universidade = {};  
+      $scope.curso = {};  
     };
     
-  //Lista todas Universidades
-	restful.universidadeList().success(function(data){
-		$scope.universidades = data;       
-	});
-    
+  //Lista todas Associados
+	restful.associadoList().success(function(data){
+		$scope.associados = data;       
+	}); 
+  
 // Show modaais de detalhes, alterar e deletar.
 $scope.dados = function (id){
     //Resentando 
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.universidade = angular.copy($scope.master);
+      $scope.associado = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
         //Pega as info da universidade selecionada
-		restful.universidadeListId(id).success(function(data){
-		$scope.universidade = data[0];	
+		restful.associadoListId(id).success(function(data){
+		$scope.associado = data[0];	
         });
 };
-//*************CADASTRA NOVA UNIVERSIDADE *********************// 
+//*************CADASTRA NOVO CURSO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormUniversidade) {
+  $scope.add = function(values, FormCurso) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.universidadeSave(values).success(function(){
+    restful.associadoSave(values).success(function(){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     
-    //Lista todas Universidades
-    restful.universidadeList().success(function(data){
-		$scope.universidades = data;       
+    //Lista todas Associado
+    restful.associadoList().success(function(data){
+		$scope.cursos = data;       
 	});
         
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -53,7 +53,7 @@ $scope.dados = function (id){
      //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.universidade = angular.copy($scope.master);
+      $scope.associado = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
@@ -63,17 +63,17 @@ $scope.dados = function (id){
 //*************UPDATE UNIVERSIDADE *********************//   
 
 //Passa os valores do form em Objeto no "values"
-  $scope.put = function(values, FormUniversidade) {
+  $scope.put = function(values, Form) {
 	 var id = values.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.universidadePut(id,values).success(function(){
+    restful.associadoPut(id,values).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
-        //Lista todas Universidades
-        restful.universidadeList().success(function(data){
-            $scope.universidades = data;       
+        //Lista todas Cursos
+        restful.associadoList().success(function(data){
+            $scope.cursos = data;       
         });
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -91,13 +91,13 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.universidadeDel(values).success(function(){
+    restful.associadoDel(values).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         
-     //Lista todas Universidades
-        restful.universidadeList().success(function(data){
-            $scope.universidades = data;       
+     //Lista todas Associado
+        restful.associadoList().success(function(data){
+            $scope.cursos = data;       
         });
         
       // Funcão de exibir a mensagem de sucesso em 5 segundos.

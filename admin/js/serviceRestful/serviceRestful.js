@@ -8,17 +8,27 @@ app.service('restful', function ($http,$sessionStorage) {
    $usuarioLogin = '../App/usuario/login'; // loga o usuario
    $usuarioSave =  '/App/usuario/save'; // Salva Usuario
 
-   //Classes Associado
-   $associadoSave = '../App/associado/save/'; // Salva Associado
-   $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
+    //Classes associado
+   $associadoSave = '../App/associado/save'; // Salva Associado
+   $associadoList = '../App/associado/list'; // Lista todo Associados
+   $associadoListId = '../App/associado/list/';// Lista associado referente ao ID
+   $associadoPut = '../App/associado/update/';// Uptades na associado
+   $associadoDel = '../App/associado/delete/';// associado Deleta
 
     //Classes Universidade
-   $universidadeSave = '../App/universidade/save'; // Salva Associado
+   $universidadeSave = '../App/universidade/save'; // Salva Universidade
    $universidadeList = '../App/universidade/list'; // Lista todas Universades
    $universidadeListId = '../App/universidade/list/';// Lista Universidade referente ao ID
    $universidadePut = '../App/universidade/update/';// Uptades na Universidade
    $universidadeDel = '../App/universidade/delete/';// Universidade Deleta
 
+   //Classes Curso
+   $cursofaculdadeSave = '../App/cursofaculdade/save'; // Salva Curso
+   $cursofaculdadeList = '../App/cursofaculdade/list'; // Lista todas os Cursos
+   $cursofaculdadeListId = '../App/cursofaculdade/list/';// Lista curso referente ao ID
+   $cursofaculdadePut = '../App/cursofaculdade/update/';// Uptades no curso
+   $cursofaculdadeDel = '../App/cursofaculdade/delete/';// Curso Deleta
+    
    //Classes Cliente
    $noticiaSave = '/App/post/save/'; // Salva Cliente
    $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
@@ -41,13 +51,28 @@ app.service('restful', function ($http,$sessionStorage) {
     };
 
 //|#######################################################|
-//|############# **  MODULO ASSOCIADOS ** ###################|
+//|############# **  MODULO ASSOCIADO ** ###################|
 //|#######################################################|
-   //Inseri novo Cliente
+   //Inseri nova Universiade
     var _associadoSave = function (values){
-        return  $http.post($associadoSave + token , values);
+        return  $http.post($associadoSave , values);
     };
-
+    //Lista todas associados
+    var _associadoList = function (values){
+        return  $http.get($associadoList);
+    };
+    //Lista associado referente ao ID
+    var _associadoListId = function (id){
+          return  $http.get($associadoListId + id);
+    };
+    //Update de associado
+    var _associadoPut = function (id , values){
+          return  $http.put($associadoPut + id , values);
+    };
+    //Update de associado
+    var _associadoDel = function (values){
+          return  $http.delete($associadoDel + values);
+    };
 //|#######################################################|
 //|############# **  MODULO UNIVERSIDADE ** ###################|
 //|#######################################################|
@@ -71,6 +96,30 @@ app.service('restful', function ($http,$sessionStorage) {
     var _universidadeDel = function (values){
           return  $http.delete($universidadeDel + values);
     };
+//|#######################################################|
+//|############# **  MODULO CURSO ** ###################|
+//|#######################################################|
+   //Inseri nova Curso
+    var _cursofaculdadeSave = function (values){
+        return  $http.post($cursofaculdadeSave , values);
+    };
+    //Lista todas Curso
+    var _cursofaculdadeList = function (values){
+        return  $http.get($cursofaculdadeList);
+    };
+    //Lista Curso referente ao ID
+    var _cursofaculdadeListId = function (id){
+          return  $http.get($cursofaculdadeListId + id);
+    };
+    //Update de Curso
+    var _cursofaculdadePut = function (id , values){
+          return  $http.put($cursofaculdadePut + id , values);
+    };
+    //Update de Curso
+    var _cursofaculdadeDel = function (values){
+          return  $http.delete($cursofaculdadeDel + values);
+    };
+    
 //|#######################################################|
 //|############# **  MODULO NOTICIAS ** ###################|
 //|#######################################################|
@@ -104,14 +153,24 @@ app.service('restful', function ($http,$sessionStorage) {
         //Return do Usuario
         usuarioLogin : _usuarioLogin,
         usuarioSave: _usuarioSave,
-        //Return do Associado
+        //Return da Associado
         associadoSave : _associadoSave,
+        associadoList : _associadoList,
+        associadoListId : _associadoListId,
+        associadoPut : _associadoPut,
+        associadoDel : _associadoDel,
         //Return da Universidade
         universidadeSave : _universidadeSave,
         universidadeList : _universidadeList,
         universidadeListId : _universidadeListId,
         universidadePut : _universidadePut,
         universidadeDel : _universidadeDel,
+        //Return da Universidade
+        cursofaculdadeSave : _cursofaculdadeSave,
+        cursofaculdadeList : _cursofaculdadeList,
+        cursofaculdadeListId : _cursofaculdadeListId,
+        cursofaculdadePut : _cursofaculdadePut,
+        cursofaculdadeDel : _cursofaculdadeDel,
         //Return do Cliente
         noticiaSave : _noticiaSave,
         clienteList : _clienteList,
