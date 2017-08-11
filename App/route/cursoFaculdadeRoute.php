@@ -18,7 +18,7 @@ $app->get('/cursofaculdade/list/{id}', \Api\Controller\CursoFaculdadeController:
 $app->get('/cursofaculdade/inativo', \Api\Controller\CursoFaculdadeController::class . ':listaInativo');
 
 // 	//Atualiza cadastro
-$app->put('/cursofaculdade/update/{id}', \Api\Controller\CursoFaculdadeController::class . ':atualizaCadastro');
+$app->put('/cursofaculdade/update/{id}', \Api\Controller\CursoFaculdadeController::class . ':atulizaCadastro');
 
 // 	//Inativa um curso
 $app->delete('/cursofaculdade/delete/{id}', \Api\Controller\CursoFaculdadeController::class . ':inativar');

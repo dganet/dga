@@ -3,12 +3,14 @@ namespace Api\Controller;
 use \Api\Model\Entity\Veiculo, \Api\Controller\AuditController as Audit;
 
 class VeiculoController{
-
 	/**
-	*	@param Array $data
-	*	Salva um veiculo, e recebe um array com as informações que serão
-	*	salvas no banco de dados
-	*/
+	 * Salva um novo veiculo
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
 	public function cadastrar($request, $response, $args){
 		$data = json_decode($request->getBody(),true);
 		$veiculo = Veiculo::getInstance();
@@ -17,9 +19,13 @@ class VeiculoController{
 		return $response->WithJson($veiculo->save());
 	}
 	/**
-	*	@param Array $data
-	*	Atualiza um cadastro conforme as informações contidas no array $data
-	*/
+	 * Atualiza as informações do Veiculo
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
 	public function atualizaCadastro($request, $response, $args){
 		$veiculo = Veiculo::getInstance();
 		$data = json_decode($request->getBody,true);
@@ -38,7 +44,14 @@ class VeiculoController{
 			return true;
 		}
 	}
-	// Liusta todos os usuario com status ATIVO
+	/**
+	 * Lista todos os veiculos ATIVOS
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
 	public function listaTudo($request, $response, $args){
 		$veiculo = Veiculo::getInstance();
 		$veiculo->makeSelect()->where("status='ATIVO'");
@@ -49,7 +62,14 @@ class VeiculoController{
 			return $response->WithJson([]);
 		}
 	}
-	// Lista todos os usuario com o id $id
+	/**
+	 * Lista um veiculo pelo ID
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
 	public function listaPorId($request, $response, $args){
 		$veiculo = Veiculo::getInstance();
 		$veiculo->makeSelect()->where("status='ATIVO'")->and("id=".$args['id']);
@@ -60,7 +80,14 @@ class VeiculoController{
 			return $response->WithJson([]);
 		}
 	}
-	// Lista todos os usuario com status INATIVO
+	/**
+	 * Lista todos os veiculos com status INATIVO
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
 	public function listaInativo($request, $response, $args){
 		$veiculo = Veiculo::getInstance();
 		$veiculo->makeSelect()->where("status='INATIVO'");
@@ -71,7 +98,14 @@ class VeiculoController{
 			return $response->WithJson([]);
 		}
 	}
-	// Inativa um Veiculo
+	/**
+	 * Inativa um Veiculo
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
 	public function inativar($request, $response, $args){
 		$veiculo = Veiculo::getInstance();
 		$veiculo->id = $args['id'];

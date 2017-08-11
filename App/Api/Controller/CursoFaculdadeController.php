@@ -12,7 +12,7 @@ class CursoFaculdadeController {
 	 * @return Json
 	 */
 	public function cadastrar($request, $response, $args){
-		$data = json_decode($request->getBody,true);
+		$data = json_decode($request->getBody(),true);
 		$curso = Cursofaculdade::getInstance();
 		$curso->load($data);
 		$curso->status = "ATIVO";
@@ -79,7 +79,7 @@ class CursoFaculdadeController {
 	 * @return Json
 	 */
 	public function atulizaCadastro($request, $response, $args){
-		$data = json_decode($request->getBody,true);
+		$data = json_decode($request->getBody(),true);
 		$curso = Cursofaculdade::getInstance();
 		$curso->load($data);
 		return $response->WithJson($curso->update());
@@ -94,6 +94,7 @@ class CursoFaculdadeController {
 	 */
 	public function inativar($request, $response, $args){
 		$curso = Cursofaculdade::getInstance();
+		$curso->id = $args['id'];
 		$curso->status = 'INATIVO';
 		return $response->WithJson($curso->update());
 	}

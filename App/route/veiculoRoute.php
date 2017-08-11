@@ -16,13 +16,3 @@ $app->put('/veiculo/update/{id}', \Api\Controller\VeiculoController::class . ':a
 // 	//Inativa um curso
 $app->delete('/veiculo/delete/{id}', \Api\Controller\VeiculoController::class . ':delete');
 
-
-
-
-
-
-// $app->get('/audit', function (Request $request, Response $response, $args){
-// 	$response = $response->withHeader('Content-type', 'application/json');
-// 	$response = $response->withJson(Audit::listAudit('veiculo'));
-// 	return $response;
-// });

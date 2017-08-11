@@ -21,7 +21,7 @@ unset($app->getContainer()['phpErrorHandler']);
 // 	*/
 // 	// Salva um post
 // 	$app->group('/post', function() use ($app){
-// 		require_once("route/postRoute.php");
+		require_once("route/postRoute.php");
 // 	});
 
 // 	/**

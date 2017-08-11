@@ -1,49 +1,100 @@
 <?php
 namespace Api\Controller;
 use \Api\Model\Entity\Post, \Api\Controller\AuditController as Audit;
-
-class PostController implements Controller{
-
-	//Cadastra Post
-	public function cadastrar($data){
-		$post = new Post($data);
-		$post->status = "ATIVO";
-		$post->createAt =date('Y-m-d H:i:s');
-		Audit::audit($data, "INSERT", "post");
-		return $post->save();
+/**
+ * Noticia
+ */
+class PostController{
+	/**
+	 * Cadastra uma nova noticia
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function cadastrar($request, $response, $args){
+		$data = json_decode($request->getBody(), true);
+		$noticia = Post::getInstance();
+		$noticia->load($data);
+		$noticia->status = "ATIVO";
+		return $response->WithJson($noticia->save());
 	}
-	//Lista todos os POST
-	public function listaTudo(){
-		$post  = new Post();
-		return $post->select(array('where' => array('status' => 'ATIVO')));
-		
+	/**
+	 * Lista todas as noticias em ATIVO
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function listaTudo($request, $response, $args){
+		$noticia = Post::getInstance();
+		$noticia->makeSelect()->where("status='ATIVO'");
+		$collection = $noticia->execute();
+		if($collection->length() > 0 ){
+			return $response->WithJson($collection->getAll());
+		}
 	}
-	//Lista Post por id
-	public function listaPorId($id){
-		$post = new Post();
-		return $post->select(array('where' => array('id' => $id)));
-		
+	/**
+	 * Lista noticias por ID
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function listaPorId($request, $response, $args){
+		$noticia = Post::getInstance();
+		$noticia->makeSelect()->where("status='ATIVO'")->and('id='.$args['id']);
+		$collection = $noticia->execute();
+		if($collection->length() > 0 ){
+			return $response->WithJson($collection->getAll());
+		}
 	}
-	//Lista todos os registros Inativos
-	public function listaInativo(){
-		$post = new Post();
-		return $post->select(array('where' => array('status' => 'INATIVO')));
-		
+	/**
+	 * Lista noticias INATIVAS
+	 *
+	 * @param [type] $reuqest
+	 * @param [type] $response
+	 * @param [type] $args
+	 * @return void
+	 */
+	public function listaInativo($request, $response, $args){
+		$noticia = Post::getInstance();
+		$noticia->makeSelect()->where("status='INATIVO'");
+		$collection = $noticia->execute();
+		if($collection->length() > 0 ){
+			return $response->WithJson($collection->getAll());
+		}
 	}
-	public function atulizaCadastro($data){
-		$post = new Post($data);
-		$post->updateAt =date('Y-m-d H:i:s');
-		Audit::audit($data, "UPDATE", "post");
-		return $post->update();
+	/**
+	 * Atualiza as informações de Noticias
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function atualizaCadastro($request, $response, $args){
+		$data = json_decode($request->getBody(),true);
+		$noticia = Post::getInstance();
+		$noticia->load($data);
+		return $response->WithJson($noticia->update());
 	}
-	
-	public function inativar($id){
-		$post = new Post();
-		$post->updateAt =date('Y-m-d H:i:s');
-		$post->id = $id;
-		$post->status = 'INATIVO';
-		Audit::audit($data, "DELETE", "post");
-		return $post->update();
+	/**
+	 * Inativa uma noticia
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function inativar($request, $response, $args){
+		$noticia = Post::getInstance();
+		$noticia->id = $args['id'];
+		$noticia->status = 'INATIVO';
+		return $response->WithJson($noticia->update());
 	}
 
 }
