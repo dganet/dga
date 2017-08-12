@@ -26,7 +26,7 @@
 
       <div class="col col-md-4 labelTemplate">
           <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
-          <label>Painel de Ações de Curso</label>
+          <label>Painel de Ações de Cursos</label>
           
       </div>
         
@@ -53,7 +53,7 @@
               <thead>
                 <tr>
                   <th class="centro">#</th>
-                  <th>Nome</th>
+                  <th>Titulo</th>
                   <th class="centro">Detalhes</th>
                   <th class="centro">Alterar</th>
                   <th class="centro">Deletar</th>
@@ -61,10 +61,10 @@
               </thead>
 
             <tbody> 
-             <tr ng-repeat="x in cursofaculdades | filter: busca  ">
+             <tr ng-repeat="x in cursos | filter: busca  ">
                
                <td class="centro">{{x.id}}</td>
-               <td>{{x.nome}}</td>
+               <td>{{x.titulo}}</td>
                
                <td class="centro">
                    <a class="btn btn-default" ng-click="dados(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-address-card-o" ></i></a>
@@ -96,19 +96,27 @@
         <h4 class="modal-title" id="myModalLabel">Cadastrar novo Curso</h4>
       </div>
         
-       <form name="FormCurso" ng-submit="add(cursofaculdade)">
+       <form name="FormCurso" ng-submit="add(curso)">
     
            <div class="modal-body">
-            <div class="row">
+              
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                  <label>Titulo</label>
+                   <input type="text" class="form-control" ng-model="curso.titulo" required> 
+                  </div> 
+                  </div>
+                </div>
 
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Nome do Curso</label>
-                  <input type="text" class="form-control" ng-model="cursofaculdade.nome" required> 
-                </div> 
+
+              <div class="row">
+                <div class="col-md-12">   
+                <label>Descrição</label>
+                  <textarea class="form-control" rows="15" ng-model="curso.descricao" required></textarea>
+                </div>
               </div>
-
-            </div>
+  
       
            </div><!--modal-body -->
         
@@ -130,20 +138,30 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Atualizar {{cursofaculdade.nome}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Atualizar {{curso.titulo}}</h4>
       </div>
         
        <form name="FormCurso" ng-submit="put(curso)"> 
     
            <div class="modal-body">
+
               <div class="row">
-                  <div class="col-md-12">
-                        <div class="form-group">
-                        <label>Nome do Curso</label>
-                        <input type="text" class="form-control" ng-model="cursofaculdade.nome" required> 
-                        </div> 
-                    </div>
-            </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Titulo</label>
+                    <input type="text" class="form-control" ng-model="curso.titulo" required> 
+                  </div> 
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-12">   
+                <label>Descrição</label>
+                  <textarea class="form-control" rows="15" ng-model="curso.descricao" required></textarea>
+                </div>
+              </div>
+  
                 
        
            </div><!--modal-body -->
@@ -170,11 +188,11 @@
       </div>
         
             <div class="modal-body">               
-               Deseja realmente Deletar {{cursofaculdade.nome}} ?                 
+               Deseja realmente Deletar {{curso.nome}} ?                 
            </div><!--modal-body -->
         
              <div class="modal-footer">
-                 <button type="button" class="btn btn-danger" ng-click="del(cursofaculdade.id)">Sim</button>
+                 <button type="button" class="btn btn-danger" ng-click="del(curso.id)">Sim</button>
                  <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
               </div>
         
@@ -189,7 +207,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Detalhes {{cursofaculdade.nome}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Detalhes {{curso.nome}}</h4>
       </div>
         
     <div class="modal-body">
@@ -197,15 +215,15 @@
               <tbody>
                 <tr>
                   <td>id</td>
-                  <td>{{cursofaculdade.id}}</td>
+                  <td>{{curso.id}}</td>
                 </tr>
                 <tr>
                   <td>Nome</td>
-                  <td>{{cursofaculdade.nome}}</td>
+                  <td>{{curso.nome}}</td>
                 </tr>
                 <tr>
                   <td>Status</td>
-                  <td>{{cursofaculdade.status}}</td>
+                  <td>{{curso.status}}</td>
                 </tr>
               </tbody>
         </table>

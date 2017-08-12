@@ -29,6 +29,13 @@ app.service('restful', function ($http,$sessionStorage) {
    $oportunidadePut = '../App/oportunidade/update/';// Uptades no oportunidade
    $oportunidadeDel = '../App/oportunidade/delete/';// oportunidade Deleta
 
+   //Classes PostCuso
+   $cursoSave = '../App/curso/save'; // Salva curso
+   $cursoList = '../App/curso/list'; // Lista todas os cursos
+   $cursoListId = '../App/curso/list/';// Lista curso referente ao ID
+   $cursoPut = '../App/curso/update/';// Uptades no curso
+   $cursoDel = '../App/curso/delete/';// oportunidade Deleta
+
     //Classes Universidade
    $universidadeSave = '../App/universidade/save'; // Salva Universidade
    $universidadeList = '../App/universidade/list'; // Lista todas Universades
@@ -67,7 +74,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Universiade
     var _associadoSave = function (values){
-        return  $http.post($associadoSave , values);
+        return  $http.post($associadoSave + token, values);
     };
     //Lista todas associados
     var _associadoList = function (values){
@@ -83,14 +90,14 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de associado
     var _associadoDel = function (values){
-          return  $http.delete($associadoDel + values);
+          return  $http.delete($associadoDel + token + values);
     };
 //|#######################################################|
 //|############# **  MODULO NOTICIAS ** ###################|
 //|#######################################################|
    //Inseri nova Noticiais
     var _noticiaSave = function (values){
-        return  $http.post($noticiaSave , values);
+        return  $http.post($noticiaSave + token, values);
     };
     //Lista todas noticias
     var _noticiaList = function (values){
@@ -106,14 +113,37 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de noticia
     var _noticiaDel = function (values){
-          return  $http.delete($noticiaDel + values);
+          return  $http.delete($noticiaDel + token + values);
+    };
+//|#######################################################|
+//|############# **  MODULO POST CURSO ** ###################|
+//|#######################################################|
+   //Inseri novo Curso
+    var _cursoSave = function (values){
+        return  $http.post($cursoSave + token , values);
+    };
+    //Lista todas cursos
+    var _cursoList = function (values){
+        return  $http.get($cursoList);
+    };
+    //Lista curso referente ao ID
+    var _cursoListId = function (id){
+          return  $http.get($cursoListId + id);
+    };
+    //Update de curso
+    var _cursoPut = function (id , values){
+          return  $http.put($cursoPut + id , values);
+    };
+    //Update de curso
+    var _cursoDel = function (values){
+          return  $http.delete($cursoDel + token + values);
     };
 //|#######################################################|
 //|############# **  MODULO OPORTUNIDADES ** ###################|
 //|#######################################################|
    //Inseri nova Noticiais
     var _oportunidadeSave = function (values){
-        return  $http.post($oportunidadeSave , values);
+        return  $http.post($oportunidadeSave + token , values);
     };
     //Lista todas oportunidades
     var _oportunidadeList = function (values){
@@ -129,7 +159,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de oportunidade
     var _oportunidadeDel = function (values){
-          return  $http.delete($oportunidadeDel + values);
+          return  $http.delete($oportunidadeDel + token + values);
     };
 
 //|#######################################################|
@@ -137,7 +167,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Universiade
     var _universidadeSave = function (values){
-        return  $http.post($universidadeSave , values);
+        return  $http.post($universidadeSave + token , values);
     };
     //Lista todas Universidades
     var _universidadeList = function (values){
@@ -153,14 +183,14 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Universidade
     var _universidadeDel = function (values){
-          return  $http.delete($universidadeDel + values);
+          return  $http.delete($universidadeDel + token + values);
     };
 //|#######################################################|
 //|############# **  MODULO CURSO ** ###################|
 //|#######################################################|
    //Inseri nova Curso
     var _cursofaculdadeSave = function (values){
-        return  $http.post($cursofaculdadeSave , values);
+        return  $http.post($cursofaculdadeSave + token , values);
     };
     //Lista todas Curso
     var _cursofaculdadeList = function (values){
@@ -176,7 +206,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Curso
     var _cursofaculdadeDel = function (values){
-          return  $http.delete($cursofaculdadeDel + values);
+          return  $http.delete($cursofaculdadeDel + token + values);
     };
     
 //|#######################################################|
@@ -208,6 +238,12 @@ app.service('restful', function ($http,$sessionStorage) {
         noticiaListId : _noticiaListId,
         noticiaPut : _noticiaPut,
         noticiaDel : _noticiaDel,
+        //Return do Curso
+        cursoSave : _cursoSave,
+        cursoList : _cursoList,
+        cursoListId : _cursoListId,
+        cursoPut : _cursoPut,
+        cursoDel : _cursoDel,
         //Return de Oportunidadaes
         oportunidadeSave : _oportunidadeSave,
         oportunidadeList : _oportunidadeList,

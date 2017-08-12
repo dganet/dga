@@ -256,11 +256,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		})
 
 		//############################################################################
-		//############# **  MODULO POST CURSOS ** ##########################################
+		//############# **  MODULO POST CURSO ** ##########################################
 		//############################################################################
 		.state('user.cursos', {
 			url: '/cursos',
-			templateUrl: 'modPostCurso/Link.htm',
+			templateUrl: 'modPostCurso/postcurso.htm',
+			controller:'postcursoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
 					if (sessionStorage.getItem('usuario.id') == null) {
@@ -274,35 +275,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-
-		.state('user.cursos.inseri', {
-			url: '/inseri',
-			templateUrl: 'modPostCurso/inseriCurso.htm',
-			controller: 'inseriCursoCtrl',
-			ncyBreadcrumb: {
-				label: 'Inseri'
-			}
-		})
-
-		.state('user.cursos.altera', {
-			url: '/altera',
-			templateUrl: 'modPostCurso/alteraCurso.htm',
-			controller: 'alteraCursoCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera'
-			}
-		})
-
-		.state('user.cursos.altera.detalhes', {
-			url: '/:id',
-			controller: function ($scope, $stateParams) {
-				// get the id
-				$scope.id = $stateParams.id;
-			},
-			ncyBreadcrumb: {
-				label: 'Cursos'
-			}
-		})
 		//############################################################################
 		//############# **  MODULO UNIVERSIDADE ** ##########################################
 		//############################################################################
