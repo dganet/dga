@@ -240,7 +240,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		//############################################################################
 		.state('user.noticia', {
 			url: '/noticia',
-			templateUrl: 'modNoticias/Link.htm',
+			templateUrl: 'modNoticias/noticias.htm',
+			controller:'noticiasCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
 					if (sessionStorage.getItem('usuario.id') == null) {
@@ -251,35 +252,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			},
 			ncyBreadcrumb: {
 				label: 'Noticias'
-			}
-		})
-
-
-		.state('user.noticia.inseri', {
-			url: '/inseri',
-			templateUrl: 'modNoticias/inseriNoticia.htm',
-			controller: 'inseriNoticiaCtrl',
-			ncyBreadcrumb: {
-				label: 'Inseri Noticia'
-			}
-		})
-
-		.state('user.noticia.altera', {
-			url: '/altera',
-			templateUrl: 'modNoticias/alteraNoticia.htm',
-			controller: 'alteraNoticiaCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera'
-			}
-		})
-		.state('user.noticia.altera.detalhes', {
-			url: '/:id',
-			controller: function ($scope, $stateParams) {
-				// get the id
-				$scope.id = $stateParams.id;
-			},
-			ncyBreadcrumb: {
-				label: 'Posts'
 			}
 		})
 
@@ -371,14 +343,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-
-
 		//############################################################################
 		//############# **  MODULO OPORTUNIDADE ** ##########################################
 		//############################################################################
 		.state('user.oportunidade', {
 			url: '/oportunidade',
-			templateUrl: 'modOportunidade/oportunidadeLink.htm',
+			templateUrl: 'modOportunidade/oportunidade.htm',
+			controller:'oportunidadeCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
 					if (sessionStorage.getItem('usuario.id') == null) {
@@ -391,37 +362,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 				label: 'Oportunidade'
 			}
 		})
-
-
-		.state('user.oportunidade.inseri', {
-			url: '/inseri',
-			templateUrl: 'modOportunidade/inseriOportunidade.htm',
-			controller: 'inseriOportunidadeCtrl',
-			ncyBreadcrumb: {
-				label: 'Inseri Oportunidade'
-			}
-		})
-
-		.state('user.oportunidade.altera', {
-			url: '/altera',
-			templateUrl: 'modOportunidade/alteraOportunidade.htm',
-			controller: 'alteraOportunidadeCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera Oportunidade'
-			}
-		})
-
-		.state('user.oportunidade.altera.detalhes', {
-			url: '/:id',
-			controller: function ($scope, $stateParams) {
-				// get the id
-				$scope.id = $stateParams.id;
-			},
-			ncyBreadcrumb: {
-				label: 'Oportunidades'
-			}
-		})
-
 		//############################################################################
 		//############# **  MODULO USUARIO ** ##########################################
 		//############################################################################

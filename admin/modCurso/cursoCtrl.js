@@ -29,7 +29,7 @@ $scope.dados = function (id){
 		$scope.curso = data[0];	
         });
 };
-//*************CADASTRA NOVO CURSO *********************// 
+//************* NOVO *********************// 
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormCurso) {
@@ -59,10 +59,10 @@ $scope.dados = function (id){
 
   };
 
-//*************UPDATE UNIVERSIDADE *********************//   
+//************* UPDATE *********************//   
 
 //Passa os valores do form em Objeto no "values"
-  $scope.put = function(values, Form) {
+  $scope.put = function(values, FormCurso) {
 	 var id = values.id;
 
     // Enviado os valores em objetos para api/user do php/slim
@@ -85,7 +85,7 @@ $scope.dados = function (id){
 
 };
 
-//*************DELETE UNIVERSIDADE *********************// 
+//************* DELETE *********************// 
 
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {

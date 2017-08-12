@@ -26,14 +26,14 @@
 
       <div class="col col-md-4 labelTemplate">
           <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
-          <label>Painel de Ações de Universidade</label>
+          <label>Painel de Ações de Noticias</label>
           
       </div>
         
         <div class="col col-md-4">
             <div class="input-group margin-bottom-sm">
 			 <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-			 <input class="form-control" type="text" ng-model="busca" placeholder="Procure pelo nome" required="required">
+			 <input class="form-control" type="text" ng-model="busca" placeholder="Procure pelo nome da Noticias" required="required">
 			</div>
         </div>
 
@@ -53,7 +53,8 @@
               <thead>
                 <tr>
                   <th class="centro">#</th>
-                  <th>Nome</th>
+                  <th>Titulo</th>
+                  <th>Chamada</th>
                   <th class="centro">Detalhes</th>
                   <th class="centro">Alterar</th>
                   <th class="centro">Deletar</th>
@@ -61,21 +62,22 @@
               </thead>
 
             <tbody> 
-             <tr ng-repeat="x in universidades | filter: busca  ">
+             <tr ng-repeat="x in noticias | filter: busca  ">
                
                <td class="centro">{{x.id}}</td>
-               <td>{{x.nome}}</td>
+               <td>{{x.titulo}}</td>
+               <td>{{x.chamada}}</td>
                
                <td class="centro">
-                   <a class="btn btn-default" aria-hidden="true" ng-click="dados(x.id)" data-toggle="modal" data-target=".bs-example-modal-lg"><i  class="fa fa-address-card-o"  ></i></a>
+                   <a class="btn btn-default" ng-click="dados(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-address-card-o" ></i></a>
                </td>
                  
                <td class="centro">
-                   <a class="btn btn-default" ng-click="dados(x.id)" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i  class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+                   <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>
                </td>
                
                  <td class="centro">
-                     <a class="btn btn-default" ng-click="dados(x.id)" data-toggle="modal" data-target=".bs-example-modal-lg-delete"><i  class="fa fa-trash-o " aria-hidden="true" ></i></a>
+                     <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-delete" ><i class="fa fa-trash-o "></i></a>
                </td>
              
                 </tr>
@@ -93,20 +95,39 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Cadastrar nova Universidade</h4>
+        <h4 class="modal-title" id="myModalLabel">Cadastrar nova Noticia</h4>
       </div>
         
-       <form name="FormUniversidade" ng-submit="add(universidade)">
+       <form name="FormNoticia" ng-submit="add(noticia)">
     
            <div class="modal-body">
-               <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                        <label>Nome da Universidade</label>
-                        <input type="text" class="form-control" ng-model="universidade.nome" required> 
-                    </div> 
-                    </div>                  
-                </div>       
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                  <label>Titulo</label>
+                  <input type="text" class="form-control" ng-model="noticia.titulo" required> 
+                  </div>
+                  </div>
+                </div>
+
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                  <label>Chamada</label>
+                  <input type="text" class="form-control" ng-model="noticia.chamada" required> 
+                  </div>
+                  </div>
+                </div>
+              
+              <div class="row">
+                <div class="col-md-12">   
+                <label>Descrição</label>
+                  <textarea class="form-control" rows="15" ng-model="noticia.descricao" required></textarea>
+                </div>
+              </div>
+      
            </div><!--modal-body -->
         
              <div class="modal-footer">
@@ -127,20 +148,38 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Atualizar {{universidade.nome}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Atualizar {{curso.nome}}</h4>
       </div>
         
-       <form name="FormUniversidade" ng-submit="put(universidade)"> 
+       <form name="FormNoticia" ng-submit="put(noticia)"> 
     
            <div class="modal-body">
+
               <div class="row">
-                  <div class="col-md-12">
-                        <div class="form-group">
-                        <label>Nome da Universidade</label>
-                        <input type="text" class="form-control" ng-model="universidade.nome" required> 
-                        </div> 
-                    </div>
-            </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                  <label>Titulo</label>
+                  <input type="text" class="form-control" ng-model="noticia.titulo" required> 
+                  </div>
+                  </div>
+                </div>
+
+              <div class="row">
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                  <label>Chamada</label>
+                  <input type="text" class="form-control" ng-model="noticia.chamada" required> 
+                  </div>
+                  </div>
+                </div>
+              
+              <div class="row">
+                <div class="col-md-12">   
+                <label>Descrição</label>
+                  <textarea class="form-control" rows="15" ng-model="noticia.descricao" required></textarea>
+                </div>
+              </div>
                 
        
            </div><!--modal-body -->
@@ -167,11 +206,11 @@
       </div>
         
             <div class="modal-body">               
-               Deseja realmente Deletar {{universidade.nome}} ?              
+               Deseja realmente Deletar com a ref#{{noticia.id}} ?               
            </div><!--modal-body -->
         
              <div class="modal-footer">
-                 <button type="button" class="btn btn-danger" ng-click="del(universidade.id)">Sim</button>
+                 <button type="button" class="btn btn-danger" ng-click="del(noticia.id)">Sim</button>
                  <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
               </div>
         
@@ -186,7 +225,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Detalhes {{universidade.nome}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Detalhes {{noticia.nome}}</h4>
       </div>
         
     <div class="modal-body">
@@ -194,15 +233,23 @@
               <tbody>
                 <tr>
                   <td>id</td>
-                  <td>{{universidade.id}}</td>
+                  <td>{{noticia.id}}</td>
                 </tr>
                 <tr>
-                  <td>Nome</td>
-                  <td>{{universidade.nome}}</td>
+                  <td>Titulo</td>
+                  <td>{{noticia.titulo}}</td>
                 </tr>
+                <tr>
+                  <td>Chamada</td>
+                  <td>{{noticia.chamada}}</td>
+                </tr>       
+                <tr>
+                  <td>Descrição</td>
+                  <td>{{noticia.descricao}}</td>
+                </tr>         
                 <tr>
                   <td>Status</td>
-                  <td>{{universidade.status}}</td>
+                  <td>{{noticia.status}}</td>
                 </tr>
               </tbody>
         </table>

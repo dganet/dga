@@ -14,6 +14,20 @@ app.service('restful', function ($http,$sessionStorage) {
    $associadoListId = '../App/associado/list/';// Lista associado referente ao ID
    $associadoPut = '../App/associado/update/';// Uptades na associado
    $associadoDel = '../App/associado/delete/';// associado Deleta
+   
+   //Classes Noticias
+   $noticiaSave = '../App/post/save'; // Salva Noticia
+   $noticiaList = '../App/post/list'; // Lista todas os Noticias
+   $noticiaListId = '../App/post/list/';// Lista Noticia referente ao ID
+   $noticiaPut = '../App/post/update/';// Uptades no Noticia
+   $noticiaDel = '../App/post/delete/';// Noticia Deleta
+
+   //Classes Opotunidades
+   $oportunidadeSave = '../App/oportunidade/save'; // Salva oportunidade
+   $oportunidadeList = '../App/oportunidade/list'; // Lista todas os oportunidades
+   $oportunidadeListId = '../App/oportunidade/list/';// Lista oportunidade referente ao ID
+   $oportunidadePut = '../App/oportunidade/update/';// Uptades no oportunidade
+   $oportunidadeDel = '../App/oportunidade/delete/';// oportunidade Deleta
 
     //Classes Universidade
    $universidadeSave = '../App/universidade/save'; // Salva Universidade
@@ -28,11 +42,9 @@ app.service('restful', function ($http,$sessionStorage) {
    $cursofaculdadeListId = '../App/cursofaculdade/list/';// Lista curso referente ao ID
    $cursofaculdadePut = '../App/cursofaculdade/update/';// Uptades no curso
    $cursofaculdadeDel = '../App/cursofaculdade/delete/';// Curso Deleta
+
+
     
-   //Classes Cliente
-   $noticiaSave = '/App/post/save/'; // Salva Cliente
-   $clienteList = '/App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
-   $clienteListId = '/App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    //MODULO PEFIL
    $updatePicture = '/App/imagem'; //Update Foto
 
@@ -73,6 +85,53 @@ app.service('restful', function ($http,$sessionStorage) {
     var _associadoDel = function (values){
           return  $http.delete($associadoDel + values);
     };
+//|#######################################################|
+//|############# **  MODULO NOTICIAS ** ###################|
+//|#######################################################|
+   //Inseri nova Noticiais
+    var _noticiaSave = function (values){
+        return  $http.post($noticiaSave , values);
+    };
+    //Lista todas noticias
+    var _noticiaList = function (values){
+        return  $http.get($noticiaList);
+    };
+    //Lista noticia referente ao ID
+    var _noticiaListId = function (id){
+          return  $http.get($noticiaListId + id);
+    };
+    //Update de noticia
+    var _noticiaPut = function (id , values){
+          return  $http.put($noticiaPut + id , values);
+    };
+    //Update de noticia
+    var _noticiaDel = function (values){
+          return  $http.delete($noticiaDel + values);
+    };
+//|#######################################################|
+//|############# **  MODULO OPORTUNIDADES ** ###################|
+//|#######################################################|
+   //Inseri nova Noticiais
+    var _oportunidadeSave = function (values){
+        return  $http.post($oportunidadeSave , values);
+    };
+    //Lista todas oportunidades
+    var _oportunidadeList = function (values){
+        return  $http.get($oportunidadeList);
+    };
+    //Lista oportunidade referente ao ID
+    var _oportunidadeListId = function (id){
+          return  $http.get($oportunidadeListId + id);
+    };
+    //Update de oportunidade
+    var _oportunidadePut = function (id , values){
+          return  $http.put($oportunidadePut + id , values);
+    };
+    //Update de oportunidade
+    var _oportunidadeDel = function (values){
+          return  $http.delete($oportunidadeDel + values);
+    };
+
 //|#######################################################|
 //|############# **  MODULO UNIVERSIDADE ** ###################|
 //|#######################################################|
@@ -121,22 +180,6 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     
 //|#######################################################|
-//|############# **  MODULO NOTICIAS ** ###################|
-//|#######################################################|
-   //Inseri novo Cliente
-    var _noticiaSave = function (values){
-        return  $http.post($noticiaSave + token , values);
-    };
-   //Lista todos os Clientes
-    var _clienteList = function (dados){
-        return  $http.get($clienteList + token);
-    };
-   //Lista informação de apenas um cliente referente ao ID
-    var _clienteListId = function (id){
-        return  $http.get($clienteListId + id + '/'+ token );
-    };
-
-//|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
 
@@ -159,22 +202,30 @@ app.service('restful', function ($http,$sessionStorage) {
         associadoListId : _associadoListId,
         associadoPut : _associadoPut,
         associadoDel : _associadoDel,
+        //Return da Noticias
+        noticiaSave : _noticiaSave,
+        noticiaList : _noticiaList,
+        noticiaListId : _noticiaListId,
+        noticiaPut : _noticiaPut,
+        noticiaDel : _noticiaDel,
+        //Return de Oportunidadaes
+        oportunidadeSave : _oportunidadeSave,
+        oportunidadeList : _oportunidadeList,
+        oportunidadeListId : _oportunidadeListId,
+        oportunidadePut : _oportunidadePut,
+        oportunidadeDel : _oportunidadeDel,
         //Return da Universidade
         universidadeSave : _universidadeSave,
         universidadeList : _universidadeList,
         universidadeListId : _universidadeListId,
         universidadePut : _universidadePut,
         universidadeDel : _universidadeDel,
-        //Return da Universidade
+        //Return da Curso da Faculdade
         cursofaculdadeSave : _cursofaculdadeSave,
         cursofaculdadeList : _cursofaculdadeList,
         cursofaculdadeListId : _cursofaculdadeListId,
         cursofaculdadePut : _cursofaculdadePut,
         cursofaculdadeDel : _cursofaculdadeDel,
-        //Return do Cliente
-        noticiaSave : _noticiaSave,
-        clienteList : _clienteList,
-        clienteListId : _clienteListId,
 
         //Return Modulo Cliente
         updatePicture : _updatePicture,
