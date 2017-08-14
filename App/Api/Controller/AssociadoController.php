@@ -6,8 +6,7 @@
  */
 namespace Api\Controller;
 use \Api\Model\Entity\Associado,
- \Api\Controller\Log,
- \Api\Controller\AuditController as Audit,
+ \Api\Auth\Auth,
  \Api\Controller\ImageController;
 
 class AssociadoController {
@@ -15,22 +14,15 @@ class AssociadoController {
 	/**
 	 * Loga um Associado
 	 * 
-	 * @param [type] $request
-	 * @param [type] $response
-	 * @param [type] $args
-	 * @return void
+	 * @param Request $request
+	 * @param Response$response
+	 * @param Mixed $args
+	 * @return Json
 	 */
 	public function logar($request, $response, $args){
-		$associado = Associado::getInstance();
 		$data = json_decode($request->getBody, true);
-		$associado->makeSelect()->where("cpf=".$data['cpd'])->and("senha=".md5($data['senha']))
-		->and("status='ATIVO'");
-		$collection = $associado->execute();
-		if($collection != null){
-			return $response->WithJson($collection->getAll());
-		}else{
-			return false;
-		}
+		$auth = new Auth();
+		return $response->WithJson($auth->login($data['email'], $data['senha'], true));
 	}
 	/**
 	 * Cadastra um novo associado no banco de dados
