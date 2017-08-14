@@ -1,0 +1,430 @@
+<div class="template">
+
+    <!-- Mensagens-->
+    <div class="row">
+      <div class="col col-md-12">
+        
+        <div class="alert alert-success" ng-hide="mensagemSucesso">
+          <strong>Sucesso!</strong> Dados cadastrado com sucesso.
+        </div>
+          
+        <div class="alert alert-warning" ng-hide="mensagemAtualizado">
+          <strong>Sucesso!</strong> Dados alterado com sucesso.
+        </div>
+
+        <div class="alert alert-danger" ng-hide="mensagemDelete">
+          <strong>Sucesso!</strong> Dados deletado com sucesso.
+        </div>
+          
+    </div>
+    </div>
+
+
+    
+     <!-- Topo Template-->
+    <div class="row">
+
+      <div class="col col-md-4 labelTemplate">
+          <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+          <label>Painel de Ações de Ônibus</label>
+          
+      </div>
+        
+        <div class="col col-md-4">
+            <div class="input-group margin-bottom-sm">
+			 <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+			 <input class="form-control" type="text" ng-model="busca" placeholder="Procure" required="required">
+			</div>
+        </div>
+
+        <div class="col col-md-">
+          <div class="acaoTemplate">
+              <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-post">Novo <i class="fa fa-file-o" aria-hidden="true"></i></button>
+
+              <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-disponiveis">Disponiveis <i class="fa fa-bus" aria-hidden="true"></i></button>
+         </div>
+       </div>
+
+    </div>
+    
+ <!-- Corpo Template-->
+
+    <div class="row corpoTemplate">
+        <div class="col col-md-12">
+            
+            <table class="table table-hover corpoTableTemplate">
+              <thead>
+                <tr>
+                  <th class="centro">#</th>
+                  <th>Nome da Linha</th>
+                  <th class="centro">Destino</th>
+                  <th class="centro">Periodo</th>
+                  <th class="centro">Vagas</th>
+                  <th class="centro">Associados</th>
+                  <th class="centro">Aguardando</th>
+                  <th class="centro">Alterar</th>
+                  <th class="centro">Deletar</th>
+                </tr>
+              </thead>
+
+            <tbody> 
+             <tr ng-repeat="x in veiculos | filter: busca  ">
+               
+               <td class="centro">{{x.id}}</td>
+               <td>{{x.nomeLinha}}</td>               
+               <td class="centro">{{x.destino}}</td>
+               <td class="centro">{{x.periodo}}</td>
+               <td class="centro">{{x.numVagas}}</td>
+               <td class="centro"><!-- associado-->
+                   <a class="btn btn-default" ng-click="associado(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-associados"><i class="fa fa-address-card-o" ></i></a>
+               </td>
+               <td class="centro"><!-- aguardando-->
+                   <a class="btn btn-default" ng-click="listaEspera(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-listaEspera"><i class="fa fa-clock-o" aria-hidden="true"></i></a>
+               </td>
+                 
+               <td class="centro"><!-- alterar-->
+                   <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>
+               </td>
+               
+                 <td class="centro"><!-- deletar-->
+                     <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-delete" ><i class="fa fa-trash-o "></i></a>
+               </td>
+             
+                </tr>
+            </tbody>
+                
+            </table>
+            
+        </div>
+    </div>
+        
+  <!-- Modal Novo -->
+<div class="modal fade bs-example-modal-lg-post" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalPost">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cadastrar novo veiculo</h4>
+      </div>
+        
+       <form name="FormVeiculo" ng-submit="add(veiculo)">
+       
+        <div class="modal-body">
+         
+             <div class="row">
+
+             <div class="col-md-3">
+                  <div class="form-group">
+                   <label>Escolha a Universidade</label>
+                        <!-- Select de Bairros -->
+                        <select class="form-control"
+                         ng-options="b.id as b.nome for b in universidades"
+                         ng-model="veiculo.id">
+                        <option value="">Selecione Universidade</option>
+                        </select>
+                   </div>
+              </div>
+
+              <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Número da Linha</label>
+                      <input type="text" class="form-control" ng-model="veiculo.nomeLinha" required>
+                    </div>
+              </div>
+
+              <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Destino</label>
+                      <select class="form-control" ng-model="veiculo.destino" required>
+                        <option value="">Selecione uma Destino</option>
+                        <option value="Guaruja">Guaruja</option>
+                        <option value="Santos">Santos</option>
+                        <option value="Mogi das Cruzes">Mogi das Cruzes</option>
+                      </select>
+                    </div> 
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Destino</label>
+                  <select class="form-control" ng-model="veiculo.periodo" required>
+                    <option value="">Selecione um Periodo</option>
+                    <option value="Manhã">Manhã</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noite">Noite</option>
+                  </select>
+                </div> 
+              </div>
+
+               <div class="col-md-3">
+                  <div class="form-group">
+                      <label>Capacidade de Vagas</label>
+                      <input type="number" class="form-control" ng-model="veiculo.numVagas" required>
+                 </div>
+               </div>
+
+          </div>
+      
+           </div><!--modal-body -->
+        
+             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Salvar Dados</button> 
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+           
+         </form>
+        
+    </div>
+  </div>
+</div>   
+    
+<!-- Modal Update -->
+<div class="modal fade bs-example-modal-lg-update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdate">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Atualizar {{cursofaculdade.nome}}</h4>
+      </div>
+        
+       <form name="FormVeiculo" ng-submit="put(veiculo)"> 
+    
+           <div class="modal-body">
+              <div class="row">
+
+             <div class="col-md-3">
+                  <div class="form-group">
+                   <label>Escolha a Universidade</label>
+                        <!-- Select de Bairros -->
+                        <select class="form-control"
+                         ng-options="b.id as b.nome for b in universidades"
+                         ng-model="veiculo.id">
+                        <option value="">Selecione Universidade</option>
+                        </select>
+                   </div>
+              </div>
+
+              <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Número da Linha</label>
+                      <input type="text" class="form-control" ng-model="veiculo.nomeLinha" required>
+                    </div>
+              </div>
+
+              <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Destino</label>
+                      <select class="form-control" ng-model="veiculo.destino" required>
+                        <option value="">Selecione uma Destino</option>
+                        <option value="Guaruja">Guaruja</option>
+                        <option value="Santos">Santos</option>
+                        <option value="Mogi das Cruzes">Mogi das Cruzes</option>
+                      </select>
+                    </div> 
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label>Destino</label>
+                  <select class="form-control" ng-model="veiculo.periodo" required>
+                    <option value="">Selecione um Periodo</option>
+                    <option value="Manhã">Manhã</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noite">Noite</option>
+                  </select>
+                </div> 
+              </div>
+
+               <div class="col-md-3">
+                  <div class="form-group">
+                      <label>Capacidade de Vagas</label>
+                      <input type="number" class="form-control" ng-model="veiculo.numVagas" required>
+                 </div>
+               </div>
+
+          </div>
+                
+       
+           </div><!--modal-body -->
+        
+             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button> 
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+           
+         </form>
+        
+    </div>
+  </div>
+</div>
+
+ <!-- Modal Delete -->
+<div class="modal fade bs-example-modal-lg-delete" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalDel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Deletar</h4>
+      </div>
+        
+            <div class="modal-body">               
+               Deseja realmente Deletar {{veiculo.nomeLinha}} ?                 
+           </div><!--modal-body -->
+        
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-danger" ng-click="del(cursofaculdade.id)">Sim</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+              </div>
+        
+    </div>
+  </div>
+</div>
+
+<!-- Modal Associados Aguardadno -->
+<div class="modal fade bs-example-modal-lg-disponiveis" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Lista Geral dos Ônibus Disponiveis</h4>
+      </div>
+        
+    <div class="modal-body">
+
+          <div class="row">
+
+           <div class="col-md-12">
+            <table class="table table-hover corpoTableTemplate">
+              <thead>
+                <tr>
+                  <td>Nome da Linha</td>
+                  <td>Destino</td>
+                  <td>Periodo</td>
+                  <td>Qtd Vagas</td>
+                  <td>Ocupadas</td>
+                  <td>Disponiveis</td>
+                </tr>
+              </thead>
+
+                <tbody>
+                  <tr ng-repeat="x in veiculoDisponiveis">
+                  <td>{{x.nomeLinha}}</td>
+                  <td>{{x.destino}}</td>
+                  <td>{{x.periodo}}</td>
+                  <td>{{x.numVagas}}</td>
+                  <td>{{x.ocupado}}</td>
+                  <td>{{x.disponivel}}</td>
+                </tr>
+                </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+        
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+        
+        
+    </div>
+  </div>
+</div>
+
+<!-- Modal Lista de espera -->
+<div class="modal fade bs-example-modal-lg-listaEspera" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Lista Espera</h4>
+      </div>
+        
+    <div class="modal-body">
+
+          <div class="row">
+
+           <div class="col-md-12">
+            <input type="text" class="form-control" ng-model="buscaAssociadoEspera" placeholder="Procure pelo Associado"><br>
+
+               <ul class="veiculo">
+
+                <li ng-repeat="(key, value) in associadosAguardando | groupBy: 'createAt'">
+                 Mês de {{ key }}
+                 <span style="color:red; float:right;">Renda</span>
+                  <ul>
+                    <li ng-repeat="player in value | orderBy :'+rendaPerCapta' | filter:buscaAssociadoEspera">
+                     {{player.nome}}<span style="color:red; float:right;">{{player.rendaPerCapta}}</span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <hr>
+              Total de : {{total}}
+
+          </div>
+        </div>
+      </div>
+        
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+        
+        
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Associados -->
+<div class="modal fade bs-example-modal-lg-associados" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Lista de Associado na Linha {{veiculo}}</h4>
+      </div>
+        
+    <div class="modal-body">
+
+          <div class="row">
+
+           <div class="col-md-12">
+           <input type="text" class="form-control" ng-model="buscaAssociado" placeholder="Procure pelo Associado"><br>
+
+            <table class="table table-hover corpoTableTemplate">
+            
+            <thead>
+             <tr>
+                <td>Associados</td>
+             </tr>
+            </thead>
+
+            <tbody>
+             <tr ng-repeat="x in associados | filter: buscaAssociado">
+               <td>{{x.nome}}</td>
+             </tr>
+            </tbody>
+         </table>
+
+          </div>
+        </div>
+      </div>
+        
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+        
+        
+    </div>
+  </div>
+</div>
+
+
+</div><!-- End Template ->

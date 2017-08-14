@@ -50,6 +50,16 @@ app.service('restful', function ($http,$sessionStorage) {
    $cursofaculdadePut = '../App/cursofaculdade/update/';// Uptades no curso
    $cursofaculdadeDel = '../App/cursofaculdade/delete/';// Curso Deleta
 
+   //Classes Veiculo
+   $veiculoSave = '../App/veiculo/save'; // Salva Veiculo
+   $veiculoList = '../App/veiculo/list'; // Lista todas os Veiculos
+   $veiculoListGeral = '../App/associado/listageral'; // Lista todas os Veiculos Geral 
+   $veiculoListAssociadoLinhaAguardando = '..//App/associado/listaguardando/'; // Lista Associados vinculado a Linha Aguardando
+   $veiculoListAssociadoLinhaAtivo = '../App/associado/listveiculo/'; // Lista Associados vinculado a Linha Aguardando
+   $veiculoListId = '../App/veiculo/list/';// Lista Veiculo referente ao ID
+   $veiculoPut = '../App/veiculo/update/';// Uptades no Veiculo
+   $veiculoDel = '../App/veiculo/delete/';// Veiculo Deleta
+
 
     
    //MODULO PEFIL
@@ -208,7 +218,42 @@ app.service('restful', function ($http,$sessionStorage) {
     var _cursofaculdadeDel = function (values){
           return  $http.delete($cursofaculdadeDel + token + values);
     };
-    
+
+//|#######################################################|
+//|############# **  MODULO VEICULO ** ###################|
+//|#######################################################|
+   //Inseri nova Veiculo
+    var _veiculoSave = function (values){
+        return  $http.post($veiculoSave + token , values);
+    };
+    //Lista todas Veiculo
+    var _veiculoList = function (values){
+        return  $http.get($veiculoList);
+    };
+    //Lista todas Veiculo Geral 
+    var _veiculoListGeral = function (values){
+        return  $http.get($veiculoListGeral);
+    };
+    //Lista  Pre-Associado referente a linha 
+    var _veiculoListAssociadoLinhaAguardando = function (id){
+        return  $http.get($veiculoListAssociadoLinhaAguardando + id);
+    };
+    //Lista todas Associados Ativos 
+    var _veiculoListAssociadoLinhaAtivo = function (id){
+        return  $http.get($veiculoListAssociadoLinhaAtivo + id);
+    };
+    //Lista Veiculo referente ao ID
+    var _veiculoListId = function (id){
+          return  $http.get($veiculoListId + id);
+    };
+    //Update de Veiculo
+    var _veiculoPut = function (id , values){
+          return  $http.put($veiculoPut + id , values);
+    };
+    //Update de Veiculo
+    var _veiculoDel = function (values){
+          return  $http.delete($veiculoDel + token + values);
+    };
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
@@ -262,6 +307,15 @@ app.service('restful', function ($http,$sessionStorage) {
         cursofaculdadeListId : _cursofaculdadeListId,
         cursofaculdadePut : _cursofaculdadePut,
         cursofaculdadeDel : _cursofaculdadeDel,
+        //Return do Veiculo
+        veiculoSave : _veiculoSave,
+        veiculoList : _veiculoList,
+        veiculoListGeral : _veiculoListGeral,
+        veiculoListAssociadoLinhaAguardando : _veiculoListAssociadoLinhaAguardando,
+        veiculoListAssociadoLinhaAtivo : _veiculoListAssociadoLinhaAtivo,
+        veiculoListId : _veiculoListId,
+        veiculoPut : _veiculoPut,
+        veiculoDel : _veiculoDel,
 
         //Return Modulo Cliente
         updatePicture : _updatePicture,

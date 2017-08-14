@@ -402,62 +402,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			}
 		})
 		//############################################################################
-		//############# **  MODULO Periodo ** ##########################################
-		//############################################################################
-		.state('user.periodo', {
-			url: '/periodo',
-			templateUrl: 'modPeriodo/periodoLink.htm',
-			resolve: {
-				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
-						$location.path('/login');
-					}
-				}
-
-			},
-			ncyBreadcrumb: {
-				label: 'Periodo'
-			}
-		})
-
-
-		.state('user.periodo.inseri', {
-			url: '/inseri',
-			templateUrl: 'modPeriodo/inseriPeriodo.htm',
-			controller: 'inseriPeriodoCtrl',
-			ncyBreadcrumb: {
-				label: 'Inseri Periodo'
-			}
-		})
-
-		.state('user.periodo.altera', {
-			url: '/altera',
-			templateUrl: 'modPeriodo/alteraPeriodo.htm',
-			controller: 'alteraPeriodoCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera Periodo'
-			}
-		})
-
-		.state('user.periodo.altera.detalhes', {
-			url: '/:id',
-			controller: function ($scope, $stateParams) {
-				// get the id
-				$scope.id = $stateParams.id;
-			},
-			ncyBreadcrumb: {
-				label: 'Altera'
-			}
-
-		})
-
-
-		//############################################################################
 		//############# **  MODULO VEICULOS ** ##########################################
 		//############################################################################
 		.state('user.veiculo', {
 			url: '/veiculo',
-			templateUrl: 'modVeiculo/link.htm',
+			templateUrl: 'modVeiculo/veiculo.htm',
+			controller:'veiculoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
 					if (sessionStorage.getItem('usuario.id') == null) {
@@ -470,47 +420,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 				label: 'Veiculo'
 			}
 		})
-
-		.state('user.veiculo.inseri', {
-			url: '/inseri',
-			templateUrl: 'modVeiculo/inseriVeiculo.htm',
-			controller: 'inseriVeiculoCtrl',
-			ncyBreadcrumb: {
-				label: 'Novo Veiculo'
-			}
-		})
-
-		.state('user.veiculo.altera', {
-			url: '/altera',
-			templateUrl: 'modVeiculo/alteraVeiculo.htm',
-			controller: 'alteraVeiculoCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera'
-			}
-		})
-
-
-		.state('user.veiculo.altera.detalhes', {
-			url: '/:id',
-			controller: function ($scope, $stateParams) {
-				// get the id
-				$scope.id = $stateParams.id;
-			},
-			ncyBreadcrumb: {
-				label: 'Altera'
-			}
-
-		})
-
-		.state('user.veiculo.listaGeral', {
-			url: '/listaGeral',
-			templateUrl: 'modVeiculo/listaGeral.htm',
-			controller: 'listaGeralCtrl',
-			ncyBreadcrumb: {
-				label: 'Lista Geral'
-			}
-		})
-
 	//############################################################################
 				$urlRouterProvider.otherwise("/login");
 
