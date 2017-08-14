@@ -7,7 +7,7 @@
  */
 namespace Api\Controller;
 use \Api\Model\Entity\Usuario, 
-	\Api\Controller\AuditController as Audit;
+	\Api\Auth\Auth;
 class UsuarioController{
 	/**
 	 * Cadastra um Usuario
@@ -106,18 +106,8 @@ class UsuarioController{
 	 */ 
 	public function login($request, $response, $args){
 		$data = json_decode($request->getBody(), true);
-		$usuario = Usuario::getInstance();
-		$usuario->makeSelect()->where("email='".$data['login']."'")->and("senha='".md5($data['senha'])."'")->and("status='ATIVO'");
-		$collection = $usuario->execute(); 
-		if ($collection->exists(0)){
-        	return $response->WithJson($collection->getAll());
-		}else{
-			return $response->WithJson(
-			[
-				'flag' => false,
-				'message' => 'Usuário ou senha invalidos'
-			]);
-		}
+		$auth = new Auth();
+		return $response->WithJson($auth->login($data['login'], $data['senha'], false));
 	}
 
 }
