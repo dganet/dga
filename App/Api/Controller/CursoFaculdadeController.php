@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Cursofaculdade, \Api\Controller\AuditController as Audit;
+use \Api\Model\Entity\Cursofaculdade, \Api\Auth\Auth;
 
 class CursoFaculdadeController {
 	/**
@@ -12,11 +12,15 @@ class CursoFaculdadeController {
 	 * @return Json
 	 */
 	public function cadastrar($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$curso = Cursofaculdade::getInstance();
-		$curso->load($data);
-		$curso->status = "ATIVO";
-		return $response->WithJson($curso->save());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$curso = Cursofaculdade::getInstance();
+			$curso->load($data);
+			$curso->status = "ATIVO";
+			return $response->WithJson($curso->save());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todos os cursos ATIVOS
@@ -79,10 +83,14 @@ class CursoFaculdadeController {
 	 * @return Json
 	 */
 	public function atulizaCadastro($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$curso = Cursofaculdade::getInstance();
-		$curso->load($data);
-		return $response->WithJson($curso->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$curso = Cursofaculdade::getInstance();
+			$curso->load($data);
+			return $response->WithJson($curso->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Inativa um curso
@@ -93,10 +101,15 @@ class CursoFaculdadeController {
 	 * @return Json
 	 */
 	public function inativar($request, $response, $args){
-		$curso = Cursofaculdade::getInstance();
-		$curso->id = $args['id'];
-		$curso->status = 'INATIVO';
-		return $response->WithJson($curso->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$curso = Cursofaculdade::getInstance();
+			$data = json_decode($request->getBody(),true);
+			$curso->id = $data['id'];
+			$curso->status = 'INATIVO';
+			return $response->WithJson($curso->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todos os Cursos inativos

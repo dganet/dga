@@ -33,28 +33,32 @@ class AssociadoController {
 	 * @return void
 	 */
 	public function cadastrar($request, $response, $args){
-		//Recupera as informações trazidas pelo request,e as insere dentro do objeto
-		$data = json_decode($request->getBody(),true);
-		$associado = Associado::getInstance();
-		$associado->rendaSerial = $data['renda'];
-		unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
-		$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
-		$associado->getRendaPerCapta();
-		/**
-		 * Faz o upload da foto e a salva no banco de dados
-		 */
-		$img = new ImageController();
-		foreach ($associado->documento as $key => $value) {
-			$doc = $img->upload($value['anexoDocumento']);
-			if ($doc['flag']){
-				$doc['obj']->tipo = $value['tipoDocumento'];
-				$imagem = $doc['obj'];
-				$r = $imagem->save(true);
-				$associado->documento[$key] = $r['lastId'];
+		if (Auth::_isLoggedIn($args['token'])){
+			//Recupera as informações trazidas pelo request,e as insere dentro do objeto
+			$data = json_decode($request->getBody(),true);
+			$associado = Associado::getInstance();
+			$associado->rendaSerial = $data['renda'];
+			unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
+			$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
+			$associado->getRendaPerCapta();
+			/**
+			 * Faz o upload da foto e a salva no banco de dados
+			 */
+			$img = new ImageController();
+			foreach ($associado->documento as $key => $value) {
+				$doc = $img->upload($value['anexoDocumento']);
+				if ($doc['flag']){
+					$doc['obj']->tipo = $value['tipoDocumento'];
+					$imagem = $doc['obj'];
+					$r = $imagem->save(true);
+					$associado->documento[$key] = $r['lastId'];
+				}
 			}
+			//Serializa os campos necessários e salva no banco de dados
+			return $response->WithJson($associado->save());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
-		//Serializa os campos necessários e salva no banco de dados
-		return $response->WithJson($associado->save());
 	}
 	/**
 	 * Lista todos os associados que estão ativos no sistema
@@ -93,12 +97,16 @@ class AssociadoController {
 	 * @return void
 	 */
 	public function atulizaCadastro($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$associado = Associado::getInstance();
-		$associado->rendaSerial = $data['renda'];
-		unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
-		$associado->load($data);
-		return $response->WithJson($associado->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$associado = Associado::getInstance();
+			$associado->rendaSerial = $data['renda'];
+			unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
+			$associado->load($data);
+			return $response->WithJson($associado->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Inativa um cliente conforme o ID passado
@@ -109,10 +117,15 @@ class AssociadoController {
 	 * @return void
 	 */
 	public function inativar($request, $response, $args){
-		$associado = Associado::getInstance();
-		$associado->id = $args['id'];
-		$associado->status = 'INATIVO';
-		return $response->WithJson($associado->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$associado = Associado::getInstance();
+			$data = json_decode($request->getBody(),true);
+			$associado->id = $data['id'];
+			$associado->status = 'INATIVO';
+			return $response->WithJson($associado->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Retorna uma lista com os associados com status INATIVO

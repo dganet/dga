@@ -1,6 +1,6 @@
 <?php 
 namespace Api\Controller;
-use \Api\Model\Entity\Oportunidade, \Api\Controller\AuditController as Audit;
+use \Api\Model\Entity\Oportunidade, \Api\Auth\Auth;
 
 class OportunidadeController {
 	/**
@@ -12,11 +12,15 @@ class OportunidadeController {
 	 * @return Json
 	 */
 	public function cadastrar($request, $response, $args){
-		$data = json_decode($request->getBody(), true);
-		$oportunidade = Oportunidade::getInstance();	
-		$oportunidade->status = "ATIVO";
-		$oportunidade->load($data);
-		return $response->WithJson($oportunidade->save());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(), true);
+			$oportunidade = Oportunidade::getInstance();	
+			$oportunidade->status = "ATIVO";
+			$oportunidade->load($data);
+			return $response->WithJson($oportunidade->save());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todas as oportunidades Ativas
@@ -59,10 +63,14 @@ class OportunidadeController {
 	 * @return Json
 	 */
 	public function atualizaCadastro($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$oportunidade = Oportunidade::getInstance();
-		$oportunidade->load($data);
-		return $response->WithJson($oportunidade->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$oportunidade = Oportunidade::getInstance();
+			$oportunidade->load($data);
+			return $response->WithJson($oportunidade->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Inativa uma oportunidade
@@ -73,11 +81,16 @@ class OportunidadeController {
 	 * @return Json
 	 */
 	public function inativar($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$oportunidade = Oportunidade::getInstance();
-		$oportunidade->id = $args['id'];
-		$oportunidade->status = 'INATIVO';
-		return $response->WithJson($oportunidade->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$oportunidade = Oportunidade::getInstance();
+			$data = json_decode($request->getBody(),true);
+			$oportunidade->id = $data['id'];
+			$oportunidade->status = 'INATIVO';
+			return $response->WithJson($oportunidade->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todas as oportunidades inativas

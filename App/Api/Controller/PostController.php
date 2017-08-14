@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Post, \Api\Controller\AuditController as Audit;
+use \Api\Model\Entity\Post, \Api\Auth\Auth;
 /**
  * Noticia
  */
@@ -14,11 +14,15 @@ class PostController{
 	 * @return Json
 	 */
 	public function cadastrar($request, $response, $args){
-		$data = json_decode($request->getBody(), true);
-		$noticia = Post::getInstance();
-		$noticia->load($data);
-		$noticia->status = "ATIVO";
-		return $response->WithJson($noticia->save());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(), true);
+			$noticia = Post::getInstance();
+			$noticia->load($data);
+			$noticia->status = "ATIVO";
+			return $response->WithJson($noticia->save());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todas as noticias em ATIVO
@@ -77,10 +81,14 @@ class PostController{
 	 * @return Json
 	 */
 	public function atualizaCadastro($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$noticia = Post::getInstance();
-		$noticia->load($data);
-		return $response->WithJson($noticia->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$noticia = Post::getInstance();
+			$noticia->load($data);
+			return $response->WithJson($noticia->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Inativa uma noticia
@@ -91,10 +99,15 @@ class PostController{
 	 * @return Json
 	 */
 	public function inativar($request, $response, $args){
-		$noticia = Post::getInstance();
-		$noticia->id = $args['id'];
-		$noticia->status = 'INATIVO';
-		return $response->WithJson($noticia->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$noticia = Post::getInstance();
+			$data = json_decode($request->getBody(),true);
+			$noticias->id = $data['id'];
+			$noticia->status = 'INATIVO';
+			return $response->WithJson($noticia->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 
 }
