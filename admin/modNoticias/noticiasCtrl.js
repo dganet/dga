@@ -24,7 +24,7 @@ $scope.dados = function (id){
     };
     // Ativando a função
     $scope.reset();
-        //Pega as info da universidade selecionada
+    //Pega as info da universidade selecionada
 		restful.noticiaListId(id).success(function(data){
 		$scope.noticia = data[0];	
         });

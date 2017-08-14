@@ -22,6 +22,7 @@
 			    $scope.activePath = $location.path('/user');
 			    sessionStorage.setItem('usuario.id', response[0].id);
 			    sessionStorage.setItem('usuario.nome', response[0].nome);
+			    sessionStorage.setItem('usuario.token', response[0].nome);
   				 
 		      }
 		     

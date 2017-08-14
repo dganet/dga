@@ -1,6 +1,8 @@
-app.service('restful', function ($http,$sessionStorage) {
+app.service('mensagensCtrl', function ($scopo ,$timeout) {
+
+  app.service('restful', function ($http,$sessionStorage) {
  //Pega o id do usuario logado
- var token = sessionStorage.getItem('usuario.token');
+ var token = sessionStorage.getItem('usuario.id');
 
 //REQUISICOES DO BACK-END CAMINHOS
 
@@ -9,49 +11,49 @@ app.service('restful', function ($http,$sessionStorage) {
    $usuarioSave =  '/App/usuario/save'; // Salva Usuario
 
     //Classes associado
-   $associadoSave = '../App/associado/save/'; // Salva Associado
+   $associadoSave = '../App/associado/save'; // Salva Associado
    $associadoList = '../App/associado/list'; // Lista todo Associados
    $associadoListId = '../App/associado/list/';// Lista associado referente ao ID
    $associadoPut = '../App/associado/update/';// Uptades na associado
    $associadoDel = '../App/associado/delete/';// associado Deleta
    
    //Classes Noticias
-   $noticiaSave = '../App/post/save/'; // Salva Noticia
+   $noticiaSave = '../App/post/save'; // Salva Noticia
    $noticiaList = '../App/post/list'; // Lista todas os Noticias
    $noticiaListId = '../App/post/list/';// Lista Noticia referente ao ID
    $noticiaPut = '../App/post/update/';// Uptades no Noticia
    $noticiaDel = '../App/post/delete/';// Noticia Deleta
 
    //Classes Opotunidades
-   $oportunidadeSave = '../App/oportunidade/save/'; // Salva oportunidade
+   $oportunidadeSave = '../App/oportunidade/save'; // Salva oportunidade
    $oportunidadeList = '../App/oportunidade/list'; // Lista todas os oportunidades
    $oportunidadeListId = '../App/oportunidade/list/';// Lista oportunidade referente ao ID
    $oportunidadePut = '../App/oportunidade/update/';// Uptades no oportunidade
    $oportunidadeDel = '../App/oportunidade/delete/';// oportunidade Deleta
 
    //Classes PostCuso
-   $cursoSave = '../App/curso/save/'; // Salva curso
+   $cursoSave = '../App/curso/save'; // Salva curso
    $cursoList = '../App/curso/list'; // Lista todas os cursos
    $cursoListId = '../App/curso/list/';// Lista curso referente ao ID
    $cursoPut = '../App/curso/update/';// Uptades no curso
    $cursoDel = '../App/curso/delete/';// oportunidade Deleta
 
     //Classes Universidade
-   $universidadeSave = '../App/universidade/save/'; // Salva Universidade
+   $universidadeSave = '../App/universidade/save'; // Salva Universidade
    $universidadeList = '../App/universidade/list'; // Lista todas Universades
    $universidadeListId = '../App/universidade/list/';// Lista Universidade referente ao ID
    $universidadePut = '../App/universidade/update/';// Uptades na Universidade
    $universidadeDel = '../App/universidade/delete/';// Universidade Deleta
 
    //Classes Curso
-   $cursofaculdadeSave = '../App/cursofaculdade/save/'; // Salva Curso
+   $cursofaculdadeSave = '../App/cursofaculdade/save'; // Salva Curso
    $cursofaculdadeList = '../App/cursofaculdade/list'; // Lista todas os Cursos
    $cursofaculdadeListId = '../App/cursofaculdade/list/';// Lista curso referente ao ID
    $cursofaculdadePut = '../App/cursofaculdade/update/';// Uptades no curso
    $cursofaculdadeDel = '../App/cursofaculdade/delete/';// Curso Deleta
 
    //Classes Veiculo
-   $veiculoSave = '../App/veiculo/save/'; // Salva Veiculo
+   $veiculoSave = '../App/veiculo/save'; // Salva Veiculo
    $veiculoList = '../App/veiculo/list'; // Lista todas os Veiculos
    $veiculoListGeral = '../App/associado/listageral'; // Lista todas os Veiculos Geral 
    $veiculoListAssociadoLinhaAguardando = '..//App/associado/listaguardando/'; // Lista Associados vinculado a Linha Aguardando
@@ -95,19 +97,19 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($associadoListId + id);
     };
     //Update de associado
-    var _associadoPut = function (values){
-          return  $http.put($associadoPut + token, values);
+    var _associadoPut = function (id , values){
+          return  $http.put($associadoPut + id , values);
     };
     //Update de associado
     var _associadoDel = function (values){
-          return  $http.delete($associadoDel + token, values);
+          return  $http.delete($associadoDel + token + values);
     };
 //|#######################################################|
 //|############# **  MODULO NOTICIAS ** ###################|
 //|#######################################################|
    //Inseri nova Noticiais
     var _noticiaSave = function (values){
-        return  $http.post($noticiaSave + token , values);
+        return  $http.post($noticiaSave + token, values);
     };
     //Lista todas noticias
     var _noticiaList = function (values){
@@ -118,12 +120,12 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($noticiaListId + id);
     };
     //Update de noticia
-    var _noticiaPut = function (values){
-          return  $http.put($noticiaPut + token, values);
+    var _noticiaPut = function (id , values){
+          return  $http.put($noticiaPut + id , values);
     };
     //Update de noticia
     var _noticiaDel = function (values){
-          return  $http.delete($noticiaDel + token , values);
+          return  $http.delete($noticiaDel + token + values);
     };
 //|#######################################################|
 //|############# **  MODULO POST CURSO ** ###################|
@@ -141,12 +143,12 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($cursoListId + id);
     };
     //Update de curso
-    var _cursoPut = function (values){
-          return  $http.put($cursoPut + token, values);
+    var _cursoPut = function (id , values){
+          return  $http.put($cursoPut + id , values);
     };
     //Update de curso
     var _cursoDel = function (values){
-          return  $http.delete($cursoDel + token , values);
+          return  $http.delete($cursoDel + token + values);
     };
 //|#######################################################|
 //|############# **  MODULO OPORTUNIDADES ** ###################|
@@ -169,7 +171,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de oportunidade
     var _oportunidadeDel = function (values){
-          return  $http.delete($oportunidadeDel + token , values);
+          return  $http.delete($oportunidadeDel + token + values);
     };
 
 //|#######################################################|
@@ -188,12 +190,12 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($universidadeListId + id);
     };
     //Update de Universidade
-    var _universidadePut = function (values){
-          return  $http.put($universidadePut + token, values);
+    var _universidadePut = function (id , values){
+          return  $http.put($universidadePut + id , values);
     };
     //Update de Universidade
     var _universidadeDel = function (values){
-          return  $http.delete($universidadeDel + token , values);
+          return  $http.delete($universidadeDel + token + values);
     };
 //|#######################################################|
 //|############# **  MODULO CURSO ** ###################|
@@ -211,12 +213,12 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($cursofaculdadeListId + id);
     };
     //Update de Curso
-    var _cursofaculdadePut = function (values){
-          return  $http.put($cursofaculdadePut + token, values);
+    var _cursofaculdadePut = function (id , values){
+          return  $http.put($cursofaculdadePut + id , values);
     };
     //Update de Curso
     var _cursofaculdadeDel = function (values){
-          return  $http.delete($cursofaculdadeDel + token , values);
+          return  $http.delete($cursofaculdadeDel + token + values);
     };
 
 //|#######################################################|
@@ -247,12 +249,12 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($veiculoListId + id);
     };
     //Update de Veiculo
-    var _veiculoPut = function (values){
-          return  $http.put($veiculoPut + token, values);
+    var _veiculoPut = function (id , values){
+          return  $http.put($veiculoPut + id , values);
     };
     //Update de Veiculo
     var _veiculoDel = function (values){
-          return  $http.delete($veiculoDel + token , values);
+          return  $http.delete($veiculoDel + token + values);
     };
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
@@ -268,57 +270,11 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 
     return {
-        //Return do Usuario
-        usuarioLogin : _usuarioLogin,
-        usuarioSave: _usuarioSave,
-        //Return da Associado
-        associadoSave : _associadoSave,
-        associadoList : _associadoList,
-        associadoListId : _associadoListId,
-        associadoPut : _associadoPut,
-        associadoDel : _associadoDel,
-        //Return da Noticias
-        noticiaSave : _noticiaSave,
-        noticiaList : _noticiaList,
-        noticiaListId : _noticiaListId,
-        noticiaPut : _noticiaPut,
-        noticiaDel : _noticiaDel,
-        //Return do Curso
-        cursoSave : _cursoSave,
-        cursoList : _cursoList,
-        cursoListId : _cursoListId,
-        cursoPut : _cursoPut,
-        cursoDel : _cursoDel,
-        //Return de Oportunidadaes
-        oportunidadeSave : _oportunidadeSave,
-        oportunidadeList : _oportunidadeList,
-        oportunidadeListId : _oportunidadeListId,
-        oportunidadePut : _oportunidadePut,
-        oportunidadeDel : _oportunidadeDel,
-        //Return da Universidade
-        universidadeSave : _universidadeSave,
-        universidadeList : _universidadeList,
-        universidadeListId : _universidadeListId,
-        universidadePut : _universidadePut,
-        universidadeDel : _universidadeDel,
-        //Return da Curso da Faculdade
-        cursofaculdadeSave : _cursofaculdadeSave,
-        cursofaculdadeList : _cursofaculdadeList,
-        cursofaculdadeListId : _cursofaculdadeListId,
-        cursofaculdadePut : _cursofaculdadePut,
-        cursofaculdadeDel : _cursofaculdadeDel,
-        //Return do Veiculo
-        veiculoSave : _veiculoSave,
-        veiculoList : _veiculoList,
-        veiculoListGeral : _veiculoListGeral,
-        veiculoListAssociadoLinhaAguardando : _veiculoListAssociadoLinhaAguardando,
-        veiculoListAssociadoLinhaAtivo : _veiculoListAssociadoLinhaAtivo,
-        veiculoListId : _veiculoListId,
-        veiculoPut : _veiculoPut,
-        veiculoDel : _veiculoDel,
 
         //Return Modulo Cliente
         updatePicture : _updatePicture,
     }
+
+});
 
 });
