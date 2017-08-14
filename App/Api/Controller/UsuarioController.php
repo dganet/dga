@@ -16,12 +16,16 @@ class UsuarioController{
 	 * @return void
 	 */
 	public function cadastrar($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$usuario = Usuario::getInstance();
-		$usuario->load($data);
-		$usuario->status = "ATIVO";
-		$usuario->createAt = date('Y-m-d H:i:s');
-		return $response->WithJson($usuario->save());
+		if (Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$usuario = Usuario::getInstance();
+			$usuario->load($data);
+			$usuario->status = "ATIVO";
+			$usuario->createAt = date('Y-m-d H:i:s');
+			return $response->WithJson($usuario->save());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todos os usuarios
@@ -60,12 +64,16 @@ class UsuarioController{
 	 * @return Json
 	 */
 	public function atulizaCadastro($request, $response, $args){
-		$data = json_decode($request->getBody(), true);
-		$usuario = Usuario::getInstance();
-		$usuario->load($data);
-		$usuario->id = $args['id'];
-		$usuario->updateAt = date('Y-m-d H:i:s');
-		return $response->WithJson($usuario->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(), true);
+			$usuario = Usuario::getInstance();
+			$usuario->load($data);
+			$usuario->id = $args['id'];
+			$usuario->updateAt = date('Y-m-d H:i:s');
+			return $response->WithJson($usuario->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todos os Usuarios inativos
@@ -90,11 +98,15 @@ class UsuarioController{
 	 * @return Json
 	 */
 	public function inativar($request, $response, $args){
-		$usuario = Usuario::getInstance();
-		$usuario->status = "INATIVO";
-		$usuario->updateAt =date('Y-m-d H:i:s');
-		$usuario->id = $args['id'];
-		return $response->WithJson($usuario->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$usuario = Usuario::getInstance();
+			$usuario->status = "INATIVO";
+			$data = json_decode($request->getBody(),true);
+			$usuario->id = $data['id'];
+			return $response->WithJson($usuario->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Loga um Usuario conforme as informações inseridas no formulário

@@ -6,7 +6,7 @@ $app->post('/usuario/login', \Api\Controller\UsuarioController::class . ':login'
 /**
  * Salva um Usuario
  */
-$app->post('/usuario/save', \Api\Controller\UsuarioController::class . ':cadastrar');
+$app->post('/usuario/save/{token}', \Api\Controller\UsuarioController::class . ':cadastrar');
 /**
  * Lista todos os Usuarios Ativos
  */
@@ -18,12 +18,12 @@ $app->get('/usuario/list/{id}', \Api\Controller\UsuarioController::class . ':lis
 /**
  * Lista usuarios inativos
  */
-$app->get('/usuario/inativo', \Api\Controller\UsuarioController::class . ':listaInativo');
+$app->get('/usuario/inativo/{token}', \Api\Controller\UsuarioController::class . ':listaInativo');
 /**
  * Atualiza o cadastro de um usuario
  */
-$app->put('/usuario/update/{id}', \Api\Controller\UsuarioController::class . ':atulizaCadastro');
+$app->put('/usuario/update/{token}', \Api\Controller\UsuarioController::class . ':atulizaCadastro');
 /**
  * Inativa um cliente
  */
-$app->delete('/usuario/delete/{id}', \Api\Controller\UsuarioController::class . ':inativar');
+$app->delete('/usuario/delete/{token}', \Api\Controller\UsuarioController::class . ':inativar');

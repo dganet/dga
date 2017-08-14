@@ -3,7 +3,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 // Cadastra um novo curso
-$app->post('/cursofaculdade/save', \Api\Controller\CursoFaculdadeController::class . ':cadastrar');
+$app->post('/cursofaculdade/save/{token}', \Api\Controller\CursoFaculdadeController::class . ':cadastrar');
 
 // 	//lista todos os curso
 $app->get('/cursofaculdade/list', \Api\Controller\CursoFaculdadeController::class . ':listaTudo');
@@ -15,11 +15,11 @@ $app->get('/cursofaculdade/listplus', \Api\Controller\CursoFaculdadeController::
 $app->get('/cursofaculdade/list/{id}', \Api\Controller\CursoFaculdadeController::class . ':listaPorId');
 
 // 	//Lista registros inativos
-$app->get('/cursofaculdade/inativo', \Api\Controller\CursoFaculdadeController::class . ':listaInativo');
+$app->get('/cursofaculdade/inativo/{token}', \Api\Controller\CursoFaculdadeController::class . ':listaInativo');
 
 // 	//Atualiza cadastro
-$app->put('/cursofaculdade/update/{id}', \Api\Controller\CursoFaculdadeController::class . ':atulizaCadastro');
+$app->put('/cursofaculdade/update/{token}', \Api\Controller\CursoFaculdadeController::class . ':atulizaCadastro');
 
 // 	//Inativa um curso
-$app->delete('/cursofaculdade/delete/{id}', \Api\Controller\CursoFaculdadeController::class . ':inativar');
+$app->delete('/cursofaculdade/delete/{token}', \Api\Controller\CursoFaculdadeController::class . ':inativar');
 

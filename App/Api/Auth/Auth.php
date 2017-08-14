@@ -3,18 +3,6 @@ namespace Api\Auth;
 use \Api\Auth\Cache;
 class Auth{
     /**
-     * Variavel que irá armazenar o token do usuario
-     *
-     * @var String
-     */
-    private $token;
-    /**
-     * Local de armazenamento do path onde será armazenado o arquivo de token
-     *
-     * @var String
-     */
-    private $tmpPath;
-    /**
      * Loga um usuario/associado conforme as informações passadas no username e password
      *
      * @param String $username

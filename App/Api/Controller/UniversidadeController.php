@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Universidade, \Api\Controller\AuditController as Audit;
+use \Api\Model\Entity\Universidade, \Api\Auth\Auth;
 
 class UniversidadeController {
 
@@ -13,11 +13,15 @@ class UniversidadeController {
 	 * @return Json
 	 */
 	public function cadastrar($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$curso = Universidade::getInstance();
-		$curso->load($data);
-		$curso->status = "ATIVO";
-		return $response->WithJson($curso->save());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$curso = Universidade::getInstance();
+			$curso->load($data);
+			$curso->status = "ATIVO";
+			return $response->WithJson($curso->save());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todas as universidades Ativas
@@ -64,11 +68,15 @@ class UniversidadeController {
 	 * @return Json
 	 */
 	public function atulizaCadastro($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$curso = Universidade::getInstance();
-		$curso->load($data);
-		$curso->status = "ATIVO";
-		return $response->WithJson($curso->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$curso = Universidade::getInstance();
+			$curso->load($data);
+			$curso->status = "ATIVO";
+			return $response->WithJson($curso->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Inativa uma universidade
@@ -79,10 +87,15 @@ class UniversidadeController {
 	 * @return Json
 	 */
 	public function inativar($request, $response, $args){
-		$curso = Universidade::getInstance();
-		$curso->id = $args['id'];
-		$curso->status = "INATIVO";
-		return $response->WithJson($curso->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$curso = Universidade::getInstance();
+			$data = json_decode($request->getBody(),true);
+			$cuso->id = $data['id'];
+			$curso->status = "INATIVO";
+			return $response->WithJson($curso->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Lista todas as universidades inativas
@@ -93,7 +106,7 @@ class UniversidadeController {
 	 * @return Json
 	 */
 	public function listaInativo(){
-			$curso = Universidade::getInstance();
+		$curso = Universidade::getInstance();
 		$curso->makeSelect()->where("status='INATIVO");
 		$collection = $curso->execute();
 		if ($collection->exists(0)){

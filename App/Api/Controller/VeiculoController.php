@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Veiculo, \Api\Controller\AuditController as Audit;
+use \Api\Model\Entity\Veiculo, \Api\Auth\Auth;
 
 class VeiculoController{
 	/**
@@ -12,11 +12,15 @@ class VeiculoController{
 	 * @return Json
 	 */
 	public function cadastrar($request, $response, $args){
-		$data = json_decode($request->getBody(),true);
-		$veiculo = Veiculo::getInstance();
-		$veiculo->load($data);
-		$veiculo->status = 'ATIVO';
-		return $response->WithJson($veiculo->save());
+		if(Auth::_isLoggedIn($args['token'])){
+			$data = json_decode($request->getBody(),true);
+			$veiculo = Veiculo::getInstance();
+			$veiculo->load($data);
+			$veiculo->status = 'ATIVO';
+			return $response->WithJson($veiculo->save());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 	/**
 	 * Atualiza as informações do Veiculo
@@ -27,21 +31,24 @@ class VeiculoController{
 	 * @return Json
 	 */
 	public function atualizaCadastro($request, $response, $args){
-		$veiculo = Veiculo::getInstance();
-		$data = json_decode($request->getBody,true);
-		$veiculo->find($args['id']);
-
-		if($veiculo->numVagas > $data['numVagas']){
-			return $response->WithJson(
-				[
-					'flag' => false,
-					'message' => 'O numero de vagas não permitido'
-				]
-			);
+		if(Auth::_isLoggedIn($args['token'])){
+			$veiculo = Veiculo::getInstance();
+			$data = json_decode($request->getBody,true);
+			$veiculo->find($args['id']);
+			if($veiculo->numVagas > $data['numVagas']){
+				return $response->WithJson(
+					[
+						'flag' => false,
+						'message' => 'O numero de vagas não permitido'
+					]
+				);
+			}else{
+				$veiculo->load($data);
+				return $response->WithJson($veiculo->update());
+				return true;
+			}
 		}else{
-			$veiculo->load($data);
-			return $response->WithJson($veiculo->update());
-			return true;
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
 	}
 	/**
@@ -107,9 +114,14 @@ class VeiculoController{
 	 * @return Json
 	 */
 	public function inativar($request, $response, $args){
-		$veiculo = Veiculo::getInstance();
-		$veiculo->id = $args['id'];
-		$veiculo->status = 'INATIVO';
-		return $response->WithJson($veiculo->update());
+		if(Auth::_isLoggedIn($args['token'])){
+			$veiculo = Veiculo::getInstance();
+			$data = json_decode($request->getBody(),true);
+			$veiculo->id = $data['id'];
+			$veiculo->status = 'INATIVO';
+			return $response->WithJson($veiculo->update());
+		}else{
+			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
+		}
 	}
 }
