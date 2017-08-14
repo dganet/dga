@@ -3,7 +3,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 
-$app->post('/oportunidade/save', \Api\Controller\OportunidadeController::class . ':cadastrar');
+$app->post('/oportunidade/save/{id}', \Api\Controller\OportunidadeController::class . ':cadastrar');
 // 	//lista todos os curso
 $app->get('/oportunidade/list', \Api\Controller\OportunidadeController::class . ':listaTudo');
 // 	//Lista curso por Id
