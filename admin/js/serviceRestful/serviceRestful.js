@@ -177,6 +177,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Universiade
     var _universidadeSave = function (values){
+          console.log($universidadeSave,values,token);
         return  $http.post($universidadeSave + token , values);
     };
     //Lista todas Universidades
@@ -224,7 +225,6 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Veiculo
     var _veiculoSave = function (values){
-        return  $http.post($veiculoSave + token , values);
     };
     //Lista todas Veiculo
     var _veiculoList = function (values){

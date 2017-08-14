@@ -14,7 +14,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'painel/home.htm',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -36,7 +36,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			controller:'associadoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -158,7 +158,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'modTicket/linkTicket.htm',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -198,7 +198,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'modBanner/linkBanner.htm',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -244,7 +244,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			controller:'noticiasCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -264,7 +264,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			controller:'postcursoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -284,7 +284,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			controller: 'universidadeCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -304,7 +304,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'cursoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -324,7 +324,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			controller:'oportunidadeCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -342,7 +342,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'modUsuario/linkUsuario.htm',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}
@@ -410,7 +410,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			controller:'veiculoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.id') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) {
 						$location.path('/login');
 					}
 				}

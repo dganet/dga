@@ -1,4 +1,4 @@
-app.controller("noticiasCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
+app.controller("noticiasCtrl",function($scope, restful,servmsg ,$location , $sessionStorage){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -74,12 +74,15 @@ $scope.dados = function (id){
         restful.noticiaList().success(function(data){
             $scope.noticias = data;       
         });
-         
+       
+       // Mensagem
+       servmsg.mensagem(sucesso).sucess(function(){});
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
-      $scope.mensagemAtualizado = false;
-      $timeout(function () {
-               $scope.mensagemAtualizado = true;
-           },10000);
+      //$scope.mensagemAtualizado = false;
+      //$timeout(function () {
+      //         $scope.mensagemAtualizado = true;
+      //     },10000);
 
     });
 
