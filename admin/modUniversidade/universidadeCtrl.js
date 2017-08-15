@@ -1,4 +1,4 @@
-app.controller("universidadeCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
+app.controller("universidadeCtrl",function($scope, restful, servmsg, $location , $sessionStorage){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -64,10 +64,9 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormUniversidade) {
-	 var id = values.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.universidadePut(id,values).success(function(){
+    restful.universidadePut(values).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -76,11 +75,14 @@ $scope.dados = function (id){
             $scope.universidades = data;       
         });
          
+       // Mensagem
+       servmsg.mensagem('put');
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
-      $scope.mensagemAtualizado = false;
-      $timeout(function () {
-               $scope.mensagemAtualizado = true;
-           },10000);
+      //$scope.mensagemAtualizado = false;
+      //$timeout(function () {
+      //         $scope.mensagemAtualizado = true;
+      //     },10000);
 
     });
 

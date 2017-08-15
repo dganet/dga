@@ -96,11 +96,12 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de associado
     var _associadoPut = function (values){
-          return  $http.put($associadoPut + token, values);
+          return  $http.put($associadoPut + token + "/" + values);
     };
     //Update de associado
     var _associadoDel = function (values){
-          return  $http.delete($associadoDel + token, values);
+          var id = {"id":values}
+          return  $http.delete($associadoDel + token, id);
     };
 //|#######################################################|
 //|############# **  MODULO NOTICIAS ** ###################|
@@ -119,11 +120,12 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de noticia
     var _noticiaPut = function (values){
-          return  $http.put($noticiaPut + token, values);
+          return  $http.put($noticiaPut + token + "/" + values);
     };
     //Update de noticia
     var _noticiaDel = function (values){
-          return  $http.delete($noticiaDel + token , values);
+          var id = {"id":values}
+          return  $http.delete($noticiaDel + token , id);
     };
 //|#######################################################|
 //|############# **  MODULO POST CURSO ** ###################|
@@ -142,11 +144,12 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de curso
     var _cursoPut = function (values){
-          return  $http.put($cursoPut + token, values);
+          return  $http.put($cursoPut + token + "/" + values);
     };
     //Update de curso
     var _cursoDel = function (values){
-          return  $http.delete($cursoDel + token , values);
+          var id = {"id":values}
+          return  $http.delete($cursoDel + id + "/" + id);
     };
 //|#######################################################|
 //|############# **  MODULO OPORTUNIDADES ** ###################|
@@ -164,12 +167,13 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($oportunidadeListId + id);
     };
     //Update de oportunidade
-    var _oportunidadePut = function (id , values){
-          return  $http.put($oportunidadePut + id , values);
+    var _oportunidadePut = function (values){
+          return  $http.put($oportunidadePut + token + "/" + values);
     };
     //Update de oportunidade
     var _oportunidadeDel = function (values){
-          return  $http.delete($oportunidadeDel + token , values);
+          var id = {"id":values}
+          return  $http.delete($oportunidadeDel + token , id);
     };
 
 //|#######################################################|
@@ -177,7 +181,6 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Universiade
     var _universidadeSave = function (values){
-          console.log($universidadeSave,values,token);
         return  $http.post($universidadeSave + token , values);
     };
     //Lista todas Universidades
@@ -190,11 +193,12 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Universidade
     var _universidadePut = function (values){
-          return  $http.put($universidadePut + token, values);
+          return  $http.put($universidadePut + token + "/" + values);
     };
     //Update de Universidade
     var _universidadeDel = function (values){
-          return  $http.delete($universidadeDel + token , values);
+          var id = {"id":values}
+          return  $http.delete($universidadeDel + token , id);
     };
 //|#######################################################|
 //|############# **  MODULO CURSO ** ###################|
@@ -213,11 +217,12 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Curso
     var _cursofaculdadePut = function (values){
-          return  $http.put($cursofaculdadePut + token, values);
+          return  $http.put($cursofaculdadePut + token + "/" + values);
     };
     //Update de Curso
     var _cursofaculdadeDel = function (values){
-          return  $http.delete($cursofaculdadeDel + token , values);
+          var id = {"id":values}
+          return  $http.delete($cursofaculdadeDel + token , id);
     };
 
 //|#######################################################|
@@ -248,11 +253,12 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Veiculo
     var _veiculoPut = function (values){
-          return  $http.put($veiculoPut + token, values);
+          return  $http.put($veiculoPut + token + "/" + values);
     };
     //Update de Veiculo
     var _veiculoDel = function (values){
-          return  $http.delete($veiculoDel + token , values);
+          var id = {"id":values}
+          return  $http.delete($veiculoDel + token , id);
     };
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
@@ -260,7 +266,7 @@ app.service('restful', function ($http,$sessionStorage) {
 
    //Update Picture
     var _updatePicture = function (values){
-        return  $http.put($updatePicture + token , values);
+        return  $http.put($updatePicture + token + "/" + values);
     };
 
 //|#######################################################|
