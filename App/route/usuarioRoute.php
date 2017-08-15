@@ -26,4 +26,4 @@ $app->put('/usuario/update/{token}', \Api\Controller\UsuarioController::class . 
 /**
  * Inativa um cliente
  */
-$app->delete('/usuario/delete/{token}', \Api\Controller\UsuarioController::class . ':inativar');
+$app->delete('/usuario/delete/{token}/{id}', \Api\Controller\UsuarioController::class . ':inativar');

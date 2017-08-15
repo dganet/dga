@@ -77,6 +77,7 @@ class UniversidadeController {
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
+		
 	}
 	/**
 	 * Inativa uma universidade
@@ -89,8 +90,7 @@ class UniversidadeController {
 	public function inativar($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
 			$curso = Universidade::getInstance();
-			$data = json_decode($request->getBody(),true);
-			$cuso->id = $data['id'];
+			$curso->id = $args['id'];
 			$curso->status = "INATIVO";
 			return $response->WithJson($curso->update());
 		}else{

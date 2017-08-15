@@ -13,4 +13,4 @@ $app->get('/oportunidade/inativo/{token}', \Api\Controller\OportunidadeControlle
 // 	//Atuza cadastro
 $app->put('/oportunidade/update/{token}', \Api\Controller\OportunidadeController::class . ':atualizaCadastro');
 // 	//Inativa um curso
-$app->delete('/oportunidade/delete/{token}', \Api\Controller\OportunidadeController::class . ':inativar');
+$app->delete('/oportunidade/delete/{token}/{id}', \Api\Controller\OportunidadeController::class . ':inativar');

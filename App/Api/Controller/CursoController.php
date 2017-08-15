@@ -90,8 +90,7 @@ class CursoController {
 	public function inativar($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
 			$curso = Curso::getInstance();
-			$data = json_decode($request->getBody(),true);
-			$curso->id = $data['id'];
+			$curso->id = $args['id'];
 			$curso->status = 'INATIVO';
 			return $response->WithJson($curso->update());
 		}else{

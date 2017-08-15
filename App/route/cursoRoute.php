@@ -13,4 +13,4 @@ $app->get('/curso/inativo/{token}', \Api\Controller\CursoController::class . ':l
 //Atualiza cadastro
 $app->put('/curso/update/{token}', \Api\Controller\CursoController::class . ':atualizaCadastro');
 //Inativa um curso
-$app->delete('/curso/delete/{token}', \Api\Controller\CursoController::class . ':inativar');
+$app->delete('/curso/delete/{token}/{id}', \Api\Controller\CursoController::class . ':inativar');

@@ -2,6 +2,7 @@ app.service('restful', function ($http,$sessionStorage) {
  //Pega o id do usuario logado
  var token = sessionStorage.getItem('usuario.token');
 
+
 //REQUISICOES DO BACK-END CAMINHOS
 
    //Classes Usuario
@@ -60,8 +61,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $veiculoPut = '../App/veiculo/update/';// Uptades no Veiculo
    $veiculoDel = '../App/veiculo/delete/';// Veiculo Deleta
 
-
-    
+   
    //MODULO PEFIL
    $updatePicture = '/App/imagem'; //Update Foto
 
@@ -153,6 +153,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Noticiais
     var _oportunidadeSave = function (values){
+
         return  $http.post($oportunidadeSave + token , values);
     };
     //Lista todas oportunidades
@@ -177,8 +178,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Universiade
     var _universidadeSave = function (values){
-          console.log($universidadeSave,values,token);
-        return  $http.post($universidadeSave + token , values);
+         return  $http.post($universidadeSave + token , values);
     };
     //Lista todas Universidades
     var _universidadeList = function (values){
@@ -190,14 +190,14 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Universidade
     var _universidadePut = function (values){
-          return  $http.put($universidadePut + token, values);
+          return  $http.put($universidadePut + token ,values);
     };
-    //Update de Universidade
+    //Delete de Universidade
     var _universidadeDel = function (values){
-          return  $http.delete($universidadeDel + token , values);
+          return  $http.delete($universidadeDel + token + "/" + values);
     };
 //|#######################################################|
-//|############# **  MODULO CURSO ** ###################|
+//|############# **  MODULO CURSO FACULDADE ** ###################|
 //|#######################################################|
    //Inseri nova Curso
     var _cursofaculdadeSave = function (values){
@@ -213,11 +213,14 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Curso
     var _cursofaculdadePut = function (values){
+
           return  $http.put($cursofaculdadePut + token, values);
     };
     //Update de Curso
     var _cursofaculdadeDel = function (values){
-          return  $http.delete($cursofaculdadeDel + token , values);
+
+        console.log(values);
+          return  $http.delete($cursofaculdadeDel + token + "/" + values);
     };
 
 //|#######################################################|

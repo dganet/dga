@@ -4,10 +4,10 @@
     $scope.mensagem = true;
 	 
   				 
-    // Enviando requisição via post no methodo Http
+    // Enviando requisição via post no methodo Http 
 		    
 		    $scope.logando = function (values , formAut){
-				restful.usuarioLogin(values).success(function(response){          	 		 
+				restful.usuarioLogin(values).success(function(response){  				
 		    	if (response.flag == false){
 		    		// Exibi a mensagem  				    
 				    $scope.mensagem = false;
@@ -16,12 +16,12 @@
 		               $scope.mensagem = true;
 		           },5000);
 
-		      	} else {
+		      	} else { 
 		      		
-		      	// Se for verdadeiro manda pra Home 
-			    $scope.activePath = $location.path('/user');
-			    sessionStorage.setItem('usuario.token', response.token);
-  				 
+		      	// Se for verdadeiro manda pra Home  
+			    $scope.activePath = $location.path('/user'); 
+			    sessionStorage.setItem('usuario.token', response.token); 
+  				
 		      }
 		     
 

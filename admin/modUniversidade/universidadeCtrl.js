@@ -64,10 +64,9 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormUniversidade) {
-	 var id = values.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.universidadePut(id,values).success(function(){
+    restful.universidadePut(values).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -81,7 +80,6 @@ $scope.dados = function (id){
       $timeout(function () {
                $scope.mensagemAtualizado = true;
            },10000);
-
     });
 
 };

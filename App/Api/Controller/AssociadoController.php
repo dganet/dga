@@ -119,8 +119,7 @@ class AssociadoController {
 	public function inativar($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
 			$associado = Associado::getInstance();
-			$data = json_decode($request->getBody(),true);
-			$associado->id = $data['id'];
+			$associado->id = $args['id'];
 			$associado->status = 'INATIVO';
 			return $response->WithJson($associado->update());
 		}else{
