@@ -18,6 +18,9 @@ class PostController{
 			$data = json_decode($request->getBody(), true);
 			$noticia = Post::getInstance();
 			$noticia->load($data);
+			$user = Auth::_getTokenInfo($args['token']);
+			$user = $user['conteudo']; 
+			$noticia->usuario_id = (int) $user->id; 
 			$noticia->status = "ATIVO";
 			return $response->WithJson($noticia->save());
 		}else{
@@ -34,11 +37,11 @@ class PostController{
 	 */
 	public function listaTudo($request, $response, $args){
 		$noticia = Post::getInstance();
-		$noticia->makeSelect()->where("status='ATIVO'");
+		$noticia->makeSelect()->where("status='ATIVO'"); // causar um erro de sintaxe, feito uhaushau
 		$collection = $noticia->execute();
 		if($collection->length() > 0 ){
 			return $response->WithJson($collection->getAll());
-		}
+		} 
 	}
 	/**
 	 * Lista noticias por ID
@@ -102,7 +105,7 @@ class PostController{
 		if(Auth::_isLoggedIn($args['token'])){
 			$noticia = Post::getInstance();
 			$data = json_decode($request->getBody(),true);
-			$noticias->id = $args['id'];
+			$noticia->id = $args['id'];
 			$noticia->status = 'INATIVO';
 			return $response->WithJson($noticia->update());
 		}else{

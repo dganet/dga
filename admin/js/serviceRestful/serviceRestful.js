@@ -64,6 +64,7 @@ app.service('restful', function ($http,$sessionStorage) {
    //Classes Banner
    $bannerSave = '../App/imagem/save/'; // Salva Curso
    $bannerList = '../App/imagem/list'; // Lista todas os Cursos
+   $bannerListTipo = '../App/imagem/listtipo/' // lista conforme o tipo desejado
    $cursofaculdadeListId = '../App/cursofaculdade/list/';// Lista curso referente ao ID
    $cursofaculdadePut = '../App/cursofaculdade/update/';// Uptades no curso
    $cursofaculdadeDel = '../App/cursofaculdade/delete/';// Curso Deleta
@@ -127,12 +128,11 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de noticia
     var _noticiaPut = function (values){
-          return  $http.put($noticiaPut + token + "/" + values);
+          return  $http.put($noticiaPut + token, values);
     };
     //Update de noticia
     var _noticiaDel = function (values){
-          var id = {"id":values}
-          return  $http.delete($noticiaDel + token + "/" + id);
+          return  $http.delete($noticiaDel + token + "/" + values);
     };
 //|#######################################################|
 //|############# **  MODULO POST CURSO ** ###################|
@@ -277,7 +277,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Lista todas Banner
     var _bannerList = function (values){
-        return  $http.get($bannerList);
+        return  $http.get($bannerListTipo + "banner");
     };
 
 //|#######################################################|
