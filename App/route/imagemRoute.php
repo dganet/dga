@@ -3,7 +3,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 //Salva uma nova imagem
-$app->get('/imagem/save/{token}', \Api\Controller\ImageController::class . ':cadastro');
+$app->post('/imagem/save/{token}', \Api\Controller\ImageController::class . ':cadastro');
 //Lista todas as imagens
 $app->get('/imagem/list', \Api\Controller\ImageController::class . ':listaTudo');
 //Lista imagens por Id
