@@ -4,7 +4,6 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 // Cadastra um novo curso
 $app->post('/cursofaculdade/save/{token}', \Api\Controller\CursoFaculdadeController::class . ':cadastrar');
-
 // 	//lista todos os curso
 $app->get('/cursofaculdade/list', \Api\Controller\CursoFaculdadeController::class . ':listaTudo');
 
@@ -21,5 +20,5 @@ $app->get('/cursofaculdade/inativo/{token}', \Api\Controller\CursoFaculdadeContr
 $app->put('/cursofaculdade/update/{token}', \Api\Controller\CursoFaculdadeController::class . ':atulizaCadastro');
 
 // 	//Inativa um curso
-$app->delete('/cursofaculdade/delete/{token}', \Api\Controller\CursoFaculdadeController::class . ':inativar');
+    $app->delete('/cursofaculdade/delete/{token}/{id}', \Api\Controller\CursoFaculdadeController::class . ':inativar');
 

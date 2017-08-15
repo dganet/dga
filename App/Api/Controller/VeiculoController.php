@@ -116,8 +116,7 @@ class VeiculoController{
 	public function inativar($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
 			$veiculo = Veiculo::getInstance();
-			$data = json_decode($request->getBody(),true);
-			$veiculo->id = $data['id'];
+			$veiculo->id = $args['id'];
 			$veiculo->status = 'INATIVO';
 			return $response->WithJson($veiculo->update());
 		}else{

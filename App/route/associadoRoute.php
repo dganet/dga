@@ -27,7 +27,7 @@ $app->get('/associado/inativo', \Api\Controller\AssociadoController::class . ':l
 $app->put('/associado/update/{token}', \Api\Controller\AssociadoController::class . ':atulizaCadastro');
 $app->put('/associado/ative/{token}', \Api\Controller\AssociadoController::class . ':ativaCadastro');
 //Inativa um Associado
-$app->delete('/associado/delete/{token}', \Api\Controller\AssociadoController::class . ':inativar');
+$app->delete('/associado/delete/{token}/{id}', \Api\Controller\AssociadoController::class . ':inativar');
 //Lista Associados que estão em um determinado veiculo
 $app->get('/associado/listveiculo/{id}', \Api\Controller\AssociadoController::class . ':listaAssociadoVeiculo');
 // 	$app->post('/picture/{id}', function(Request $request, Response $response, $args){

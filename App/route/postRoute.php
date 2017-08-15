@@ -12,4 +12,4 @@ $app->get('/post/inativo/{token}', \Api\Controller\PostController::class . ':lis
 //Atualiza as Noticias
 $app->put('/post/update/{token}', \Api\Controller\PostController::class . ':atualizaCadastro');	
 //Inativa um Post
-$app->delete('/post/delete/{token}', \Api\Controller\PostController::class . ':inativar');	
+$app->delete('/post/delete/{token}/{id}', \Api\Controller\PostController::class . ':inativar');	

@@ -82,10 +82,8 @@ class OportunidadeController {
 	 */
 	public function inativar($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
-			$data = json_decode($request->getBody(),true);
 			$oportunidade = Oportunidade::getInstance();
-			$data = json_decode($request->getBody(),true);
-			$oportunidade->id = $data['id'];
+			$oportunidade->id = $args['id'];
 			$oportunidade->status = 'INATIVO';
 			return $response->WithJson($oportunidade->update());
 		}else{

@@ -102,7 +102,7 @@ class PostController{
 		if(Auth::_isLoggedIn($args['token'])){
 			$noticia = Post::getInstance();
 			$data = json_decode($request->getBody(),true);
-			$noticias->id = $data['id'];
+			$noticias->id = $args['id'];
 			$noticia->status = 'INATIVO';
 			return $response->WithJson($noticia->update());
 		}else{

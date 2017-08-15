@@ -1,6 +1,8 @@
 <?php
+
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+
 require_once "vendor/autoload.php";
 
 date_default_timezone_set('America/Sao_Paulo');
@@ -12,16 +14,17 @@ $app = new Slim\App([
 ]);
 unset($app->getContainer()['errorHandler']);
 unset($app->getContainer()['phpErrorHandler']);
+
 // 	// Rotas para o Sistema
 // 	$app->group('/associado', function() use ($app){
-		require_once("route/associadoRoute.php");
+	require_once("route/associadoRoute.php");
 // 	});
 // 	/**
 // 	*	POST
 // 	*/
 // 	// Salva um post
 // 	$app->group('/post', function() use ($app){
-		require_once("route/postRoute.php");
+	require_once("route/postRoute.php");
 // 	});
 
 // 	/**
@@ -78,7 +81,7 @@ unset($app->getContainer()['phpErrorHandler']);
 // 		require_once("route/testeRoute.php");
 // 	});
 // 	/**
-// 	* CURSOFACULDADE
+// 	* IMAGEM
 // 	*/
 // 	$app->group('/imagem', function() use ($app){
 // 		require_once("route/imagemRoute.php");
