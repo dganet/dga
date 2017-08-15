@@ -158,4 +158,17 @@ trait Builder{
         }
         return $this;
     }
+
+    /**
+     * Gera os campos do Like
+     *
+     * @param String $options
+     * @return void
+     */
+    public function like($options){
+        if(isset($this->configuration['sql'])){
+            $this->configuration['sql'] .= " like '%".$options."%'";
+        }
+        return $this;
+    }
 }

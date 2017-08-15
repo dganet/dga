@@ -10,7 +10,6 @@ use \Api\Model\Entity\Associado,
  \Api\Controller\ImageController;
 
 class AssociadoController {
-
 	/**
 	 * Loga um Associado
 	 * 

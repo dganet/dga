@@ -1,9 +1,38 @@
 <?php
-// namespace Api\Controller;
-// use \Api\Model\Entity\Ticket;
-// use \Api\Model\Entity\TicketMessage;
-// class TicketController{
-
+namespace Api\Controller;
+use \Api\Model\Entity\Ticket;
+use \Api\Model\Entity\TicketMessage;
+class TicketController{
+    /**
+     * Recebe a instancia da classe Ticket
+     *
+     * @var Object
+     */
+    private $ticket;
+    /**
+     * Metodo contrutor da classe controladora do Ticket, seta como primary key o campo
+     * idTicket
+     */
+    public function __construct(){
+        $this->ticket = Ticket::getInstance();
+        $this->configuration['primaryKey'] = 'idTicket';
+    }
+    /**
+     * Lista todos os tickets em aberto
+     *
+     * @param [type] $request
+     * @param [type] $response
+     * @param [type] $args
+     * @return void
+     */
+    public function listaTudo($request, $response, $args){
+        $this->$ticket->makeSelect()->where("statusTicket='ATIVO'");
+        $collection = $this->$ticket->execute();
+        if($collection->length() > 0){
+            return $response->WithJson($collection->getAll());
+        }
+    }
+}
 //     public function cadastrar($data = []){
         
 //         $ticket = new Ticket($data);

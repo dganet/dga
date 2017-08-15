@@ -15,22 +15,35 @@ $app = new Slim\App([
 unset($app->getContainer()['errorHandler']);
 unset($app->getContainer()['phpErrorHandler']);
 
-// 	// Rotas para o Sistema
-// 	$app->group('/associado', function() use ($app){
-	require_once("route/associadoRoute.php");
+//Insere as rotas do Associado
+require_once("route/associadoRoute.php");
+//Insere as rodas do Post
+require_once("route/postRoute.php");
+//Insere as rotas do Usuario
+require_once("route/usuarioRoute.php");
+//Insere as rotas do curso
+require_once("route/cursoRoute.php");
+//Insere as rotas do Oportunidade
+require_once("route/oportunidadeRoute.php");
+//Insere as rotas do Veiculo
+require_once("route/veiculoRoute.php");
+//Insere as rotas do universidade
+require_once("route/universidadeRoute.php");
+//Insere as rotas do curso Faculdade
+require_once("route/cursoFaculdadeRoute.php");
+//Insere as rotas do Imagem
+require_once("route/imagemRoute.php");
+//Insere as rotas do ticket
+require_once("route/ticketRoute.php");
 // 	});
 // 	/**
-// 	*	POST
+// 	* TESTE
 // 	*/
-// 	// Salva um post
-// 	$app->group('/post', function() use ($app){
-	require_once("route/postRoute.php");
+// 	$app->group('/teste', function() use ($app){
+// 		require_once("route/testeRoute.php");
 // 	});
-
-// 	/**
-// 	*	USUARIO
-// 	*/
- 	require_once("route/usuarioRoute.php");
+// 	});
+// 	});
 // 	/**
 // 	* VAGA
 // 	*/
@@ -42,55 +55,6 @@ unset($app->getContainer()['phpErrorHandler']);
 // 	*/
 // 	$app->group('/periodo', function() use ($app){
 // 		require_once("route/periodoRoute.php");
-// 	});
-
-// 	/**
-// 	* POSTCURSO
-// 	*/
-// 	$app->group('/curso', function() use ($app){
- 		require_once("route/cursoRoute.php");
-// 	});
-// 	/**
-// 	* OPORTUNIDADE
-// 	*/
-// 	$app->group('/oportunidade', function() use ($app){
-		require_once("route/oportunidadeRoute.php");
-// 	});
-// 	/**
-// 	* VEICULO
-// 	*/
-// 	$app->group('/veiculo', function () use ($app){
- 		require_once("route/veiculoRoute.php");
-// 	});
-//   /**
-//    * UNIVERSIDADE
-//    */
-//    $app->group('/universidade', function () use ($app){
-  		require_once("route/universidadeRoute.php");
-//  	});
-//   /**
-// 	* CURSOFACULDADE
-// 	*/
-// 	$app->group('/cursofaculdade', function() use ($app){
- 		require_once("route/cursoFaculdadeRoute.php");
-// 	});
-// 	/**
-// 	* TESTE
-// 	*/
-// 	$app->group('/teste', function() use ($app){
-// 		require_once("route/testeRoute.php");
-// 	});
-// 	/**
-// 	* IMAGEM
-// 	*/
-// 	$app->group('/imagem', function() use ($app){
-// 		require_once("route/imagemRoute.php");
-// 	});
-// 	/**
-// 	* TICKET
-// 	*/
-// 	$app->group('/ticket', function() use ($app){
-// 		require_once("route/ticketRoute.php");
 // 	});
 
 $app->run();

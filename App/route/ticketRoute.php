@@ -3,41 +3,17 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Api\Controller\TicketController;
 
-$app->get('/list', function(Request $request, Response $response){
-    $ticketController = new TicketController();
-    return $response->withJson($ticketController->listaTudo());
-});                         
-$app->get('/listByAssoc/{id}', function(Request $request, Response $response, $args){
-    $ticketController = new TicketController();
-    return $response->withJson($ticketController->listaPorAssociado($args['id']));
-});
-$app->get('/listTicketMessage/{id}', function(Request $request, Response $response, $args){
-    $ticketController = new TicketController();
-    return $response->withJson($ticketController->listaMessage($args['id']));
-});
-$app->get('/listTicketAssoc', function(Request $request, Response $response){
-    $ticketController = new TicketController();
-    return $response->withJson($ticketController->listaPorAssociadoAtivo());
-});
-$app->post('/newMessage/{idRemetente}', function(Request $request, Response $response, $args){
-    $ticketController = new TicketController();
-    $post = json_decode($request->getBody(), true);
-    $post['idRemetente'] = $args['idRemetente'];
-    return $response->withJson($ticketController->newMessage($post));
-});
-$app->post('/save/{id}', function(Request $request, Response $response, $args){
-    $ticketController = new TicketController();
-    $post = json_decode($request->getBody(), true);
-    $post['fkAssociado'] = $args['id'];
-    return $response->withJson($ticketController->cadastrar($post));
-});
-$app->put('/update/{id}', function(Request $request, Response $response, $args){
-    $ticketController = new TicketController();
-    $post = json_decode($request->getBody(), true);
-    return $response->withJson($ticketController->atualizar($post));
-});
-$app->delete('/delete/{id}', function(Request $request, Response $response, $args){
-    $ticketController = new TicketController();
-    $post = json_decode($request->getBody(), true);
-    return $response->withJson($ticketController->deletar($post));
-});
+//Salva uma nova Ticket
+$app->get('/ticket/save/{token}', \Api\Controller\TicketController::class . ':cadastro');
+//Lista todas as Tickets
+$app->get('/ticket/list', \Api\Controller\TicketController::class . ':listaTudo');
+//Lista Tickets por Id
+$app->get('/ticket/listid/{id}', \Api\Controller\TicketController::class . ':listaPorId');
+//Lista Tickets por tipo
+$app->get('/ticket/listtipo/{tipo}', \Api\Controller\TicketController::class . ':listaPorTipo');
+//Lista registros inativos
+$app->get('/ticket/inativo/{token}', \Api\Controller\TicketController::class . ':listaInativo');
+//Atualiza ticket
+$app->put('/ticket/update/{token}', \Api\Controller\TicketController::class . ':atualizaCadastro');
+//Inativa um ticket
+$app->delete('/ticket/delete/{token}/{id}', \Api\Controller\TicketController::class . ':inativar');
