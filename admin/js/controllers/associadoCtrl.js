@@ -1,4 +1,4 @@
-app.controller("associadoCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
+app.controller("associadoCtrl",function($scope, restful, $location , $timeout , $sessionStorage){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
