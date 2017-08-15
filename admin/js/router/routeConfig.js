@@ -32,7 +32,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 		.state('user.associado', {
 			url: '/associado',
-			templateUrl: 'modAssociado/associado.htm',
+			templateUrl: 'modulos/associado.htm',
 			controller:'associadoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
@@ -195,7 +195,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 		.state('user.banner', {
 			url: '/banner',
-			templateUrl: 'modBanner/linkBanner.htm',
+			templateUrl: 'modulos/banner.htm',
+			controller: 'bannerCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
 					if (sessionStorage.getItem('usuario.token') == null) {
@@ -209,38 +210,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-		.state('user.banner.um', {
-			url: '/bannerUm',
-			templateUrl: 'modBanner/bannerUm.htm',
-			controller: 'alteraBannerCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera Banner UM'
-			}
-		})
-
-		.state('user.banner.dois', {
-			url: '/bannerDois',
-			templateUrl: 'modBanner/bannerDois.htm',
-			controller: 'alteraBannerCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera Banner Dois'
-			}
-		})
-
-		.state('user.banner.tres', {
-			url: '/bannerTres',
-			templateUrl: 'modBanner/bannerTres.htm',
-			controller: 'alteraBannerCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera Banner Tres'
-			}
-		})
 		//############################################################################
 		//############# **  MODULO NOTICIAS ** ##########################################
 		//############################################################################
 		.state('user.noticia', {
 			url: '/noticia',
-			templateUrl: 'modNoticias/noticias.htm',
+			templateUrl: 'modulos/noticias.htm',
 			controller:'noticiasCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
@@ -260,7 +235,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		//############################################################################
 		.state('user.cursos', {
 			url: '/cursos',
-			templateUrl: 'modPostCurso/postcurso.htm',
+			templateUrl: 'modulos/postcurso.htm',
 			controller:'postcursoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
@@ -280,7 +255,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		//############################################################################
 		.state('user.universidade', {
 			url: '/universidade',
-		   templateUrl: 'modUniversidade/universidade.htm',
+		   templateUrl: 'modulos/universidade.htm',
 			controller: 'universidadeCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
@@ -300,7 +275,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		//############################################################################
 		.state('user.curso', {
 			url: '/curso',
-			templateUrl: 'modCurso/curso.htm',
+			templateUrl: 'modulos/curso.htm',
             controller: 'cursoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
@@ -320,7 +295,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		//############################################################################
 		.state('user.oportunidade', {
 			url: '/oportunidade',
-			templateUrl: 'modOportunidade/oportunidade.htm',
+			templateUrl: 'modulos/oportunidade.htm',
 			controller:'oportunidadeCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
@@ -406,7 +381,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		//############################################################################
 		.state('user.veiculo', {
 			url: '/veiculo',
-			templateUrl: 'modVeiculo/veiculo.htm',
+			templateUrl: 'modulos/veiculo.htm',
 			controller:'veiculoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {

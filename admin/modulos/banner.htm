@@ -1,0 +1,229 @@
+<div class="template">
+
+    <!-- Mensagens-->
+    <div class="row">
+      <div class="col col-md-12">
+        
+        <div class="alert alert-success" ng-hide="mensagemSucesso">
+          <strong>Sucesso!</strong> Dados cadastrado com sucesso.
+        </div>
+          
+        <div class="alert alert-warning" ng-hide="mensagemAtualizado">
+          <strong>Sucesso!</strong> Dados alterado com sucesso.
+        </div>
+
+        <div class="alert alert-danger" ng-hide="mensagemDelete">
+          <strong>Sucesso!</strong> Dados deletado com sucesso.
+        </div>
+          
+    </div>
+    </div>
+
+
+    
+     <!-- Topo Template-->
+    <div class="row">
+
+      <div class="col col-md-4 labelTemplate">
+          <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
+          <label>Painel de Ações de Banner</label>
+          
+      </div>
+        
+       <div class="col col-md-4">
+         <div class="input-group margin-bottom-sm">
+           <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+           <input class="form-control" type="text" ng-model="busca" placeholder="Procure pelo nome do Curso" required="required">
+         </div>
+       </div>
+
+       <div class="col col-md-4">
+          <div class="acaoTemplate">
+              <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-post">Novo <i class="fa fa-file-o" aria-hidden="true"></i></button>
+         </div>
+       </div>
+       
+ <!-- Corpo Template-->
+
+    <div class="row corpoTemplate">
+        <div class="col col-md-12">
+            
+            <table class="table table-hover corpoTableTemplate">
+              <thead>
+                <tr>
+                  <th class="centro">#</th>
+                  <th>Nome</th>
+                  <th>Foto</th>
+                  <th class="centro">Detalhes</th>
+                  <th class="centro">Alterar</th>
+                  <th class="centro">Deletar</th>
+                </tr>
+              </thead>
+
+            <tbody> 
+             <tr ng-repeat="x in banners | filter: busca  ">
+               
+               <td class="centro">{{x.id}}</td>
+               <td>Banner {{x.id}}</td>
+               <td><img src="../App/Api/upload/{{x.nome}}" alt="Banner3" width="200px" height="200px"></td>
+               
+               <td class="centro">
+                   <a class="btn btn-default" ng-click="dados(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-address-card-o" ></i></a>
+               </td>
+                 
+               <td class="centro">
+                   <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>
+               </td>
+               
+                 <td class="centro">
+                     <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-delete" ><i class="fa fa-trash-o "></i></a>
+               </td>
+             
+                </tr>
+            </tbody>
+                
+            </table>
+            
+        </div>
+    </div>
+        
+  <!-- Modal Novo -->
+<div class="modal fade bs-example-modal-lg-post" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalPost">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cadastrar novo Curso</h4>
+      </div>
+        
+       <form name="FormCurso" ng-submit="add(banner)">
+    
+           <div class="modal-body">
+              <div class="row">
+
+              <div class="col-md-12">
+                <div class="form-group">
+                <label>Foto do Banner</label>
+                <input type="file" ng-file-model="banner.foto" name="arquivo"/ class="form-control">
+                </div> 
+                </div>
+
+              <div class="col-md-12">
+                <div class="form-group">
+                <label>Link do Banner</label>
+                <input type="text" ng-model="banner.link" name="arquivo"/ class="form-control">
+                </div> 
+                </div>
+      
+           </div><!--modal-body -->
+        
+             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Salvar Dados</button> 
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+           
+         </form>
+        
+    </div>
+  </div>
+</div>   
+    
+<!-- Modal Update -->
+<div class="modal fade bs-example-modal-lg-update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdate">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Atualizar {{cursofaculdade.nome}}</h4>
+      </div>
+        
+       <form name="FormCurso" ng-submit="put(cursofaculdade)"> 
+    
+           <div class="modal-body">
+              <div class="row">
+                  <div class="col-md-12">
+                        <div class="form-group">
+                        <label>Nome do Curso</label>
+                        <input type="text" class="form-control" ng-model="cursofaculdade.nome" required> 
+                        </div> 
+                    </div>
+            </div>
+                
+       
+           </div><!--modal-body -->
+        
+             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button> 
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+           
+         </form>
+        
+    </div>
+  </div>
+</div>
+
+ <!-- Modal Delete -->
+<div class="modal fade bs-example-modal-lg-delete" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalDel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Deletar</h4>
+      </div>
+        
+            <div class="modal-body">               
+               Deseja realmente Deletar {{cursofaculdade.nome}} ?                 
+           </div><!--modal-body -->
+        
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-danger" ng-click="del(cursofaculdade.id)">Sim</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+              </div>
+        
+    </div>
+  </div>
+</div>
+
+<!-- Modal Detalhes -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Detalhes {{cursofaculdade.nome}}</h4>
+      </div>
+        
+    <div class="modal-body">
+            <table class="table table-hover corpoTableTemplate">
+              <tbody>
+                <tr>
+                  <td>id</td>
+                  <td>{{cursofaculdade.id}}</td>
+                </tr>
+                <tr>
+                  <td>Nome</td>
+                  <td>{{cursofaculdade.nome}}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>{{cursofaculdade.status}}</td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+        
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+        
+        
+    </div>
+  </div>
+</div>
+
+</div><!-- End Template ->

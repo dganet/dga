@@ -61,6 +61,13 @@ app.service('restful', function ($http,$sessionStorage) {
    $veiculoPut = '../App/veiculo/update/';// Uptades no Veiculo
    $veiculoDel = '../App/veiculo/delete/';// Veiculo Deleta
 
+   //Classes Banner
+   $bannerSave = '../App/imagem/save/'; // Salva Curso
+   $bannerList = '../App/imagem/list'; // Lista todas os Cursos
+   $cursofaculdadeListId = '../App/cursofaculdade/list/';// Lista curso referente ao ID
+   $cursofaculdadePut = '../App/cursofaculdade/update/';// Uptades no curso
+   $cursofaculdadeDel = '../App/cursofaculdade/delete/';// Curso Deleta
+
    
    //MODULO PEFIL
    $updatePicture = '/App/imagem'; //Update Foto
@@ -261,6 +268,19 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.delete($veiculoDel + token + "/" + id);
     };
 //|#######################################################|
+//|############# **  MODULO BANNER ** ###################|
+//|#######################################################|
+   //Inseri novo Banner
+    var _bannerSave = function (values){
+      console.log(values);
+        return  $http.post($bannerSave + token , values);
+    };
+    //Lista todas Banner
+    var _bannerList = function (values){
+        return  $http.get($bannerList);
+    };
+
+//|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
 
@@ -322,7 +342,9 @@ app.service('restful', function ($http,$sessionStorage) {
         veiculoListId : _veiculoListId,
         veiculoPut : _veiculoPut,
         veiculoDel : _veiculoDel,
-
+        //Return do Banner
+        bannerSave : _bannerSave,
+        bannerList : _bannerList,
         //Return Modulo Cliente
         updatePicture : _updatePicture,
     }
