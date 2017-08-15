@@ -45,7 +45,6 @@ class ImageController{
                         $image->nome = $newName;
                         $image->path = $destino;
                         $image->status = 'ATIVO';
-                        $image->tipo  = $img['tipo'];
                         // Com as informações
                         return array(
                                 'flag'    => true,
@@ -71,7 +70,21 @@ class ImageController{
                 );
             }
     }
-}
+}   
+    /**
+     * Verifica quantidade de banner cadastrado atualmente o limite é de 5
+     *
+     * @return boolean
+     */
+    public function checkBanner(){
+        $img = Imagem::getInstance();
+        $collection = $img->makeSelect()->where("tipo='banner'")->and("status='ATIVO'")->execute();
+        if ($collection->length() > 5){
+            return false;
+        }else{
+            return true;
+        }
+    }
     /**
      *  FUNÇÔES HTTP
     */
@@ -83,21 +96,28 @@ class ImageController{
      * @param [type] $args
      * @return void
      */
-    public function cadastrar($request, $response, $args){
+    public function cadastro($request, $response, $args){
         $data = json_decode($request->getBody(),true);
-        $this->upload($data);
+        $this->upload($data['foto']);
         $img = Imagem::getInstance();
-        return $response->WithJson($img->save());
+        $img->tipo = $data['tipoImagem'];
+        $img->link = $data['link'];
+        if($this->checkBanner()){
+            return $response->WithJson($img->save());
+        }
+        return var_dump($data);
     }
     public function update($request, $response, $args){
         
     }
-  /**
-   * Função que lista todas as imagens conforme os parametros.
-   * 
-   * @param String Tipo da Imagem Ex: BANNER, FOTO, 
-   * @return Array associativo.
-   */
+    /**
+     * Função que lista todas as imagens conforme os parametros
+     * .
+     * @param Request $request
+     * @param Response $response
+     * @param Mixed $args
+     * @return Json
+     */
   public function listaPorTipo($request, $response, $args){
     $img = Imagem::getInstance();
     $img->makeSelect()->where("tipo")->like($args['tipo']);
@@ -106,11 +126,14 @@ class ImageController{
         return $response->WithJson($collection->getAll());
     }
   }
-  /**
-   * Lista todas as imagens
-   *
-   * @return void
-   */
+    /**
+    * Lista todas as imagens
+    *
+    * @param Request $request
+    * @param Response $response
+    * @param Mixed $args
+    * @return Json
+    */
   public function listaTudo($request, $response, $args){
     $img = Imagem::getInstance();
     $img->makeSelect()->where("status='ATIVO'");
@@ -122,8 +145,10 @@ class ImageController{
   /**
    * Função para listar todas as imagens conforme os parametros.
    * 
-   * @param Int Id da imagem a ser mostrada
-   * @return Array associativo
+   * @param Request $request
+   * @param Response $response
+   * @param Mixed $args
+   * @return Json
    */
   public function listaPorId($request, $response, $args){
     $img = Imagem::getInstance();
@@ -136,8 +161,10 @@ class ImageController{
   /**
    * Função  que inativa e deleta a foto
    * 
-   * @param Integer $id
-   * @return true or fale;
+   * @param Request $request
+   * @param Response $response
+   * @param Mixed $args
+   * @return Json
    */
   public function inativar($request, $response, $args){
     $img = imagem::getInstance();
