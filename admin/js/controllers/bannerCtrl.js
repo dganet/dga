@@ -27,8 +27,9 @@ $scope.dados = function (id){
 //************* NOVO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormCurso) {
-    values['tipoImagem'] = 'banner1';
+  $scope.add = function(values, FormBanner) {
+    //incluir o tipo da imagem que é o Banner
+    values['tipoImagem'] = 'banner';
     // Enviado os valores em objetos para api/user do php/slim
     restful.bannerSave(values).success(function(){
       // Fecha o Modal
@@ -60,7 +61,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormCurso) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.bannerPUT(values).success(function(){
+    restful.bannerPut(values).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
