@@ -8,7 +8,6 @@ app.controller("bannerCtrl",function($scope,restful,$location , $timeout , $sess
         
   //Lista todos os Banners
 	restful.bannerList().success(function(data){
-    console.log(data);
 		$scope.banners = data;       
 	}); 
 // Show modaais de detalhes, alterar e deletar.
@@ -16,13 +15,13 @@ $scope.dados = function (id){
     //Resentando 
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.cursofaculdade = angular.copy($scope.master);
+      $scope.banner = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
         //Pega as info da universidade selecionada
 		restful.cursofaculdadeListId(id).success(function(data){
-		$scope.cursofaculdade = data[0];	
+		$scope.banner = data[0];	
         });
 };
 //************* NOVO *********************// 
@@ -36,8 +35,8 @@ $scope.dados = function (id){
       $('#closeModalPost').modal('hide');
     
     //Lista todas Cursos
-    restful.cursofaculdadeList().success(function(data){
-		$scope.cursofaculdades = data;       
+    restful.bannerList().success(function(data){
+		$scope.banners = data;       
 	});
         
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -49,7 +48,7 @@ $scope.dados = function (id){
      //Resentando os input do formulario .
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
-      $scope.cursofaculdade = angular.copy($scope.master);
+      $scope.banner = angular.copy($scope.master);
     };
     // Ativando a função
     $scope.reset();
@@ -61,13 +60,13 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormCurso) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.cursofaculdadePut(values).success(function(){
+    restful.bannerPUT(values).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
         //Lista todas Cursos
-        restful.cursofaculdadeList().success(function(data){
-            $scope.cursofaculdades = data;       
+        restful.bannerList().success(function(data){
+            $scope.banners = data;       
         });
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -85,13 +84,13 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.cursofaculdadeDel(values).success(function(){
+    restful.bannerDel(values).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         
      //Lista todas Cursos
-        restful.cursofaculdadeList().success(function(data){
-            $scope.cursofaculdades = data;       
+        restful.bannerList().success(function(data){
+            $scope.banners = data;       
         });
         
       // Funcão de exibir a mensagem de sucesso em 5 segundos.

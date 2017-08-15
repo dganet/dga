@@ -1,4 +1,4 @@
-app.controller("noticiasCtrl",function($scope, restful,servmsg ,$location , $sessionStorage){
+app.controller("noticiasCtrl",function($scope, restful ,$location , $sessionStorage){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .

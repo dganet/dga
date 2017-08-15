@@ -39,7 +39,11 @@
 
        <div class="col col-md-4">
         <div class="acaoTemplate">
+            <!-- Novo -->
             <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-post">Novo <i class="fa fa-file-o" aria-hidden="true"></i></button>
+            <!-- Pré-associados -->
+            <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-preAssociados">Pré-Associados <i class="fa fa-list-ul" aria-hidden="true"></i></button>
+
        </div>
 
     </div>
@@ -219,5 +223,44 @@
     </div>
   </div>
 </div>
+
+<!-- Pré-Assocados -->
+<div class="modal fade bs-example-modal-lg-preAssociados" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Detalhes {{curso.nome}}</h4>
+      </div>
+        
+    <div class="modal-body">
+            <table class="table table-hover corpoTableTemplate">
+              <tbody>
+                <tr>
+                  <td>id</td>
+                  <td>{{curso.id}}</td>
+                </tr>
+                <tr>
+                  <td>Nome</td>
+                  <td>{{curso.nome}}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>{{curso.status}}</td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+        
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+        
+        
+    </div>
+  </div>
+</div>
+
 
 </div><!-- End Template ->
