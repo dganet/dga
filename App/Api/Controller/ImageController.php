@@ -91,10 +91,10 @@ class ImageController{
     /**
      * Salva uma nova imagem
      *
-     * @param [type] $request
-     * @param [type] $response
-     * @param [type] $args
-     * @return void
+     * @param Request $request
+     * @param Response $response
+     * @param Mixed $args
+     * @return Json
      */
     public function cadastro($request, $response, $args){
         $data = json_decode($request->getBody(),true);
@@ -105,10 +105,22 @@ class ImageController{
         if($this->checkBanner()){
             return $response->WithJson($img->save());
         }
-        return var_dump($data);
     }
-    public function update($request, $response, $args){
-        
+    /**
+     * Atualiza uma nova imagem
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param Mixed $args
+     * @return Json
+     */
+    public function atualizaCadastro($request, $response, $args){
+        $data = json_decode($request->getBody(),true);
+        $this->upload($data['foto']);
+        $img = Imagem::getInstance();
+        isset($data['tipoImagem']) ? $img->tipo = $data['tipoImagem'] : null;
+        $img->link = $data['link'];
+        return $response->WithJson($img->update());
     }
     /**
      * Função que lista todas as imagens conforme os parametros
