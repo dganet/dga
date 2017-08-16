@@ -314,7 +314,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 		//############################################################################
 		.state('user.usuario', {
 			url: '/usuario',
-			templateUrl: 'modUsuario/linkUsuario.htm',
+			templateUrl: 'modulos/usuario.htm',
+			controller:'usuarioCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
 					if (sessionStorage.getItem('usuario.token') == null) {
@@ -325,55 +326,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			},
 			ncyBreadcrumb: {
 				label: 'Usuario'
-			}
-		})
-
-
-		.state('user.usuario.inseri', {
-			url: '/inseri',
-			templateUrl: 'modUsuario/inseriUsuario.htm',
-			controller: 'inseriUsuarioCtrl',
-			ncyBreadcrumb: {
-				label: 'Inseri Usuario'
-			}
-		})
-
-		.state('user.usuario.altera', {
-			url: '/altera',
-			templateUrl: 'modUsuario/alteraUsuario.htm',
-			controller: 'alteraUsuarioCtrl',
-			ncyBreadcrumb: {
-				label: 'Altera Usuario'
-			}
-		})
-
-		.state('user.usuario.altera.detalhes', {
-			url: '/:id',
-			controller: function ($scope, $stateParams) {
-				// get the id
-				$scope.id = $stateParams.id;
-			},
-			ncyBreadcrumb: {
-				label: 'Altera'
-			}
-
-		})
-
-		.state('user.permissao', {
-			url: '/permissao',
-			templateUrl: 'modUsuario/linkPermissao.htm',
-			controller: 'inseriPermissaoCtrl',
-			ncyBreadcrumb: {
-				label: 'Inseri Usuario'
-			}
-		})
-
-		.state('user.permissao.inseri', {
-			url: '/inseri',
-			templateUrl: 'modUsuario/inseriPermissao.htm',
-			controller: 'inseriPermissaoCtrl',
-			ncyBreadcrumb: {
-				label: 'Novo Grupo'
 			}
 		})
 		//############################################################################

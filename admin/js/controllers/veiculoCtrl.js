@@ -11,6 +11,11 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
       $scope.veiculo = {};  
     };
     
+    //Lista todas faculdades
+  restful.universidadeList().success(function(data){
+    $scope.universidades = data;       
+  });
+
   //Lista todas veiculos
 	restful.veiculoList().success(function(data){
 		$scope.veiculos = data;       
@@ -27,7 +32,6 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
 
     //Lista Associados vinculado a Linha Aguardando
     restful.veiculoListAssociadoLinhaAguardando(idVeiculo).success(function(data){
-      console.log(data);
 
     data.forEach(function(element) {
      var dataformat = element['createAt'] =  new Date(element['createAt']);

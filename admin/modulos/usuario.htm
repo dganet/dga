@@ -26,15 +26,15 @@
 
       <div class="col col-md-4 labelTemplate">
           <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
-          <label>Painel de Ações de Banner</label>
+          <label>Painel de Ações de Usuario</label>
           
       </div>
         
        <div class="col col-md-4">
          <div class="input-group margin-bottom-sm">
-           <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-           <input class="form-control" type="text" ng-model="busca" placeholder="Procure pelo nome do Curso" required="required">
-         </div>
+    			 <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+    			 <input class="form-control" type="text" ng-model="busca" placeholder="Procure pelo nome do Usuario" required="required">
+			   </div>
        </div>
 
        <div class="col col-md-4">
@@ -53,18 +53,21 @@
                 <tr>
                   <th class="centro">#</th>
                   <th>Nome</th>
-                  <th>Foto</th>
+                  <th class="centro">Detalhes</th>
                   <th class="centro">Alterar</th>
                   <th class="centro">Deletar</th>
                 </tr>
               </thead>
 
             <tbody> 
-             <tr ng-repeat="x in banners | filter: busca  ">
+             <tr ng-repeat="x in usuarios | filter: busca  ">
                
                <td class="centro">{{x.id}}</td>
-               <td>Banner {{x.id}}</td>
-               <td><img src="../App/Api/upload/{{x.nome}}" alt="Banner3" width="200px" height="200px"></td>
+               <td>{{x.nome}}</td>
+               
+               <td class="centro">
+                   <a class="btn btn-default" ng-click="dados(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-address-card-o" ></i></a>
+               </td>
                  
                <td class="centro">
                    <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>
@@ -92,25 +95,42 @@
         <h4 class="modal-title" id="myModalLabel">Cadastrar novo Curso</h4>
       </div>
         
-       <form name="FormBanner" ng-submit="add(banner)">
+       <form name="FormCurso" ng-submit="add(usuario)">
     
            <div class="modal-body">
-              <div class="row">
+  
+                <div class="row">
 
-              <div class="col-md-12">
-                <div class="form-group">
-                <label>Foto do Banner</label>
-                <input type="file" ng-file-model="banner.foto" name="arquivo"/ class="form-control">
-                </div> 
-                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                  <label>E-mail</label>
+                  <input type="text" class="form-control" ng-model="usuario.email" required> 
+                  </div> 
+                  </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                <label>Link do Banner</label>
-                <input type="text" ng-model="banner.link" name="arquivo"/ class="form-control">
-                </div> 
+                  <div class="col-md-3">
+                  <div class="form-group">
+                  <label>Senha</label>
+                  <input type="password" class="form-control" ng-model="usuario.senha" required> 
+                  </div> 
+                  </div>
+
+                   <div class="col-md-3">
+                  <div class="form-group">
+                  <label>Nome</label>
+                  <input type="text" class="form-control" ng-model="usuario.nome" required> 
+                  </div> 
+                  </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                  <label>CPF</label>
+                  <input type="text" class="form-control" ng-model="usuario.cpf" required> 
+                  </div> 
+                  </div>
+
                 </div>
-           </div>
+      
            </div><!--modal-body -->
         
              <div class="modal-footer">
@@ -131,28 +151,45 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
+        <h4 class="modal-title" id="myModalLabel">Atualizar {{usuario.nome}}</h4>
       </div>
         
-       <form name="FormBanner" ng-submit="put(banner)"> 
+       <form name="FormCurso" ng-submit="put(usuario)"> 
     
            <div class="modal-body">
-              <div class="row">
+  
+                <div class="row">
 
-              <div class="col-md-12">
-                <div class="form-group">
-                <label>Foto do Banner</label>
-                <input type="file" ng-file-model="banner.foto" name="arquivo"/ class="form-control">
-                </div> 
-                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                  <label>E-mail</label>
+                  <input type="text" class="form-control" ng-model="usuario.email" required> 
+                  </div> 
+                  </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                <label>Link do Banner</label>
-                <input type="text" ng-model="banner.link" name="arquivo"/ class="form-control">
-                </div> 
+                  <div class="col-md-3">
+                  <div class="form-group">
+                  <label>Senha</label>
+                  <input type="password" class="form-control" ng-model="usuario.senha" required> 
+                  </div> 
+                  </div>
+
+                   <div class="col-md-3">
+                  <div class="form-group">
+                  <label>Nome</label>
+                  <input type="text" class="form-control" ng-model="usuario.nome" required> 
+                  </div> 
+                  </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                  <label>CPF</label>
+                  <input type="text" class="form-control" ng-model="usuario.cpf" required> 
+                  </div> 
+                  </div>
+
                 </div>
-           </div>
+                
        
            </div><!--modal-body -->
         
@@ -178,13 +215,51 @@
       </div>
         
             <div class="modal-body">               
-               Deseja realmente Deletar {{banner.id}} ?                 
+               Deseja realmente Deletar {{usuario.nome}} ?                 
            </div><!--modal-body -->
         
              <div class="modal-footer">
-                 <button type="button" class="btn btn-danger" ng-click="del(banner.id)">Sim</button>
+                 <button type="button" class="btn btn-danger" ng-click="del(usuario.id)">Sim</button>
                  <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
               </div>
+        
+    </div>
+  </div>
+</div>
+
+<!-- Modal Detalhes -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Detalhes {{usuario.nome}}</h4>
+      </div>
+        
+    <div class="modal-body">
+            <table class="table table-hover corpoTableTemplate">
+              <tbody>
+                <tr>
+                  <td>id</td>
+                  <td>{{usuario.id}}</td>
+                </tr>
+                <tr>
+                  <td>Nome</td>
+                  <td>{{usuario.nome}}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>{{usuario.status}}</td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+        
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+        
         
     </div>
   </div>
