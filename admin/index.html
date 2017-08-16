@@ -2,21 +2,29 @@
 <html ng-app="myApp">
 <head>
 <meta charset="UTF-8">
+
 <!-- Importando Responsivo -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
 <!-- Importando Favicon -->
 <link rel="shortcut icon" href="imagens/favicon.png" />
+
 <!-- Importando CSS -->
 <link rel="stylesheet" type="text/css" href="css/gadeveloper.css">
-<!-- Importando Bootstrap -->
-<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-<!-- Importando Font-Awesome-->
-<link rel="stylesheet" type="text/css" href="../node_modules/font-awesome/css/font-awesome.min.css">
+
 <!-- Importando Jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Importando Bootstrap -->
+<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+
+<!-- Importando Font-Awesome-->
+<link rel="stylesheet" type="text/css" href="../node_modules/font-awesome/css/font-awesome.min.css">
+
+<!-- Importando Tinymce -->
+ <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+ <script>tinymce.init({ selector:'textarea' });</script>
 
 <!-- Importando Angular -->
 <script src="../node_modules/angular/angular.js"></script>
@@ -43,6 +51,7 @@
 <script src="js/controllers/loginCtrl.js"></script>
 <!-- Importando RestFul -->
 <script src="js/serviceRestful/serviceRestful.js"></script>
+
 <!-- Importando Controllers Modulo Associado -->
 <script src="js/controllers/associadoCtrl.js"></script>
 
@@ -71,13 +80,12 @@
 <script src="js/controllers/veiculoCtrl.js"></script>
 
 <!-- Importando Controllers Modulo Usuario -->
+<script src="js/controllers/usuarioCtrl.js"></script>
+
+<!-- Importando Controllers Modulo Usuario -->
 <script src="modUsuario/inseriUsuarioCtrl.js"></script>
 <script src="modUsuario/alteraUsuarioCtrl.js"></script>
 <script src="modUsuario/inseriPermissaoCtrl.js"></script>
-
-<!-- Importando Controllers Modulo Usuario -->
-<script src="modBanner/bannerCtrl.js"></script>
-
 
 <title>AETUB</title>
 </head>

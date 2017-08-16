@@ -62,11 +62,18 @@ app.service('restful', function ($http,$sessionStorage) {
    $veiculoDel = '../App/veiculo/delete/';// Veiculo Deleta
 
    //Classes Banner
-   $bannerSave = '../App/imagem/save/'; // Salva Curso
-   $bannerList = '../App/imagem/list'; // Lista todas os Cursos
+   $bannerSave = '../App/imagem/save/'; // Salva Banner
+   $bannerList = '../App/imagem/list'; // Lista todas os Banners
    $bannerListTipo = '../App/imagem/listtipo/' // lista conforme o tipo desejado
-   $bannerPut = '../App/imagem/update/';// Uptades no curso
-   $bannerDel = '../App/imagem/delete/';// Curso Deleta
+   $bannerPut = '../App/imagem/update/';// Uptades no Banner
+   $bannerDel = '../App/imagem/delete/';// Banner Deleta
+
+   //Classes Usuario
+   $usuarioSave = '../App/usuario/save/'; // Salva Usuario
+   $usuarioList = '../App/usuario/list'; // Lista todas os Usuarios
+   $usuarioListId = '../App/usuario/list/';// Lista Usuario referente ao ID
+   $usuarioPut = '../App/usuario/update/';// Uptades no Usuario
+   $usuarioDel = '../App/usuario/delete/';// Usuario Deleta
 
    
    //MODULO PEFIL
@@ -231,6 +238,8 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Veiculo
     var _veiculoSave = function (values){
+      console.log(values);
+        return  $http.post($veiculoSave + token , values);
     };
     //Lista todas Veiculo
     var _veiculoList = function (values){
@@ -265,7 +274,6 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri novo Banner
     var _bannerSave = function (values){
-      console.log(values);
         return  $http.post($bannerSave + token , values);
     };
     //Lista todas Banner
@@ -278,11 +286,36 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Banner
     var _bannerPut = function (values){
+      console.log(values);
           return  $http.put($bannerPut + token, values);
     };
     //Update de banner
     var _bannerDel = function (values){
           return  $http.delete($bannerDel + token + "/" + values);
+    };
+
+//|#######################################################|
+//|############# **  MODULO USUARIOS ** ###################|
+//|#######################################################|
+   //Inseri novo usuario
+    var _usuarioSave = function (values){
+        return  $http.post($usuarioSave + token , values);
+    };
+    //Lista todas usuario
+    var _usuarioList = function (values){
+        return  $http.get($usuarioList);
+    };
+    //Lista todas usuario
+    var _usuarioListId = function (values){
+        return  $http.get($usuarioListId + values);
+    };
+    //Update de usuario
+    var _usuarioPut = function (values){
+          return  $http.put($usuarioPut + token, values);
+    };
+    //Update de usuario
+    var _usuarioDel = function (values){
+          return  $http.delete($usuarioDel + token + "/" + values);
     };
 
 //|#######################################################|
@@ -353,6 +386,12 @@ app.service('restful', function ($http,$sessionStorage) {
         bannerListTipo : _bannerListTipo,
         bannerPut : _bannerPut,
         bannerDel : _bannerDel,
+        //Return da Curso da Usuario
+        usuarioSave : _usuarioSave,
+        usuarioList : _usuarioList,
+        usuarioListId : _usuarioListId,
+        usuarioPut : _usuarioPut,
+        usuarioDel : _usuarioDel,
         //Return Modulo Cliente
         updatePicture : _updatePicture,
     }
