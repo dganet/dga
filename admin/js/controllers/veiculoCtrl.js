@@ -10,7 +10,29 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
     $scope.novo = function(){
       $scope.veiculo = {};  
     };
+
+
+  //Função Iputs array Universidade
+  var destinos = $scope.destino = [];
+  var destino = {destino:destinos};
+
+  $scope.addDestino = function(){
+  //Lista todas faculdades
+  restful.universidadeList().success(function(data){
+    $scope.universidades = data;       
+  });
+
+  var newInputs = $scope.destino.lenght+1;
+  $scope.destino.push({idUniversidade:''});
+  };
+
+  $scope.removeDestino = function() {
+     var lastItem = $scope.destino.length-1;
+     $scope.destino.splice(lastItem);
+   };
+//END Iputs array Universidade
     
+
     //Lista todas faculdades
   restful.universidadeList().success(function(data){
     $scope.universidades = data;       
@@ -26,7 +48,7 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
     $scope.veiculoDisponiveis = data;       
   }); 
 
-      //Lista espera
+  //Lista espera
   $scope.listaEspera = function(value){
     var idVeiculo = value;
 
@@ -72,6 +94,9 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormVeiculo) {
+    // Concatenar o Objeto destino no formulario.
+    values = angular.merge(values,destino);
+
     // Enviado os valores em objetos para api/user do php/slim
     restful.veiculoSave(values).success(function(){
       // Fecha o Modal

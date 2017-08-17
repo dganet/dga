@@ -13,6 +13,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $associadoSave = '../App/associado/save/'; // Salva Associado
    $associadoList = '../App/associado/list'; // Lista todo Associados
    $associadoListId = '../App/associado/list/';// Lista associado referente ao ID
+   $associadoListPre = '../App/associado/listaaprovacao';// Lista oportunidade referente ao ID
    $associadoPut = '../App/associado/update/';// Uptades na associado
    $associadoDel = '../App/associado/delete/';// associado Deleta
    
@@ -103,6 +104,10 @@ app.service('restful', function ($http,$sessionStorage) {
     //Lista todas associados
     var _associadoList = function (values){
         return  $http.get($associadoList);
+    };
+    //Lista todos pré-associados
+    var _associadoListPre = function (values){
+        return  $http.get($associadoListPre);
     };
     //Lista associado referente ao ID
     var _associadoListId = function (id){
@@ -339,6 +344,7 @@ app.service('restful', function ($http,$sessionStorage) {
         associadoSave : _associadoSave,
         associadoList : _associadoList,
         associadoListId : _associadoListId,
+        associadoListPre : _associadoListPre,
         associadoPut : _associadoPut,
         associadoDel : _associadoDel,
         //Return da Noticias

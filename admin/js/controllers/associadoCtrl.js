@@ -16,6 +16,11 @@ app.controller("associadoCtrl",function($scope, restful, $location , $timeout , 
 		$scope.associados = data;       
 	}); 
   
+  //Lista todas Associados
+  restful.associadoListPre().success(function(data){
+    $scope.associadospre = data;       
+  }); 
+
 // Show modaais de detalhes, alterar e deletar.
 $scope.dados = function (id){
     //Resentando 
