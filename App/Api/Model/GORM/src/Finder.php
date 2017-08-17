@@ -8,12 +8,16 @@ trait Finder{
      * @param int $id
      * @return void
      */
-    public function find($id){
+    public function find($id, $needArray = false){
         $this->makeSelect()->where("id=".$id);
         $stmt = $this::getConnection()->prepare($this->configuration['sql']);
         $stmt->execute(); 
         $line = $stmt->fetch(PDO::FETCH_ASSOC);
-        $this->load($line);
+        if($needArray){
+            return $line;
+        }else{
+            $this->load($line);
+        }
     }
     /**
      * Executa a busca do Select que estiver na variavel this

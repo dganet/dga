@@ -286,11 +286,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Banner
     var _bannerPut = function (values){
-<<<<<<< HEAD
-        console.log(values);
-=======
       console.log(values);
->>>>>>> bed5e3913cce676e2997a59de825eb22c2b17eb3
           return  $http.put($bannerPut + token, values);
     };
     //Update de banner
