@@ -231,27 +231,32 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Detalhes {{curso.nome}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Lista de Ṕré-Associados</h4>
       </div>
         
-    <div class="modal-body">
-            <table class="table table-hover corpoTableTemplate">
-              <tbody>
-                <tr>
-                  <td>id</td>
-                  <td>{{curso.id}}</td>
-                </tr>
-                <tr>
-                  <td>Nome</td>
-                  <td>{{curso.nome}}</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>{{curso.status}}</td>
-                </tr>
-              </tbody>
-        </table>
-      </div>
+        <div class="modal-body">
+
+           <input type="text" class="form-control" ng-model="buscapre" placeholder="Procure pelos pré-associados">
+  
+           <table class="table table-condensed">
+            <thead>
+             <tr>
+                <td>ID</td>
+                <td>Associados</td>
+             </tr>
+            </thead>
+
+            <tbody>
+             <tr ng-repeat="x in associadospre | filter: buscapre">
+               <td>{{x.id}}</td>
+               <td><a ui-sref="user.associado.altera.detalhes({id: x.id})" ng-click="dados(x.id)">{{x.nome}}</a></td>
+             </tr>
+
+            </tbody>
+
+           </table>
+
+        </div>
         
      <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
