@@ -5,7 +5,7 @@ class Ticket extends \GORM\Model{
     public $idTicket;
     public $assuntoTicket;
     public $descricaoTicket;
-    public $fkAssociado;
+    public $ownerTicket;
     public $statusTicket;
     public $createAtTicket;
     public $updateAtTicket;

@@ -81,10 +81,8 @@ class VeiculoController{
 		$veiculo = Veiculo::getInstance();
 		$veiculo->makeSelect()->where("status='ATIVO'")->and("id=".$args['id']);
 		$collection = $veiculo->execute();
-		if($collection->exists(0)){
+		if( $collection->length() > 0 ){
 			return $response->WithJson($collection->getAll());
-		}else{
-			return $response->WithJson([]);
 		}
 	}
 	/**

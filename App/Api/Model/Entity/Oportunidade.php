@@ -3,7 +3,6 @@ namespace Api\Model\Entity;
 
 class Oportunidade extends \GORM\Model{
 	public $id;
-	public $usuario_id;
 	public $status;
 	public $createAt;
 	public $updateAt;

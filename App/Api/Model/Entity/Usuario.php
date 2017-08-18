@@ -7,7 +7,7 @@ class Usuario extends \GORM\Model{
 	public $senha;
 	public $nome;
 	public $cargo;
-	public $imagem;
+	public $fkImagem;
 	public $cpf;
 	public $status;
 	public $createAt;
