@@ -13,7 +13,7 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
 
 
   //Função Iputs array Universidade
-  var destinos = $scope.destino = [];
+  var destinos = $scope.destinos = [];
   var destino = {destino:destinos};
 
   $scope.addDestino = function(){
@@ -22,13 +22,13 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
     $scope.universidades = data;       
   });
 
-  var newInputs = $scope.destino.lenght+1;
-  $scope.destino.push({idUniversidade:''});
+  var newInputs = $scope.destinos.lenght+1;
+  $scope.destinos.push({idUniversidade:''});
   };
 
   $scope.removeDestino = function() {
-     var lastItem = $scope.destino.length-1;
-     $scope.destino.splice(lastItem);
+     var lastItem = $scope.destinos.length-1;
+     $scope.destinos.splice(lastItem);
    };
 //END Iputs array Universidade
     

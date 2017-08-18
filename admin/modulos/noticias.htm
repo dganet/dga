@@ -2,7 +2,6 @@
 
     <div class="row">
       <div class="col col-md-12">
-        
         <div class="alert alert-success" ng-hide="mensagemSucesso">
           <strong>Sucesso!</strong> Dados cadastrado com sucesso.
         </div>
@@ -121,7 +120,7 @@
               <div class="row">
                 <div class="col-md-12">   
                 <label>Descrição</label>
-                  <textarea class="form-control" rows="15" ng-model="noticia.descricao" required></textarea>
+                  <textarea class="form-control" rows="15" ng-model="noticia.descricao" required ui-tinymce="tinymceOptions" ng-model="tinymceModel"></textarea>
                 </div>
               </div>
       
@@ -174,7 +173,7 @@
               <div class="row">
                 <div class="col-md-12">   
                 <label>Descrição</label>
-                  <textarea class="form-control" rows="15" ng-model="noticia.descricao" required></textarea>
+                  <textarea class="form-control" rows="15" ng-model="noticia.descricao" required ui-tinymce="tinymceOptions" ng-model="tinymceModel"></textarea>
                 </div>
               </div>
                 

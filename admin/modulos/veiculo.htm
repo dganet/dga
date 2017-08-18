@@ -167,8 +167,8 @@
 
                     </div>    
 
-                   <div class="col-md-1" >
-                      <label ng-show="$last">Remover</label>
+                   <div class="col-md-1" ng-show="$last">
+                      <label>Remover</label>
                       <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDestino()">x</button>
                    </div>
                  
@@ -196,48 +196,25 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Atualizar {{cursofaculdade.nome}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Atualizar {{veiculo.nomeLinha}}</h4>
       </div>
         
        <form name="FormVeiculo" ng-submit="put(veiculo)"> 
     
            <div class="modal-body">
-              <div class="row">
 
-             <div class="col-md-3">
-                  <div class="form-group">
-                   <label>Escolha a Universidade</label>
-                        <!-- Select de Bairros -->
-                        <select class="form-control"
-                         ng-options="b.id as b.nome for b in universidades"
-                         ng-model="veiculo.id">
-                        <option value="">Selecione Universidade</option>
-                        </select>
-                   </div>
-              </div>
+             <div class="row">
 
               <div class="col-md-3">
                     <div class="form-group">
-                      <label>Número da Linha</label>
+                      <label>Nome da Linha</label>
                       <input type="text" class="form-control" ng-model="veiculo.nomeLinha" required>
                     </div>
               </div>
 
               <div class="col-md-3">
-                    <div class="form-group">
-                      <label>Destino</label>
-                      <select class="form-control" ng-model="veiculo.destino" required>
-                        <option value="">Selecione uma Destino</option>
-                        <option value="Guaruja">Guaruja</option>
-                        <option value="Santos">Santos</option>
-                        <option value="Mogi das Cruzes">Mogi das Cruzes</option>
-                      </select>
-                    </div> 
-              </div>
-
-              <div class="col-md-3">
                 <div class="form-group">
-                  <label>Destino</label>
+                  <label>Período</label>
                   <select class="form-control" ng-model="veiculo.periodo" required>
                     <option value="">Selecione um Periodo</option>
                     <option value="Manhã">Manhã</option>
@@ -254,7 +231,42 @@
                  </div>
                </div>
 
-          </div>
+
+               <div class="col-md-3">
+                  <div class="form-group">
+                  <label>Adicione o Destino</label>
+                      <button type="button" class="btn btn-primary" ng-click="addDestino()">Adicionar</button>
+                 </div>
+               </div>
+
+             </div><!-- row -->
+
+             
+                <div class="row" >
+
+                  <div data-ng-repeat="x in destinos">
+                   
+                   <div class="col-md-3" >
+                        
+                        <div class="form-group">
+                         <label>Escolho o Destino</label>
+                              <!-- Select de Bairros -->
+                              <select class="form-control"
+                               ng-options="b.id as b.nome for b in universidades"
+                               ng-model="x.idUniversidade">
+                              <option value="">Selecione Universidade</option>
+                              </select>
+                         </div>
+
+                    </div>    
+
+                   <div class="col-md-1" ng-show="$last">
+                      <label >Remover</label>
+                      <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDestino()">x</button>
+                   </div>
+                 
+
+             </div>
                 
        
            </div><!--modal-body -->

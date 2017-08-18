@@ -1,0 +1,21 @@
+{
+  "name": "dga",
+  "homepage": "https://github.com/dganet/dga",
+  "authors": [
+    "adniltonm <adniltonweb@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ng-file-model": "*",
+    "angular-ui-tinymce": "^0.0.19"
+  }
+}
