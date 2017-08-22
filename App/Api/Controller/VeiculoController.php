@@ -111,12 +111,17 @@ class VeiculoController{
 	 * @param Mixed $args
 	 * @return Json
 	 */
-	public function inativar($request, $response, $args){
+	public function delete($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
+			$vagas = new \Api\Controller\VagaController();
 			$veiculo = Veiculo::getInstance();
-			$veiculo->id = $args['id'];
-			$veiculo->status = 'INATIVO';
-			return $response->WithJson($veiculo->update());
+			$veiculo->find($args['id']);
+			if($veiculo->vagasDisponiveis == $veiculo->numVagas){
+				$veiculo->status = 'INATIVO';
+				return $response->WithJson($veiculo->update());
+			}else{
+				return $response->WithJson(['flag' => false, 'message' => 'Ainda Há vagabundos no onibus, remova-os antes de inativar o veiculo']);
+			}
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}

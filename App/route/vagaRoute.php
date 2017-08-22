@@ -14,7 +14,7 @@ $app->get('/vagas/list', \Api\Controller\VagaController::class . ':listaTudo');
 /**
  * Lista usuarios por ID
  */
-$app->get('/vagas/list/{id}', \Api\Controller\VagaController::class . ':listaPorId');
+$app->get('/vagas/associadoxveiculo/{idVeiculo}', \Api\Controller\VagaController::class . ':AssociadoxVeiculo');
 /**
  * Lista usuarios inativos
  */

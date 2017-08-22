@@ -243,8 +243,9 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Veiculo
     var _veiculoSave = function (values){
-      console.log(values);
-        return  $http.post($veiculoSave + token , values);
+        console.log(token);
+        console.log(values);
+           return  $http.post($veiculoSave + token, values);
     };
     //Lista todas Veiculo
     var _veiculoList = function (values){
@@ -272,6 +273,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Veiculo
     var _veiculoDel = function (values){
+      
           return  $http.delete($veiculoDel + token + "/" + values);
     };
 //|#######################################################|
@@ -318,9 +320,10 @@ app.service('restful', function ($http,$sessionStorage) {
     var _usuarioPut = function (values){
           return  $http.put($usuarioPut + token, values);
     };
-    //Update de usuario
+    //Delete de usuario
     var _usuarioDel = function (values){
-          return  $http.delete($usuarioDel + token + "/" + values);
+console.log('passo 3');
+          return  $http.delete($usuarioDel + "/" + token);
     };
 
 //|#######################################################|

@@ -1,4 +1,4 @@
-app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
+app.controller("veiculoCtrl",function($scope, restful, $location , $timeout , $sessionStorage){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -88,17 +88,13 @@ $scope.dados = function (id){
     $scope.reset();
         //Pega as info da universidade selecionada
 		restful.veiculoListId(id).success(function(data){ 
-        // meu id's de destino
-
-        //conveerter numVagas em inteiro
+       // Dados do Veiculo 
+        $scope.veiculo = data[0];
+       //conveerter numVagas em inteiro
         data.forEach(function(element) {
           element['numVagas'] = parseInt(element['numVagas']); 
        
         }, this);
-        
-
-
-          console.log($scope.veiculo = data[0]); 
     
          //Função Iputs array Universidade
           var destinos = $scope.destino =  data[0]['destino'];
@@ -191,7 +187,7 @@ $scope.dados = function (id){
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
     restful.veiculoDel(values).success(function(){
-    // Fecha o Modal
+      // Fecha o Modal
       $('#closeModalDel').modal('hide');
         
      //Lista todas veiculos

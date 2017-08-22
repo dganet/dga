@@ -20,8 +20,7 @@
 		      		
 		      	// Se for verdadeiro manda pra Home  
 			    $scope.activePath = $location.path('/user'); 
-			    sessionStorage.setItem('usuario.token', response.token); 
-  				
+				sessionStorage.setItem('usuario.token', response.token); 
 		      }
 		     
 
