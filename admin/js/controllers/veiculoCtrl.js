@@ -12,8 +12,8 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
     };
 
 
-  //Função Iputs array Universidade
-  var destinos = $scope.destinos = [];
+//Função Iputs array Universidade
+  var destinos = $scope.destino = [];
   var destino = {destino:destinos};
 
   $scope.addDestino = function(){
@@ -22,13 +22,13 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
     $scope.universidades = data;       
   });
 
-  var newInputs = $scope.destinos.lenght+1;
-  $scope.destinos.push({idUniversidade:''});
+  var newInputs = $scope.destino.lenght+1;
+  $scope.destino.push({id:''});
   };
 
   $scope.removeDestino = function() {
-     var lastItem = $scope.destinos.length-1;
-     $scope.destinos.splice(lastItem);
+     var lastItem = $scope.destino.length-1;
+     $scope.destino.splice(lastItem);
    };
 //END Iputs array Universidade
     
@@ -77,8 +77,9 @@ app.controller("veiculoCtrl",function($scope, restful,$location , $timeout , $se
 
 
 // Show modaais de detalhes, alterar e deletar.
-$scope.dados = function (id){
-    //Resentando 
+$scope.dados = function (id){ 
+   
+   //Resentando 
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
       $scope.veiculo = angular.copy($scope.master);
@@ -86,14 +87,50 @@ $scope.dados = function (id){
     // Ativando a função
     $scope.reset();
         //Pega as info da universidade selecionada
-		restful.veiculoListId(id).success(function(data){
-		$scope.veiculo = data[0];	
+		restful.veiculoListId(id).success(function(data){ 
+        // meu id's de destino
+
+        //conveerter numVagas em inteiro
+        data.forEach(function(element) {
+          element['numVagas'] = parseInt(element['numVagas']); 
+       
+        }, this);
+        
+
+
+          console.log($scope.veiculo = data[0]); 
+    
+         //Função Iputs array Universidade
+          var destinos = $scope.destino =  data[0]['destino'];
+
+          var destino = {destino:destinos};
+          $scope.addDestino = function(){
+          //Lista todas faculdades
+          restful.universidadeList().success(function(data){
+            $scope.universidades = data;       
+          });
+
+          var newInputs = $scope.destino.lenght+1;
+          $scope.destino.push({idUniversidade:''});
+          };
+
+          $scope.removeDestino = function() {
+             var lastItem = $scope.destino.length-1;
+             $scope.destino.splice(lastItem);
+           };
+        //END Iputs array Universidade
+
+
         });
+        
 };
+
+
 //************* NOVO *********************// 
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormVeiculo) {
+
     // Concatenar o Objeto destino no formulario.
     values = angular.merge(values,destino);
 

@@ -383,7 +383,7 @@ app.service('restful', function ($http,$sessionStorage) {
         veiculoListGeral : _veiculoListGeral,
         veiculoListAssociadoLinhaAguardando : _veiculoListAssociadoLinhaAguardando,
         veiculoListAssociadoLinhaAtivo : _veiculoListAssociadoLinhaAtivo,
-        veiculoListId : _veiculoListId,
+        veiculoListId: _veiculoListId,
         veiculoPut : _veiculoPut,
         veiculoDel : _veiculoDel,
         //Return do Banner

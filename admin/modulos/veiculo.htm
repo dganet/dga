@@ -80,8 +80,8 @@
                    <a class="btn btn-default" ng-click="listaEspera(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-listaEspera"><i class="fa fa-clock-o" aria-hidden="true"></i></a>
                </td>
                  
-               <td class="centro"><!-- alterar-->
-                   <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>
+               <td class="centro"><!-- alterar-->  
+                   <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-guilherme"><i class="fa fa-pencil-square-o" ></i></a>
                </td>
                
                  <td class="centro"><!-- deletar-->
@@ -160,7 +160,7 @@
                               <!-- Select de Bairros -->
                               <select class="form-control"
                                ng-options="b.id as b.nome for b in universidades"
-                               ng-model="x.idUniversidade">
+                               ng-model="x.id">
                               <option value="">Selecione Universidade</option>
                               </select>
                          </div>
@@ -172,9 +172,9 @@
                       <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDestino()">x</button>
                    </div>
                  
+                </div>
 
              </div>
-
       
            </div><!--modal-body -->
         
@@ -189,20 +189,20 @@
   </div>
 </div>   
     
-<!-- Modal Update -->
-<div class="modal fade bs-example-modal-lg-update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdate">
+ <!-- Modal Novo -->
+<div class="modal fade bs-example-modal-lg-guilherme" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalPost">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Atualizar {{veiculo.nomeLinha}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Atualiza veiculo {{veiculo.nomeLinha}}</h4> 
       </div>
         
-       <form name="FormVeiculo" ng-submit="put(veiculo)"> 
-    
-           <div class="modal-body">
-
+       <form name="FormVeiculo" ng-submit="put(veiculo)">
+       
+        <div class="modal-body">
+         
              <div class="row">
 
               <div class="col-md-3">
@@ -227,7 +227,7 @@
                <div class="col-md-3">
                   <div class="form-group">
                       <label>Capacidade de Vagas</label>
-                      <input type="number" class="form-control" ng-model="veiculo.numVagas" required>
+                      <input type="number" class="form-control" ng-model="veiculo.numVagas" string-to-number required>
                  </div>
                </div>
 
@@ -244,7 +244,7 @@
              
                 <div class="row" >
 
-                  <div data-ng-repeat="x in destinos">
+                  <div data-ng-repeat="x in destino">
                    
                    <div class="col-md-3" >
                         
@@ -253,7 +253,7 @@
                               <!-- Select de Bairros -->
                               <select class="form-control"
                                ng-options="b.id as b.nome for b in universidades"
-                               ng-model="x.idUniversidade">
+                               ng-model="x.id">
                               <option value="">Selecione Universidade</option>
                               </select>
                          </div>
@@ -261,18 +261,18 @@
                     </div>    
 
                    <div class="col-md-1" ng-show="$last">
-                      <label >Remover</label>
+                      <label>Remover</label>
                       <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDestino()">x</button>
                    </div>
                  
+                </div>
 
              </div>
-                
-       
+      
            </div><!--modal-body -->
         
              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Atualizar Dados</button> 
+                <button type="submit" class="btn btn-primary">Salvar Dados</button> 
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
               </div>
            
@@ -280,7 +280,8 @@
         
     </div>
   </div>
-</div>
+</div>   
+
 
  <!-- Modal Delete -->
 <div class="modal fade bs-example-modal-lg-delete" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalDel">

@@ -1,6 +1,6 @@
 
     app.controller("noticiasCtrl", function($scope, $http, $timeout , $location,  $sessionStorage){
-
+  $scope.tinymceModel = 'Initial content';
     $scope.mensagem = true;
     //Exibi Todas Noticias e Oculta quando clica em Leia Mais.
     $scope.leiaMais = true;
