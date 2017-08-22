@@ -39,16 +39,16 @@ require_once("route/ticketRoute.php");
 // 	/**
 // 	* TESTE
 // 	*/
-// 	$app->group('/teste', function() use ($app){
-// 		require_once("route/testeRoute.php");
-// 	});
+	$app->group('/teste', function() use ($app){
+ 		require_once("route/testeRoute.php");
+});
 // 	});
 // 	});
 // 	/**
 // 	* VAGA
 // 	*/
 // 	$app->group('/vaga', function() use ($app){
-// 		require_once("route/vagaRoute.php");
+ 		require_once("route/vagaRoute.php");
 // 	});
 // 	/**
 // 	* PERIODO

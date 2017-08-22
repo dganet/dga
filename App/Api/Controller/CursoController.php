@@ -37,10 +37,10 @@ class CursoController {
 		$curso = Curso::getInstance();
 		$curso->makeSelect()->where("status='ATIVO'");
 		$collection = $curso->execute();
-		if($collection->length() > 0){
-			return $response->WithJson($collection->getAll());
-		}else{
-			return $response->WithJson([]);
+		if ($collection != null){
+			if($collection->length() > 0){
+				return $response->WithJson($collection->getAll());
+			}
 		}
 	}
 	/**
@@ -55,10 +55,10 @@ class CursoController {
 		$curso = Curso::getInstance();
 		$curso->makeSelect()->where("status='ATIVO'")->and("id=".$args['id']);
 		$collection = $curso->execute();
-		if($collection->length() > 0){
-			return $response->WithJson($collection->getAll());
-		}else{
-			return $response->WithJson([]);
+		if ($collection != null){
+			if($collection->length() > 0){
+				return $response->WithJson($collection->getAll());
+			}
 		}
 	}
 	/**
@@ -109,10 +109,10 @@ class CursoController {
 		$curso = Curso::getInstance();
 		$curso->makeSelect()->where("status='INATIVO'");
 		$collection = $curso->execute();
-		if($collection->length() > 0){
-			return $response->WithJson($collection->getAll());
-		}else{
-			return $response->WithJson([]);
+		if ($collection != null){
+			if($collection->length() > 0){
+				return $response->WithJson($collection->getAll());
+			}
 		}
 	}
 

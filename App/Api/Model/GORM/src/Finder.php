@@ -32,19 +32,19 @@ trait Finder{
             $stmt->execute(); 
             $line = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $this->afterSelect();
-            $collection = new \GORM\Collection\Collection();
-            foreach ($line as $key => $value) {
-                $cls = new $cls();
-                $cls->load($value);
-                //Antes de adcionar na coleção 
-                $cls->beforeCollection();
-                $collection->add($cls);
-                //depois de adcionar da coleção
-                $cls->afterCollection();
-            }
             if($needArray){
                 return $line;
             }else{
+                $collection = new \GORM\Collection\Collection();
+                foreach ($line as $key => $value) {
+                    $cls = new $cls();
+                    $cls->load($value);
+                    //Antes de adcionar na coleção 
+                    $cls->beforeCollection();
+                    $collection->add($cls);
+                    //depois de adcionar da coleção
+                    $cls->afterCollection();
+                }
                 return $collection;
             }
         }catch (PDOException $e){

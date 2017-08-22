@@ -134,8 +134,10 @@ class ImageController{
     $img = Imagem::getInstance();
     $img->makeSelect()->where("tipo")->like($args['tipo']);
     $collection = $img->execute();
-    if ($collection->length() > 0 ){
-        return $response->WithJson($collection->getAll());
+    if($collection != null){
+        if ($collection->length() > 0 ){
+            return $response->WithJson($collection->getAll());
+        }
     }
   }
     /**
@@ -150,8 +152,10 @@ class ImageController{
     $img = Imagem::getInstance();
     $img->makeSelect()->where("status='ATIVO'");
     $collection = $img->execute();
-    if ($collection->length() > 0 ){
-        return $response->WithJson($collection->getAll());
+    if($collection != null){
+        if ($collection->length() > 0 ){
+            return $response->WithJson($collection->getAll());
+        }
     }
   }
   /**
@@ -166,8 +170,10 @@ class ImageController{
     $img = Imagem::getInstance();
     $img->makeSelect()->where("id=".$args['id'])->and("status='ATIVO'");
     $collection = $img->execute();
-    if ($collection->length() > 0 ){
-        return $response->WithJson($collection->getAll());
+    if($collection != null){
+        if ($collection->length() > 0 ){
+            return $response->WithJson($collection->getAll());
+        }
     }
   }
   /**

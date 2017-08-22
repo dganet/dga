@@ -25,7 +25,7 @@ class Auth{
             /**
              * Verifica se alguma coisa foi retornada
              */
-            if($collection->length()> 0 ){
+            if($collection->length() > 0 ){
                 $hash = md5($collection->get(0)->email."|".time());
                 $cache->save($hash, $collection->get(0)); 
                 return ['token' => $hash, 'user' => $collection->get(0), 'flag' => true];

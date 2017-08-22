@@ -3,15 +3,8 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 $app->get('/test',function(Request $request, Response $response){
-    echo "
-        <table >
-        <form action='upload' method='post' enctype='multipart/form-data'>
-            <input type='file' name='arquivo'  accept='image/png, image/jpeg'>
-            <input type='text' name='texto'>
-            <input type='submit' value='enviar'>
-            </form>
-        </table>
-    ";
+    
+    return $response->WithJson($veiculo->getvagas());
 });
 
 $app->get('/img',function(Request $request, Response $response){

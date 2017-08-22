@@ -16,9 +16,8 @@ class Veiculo extends \GORM\Model{
 
 	public function beforeSave(){
 		$universidade = \Api\Model\Entity\Universidade::getInstance();
-		$stack = [];
 		foreach ($this->destino as $key => $value) {
-			$stack[$key] = $universidade->makeSelect("id,nome")->where("id=".$value['idUniversidade'])->execute(true);
+			$stack[$key] = $universidade->makeSelect("id,nome")->where("id=".$value['idUniversidade'])->execute(true)[0];
 		}
 		$this->destino = serialize($stack);
 		$this->status = "ATIVO";
@@ -28,10 +27,9 @@ class Veiculo extends \GORM\Model{
 		$this->destino = unserialize($this->destino);
 	}
 	public function getVagas(){
-		$associado = \Api\Model\Entity\Associado::getInstance();
-		$associado->makeSelect()->where('veiculo_id='.$this->id);
-		$collection = $associado->execute();
-		return $collection->length() - $this->numVagas ;
+		$veiculo = \Api\Model\Entity\Veiculo::getInstance();
+		$veiculo->makeSelect("destino,vagasDisponiveis");
+		return $veiculo->execute(true);
 	}
 	
 }

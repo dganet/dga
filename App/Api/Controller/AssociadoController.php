@@ -71,7 +71,11 @@ class AssociadoController {
 		$associado = Associado::getInstance();
 		$associado->makeSelect()->where("status='ATIVO'");
 		$collection = $associado->execute();
-		return $response->Withjson($collection->getAll());
+		if($collection != null){
+			if($collection->length() > 0){
+				return $response->Withjson($collection->getAll());
+			}
+		}
 	}
 	/**
 	 * Lista o associados atraves de um ID
@@ -85,7 +89,11 @@ class AssociadoController {
 		$associado = Associado::getInstance();
 		$associado->makeSelect()->where("id=".$args['id']);
 		$collection = $associado->execute();
-		return $response->Withjson($collection->getAll());
+		if($collection != null){
+			if($collection->length() > 0){
+				return $response->Withjson($collection->getAll());
+			}
+		}
 	}
 	/**
 	 * Atualiza informaçoes do Associado
@@ -137,7 +145,11 @@ class AssociadoController {
 		$associado = Associado::getInstance();
 		$associado->makeSelect()->where("status='INATIVO'");
 		$collection = $associado->execute();
-		return $response->WithJson($collection->getAll());
+		if($collection != null){
+			if($collection->length() > 0){
+				return $response->WithJson($collection->getAll());
+			}
+		}
 	}
 	/**
 	 * Lista Associados que estão com status AGUGARDANDOVAGA
@@ -153,7 +165,11 @@ class AssociadoController {
 		->inner('veiculo', 'veiculo.id = associado.veiculo_id')
 			->where("associado.status='AGUARDANDOVAGA'")->order('associado.createAt');
 		$collection = $associado->execute();
-		$associado->getRendaPerCapta();
+		if($collection != null){
+			if($collection->length() > 0){
+				$associado->getRendaPerCapta();
+			}
+		}
 		return $response->WithJson($collection->getAll());
 		
 	}
@@ -171,7 +187,11 @@ class AssociadoController {
 		->inner('veiculo', 'veiculo.id = associado.veiculo_id')
 			->where("associado.status='AGUARDANDOVAGA'")->and('associado.id='.$args['id'])->order('associado.createAt');
 		$collection = $associado->execute();
-		return $response->WithJson($collection->getAll());
+		if($collection != null){
+			if($collection->length() > 0){
+				return $response->WithJson($collection->getAll());
+			}
+		}
 	}
 	/**
 	 * Retorna uma lista com os associados que estão com status AGUARDANDOVAGA
@@ -185,7 +205,11 @@ class AssociadoController {
 		$associado = Associado::getInstance();
 		$associado->makeSelect()->where("status='AGUARDANDOVAGA'");
 		$collection = $associado->execute();
-		return $response->WithJson($collection->getAll());
+		if($collection != null){
+			if($collection->length() > 0){
+				return $response->WithJson($collection->getAll());
+			}
+		}
 	}
 	/**
 	 * Retorna a lista de vagas remanecentes por onibus/associados
@@ -222,7 +246,11 @@ class AssociadoController {
 		$associado = Associado::getInstance();
 		$associado->makeSelect('nome')->where("veiculo_id=".$args['id'])->and("status='ATIVO");
 		$collection = $associado->execute();
-		return $response->WithJson($collection->getAll());
+		if($collection != null){
+			if($collection->length() > 0){
+				return $response->WithJson($collection->getAll());
+			}
+		}
 	}
 	/**
 	 * Ativa o cadastro de um associado somente se o veiculo ainda possuir vagas
@@ -236,7 +264,11 @@ class AssociadoController {
 	// 	$associado = Associado::getInstance();
 	// 	$associado->makeSelect()->where("id=".$args['id']);
 	// 	$collection = $associado->execute();
-	// 	$associado->
+	// if($collection != null){
+	// 	if($collection->length() > 0){
+	// 		// 	$associado->
+	// 	}
+	// }
 	// 	//Veiculo
 	// 	$veiculo = \Api\Model\Entity\Veiculo::getInstance();
 	// 	$veiculo = $associado->veiculo_id;
