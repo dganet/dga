@@ -103,7 +103,6 @@
        <form name="FormAssociado" ng-submit="add(associado)">
     
            <div class="modal-body">
-                <div class="conteudo">
                   <!-- Nav tabs -->
                   <div class="navTabs">
 
@@ -385,9 +384,9 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label>Universidade</label>
-                           <select class="form-control" ng-model="associado.universidade"  ng-options="x.id as x.nome for x in universidades">
-                              <option value="">Selecione uma Universidade</option>
-                           </select>
+                            <select class="form-control" ng-model="associado.universidade" ng-change="selectUni(associado.universidade_id)" ng-options="x.id as x.nome for x in universidades">
+                              <option value="">Selecione um Linha</option>
+                            </select>
                         </div>
                       </div>
 
@@ -508,8 +507,8 @@
                 <div class="row" ng-show="tabs == 6">
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label>Linha</label>
-                            <select class="form-control" ng-model="associado.veiculo_id"  ng-options="x.id as x.nomeLinha for x in veiculos">
+                          <label>Seleciona a Universidade</label>
+                            <select class="form-control" ng-model="associado.universidade" disabled="disabled" ng-options="x.id as x.nome for x in universidades">
                               <option value="">Selecione um Linha</option>
                             </select>
                         </div>
@@ -575,7 +574,6 @@
        <form name="FormAssociado" ng-submit="put(associado)"> 
     
            <div class="modal-body">
-                <div class="conteudo">
                   <!-- Nav tabs -->
                   <div class="navTabs">
 

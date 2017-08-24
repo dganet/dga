@@ -41,6 +41,7 @@ app.service('restful', function ($http,$sessionStorage) {
     //Classes Universidade
    $universidadeSave = '../App/universidade/save/'; // Salva Universidade
    $universidadeList = '../App/universidade/list'; // Lista todas Universades
+   $universidadeListVeiculo = '../App/universidade/veiculos/'; // Lista todas Universades
    $universidadeListId = '../App/universidade/list/';// Lista Universidade referente ao ID
    $universidadePut = '../App/universidade/update/';// Uptades na Universidade
    $universidadeDel = '../App/universidade/delete/';// Universidade Deleta
@@ -97,7 +98,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 //|############# **  MODULO ASSOCIADO ** ###################|
 //|#######################################################|
-   //Inseri nova Universiade
+   //Inseri nova Associado
     var _associadoSave = function (values){
         return  $http.post($associadoSave + token, values);
     };
@@ -203,6 +204,10 @@ app.service('restful', function ($http,$sessionStorage) {
     var _universidadeList = function (values){
         return  $http.get($universidadeList);
     };
+    //Lista todas Universidade Veiculo
+    var _universidadeListVeiculo = function (id){
+        return  $http.get($universidadeListVeiculo + id);
+    };
     //Lista Universidade referente ao ID
     var _universidadeListId = function (id){
           return  $http.get($universidadeListId + id);
@@ -243,8 +248,6 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Veiculo
     var _veiculoSave = function (values){
-        console.log(token);
-        console.log(values);
            return  $http.post($veiculoSave + token, values);
     };
     //Lista todas Veiculo
@@ -371,6 +374,7 @@ console.log('passo 3');
         //Return da Universidade
         universidadeSave : _universidadeSave,
         universidadeList : _universidadeList,
+        universidadeListVeiculo : _universidadeListVeiculo,
         universidadeListId : _universidadeListId,
         universidadePut : _universidadePut,
         universidadeDel : _universidadeDel,

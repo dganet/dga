@@ -170,9 +170,11 @@ $scope.associado = {
 	cep: '11250000',
 	cidade: 'Bertioga',
 }
+
 $scope.boleano = [
 	{label:'Sim',b:"1"},{label: 'Não', b:"0"}
 ];
+
 $scope.bosta = [
 	{id:'1',label:"Solteiro(a)"},
 	{id:'2',label:"Casado(a)"}
