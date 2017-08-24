@@ -1,7 +1,6 @@
 app.service('restful', function ($http,$sessionStorage) {
  //Pega o id do usuario logado
  var token = sessionStorage.getItem('usuario.token');
-console.log(token);
 
 //REQUISICOES DO BACK-END CAMINHOS
 

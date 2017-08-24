@@ -143,7 +143,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label>CPF</label>
-                          <input type="text" class="form-control" ng-model="associado.cpf" ui-br-cpf-mask>
+                          <input type="text" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" ng-model="associado.cpf" placeholder="formato xxx.xxx.xxx-xx">
                         </div>
                       </div>
 
@@ -389,7 +389,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label>Universidade</label>
-                            <select class="form-control" ng-model="associado.universidadeId" ng-change="selectUni(associado.universidadeId)" ng-options="x.id as x.nome for x in universidades">
+                            <select class="form-control" ng-model="associado.fkUniversidade" ng-change="selectUni(associado.fkUniversidade)" ng-options="x.id as x.nome for x in universidades">
                               <option value="">Selecione um Linha</option>
                             </select>
                         </div>
@@ -512,8 +512,8 @@
                 <div class="row" ng-show="tabs == 6">
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label>Seleciona a Universidade</label>
-                            <select class="form-control" ng-model="associado.universidadeId" disabled="disabled" ng-options="x.id as x.nome for x in universidades">
+                          <label>Universidade</label>
+                            <select class="form-control" ng-model="associado.fkUniversidade" disabled="disabled" ng-options="x.id as x.nome for x in universidades">
                               <option value="">Selecione um Linha</option>
                             </select>
                         </div>

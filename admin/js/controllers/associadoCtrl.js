@@ -204,7 +204,6 @@ $scope.removeDocumento = function() {
 
   $scope.selectUni = function(id){
     restful.universidadeListVeiculo(id).success(function(data){
-      console.log(data);
       $scope.veiculos = data;
     });
   };
@@ -233,10 +232,11 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormAssociado) {
+    console.log(values);
     var associado = values;
     var associado = angular.merge(associado,renda,documento);
 
-    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.veiculo_id == undefined){
+    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.veiculo == undefined){
 
       $scope.mensagemObrigatorio = true;
           $timeout(function () {
