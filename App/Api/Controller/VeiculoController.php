@@ -126,4 +126,25 @@ class VeiculoController{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
 	}
+	
+	/**
+	 * Retorna quais veiculos que atendem uma universidade ID
+	 *
+	 * @param int $idUniversidade
+	 * @return Array
+	 */
+	public static function getVeiculosByUniversidade($idUniversidade){
+		$veiculo = Veiculo::getInstance();
+		$veiculo->makeSelect()->where("status='ATIVO'");
+		$collection = $veiculo->execute();
+		$atende = [];
+		foreach ($collection as $i => $veiculos) {
+			foreach ($veiculos->destino as $key => $universidade){
+				if ($universidade['id'] == $idUniversidade){
+					array_push($atende , $veiculos->id);
+				}
+			}
+		}
+		return $atende;
+	}
 }

@@ -115,5 +115,16 @@ class UniversidadeController {
 			return $response->WithJson([]);
 		}
 	}
+	/**
+	 * Retorna os veiculos que atendem a universidade x
+	 *
+	 * @param Request $request
+	 * @param Response $response
+	 * @param Mixed $args
+	 * @return Json
+	 */
+	public function getVeiculos($request, $response, $args){
+		return $response->WithJson(VeiculoController::getVeiculosByUniversidade($args['id']));
+	}
 	
 }

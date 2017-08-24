@@ -117,5 +117,6 @@ class UsuarioController{
 		$auth = new Auth();
 		return $response->WithJson($auth->login($data['login'], $data['senha'], false));
 	}
+	
 
 }
