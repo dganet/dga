@@ -1,7 +1,7 @@
 app.service('restful', function ($http,$sessionStorage) {
  //Pega o id do usuario logado
  var token = sessionStorage.getItem('usuario.token');
-
+console.log(token);
 
 //REQUISICOES DO BACK-END CAMINHOS
 
@@ -206,6 +206,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Lista todas Universidade Veiculo
     var _universidadeListVeiculo = function (id){
+      console.log(id);
         return  $http.get($universidadeListVeiculo + id);
     };
     //Lista Universidade referente ao ID

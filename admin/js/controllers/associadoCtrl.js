@@ -150,6 +150,14 @@ $scope.parentescos = [
             {value:"Outros", label:"Outros"}
 ];
 
+$scope.tipoDocumentos = [
+            {value:"RG", label:"RG"},
+            {value:"CPF", label:"CPF"},
+            {value:"CNH", label:"CNH"},
+            {value:"Certidao de Nascimento", label:"Certidão de Nascimento"},
+            {value:"Titulo de Eleitor", label:"Titulo de Eleitor"},
+            {value:"Comprovante de Residencia", label:"Comprovante de Residencia"},
+];
 
 // Funcoes de adicionar inputs de renda e documentos
 var dados = $scope.renda = [];
@@ -190,8 +198,10 @@ $scope.removeDocumento = function() {
   
     //Lista todas Universidade
   restful.universidadeList().success(function(data){
+    console.log(data);
     $scope.universidades = data;     
   }); 
+
   $scope.selectUni = function(id){
     restful.universidadeListVeiculo(id).success(function(data){
       console.log(data);
@@ -219,10 +229,24 @@ $scope.dados = function (id){
 		$scope.associado = data[0];	
         });
 };
-//*************CADASTRA NOVO CURSO *********************// 
+//*************CADASTRA NOVO ASSOCIADO *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, FormCurso) {
+  $scope.add = function(values, FormAssociado) {
+    var associado = values;
+    var associado = angular.merge(associado,renda,documento);
+
+    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.veiculo_id == undefined){
+
+      $scope.mensagemObrigatorio = true;
+          $timeout(function () {
+               $scope.mensagemObrigatorio = false;
+           },10000);
+  
+
+      
+    }else{
+
     // Enviado os valores em objetos para api/user do php/slim
     restful.associadoSave(values).success(function(){
       // Fecha o Modal
@@ -246,7 +270,7 @@ $scope.dados = function (id){
     };
     // Ativando a função
     $scope.reset();
-
+};
   };
 
 //*************UPDATE UNIVERSIDADE *********************//   
