@@ -13,7 +13,7 @@
 		<div ng-show="Noticia">
 			<div class="tituloPortal">{{post.titulo}}</div>
 			<div class="chamadaLeiaMaisPortal">{{post.chamada}}</div>
-			<div class="descricaoPortal" ng-model="tinymceModel">{{post.descricao}}</div>
+			<div class="descricaoPortal" ng-model="tinymceModel" ui-tinymce="tinymceOptions">{{post.descricao}}</div>
 			<hr>
 			<a ng-click="voltar()"><button type="button" class="btn btn-danger">Voltar</button></a>
 		</div>

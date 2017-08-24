@@ -60,6 +60,7 @@ app.controller("veiculoCtrl",function($scope, restful, $location , $timeout , $s
      var dataformat = element['createAt'] = $filter('date')(dataformat,'MMMM');
      element = dataformat;
        }, this);
+    
       $scope.associadosAguardando = data;    
       $scope.total =  $scope.associadosAguardando.length;    
     });

@@ -1,4 +1,9 @@
 app.controller("associadoCtrl",function($scope, restful, $location , $timeout , $sessionStorage){
+  //função que oculta e mostra as tabs
+  $scope.go = function (dados){
+    $scope.tabs = dados;
+};
+
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
