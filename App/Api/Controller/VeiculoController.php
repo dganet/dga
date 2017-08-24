@@ -141,7 +141,7 @@ class VeiculoController{
 		foreach ($collection as $i => $veiculos) {
 			foreach ($veiculos->destino as $key => $universidade){
 				if ($universidade['id'] == $idUniversidade){
-					array_push($atende , $veiculos->id);
+					array_push($atende , ["id" => $veiculos->id, "nome" => $veiculos->nome]);
 				}
 			}
 		}
