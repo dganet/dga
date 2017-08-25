@@ -200,15 +200,11 @@ class AssociadoController {
 	 */
 	public function ListaAguardandoVagaID($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->makeSelect("associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt")
-		->inner('veiculo', 'veiculo.id = associado.veiculo_id')
-			->where("associado.status='AGUARDANDOVAGA'")->and('associado.id='.$args['id'])->order('associado.createAt');
-		$collection = $associado->execute();
-		if($collection != null){
-			if($collection->length() > 0){
-				return $response->WithJson($collection->getAll());
-			}
-		}
+		$associado->makeSelect("associado.id as idAssociado, associado.nome as AssociadoNome, universidade.nome as Universidade")
+		->inner('universidade', "associado.fkuniversidade=universidade.id")->where("associado.status='AGUARDANDOVAGA'")
+		->and('associado.id='.$args['id'])->order('associado.createAt');
+		$collection = $associado->execute(true);
+		return $response->WithJson($collection);
 	}
 	/**
 	 * Retorna uma lista com os associados que estão com status AGUARDANDOVAGA
