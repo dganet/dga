@@ -16,7 +16,7 @@ $app->get('/associado/listaguardando', \Api\Controller\AssociadoController::clas
 //Lista associados com status AGUARDANDOVAGA e com ID {id}
 $app->get('/associado/listaguardando/{id}', \Api\Controller\AssociadoController::class . ':listaAguardandoVagaId');
 //Lista associados com status APROVACAO
-$app->get('/associado/listaprovacao', \Api\Controller\AssociadoController::class . ':listaAguardandoAprovacao');
+$app->get('/associado/listaaprovacao', \Api\Controller\AssociadoController::class . ':listaAguardandoAprovacao');
 //Lista Geral
 $app->get('/associado/listageral', \Api\Controller\AssociadoController::class . ':listaGeral');
 //Lista Associado por ID

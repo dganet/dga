@@ -73,6 +73,24 @@ trait Builder{
         $this->configuration['sql'] = $sql;
     }
     /**
+     * Gera o DELETE 
+     *
+     * @param String $options
+     * @return void
+     */
+    public function makeDelete($options){
+        $sql = "DELETE FROM ".$this->configuration['table']." WHERE ";
+        $this->loadTable();
+        foreach ($this as $key => $value) {
+            if($key != 'configuration'){
+                if(!empty($value)){
+                    $sql .= $key ."='". $value."'";
+                }
+            }
+        }
+        $this->configuration['sql'] = $sql;
+    }
+    /**
      * Cria uma parte do sql para fazer o select();
      * 
      * @return this

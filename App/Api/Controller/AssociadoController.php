@@ -145,7 +145,14 @@ class AssociadoController {
 			$associado = Associado::getInstance();
 			$associado->id = $args['id'];
 			$associado->status = 'INATIVO';
-			return $response->WithJson($associado->update());
+			/**
+			 * Remove a vaga do associado
+			 */
+			$vaga = \Api\Model\Entity\Vaga::getInstance();
+			$vaga->fkAssociado=$args['id'];
+			$vaga->delete();
+			return $response->WithJson($vaga->configuration['sql']);
+			//return $response->WithJson($associado->update());
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
@@ -181,13 +188,7 @@ class AssociadoController {
 		$associado->makeSelect("associado.id as idAssociado, associado.nome as AssociadoNome, universidade.nome as Universidade")
 		->inner('universidade', "associado.fkuniversidade=universidade.id")->where("associado.status='AGUARDANDOVAGA'");
 		$collection = $associado->execute(true);
-		// if($collection != null){
-		// 	if($collection->length() > 0){
-		// 		$associado->getRendaPerCapta();
-		// 	}
-		// }
 		return $response->WithJson($collection);
-		
 	}
 	/**
 	 * Lista Associado referente a um id e que está com o status AGUGARDANDOVAGA 
@@ -259,14 +260,17 @@ class AssociadoController {
 	 * @return void
 	 */
 	public function listaAssociadoVeiculo($request, $response, $args){
-		$associado = Associado::getInstance();
-		$associado->makeSelect('nome')->where("veiculo_id=".$args['id'])->and("status='ATIVO");
-		$collection = $associado->execute();
-		if($collection != null){
-			if($collection->length() > 0){
-				return $response->WithJson($collection->getAll());
-			}
-		}
+		$vaga = \Api\Model\Entity\Vaga::getInstance();
+		$vaga->makeSelect('associado.nome')->inner('associado', "associado.id=vaga.fkAssociado")
+			->inner('veiculo', 'veiculo.id=vaga.fkVeiculo')
+			->where("vaga.fkveiculo=".$args['id'])->and("associado.status='ATIVO'");
+		$collection = $vaga->execute(true);
+		// if($collection != null){
+		// 	if($collection->length() > 0){
+		// 		return $response->WithJson($collection->getAll());
+		// 	}
+		// }
+		return $response->WithJson($collection);
 	}
 	/**
 	 * Ativa o cadastro de um associado somente se o veiculo ainda possuir vagas
