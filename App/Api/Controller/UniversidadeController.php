@@ -126,5 +126,12 @@ class UniversidadeController {
 	public function getVeiculos($request, $response, $args){
 		return $response->WithJson(VeiculoController::getVeiculosByUniversidade($args['id']));
 	}
+
+	public function getAssociadosAguardando($id){
+		$associados = \Api\Model\Entity\Associado::getInstance();
+		$associado->makeSelect()->where('fkUniversidade='.$id)->and("status='AGUARDANDOVAGA'");
+		$collection = $associado->execute();
+		return $collection;
+	}
 	
 }

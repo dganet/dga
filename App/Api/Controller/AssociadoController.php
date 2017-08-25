@@ -37,7 +37,11 @@ class AssociadoController {
 			$data = json_decode($request->getBody(),true);
 			$associado = Associado::getInstance();
 			$associado->rendaSerial = $data['renda'];
+			$associado->fkCursoFaculdade = $data['curso'];
+			$veiculo = $data['veiculo'];
+			unset($data['curso']);  // Remove informação de curso
 			unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
+			unset($data['veiculo']);  // remove a informação de veiculo
 			$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
 			$associado->getRendaPerCapta();
 			/**
@@ -53,8 +57,21 @@ class AssociadoController {
 					$associado->documento[$key] = $r['lastId'];
 				}
 			}
-			//Serializa os campos necessários e salva no banco de dados
-			return $response->WithJson($associado->save());
+			/**
+			 * ATIVA O ASSOCIADO E O COLOCA EM UMA VAGA
+			 */
+			if ($veiculo != null){
+				$associado->status = "ATIVO";
+				$idAssoc = $associado->save(true);
+				$vaga = \Api\Model\Entity\Vaga::getInstance();
+				$vaga->fkAssociado = $idAssoc['lastId'];
+				$vaga->fkUniversidade = $associado->fkUniversidade;
+				$vaga->fkVeiculo = $veiculo;
+				return $response->WithJson($vaga->save());
+			}else{
+				$associado->status = "AGUARDANDOVAGA";
+				return $response->WithJson($associado->save());
+			}
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
@@ -128,7 +145,14 @@ class AssociadoController {
 			$associado = Associado::getInstance();
 			$associado->id = $args['id'];
 			$associado->status = 'INATIVO';
-			return $response->WithJson($associado->update());
+			/**
+			 * Remove a vaga do associado
+			 */
+			$vaga = \Api\Model\Entity\Vaga::getInstance();
+			$vaga->fkAssociado=$args['id'];
+			$vaga->delete();
+			return $response->WithJson($vaga->configuration['sql']);
+			//return $response->WithJson($associado->update());
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
@@ -161,17 +185,10 @@ class AssociadoController {
 	 */
 	public function ListaAguardandoVaga($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->makeSelect("associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt")
-		->inner('veiculo', 'veiculo.id = associado.veiculo_id')
-			->where("associado.status='AGUARDANDOVAGA'")->order('associado.createAt');
-		$collection = $associado->execute();
-		if($collection != null){
-			if($collection->length() > 0){
-				$associado->getRendaPerCapta();
-			}
-		}
-		return $response->WithJson($collection->getAll());
-		
+		$associado->makeSelect("associado.id as idAssociado, associado.nome as AssociadoNome, universidade.nome as Universidade")
+		->inner('universidade', "associado.fkuniversidade=universidade.id")->where("associado.status='AGUARDANDOVAGA'");
+		$collection = $associado->execute(true);
+		return $response->WithJson($collection);
 	}
 	/**
 	 * Lista Associado referente a um id e que está com o status AGUGARDANDOVAGA 
@@ -183,15 +200,11 @@ class AssociadoController {
 	 */
 	public function ListaAguardandoVagaID($request, $response, $args){
 		$associado = Associado::getInstance();
-		$associado->makeSelect("associado.id, associado.nome, associado.salario, associado.rendaSerial, associado.createAt")
-		->inner('veiculo', 'veiculo.id = associado.veiculo_id')
-			->where("associado.status='AGUARDANDOVAGA'")->and('associado.id='.$args['id'])->order('associado.createAt');
-		$collection = $associado->execute();
-		if($collection != null){
-			if($collection->length() > 0){
-				return $response->WithJson($collection->getAll());
-			}
-		}
+		$associado->makeSelect("associado.id as idAssociado, associado.nome as AssociadoNome, universidade.nome as Universidade")
+		->inner('universidade', "associado.fkuniversidade=universidade.id")->where("associado.status='AGUARDANDOVAGA'")
+		->and('associado.id='.$args['id'])->order('associado.createAt');
+		$collection = $associado->execute(true);
+		return $response->WithJson($collection);
 	}
 	/**
 	 * Retorna uma lista com os associados que estão com status AGUARDANDOVAGA
@@ -243,14 +256,17 @@ class AssociadoController {
 	 * @return void
 	 */
 	public function listaAssociadoVeiculo($request, $response, $args){
-		$associado = Associado::getInstance();
-		$associado->makeSelect('nome')->where("veiculo_id=".$args['id'])->and("status='ATIVO");
-		$collection = $associado->execute();
-		if($collection != null){
-			if($collection->length() > 0){
-				return $response->WithJson($collection->getAll());
-			}
-		}
+		$vaga = \Api\Model\Entity\Vaga::getInstance();
+		$vaga->makeSelect('associado.nome')->inner('associado', "associado.id=vaga.fkAssociado")
+			->inner('veiculo', 'veiculo.id=vaga.fkVeiculo')
+			->where("vaga.fkveiculo=".$args['id'])->and("associado.status='ATIVO'");
+		$collection = $vaga->execute(true);
+		// if($collection != null){
+		// 	if($collection->length() > 0){
+		// 		return $response->WithJson($collection->getAll());
+		// 	}
+		// }
+		return $response->WithJson($collection);
 	}
 	/**
 	 * Ativa o cadastro de um associado somente se o veiculo ainda possuir vagas

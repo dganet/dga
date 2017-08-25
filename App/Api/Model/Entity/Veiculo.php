@@ -17,12 +17,21 @@ class Veiculo extends \GORM\Model{
 	public function beforeSave(){
 		$universidade = \Api\Model\Entity\Universidade::getInstance();
 		foreach ($this->destino as $key => $value) {
-			$stack[$key] = $universidade->makeSelect("nome")->where("id=".$value['id'])->execute(true)[0];
+			$stack[$key] = $universidade->makeSelect("id,nome")->where("id=".$value['id'])->execute(true)[0];
 		}
 		$this->vagasDisponiveis = $this->numVagas;
 		$this->destino = serialize($stack);
 		$this->status = "ATIVO";
 		$this->createAt = date('Y-m-d H:i:s');
+	}
+	public function beforeUpdate(){
+		$universidade = \Api\Model\Entity\Universidade::getInstance();
+		foreach ($this->destino as $key => $value) {
+			$stack[$key] = $universidade->makeSelect("id,nome")->where("id=".$value['id'])->execute(true)[0];
+		}
+		// $this->vagasDisponiveis = $this->numVagas;
+		$this->destino = serialize($stack);
+		$this->updateAt = date('Y-m-d H:i:s');
 	}
 	public function afterCollection(){
 		$this->destino = unserialize($this->destino);

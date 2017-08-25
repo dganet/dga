@@ -272,6 +272,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Veiculo
     var _veiculoPut = function (values){
+        delete values['vagasDisponiveis'];
           return  $http.put($veiculoPut + token, values);
     };
     //Update de Veiculo
