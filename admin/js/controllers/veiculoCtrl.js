@@ -1,4 +1,4 @@
-app.controller("veiculoCtrl",function($scope, restful, $location , $timeout , $sessionStorage){
+app.controller("veiculoCtrl",function($scope, restful, $location , $timeout ){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .

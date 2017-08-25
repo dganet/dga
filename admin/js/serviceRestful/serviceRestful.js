@@ -99,6 +99,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Associado
     var _associadoSave = function (values){
+      console.log($associadoSave + token);
         return  $http.post($associadoSave + token, values);
     };
     //Lista todas associados
@@ -205,7 +206,6 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Lista todas Universidade Veiculo
     var _universidadeListVeiculo = function (id){
-      console.log(id);
         return  $http.get($universidadeListVeiculo + id);
     };
     //Lista Universidade referente ao ID

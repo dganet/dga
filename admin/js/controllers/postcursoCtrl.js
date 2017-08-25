@@ -1,4 +1,4 @@
-app.controller("postcursoCtrl",function($scope, restful,$location , $timeout , $sessionStorage){
+app.controller("postcursoCtrl",function($scope, restful,$location , $timeout ){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .

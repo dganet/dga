@@ -1,4 +1,4 @@
-app.controller("usuarioCtrl",function($scope,restful,$location , $timeout , $sessionStorage){
+app.controller("usuarioCtrl",function($scope,restful,$location , $timeout ){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .

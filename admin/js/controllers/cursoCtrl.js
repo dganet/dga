@@ -1,4 +1,4 @@
-app.controller("cursoCtrl",function($scope,restful,$location , $timeout , $sessionStorage){
+app.controller("cursoCtrl",function($scope,restful,$location , $timeout ){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .

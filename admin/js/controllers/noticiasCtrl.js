@@ -1,5 +1,8 @@
-app.controller("noticiasCtrl",function($scope, restful ,$timeout,$location , $sessionStorage){
-//teste 
+app.controller("noticiasCtrl",function($scope, restful ,$timeout,$location ){
+
+ var token = sessionStorage.getItem('usuario.token');
+ console.log(token);
+
   $scope.tinymceModel = 'Initial content';
 
   $scope.getContent = function() {

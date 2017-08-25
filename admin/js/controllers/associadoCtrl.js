@@ -1,4 +1,4 @@
-app.controller("associadoCtrl",function($scope, restful, $location , $timeout , $sessionStorage){
+app.controller("associadoCtrl",function($scope, restful, $location , $timeout ){
 
   //scope.master vazio;
   $scope.master = {};
@@ -198,7 +198,6 @@ $scope.removeDocumento = function() {
   
     //Lista todas Universidade
   restful.universidadeList().success(function(data){
-    console.log(data);
     $scope.universidades = data;     
   }); 
 
@@ -232,7 +231,6 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormAssociado) {
-    console.log(values);
     var associado = values;
     var associado = angular.merge(associado,renda,documento);
 

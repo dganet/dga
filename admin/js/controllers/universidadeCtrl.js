@@ -1,4 +1,4 @@
-app.controller("universidadeCtrl",function($scope, restful, $location , $sessionStorage){
+app.controller("universidadeCtrl",function($scope, restful, $location ){
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
