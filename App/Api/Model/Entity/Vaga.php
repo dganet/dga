@@ -6,4 +6,12 @@ class Vaga extends \GORM\Model{
     public $fkVeiculo;
     public $fkUniversidade;
     public $fkAssociado;
+
+
+    public function beforeSave(){
+
+    }
+    public function beforeUpdate(){
+        
+    }
 }

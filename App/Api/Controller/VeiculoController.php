@@ -33,8 +33,8 @@ class VeiculoController{
 	public function atualizaCadastro($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
 			$veiculo = Veiculo::getInstance();
-			$data = json_decode($request->getBody,true);
-			$veiculo->find($args['id']);
+			$data = json_decode($request->getBody(),true);
+			$veiculo->find($data['id']);
 			if($veiculo->numVagas > $data['numVagas']){
 				return $response->WithJson(
 					[
@@ -43,9 +43,11 @@ class VeiculoController{
 					]
 				);
 			}else{
+				$vaga = $data['numVagas'] - $veiculo->numVagas;  
+				$disp = $veiculo->vagasDisponiveis;
 				$veiculo->load($data);
+				$veiculo->vagasDisponiveis += $vaga;
 				return $response->WithJson($veiculo->update());
-				return true;
 			}
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
@@ -128,14 +130,14 @@ class VeiculoController{
 	}
 	
 	/**
-	 * Retorna quais veiculos que atendem uma universidade ID
+	 * Retorna quais veiculos que atendem uma universidade ID e que possuem vagas disponiveis
 	 *
 	 * @param int $idUniversidade
 	 * @return Array
 	 */
 	public static function getVeiculosByUniversidade($idUniversidade){
 		$veiculo = Veiculo::getInstance();
-		$veiculo->makeSelect()->where("status='ATIVO'");
+		$veiculo->makeSelect()->where("status='ATIVO'")->and("vagasDisponiveis > 0");
 		$collection = $veiculo->execute();
 		$atende = [];
 		foreach ($collection as $i => $veiculos) {
