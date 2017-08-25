@@ -1,4 +1,7 @@
 app.controller("cursoCtrl",function($scope,restful,$location , $timeout ){
+    //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token'); 
+
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -34,7 +37,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormCurso) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.cursofaculdadeSave(values).success(function(){
+    restful.cursofaculdadeSave(values,token).success(function(){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     

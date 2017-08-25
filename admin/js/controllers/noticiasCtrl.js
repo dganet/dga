@@ -1,8 +1,9 @@
 app.controller("noticiasCtrl",function($scope, restful ,$timeout,$location ){
+ 
+  //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token');
 
- var token = sessionStorage.getItem('usuario.token');
- console.log(token);
-
+/*
   $scope.tinymceModel = 'Initial content';
 
   $scope.getContent = function() {
@@ -18,7 +19,7 @@ app.controller("noticiasCtrl",function($scope, restful ,$timeout,$location ){
     toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
   };
 
-
+*/
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -54,7 +55,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormNoticia) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.noticiaSave(values).success(function(){
+    restful.noticiaSave(values,token).success(function(){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     
