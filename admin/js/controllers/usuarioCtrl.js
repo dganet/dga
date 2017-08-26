@@ -1,4 +1,6 @@
 app.controller("usuarioCtrl",function($scope,restful,$location , $timeout ){
+      //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token'); 
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -34,7 +36,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormUsuario) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.usuarioSave(values).success(function(){
+    restful.usuarioSave(values,token).success(function(){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     
@@ -64,7 +66,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormUsuario) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.usuarioPut(values).success(function(){
+    restful.usuarioPut(values,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -88,7 +90,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.usuarioDel(values).success(function(){
+    restful.usuarioDel(values,token).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         

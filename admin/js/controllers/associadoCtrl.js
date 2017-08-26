@@ -1,4 +1,6 @@
 app.controller("associadoCtrl",function($scope, restful, $location , $timeout ){
+      //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token'); 
 
   //scope.master vazio;
   $scope.master = {};
@@ -234,7 +236,7 @@ $scope.dados = function (id){
     var associado = values;
     var associado = angular.merge(associado,renda,documento);
 
-    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.veiculo == undefined){
+    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.universidade == undefined){
 
       $scope.mensagemObrigatorio = true;
           $timeout(function () {
@@ -246,7 +248,7 @@ $scope.dados = function (id){
     }else{
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.associadoSave(values).success(function(){
+    restful.associadoSave(values,token).success(function(){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     
@@ -278,7 +280,7 @@ $scope.dados = function (id){
 	 var id = values.id;
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.associadoPut(id,values).success(function(){
+    restful.associadoPut(id,values,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -302,7 +304,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.associadoDel(values).success(function(){
+    restful.associadoDel(values,token).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         

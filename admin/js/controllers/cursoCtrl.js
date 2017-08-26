@@ -67,7 +67,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormCurso) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.cursofaculdadePut(values).success(function(){
+    restful.cursofaculdadePut(values,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -91,7 +91,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.cursofaculdadeDel(values).success(function(){
+    restful.cursofaculdadeDel(values,token).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         
