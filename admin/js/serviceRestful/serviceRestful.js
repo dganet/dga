@@ -56,7 +56,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $veiculoSave = '../App/veiculo/save/'; // Salva Veiculo
    $veiculoList = '../App/veiculo/list'; // Lista todas os Veiculos
    $veiculoListGeral = '../App/associado/listageral'; // Lista todas os Veiculos Geral 
-   $veiculoListAssociadoLinhaAguardando = '..//App/associado/listaguardando/'; // Lista Associados vinculado a Linha Aguardando
+   $veiculoListAssociadoLinhaAguardando = '../App/associado/listaguardando/'; // Lista Associados vinculado a Linha Aguardando
    $veiculoListAssociadoLinhaAtivo = '../App/associado/listveiculo/'; // Lista Associados vinculado a Linha Aguardando
    $veiculoListId = '../App/veiculo/list/';// Lista Veiculo referente ao ID
    $veiculoPut = '../App/veiculo/update/';// Uptades no Veiculo
