@@ -1,6 +1,4 @@
 app.service('restful', function ($http,$sessionStorage) {
- //Pega o id do usuario logado
- var token = sessionStorage.getItem('usuario.token');
 
 //REQUISICOES DO BACK-END CAMINHOS
 
@@ -86,7 +84,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 
    //Logando
-    var _usuarioLogin = function (values){
+    var _usuarioLogin = function (values){ 
         return  $http.post($usuarioLogin , values);
     };
    //Salva novo Usuario
@@ -99,6 +97,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Associado
     var _associadoSave = function (values){
+      console.log($associadoSave + token);
         return  $http.post($associadoSave + token, values);
     };
     //Lista todas associados
@@ -125,7 +124,9 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  MODULO NOTICIAS ** ###################|
 //|#######################################################|
    //Inseri nova Noticiais
-    var _noticiaSave = function (values){
+    var _noticiaSave = function (values,token){
+      console.log(token);
+    console.log($noticiaSave + "/" + token);
         return  $http.post($noticiaSave + token, values);
     };
     //Lista todas noticias
@@ -148,7 +149,8 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  MODULO POST CURSO ** ###################|
 //|#######################################################|
    //Inseri novo Curso
-    var _cursoSave = function (values){
+    var _cursoSave = function (values,token){
+      console.log($cursoSave + "/" + token );
         return  $http.post($cursoSave + token , values);
     };
     //Lista todas cursos
@@ -205,7 +207,6 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Lista todas Universidade Veiculo
     var _universidadeListVeiculo = function (id){
-      console.log(id);
         return  $http.get($universidadeListVeiculo + id);
     };
     //Lista Universidade referente ao ID

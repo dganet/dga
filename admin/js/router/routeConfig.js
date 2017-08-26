@@ -1,7 +1,5 @@
 app.config(function ($stateProvider, $urlRouterProvider) {
 
-
-
 	$stateProvider
 		.state('login', {
 			url: '/login',
@@ -13,8 +11,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			url: '/user',
 			templateUrl: 'painel/home.htm',
 			resolve: {
-				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.token') == null) {
+				function($sessionStorage, $location) {		
+					if (sessionStorage.getItem('usuario.token') == null) { 
 						$location.path('/login');
 					}
 				}
@@ -36,7 +34,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			controller:'associadoCtrl',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.token') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) { 
 						$location.path('/login');
 					}
 				}
@@ -158,7 +156,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 			templateUrl: 'modTicket/linkTicket.htm',
 			resolve: {
 				function($sessionStorage, $location) {
-					if (sessionStorage.getItem('usuario.token') == null) {
+					if (sessionStorage.getItem('usuario.token') == null) { 
 						$location.path('/login');
 					}
 				}
