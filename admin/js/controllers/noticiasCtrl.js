@@ -1,6 +1,5 @@
 app.controller("noticiasCtrl",function($scope, restful ,$timeout,$location ){
- 
-  //Pega o Token 
+   //Pega o Token 
   var token = sessionStorage.getItem('usuario.token');
 
 /*
@@ -86,7 +85,7 @@ $scope.dados = function (id){
   $scope.put = function(values, FormNoticia) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.noticiaPut(values).success(function(){
+    restful.noticiaPut(values,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -110,7 +109,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.noticiaDel(values).success(function(){
+    restful.noticiaDel(values,token).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         

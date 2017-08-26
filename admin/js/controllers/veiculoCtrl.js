@@ -1,4 +1,6 @@
 app.controller("veiculoCtrl",function($scope, restful, $location , $timeout ){
+      //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token'); 
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -132,7 +134,7 @@ $scope.dados = function (id){
     values = angular.merge(values,destino);
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.veiculoSave(values).success(function(){
+    restful.veiculoSave(values,token).success(function(){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     
@@ -163,7 +165,7 @@ $scope.dados = function (id){
   $scope.put = function(values, FormVeiculo) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.veiculoPut(values).success(function(){
+    restful.veiculoPut(values,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -187,7 +189,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.veiculoDel(values).success(function(){
+    restful.veiculoDel(values,token).success(function(){
       // Fecha o Modal
       $('#closeModalDel').modal('hide');
         

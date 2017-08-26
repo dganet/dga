@@ -1,4 +1,6 @@
 app.controller("bannerCtrl",function($scope,restful,$location , $timeout ){
+      //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token'); 
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -31,7 +33,7 @@ $scope.dados = function (id){
     //incluir o tipo da imagem que é o Banner
     values['tipoImagem'] = 'banner';
     // Enviado os valores em objetos para api/user do php/slim
-    restful.bannerSave(values).success(function(){
+    restful.bannerSave(values,token).success(function(){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     
@@ -61,7 +63,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormBanner) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.bannerPut(values).success(function(){
+    restful.bannerPut(values,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -85,7 +87,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.bannerDel(values).success(function(){
+    restful.bannerDel(values,token).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         

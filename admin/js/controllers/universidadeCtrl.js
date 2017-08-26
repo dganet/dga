@@ -1,4 +1,6 @@
 app.controller("universidadeCtrl",function($scope, restful, $location ){
+      //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token'); 
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -35,7 +37,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormUniversidade) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.universidadeSave(values).success(function(){
+    restful.universidadeSave(values,token).success(function(){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     
@@ -66,7 +68,7 @@ $scope.dados = function (id){
   $scope.put = function(values, FormUniversidade) {
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.universidadePut(values).success(function(){
+    restful.universidadePut(values,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -89,7 +91,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.universidadeDel(values).success(function(){
+    restful.universidadeDel(values,token).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         

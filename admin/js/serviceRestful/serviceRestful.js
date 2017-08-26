@@ -96,8 +96,8 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  MODULO ASSOCIADO ** ###################|
 //|#######################################################|
    //Inseri nova Associado
-    var _associadoSave = function (values){
-      console.log($associadoSave + token);
+    var _associadoSave = function (values,token){
+      console.log($associadoSave + token, values);
         return  $http.post($associadoSave + token, values);
     };
     //Lista todas associados
@@ -113,11 +113,11 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($associadoListId + id);
     };
     //Update de associado
-    var _associadoPut = function (values){
+    var _associadoPut = function (values,token){
           return  $http.put($associadoPut + token , values);
     };
     //Update de associado
-    var _associadoDel = function (values){
+    var _associadoDel = function (values,token){
           return  $http.delete($associadoDel + token + "/" + values);
     };
 //|#######################################################|
@@ -125,8 +125,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Noticiais
     var _noticiaSave = function (values,token){
-      console.log(token);
-    console.log($noticiaSave + "/" + token);
+      console.log($noticiaSave + token);
         return  $http.post($noticiaSave + token, values);
     };
     //Lista todas noticias
@@ -138,11 +137,11 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($noticiaListId + id);
     };
     //Update de noticia
-    var _noticiaPut = function (values){
+    var _noticiaPut = function (values,token){
           return  $http.put($noticiaPut + token, values);
     };
     //Update de noticia
-    var _noticiaDel = function (values){
+    var _noticiaDel = function (values,token){
           return  $http.delete($noticiaDel + token + "/" + values);
     };
 //|#######################################################|
@@ -150,7 +149,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri novo Curso
     var _cursoSave = function (values,token){
-      console.log($cursoSave + "/" + token );
+      console.log($cursoSave + "/" + token ); 
         return  $http.post($cursoSave + token , values);
     };
     //Lista todas cursos
@@ -162,18 +161,18 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($cursoListId + id);
     };
     //Update de curso
-    var _cursoPut = function (values){
+    var _cursoPut = function (values,token){
           return  $http.put($cursoPut + token, values);
     };
     //Update de curso
-    var _cursoDel = function (values){
+    var _cursoDel = function (values,token){
           return  $http.delete($cursoDel + id + "/" + values);
     };
 //|#######################################################|
 //|############# **  MODULO OPORTUNIDADES ** ###################|
 //|#######################################################|
    //Inseri nova Noticiais
-    var _oportunidadeSave = function (values){
+    var _oportunidadeSave = function (values,token){
 
         return  $http.post($oportunidadeSave + token , values);
     };
@@ -186,11 +185,11 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($oportunidadeListId + id);
     };
     //Update de oportunidade
-    var _oportunidadePut = function (values){
+    var _oportunidadePut = function (values,token ){
           return  $http.put($oportunidadePut + token, values);
     };
     //Update de oportunidade
-    var _oportunidadeDel = function (values){
+    var _oportunidadeDel = function (values,token){
           return  $http.delete($oportunidadeDel + token + "/" + values);
     };
 
@@ -198,7 +197,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  MODULO UNIVERSIDADE ** ###################|
 //|#######################################################|
    //Inseri nova Universiade
-    var _universidadeSave = function (values){
+    var _universidadeSave = function (values,token){
          return  $http.post($universidadeSave + token , values);
     };
     //Lista todas Universidades
@@ -214,18 +213,18 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($universidadeListId + id);
     };
     //Update de Universidade
-    var _universidadePut = function (values){
+    var _universidadePut = function (values,token){
           return  $http.put($universidadePut + token, values);
     };
     //Delete de Universidade
-    var _universidadeDel = function (values){
+    var _universidadeDel = function (values,token){
           return  $http.delete($universidadeDel + token + "/" + values);
     };
 //|#######################################################|
 //|############# **  MODULO CURSO FACULDADE ** ###################|
 //|#######################################################|
    //Inseri nova Curso
-    var _cursofaculdadeSave = function (values){
+    var _cursofaculdadeSave = function (values,token){
         return  $http.post($cursofaculdadeSave + token , values);
     };
     //Lista todas Curso
@@ -237,18 +236,18 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($cursofaculdadeListId + id);
     };
     //Update de Curso
-    var _cursofaculdadePut = function (values){
+    var _cursofaculdadePut = function (values,token){
           return  $http.put($cursofaculdadePut + token, values);
     };
     //Update de Curso
-    var _cursofaculdadeDel = function (values){
+    var _cursofaculdadeDel = function (values,token){
           return  $http.delete($cursofaculdadeDel + token + "/" +  values);
     };
 //|#######################################################|
 //|############# **  MODULO VEICULO ** ###################|
 //|#######################################################|
    //Inseri nova Veiculo
-    var _veiculoSave = function (values){
+    var _veiculoSave = function (values,token){
            return  $http.post($veiculoSave + token, values);
     };
     //Lista todas Veiculo
@@ -272,12 +271,12 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.get($veiculoListId + id);
     };
     //Update de Veiculo
-    var _veiculoPut = function (values){
+    var _veiculoPut = function (values,token){
         delete values['vagasDisponiveis'];
           return  $http.put($veiculoPut + token, values);
     };
     //Update de Veiculo
-    var _veiculoDel = function (values){
+    var _veiculoDel = function (values,token){
       
           return  $http.delete($veiculoDel + token + "/" + values);
     };
@@ -285,7 +284,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  MODULO BANNER ** ###################|
 //|#######################################################|
    //Inseri novo Banner
-    var _bannerSave = function (values){
+    var _bannerSave = function (values,token){
         return  $http.post($bannerSave + token , values);
     };
     //Lista todas Banner
@@ -297,12 +296,12 @@ app.service('restful', function ($http,$sessionStorage) {
         return  $http.get($bannerListTipo + values);
     };
     //Update de Banner
-    var _bannerPut = function (values){
+    var _bannerPut = function (values,token){
       console.log(values);
           return  $http.put($bannerPut + token, values);
     };
     //Update de banner
-    var _bannerDel = function (values){
+    var _bannerDel = function (values,token){
           return  $http.delete($bannerDel + token + "/" + values);
     };
 
@@ -310,7 +309,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  MODULO USUARIOS ** ###################|
 //|#######################################################|
    //Inseri novo usuario
-    var _usuarioSave = function (values){
+    var _usuarioSave = function (values,token){
         return  $http.post($usuarioSave + token , values);
     };
     //Lista todas usuario
@@ -322,12 +321,11 @@ app.service('restful', function ($http,$sessionStorage) {
         return  $http.get($usuarioListId + values);
     };
     //Update de usuario
-    var _usuarioPut = function (values){
+    var _usuarioPut = function (values,token){
           return  $http.put($usuarioPut + token, values);
     };
     //Delete de usuario
-    var _usuarioDel = function (values){
-console.log('passo 3');
+    var _usuarioDel = function (values,token){
           return  $http.delete($usuarioDel + "/" + token);
     };
 
@@ -336,7 +334,7 @@ console.log('passo 3');
 //|#######################################################|
 
    //Update Picture
-    var _updatePicture = function (values){
+    var _updatePicture = function (values,token){
         return  $http.put($updatePicture + token + "/" + values);
     };
 
