@@ -3,7 +3,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 //Salva um novo curso
-$app->get('/curso/save/{token}', \Api\Controller\CursoController::class . ':cadastro');
+$app->post('/curso/save/{token}', \Api\Controller\CursoController::class . ':cadastrar');
 //Lista todos os curso
 $app->get('/curso/list', \Api\Controller\CursoController::class . ':listaTudo');
 //Lista curso por Id

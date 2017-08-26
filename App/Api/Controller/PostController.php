@@ -20,7 +20,6 @@ class PostController{
 			$noticia->load($data);
 			$user = Auth::_getTokenInfo($args['token']);
 			$user = $user['conteudo']; 
-			$noticia->usuario_id = (int) $user->id; 
 			$noticia->status = "ATIVO";
 			return $response->WithJson($noticia->save());
 		}else{

@@ -79,7 +79,7 @@ class ImageController{
     public function checkBanner(){
         $img = Imagem::getInstance();
         $collection = $img->makeSelect()->where("tipo='banner'")->and("status='ATIVO'")->execute();
-        if ($collection->length() > 5){
+        if ($collection->length() >= 5){
             return false;
         }else{
             return true;
@@ -94,16 +94,18 @@ class ImageController{
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
-     * @return Json
+     * @return Jsonemon
      */
     public function cadastro($request, $response, $args){
         $data = json_decode($request->getBody(),true);
-        $this->upload($data['foto']);
-        $img = Imagem::getInstance();
-        $img->tipo = $data['tipoImagem'];
-        $img->link = $data['link'];
-        if($this->checkBanner()){
+        if($this->checkBanner()){ 
+            $this->upload($data['foto']);
+            $img = Imagem::getInstance();
+            $img->tipo = $data['tipoImagem'];
+            $img->link = $data['link'];
             return $response->WithJson($img->save());
+        }else{
+            $response->WithJson(['flag' => false, 'message' => "Limite de cadastro de Banner exedido!"]);
         }
     }
     /**

@@ -15,6 +15,10 @@
         <div class="alert alert-danger" ng-hide="mensagemDelete">
           <strong>Sucesso!</strong> Dados deletado com sucesso.
         </div>
+
+        <div class="alert alert-danger" ng-hide="mensagemLimite">
+          <strong>Atenção!</strong> Guilherme nao pode da pra mais de 5 pessoas;.
+        </div>
           
     </div>
     </div>
@@ -133,7 +137,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
       </div>
-        
+  
        <form name="FormBanner" ng-submit="put(banner)"> 
     
            <div class="modal-body">

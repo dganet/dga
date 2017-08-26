@@ -63,6 +63,7 @@ app.service('restful', function ($http,$sessionStorage) {
    //Classes Banner
    $bannerSave = '../App/imagem/save/'; // Salva Banner
    $bannerList = '../App/imagem/list'; // Lista todas os Banners
+   $bannerListId = '../App/imagem/listid/'; // Lista todas os Banner
    $bannerListTipo = '../App/imagem/listtipo/' // lista conforme o tipo desejado
    $bannerPut = '../App/imagem/update/';// Uptades no Banner
    $bannerDel = '../App/imagem/delete/';// Banner Deleta
@@ -291,6 +292,10 @@ app.service('restful', function ($http,$sessionStorage) {
     var _bannerList = function (values){
         return  $http.get($bannerList);
     };
+    //Lista todas Banner ID
+    var _bannerListId = function (values){
+        return  $http.get($bannerListId);
+    };
     //Lista todas Banner
     var _bannerListTipo = function (values){
         return  $http.get($bannerListTipo + values);
@@ -396,6 +401,7 @@ app.service('restful', function ($http,$sessionStorage) {
         //Return do Banner
         bannerSave : _bannerSave,
         bannerList : _bannerList,
+        bannerListId : _bannerListId,
         bannerListTipo : _bannerListTipo,
         bannerPut : _bannerPut,
         bannerDel : _bannerDel,

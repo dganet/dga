@@ -17,7 +17,7 @@ class CursoController {
 	public function cadastrar($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
 			$curso = Curso::getInstance();
-			$data = json_decode($resquest->getBody(),true);
+			$data = json_decode($request->getBody(),true);
 			$curso->load($data);
 			$curso->status = "ATIVO";
 			return $response->WithJson($curso->save());
@@ -69,7 +69,7 @@ class CursoController {
 	 * @param Mixed $args
 	 * @return Json
 	 */
-	public function atulizaCadastro($request, $response, $args){
+	public function atualizaCadastro($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
 			$data = json_decode($request->getBody(), true);
 			$curso = Curso::getInstance();

@@ -7,6 +7,7 @@ app.controller("bannerCtrl",function($scope,restful,$location , $timeout ){
   $scope.mensagemSucesso = true;
   $scope.mensagemAtualizado = true;
   $scope.mensagemDelete = true;
+  $scope.mensagemLimite = true; 
         
   //Lista todos os Banners
 	restful.bannerList().success(function(data){
@@ -14,6 +15,7 @@ app.controller("bannerCtrl",function($scope,restful,$location , $timeout ){
 	}); 
 // Show modaais de detalhes, alterar e deletar.
 $scope.dados = function (id){
+  console.log(id);
     //Resentando 
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
@@ -21,8 +23,9 @@ $scope.dados = function (id){
     };
     // Ativando a função
     $scope.reset();
-        //Pega as info da universidade selecionada
-		restful.cursofaculdadeListId(id).success(function(data){
+       //Pega as info da universidade selecionada ja sei mano ...
+		restful.bannerListId(id).success(function(data){
+      console.log(data);
 		$scope.banner = data[0];	
         });
 };
@@ -33,10 +36,18 @@ $scope.dados = function (id){
     //incluir o tipo da imagem que é o Banner
     values['tipoImagem'] = 'banner';
     // Enviado os valores em objetos para api/user do php/slim
-    restful.bannerSave(values,token).success(function(){
+    restful.bannerSave(values,token).success(function(response){
+
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
-    
+    if ( response.flag == false){
+      // Funcão de exibir a mensagem de sucesso em 5 segundos.
+      $scope.mensagemLimite = false;
+      $timeout(function () {
+               $scope.mensagemLimite = true; 
+           },10000);
+  
+    };//go
     //Lista todas Cursos
     restful.bannerList().success(function(data){
 		$scope.banners = data;       
@@ -62,6 +73,7 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormBanner) {
+    console.log(values); //testa plis tira dessa porra da tela de trabalho 
     // Enviado os valores em objetos para api/user do php/slim
     restful.bannerPut(values,token).success(function(){
      // Fecha o Modal
