@@ -330,7 +330,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Delete de usuario
     var _usuarioDel = function (id,token){
-          return  $http.delete($usuarioDel + token "/" + id);
+          return  $http.delete($usuarioDel + token + "/" + id);
     };
 
 //|#######################################################|
