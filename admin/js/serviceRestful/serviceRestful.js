@@ -125,7 +125,6 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Noticiais
     var _noticiaSave = function (values,token){
-      console.log($noticiaSave + token);
         return  $http.post($noticiaSave + token, values);
     };
     //Lista todas noticias
@@ -292,7 +291,6 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Lista todas Banner ID
     var _bannerListId = function (id){
-      console.log(id);
         return  $http.get($bannerListId + id);
     };
     //Lista todas Banner
@@ -325,7 +323,6 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de usuario
     var _usuarioPut = function (values,token){
-      console.log(values);
           return  $http.put($usuarioPut + token, values);
     };
     //Delete de usuario

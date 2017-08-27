@@ -144,7 +144,7 @@
                         <div class="form-group">
                           <label>CPF</label>
 
-                          <input type="text" class="form-control" class="cpf" id="cpf" ng-model="associado.cpf">
+                          <input type="text" class="form-control" ui-br-cpf-mask ng-model="associado.cpf">
                         </div>
                       </div>
 
@@ -632,7 +632,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label>CPF</label>
-                          <input type="text" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" ng-model="associado.cpf" placeholder="formato xxx.xxx.xxx-xx">
+                          <input type="text" class="form-control" ui-br-cpf-mask  ng-model="associado.cpf">
                         </div>
                       </div>
 
