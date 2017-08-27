@@ -236,7 +236,7 @@ $scope.dados = function (id){
     var associado = values;
     var associado = angular.merge(associado,renda,documento);
 
-    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.universidade == undefined){
+    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.fkUniversidade == undefined){
 
       $scope.mensagemObrigatorio = true;
           $timeout(function () {
@@ -254,7 +254,7 @@ $scope.dados = function (id){
     
     //Lista todas Associado
     restful.associadoList().success(function(data){
-		$scope.cursos = data;       
+		$scope.associado = data;       
 	});
         
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -273,20 +273,32 @@ $scope.dados = function (id){
 };
   };
 
-//*************UPDATE UNIVERSIDADE *********************//   
+//*************UPDATE ASSOCIADO *********************//   
 
 //Passa os valores do form em Objeto no "values"
-  $scope.put = function(values, Form) {
-	 var id = values.id;
+  $scope.put = function(values, FormAssociado) {
+
+    var associado = values;
+    var associado = angular.merge(associado,renda,documento);
+    if (values.nome == undefined || values.cpf == undefined || values.salario == undefined || values.fkUniversidade == undefined){
+
+      $scope.mensagemObrigatorio = true;
+          $timeout(function () {
+               $scope.mensagemObrigatorio = false;
+           },10000);
+  
+
+      
+    }else{
 
     // Enviado os valores em objetos para api/user do php/slim
-    restful.associadoPut(id,values,token).success(function(){
+    restful.associadoPut(values,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
         //Lista todas Cursos
         restful.associadoList().success(function(data){
-            $scope.cursos = data;       
+            $scope.associados = data;       
         });
          
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -296,7 +308,7 @@ $scope.dados = function (id){
            },10000);
 
     });
-
+};
 };
 
 //*************DELETE UNIVERSIDADE *********************// 
@@ -304,13 +316,13 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.associadoDel(values,token).success(function(){
+    restful.associadoDel(values,token).success(function(response){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         
      //Lista todas Associado
         restful.associadoList().success(function(data){
-            $scope.cursos = data;       
+            $scope.associados = data;       
         });
         
       // Funcão de exibir a mensagem de sucesso em 5 segundos.

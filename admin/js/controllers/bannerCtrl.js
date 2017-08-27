@@ -13,9 +13,15 @@ app.controller("bannerCtrl",function($scope,restful,$location , $timeout ){
 	restful.bannerList().success(function(data){
 		$scope.banners = data;       
 	}); 
+
+//Novo registro. zera todas informaçoes do objeto
+    $scope.novo = function(){
+      $scope.banner = {};  
+    };
+    
 // Show modaais de detalhes, alterar e deletar.
 $scope.dados = function (id){
-  console.log(id);
+  var id = id;
     //Resentando 
     $scope.reset = function() {
     // Copiando os valores vazio do scope.master 
@@ -25,7 +31,6 @@ $scope.dados = function (id){
     $scope.reset();
        //Pega as info da universidade selecionada ja sei mano ...
 		restful.bannerListId(id).success(function(data){
-      console.log(data);
 		$scope.banner = data[0];	
         });
 };
@@ -39,7 +44,7 @@ $scope.dados = function (id){
     restful.bannerSave(values,token).success(function(response){
 
       // Fecha o Modal
-      $('#closeModalPost').modal('hide');
+    $('#closeModalPost').modal('hide');
     if ( response.flag == false){
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagemLimite = false;

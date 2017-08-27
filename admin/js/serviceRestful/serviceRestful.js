@@ -98,7 +98,6 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri nova Associado
     var _associadoSave = function (values,token){
-      console.log($associadoSave + token, values);
         return  $http.post($associadoSave + token, values);
     };
     //Lista todas associados
@@ -293,8 +292,9 @@ app.service('restful', function ($http,$sessionStorage) {
         return  $http.get($bannerList);
     };
     //Lista todas Banner ID
-    var _bannerListId = function (values){
-        return  $http.get($bannerListId);
+    var _bannerListId = function (id){
+      console.log(id);
+        return  $http.get($bannerListId + id);
     };
     //Lista todas Banner
     var _bannerListTipo = function (values){
@@ -302,7 +302,6 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de Banner
     var _bannerPut = function (values,token){
-      console.log(values);
           return  $http.put($bannerPut + token, values);
     };
     //Update de banner
