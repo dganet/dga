@@ -149,7 +149,6 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri novo Curso
     var _cursoSave = function (values,token){
-      console.log($cursoSave + "/" + token ); 
         return  $http.post($cursoSave + token , values);
     };
     //Lista todas cursos
@@ -165,8 +164,8 @@ app.service('restful', function ($http,$sessionStorage) {
           return  $http.put($cursoPut + token, values);
     };
     //Update de curso
-    var _cursoDel = function (values,token){
-          return  $http.delete($cursoDel + id + "/" + values);
+    var _cursoDel = function (id,token){
+          return  $http.delete($cursoDel + token + "/" + id);
     };
 //|#######################################################|
 //|############# **  MODULO OPORTUNIDADES ** ###################|
@@ -326,11 +325,12 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Update de usuario
     var _usuarioPut = function (values,token){
+      console.log(values);
           return  $http.put($usuarioPut + token, values);
     };
     //Delete de usuario
-    var _usuarioDel = function (values,token){
-          return  $http.delete($usuarioDel + "/" + token);
+    var _usuarioDel = function (id,token){
+          return  $http.delete($usuarioDel + token "/" + id);
     };
 
 //|#######################################################|

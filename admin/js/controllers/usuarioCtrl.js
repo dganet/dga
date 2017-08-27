@@ -88,9 +88,9 @@ $scope.dados = function (id){
 //************* DELETE *********************// 
 
 //Passa os valores do form em Objeto no "values"
-  $scope.del = function(values) {
+  $scope.del = function(id) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.usuarioDel(values,token).success(function(){
+    restful.usuarioDel(id,token).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
         
