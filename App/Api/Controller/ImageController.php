@@ -122,6 +122,7 @@ class ImageController{
         $img = Imagem::getInstance();
         isset($data['tipoImagem']) ? $img->tipo = $data['tipoImagem'] : null;
         $img->link = $data['link'];
+        $img->id = $data['id'];
         return $response->WithJson($img->update());
     }
     /**
