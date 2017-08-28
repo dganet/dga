@@ -28,6 +28,7 @@ app.controller("veiculoCtrl",function($scope, restful, $location , $timeout ){
   $scope.destino.push({id:''});
   };
 
+  //Remove o Destino 
   $scope.removeDestino = function() {
      var lastItem = $scope.destino.length-1;
      $scope.destino.splice(lastItem);
@@ -42,7 +43,7 @@ app.controller("veiculoCtrl",function($scope, restful, $location , $timeout ){
 
   //Lista todas veiculos
 	restful.veiculoList().success(function(data){
-		$scope.veiculos = data;       
+        $scope.veiculos = data;       
 	});
 
   //Lista espera
@@ -95,8 +96,12 @@ $scope.dados = function (id){
         }, this);
     
          //Função Iputs array Universidade
+        if(data.destino == null){
+          var destinos = $scope.destino = [];
+        }else { 
           var destinos = $scope.destino =  data[0]['destino'];
-
+        };
+          
           var destino = {destino:destinos};
           $scope.addDestino = function(){
           //Lista todas faculdades

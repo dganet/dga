@@ -164,6 +164,7 @@ $scope.tipoDocumentos = [
 // Funcoes de adicionar inputs de renda e documentos
 var dados = $scope.renda = [];
 var renda = {renda:dados};
+
 var dadosDoc = $scope.documento = [];
 var documento = {documento:dadosDoc};
 
