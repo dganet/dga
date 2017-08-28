@@ -60,7 +60,7 @@ class AssociadoController {
 			/**
 			 * ATIVA O ASSOCIADO E O COLOCA EM UMA VAGA
 			 */
-			if ($veiculo != null){
+			if (isset($data['veiculo'])){
 				$associado->status = "ATIVO";
 				$idAssoc = $associado->save(true);
 				$vaga = \Api\Model\Entity\Vaga::getInstance();
