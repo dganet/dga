@@ -41,9 +41,6 @@ class AssociadoController {
 			$veiculo = $data['veiculo'];
 			unset($data['curso']);  // Remove informação de curso
 			unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
-			unset($data['veiculo']);  // remove a informação de veiculo
-			$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
-			$associado->getRendaPerCapta();
 			/**
 			 * Faz o upload da foto e a salva no banco de dados
 			 */
@@ -61,6 +58,9 @@ class AssociadoController {
 			 * ATIVA O ASSOCIADO E O COLOCA EM UMA VAGA
 			 */
 			if (isset($data['veiculo'])){
+				unset($data['veiculo']);  // remove a informação de veiculo
+				$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
+				$associado->getRendaPerCapta();
 				$associado->status = "ATIVO";
 				$idAssoc = $associado->save(true);
 				$vaga = \Api\Model\Entity\Vaga::getInstance();
@@ -69,6 +69,9 @@ class AssociadoController {
 				$vaga->fkVeiculo = $veiculo;
 				return $response->WithJson($vaga->save());
 			}else{
+				unset($data['veiculo']);  // remove a informação de veiculo
+				$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
+				$associado->getRendaPerCapta();
 				$associado->status = "AGUARDANDOVAGA";
 				return $response->WithJson($associado->save());
 			}
@@ -150,9 +153,9 @@ class AssociadoController {
 			 */
 			$vaga = \Api\Model\Entity\Vaga::getInstance();
 			$vaga->fkAssociado=$args['id'];
-			$vaga->delete();
-			return $response->WithJson($vaga->configuration['sql']);
-			//return $response->WithJson($associado->update());
+			if ($vaga->delete()['flag']){
+				return $response->WithJson($associado->update());
+			}
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
@@ -261,87 +264,7 @@ class AssociadoController {
 			->inner('veiculo', 'veiculo.id=vaga.fkVeiculo')
 			->where("vaga.fkveiculo=".$args['id'])->and("associado.status='ATIVO'");
 		$collection = $vaga->execute(true);
-		// if($collection != null){
-		// 	if($collection->length() > 0){
-		// 		return $response->WithJson($collection->getAll());
-		// 	}
-		// }
 		return $response->WithJson($collection);
 	}
-	/**
-	 * Ativa o cadastro de um associado somente se o veiculo ainda possuir vagas
-	 * 
-	 * @param [type] $request
- 	 * @param [type] $response
-	 * @param [type] $args
-	 * @return void
-	 */
-	// public function ativaCadastro($request, $response, $args){
-	// 	$associado = Associado::getInstance();
-	// 	$associado->makeSelect()->where("id=".$args['id']);
-	// 	$collection = $associado->execute();
-	// if($collection != null){
-	// 	if($collection->length() > 0){
-	// 		// 	$associado->
-	// 	}
-	// }
-	// 	//Veiculo
-	// 	$veiculo = \Api\Model\Entity\Veiculo::getInstance();
-	// 	$veiculo = $associado->veiculo_id;
-	// 	if($veiculo->getVagas() > 0){
-	// 		$associado->status = "ATIVO";
-	// 		return $response->WithJson($associado->update());
-	// 	}else{
-	// 		return $response->WithJson(
-	// 		[
-	// 			'falg' => false,
-	// 			'message' => 'Não há vagas disponiveis'
-	// 		]);
-	// 	}
-	// }
-/**
- * Lista todos associados em um determinado curso
- *
- * @param [type] $request
- * @param [type] $response
- * @param [type] $args
- * @return void
- */
-//   public function listAssociadoCurso($request, $response, $args){
-//     $associado = Associado::getInstance();
-
-// 	$collection = $associado->makeSelect()->where("curso=".$args['id'])->execute();
-//     return $response->WithJson($collection->getAll());
-//   }
-//   //Gerencia a imagem de perfil do associado
-//   public function picture($post){
-// 	$img = new ImageController();
-// 	$post['picture']['tipo'] = 'foto';
-// 	$r = $img->upload($post['picture']);
-// 	//Associado
-// 	$assoc = new Associado();
-// 	$array = $assoc->load((int)$post['idAssoc']);
-// 	$array = $array[0];
-// 	unset($array['senha']);
-// 	$associado = new Associado($array);
-// 	if ($associado->foto == null){
-// 		$imagem = new \Api\Model\Entity\Imagem();
-// 		$imagem->path = $r['path'];
-//         $imagem->nome = $r['name'];
-//         $imagem->tipo = 'foto';
-//         $imagem->createAt = date('Y-m-d H:i:s');
-//         $imagem->status = 'ATIVO';
-//         $id = $imagem->save(true);
-// 		$associado->foto = $id;
-// 	}else{
-// 		$image = new \Api\Model\Entity\Imagem($img->listaPorId($associado->foto));
-// 		$nameOld = $image->nome;
-// 		unlink($r['path'].$nameOld);
-// 		$image->nome = $r['name'];
-// 		$image->updateAt = date('Y-m-d H:i:s');
-// 		$image->update();
-// 	}
-// 	return $associado->update();
-// 	print_r($associado);
-//   }
+	
 }

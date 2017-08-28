@@ -122,7 +122,7 @@ class VeiculoController{
 				$veiculo->status = 'INATIVO';
 				return $response->WithJson($veiculo->update());
 			}else{
-				return $response->WithJson(['flag' => false, 'message' => 'Ainda Há vagabundos no onibus, remova-os antes de inativar o veiculo']);
+				return $response->WithJson(['flag' => false, 'message' => 'Ainda há associados no veicuo, não será possivel fazer a deleção']);
 			}
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);

@@ -3,8 +3,10 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 $app->get('/test',function(Request $request, Response $response){
-    
-    return $response->WithJson($veiculo->getvagas());
+    $teste = \Api\Model\Entity\Vaga::getInstance();
+    $teste->fkAssociado = 1;
+    $teste->makeDelete();
+    return $response->WithJson(ervar_dump($teste));
 });
 
 $app->get('/img',function(Request $request, Response $response){

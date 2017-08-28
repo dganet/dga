@@ -78,9 +78,9 @@ trait Builder{
      * @param String $options
      * @return void
      */
-    public function makeDelete($options){
-        $sql = "DELETE FROM ".$this->configuration['table']." WHERE ";
+    public function makeDelete(){
         $this->loadTable();
+        $sql = "DELETE FROM ".$this->configuration['table']." WHERE ";
         foreach ($this as $key => $value) {
             if($key != 'configuration'){
                 if(!empty($value)){
