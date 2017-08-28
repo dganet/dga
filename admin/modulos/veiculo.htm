@@ -40,8 +40,6 @@
         <div class="col col-md-">
           <div class="acaoTemplate">
               <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-post">Novo <i class="fa fa-file-o" aria-hidden="true"></i></button>
-
-              <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-disponiveis">Disponiveis <i class="fa fa-bus" aria-hidden="true"></i></button>
          </div>
        </div>
 
@@ -71,7 +69,7 @@
                
                <td class="centro">{{x.id}}</td>
                <td>{{x.nome}}</td>               
-               <td class="centro">{{x.destino}}</td>
+               <td class="centro">{{x.destino[0]['nome']}}</td>
                <td class="centro">{{x.periodo}}</td>
                <td class="centro"><!-- associado-->
                    <a class="btn btn-default" ng-click="associado(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-associados"><i class="fa fa-address-card-o" ></i></a>

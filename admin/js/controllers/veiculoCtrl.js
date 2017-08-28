@@ -45,11 +45,6 @@ app.controller("veiculoCtrl",function($scope, restful, $location , $timeout ){
 		$scope.veiculos = data;       
 	});
 
-    //Lista todas veiculos Disponiveis
-  restful.veiculoListGeral().success(function(data){
-    $scope.veiculoDisponiveis = data;       
-  }); 
-
   //Lista espera
   $scope.listaEspera = function(value){
     var idVeiculo = value;
