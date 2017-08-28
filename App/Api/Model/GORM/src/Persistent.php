@@ -129,32 +129,35 @@ trait Persistent
         }
     }
     public function delete(){
-        //$this->beforeDelete();
-        
-        // if ($this->configuration['mode'] == 'devel'){
-        //     try{
-                 $this->makeDelete();
-        //         if(!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
-        //             throw new Exception("Não foi posivel deletar as informações", 005);
-        //         }else{
-        //             $this->afterDelete();
-        //             return [
-        //                 'flag' => true,
-        //                 'message' => 'Delete efetuado com sucesso',
-        //                 'debug' => $this->configuration['sql']
-        //             ];
-        //         }
-        //     }catch(PDOException $e){
-        //         switch ($e->getCode()) {
-        //             case '42000':
-        //                 echo "Erro de sintaxe : ". $this->configuration['sql'];
-        //                 break;
-        //             default:
-        //                 echo $e->getMessage()."<br>". $this->configuration['sql'];
-        //                 break;
-        //         }
-        //     }
-        // }
+        $this->beforeDelete();
+        if ($this->configuration['mode'] == 'devel'){
+            try{
+            $this->makeDelete();
+                if(!$this::getConnection()->prepare($this->configuration['sql'])->execute()){
+                    throw new Exception("Não foi posivel deletar as informações", 005);
+                }else{
+                    $this->afterDelete();
+                    return [
+                        'flag' => true,
+                        'message' => 'Delete efetuado com sucesso',
+                        'debug' => $this->configuration['sql']
+                    ];
+                }
+            }catch(PDOException $e){
+                switch ($e->getCode()) {
+                    case '42000':
+                        echo "Erro de sintaxe : ". $this->configuration['sql'];
+                        break;
+                    default:
+                        echo $e->getMessage()."<br>". $this->configuration['sql'];
+                        break;
+                }
+            }
+        }
+    }
+    public function beforeDelete(){
+    }
+    public function afterDelete(){
     }
     /**
      * É executado antes de salvar uma informação no banco de dados e pode
