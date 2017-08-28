@@ -94,9 +94,11 @@ $scope.dados = function (id){
           element['numVagas'] = parseInt(element['numVagas']); 
        
         }, this);
-    
+        
+        var destinoArray = data[0]['destino'];
+
          //Função Iputs array Universidade
-        if(data.destino == null){
+        if(destinoArray == null){
           var destinos = $scope.destino = [];
         }else { 
           var destinos = $scope.destino =  data[0]['destino'];
