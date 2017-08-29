@@ -43,7 +43,7 @@ app.controller("veiculoCtrl",function($scope, restful, $location , $timeout ){
 
   //Lista todas veiculos
 	restful.veiculoList().success(function(data){
-        $scope.veiculos = data;       
+          $scope.veiculos = data;       
 	});
 
   //Lista espera
@@ -128,7 +128,6 @@ $scope.dados = function (id){
   $scope.put = function(values, FormVeiculo) {
     // Concatenar o Objeto destino no formulario.
     values = angular.merge(values,destino);
-    console.log(destino);
     // Enviado os valores em objetos para api/user do php/slim
     restful.veiculoPut(values,token).success(function(){
      // Fecha o Modal
