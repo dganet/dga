@@ -14,4 +14,5 @@ class Vaga extends \GORM\Model{
     public function beforeUpdate(){
         
     }
+    
 }

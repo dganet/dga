@@ -7,7 +7,8 @@
 namespace Api\Controller;
 use \Api\Model\Entity\Associado,
  \Api\Auth\Auth,
- \Api\Controller\ImageController;
+ \Api\Controller\ImageController,
+ DateTime;
 
 class AssociadoController {
 	/**
@@ -129,8 +130,58 @@ class AssociadoController {
 			$associado = Associado::getInstance();
 			$associado->rendaSerial = $data['renda'];
 			unset($data['renda']);	//Remove o valor de renda dentro do array vindodo Request
-			$associado->load($data);
-			return $response->WithJson($associado->update());
+			unset($data['curso']);  // Remove informação de curso
+			/**
+			 * Faz o upload da foto e a salva no banco de dados
+			 */
+			$img = new ImageController();
+			//Verifica se foi enviado algum documento
+			if($associado->documento != null ){
+				foreach ($associado->documento as $key => $value) {
+					$doc = $img->upload($value['anexoDocumento']);
+					if ($doc['flag']){
+						$doc['obj']->tipo = $value['tipoDocumento'];
+						$imagem = $doc['obj'];
+						$r = $imagem->save(true);
+						$associado->documento[$key] = $r['lastId'];
+					}
+				}
+			}
+			/**
+			 * Atualiza as informações do associado nas vagas
+			 */
+			if (isset($data['veiculo'])){
+				$veiculo = $data['veiculo'];
+				unset($data['veiculo']);  // remove a informação de veiculo
+				$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
+				$associado->getRendaPerCapta();
+				$associado->status = "ATIVO";
+				$vagacontroller = \Api\Controller\VagaController::getVagaByAssoc($associado->id);
+				$vaga = \Api\Model\Entity\Vaga::getInstance();
+				if ($vagacontroller == null || $vagacontroller == false ){
+					//Caso o associado não esteja cadastrado em nenhuma vaga
+					$vaga->fkAssociado = $associado->id;
+					$vaga->fkUniversidade = $associado->fkUniversidade;
+					$vaga->fkVeiculo = $veiculo;
+					$vaga->save();
+				}else{
+					//Caso associado esteja cadastrado em uma vaga ele apenas atualiza a mesma
+					$vaga->load( $vagacontroller[0]);
+					$response->WithJson($vaga->delete());
+					$vaga->fkAssociado = $associado->id;
+					$vaga->fkUniversidade = $associado->fkUniversidade;
+					$vaga->fkVeiculo = $veiculo;
+					$vaga->save();
+				}
+				return $response->WithJson($associado->update());
+			}else{
+				unset($data['veiculo']);  // remove a informação de veiculo
+				$associado->load($data);	//Carrega as informações restantes dentro do Objeto	
+				$associado->getRendaPerCapta();
+				$associado->status = "AGUARDANDOVAGA";
+				return $response->WithJson($associado->update());
+			}
+			
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
 		}
@@ -192,6 +243,31 @@ class AssociadoController {
 		->inner('universidade', "associado.fkuniversidade=universidade.id")->where("associado.status='AGUARDANDOVAGA'");
 		$collection = $associado->execute(true);
 		return $response->WithJson($collection);
+	}
+	/**
+	 * Lista Associados que estão com status AGUGARDANDOVAGA
+	 *
+	 * @param [type] $request
+	 * @param [type] $response
+	 * @param [type] $args
+	 * @return void
+	 */
+	public function ListaAguardandoVagaUniversidade($request, $response, $args){
+		$associado = Associado::getInstance();
+		$associado->makeSelect()->inner('universidade', "associado.fkuniversidade=universidade.id")->where("associado.status='AGUARDANDOVAGA'")
+			->and("associado.fkUniversidade=".$args['id']);
+		$collection = $associado->execute(true);
+		// Separa os associados por mes onde cada posição do array é referente a um mês
+		foreach ($collection as $key => $value){
+			$data = DateTime::createFromFormat('Y-m-d H:i:s', $value['createAt']);
+			print_r($data->format('m'));
+			$month[$data->format('m')] = $values;
+		}
+		// Organize o array por renda amenor renda fica como a primeira
+		foreach($month as $key => $value){
+
+		}
+		return $response->WithJson($month);
 	}
 	/**
 	 * Lista Associado referente a um id e que está com o status AGUGARDANDOVAGA 

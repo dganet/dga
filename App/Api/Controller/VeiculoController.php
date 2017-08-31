@@ -115,6 +115,7 @@ class VeiculoController{
 	 */
 	public function delete($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
+			if(vaga)
 			$vagas = new \Api\Controller\VagaController();
 			$veiculo = Veiculo::getInstance();
 			$veiculo->find($args['id']);
@@ -149,4 +150,24 @@ class VeiculoController{
 		}
 		return $atende;
 	}
+	/**
+	 * Retorna todos os veiculos que tem a universidade de id $id
+	 *
+	 * @return void
+	 */
+	public function getUniversidade($idUniversidade){
+		$veiculo = Veiculo::getInstance();
+		$veiculo->makeSelect()->where("status='ATIVO'");
+		$collection = $veiculo->execute();
+		foreach ($collection as $key => $veiculo) {
+			foreach($veiculo->destino as $keys => $value){
+				if($value['id'] == $idUniversidade){
+					return true;
+					break;
+				}
+			}
+		}
+	}
+
+
 }
