@@ -14,6 +14,7 @@ class Veiculo extends \GORM\Model{
 	public $tipo;
 	public $status;
 
+	
 	public function beforeSave(){
 		$universidade = \Api\Model\Entity\Universidade::getInstance();
 		foreach ($this->destino as $key => $value) {

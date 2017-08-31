@@ -57,6 +57,7 @@
                 <tr>
                   <th class="centro">#</th>
                   <th>Nome</th>
+                  <th>Link</th>
                   <th>Foto</th>
                   <th class="centro">Alterar</th>
                   <th class="centro">Deletar</th>
@@ -68,7 +69,8 @@
                
                <td class="centro">{{x.id}}</td>
                <td>Banner {{x.id}}</td>
-               <td><img src="../App/Api/upload/{{x.nome}}" alt="Banner3" width="200px" height="200px"></td>
+               <td>{{x.link}}</td>
+               <td><img src="../App/Api/upload/{{x.nome}}" alt="Banner3" width="50px" height="50px"></td>
                  
                <td class="centro">
                    <a class="btn btn-default" ng-click="dados(x.id)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>

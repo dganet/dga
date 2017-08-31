@@ -28,6 +28,7 @@ app.controller("veiculoCtrl",function($scope, restful, $location , $timeout ){
   $scope.destino.push({id:''});
   };
 
+  //Remove o Destino 
   $scope.removeDestino = function() {
      var lastItem = $scope.destino.length-1;
      $scope.destino.splice(lastItem);
@@ -42,7 +43,7 @@ app.controller("veiculoCtrl",function($scope, restful, $location , $timeout ){
 
   //Lista todas veiculos
 	restful.veiculoList().success(function(data){
-		$scope.veiculos = data;       
+          $scope.veiculos = data;       
 	});
 
   //Lista espera
@@ -93,11 +94,18 @@ $scope.dados = function (id){
           element['numVagas'] = parseInt(element['numVagas']); 
        
         }, this);
-    
+        
+        var destinoArray = data[0]['destino'];
+
          //Função Iputs array Universidade
+        if(destinoArray == null){
+          var destinos = $scope.destino = [];
+        }else { 
           var destinos = $scope.destino =  data[0]['destino'];
+        };
 
           var destino = {destino:destinos};
+
           $scope.addDestino = function(){
           //Lista todas faculdades
           restful.universidadeList().success(function(data){
@@ -113,6 +121,33 @@ $scope.dados = function (id){
              $scope.destino.splice(lastItem);
            };
         //END Iputs array Universidade
+
+ //************* UPDATE *********************//   
+
+//Passa os valores do form em Objeto no "values"
+  $scope.put = function(values, FormVeiculo) {
+    // Concatenar o Objeto destino no formulario.
+    values = angular.merge(values,destino);
+    // Enviado os valores em objetos para api/user do php/slim
+    restful.veiculoPut(values,token).success(function(){
+     // Fecha o Modal
+      $('#closeModalUpdate').modal('hide');
+
+        //Lista todas veiculos
+        restful.veiculoList().success(function(data){
+            $scope.veiculos = data;       
+        });
+         
+      // Funcão de exibir a mensagem de sucesso em 5 segundos.
+      $scope.mensagemAtualizado = false;
+      $timeout(function () {
+               $scope.mensagemAtualizado = true;
+           },10000);
+
+    });
+
+};
+
 
 
         });
@@ -154,30 +189,6 @@ $scope.dados = function (id){
 
   };
 
-//************* UPDATE *********************//   
-
-//Passa os valores do form em Objeto no "values"
-  $scope.put = function(values, FormVeiculo) {
-
-    // Enviado os valores em objetos para api/user do php/slim
-    restful.veiculoPut(values,token).success(function(){
-     // Fecha o Modal
-      $('#closeModalUpdate').modal('hide');
-
-        //Lista todas veiculos
-        restful.veiculoList().success(function(data){
-            $scope.veiculos = data;       
-        });
-         
-      // Funcão de exibir a mensagem de sucesso em 5 segundos.
-      $scope.mensagemAtualizado = false;
-      $timeout(function () {
-               $scope.mensagemAtualizado = true;
-           },10000);
-
-    });
-
-};
 
 //************* DELETE *********************// 
 

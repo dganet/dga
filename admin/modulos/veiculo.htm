@@ -49,7 +49,7 @@
 
     <div class="row corpoTemplate">
         <div class="col col-md-12">
-            
+            {{veiculo}}
             <table class="table table-hover corpoTableTemplate">
               <thead>
                 <tr>
@@ -66,10 +66,10 @@
 
             <tbody> 
              <tr ng-repeat="x in veiculos | filter: busca  ">
-               
+                                                              
                <td class="centro">{{x.id}}</td>
                <td>{{x.nome}}</td>               
-               <td class="centro">{{x.destino[0]['nome']}}</td>
+               <td class="centro"><span ng-repeat="y in x.destino">{{y.nome}} / </span></td>
                <td class="centro">{{x.periodo}}</td>
                <td class="centro"><!-- associado-->
                    <a class="btn btn-default" ng-click="associado(x.id)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-associados"><i class="fa fa-address-card-o" ></i></a>
@@ -188,7 +188,7 @@
 </div>   
     
  <!-- Modal Novo -->
-<div class="modal fade bs-example-modal-lg-guilherme" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalPost">
+<div class="modal fade bs-example-modal-lg-guilherme" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalUpdate">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
@@ -198,7 +198,6 @@
       </div>
         
        <form name="FormVeiculo" ng-submit="put(veiculo)">
-       
         <div class="modal-body">
          
              <div class="row">

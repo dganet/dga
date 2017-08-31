@@ -37,7 +37,7 @@ $scope.dados = function (id){
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, FormCurso) {
     // Enviado os valores em objetos para api/user do php/slim
-    restful.cursofaculdadeSave(values,token).success(function(){
+    restful.cursofaculdadeSave(values,token).success(function(response){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
     
