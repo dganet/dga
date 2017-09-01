@@ -321,7 +321,9 @@ h4 {
 	padding: 5px;
 	float: left;
 }
-
+.obrigatorio {
+	color:red;
+}
 /* 
 /* Desktop maiores */
 /*@media (min-width: 1200px) { 

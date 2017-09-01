@@ -97,7 +97,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Cadastrar novo Curso</h4>
+        <h4 class="modal-title" id="myModalLabel">Cadastrar novo Associado</h4>
       </div>
         
        <form name="FormAssociado" ng-submit="add(associado)" novalidate>
@@ -125,7 +125,7 @@
 
                      <div class="col-md-4">
                       <div class="form-group">
-                          <label>Nome Completo do Associado</label>
+                          <label class="obrigatorio">Nome Completo do Associado *</label>
                           <input type="text" class="form-control" ng-model="associado.nome">
                         </div>
                       </div>
@@ -142,8 +142,7 @@
 
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label>CPF</label>
-
+                            <label class="obrigatorio">CPF *</label>
                           <input type="text" class="form-control" ui-br-cpf-mask ng-model="associado.cpf">
                         </div>
                       </div>
@@ -329,7 +328,7 @@
 
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label>Renda do Associado</label>          
+                             <label class="obrigatorio">Renda do Associado *</label>         
                           <input type="text" class="form-control" ng-model="associado.salario" ui-money-mask="2" required="required">
                         </div>
                       </div>
@@ -389,7 +388,7 @@
 
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label>Universidade</label>
+                             <label class="obrigatorio">Universidade *</label>
                             <select class="form-control" ng-model="associado.fkUniversidade" ng-change="selectUni(associado.fkUniversidade)" ng-options="x.id as x.nome for x in universidades">
                               <option value="">Selecione um Linha</option>
                             </select>
@@ -614,7 +613,7 @@
 
                      <div class="col-md-4">
                       <div class="form-group">
-                          <label>Nome Completo do Associado</label>
+                          <label class="obrigatorio">Nome Completo do Associado *</label>
                           <input type="text" class="form-control" ng-model="associado.nome">
                         </div>
                       </div>
@@ -631,8 +630,8 @@
 
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label>CPF</label>
-                          <input type="text" class="form-control" ui-br-cpf-mask  ng-model="associado.cpf">
+                            <label class="obrigatorio">CPF *</label>
+                          <input type="text" class="form-control" ui-br-cpf-mask ng-model="associado.cpf">
                         </div>
                       </div>
 
@@ -817,7 +816,7 @@
 
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label>Renda do Associado</label>          
+                             <label class="obrigatorio">Renda do Associado *</label>         
                           <input type="text" class="form-control" ng-model="associado.salario" ui-money-mask="2" required="required">
                         </div>
                       </div>
@@ -877,7 +876,7 @@
 
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label>Universidade</label>
+                             <label class="obrigatorio">Universidade *</label>
                             <select class="form-control" ng-model="associado.fkUniversidade" ng-change="selectUni(associado.fkUniversidade)" ng-options="x.id as x.nome for x in universidades">
                               <option value="">Selecione um Linha</option>
                             </select>
