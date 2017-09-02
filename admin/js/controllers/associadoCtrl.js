@@ -191,6 +191,7 @@ $scope.removeDocumento = function() {
 
   //Lista todas Associados
 	restful.associadoList().success(function(data){
+    console.log(data);
 		$scope.associados = data;       
 	}); 
   

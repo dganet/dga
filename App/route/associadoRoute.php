@@ -6,8 +6,9 @@
 */
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-
+// Loga um associado
 $app->post('/associado/login', \Api\Controller\AssociadoController::class . ':logar');
+//Salva um associado
 $app->post('/associado/save/{token}', \Api\Controller\AssociadoController::class . ':cadastrar');
 //Lista Todos os Associadosdo
 $app->get('/associado/list', \Api\Controller\AssociadoController::class . ':listaAtivo');
@@ -25,17 +26,11 @@ $app->get('/associado/list/{id}', \Api\Controller\AssociadoController::class . '
 $app->get('/associado/inativo', \Api\Controller\AssociadoController::class . ':listaInativo');
 //Atualiza os Associados
 $app->put('/associado/update/{token}', \Api\Controller\AssociadoController::class . ':atulizaCadastro');
+//Ativa um associado
 $app->put('/associado/ative/{token}', \Api\Controller\AssociadoController::class . ':ativaCadastro');
 //Inativa um Associado
 $app->delete('/associado/delete/{token}/{id}', \Api\Controller\AssociadoController::class . ':inativar');
 //Lista Associados que estão em um determinado veiculo
 $app->get('/associado/listveiculo/{id}', \Api\Controller\AssociadoController::class . ':listaAssociadoVeiculo');
-// 	$app->post('/picture/{id}', function(Request $request, Response $response, $args){
-// 		$associado = new \Api\Controller\AssociadoController();
-// 		$post = json_decode($request->getBody(), true);
-// 		$post['idAssoc'] = $args['id'];
-// 		$associado = $associado->picture($post);
-// 		$response = $response->withHeader('Content-type', 'application/json');
-// 		$response = $response->withJson($associado);
-// 		return $response;
-// 	});
+//
+$app->get('/associado/listauniversidadevaga/{id}', \Api\Controller\AssociadoController::class . ':ListaAguardandoVagaUniversidade');

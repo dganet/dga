@@ -39,12 +39,55 @@ class VagaController{
         }
         return $uni;
     }
-
+    /**
+     * Retorna todos os associados que estão em um veiculo
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param Mixed $args
+     * @return mixed
+     */
     public function AssociadoxVeiculo($request, $response, $args){
         $vaga = \Api\Model\Entity\Vaga::getInstance();
         $vaga->makeSelect("associado.nome")->inner('associado','associado.id = vaga.fkAssociado')
             ->where("vaga.fkVeiculo=".$args['idVeiculo'])->and("associado.status='ATIVO'");
         $collection = $vaga->execute(true);
-        var_dump($collection);
+        if($collection != null ){
+            if($collection->lenth() > 0 ){
+                $response->WithJson($collection->getAll());
+            }
+        }
+    }
+    /**
+     * Verifica se há algum associado já cadastrado em uma vaga, se sim retorna true, se não retorna false
+     *
+     * @return boolean
+     */
+    public function checkAssociado($idAssociado){
+        $vaga = \Api\Model\Entity\Vaga::getInstance();
+        $vaga->makeSelect()->where("fkAssociado=".$idAssociado);
+        $collection = $vaga->execute();
+        if( $collection != null || $collection->lenght() > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+    /**
+     * Verifica se há algum associado já cadastrado em uma vaga, se sim retorna um objeto do tipo vaga, se não retorna false
+     *
+     * @return boolean
+     */
+    public static function getVagaByAssoc($idAssociado){
+        $vaga = \Api\Model\Entity\Vaga::getInstance();
+        $vaga->makeSelect()->where("fkAssociado=".$idAssociado);
+        $collection = $vaga->execute(true);
+        if( $collection != null ){
+                return $collection;
+        }else{
+            return false;
+        }
+
     }
 }

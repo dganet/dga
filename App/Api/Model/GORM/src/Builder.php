@@ -81,12 +81,10 @@ trait Builder{
     public function makeDelete(){
         $this->loadTable();
         $sql = "DELETE FROM ".$this->configuration['table']." WHERE ";
-        foreach ($this as $key => $value) {
-            if($key != 'configuration'){
-                if(!empty($value)){
-                    $sql .= $key ."='". $value."'";
-                }
-            }
+        if(isset($this->configuration['primaryKey'])){
+            $sql .= $this->configuration['primaryKey'];
+        }else{
+            $sql .= $this->id;
         }
         $this->configuration['sql'] = $sql;
     }
