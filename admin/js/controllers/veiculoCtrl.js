@@ -113,7 +113,7 @@ $scope.dados = function (id){
           });
 
           var newInputs = $scope.destino.lenght+1;
-          $scope.destino.push({idUniversidade:''});
+          $scope.destino.push({id:''});
           };
 
           $scope.removeDestino = function() {
@@ -126,8 +126,10 @@ $scope.dados = function (id){
 
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormVeiculo) {
+
     // Concatenar o Objeto destino no formulario.
     values = angular.merge(values,destino);
+        console.log(values);
     // Enviado os valores em objetos para api/user do php/slim
     restful.veiculoPut(values,token).success(function(){
      // Fecha o Modal
