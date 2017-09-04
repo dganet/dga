@@ -16,7 +16,9 @@ trait Finder{
         if($needArray){
             return $line;
         }else{
+            $this->beforeSelect();
             $this->load($line);
+            $this->afterSelect();
         }
     }
     /**
