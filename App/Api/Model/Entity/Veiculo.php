@@ -34,6 +34,9 @@ class Veiculo extends \GORM\Model{
 		$this->destino = serialize($stack);
 		$this->updateAt = date('Y-m-d H:i:s');
 	}
+	public function afterSelect(){
+		$this->destino = unserialize($this->destino);
+	}
 	public function afterCollection(){
 		$this->destino = unserialize($this->destino);
 	}

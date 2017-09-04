@@ -43,11 +43,20 @@ class VeiculoController{
 					]
 				);
 			}else{
-				$vaga = $data['numVagas'] - $veiculo->numVagas;  
-				$disp = $veiculo->vagasDisponiveis;
-				$veiculo->load($data);
-				$veiculo->vagasDisponiveis += $vaga;
-				return $response->WithJson($veiculo->update());
+				// $dest = self::checkDestino($data);
+				// if(empty($dest)){
+				// 	$vaga = $data['numVagas'] - $veiculo->numVagas;  
+				// 	$disp = $veiculo->vagasDisponiveis;
+				// 	$veiculo->load($data);
+				// 	$veiculo->vagasDisponiveis += $vaga;
+				// 	return $response->WithJson($veiculo->update());
+				// }else{
+				// 	return $response->WithJson([
+				// 		'message' => "Não é possivel remover os destinos, pois há associados indo para estas faculdades, primeiro remova-os",
+				// 		'destinos' => $dest
+				// 	]);
+				// }
+				return $response->WithJson(self::checkDestino($data));
 			}
 		}else{
 			return $response->WithJson(['flag' => false, 'message' => 'Não foi possivel completar sua requisição, pois, o usuario não está logado']);
@@ -77,7 +86,7 @@ class VeiculoController{
 	 * @param Request $request
 	 * @param Response $response
 	 * @param Mixed $args
-	 * @return Json
+	 * @return json
 	 */
 	public function listaPorId($request, $response, $args){
 		$veiculo = Veiculo::getInstance();
@@ -115,7 +124,6 @@ class VeiculoController{
 	 */
 	public function delete($request, $response, $args){
 		if(Auth::_isLoggedIn($args['token'])){
-			if(vaga)
 			$vagas = new \Api\Controller\VagaController();
 			$veiculo = Veiculo::getInstance();
 			$veiculo->find($args['id']);
@@ -168,6 +176,48 @@ class VeiculoController{
 			}
 		}
 	}
+	/**
+	 * Verifica se uma determinada universidade pode ser removida de um veiculo
+	 * A condição para que a remoção tenha sucesso é nenhum associado estar indo para a universidade requerida
+	 *
+	 * @param Array $array
+	 * @return array
+	 */
+	public function checkDestino($array){
+		$veiculo = Veiculo::getInstance();
+		$vaga = \Api\Model\Entity\Vaga::getInstance();
+		$veiculo->find($array['id']);
+		$diff = self::array_recursive_diff($veiculo->destino,$array['destino']);
+		// $universidades = [];
+		// foreach ($diff as $key => $values){
+		// 	$vaga->makeSelect()->where("fkVeiculo=".$veiculo->id)->and("fkUniversidade=".$values['id']);
+		// 	$collection = $vaga->execute();
+		// 	if ($collection != null){
+		// 		if($collection->length() > 0){
+		// 			array_push($universidades, $values);
+		// 		}
+		// 	}
+		// }
+		return print_r($diff);
+	}
 
+	public function array_recursive_diff($array1, $array2){
+		$r = [];
+		foreach ($array1 as $key1 => $value1) {
+			$flag = false;
+			foreach ($array2 as $key2 => $value2){
+				if(in_array($value1['nome'], $value2)){
+					
+					$flag = true;
+					break;
+				}
+			}
+			if($flag == false){
+				array_push($r, $value1);
+			}
+
+		}
+		return $r;
+	}
 
 }
