@@ -90,12 +90,17 @@ class AssociadoController {
 	 */
 	public function listaAtivo($request, $response, $args){
 		$associado = Associado::getInstance();
+		$vaga = \Api\Model\Entity\Vaga::getInstance();
+        $veiculo = \Api\Model\Entity\Veiculo::getInstance();
 		$associado->makeSelect()->where("status='ATIVO'");
-		$collection = $associado->execute();
+		$collection = $associado->execute(true);
+		foreach ($collection as $key => $value) {
+			$vaga = $vaga->makeSelect()->where('fkAssociado='.$value['id'])->execute(true);
+			$veiculo = $veiculo->makeSelect()->where("id=".$vaga[0]['fkVeiculo'])->execute(true);
+			$collection[$key]['veiculo'] = $veiculo[0]['nome'];
+		}
 		if($collection != null){
-			if($collection->length() > 0){
-				return $response->Withjson($collection->getAll());
-			}
+				return $response->Withjson($collection);
 		}
 	}
 	/**

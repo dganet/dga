@@ -128,10 +128,11 @@ $scope.dados = function (id){
   $scope.put = function(values, FormVeiculo) {
 
     // Concatenar o Objeto destino no formulario.
-    values = angular.merge(values,destino);
-        console.log(values);
+    bosta = angular.merge(values,destino);
+    console.log(destino);
+        console.log(bosta);
     // Enviado os valores em objetos para api/user do php/slim
-    restful.veiculoPut(values,token).success(function(){
+    restful.veiculoPut(bosta,token).success(function(){
      // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
@@ -164,6 +165,7 @@ $scope.dados = function (id){
 
     // Concatenar o Objeto destino no formulario.
     values = angular.merge(values,destino);
+    console.log(values);
 
     // Enviado os valores em objetos para api/user do php/slim
     restful.veiculoSave(values,token).success(function(){

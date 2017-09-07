@@ -60,7 +60,8 @@ class Associado extends \GORM\Model{
     public $updateAt;                
     public $status;                  
     public $fkUniversidade;                          
-    public $fkCursoFaculdade;                        
+    public $fkCursoFaculdade;
+    private $veiculo;                        
 
     public function getRendaPerCapta(){
         if (!is_array($this->rendaSerial)){
@@ -93,13 +94,20 @@ class Associado extends \GORM\Model{
        $this->rendaSerial = serialize($this->rendaSerial);
     }
     /**
-     * Executa depois do Select
+     * Executa antes do Select
      *
      * @return void
      */
     public function beforeCollection(){
         $this->documento = unserialize($this->documento);
         $this->rendaSerial = unserialize($this->rendaSerial);
+    }
+    /**
+     * Executa depois do select
+     *
+     * @return void
+     */
+    public function afterCollection(){
         
     }
 }
