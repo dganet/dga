@@ -78,7 +78,7 @@
                </td>
                  
                <td class="centro"><!-- alterar-->  
-                   <a class="btn btn-default" ng-click="dados(x.id, x.nome)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-guilherme"><i class="fa fa-pencil-square-o" ></i></a>
+                   <a class="btn btn-default" ng-click="dados(x.id, x.nome)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>
                </td>
                
                  <td class="centro"><!-- deletar-->
@@ -187,7 +187,7 @@
 </div>   
     
  <!-- Modal Novo -->
-<div class="modal fade bs-example-modal-lg-guilherme" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalUpdate">
+<div class="modal fade bs-example-modal-lg-update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalUpdate">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
@@ -241,14 +241,13 @@
                 <div class="row" >
 
                   <div data-ng-repeat="x in destino">
-                   
                    <div class="col-md-3" >
                         
                         <div class="form-group">
                          <label>Escolho o Destino</label>
                               <!-- Select de Bairros -->
                               <select class="form-control"
-                               ng-options="b.id as b.nome for b in universidades"
+                               ng-options="x.id as x.nome for x in universidades"
                                ng-model="x.id">
                               <option value="">Selecione Universidade</option>
                               </select>
@@ -260,7 +259,6 @@
                       <label>Remover</label>
                       <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDestino()">x</button>
                    </div>
-                 
                 </div>
 
              </div>
