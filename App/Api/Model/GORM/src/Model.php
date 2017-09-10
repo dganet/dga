@@ -3,7 +3,7 @@
  * ORM simples para gerir querys SQL
  * 
  * @author Guilherme Brito
- * @version 1.0.15
+ * @version 1.0.16
  */
 namespace GORM;
 use Exception;

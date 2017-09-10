@@ -120,18 +120,18 @@ $scope.dados = function (id){
              var lastItem = $scope.destino.length-1;
              $scope.destino.splice(lastItem);
            };
+        });
         //END Iputs array Universidade
-
+};
  //************* UPDATE *********************//   
 
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, FormVeiculo) {
     // Concatenar o Objeto destino no formulario.
     values = angular.merge(values,destino);
-
-      // Enviado os valores em objetos para api/user do php/slim
+    // Enviado os valores em objetos para api/user do php/slim
     restful.veiculoPut(values,token).success(function(){
-     // Fecha o Modal
+    // Fecha o Modal
       $('#closeModalUpdate').modal('hide');
 
         //Lista todas veiculos
@@ -150,12 +150,6 @@ $scope.dados = function (id){
 };
 
 
-
-        });
-        
-};
-
-
 //************* NOVO *********************// 
 
 //Passa os valores do form em Objeto no "values"
@@ -163,6 +157,7 @@ $scope.dados = function (id){
 
     // Concatenar o Objeto destino no formulario.
     values = angular.merge(values,destino);
+
     // Enviado os valores em objetos para api/user do php/slim
     restful.veiculoSave(values,token).success(function(){
       // Fecha o Modal

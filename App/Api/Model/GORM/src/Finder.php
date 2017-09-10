@@ -35,7 +35,9 @@ trait Finder{
             $line = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $this->afterSelect();
             if($needArray){
+                $this->beforeArray();
                 return $line;
+                $this->afterArray();
             }else{
                 $collection = new \GORM\Collection\Collection();
                 foreach ($line as $key => $value) {
@@ -94,4 +96,20 @@ trait Finder{
    public function afterSelect(){
 
    }
+   /**
+     * Executa antes de fazer o select
+     *
+     * @return void
+     */
+    public function beforeArray(){
+        
+           }
+           /**
+            * Executa depois de fazer o Array
+            *
+            * @return void
+            */
+           public function afterArray(){
+        
+           }
 }
