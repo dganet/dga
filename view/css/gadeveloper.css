@@ -1,54 +1,103 @@
-
-body, html,{
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Marketplace
+Explore
+ @adniltonweb
+ Sign out
+ Unwatch 2
+  Star 1
+ Fork 1 dganet/dga
+forked from gaDevelopper/gadeveloper
+ Code  Pull requests 0  Projects 0  Wiki  Settings Insights 
+Branch: aetub Find file Copy pathdga/admin/css/gadeveloper.css
+a4b7053  11 days ago
+@adniltonweb adniltonweb update
+1 contributor
+RawBlameHistory    
+Executable File  340 lines (294 sloc)  4.87 KB
+body, html,.corpo{
+ 	background: #E6E6E6;
  	margin: 0 auto;
+
 }
-.bodyPainelAdm{
-		padding-top: 10px;
-	 	background: #E6E6E6;
-		height: 100%;
-		position: fixed;
-		width: 100%;
+
+/*  PAINEL LOGIN  */
+.blocoHome {
+	width: 100%;
+	background: #006FBD;
+	top:0;
+ 	bottom:0;
+ 	height: 100%;
+ 	position: absolute;
 }
+
+
+.titulo_login{
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 30px;	
+}
+
+
+.blocoLogin {
+	background: #F3F3F3;
+ 	margin: 0 auto;
+ 	width: 35%;
+ 	padding: 5%;
+ 	top:0;
+ 	bottom:0;
+ 	position: absolute;
+ 	left: 30%;
+ 	box-shadow: 2px 5px 15px rgba(0,0,0,0.5);
+  	}
+
+
+/*  PAINEL PAINEL  */
 
 /*  topo  */
 #topo {
 	width: 100%;
-	background: #008f8f;
-	height: 60px;
+	background: #006FBD;
+	height: 40px;
+	margin-top: 5px;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-	display: table;
+
 }
 
 #blocoLogo {
+	margin-top: -3px;
 	float: left;
-	padding-left: 20px;
-	width: 25%;
+	margin-left: 20px;
+	width: 300px;
 }
-#blocoLogo > img {
-	height: 60px;
-	margin-right: 20px;
-	float: left;
-	margin-bottom: -3px;
-}
+
 .nomeUsuario{
 	color: white;
 	font-size: 16px;
-	padding: 19px 15px;
+	padding: 12px 15px;
 	font-weight: bold;
 }
 
+#blocoLogo > img {
+	height: 40px;
+	margin-right: 20px;
+	margin-top: 2px;
+	float: left;
+}
+
+
 .dropbtn {
-    background-color:#008f8f;
+    background-color:#006FBD;
     color: white;
+    padding: 10px 15px;
     border: none;
     cursor: pointer;
-	padding: 20px 0px;
 }
 .dropbtn a {
 	color: white;
-    padding: 20px 30px;
-	text-decoration: none;
-	font-weight: bold;
 }
 .dropbtn a:hover{
 	color: white;
@@ -62,13 +111,10 @@ body, html,{
 	color: white;
 	text-decoration: none;
 }
-.bloco-menu {
-	float: right;
-	width: 70%;
-    }
 .menu {
 	float: right;
-}
+    margin-right: 60px;
+    }
 .menu .dropdown {
     position: relative;
     display: inline-block;
@@ -99,15 +145,18 @@ body, html,{
 }
 
 .menu .dropdown:hover .dropbtn {
-background:#007f7f; 
-}
+background:#006FBD; 
+color:white; 
+-moz-box-shadow:0 3px 10px 0 #CCC; 
+-webkit-box-shadow:0 3px 10px 0 #ccc; 
 
+}
 
 
 /*  breadcrumb   */
 .breadcrumb {
 	background: white;
-	margin:20px 10px 0px 10px;
+	margin:10px 10px 0px 10px;
 	width: calc(100% - 20px);
 	height: 40px;
 	color: #336699;
@@ -115,49 +164,52 @@ background:#007f7f;
 }
 
 /*  TEMPLATES  */
-
-/* Sub-Menu lado Esquerdo Links dos Templates */
-.sub-menu ul li {
-	display: inline;
-	width: 100%;
+.template {
+	background: white;
+	width: calc(100% - 20px );
+	position: absolute;
+	top:105px;
+	left: 10px;
+	bottom: 10px;
+	padding: 20px;
+    overflow: auto;
 }
-.sub-menu ul li a {
-	width: 100%;
-	padding: 10px;
-	display: inline-block;
-	/* visual do link */
-	text-decoration: none;
-	color: gray;
-	margin-left: -20px;
+.labelTemplate {
+    padding-top: 10px;
 }
-.sub-menu a:hover {
-	text-decoration: none;
-	background: #F3F3F3;
+.acaoTemplate {
+    padding-top: -20px;
+    float: right;
+}
+.corpoTemplate {
+    margin-top: 30px;
+}
+.corpoTemplate .corpoTableTemplate .centro {
+    text-align: center;
 }
 
-
-/*  Primeiro Layout  */
-.modeloA {
+/*  TEMPLATE UM  */
+.um {
 	background: white;
 	width: 15%;
 	position: fixed;
 	bottom: 10px;
-	top:150px;
+	top:105px;
 	left: 10px;
 	padding-top: 20px;
 
 }
-.modeloA2 {
+.dois {
 	background: white;
 	width: calc(85% - 30px);
 	position: fixed;
 	bottom: 10px;
-	top:150px;
+	top:105px;
 	left: calc(15% + 20px);
 	overflow: auto;
 	}
 
-.modeloA3 {
+.tres {
 	width: 20%;
 	margin-top: -20px;
 	padding-right: 20px;
@@ -170,16 +222,52 @@ background:#007f7f;
 }
 
 
-.modeloA4 {
+.quatro {
 	width: calc(80% - 20px);
 	float: left;
 	padding-left: 20px;
 	margin-bottom: 20px;
 }
-.tableList {
+
+.cinco {
+	width: 65%;
+	margin-top: -20px;
+	padding-right: 20px;
+	border-right:1px solid #E6E6E6;
+	float: left;
+}
+
+.cinco thead {
 	font-weight: bold;
 }
-.linkList a {
+
+
+.seis {
+	width: calc(35% - 20px);
+	float: left;
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
+
+.um ul li {
+	display: inline;
+	width: 100%;
+}
+.um ul li a {
+	width: 100%;
+	padding: 10px;
+	display: inline-block;
+	/* visual do link */
+	text-decoration: none;
+	color: gray;
+	margin-left: -30px;
+}
+
+.um a:hover {
+	text-decoration: none;
+	background: #F3F3F3;
+}
+table tbody tr .teste a{
 	width: 100%;
 	padding: 10px;
 	display: inline-block;
@@ -187,23 +275,16 @@ background:#007f7f;
 	text-decoration: none;
 	color: gray;
 }
-.linkList a:hover {
+table tbody tr .teste a:hover{
 	text-decoration: none;
 	background: #F3F3F3;
 }
-.linkList a:active {
-	text-decoration: none;
-}
-.linkList a:visited {
-	text-decoration: none;
-}
-
 /*  SECTION  */
 
 .acoes {
 	width: 100%; 
-	height: 50px;
-	padding: 25px 20px 0px 30px;
+	height: 20px;
+	padding: 0px 20px 0px 30px;
 }
 
 .acoes a {
@@ -211,62 +292,97 @@ background:#007f7f;
 	padding-left: 10px;
 }
 .conteudo {
-	padding: 25px 30px 0px 30px;
+	padding: 10px 30px 0px 30px;
+	margin-bottom: 20px;
 
 }
-
-.bloco-passo {
-	width: 15%;
-	float: left;
-}
-.bloco-imovel {
-	width: 85%;
-	float: left;
-}
-.passo1 {
-	width: 100px;
-	height: 50px;
-	padding: 14px 15px;
-	background-color: #D3D3D3;
-	margin-bottom: 10px;
+.icone_altera {
+margin-left: 20px;
 }
 
-.passo2 {
-	width: 100px;
-	height: 50px;
-	padding: 14px 15px;
-	background-color: #D3D3D3;
-	margin-bottom: 10px;	
-}
-
-.passo3 {
-	width: 100px;
-	height: 50px;
-	padding: 14px 15px;
-	background-color: #D3D3D3;
-	margin-bottom: 10px;
-}
-
-.passo4 {
-	width: 100px;
-	height: 50px;
-	padding: 14px 15px;
-	background-color: #D3D3D3;
-	margin-bottom: 10px;
-}
-.passo5 {
-	width: 100px;
-	height: 50px;
-	padding: 14px 15px;
-	background-color: #D3D3D3;
-	margin-bottom: 10px;
-}
-.passoSelecionado {
-	width: 100px;
-	height: 50px;
-	padding: 14px 15px;
-	background-color: gray;
-	margin-bottom: 10px;
-}
 /*  FIM  */
 
+.navTabs {
+
+	margin-bottom: 20px;
+}
+
+h4 {
+	border-left: 10px solid gray;
+	padding-left: 5px;
+}
+
+
+.veiculo ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.veiculo ul li {
+	font-weight: bold;
+}
+.veiculo ul li li{
+	font-weight: normal;
+}
+
+.table a:link{
+	text-decoration: none;
+}
+.janela-chat {
+	height: 500px;
+	width: 100%;
+	border: 1px solid #b6b6b6;
+	margin-top: -6px;
+	overflow: auto;
+}
+.acoes-chat {
+	margin-bottom: 20px;
+	height: 50px;
+}
+.Associado {
+	width: 80%;
+	height: auto; 
+	border-radius: 20px;
+	background:#8DEEEE;
+	margin: 10px;
+	padding: 5px;
+	float:right ;
+}
+.Aetub{
+	width: 80%;
+	height: auto; 
+	border-radius: 20px;
+	background: #9BCD9B;
+	margin: 10px;
+	padding: 5px;
+	float: left;
+}
+.obrigatorio {
+	color:red;
+}
+/* 
+/* Desktop maiores */
+/*@media (min-width: 1200px) { 
+/*} 
+tables em formato porta retrato até os desktos no formato paisagem */
+/* @media (min-width: 768px) and (max-width: 1200px) {  }
+/*
+/* dispositivo em paisagem até os tablets em formato porta-retrato */
+/*@media (min-width: 481px) and  (max-width: 767px) {  }
+/*
+/*  }
+ 
+/* dispositivo no formato paisagem e abaixos */
+/*@media (max-width: 480px) {}
+© 2017 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
+About

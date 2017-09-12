@@ -1,11 +1,35 @@
  app.controller("clienteCtrl", function($scope, $http, $timeout , $location, restful){
 
-//Oculta a Mensagem de sucesso
-$scope.mensagemSucesso = false;
+   //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token'); 
 
-//Scope Vazio
-$scope.master = {};
+  //scope.master vazio;
+  $scope.master = {};
+  //Ocultando o Alert Mensagem .
+  $scope.mensagemSucesso = true;
+  $scope.mensagemAtualizado = true;
+  $scope.mensagemDelete = true;
 
+  //Lista todos os clientes
+    restful.clienteList().success(function(data){
+        $scope.clientes = data;
+        console.log(data);
+    });
+
+  // Show modaais de detalhes, alterar e deletar.
+  $scope.dados = function (idCliente){
+      //Resentando 
+      $scope.reset = function() {
+      // Copiando os valores vazio do scope.master 
+        $scope.cliente = angular.copy($scope.master);
+      };
+      // Ativando a função
+      $scope.reset();
+          //Pega as info da universidade selecionada
+      restful.clienteListId(id).success(function(data){
+      $scope.cliente = data[0];  
+          });
+    };
 
 //*************CADASTRA NOVO CLIENTE *********************// 
 
@@ -32,12 +56,7 @@ $scope.master = {};
 
   //*************UPDATE CLIENTE *********************// 
 
-  //Lista todos os clientes
-    restful.clienteList().success(function(data){
-        $scope.clientes = data;
-    });
-
-  // Seleciona o usuario e mostra do Lado.
+    // Seleciona o usuario e mostra do Lado.
   $scope.janela = function (values){
       //Show na div modeloA
         $scope.modeloA4 = true;

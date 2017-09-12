@@ -57,40 +57,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
       .state('user.cliente', {
       url: '/cliente',
-      templateUrl: 'view/modCliente/linkCliente.htm',
+      templateUrl: 'view/modulos/cliente.htm',
+      controller:'clienteCtrl',
        ncyBreadcrumb: {
             label: 'Modulo Cliente'
          }
     })
-
-      .state('user.cliente.new', {
-      url: '/inseri',
-      templateUrl: 'view/modCliente/newCliente.htm',
-      controller : 'clienteCtrl',
-       ncyBreadcrumb: {
-            label: 'Novo Cliente'
-         }
-    })
-
-      .state('user.cliente.update', {
-      url: '/update',
-      templateUrl: 'view/modCliente/updateCliente.htm',
-      controller : 'clienteCtrl',
-       ncyBreadcrumb: {
-            label: 'Atualiza Cliente'
-         }
-    })
-
-      .state('user.cliente.update.detalhes', {
-		 	 url: '/:id',
-			 controller: function($scope, $stateParams) {
-						// get the id
-						$scope.id = $stateParams.id;
-				},
-							ncyBreadcrumb: {
-						label: 'Altera'
-				 }
-		})
 
 //|#######################################################|
 //|############# **  MODULO IMOVEIS ** ###################|
@@ -106,7 +78,6 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.imovel.new', {
       url: '/inseri',
       templateUrl: 'view/modImovel/newImovel.htm',
-      controller: 'imovelCtrl',
        ncyBreadcrumb: {
             label: 'Novo Imovel'
          }

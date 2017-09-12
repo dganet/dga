@@ -12,7 +12,7 @@ app.service('restful', function ($http,$sessionStorage) {
 
    //Classes Cliente
    $clienteSave = 'App/cliente/save'; // Salva Cliente
-   $clienteList = 'App/cliente/list'; // Lista todos os Cliente referente ao id do Usuario
+   $clienteList = 'App/cliente/list/'; // Lista todos os Cliente referente ao id do Usuario
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    //MODULO PEFIL
    $updatePicture = 'App/imagem'; //Update Foto
