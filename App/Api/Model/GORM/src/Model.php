@@ -28,10 +28,10 @@ class Model{
 	*/
 	public 		$db = array(
 		"driver" 	=> "mysql",
-		"host"		=> "31.220.104.130",		//31.220.104.130 mysql.hostinger.com.br
-		"dbname"	=> "u172775243_imobi", 		//u172775243_imobi
-		"user"		=> "u172775243_imobi", 		//u172775243_imobi
-		"pass"		=> "im98yp121556" 			//im98yp121556
+		"host"		=> "br654.hostgator.com.br",		//31.220.104.130 mysql.hostinger.com.br br654.hostgator.com.br
+		"dbname"	=> "smout364_dga", 		//u172775243_imobi
+		"user"		=> "smout364_dga", 		//u172775243_imobi
+		"pass"		=> "159951" 			//im98yp121556
 	);
 	/**
     * Recebe o nome da tabela da função Model::loadTable()
