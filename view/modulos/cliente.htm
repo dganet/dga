@@ -141,7 +141,8 @@
                   <input type="text" class="form-control" ng-model="cliente.telComercialCliente" ui-br-phone-number> 
                   </div> 
                 </div>
-
+                
+              </div>
       
            </div><!--modal-body -->
         
@@ -163,7 +164,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Atualizar {{cursofaculdade.nome}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Atualizar {{cliente.nomeCliente}}</h4>
       </div>
         
        <form name="FormCliente" ng-submit="put(cliente)"> 
@@ -239,7 +240,7 @@
       </div>
         
             <div class="modal-body">               
-               Deseja realmente Deletar {{cursofaculdade.nome}} ?                 
+               Deseja realmente Deletar {{cliente.nomeCliente}} ?                 
            </div><!--modal-body -->
         
              <div class="modal-footer">
@@ -252,13 +253,13 @@
 </div>
 
 <!-- Modal Detalhes -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModal">
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalDetalhes">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Detalhes {{cursofaculdade.nome}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Detalhes {{cliente.nomeClienete}}</h4>
       </div>
         
     <div class="modal-body">
@@ -266,16 +267,17 @@
               <tbody>
                 <tr>
                   <td>id</td>
-                  <td>{{cursofaculdade.id}}</td>
+                  <td>{{cliente.idCliente}}</td>
                 </tr>
                 <tr>
                   <td>Nome</td>
-                  <td>{{cursofaculdade.nome}}</td>
+                  <td>{{cliente.nomeCliente}}</td>
                 </tr>
                 <tr>
-                  <td>Status</td>
-                  <td>{{cursofaculdade.status}}</td>
+                  <td>Endereço</td>
+                  <td>{{cliente.enderecoCliente}}</td>
                 </tr>
+
               </tbody>
         </table>
       </div>
