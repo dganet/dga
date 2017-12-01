@@ -11,7 +11,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $usuarioSaveMigraFB =  'App/usuario/migrate'; // Migra usuário com Dados do Facebook
 
    //Classes Cliente
-   $clienteSave = 'App/cliente/save'; // Salva Cliente
+   $clienteSave = 'App/cliente/save/'; // Salva Cliente
    $clienteList = 'App/cliente/list/'; // Lista todos os Cliente referente ao id do Usuario
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    //MODULO PEFIL
@@ -44,16 +44,16 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  MODULO CLIENTE ** ###################|
 //|#######################################################|
    //Inseri novo Cliente
-    var _clienteSave = function (values){
+    var _clienteSave = function (values, token){
         return  $http.post($clienteSave + token , values);
     };
    //Lista todos os Clientes
-    var _clienteList = function (dados){
+    var _clienteList = function (token){
         return  $http.get($clienteList + token);
     };
    //Lista informação de apenas um cliente referente ao ID
     var _clienteListId = function (id){
-        return  $http.get($clienteListId + id + '/'+ token );
+        return  $http.get($clienteListId + id);
     };
 
 //|#######################################################|

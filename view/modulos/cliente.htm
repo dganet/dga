@@ -42,7 +42,8 @@
               <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-post">Novo <i class="fa fa-file-o" aria-hidden="true"></i></button>
          </div>
        </div>
-       
+    </div>
+
  <!-- Corpo Template-->
 
     <div class="row corpoTemplate">
@@ -141,7 +142,7 @@
                   <input type="text" class="form-control" ng-model="cliente.telComercialCliente" ui-br-phone-number> 
                   </div> 
                 </div>
-                
+
               </div>
       
            </div><!--modal-body -->
@@ -214,7 +215,7 @@
                   </div> 
                 </div>
 
-                
+            </div>    <!--row -->
        
            </div><!--modal-body -->
         
@@ -277,7 +278,22 @@
                   <td>Endereço</td>
                   <td>{{cliente.enderecoCliente}}</td>
                 </tr>
-
+                <tr>
+                  <td>E-mail</td>
+                  <td>{{cliente.emailCliente}}</td>
+                </tr>
+                <tr>
+                  <td>Telefone Fixo</td>
+                  <td>{{cliente.telFixoCliente}}</td>
+                </tr>
+                <tr>
+                  <td>Telefone Celular</td>
+                  <td>{{cliente.telCelularCliente}}</td>
+                </tr>
+                <tr>
+                  <td>Telefone Comercial</td>
+                  <td>{{cliente.telComercialCliente}}</td>
+                </tr>
               </tbody>
         </table>
       </div>
