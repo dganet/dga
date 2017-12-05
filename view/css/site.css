@@ -219,30 +219,3 @@ header {
 }
 .footer{}
         
-        /* MODAL */
- .modal:target {
-	opacity: 1;
-	pointer-events: auto;
-}
-
-.modal > div {
-	width: 400px;
-	position: relative;
-	margin: 10% auto;
-	padding: 15px 20px;
-	background: #fff;
-}
-
-.fechar {
-	position: absolute;
-	width: 30px;
-	right: -15px;
-	top: -20px;
-	text-align: center;
-	line-height: 30px;
-	margin-top: 5px;
-	background: #ff4545;
-	border-radius: 50%;
-	font-size: 16px;
-	color: #8d0000;
-}
