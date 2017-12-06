@@ -70,34 +70,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.imovel', {
       url: '/imovel',
       templateUrl: 'view/modulos/imovel.htm',
-      controller: 'imovelCtrl'
+      controller: 'imovelCtrl',
        ncyBreadcrumb: {
             label: 'Modulo Imovel'
          }
     })
-
-      .state('user.imovel.new', {
-      url: '/inseri',
-      templateUrl: 'view/modImovel/newImovel.htm',
-       ncyBreadcrumb: {
-            label: 'Novo Imovel'
-         }
-    })
-
-      .state('user.imovel.newProprietario', {
-      url: '/inseri',
-      templateUrl: 'view/modImovel/newProprietario.htm',
-       ncyBreadcrumb: {
-            label: 'Novo Proprietario'
-         }
-    })
-      .state('user.imovel.update', {
-      url: '/update',
-      templateUrl: 'view/modImoveil/updateImoveil.htm',
-       ncyBreadcrumb: {
-            label: 'Atualiza Imoveil'
-         }
-    })
+      
 //|#######################################################|
 //|############# **  MODULO FINANCEIRO ** ################|
 //|#######################################################|
