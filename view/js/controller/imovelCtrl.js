@@ -1,11 +1,13 @@
- app.controller("imovelCtrl", function($scope, $http, $timeout , $location, $sessionStorage, serviceEnderecos){
-//Pegando Token
- var token = sessionStorage.getItem('usuario.token');
-//Oculta a Mensagem de sucesso
-$scope.mensagemSucesso = false;
+ app.controller("imovelCtrl", function($scope, $timeout , $location, restful, serviceEnderecos){
+   //Pega o Token 
+  var token = sessionStorage.getItem('usuario.token'); 
 
-//Scope Vazio
-$scope.master = {};
+  //scope.master vazio;
+  $scope.master = {};
+  //Ocultando o Alert Mensagem .
+  $scope.mensagemSucesso = true;
+  $scope.mensagemAtualizado = true;
+  $scope.mensagemDelete = true;
 
 
 //*************CADASTRA NOVO CLIENTE *********************//
@@ -38,13 +40,10 @@ $scope.master = {};
     //Mudar o Css do Processo em ativo
     $scope.passo1 = 'background:gray; color:white';
     //Ativar o Form do Check CPF
-<<<<<<< HEAD
+
     $scope.formCPF = 'ativo';
-=======
-    $scope.formCPF = 'inativo';
     $scope.formImagens ="ativo";
 
->>>>>>> a7fa91c72d09b1e5ac54fb0785e26ddb955784d8
 
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;

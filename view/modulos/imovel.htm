@@ -26,7 +26,7 @@
 
       <div class="col col-md-4 labelTemplate">
           <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
-          <label>Painel de Ações do Cliente</label>
+          <label>Painel de Ações do Imoveis</label>
           
       </div>
         
@@ -93,58 +93,54 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Cadastrar novo Curso</h4>
+        <h4 class="modal-title" id="myModalLabel">Cadastrar Imovel</h4>
       </div>
         
-       <form name="FormCliente" ng-submit="add(cliente)">
+       <form name="FormImovel" ng-submit="add(imovel)">
     
            <div class="modal-body">
-              <div class="row">
 
-                <div class="col-md-6">
-                  <div class="form-group">
-                  <label>Nome Completo</label>
-                  <input type="text" class="form-control" ng-model="cliente.nomeCliente" required> 
-                  </div> 
+                <div class="bloco-passo">
+
+                <div class="passo1" style="{{passo1}}">
+                Passo 01
                 </div>
 
-                <div class="col-md-6">
-                  <div class="form-group">
-                  <label>E-mail</label>
-                  <input type="email" class="form-control" ng-model="cliente.emailCliente" required> 
-                  </div> 
+                <div class="passo2" style="{{passo2}}">
+                Passo 02
                 </div>
 
-                <div class="col-md-6">
-                  <div class="form-group">
-                  <label>Endereço</label>
-                  <input type="text" class="form-control" ng-model="cliente.enderecoCliente" required> 
-                  </div> 
+                <div class="passo3" style="{{passo3}}">
+                Passo 03
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>Telefone Fixo:</label>
-                  <input type="text" class="form-control" ng-model="cliente.telFixoCliente" ui-br-phone-number > 
-                  </div> 
+                <div class="passo4" style="{{passo4}}">
+                Passo 04
                 </div>
+              
+               </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>Telefone Celular:</label>
-                  <input type="text" class="form-control" ng-model="cliente.telCelularCliente" ui-br-phone-number> 
-                  </div> 
-                </div>
+               <div class="bloco-imovel">
+                                  <!-- FORMULARIO QUE CHECK O CPF -->
+                  <div class="row" ng-if="formCPF == 'ativo'">
+                      <form name="FormCPF" ng-submit=checkCPF(proprietario)>
+                          <div class="col-md-4">
+                              <div class="form-group">
+                              <label>CPF</label>
+                              <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" required>
+                          </div>
+                          </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>Telefone Comercial:</label>
-                  <input type="text" class="form-control" ng-model="cliente.telComercialCliente" ui-br-phone-number> 
-                  </div> 
-                </div>
+                          <div class="col-md-2">
+                              <div class="form-group">
+                              <button type="submit" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search" aria-hidden="true"></i></button>
+                          </div>
+                          </div>
+                      </form>
 
-              </div>
-      
+                  </div>
+               </div>
+        
            </div><!--modal-body -->
         
              <div class="modal-footer">
