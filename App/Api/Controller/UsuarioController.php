@@ -1,5 +1,6 @@
 <?php
 namespace Api\Controller;
+use PDO, Exception;
 use \Api\Model\Entity\Usuario,
 \Api\Model\Entity\CarteiraImovel,
 \Api\Model\Entity\CarteiraCliente;
@@ -52,13 +53,20 @@ class UsuarioController {
         $cliente->nomeCarteiraCliente = "Carteira de Cliente de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
         $usuario->fkCarteiraImovel = $imovel->save(true);
         $usuario->fkCarteiraCliente = $cliente->save(true);
-        if ($usuario->save()){
+        try{
+            $usuario->save();
             require "MailController.php";
             confirmEmail($usuario->emailUsuario,$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario, $usuario->creciUsuario);
-            return $response->withJson(['message' => 'Usuario cadastrado com sucesso!', flag => true]);
-
-        }else{
-            return $response->withJson(['message' => 'Ocorreu um problema ao cadastrar o usuário!', flag => false]);
+            return $response->withJson(['message' => 'Usuario cadastrado com sucesso!', 'flag' => true]);
+        }catch(Exception $e){
+            switch ($e->getCode()) {
+                case 23000:
+                    return $response->WithJson(['message' => 'Este e-mail ou Creci já está cadastrado', 'flag' => false]);
+                    break;
+                default:
+                    return $response->WithJson(['message' => 'Ocorreu algum problema ao salvar a informação, tente novamente mais tarde', 'flag' => false]);
+                    break;
+            }
         }
     }
     /**

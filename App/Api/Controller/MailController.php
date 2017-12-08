@@ -6,11 +6,11 @@ function confirmEmail($email,$user,$creci){
     $mail = new PHPMailer;
     //Configuração de SMTP
     $mail->isSMTP();        //Informa que é um envio de email
-    $mail->Host = 'mx1.hostinger.com.br';
+    $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'admin@imobiliar.net.br';
-    $mail->Password = 'LKLu2NxJ';
-    $mail->SMTPSecure = 'tls';
+    $mail->Username = 'gadevelopper@gmail.com';
+    $mail->Password = 'gadevelopper26112016';
+    $mail->SMTPSecure = 'ssl';
     $mail->Port = 587;
     //########################
    
@@ -19,10 +19,10 @@ function confirmEmail($email,$user,$creci){
     $mail->addAddress($email,$user); //Informação vinda da classe que está chamando 
     //########################
     //Informações de anexos
-    if (!$anexo == null){
-        $mail->addAttachment($anexo);
-    }
-    $mail->isHTML(true);
+    // if (!$anexo == null){
+    //     $mail->addAttachment($anexo);
+    // }
+    // $mail->isHTML(true);
     //#########################
     //Informações do email
     $mail->Subject = 'Cadastro Imobiliar ';

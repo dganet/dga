@@ -70,7 +70,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
       .state('user.imovel', {
       url: '/imovel',
       templateUrl: 'view/modulos/imovel.htm',
-      controller: 'imovelCtrl'
+      controller: 'imovelCtrl',
        ncyBreadcrumb: {
             label: 'Modulo Imovel'
          }

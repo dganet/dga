@@ -3,8 +3,7 @@
                 "psr-4":{
                         "Api\\" : "Api/",
 			"GORM\\" : "Api/Model/GORM/src",
-                        "Mail\\" : "vendor/phpmailer/phpmailer",
-                        "PagSeguro\\" : "vendor/pagseguro/php3/source"
+                        "Mail\\" : "vendor/phpmailer/phpmailer"
                 }
         },
         "require": {

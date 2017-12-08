@@ -379,7 +379,7 @@
         },
         "time": "2017-03-15 19:32:56",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "classmap": [
                 "class.phpmailer.php",
