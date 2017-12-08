@@ -1,4 +1,4 @@
- app.controller("imovelCtrl", function($scope, $timeout , $location, restful, serviceEnderecos){
+ app.controller("imovelCtrl", function($scope, $timeout , $location, $http, serviceEnderecos){
    //Pega o Token 
   var token = sessionStorage.getItem('usuario.token'); 
 
@@ -9,29 +9,6 @@
   $scope.mensagemAtualizado = true;
   $scope.mensagemDelete = true;
 
-
-//*************CADASTRA NOVO CLIENTE *********************//
-
-//Passa os valores do form em Objeto no "values"
-  $scope.add = function(values, formProprietario) {
-            // Enviado os valores em objetos para api/user do php/slim
-            $http.post('App/cliente/save' + token , values).success(function(){
-                // Funcão de exibir a mensagem de sucesso em 5 segundos.
-                $scope.mensagemSucesso = true;
-                $timeout(function () {
-                        $scope.mensagemSucesso = false;
-                    },10000);
-                //Resentando os input do formulario .
-                $scope.reset = function() {
-                // Copiando os valores vazio do scope.master
-                $scope.cliente = angular.copy($scope.master);
-                };
-                // Ativando a função
-                $scope.reset();
-             });
-
-
-  };
 
 //*************CADASTRA IMOVEL *********************//
     var p = $scope.proprietario = {};
@@ -65,10 +42,12 @@
             var flag = response.flag;
                 //Se não existir
                 if (flag == false){
+                  console.log('falso');
                     //Printa na tela o formulario para cadastar
                     $scope.formProprietario = 'ativo';
                     $scope.proprietario = cpf;
                 }else{
+                  console.log('segue');
                     //Printa na tela com os dados
                     $scope.formProprietario = 'ativo';
                     $scope.proprietario = response;

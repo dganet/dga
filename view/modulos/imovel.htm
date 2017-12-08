@@ -96,59 +96,173 @@
         <h4 class="modal-title" id="myModalLabel">Cadastrar Imovel</h4>
       </div>
         
-       <form name="FormImovel" ng-submit="add(imovel)">
-    
+   
            <div class="modal-body">
 
-                <div class="bloco-passo">
-
-                <div class="passo1" style="{{passo1}}">
-                Passo 01
-                </div>
-
-                <div class="passo2" style="{{passo2}}">
-                Passo 02
-                </div>
-
-                <div class="passo3" style="{{passo3}}">
-                Passo 03
-                </div>
-
-                <div class="passo4" style="{{passo4}}">
-                Passo 04
-                </div>
-              
-               </div>
-
-               <div class="bloco-imovel">
-                                  <!-- FORMULARIO QUE CHECK O CPF -->
+<!-- FORMULARIO QUE CHECK O CPF -->
                   <div class="row" ng-if="formCPF == 'ativo'">
+
                       <form name="FormCPF" ng-submit=checkCPF(proprietario)>
+                          
                           <div class="col-md-4">
-                              <div class="form-group">
+                          <div class="form-group">
                               <label>CPF</label>
                               <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" required>
                           </div>
                           </div>
 
                           <div class="col-md-2">
-                              <div class="form-group">
+                          <div class="form-group">
                               <button type="submit" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search" aria-hidden="true"></i></button>
                           </div>
                           </div>
                       </form>
 
                   </div>
-               </div>
-        
+
+<!-- AO VERIFICAR O CPF PRINTA NA TELA O DADOS DO PROPRIETARIO OU FORMULARIO EM BRANCO -->
+    <div ng-if="formProprietario == 'ativo'">
+        <div class="row">
+             <form name="first" ng-submit="primeiroPasso(proprietario)">
+
+            <div class="alert alert-success">
+                <strong>Novo Proprietário!</strong> Não foi encontrado nenhum proprietário nos seus registro com este cpf , deseja realmente criar um novo ?
+            </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" ng-model="proprietario.nomeProprietario" required>
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>CPF</label>
+                    <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" disabled ui-br-cpf-mask required>
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" ng-model="proprietario.emailProprietario" required>
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" ng-model="proprietario.telefoneProprietario" ui-br-phone-number required>
+                </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                <hr>
+
+                <button type="submit" class="btn btn-primary">Avançar</button>
+                <button ng-click="back('cpf')" class="btn btn-danger">Voltar</button>
+                </div>
+                </div>
+
+
+
+         </form>
+               </div><!-- row -->
+               </div><!-- FORM PROPRIETÁRIO -->
+
+
+    <!-- FORMULARIO ENDEREÇOS -->
+    <div ng-if="formEndereco == 'ativo'">
+        <div class="row">
+             <form name="second" ng-submit="segundoPasso(imovel)">
+
+                 <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input type="text" class="form-control" ng-model="imovel.enderecoImovel">
+                     </div>
+                 </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Estado</label>
+                        <select class="form-control" ng-change="executeCidade(imovel.idEstado)"
+                        ng-options="imovel.idEstado as imovel.nome for imovel in estados track by imovel.idEstado"
+                        ng-model="imovel.idEstado">
+                        <option value="">Selecione Estado</option>
+                        </select>
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Cidade</label>
+                        <select class="form-control" ng-change="executeBairro(imovel.idCidade)" ng-disabled="!imovel.idEstado"
+                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: imovel.idEstado}"
+                         ng-model="imovel.idCidade">
+                        <option value="">Selecione Cidade</option>
+                        </select>
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Bairro</label>
+                         <!-- InputBairro novo Bairro -->
+                        <div ng-show="inputBairro">
+                        <input type="text" class="form-control" ng-model="imovel.idBairro" placeholder="Novo Bairro" required>
+                        </div>
+
+                       <!-- Select de Bairros -->
+                        <select class="form-control" ng-disabled="!imovel.idCidade"
+                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: imovel.idCidade}"
+                         ng-model="imovel.idBairro"
+                         ng-show="selectBairro">
+                        <option value="">Selecione Bairro</option>
+                        </select>
+                </div>
+                </div>
+
+
+                <div class="col-md-3" ng-show="btnNewBairro">
+                <div class="form-group">
+                    <span style="margin-top:25px; float:left;"> <button type="submit" class="btn btn-primary" ng-click="newBairro()">Novo Bairro</button></span>
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-show="btnBairroBack">
+                <div class="form-group">
+                    <span style="margin-top:25px;float:left;"><button type="submit" class="btn btn-danger" ng-click="backBairro('bairro')">Voltar</button></span>
+                </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                <hr>
+
+                <button type="submit" id="segundoPasso" class="btn btn-primary">Avançar</button>
+                <button ng-click="back('proprietario')" class="btn btn-danger">Voltar</button>
+                </div>
+                </div>
+
+
+
+         </form>
+
+               </div><!-- row -->
+               </div><!-- Form Imoveis -->
+
+
            </div><!--modal-body -->
         
+             
              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Salvar Dados</button> 
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-              </div>
-           
-         </form>
+  
+                <button type="button" class="btn btn-default" >Passo 1</button>
+
+             </div>
+
         
     </div>
   </div>
