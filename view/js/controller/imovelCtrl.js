@@ -42,12 +42,10 @@
             var flag = response.flag;
                 //Se não existir
                 if (flag == false){
-                  console.log('falso');
                     //Printa na tela o formulario para cadastar
                     $scope.formProprietario = 'ativo';
                     $scope.proprietario = cpf;
                 }else{
-                  console.log('segue');
                     //Printa na tela com os dados
                     $scope.formProprietario = 'ativo';
                     $scope.proprietario = response;
@@ -291,7 +289,6 @@
      //
      //
         $scope.terceiroPasso = function (values){
-          console.log('estou aqui');
           $scope.imovel.push = values;
           $scope.passo1 = {};
           $scope.passo2 = {};

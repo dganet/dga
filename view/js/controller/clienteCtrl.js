@@ -45,7 +45,7 @@
       $('#closeModalPost').modal('hide');
     
     //Lista todas Cursos
-    restful.clienteList().success(function(data){
+    restful.clienteList(token).success(function(data){
     $scope.clientes = data;       
   });
         
@@ -75,7 +75,7 @@
       $('#closeModalUpdate').modal('hide');
 
         //Lista todas Cursos
-        restful.clienteList().success(function(data){
+        restful.clienteList(token).success(function(data){
             $scope.clientes = data;       
         });
          

@@ -251,7 +251,211 @@
          </form>
 
                </div><!-- row -->
-               </div><!-- Form Imoveis -->
+               </div><!-- FORM ENDEREÇOS -->
+
+
+
+<!-- FORMULARIO DOS DADOS DOS IMOVEIs -->
+    <div ng-if="formImovel == 'ativo'">
+        <div class="row">
+             <form name="terceiro" ng-submit="terceiroPasso(imovel)">
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Qual Operação ? </label>
+                    <select class="form-control"
+                                ng-options="op.nomeOperacao as op.nomeOperacao for op in operacoes"
+                                ng-model="imovel.tipoOperacaoImovel"
+                                ng-change="selectOperation(imovel.tipoOperacaoImovel)">
+                                <option value="">Selecione a Operação</option>
+                    </select>
+
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="operacao == 'ativo'">
+                <div class="form-group">
+                    <label>Selecione o Tipo</label>
+                    <select class="form-control"
+                            ng-model="imovel.tipoImovel"
+                            ng-options ="t.tipoImovel as t.tipoImovel for t in tipos"
+                            ng-change="selectTipo(imovel.tipoImovel)"
+                            >
+                        <option value="">Tipo de Imovel</option>
+                    </select>
+
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="valorImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Valor</label>
+                    <input type="text" class="form-control" ng-model="imovel.valorImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="iptuImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Iptu</label>
+                    <input type="text" class="form-control" ng-model="imovel.iptuImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="condominioImovel == 'ativo'" >
+                <div class="form-group">
+                    <label>Condominio</label>
+                    <input type="text" class="form-control" ng-model="imovel.condominioImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="idadeImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Idade do Imovel</label>
+                    <input type="text" class="form-control" ng-model="imovel.idadeImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="idadeImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Suite(s)</label>
+                    <input type="text" class="form-control" ng-model="imovel.suiteImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="copaImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Copa</label>
+                    <input type="text" class="form-control" ng-model="imovel.copaImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="banheiroImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Banheiros</label>
+                    <input type="text" class="form-control" ng-model="imovel.banheiroImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="saladejantarImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Sala de Jantar</label>
+                    <input type="text" class="form-control" ng-model="imovel.saladejantarImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="mobiladoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Mobilado</label>
+                    <select class="form-control" ng-model="imovel.mobiladoImovel">
+                      <option ng-value="sim">Sim</option>
+                      <option ng-value="nao">Não</option>
+                    </select>
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="elevadorImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Elevador</label>
+                    <input type="text" class="form-control" ng-model="imovel.elevadorImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="andarImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Andar do Imovel</label>
+                    <input type="text" class="form-control" ng-model="imovel.andarImovel">
+                </div>
+                </div>
+                <div class="col-md-3" ng-if="descricaoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <input type="text" class="form-control" ng-model="imovel.descricaoImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="garagemCobertaImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Garagem Coberta</label>
+                    <input type="text" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemCobertaImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="garagemDescobertaImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Garagem Descoberta</label>
+                    <input type="text" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemDescobertaImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="areaTerrenoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Aréa do terreno</label>
+                    <input type="text" class="form-control" ng-model="imovel.areaTerrenoImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="areaUtilImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Aréa Util</label>
+                    <input type="text" class="form-control" ng-model="imovel.areaUtilImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="areaTotalImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Aréa do total do Imovel</label>
+                    <input type="text" class="form-control" ng-model="imovel.areaTotalImovel">
+                </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                <hr>
+
+                <button type="submit" id="terceiroPasso" class="btn btn-primary">Avançar</button>
+                <button ng-click="back('endereco')" class="btn btn-danger">Voltar</button>
+                </div>
+                </div>
+
+        </div><!-- ROW -->
+
+    </div><!-- FORMULARIO DADOS DOS IMOVEIS -->
+
+
+<!-- FORMULARIO DE IMAGENS-->
+    <div ng-if="formImagens == 'ativo'">
+        <div class="row">
+             <form name="first" ng-submit="quartoPasso(proprietario)">
+               <div class="row" data-ng-repeat="x in documento">
+                <div class="col-md-9">
+                    <div class="form-group">
+                    <label>Imagens</label>
+                  <input type="file" ng-file-model="x.anexoDocumento" name="arquivo"/ class="form-control">
+                </div>
+                </div>
+
+                <div class="col-md-1">
+                  <div class="form-group">
+                    <label ng-show="$last">Remover</label>
+                    <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDocumento()">x</button>
+                  </div>
+                </div>
+    </div>
+            <button type="button" ng-click="addDocumento()">Adicionar Documento</button>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                <hr>
+
+                <button type="submit" class="btn btn-primary">Avançar</button>
+                <button ng-click="back('cpf')" class="btn btn-danger">Voltar</button>
+                </div>
+                </div>
+
+         </form>
+      </div><!-- row -->
+
+     </div><!-- FORMULARIO DE IMAGENS-->
 
 
            </div><!--modal-body -->
