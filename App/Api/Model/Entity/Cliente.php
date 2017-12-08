@@ -6,7 +6,7 @@ class Cliente extends \GORM\Model{
     private $nomeCliente;
     private $emailCliente;
     private $enderecoCliente;
-    private $telComercialCLiente;
+    private $telComercialCliente;
     private $telFixoCliente;
     private $telCelularCliente;
     private $createAtCliente;
@@ -49,7 +49,7 @@ class Cliente extends \GORM\Model{
            'nomeCliente' => $this->__get('nomeCliente'),
            'emailCliente'   => $this->__get('emailCliente'),
            'enderecoCliente' => $this->__get('enderecoCliente'),
-           'telComercialCLiente' => $this->__get('telComercialCLiente'),
+           'telComercialCliente' => $this->__get('telComercialCliente'),
            'telFixoCliente' => $this->__get('telFixoCliente'),
            'telCelularCliente' => $this->__get('telCelularCliente'),
            'createAtCliente'   => $this->__get('createAtCliente'),

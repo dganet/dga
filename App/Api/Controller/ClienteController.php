@@ -85,7 +85,6 @@ class ClienteController{
         if (Auth::_isLoggedIn($token)){
             $post = json_decode($request->getBody(),true);
             $this->cliente->load($post);
-            $this->cliente->idCliente = $args['id']; 
             $this->cliente->updateAt = date("Y-m-d H:i:s");
             if ($this->cliente->update()){
                 return $response->withJson([

@@ -70,9 +70,9 @@ $app->get('/cliente/listId/{id}', \Api\Controller\ClienteController::class . ':l
 //Salva um novo cliente
 $app->post('/cliente/save/{token}', \Api\Controller\ClienteController::class . ':save');
 // Atualiza as informações do cliente
-$app->put('/cliente/update/{id}/{token}', \Api\Controller\ClienteController::class . ':update');
+$app->put('/cliente/update/{token}', \Api\Controller\ClienteController::class . ':update');
 //Inativa o cliente
-$app->get('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::class . ':delete');
+$app->delete('/cliente/delete/{token}', \Api\Controller\ClienteController::class . ':delete');
 // FIM CLIENTE
 /**
  * IMAGEM

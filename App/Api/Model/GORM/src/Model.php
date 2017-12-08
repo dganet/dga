@@ -31,7 +31,7 @@ class Model{
 		"host"		=> "br654.hostgator.com.br",		//31.220.104.130 mysql.hostinger.com.br br654.hostgator.com.br
 		"dbname"	=> "smout364_dga", 		//u172775243_imobi
 		"user"		=> "smout364_dga", 		//u172775243_imobi
-		"pass"		=> "159951" 			//im98yp121556
+		"pass"		=> "159951"			//im98yp121556
 	);
 	/**
     * Recebe o nome da tabela da função Model::loadTable()
@@ -162,4 +162,10 @@ class Model{
 			}
 		return $array;
 	}
+	//Load object information by array
+	public function load($array = []){
+        foreach ($array as $key => $value) {
+            $this->$key = $value;
+        }
+    }
 }
