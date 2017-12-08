@@ -2,7 +2,9 @@ app.service('restful', function ($http,$sessionStorage) {
  //Pegando Token
  var token = sessionStorage.getItem('usuario.token');
 
-//REQUISICOES DO BACK-END CAMINHOS
+//REQUISICOES DO FRONT-END TO BACK-END 
+  
+  //CAMINHOS
 
    //Classes Usuario
    $usuarioLogin = 'App/usuario/login'; // loga o usuario
@@ -14,6 +16,8 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteSave = 'App/cliente/save/'; // Salva Cliente
    $clienteList = 'App/cliente/list/'; // Lista todos os Cliente referente ao id do Usuario
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
+   $clientePut = 'App/cliente/update/'; // Lista unico cliente referente ao ID + token
+   $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token     
    //MODULO PEFIL
    $updatePicture = 'App/imagem'; //Update Foto
 
@@ -55,6 +59,15 @@ app.service('restful', function ($http,$sessionStorage) {
     var _clienteListId = function (id){
         return  $http.get($clienteListId + id);
     };
+    //Atualiza as informações do Cliente
+    var _clientePut = function (values, token){
+        return  $http.put($clientePut + token , values);
+    };
+    //Inativa o Cliente
+    var _clienteDel = function (values,token){
+        return  $http.put($clienteDel + token , values);
+    };
+
 
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
@@ -80,6 +93,8 @@ app.service('restful', function ($http,$sessionStorage) {
         clienteSave : _clienteSave,
         clienteList : _clienteList,
         clienteListId : _clienteListId,
+        clientePut : _clientePut,
+        clienteDel : _clienteDel,
 
         //Return Modulo Cliente
         updatePicture : _updatePicture,
