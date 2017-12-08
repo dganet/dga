@@ -19,9 +19,7 @@
     //Ativar o Form do Check CPF
 
     $scope.formCPF = 'ativo';
-    $scope.formImagens ="ativo";
-
-
+    $scope.formImagens = "ativo";
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
 

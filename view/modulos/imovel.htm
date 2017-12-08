@@ -409,7 +409,7 @@
                 </div>
 
                 <div class="col-md-12">
-                    <div class="form-group">
+                <div class="form-group">
                 <hr>
 
                 <button type="submit" id="terceiroPasso" class="btn btn-primary">Avançar</button>
@@ -417,9 +417,10 @@
                 </div>
                 </div>
 
-        </div><!-- ROW -->
+        </form>
 
-    </div><!-- FORMULARIO DADOS DOS IMOVEIS -->
+        </div><!-- ROW -->
+        </div><!-- FORMULARIO DADOS DOS IMOVEIS -->
 
 
 <!-- FORMULARIO DE IMAGENS-->
@@ -427,12 +428,13 @@
         <div class="row">
              <form name="first" ng-submit="quartoPasso(proprietario)">
                <div class="row" data-ng-repeat="x in documento">
-                <div class="col-md-9">
+                <div class="col-md-11">
                     <div class="form-group">
                     <label>Imagens</label>
                   <input type="file" ng-file-model="x.anexoDocumento" name="arquivo"/ class="form-control">
+                    </div>
                 </div>
-                </div>
+              </div>
 
                 <div class="col-md-1">
                   <div class="form-group">
@@ -440,15 +442,15 @@
                     <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDocumento()">x</button>
                   </div>
                 </div>
-    </div>
+
             <button type="button" ng-click="addDocumento()">Adicionar Documento</button>
 
                 <div class="col-md-12">
-                    <div class="form-group">
+                <div class="form-group">
                 <hr>
 
                 <button type="submit" class="btn btn-primary">Avançar</button>
-                <button ng-click="back('cpf')" class="btn btn-danger">Voltar</button>
+                <button ng-click="back('segundoPasso')" class="btn btn-danger">Voltar</button>
                 </div>
                 </div>
 
