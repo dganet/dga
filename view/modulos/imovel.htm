@@ -427,7 +427,7 @@
     <div ng-if="formImagens == 'ativo'">
         <div class="row">
              <form name="first" ng-submit="quartoPasso(proprietario)">
-               <div class="row" data-ng-repeat="x in documento">
+               <div data-ng-repeat="x in documento">
                 <div class="col-md-11">
                     <div class="form-group">
                     <label>Imagens</label>
@@ -443,7 +443,11 @@
                   </div>
                 </div>
 
-            <button type="button" ng-click="addDocumento()">Adicionar Documento</button>
+                <div class="col-md-1">
+                <div class="form-group">
+                  <button type="button" ng-click="addDocumento()">Adicionar Documento</button>
+                </div>
+              </div>
 
                 <div class="col-md-12">
                 <div class="form-group">
