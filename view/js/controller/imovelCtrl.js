@@ -19,7 +19,6 @@
     //Ativar o Form do Check CPF
 
     $scope.formCPF = 'ativo';
-    $scope.formImagens = "ativo";
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
 
@@ -296,8 +295,9 @@
           // Ativa o Formulario do Segundo Passo
           $scope.formImagens = 'ativo';
   };
-    var dadosDoc = $scope.documento = [];
-  var documento = {documento:dadosDoc};
+
+          var dadosDoc = $scope.documento = [];
+          var documento = {documento:dadosDoc};
 
           $scope.addDocumento = function(){
            var newInputs = $scope.documento.lenght+1;

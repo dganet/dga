@@ -428,7 +428,7 @@
         <div class="row">
              <form name="first" ng-submit="quartoPasso(proprietario)">
                <div data-ng-repeat="x in documento">
-                <div class="col-md-11">
+                <div class="col-md-9">
                     <div class="form-group">
                     <label>Imagens</label>
                   <input type="file" ng-file-model="x.anexoDocumento" name="arquivo"/ class="form-control">
@@ -438,14 +438,15 @@
 
                 <div class="col-md-1">
                   <div class="form-group">
-                    <label ng-show="$last">Remover</label>
-                    <button type="button" ng-show="$last" class="btn btn-danger" ng-click="removeDocumento()">x</button>
+                    <label>Remover</label>
+                    <button type="button" class="btn btn-danger" ng-click="removeDocumento()">x</button>
                   </div>
                 </div>
 
                 <div class="col-md-1">
                 <div class="form-group">
-                  <button type="button" ng-click="addDocumento()">Adicionar Documento</button>
+                  <label>Adicionar</label>
+                  <button type="button" class="btn btn-success" ng-click="addDocumento()">Foto</button>
                 </div>
               </div>
 
@@ -453,7 +454,7 @@
                 <div class="form-group">
                 <hr>
 
-                <button type="submit" class="btn btn-primary">Avançar</button>
+                <button type="submit" class="btn btn-primary" ng-click="save()">Salvar Imovel</button>
                 <button ng-click="back('segundoPasso')" class="btn btn-danger">Voltar</button>
                 </div>
                 </div>
