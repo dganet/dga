@@ -11,8 +11,15 @@
 
 
 //*************CADASTRA IMOVEL *********************//
+    
+    //Armazena os dados do Objeto Proprietario
     var p = $scope.proprietario = {};
+    //Armazena os dados do Objeto Imovel
     var i = $scope.imovel = {};
+    //Armazena os dados da Imaggens do Imovel
+    var f = $scope.fotoImovel = [];
+    var fotos = {imagem:f};
+
 
     //Mudar o Css do Processo em ativo
     $scope.passo1 = 'background:gray; color:white';
@@ -69,6 +76,15 @@
                 if (value == 'endereco'){
                 $scope.formEndereco = 'ativo';
                 $scope.formImagens = "inativo";
+                $scope.passo2 = 'background:gray; color:white';
+                $scope.passo3 = {};
+                }
+
+                if (value == 'fotos'){
+                $scope.formCPF = 'inativo';
+                $scope.formEndereco = 'inativo';
+                $scope.formProprietario = 'inativo';
+                $scope.formImagens = "ativo";
                 $scope.passo2 = 'background:gray; color:white';
                 $scope.passo3 = {};
                 }
@@ -296,17 +312,20 @@
           $scope.formImagens = 'ativo';
   };
 
-          var dadosDoc = $scope.documento = [];
-          var documento = {documento:dadosDoc};
-
+          // Função que adicionar imagens,
           $scope.addDocumento = function(){
-           var newInputs = $scope.documento.lenght+1;
-           $scope.documento.push({tipoDocumento:'',anexoDocumento:''});
+           var newInputs = $scope.fotoImovel.lenght+1;
+           $scope.fotoImovel.push({anexoDocumento:''});
           };
 
           $scope.removeDocumento = function() {
-          	 var lastItem = $scope.documento.length-1;
-          	 $scope.documento.splice(lastItem);
+          	 var lastItem = $scope.foto.length-1;
+          	 $scope.foto.splice(lastItem);
            };
 
+           $scope.save = function(){
+               console.log(i);
+               console.log(p);
+               console.log(f);
+           };
  });//END do controller
