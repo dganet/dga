@@ -63,6 +63,7 @@
                 if (value == 'cpf'){
                 $scope.formCPF = 'ativo';
                 $scope.formProprietario = 'inativo';
+                console.log('cpf');
                 }
 
                 if (value == 'proprietario'){
@@ -71,16 +72,25 @@
                 $scope.passo1 = 'background:gray; color:white';
                 $scope.passo2 = {};
                 $scope.formProprietario = 'ativo';
+                console.log('proprietario');
                 }
 
                 if (value == 'endereco'){
-                $scope.formEndereco = 'ativo';
-                $scope.formImagens = "inativo";
+                  console.log('endereco');
+                $scope.formEndereco = 'inativo';
+                $scope.formImovel = 'ativo';
                 $scope.passo2 = 'background:gray; color:white';
                 $scope.passo3 = {};
                 }
 
+                if (value == 'imovel'){
+                  console.log('imovel');
+                $scope.formEndereco = 'ativo';
+                $scope.formImovel = 'invativo';
+
+                }
                 if (value == 'fotos'){
+                  console.log('fotos');
                 $scope.formCPF = 'inativo';
                 $scope.formEndereco = 'inativo';
                 $scope.formProprietario = 'inativo';
@@ -176,6 +186,7 @@
             $scope.passo1 = {};
             $scope.passo2 = {};
             $scope.passo3 = 'background:gray; color:white';
+
             $scope.formEndereco = false;
             // Ativa o Formulario do Segundo Passo
             $scope.formImovel = 'ativo';
@@ -274,7 +285,6 @@
         };
 
         if(value == "Terreno"){
-          console.log('morre');
             //Ativar todos os Inputs
             $scope.valorImovel = 'inativo';
             $scope.iptuImovel = 'inativo';
