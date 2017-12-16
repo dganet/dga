@@ -17,6 +17,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
       controller:'siteCtrl',
     })
 
+    .state('login.forget', {
+      url: '/forget',
+      templateUrl: 'view/site/forget.htm',
+      controller:'forgetCtrl',
+    })
+
     .state('corretor', {
       url: '/corretor',
       templateUrl: 'view/site/corretor.htm',

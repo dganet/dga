@@ -76,27 +76,18 @@
                 }
 
                 if (value == 'endereco'){
-                  console.log('endereco');
-                $scope.formEndereco = 'inativo';
-                $scope.formImovel = 'ativo';
+                console.log('endereco');
+                $scope.formEndereco = 'ativo';
+                $scope.formImovel = 'inativo';
                 $scope.passo2 = 'background:gray; color:white';
                 $scope.passo3 = {};
                 }
 
                 if (value == 'imovel'){
-                  console.log('imovel');
-                $scope.formEndereco = 'ativo';
-                $scope.formImovel = 'invativo';
+                console.log('imovel');
+                $scope.formImagens = 'inativo';
+                $scope.formImovel = 'ativo';
 
-                }
-                if (value == 'fotos'){
-                  console.log('fotos');
-                $scope.formCPF = 'inativo';
-                $scope.formEndereco = 'inativo';
-                $scope.formProprietario = 'inativo';
-                $scope.formImagens = "ativo";
-                $scope.passo2 = 'background:gray; color:white';
-                $scope.passo3 = {};
                 }
 
             };
