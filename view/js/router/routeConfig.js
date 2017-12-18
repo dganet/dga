@@ -19,7 +19,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
     .state('login.forget', {
       url: '/forget',
-      templateUrl: 'view/site/forget.htm',
+      templateUrl: 'view/site/lostpwd.htm',
       controller:'forgetCtrl',
     })
 
