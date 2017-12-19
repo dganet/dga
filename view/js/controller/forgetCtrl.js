@@ -1,4 +1,4 @@
- app.controller("forgetCtrl", function($scope){
+ app.controller("lostpwdCtrl", function($scope){
 
 
   
