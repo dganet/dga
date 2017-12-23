@@ -68,6 +68,7 @@ $scope.FBLogin = function (){
                             values['idFacebook'] = idFacebook;
                             //Funcao uptade
                             restful.usuarioSaveMigraFB(values).success(function(response){
+
                                     var auth = response.flag;
                                     if (auth == false){
                                         // Exibi a mensagem  				    
@@ -81,9 +82,9 @@ $scope.FBLogin = function (){
                                         // Exibi a mensagem  				    
                                         $scope.mensagemMigrar = true;
                                         // Depois de 5 segundos some a mensagem
-                                        $timeout(function () {
+                                        $timeout(function () {                              
                                             $scope.activePath = $location.path('/user');
-                                            sessionStorage.setItem('usuario.id', response.idUsuario);
+                                            sessionStorage.setItem('usuario.idUsuario', response.idUsuario);
                                             sessionStorage.setItem('usuario.nome', response.nomeUsuario);
                                             sessionStorage.setItem('usuario.sobrenome', response.sobrenomeUsuario);
                                             sessionStorage.setItem('usuario.token', response.token);
@@ -151,7 +152,7 @@ $scope.FBLogin = function (){
 });
 };
 
-     //Autentinca o Usuario e loga no sistema
+     //Autentinca o Usuario e loga no sistema por Login e Senha
      		    
 		    $scope.logando = function (values , formAut){
                     restful.usuarioLogin(values).success(function(response){

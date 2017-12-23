@@ -1,8 +1,9 @@
  app.controller("clienteCtrl", function($scope, $timeout , $location, restful){
 
-   //Pega o Token 
+  //Pega o Token 
   var token = sessionStorage.getItem('usuario.token'); 
-
+  //Pega o idUsuario 
+  var idUsuario = sessionStorage.getItem('usuario.idUsuario'); 
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .

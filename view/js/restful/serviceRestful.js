@@ -20,8 +20,9 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token     
    //MODULO PEFIL
    $updatePicture = 'App/imagem'; //Update Foto
-   // Resgate Senha
+   // Resgate Senha e Update Senha
    $resgateSenha = 'Caminho do BACK-END'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
+   $updateSenha = 'caminho do BACK-END'; // Envia a senha atualiza e o e-mail 
 
 
 //|#######################################################|
@@ -84,11 +85,15 @@ app.service('restful', function ($http,$sessionStorage) {
 //|############# **  RESGATE SENHA ** ################|
 //|#######################################################|
 
-   //Update Picture
+   //Solicita o Codigo da Recuperacao de Senha
     var _resgateSenha = function (values){
         return  $http.post($resgateSenha, values);
     };
-
+    //Atualiza a Senha
+    var _updateSenha = function (values){
+      console.log(values);
+        return $http.put($updateSenha , values);
+    };
 //|#######################################################|
 //|############# **  RETURNS ** ##########################|
 //|#######################################################|
@@ -110,8 +115,9 @@ app.service('restful', function ($http,$sessionStorage) {
         //Return Imagens
         updatePicture : _updatePicture,
         
-        //Return Resgate Senha
+        //Return Resgate Senha e Update da Senha
         resgateSenha : _resgateSenha,
+        updateSenha : _updateSenha,
     }
 
 });
