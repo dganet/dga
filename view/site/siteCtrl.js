@@ -7,6 +7,10 @@
 		$scope.estados = response;
 	});
 
+      $scope.forgetSenha = function(){
+  console.log('teste');
+};
+
 $scope.executeCidade = function (id){
 
 		serviceEnderecos.getCidadesEstado(id).success(function (response){

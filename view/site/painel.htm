@@ -10,38 +10,40 @@
 
     <!--Parte de Criar Conta e Realizar Login-->
     <div class="bloco-login-conta">
-
         <!--Autenticacao-->
-        <div class="autenticacao">
-            
-            <form class="form-inline" name="formAut" ng-submit="logando(user)">
-            <div class="form-group">
-            
-                <input type="email" class="form-control" placeholder="Digite seu E-mail" ng-model="user.emailUsuario">
-            </div>
-            <div class="form-group">
-             
-                <input type="password" class="form-control" placeholder="Digite sua Senha" ng-model="user.senhaUsuario">
+            <div class="form-inline" >   
+
+                <form name="formAut" ng-submit="logando(user)">
+                    
+                    <div class="form-group">                
+                            <input type="email" class="form-control input-sm" placeholder="Digite seu E-mail" ng-model="user.emailUsuario">
+                    </div>
+
+                    <div class="form-group">                   
+                            <input type="password" class="form-control input-sm"  placeholder="Digite sua Senha" ng-model="user.senhaUsuario">
+                    </div>
+
+                    <div class="form-group">            
+                            <button type="submit" class="btn btn-success input-sm">Acessar</button>
+                    </div>
+
+                    <div class="form-group">   
+                            <button ng-click="FBLogin()" class="btn btn-primary input-sm">Facebbok</button>
+                    </div>
+
+                </form>         
+            <div class="forgetSenha">
+                <div ng-click="forgetSenha()">Esqueceu senha ?</div>
             </div>
 
-            <button type="submit" class="btn btn-success">Acessar</button>
-            </form>
-        </div>
-
-
-            <div class="botaoFB">
-                <button ng-click="FBLogin()" class="btn btn-primary">Login Facebbok</button>
             </div>
-            
-    </div>
-
-            <div class="erroSenha">
-                <!--Mensagem de Senha Incorreta-->  
-                <div class="alert alert-danger" ng-show="mensagemErroSenha">
-                <strong>Usuario ou Senha!</strong> incorreto.
-                </div>
-            </div>
-            
+    </div>           
+                            <div class="erroSenha">
+                        <!--Mensagem de Senha Incorreta-->  
+                        <div class="alert alert-danger" ng-show="mensagemErroSenha">
+                        <strong>Usuario ou Senha!</strong> incorreto.
+                        </div>
+                    </div>    
 </header>
 
 <section>
