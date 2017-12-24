@@ -1,15 +1,39 @@
- app.controller("siteCtrl", function($scope, $http, $timeout , $location, $sessionStorage, restful, serviceEnderecos){
+ app.controller("siteCtrl", function($scope, $timeout , $location, $sessionStorage, restful, serviceEnderecos){
     //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
+    $scope.mensagemErroEmail = true;
+    $scope.mensagemSucessoEmail = true;
+
+
+      //Envio de Solicitação de Senha
+      $scope.recovery = function(values){
+        restful.recovery(values).success(function(response){
+          if (response.flag == false){
+              // Exibi a mensagem             
+              $scope.mensagemErroEmail = true;
+              // Depois de 5 segundos some a mensagem
+              $timeout(function () {
+              $scope.mensagemErroEmail = false;
+               },10000);
+          }else{
+
+              // Exibi a mensagem             
+              $scope.mensagemSucessoEmail = true;
+              // Depois de 5 segundos some a mensagem
+              $timeout(function () {
+              $scope.mensagemSucessoEmail = false;
+               },10000);            
+          }
+        });
+};
+
     //Endereços Estado / Cidade
-    	serviceEnderecos.getEstados().success(function (response){
+    serviceEnderecos.getEstados().success(function (response){
 		$scope.estados = response;
 	});
 
-      $scope.forgetSenha = function(){
-  console.log('teste');
-};
+
 
 $scope.executeCidade = function (id){
 
