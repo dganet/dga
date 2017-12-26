@@ -2,13 +2,13 @@
     //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
-    $scope.mensagemErroEmail = true;
-    $scope.mensagemSucessoEmail = true;
+    $scope.mensagemErroEmail = false;
+    $scope.mensagemSucessoEmail = false;
 
 
       //Envio de Solicitação de Senha
-      $scope.recovery = function(values){
-        restful.recovery(values).success(function(response){
+      $scope.solicitaRecSenha = function(values){
+        restful.solicitaResgateSenha(values).success(function(response){
           if (response.flag == false){
               // Exibi a mensagem             
               $scope.mensagemErroEmail = true;

@@ -21,8 +21,10 @@ app.service('restful', function ($http,$sessionStorage) {
    //MODULO PEFIL
    $updatePicture = 'App/imagem'; //Update Foto
    // Resgate Senha e Update Senha
+   $solicitaResgateSenha = 'caminho do Back-End'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
    $resgateSenha = 'Caminho do BACK-END'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
    $updateSenha = 'caminho do BACK-END'; // Envia a senha atualiza e o e-mail 
+
 
 
 //|#######################################################|
@@ -68,7 +70,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Inativa o Cliente
     var _clienteDel = function (values,token){
-        return  $http.put($clienteDel + token , values);
+        return  $http.del($clienteDel + token , values);
     };
 
 
@@ -84,16 +86,19 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 //|############# **  RESGATE SENHA ** ################|
 //|#######################################################|
-
+    //Recuperação de Senha
+    var _solicitaResgateSenha = function (values){
+        return $http.post($solicitaResgateSenha , values);
+    };
    //Solicita o Codigo da Recuperacao de Senha
     var _resgateSenha = function (values){
         return  $http.post($resgateSenha, values);
     };
     //Atualiza a Senha
     var _updateSenha = function (values){
-      console.log(values);
         return $http.put($updateSenha , values);
     };
+
 //|#######################################################|
 //|############# **  RETURNS ** ##########################|
 //|#######################################################|
@@ -116,6 +121,7 @@ app.service('restful', function ($http,$sessionStorage) {
         updatePicture : _updatePicture,
         
         //Return Resgate Senha e Update da Senha
+        solicitaResgateSenha : _solicitaResgateSenha,
         resgateSenha : _resgateSenha,
         updateSenha : _updateSenha,
     }
