@@ -147,75 +147,7 @@ header {
     font-weight: bold;
     padding: 10px 0px 0px 0px;
 }
-.corretor {
-    float: right;
-    margin: -40px 0px 0px 0px;  
 
-}
-
-.nome-corretor {
-    color: white;
-    font-weight: bold;
-    float: right;
-    padding: 15px 20px 0px 0px;
-}
-.foto-corretor {
-    float: right;
-}
-.bloco-conteudo {
-    width: 100%;
-    position: fixed;
-	bottom: 10px;
-	top:50px;
-    overflow: auto;
-    margin-top: 5px;    
-}
-.conteudo-corretor{
-	width: 1024px;
-    margin: 0 auto;
-}
-
-.filtro-corretor-imovel{
-    margin-top: 25px;
-    padding: 15px;
-    background:#DEEEFF;
-}
-.section-corretor{
-    width: 800px;
-    margin-top: 20px;
-    padding: 20px;
-    background: #DEEEFF;
-    display: table;
-    float: left;
-
-}
-.bloco-corretor-imoveis{
-    width: 240px;
-    background:#FFFEFE;
-    font-size: 16px;
-    float: left;
-    padding: 10px;
-    margin-right: 13px;
-    margin-bottom:10px;
-}
-.corretor-ref {
-    padding:10px 0px 0px 0px;
-}
-.corretor-valor{
-    padding:10px 0px 0px 0px;
-}
-.corretor-regiao {
-    padding:10px 0px 10px 0px;
-}
-.corretor-detalhes {
-    margin:0 auto;
-}
-.aside-corretor{
-    float: right;
-    width: 204px;
-    margin-left:10px;
-    margin-top:20px;
-}
 
 /* Forget */
 

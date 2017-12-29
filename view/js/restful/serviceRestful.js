@@ -68,7 +68,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Inativa o Cliente
     var _clienteDel = function (values,token){
-        return  $http.put($clienteDel + token , values);
+        return  $http.delete($clienteDel + token , values);
     };
 
 
@@ -91,7 +91,6 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Atualiza a Senha
     var _updateSenha = function (values){
-      console.log(values);
         return $http.put($updateSenha , values);
     };
 //|#######################################################|

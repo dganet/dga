@@ -1,5 +1,5 @@
-app.config(function ($stateProvider, $urlRouterProvider){
-  
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider){
+
   $stateProvider
 //|#######################################################|
 //|############# **  SITE ** ###################|
@@ -215,6 +215,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
 
   $urlRouterProvider.otherwise("/site/inicio");
 
-
+  // Utilizando o HTML5 History API
+    $locationProvider.html5Mode(false);
 
 });
