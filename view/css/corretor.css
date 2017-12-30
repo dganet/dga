@@ -1,10 +1,39 @@
+/* SITE CORRETOR */
+
+.corpo-corretor{
+    margin: 0 auto;
+    width: 100%;
+    position: fixed;
+}
+
+.topo-corretor{
+    width: 100%;
+    height: 50px;
+    background: #51A8B1;
+    box-shadow: 1px 1px 5px black; 
+}
+
+.topo-conteudo {
+    margin: 0 auto;
+    height: 50px;
+    width: 1024px;
+}
+
+.logo-imobiliar{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 0px 0px 0px;
+}
+
 .corretor {
     float: right;
     margin: -40px 0px 0px 0px;  
 
 }
 
-.nome-corretor {
+/*Feature Menu*/
+.nome-corretor2 {
     color: white;
     font-weight: bold;
     float: right;
@@ -13,57 +42,82 @@
 .foto-corretor {
     float: right;
 }
+
 .bloco-conteudo {
-    width: 100%;
-    position: fixed;
-	bottom: 10px;
-	top:50px;
-    overflow: auto;
-    margin-top: 5px;    
-}
-.conteudo-corretor{
-	width: 1024px;
+    width: 1100px;
     margin: 0 auto;
+    padding-top: 15px;
 }
 
-.filtro-corretor-imovel{
-    margin-top: 25px;
-    padding: 15px;
-    background:#DEEEFF;
-}
-.section-corretor{
-    width: 800px;
-    margin-top: 20px;
-    padding: 20px;
-    background: #DEEEFF;
-    display: table;
+.aside-corretor{
+    width: 200px;
     float: left;
+    margin-right: 15px;
 
 }
-.bloco-corretor-imoveis{
-    width: 240px;
-    background:#FFFEFE;
-    font-size: 16px;
-    float: left;
+/*BLOCO DO PERFIL*/
+.aside-perfil{
+    border: 1px solid #D3D3D3;
+    width: 200px;   
+}
+.nome-corretor{
+    font-size: 14px;
+    text-align: center;
+    width: 200px;
+    font-weight: bold;
+
+}
+.idade-corretor{
+    font-size: 14px;
+    text-align: center;
+}
+.cresci-corretor{
+    font-size: 14px;
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 15px;
+}
+.view-corretor {
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+/*BLOCO ABOUT CORRETOR*/
+.aside-about{
+    margin-top: 15px;
+    border: 1px solid #D3D3D3;
+    width: 200px;
     padding: 10px;
-    margin-right: 13px;
-    margin-bottom:10px;
 }
-.corretor-ref {
-    padding:10px 0px 0px 0px;
+.lista-about{
+    list-style: none;
+    padding: 0 3px;
+
 }
-.corretor-valor{
-    padding:10px 0px 0px 0px;
+/*BLOCO DO IMOVEIS*/
+.aside-imoveis{
+    border: 1px solid blue;
+    width: 524px;
+    float: left;
+    margin-right: 15px;
 }
-.corretor-regiao {
-    padding:10px 0px 10px 0px;
+
+.bkg-perfil{
+    width: 100%;
+    height: 80px;
 }
-.corretor-detalhes {
-    margin:0 auto;
+.foto-perfil img{
+    border-radius: 100px;
+    border: 5px solid white;
+    width: 100px;
+    height: 100px;
+    margin: -50px 0px 0px 50px;
 }
+
+
+/*BLOCO DO FILTRO*/
 .aside-filtro{
-    float: right;
-    width: 204px;
-    margin-left:10px;
-    margin-top:20px;
+    border: 1px solid green;
+    float: left;
+    width: 300px;
 }

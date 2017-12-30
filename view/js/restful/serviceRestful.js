@@ -70,7 +70,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Inativa o Cliente
     var _clienteDel = function (values,token){
-        return  $http.delete($clienteDel + token , values);
+        return  $http.delete($clienteDel + values + '/' + token);
     };
 
 
