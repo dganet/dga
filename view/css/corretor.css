@@ -92,8 +92,10 @@
 .lista-about{
     list-style: none;
     padding: 0 3px;
+    border: 1px solid red;
 
 }
+
 /*BLOCO DO IMOVEIS*/
 .aside-imoveis{
     border: 1px solid blue;
