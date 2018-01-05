@@ -44,7 +44,7 @@
             <table>
                 <tr>
                     <td class="tdCentralizado"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
-                    <td>&ensp;<a href="">e-mail eletrônico</a></td>
+                    <td>&ensp;<a href="" data-toggle="modal" data-target=".bs-example-modal-sm-email">e-mail eletrônico</a></td>
                 </tr>
                 <tr>
                     <td class="tdCentralizado"><i class="fa fa-phone" aria-hidden="true"></i></td>
@@ -326,19 +326,19 @@
     <!-- FILTRO -->
 
     <div class="aside-filtro">
-        <form>
+        <form name="filtroImoveis" ng-submit="busca(filtro)">
             <div class="row">
             
             <div class="col-md-12">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Referência">
+                    <input type="text" class="form-control" placeholder="Referência" ng-model="filtro.referencia">
                 </div>
             </div>
 
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Transação</label>
-                    <select class="form-control">
+                    <select class="form-control" ng-model="filtro.transacao">
                       <option value="volvo">Comprar</option>
                       <option value="saab">Alugar</option>
                     </select>
@@ -348,7 +348,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Tipo do Imovel</label>
-                    <select class="form-control">
+                    <select class="form-control" ng-model="filtro.tipoImovel">
                       <option value="volvo">Casa</option>
                       <option value="saab">Aparatamento</option>
                     </select>
@@ -357,13 +357,13 @@
             
             <div class="col-md-6">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Minimo">
+                    <input type="text" class="form-control" placeholder="Minimo" ng-model="filtro.minimo">
                 </div>
             </div>
 
             <div class="col-md-6">         
                 <div class="form-group">
-                     <input type="text" class="form-control" placeholder="Máximo">
+                     <input type="text" class="form-control" placeholder="Máximo" ng-model="filtro.maximo">
                 </div>
             </div>
 
@@ -377,9 +377,57 @@
 
         </form>
    </div>
+
     <!-- RODAPE -->
     <div class="footer">
 
     </div>
 
 </div><!-- END BLOCO INTEIRO -->
+
+
+
+
+
+
+ <!-- Modal E-mail -->
+<div class="modal fade bs-example-modal-sm-email" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalDel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">E-mail</h4>
+      </div>
+        
+            <div class="modal-body">               
+               roberto.santos@imobiliar.net.br               
+           </div><!--modal-body -->
+        
+    </div>
+  </div>
+</div>
+
+
+ <!-- Modal Imovel -->
+<div class="modal fade bs-example-modal-lg-imovel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalDel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Deletar</h4>
+      </div>
+        
+            <div class="modal-body">               
+               Deseja realmente Deletar {{cliente.nomeCliente}} ?                 
+           </div><!--modal-body -->
+        
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-danger" ng-click="del(cliente.idCliente)">Sim</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+              </div>
+        
+    </div>
+  </div>
+</div>

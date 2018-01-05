@@ -26,6 +26,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider){
     .state('corretor', {
       url: '/corretor',
       templateUrl: 'view/site/corretor.htm',
+      controller:'corretorCtrl',
     })
 
     .state('cidade', {
