@@ -66,10 +66,14 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Atualiza as informações do Cliente
     var _clientePut = function (values, token){
+      console.log(values);
+      console.log(token);
         return  $http.put($clientePut + token , values);
     };
     //Inativa o Cliente
     var _clienteDel = function (values,token){
+      console.log(values);
+      console.log(token);
         return  $http.delete($clienteDel + values + '/' + token);
     };
 

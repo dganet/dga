@@ -32,7 +32,8 @@
       $scope.reset();
           //Pega as info da universidade selecionada
       restful.clienteListId(idCliente).success(function(data){
-        console.log($scope.cliente = data[0]);  
+        console.log(data);
+        $scope.cliente = data;  
           });
     };
 
