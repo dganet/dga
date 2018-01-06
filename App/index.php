@@ -109,6 +109,6 @@ $app->post('/bairro/save', \Api\Controller\EnderecoController::class . ':setBair
 /**
  * TESTE
  */
-$app->get('/teste', \Api\Test\Teste::class . ':main');
+
 //##################################################################
 $app->run();
