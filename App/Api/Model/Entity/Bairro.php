@@ -2,20 +2,10 @@
 namespace Api\Model\Entity;
 
 class Bairro extends \GORM\Model{
-    private $idBairro;
-    private $nome;
-    private $cidadeId;
-    /**
-     * Construtor
-     * 
-     * @param Array $data
-     */
-    public function __construct($data = []){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
-        $this->class = $this;
-    }
+    public $idBairro;
+    public $nome;
+    public $cidadeId;
+    
     /**
      * Metodo Setter
      * 
@@ -48,24 +38,7 @@ class Bairro extends \GORM\Model{
                 break;
         }
     }
-    /**
-     * Converte o Objeto para um array
-     * 
-     * @return void
-     */
-    public function toArray(): Array {
-        $temp = array(
-           'idBairro' => $this->__get('idBairro'),
-           'nome' => $this->__get('nome'),
-           'cidadeId' => $this->__get('cidadeId')
-        );
-        foreach ($temp as $key => $value) {
-            if($value == null){
-                unset($temp[$key]);
-            }
-        }
-        return $temp;
-    }
+    
     /**
      * Retorna as propriedades da classe
      * 
@@ -74,9 +47,5 @@ class Bairro extends \GORM\Model{
     public function __toString(){
         return var_dump($this->toArray());
     }
-    public function load($data){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
-    }
+    
 }

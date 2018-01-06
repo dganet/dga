@@ -14,6 +14,7 @@ class ProprietarioController{
      */
     public function __construct(){
         $this->proprietario = Proprietario::getInstance();
+              
     }
     /**
      * Lista todos os proprietarios
@@ -132,9 +133,10 @@ class ProprietarioController{
             $usuario->load($tokeninf['conteudo']);
             $imoveis = $usuario->CarteiraImovel->Imovel;
             foreach ($imoveis as $key => $value) {
+                $this->proprietario->setPrimaryKey('idProprietario');
                 $this->proprietario->find((int) $imoveis[$key]['fkProprietario']);
                 if ($this->proprietario->cpfProprietario == $post['cpfProprietario']){
-                    return $response->withJson($this->proprietario->toArray());
+                    return $response->withJson((array)$this->proprietario);
                     break;
                 } 
             }

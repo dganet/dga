@@ -1,233 +1,190 @@
 <?php
-/**
-*   Classe que irá gerar os SQL de forma Generica.
-*   @author Guilherme Brito
-*   @version 1.0
-*/
 namespace GORM;
-trait Builder
-{
+use Exception;
+trait Builder{
     /**
-    *
-    * Conjunto de variavel que recebe os valores para se gerar um SQL
-    * @access private
-    * @name $select
-    * @name $insert
-    * @name $where
-    * @name $update
-    * @name $set
-    * @name $inner
-    * @name $on
-    */
-    private static $select  = "SELECT * FROM ";
-    private static $insert  = "INSERT INTO ";
-    private static $where   = " WHERE ";
-    private static $update  = "UPDATE ";
-    private static $set     = " SET ";
-    private static $inner   = " INNER JOIN ";
-    private static $on      = " ON ";
-    private static $group   = " GROUP BY ";
-    private static $order   = " ORDER BY ";
-    /**
-    * Variavel que recebe um array com as opções para gerar o SQL
-    * @access public
-    * @name $condition
-    * @example $condition = array('where' => array('campo' => 'valor'))
-    */
-    public static  $condition;
-    
-    
-    /**
-    * Recebe a String que formara o SQL
-    * @access public
-    * @name $sql
-    */
-    public static  $sql;
-
-    /**
-    * Função para gerar um Insert no banco de dados com base nas informações passadas no parametro
-    * @param Object $class
-    * @return void
-    */
+     * Metodo responsável por criar as querys de inserção no banco de dados
+     *
+     * @return void
+     */
     public function makeInsert(){
-        $array = $this->class->toArray();
-        $size   = count($array);
-        $i      = 0;
-        $chave  = "(";
-        $valor  = "(";
-        foreach ($array as $key => $value) {
-            $value = addslashes($value);
-            if($i < ($size - 1) ){
-                $chave  .= $key.", ";
-                $valor  .= "'".$value."', ";
-            }else{
-                $chave  .= $key.") ";
-                $valor  .= "'".$value."') ";
+        $sql = "INSERT INTO ";
+        $this->loadTable();
+        $sql .= $this->configuration['table'];
+        $chave = ' (';
+        $valor = ' (';
+        //Percorre o OBJETO pegando as propriedades para gerar o SQL
+        foreach ($this as $key => $value) {
+            //Se não fizer parte da variavel de configuração então ele lista as 
+            //propriedades do Objeto
+            if($key != 'configuration'){
+                if(!empty($value)){
+                    $value = addslashes($value);
+                    $chave .= $key.",";
+                    $valor .= "'".$value."',";
+                }
             }
-            $i++;
         }
-        $retorno = ["key" => $chave, "value" => $valor ];
-        self::$sql = self::$insert.$this->table." ".$retorno['key']." values ".$retorno['value'];
-        return self::$sql;
+        //Retira a ultima virgula das variaveis de valor e chave
+        $chave = substr($chave,0, strlen($chave)-1);
+        $chave .= ')';
+        $valor = substr($valor,0, strlen($valor)-1);
+        $valor .= ')';
+        $sql .= $chave . " VALUES " . $valor;
+        $this->configuration['sql'] = $sql;
+    }
+    /**
+     * Gera uma query de update em um determinado Objeto, 
+     * o seu where é por padrão no campo id (Primary Key), caso precise de um outro PK
+     * deverá ser setado o novo pk com o metodo setPrimaryKey
+     *
+     * @return void
+     */
+    public function makeUpdate(){
+        $sql = "UPDATE ";
+        $this->loadTable();
+        $sql .= $this->configuration['table']; 
+        $sql .= " SET ";
+        foreach ($this as $key => $value) {
+            if($key != 'configuration'){
+                if(!empty($value)){
+                    $sql .= $key ."='". $value ."',";
+                }
+            }
+        }
+        $sql = substr($sql,0, strlen($sql)-1);
+        $sql .= ' WHERE ';
+        if(isset($this->configuration['primaryKey'])){
+            $pk = $this->configuration['primaryKey'];
+            // Verifica se o valor da PK é nulo ou vazio
+            if (empty($this->$pk)){
+                throw new Exception("Valor do campo ".$pk." não pode ser nulo ou vazio", 1);
+            }else{
+                $sql .= $pk ."=". $this->$pk;
+            }
+        }else{
+            // Verifica se o valor do campo ID é nulo ou vazio
+            if(empty($this->id)){
+                throw new Exception("Valor do campo 'id' não pode ser nulo ou vazio", 1);
+            }else{
+                $sql .=  "id = ".$this->id;
+            }
+        }
+        $this->configuration['sql'] = $sql;
+    }
+    /**
+     * Gera o DELETE 
+     *
+     * @param String $options
+     * @return void
+     */
+    public function makeDelete(){
+        $this->loadTable();
+        $sql = "DELETE FROM ".$this->configuration['table']." WHERE ";
+        if(isset($this->configuration['primaryKey'])){
+            $sql .= $this->configuration['primaryKey'];
+        }else{
+            $sql .= $this->id;
+        }
+        $this->configuration['sql'] = $sql;
+    }
+    /**
+     * Cria uma parte do sql para fazer o select();
+     * 
+     * @return this
+     */
+    public function makeSelect($options = '*'){
+        $sql = "SELECT $options FROM ";
+        $this->loadTable();
+        $sql .= $this->configuration['table'];
+        $this->configuration['sql'] = $sql;
+        return $this;
+    }
+    /**
+     * Gera os campos que serão buscados, 
+     * EX: SELECT $fields FROM $tabela
+     *
+     * @param String $options
+     * @return this
+     */
+    public function fields($options){
+        if (isset($this->configuration['sql'])){
+            $sql = $this->configuration['sql'];
+            $this->configuration['sql'] = str_replace('*', $options, $sql);   
+        }
+            return $this;   
+    }
+    /**
+     * Gera os campos do WHERE
+     *
+     * @param String $options
+     * @return this
+     */
+    public function where($options){
+        if (isset($this->configuration['sql'])){
+            $this->configuration['sql'] .=" WHERE ".  $options;      
+        }
+        return $this;
+    }
+    /**
+     * Gera os campos AND
+     *
+     * @param String $options
+     * @return This
+     */
+    public function and($options){
+        if(isset($this->configuration['sql'])){
+            $this->configuration['sql'] .= " AND ". $options;
+        }
+        return $this;
+    }
+    /**
+     * Gera os campos do INNER JOIN
+     *
+     * @param String $options
+     * @return void
+     */
+    public function inner($options,$op){
+        if(isset($this->configuration['sql'])){
+            $this->configuration['sql'] .= " INNER JOIN ".$options." ON ".$op;
+        }
+        return $this;
+    }
+    /**
+     * Gera os campos do ORDER BY
+     *
+     * @param String $options
+     * @return void
+     */
+    public function order($options){
+        if(isset($this->configuration['sql'])){
+            $this->configuration['sql'] .= " ORDER BY ".$options;
+        }
+        return $this;
+    }
+     /**
+     * Gera os campos do GROUP BY
+     *
+     * @param String $options
+     * @return void
+     */
+    public function group($options){
+        if(isset($this->configuration['sql'])){
+            $this->configuration['sql'] .= " GROUP BY ".$options;
+        }
+        return $this;
     }
 
     /**
-    * Função gera um SQL com base nas informações passadas pela variavel self::$condition
-    * possiveis posições para o Array:
-    * @example ['select' => 'nome,telefone']
-    * ---- Modifica o SELECT * para SELECT nome,telefone
-    * @example ['inner' => array('nomeDaTabela' => array('nomeDoCampo1' => 'nomeDoCampo2'))]
-    * ---- irá gerar algo como SELECT * FROM $TABELA INNER JOIN nomeDaTabela ON nomeDoCampo1=nomeDoCampo2
-    * @example ['where' => array('nomeDocampo1' => 'nomeDoCampo2')]
-    * ---- irá gerar algo como SELECT * FROM $TABELA WHERE cnomeDoCampo1=nomeDoCampo2
-    * @example ['AND' => array(' nomeDocampo1' => 'nomeDoCampo2', 'nomeDocampo3' => 'nomeDoCampo4' )]
-    * ---- essa opção pode ser usada com o where ficando da seguinte forma: ['where' => 'AND' => array('nomeDocampo1' => 'nomeDoCampo2', 'nomeDocampo3' => 'nomeDoCampo4' )]
-    * @param Object $class
-    * @return void
-    */
-    public function makeSelect($value){
-        $temp = self::$select.$this->table;
-        //Checa se é um array
-        if(is_array($value)){
-            // Converte a Classe para um array
-            $class = $this->class->toArray();
-            /**
-            * Checa se a posição ['select'] existe
-            */
-            if (isset(self::$condition['select'])){
-                $option = self::$condition['select'];
-                $temp = str_replace("*", $option, $temp);
-            }
-            /**
-            * Checa se a posição ['inner'] existe
-            */
-            if (isset(self::$condition['inner'])){
-                $inner = self::$condition['inner'];
-                foreach ($inner as $table => $value) {
-                    $temp .=  self::$inner.$table.self::$on;
-                    foreach ($value as $key => $values) {
-                        $temp .= $key."=".$values;
-                    }
-                }
-            }
-            /**
-            * Checa se a posição ['where'] existe
-            */
-            if (isset(self::$condition["where"])){
-                $where = self::$condition['where'];
-                $temp .= self::$where;
-                /**
-                * Percorre a primeira camada do array para checar se existe alguma clausula como 'AND' ou 'OR'
-                */
-                foreach ($where as $key => $value) {
-                    // Faz as verificações para saber como a informação esta sendo passada
-                    // se for apenas array('nomedocampo'), ele pega a propriedade do objeto com este nome
-                    if (isset($where[0])){
-                        if (is_string($value)){
-                            $temp .= $this->table.".".$value."='".$class[$value]."'";
-                        }else{
-                            $temp .= $this->table.".".$value."=".$class[$value];
-                        }
-                    /**
-                    * Checa se a posição ['AND'] existe
-                    */
-                    }elseif(isset($where["AND"])){
-                        $count = count($where['AND']);
-                        foreach ($value as $key => $values) {
-                            $i++;
-                            if($i < $count){
-                                if (is_string($values)){
-                                    $temp .= $key."='".$values."' AND ";
-                                }else{
-                                    $temp .= $key."=".$values." AND ";
-                                }
-                            }else{
-                                if (is_string($values)){
-                                    $temp .= $key."='".$values."'";
-                                }else{
-                                    $temp .= $key."=".$values;
-                                }
-                            }
-                        }
-                    /**
-                    * Checa se a posição ['OR'] existe
-                    */
-                    }elseif (isset($where["OR"])) {
-                        $count = count($where['OR']);
-                        $i=0;
-                        foreach ($value as $key => $values) {
-
-                            $i++;
-                            if($i<$count){
-                                if (is_string($values)){
-                                    $temp .= $key."='".$values."' OR ";
-                                }else{
-                                    $temp .= $key."=".$values." OR ";
-                                }
-                            }else{
-                                if (is_string($values)){
-                                    $temp .= $key."='".$values."'";
-                                }else{
-                                    $temp .= $key."=".$values;
-                                }
-                            }
-                        }
-                    // Se tiver apenas array('key' => value) ele tambem aceita
-                    }else{
-                        if (is_string($value)){
-                            $temp .= $this->table.".".$key."='".$value."'";
-                        }else{
-                            $temp .= $this->table.".".$key."=".$value;
-                        }
-                    }
-                }
-            }
-            /**
-             * Checa se a posição GROUP existe
-             */
-            if (isset(self::$condition["group"])){
-                $temp .= self::$group.self::$condition['group'];
-            }
-            /**
-             * Checa se a posição order existe
-             */
-            if (isset(self::$condition["order"])){
-                $temp .= self::$order.self::$condition['order'];
-            }
-
+     * Gera os campos do Like
+     *
+     * @param String $options
+     * @return void
+     */
+    public function like($options){
+        if(isset($this->configuration['sql'])){
+            $this->configuration['sql'] .= " like '%".$options."%'";
         }
-        //Checa se é um Inteiro
-        if(is_int($value)){
-            $temp .= self::$where."id".ucfirst($this->table)."=$value";
-        }
-        //Checa se é uma String
-        if(is_string($value)){
-            $temp .= " ".$value;
-        }
-        return $temp;
+        return $this;
     }
-    /**
-    * Função para gerar um Update com base nas informações do OBJ
-    * @param Object $class
-    * @return void
-    */
-    public function makeUpdate($class){
-        $class = $class->toArray();
-        $temp = null;
-        $idname = "id".ucfirst($this->table);
-        $id = $class[$idname];
-        unset($class[$idname]);
-        foreach ($class as $key => $value) {
-            $value = addslashes($value);
-            if (empty($value)){
-            }else{
-                $temp .= " $key='$value',";
-            }
-        }
-        $temp = substr($temp, 0, -1);
-        self::$sql = self::$update.$this->table.self::$set.$temp.self::$where.$idname.'='.$id;
-        return self::$sql;
-    }
-
-
 }

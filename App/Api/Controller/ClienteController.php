@@ -12,7 +12,7 @@ class ClienteController{
      * Construtor
      */
     public function __construct(){
-        $this->cliente = Cliente::getInstance();
+         $this->cliente = Cliente::getInstance();
     }
     /**
      * Lista todos os clientes
@@ -25,7 +25,8 @@ class ClienteController{
     public function list($request, $response, $args){
         $token = $args['token'];
         $user = Auth::_getTokenInfo($token);
-        return $response->withJson($this->cliente->select('where fkCarteiraCliente='.$user['conteudo']['fkCarteiraCliente']));
+        $collection = $this->cliente->makeSelect()->where('fkCarteiraCliente='.$user['conteudo']['fkCarteiraCliente'])->execute();
+        return $response->withJson($collection->getAll());
     }
     /**
      * Lista de cliente por id
@@ -36,7 +37,9 @@ class ClienteController{
      * @return MixedJson
      */
     public function listById($request, $response, $args){
-        return $response->withJson($this->cliente->select( (int) $args['id'] ));
+        $this->cliente->setPrimaryKey('idCliente');
+        $this->cliente->find( (int) $args['id'] );
+        return $response->withJson($this->cliente);
     }
     /**
      * Salva um novo cliente
@@ -49,11 +52,11 @@ class ClienteController{
     public function save($request, $response, $args){
         $token = $args['token'];
         if (Auth::_isLoggedIn($token)){
+            $cliente = Cliente::getInstance();
             $user = Auth::_getTokenInfo($token);
             $post = json_decode($request->getBody(), true);
-            $this->cliente = $this->cliente->load($post);
-            $this->cliente->fkCarteiraCliente = $user['conteudo']['fkCarteiraCliente'];
-            $this->cliente->createAt = date("Y-m-d H:i:s");
+            $cliente->load($post);
+            $cliente->fkCarteiraCliente = $user['conteudo']['fkCarteiraCliente'];
            if($this->cliente->save()){
                 return $response->withJson([
                     'message' => 'Cliente salvo com sucesso!',
@@ -114,6 +117,7 @@ class ClienteController{
      */
     public function delete($request, $response, $args){
          $token = $args['token'];
+         $id = $args['id'];
         if (Auth::_isLoggedIn($token)){
             $this->cliente->idCliente = $args['id'];
             $this->cliente->statusCliente = 'INATIVO'; 

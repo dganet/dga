@@ -2,18 +2,10 @@
 namespace Api\Model\Entity;
 
 class Cidade extends \GORM\Model{
-    private $idCidade;
-    private $nome;
-    private $estadoId;
-    /**
-     * Construtor
-     * 
-     * @param Array $data
-     */
-    public function __construct($data = []){
-        $this->load($data);
-        $this->class = $this;
-    }
+    public $idCidade;
+    public $nome;
+    public $estadoId;
+    
     /**
      * Metodo Setter
      * 
@@ -46,29 +38,6 @@ class Cidade extends \GORM\Model{
             default:
                 return $this->$attr;        
                 break;
-        }
-    }
-    /**
-     * Converte o Objeto para um array
-     * 
-     * @return void
-     */
-    public function toArray(): Array {
-        $temp = array(
-           'idCidade' => $this->__get('idCidade'),
-           'nome' => $this->__get('nome'),
-           'estadoId' => $this->__get('estadoId')
-        );
-        foreach ($temp as $key => $value) {
-            if($value == null){
-                unset($temp[$key]);
-            }
-        }
-        return $temp;
-    }
-    public function load($data){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
         }
     }
     /**

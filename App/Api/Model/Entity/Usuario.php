@@ -2,33 +2,23 @@
 namespace Api\Model\Entity;
 
 class Usuario extends \GORM\Model{
-    private $idUsuario;
-    private $idFacebook;
-    private $emailUsuario;
-    private $senhaUsuario;
-    private $nomeUsuario;
-    private $sobrenomeUsuario;
-    private $creciUsuario;
-    private $telComercialUsuario;
-    private $telCelularUsuario;
-    private $telFixoUsuario;
-    private $createAtUsuario;
-    private $updateAtUsuario;
-    private $statusUsuario;
-    private $fkPermissao;
-    private $fkCarteiraImovel;
-    private $fkCarteiraCliente;
-    /**
-     * Construtor
-     * 
-     * @param Array $data
-     */
-    public function __construct($data = []){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
-        $this->class = $this;
-    }
+    public $idUsuario;
+    public $idFacebook;
+    public $emailUsuario;
+    public $senhaUsuario;
+    public $nomeUsuario;
+    public $sobrenomeUsuario;
+    public $creciUsuario;
+    public $telComercialUsuario;
+    public $telCelularUsuario;
+    public $telFixoUsuario;
+    public $createAtUsuario;
+    public $updateAtUsuario;
+    public $statusUsuario;
+    public $fkPermissao;
+    public $fkCarteiraImovel;
+    public $fkCarteiraCliente;
+    
     /**
      * Metodo Setter
      * 
@@ -56,16 +46,19 @@ class Usuario extends \GORM\Model{
             case 'Permissao':
                 $idPermissao    = (int) $this->fkPermissao;
                 $permissao      = new Permissao();
+                $permissar->setPrimaryKey('idPermissao');
                 $permissao      = $permissao->find($idPermissao);
                 return $permissao;
                 break;
             case 'CarteiraCliente':
                 $carteiraCliente = CarteiraCliente::getInstance();
+                $carteiraCliente->setPrimaryKey('idCarteiraCliente');
                 $carteiraCliente->find((int) $this->fkCarteiraCliente);
                 return $carteiraCliente->Carteira;
                 break;
             case 'CarteiraImovel':
                 $carteiraImovel = CarteiraImovel::getInstance();
+                $carteiraImovel->setPrimaryKey('idCarteiraImovel');
                 $carteiraImovel->find((int) $this->fkCarteiraImovel);
                 return $carteiraImovel; 
                 break;
@@ -79,32 +72,7 @@ class Usuario extends \GORM\Model{
      * 
      * @return void
      */
-    public function toArray(): Array {
-        $temp = array(
-            'idUsuario' => $this->__get('idUsuario'),         
-            'idFacebook' => $this->__get('idFacebook'),
-            'emailUsuario'  => $this->__get('emailUsuario'),          
-            'senhaUsuario'  => $this->__get('senhaUsuario'),          
-            'nomeUsuario'   => $this->__get('nomeUsuario'),           
-            'sobrenomeUsuario'  => $this->__get('sobrenomeUsuario'),          
-            'creciUsuario'  => $this->__get('creciUsuario'),
-            'telComercialUsuario' =>$this->__get('telComercialUsuario'),
-            'telCelularUsuario' =>$this->__get('telCelularUsuario'),
-            'telFixoUsuario' =>$this->__get('telFixoUsuario'),          
-            'createAtUsuario'   => $this->__get('createAtUsuario'),           
-            'updateAtUsuario'   => $this->__get('updateAtUsuario'),           
-            'statusUsuario' => $this->__get('statusUsuario'),         
-            'fkPermissao'   => $this->__get('fkPermissao'),
-            'fkCarteiraImovel' => $this->__get('fkCarteiraImovel'),
-            'fkCarteiraCliente' => $this->__get('fkCarteiraCliente')        
-        );
-        foreach ($temp as $key => $value) {
-            if($value == null){
-                unset($temp[$key]);
-            }
-        }
-        return $temp;
-    }
+   
     /**
      * Retorna os valores das propriedades da classe
      * 
@@ -114,9 +82,5 @@ class Usuario extends \GORM\Model{
         return var_dump($this->toArray());
     }
 
-    public function load($data){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
-    }
+   
 }

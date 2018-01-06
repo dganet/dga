@@ -22,12 +22,14 @@ class Auth{
             return ['message' => 'Por favor informe um usuário e senha', 'flag' => false];
         }else{
             $usuario = Usuario::getInstance();
-            $usuario->find("where emailUsuario='".$array['emailUsuario']."' AND senhaUsuario='".md5($array['senhaUsuario'])."' AND statusUsuario='ATIVO'");
+            $usuario->makeSelect()->where("emailUsuario='".$array["emailUsuario"]."'")->and("senhaUsuario='".md5($array['senhaUsuario'])."'")->and("statusUsuario='ATIVO'");
+            $usuario = $usuario->execute(true);
+            
             //Verifica se existe alguma coisa em $usuario
             if (!$usuario->idUsuario == null){
                 $hash = md5($usuario->emailUsuario."|".time());
-                $cache->save($hash, $usuario->toArray());
-                $user = $usuario->toArray();
+                $cache->save($hash,  $usuario);
+                $user = (array)$usuario;
                 $user['token'] = $hash;
                 $user['flag'] = true;
                 return $user;

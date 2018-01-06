@@ -1,62 +1,27 @@
 <?php
 /**
-*	Classe desenvolvida com intuito de aprendizado, tentativa de gerar e entender o funcionamento de um ORM
-*	@author Guilherme Brito
-* 	@version 1.0
-*/
+ * ORM simples para gerir querys SQL
+ * 
+ * @author Guilherme Brito
+ * @version 1.0.16
+ */
 namespace GORM;
-require_once(dirname(__DIR__).'/gorm.php');
-use PDO;
-class Model{
-	use Builder, Persistent, Finder;
-	/**
-	*	Variavel recebe uma instancia das classes filhas
-	*   @access protected
-	*	@name $class
-	*/
-	protected  		$class;
-	/**
-	* 	Variavel recebe o caminho completo da classe filha que há está chamando
-	* 	@access protected
-	*	@name $instance
-	*/
-	protected		$instance;
-	/**
-	* 	Variavel que recebe um array com as informações de conexão
-	* 	@access public
-	* 	@name $db
-	*/
-	public 		$db = array(
-		"driver" 	=> "mysql",
-		"host"		=> "br654.hostgator.com.br",		//31.220.104.130 mysql.hostinger.com.br br654.hostgator.com.br
-		"dbname"	=> "smout364_dga", 		//u172775243_imobi
-		"user"		=> "smout364_dga", 		//u172775243_imobi
-		"pass"		=> "159951"			//im98yp121556
-	);
-	/**
-    * Recebe o nome da tabela da função Model::loadTable()
-    * @access public
-    * @name $table
-    */
-	public static $table;
-	/**
-	 * Informa qual é a primary key do objeto
-	 * 
-	 * @var String
-	 */
-	private static $primaryKey = null;
-	/**
-	 * Variavel que habilita o DEBUG quando setada como true
-	 * 
-	 * @var boolean
-	 */
-	private $debug = false;
-	/**
-     * Retorna uma instância única de uma classe.
+use Exception;
+include(dirname(dirname(__FILE__)).'/gorm.php');
+class Model 
+{
+use Database, Init, Persistent, Builder, Finder;
+    /**
+     * Variável para armazenar as configurações
+     * sql = recebe o query sql que será executada
+     *  
+     * @var Mixed
+     */
+    private $configuration;
+    /**
+     * Metodo que implementa o metodo Singleton
      *
-     * @staticvar Singleton $instance A instância única dessa classe.
-     *
-     * @return Singleton A Instância única.
+     * @return Instancia 
      */
     public static function getInstance()
     {
@@ -64,108 +29,102 @@ class Model{
         if (null === $instance) {
             $instance = new static();
         }
-
+        //Verifica se as configurações já foram carregadas
+        if(empty($instance->configuration)){
+            $instance->loadConf();
+        }
+        // Por padrão o chave primaria é setada como id
+        $instance->setPrimaryKey('id');
         return $instance;
     }
-	/**
-     * Construtor do tipo protegido previne que uma nova instância da
-     * Classe seja criada através do operador `new` de fora dessa classe.
-     */
-    protected function __construct()
-    {
-		return $this->getInstance();
-    }
-
     /**
-     * Método clone do tipo privado previne a clonagem dessa instância
-     * da classe
+     * Função para carregas as informações do arquivo de configuração 
+     * gorm.conf
      *
-     * @return void
+     * @return Mixed
      */
-    private function __clone()
-    {
-    }
-
-    /**
-     * Método unserialize do tipo privado para prevenir a desserialização
-     * da instância dessa classe.
-     *
-     * @return void
-     */
-    private function __wakeup()
-    {
-    }
-	/**
-	 * Set a value for debug
-	 * 
-	 * @param [type] $value
-	 * @return void
-	 */
-	public function _setDebug($value = false){
-		$this->debug = $value;
-	}
-	/**
-	 * Get the value for the variable debug
-	 * 
-	 * @return Bool
-	 */
-	public function _getDebug(){
-		return $this->debug;
-	}
-	/**
-	 * Get PrimaryKey
-	 * 
-	 * @return String
-	 */
-	public function _getPrimaryKey(): String {
-		return $this->primaryKey;
-	}
-	/**
-	 * Set PrimaryKey
-	 * 
-	 * @param String $value
-	 * @return void
-	 */
-	public function _setPrimaryKey(String $value){
-		$this->primaryKey = $value;
-	}
-	/**
-	 * Retorna um Objeto da classe que está chamando
-	 * 
-	 * @param Array $array
-	 * @return Object
-	 */
-	//public function load(Array $array = []){
-	//	$cls = get_called_class();
-	//	return  $cls($array);
-	//}	
-	/**
-	*	Carrega a Tabela na variavel dentro da trait Builder::$table
-	*	@return void
-	*/
-	public function loadTable(){
-		$this->instance = get_called_class();
-		$this->table = str_replace("\\", "/", strtolower($this->instance));
-		$this->table = explode('/', $this->table);
-		$this->table = $this->table[count($this->table) -1];
-	
-	}
-	/**
-	* 	Retorna um ou mais objetos de seus respectivos tipos
-	* 	@param Array $return
-	* 	@return Array $array
-	*/
-	public function loadObject($return){
-		foreach ($return as $key => $value) {
-				$obj = new $this->instance($value);
-				$array[$key] =$obj->toArray();
-			}
-		return $array;
-	}
-	//Load object information by array
-	public function load($array = []){
-        foreach ($array as $key => $value) {
-            $this->$key = $value;
+    public function loadConf(){
+        $file =  dirname(dirname(__FILE__))."/gorm.conf";
+        //Checa a existencia do arquivo de configuração
+        if (file_exists($file)){
+            // Checa se é possivel ler o arquivo de configuração
+            if (is_readable($file)){
+                $arch = file($file);
+                foreach ($arch as $key => $value) {
+                    //Verifica se a linha do arquivo começa com # (se é um comentário)
+                    if (substr($value, 0, 1)!= "#"){
+                        $arr = explode('=', $value);
+                        $conf[trim($arr[0])] = trim($arr[1]);
+                    }
+                }
+                $this->configuration = $conf;
+            }else{
+                throw new Exception("Não foi possivel ler o arquivo de configuração", 002);
+            }
+        }else{
+            throw new Exception("Arquivo não encontrado", 001);
         }
     }
+    /**
+     * Retorna uma instancia da classe que esta solicitando uma determinada função
+     *
+     * @return void
+     */
+    public static function getCalledClass(){
+        $cls = get_called_class();
+        $cls = $cls::getInstance();
+		return $cls;
+    }
+    /**
+     * Metodo para carregar a tabela que será trabalhada
+     *
+     * @return void
+     */
+    public function loadTable(){
+        $this->configuration['table'] = get_called_class();
+        $this->configuration['table'] = str_replace("\\", "/", strtolower(get_called_class()));
+		$this->configuration['table'] = explode('/', $this->configuration['table']);
+		$this->configuration['table'] = $this->configuration['table'][count($this->configuration['table']) -1];     
+    }
+    /**
+     * Seta qual é a Primary Key de uma determinada tabela;
+     *
+     * @param String $pk
+     * @return void
+     */
+    public function setPrimaryKey($pk){
+        $this->configuration['primaryKey'] = $pk;
+    }
+    /**
+     * Seta qual é o campo que não pode ser repetido no banco de dados
+     *
+     * @param Strint $unique
+     * @return void
+     */
+    public function setUniqueFild($unique){
+        $this->configuration['uniqueFild'] = $unique;
+    }
+    /**
+     * Carrega as informações de um objeto atraves de um array
+     *
+     * @param array $array
+     * @return void
+     */
+    public function load($array = []){
+        foreach ($array as $key => $value) {
+            try{
+                $this->$key = $value;
+            }catch(Exception $e){
+                
+            }
+        }
+    }
+    public function toArray(){
+        foreach ($this as $key => $value) {
+            $arr[$key] = $value;
+        }
+        return $arr;
+    }
+   
+
 }

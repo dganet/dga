@@ -59,7 +59,7 @@ $app->put('/proprietario/update/{id}/{token}', \Api\Controller\ProprietarioContr
 $app->delete('/proprietario/delete/{id}/{token}', \Api\Controller\ProprietarioController::class . ':delete');
 //Verifica se o proprietario foi inserido na casteira de cliente do usuario
 $app->post('/proprietario/cpf/{token}', \Api\Controller\ProprietarioController::class . ':cpfCheck');
-//FIM Proprietario
+//FIM ]roprietario
 /**
  * CLIENTE
  */
@@ -72,7 +72,7 @@ $app->post('/cliente/save/{token}', \Api\Controller\ClienteController::class . '
 // Atualiza as informações do cliente
 $app->put('/cliente/update/{token}', \Api\Controller\ClienteController::class . ':update');
 //Inativa o cliente
-$app->delete('/cliente/delete/{token}', \Api\Controller\ClienteController::class . ':delete');
+$app->delete('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::class . ':delete');
 // FIM CLIENTE
 /**
  * IMAGEM

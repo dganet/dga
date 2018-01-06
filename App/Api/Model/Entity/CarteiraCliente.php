@@ -2,20 +2,9 @@
 namespace Api\Model\Entity;
 
 class CarteiraCliente extends \GORM\Model{
-    private $idCarteiraCliente;
-    private $nomeCarteiraCliente;
-    private $carteira;
-    /**
-     * Construtor
-     * 
-     * @param Array $data
-     */
-    public function __construct($data = []){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
-        $this->class = $this;
-    }
+    public $idCarteiraCliente;
+    public $nomeCarteiraCliente;
+    public $carteira;
     /**
      * Metodo Setter
      * 
@@ -44,24 +33,6 @@ class CarteiraCliente extends \GORM\Model{
         }
     }
     /**
-     * Converte o Objeto para um array
-     * 
-     * @return void
-     */
-    public function toArray(): Array {
-        $temp = array(
-           'idCarteiraCliente'   => $this->__get('idCarteiraCliente'),
-           'nomeCarteiraCliente' => $this->__get('nomeCarteiraCliente'),
-           'carteira'   => $this->__get('carteira')
-        );
-        foreach ($temp as $key => $value) {
-            if($value == null){
-                unset($temp[$key]);
-            }
-        }
-        return $temp;
-    }
-    /**
      * Retorna as propriedades da classe
      * 
      * @return string
@@ -69,10 +40,8 @@ class CarteiraCliente extends \GORM\Model{
     public function __toString(){
         return var_dump($this->toArray());
     }
-
-    public function load($data){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
+    
+    public function beforeSave(){
     }
+
 }

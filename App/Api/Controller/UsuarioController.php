@@ -16,7 +16,12 @@ class UsuarioController {
      */
     public function list($request,$response,$args){
         $usuario = new Usuario();
-        return $response->withJson($usuario->all());
+        $collection = $usuario->makeSelect()->execute();
+        if ($collection != null){
+			if($collection->length() > 0){
+				return $response->WithJson($collection->getAll());
+			}
+		}
     }
     /**
      * Lista usuarios por id
@@ -27,9 +32,10 @@ class UsuarioController {
      * @return mixedJson
      */
     public function listById($request,$response,$args){
-        $id = $args['id'];
         $usuario = Usuario::getInstance();
-        return $response->withJson($usuario->find($id)->toArray());
+        $usuario->setPrimaryKey('idUsuario');
+        $usuario->find($args['id']);
+        return $response->withJson($usuario);
     }
     /**
      * Salva um Usuario e cria sua agenda de telefones
@@ -40,24 +46,30 @@ class UsuarioController {
      * @return mixedJson
      */
     public function save($request, $response, $args){
-        $post = json_decode($request->getBody());
+        $post = json_decode($request->getBody(), true);
         $usuario = Usuario::getInstance();
+        //Pequena correção de nomeclatura
+        $post['senhaUsuario'] = $post['senha'];
+        unset($post['termoUsuario']);
+        unset($post['senha']);
+        //-------
         $usuario->load($post);
-        $usuario->createAtUsuario = date("Y-m-d H:i:s");
         $usuario->fkPermissao = 1;
         $usuario->statusUsuario = 'AGUARDANDOCONFIRMACAOEMAIL';
         $usuario->senhaUsuario = md5($usuario->senhaUsuario);
         $imovel =  CarteiraImovel::getInstance();
         $cliente = CarteiraCliente::getInstance();
-        $imovel->nomeCarteiraImovel = "Carteira de Imovel de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
-        $cliente->nomeCarteiraCliente = "Carteira de Cliente de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario;
-        $usuario->fkCarteiraImovel = $imovel->save(true);
-        $usuario->fkCarteiraCliente = $cliente->save(true);
+        $imovel->nomeCarteiraImovel = "Carteira de Imovel de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario. "ID: ".$usuario->idUsuario;
+        $cliente->nomeCarteiraCliente = "Carteira de Cliente de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario. "ID: ".$usuario->idUsuario;
+        $imovel = $imovel->save(true);
+        $cliente = $cliente->save(true);
+        $usuario->fkCarteiraImovel = $imovel['lastId'];
+        $usuario->fkCarteiraCliente = $cliente['lastId'];
         try{
-            $usuario->save();
+            
             require "MailController.php";
             confirmEmail($usuario->emailUsuario,$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario, $usuario->creciUsuario);
-            return $response->withJson(['message' => 'Usuario cadastrado com sucesso!', 'flag' => true]);
+            return $response->withJson($usuario->save());
         }catch(Exception $e){
             switch ($e->getCode()) {
                 case 23000:
@@ -117,7 +129,7 @@ class UsuarioController {
      */
     public function confirm($request, $response, $args){
       $usuario = Usuario::getInstance();
-      $usuario->find('where creciUsuario='.$args['creci']);
+      $usuario = $usuario->makeSelect()->where('creciUsuario='.$args['creci'])->execute()->get(0);
       $usuario->statusUsuario = 'ATIVO';
       if ($usuario->update()){
           return $response->withJson([
@@ -140,8 +152,9 @@ class UsuarioController {
     public static function forgot($email){
         $usuario = Usuario::getInstance();
         $usuario->email = $email;
-        $usuario->find("where emailUsuario = '".$email."'");
-        return $usuario;
+        $usuario->makeSelect()->where("emailUsuario = '".$email."'");
+        $collection = $usuario->execute()->get(0);
+        return $collection;
     }
     /**
      * Verifica se o usuairo possui no conta vinculada com facebook
@@ -152,8 +165,10 @@ class UsuarioController {
     public static function checkFaceLogin($post){
         $usuario = Usuario::getInstance();
         $cache = new Cache();
-        $usuario->_setDebug(false);
-        $usuario->find("where idFacebook='".$post['userID']."'");
+       
+        $usuario->makeSelect()->where("idFacebook='".$post['userID']."'");
+        $usuario = $usuario->execute()->get(0);
+
         if (is_null($usuario->emailUsuario)){
             //então o cara não tem cadastro vinculado com facebook.
             return 
@@ -174,8 +189,10 @@ class UsuarioController {
                     'message ' => 'Email do usuario já cadastrado no Imobiliar, anexando facebook a sua conta cadastrada',
                 ];
             }else{
-                $cache->save($post['accessToken'], $usuario->toArray());
-                return $usuario->toArray();    
+                $arr = (array) $usuario;
+                array_pop($arr);
+                $cache->save($post['accessToken'], $arr);
+                return $arr;    
             }
         }
     }
@@ -191,7 +208,7 @@ class UsuarioController {
         $post = json_decode($request->getBody(), true);
         $usuario = Usuario::getInstance();
         $usuario->_setDebug(false);
-        $usuario->find("where emailUsuario='".$post['emailUsuario']."' AND senhaUsuario='".md5($post['senhaUsuario'])."'");
+        $usuario->makeSelect("where emailUsuario='".$post['emailUsuario']."' AND senhaUsuario='".md5($post['senhaUsuario'])."'");
         if (is_null($usuario->emailUsuario)){
             return $response->withJson(
             [

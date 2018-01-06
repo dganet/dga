@@ -2,25 +2,15 @@
 namespace Api\Model\Entity;
 
 class Proprietario extends \GORM\Model{
-    private $idProprietario;
-    private $nomeProprietario;
-    private $sobrenomeProprietario;
-    private $cpfProprietario;
-    private $emailProprietario;
-    private $statusProprietario;
-    private $createAtProprietario;
-    private $updateAtProprietario;
-    /**
-     * Contrutor
-     *
-     * @param array $data
-     */
-    public function __construct($data = []){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
-        $this->class = $this;
-    }
+    public $idProprietario;
+    public $nomeProprietario;
+    public $sobrenomeProprietario;
+    public $cpfProprietario;
+    public $emailProprietario;
+    public $statusProprietario;
+    public $createAtProprietario;
+    public $updateAtProprietario;
+    
     /**
      * Metodo Setter
      * 
@@ -53,37 +43,9 @@ class Proprietario extends \GORM\Model{
               break;
       }
     }
-    /**
-     * Converte o Objeto para um array
-     * 
-     * @return void
-     */
-    public function toArray(): Array {
-        $temp = array(
-           'idProprietario'   => $this->__get('idProprietario'),
-           'nomeProprietario' => $this->__get('nomeProprietario'),
-           'sobrenomeProprietario'   => $this->__get('sobrenomeProprietario'),
-           'emailProprietario' => $this->__get('emailProprietario'),
-           'statusProprietario'   => $this->__get('statusProprietario'),
-           'createAtProprietario' => $this->__get('createAtProprietario'),
-           'updateAtProprietario'   => $this->__get('updateAtProprietario')
-           
-        );
-        foreach ($temp as $key => $value) {
-            if($value == null){
-                unset($temp[$key]);
-            }
-        }
-        return $temp;
-    }
-    /**
-     * Retorna as propriedades da classe
-     * 
-     * @return string
-     */
-    public function __toString(){
-        return var_dump($this->toArray());
-    }
+   
+    
+    
     /**
      * Verifica se o priprietário tem pelo menos 1 Imovel ativo
      *
@@ -98,9 +60,5 @@ class Proprietario extends \GORM\Model{
             return true;
         }
     }
-    public function load($data){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
-    }
+    
 }

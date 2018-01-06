@@ -2,20 +2,9 @@
 namespace Api\Model\Entity;
 
 class CarteiraImovel extends \GORM\Model{
-    private $idCarteiraImovel;
-    private $nomeCarteiraImovel;
-    private $carteira;
-    /**
-     * Construtor
-     * 
-     * @param Array $data
-     */
-    public function __construct($data = []){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
-        $this->class = $this;
-    }
+    public $idCarteiraImovel;
+    public $nomeCarteiraImovel;
+    public $carteira;
     /**
      * Metodo Setter
      * 
@@ -35,31 +24,14 @@ class CarteiraImovel extends \GORM\Model{
         switch ($attr) {
             case 'Imovel':
                 $this->carteira = Imovel::getInstance();
-                $this->carteira = $this->carteira->select('where fkCarteiraImovel='.$this->idCarteiraImovel);
-                return $this->carteira;
+                $this->carteira = $this->carteira->makeSelect()->where('fkCarteiraImovel='.$this->idCarteiraImovel)->execute(true);
+                $arr = $this->carteira;
+                return $arr;
                 break;
             default:
                 return $this->$attr;
                 break;
         }
-    }
-    /**
-     * Converte o Objeto para um array
-     * 
-     * @return void
-     */
-    public function toArray(): Array {
-        $temp = array(
-           'idCarteiraImovel'   => $this->__get('idCarteiraImovel'),
-           'nomeCarteiraImovel' => $this->__get('nomeCarteiraImovel'),
-           'carteira'   => $this->__get('carteira')
-        );
-        foreach ($temp as $key => $value) {
-            if($value == null){
-                unset($temp[$key]);
-            }
-        }
-        return $temp;
     }
     /**
      * Retorna as propriedades da classe
@@ -69,9 +41,7 @@ class CarteiraImovel extends \GORM\Model{
     public function __toString(){
         return var_dump($this->toArray());
     }
-    public function load($data){
-        foreach ($data as $key => $value) {
-            $this->__set($key,$value);
-        }
+
+    public function beforeSave(){    
     }
 }

@@ -53,10 +53,10 @@ function forgotEmail($senha, $user, $email){
      $mail = new PHPMailer;
     //Configuração de SMTP
     $mail->isSMTP();        //Informa que é um envio de email
-    $mail->Host = 'mx1.hostinger.com.br';
+    $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'admin@imobiliar.net.br';
-    $mail->Password = 'LKLu2NxJ';
+    $mail->Username = 'gadevelopper@gmail.com';
+    $mail->Password = 'gadevelopper26112016';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
     //########################
