@@ -31,8 +31,8 @@
     $scope.imovel = emptyImovel;
 
     //Armazena os dados da Imaggens do Imovel
-    var f = $scope.fotoImovel = [];
-    var fotos = {imagem:f};
+    var emptyFotos = $scope.fotoImovel = [];
+    var f = {infoImagem:emptyFotos};
 
 
     //Mudar o Css do Processo em ativo
@@ -321,7 +321,6 @@
      //
         $scope.terceiroPasso = function (values){
           emptyImovel.push(values);
-          console.log(i);
           $scope.passo1 = {};
           $scope.passo2 = {};
           $scope.passo3 = {};
@@ -344,6 +343,7 @@
 
            $scope.save = function(){
                console.log(i);
+               console.log(e);
                console.log(p);
                console.log(f);
            };
