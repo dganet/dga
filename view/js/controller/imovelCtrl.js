@@ -13,9 +13,23 @@
 //*************CADASTRA IMOVEL *********************//
     
     //Armazena os dados do Objeto Proprietario
-    var p = $scope.proprietario = {};
+    var emptyProprietario = [];
+    // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
+    var p = {infoProprietario:emptyProprietario};
+    $scope.proprietario = emptyProprietario;
+   
+    //Armazena os dados do Objeto Endereco
+    var emptyEndereco = [];
+    // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
+    var e = {infoEndereco:emptyEndereco};
+    $scope.endereco = emptyEndereco;
+
     //Armazena os dados do Objeto Imovel
-    var i = $scope.imovel = {};
+    var emptyImovel = [];
+    // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
+    var i = {infoImovel:emptyImovel};
+    $scope.imovel = emptyImovel;
+
     //Armazena os dados da Imaggens do Imovel
     var f = $scope.fotoImovel = [];
     var fotos = {imagem:f};
@@ -63,7 +77,6 @@
                 if (value == 'cpf'){
                 $scope.formCPF = 'ativo';
                 $scope.formProprietario = 'inativo';
-                console.log('cpf');
                 }
 
                 if (value == 'proprietario'){
@@ -99,8 +112,10 @@
         //
         //
             $scope.primeiroPasso = function(dados){
+
             //, Coleta dados do proprietario
-             $scope.proprietario.push = dados;
+             emptyProprietario.push(dados);
+
              $scope.inputBairro = false;
 
             //Segundo Passo
@@ -173,7 +188,9 @@
      //
      //
         $scope.segundoPasso = function (values){
-            $scope.imovel.push = values;
+            //, Coleta dados do Imovel
+             emptyEndereco.push(values);
+
             $scope.passo1 = {};
             $scope.passo2 = {};
             $scope.passo3 = 'background:gray; color:white';
@@ -303,7 +320,8 @@
      //
      //
         $scope.terceiroPasso = function (values){
-          $scope.imovel.push = values;
+          emptyImovel.push(values);
+          console.log(i);
           $scope.passo1 = {};
           $scope.passo2 = {};
           $scope.passo3 = {};

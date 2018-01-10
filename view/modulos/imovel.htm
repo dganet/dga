@@ -102,12 +102,12 @@
 <!-- FORMULARIO QUE CHECK O CPF -->
                   <div class="row" ng-if="formCPF == 'ativo'">
 
-                      <form name="FormCPF" ng-submit=checkCPF(proprietario)>
+                      <form name="FormCPF" ng-submit="checkCPF(proprietario)" novalidate>
                           
                           <div class="col-md-4">
                           <div class="form-group">
                               <label>CPF</label>
-                              <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" required>
+                              <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" ui-br-cpf-mask>
                           </div>
                           </div>
 
@@ -123,7 +123,7 @@
 <!-- AO VERIFICAR O CPF PRINTA NA TELA O DADOS DO PROPRIETARIO OU FORMULARIO EM BRANCO -->
     <div ng-if="formProprietario == 'ativo'">
         <div class="row">
-             <form name="first" ng-submit="primeiroPasso(proprietario)">
+             <form name="first" ng-submit="primeiroPasso(proprietario)" novalidate>
 
             <div class="alert alert-success">
                 <strong>Novo Proprietário!</strong> Não foi encontrado nenhum proprietário nos seus registro com este cpf , deseja realmente criar um novo ?
@@ -176,20 +176,20 @@
     <!-- FORMULARIO ENDEREÇOS -->
     <div ng-if="formEndereco == 'ativo'">
         <div class="row">
-             <form name="second" ng-submit="segundoPasso(imovel)">
+             <form name="second" ng-submit="segundoPasso(endereco)">
 
                  <div class="col-md-12">
                     <div class="form-group">
                         <label>Endereço</label>
-                        <input type="text" class="form-control" ng-model="imovel.enderecoImovel">
+                        <input type="text" class="form-control" ng-model="endereco.enderecoImovel">
                      </div>
                  </div>
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Estado</label>
-                        <select class="form-control" ng-change="executeCidade(imovel.idEstado)"
-                        ng-options="imovel.idEstado as imovel.nome for imovel in estados track by imovel.idEstado"
-                        ng-model="imovel.idEstado">
+                        <select class="form-control" ng-change="executeCidade(endereco.idEstado)"
+                        ng-options="endereco.idEstado as endereco.nome for endereco in estados track by endereco.idEstado"
+                        ng-model="endereco.idEstado">
                         <option value="">Selecione Estado</option>
                         </select>
                 </div>
@@ -198,9 +198,9 @@
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Cidade</label>
-                        <select class="form-control" ng-change="executeBairro(imovel.idCidade)" ng-disabled="!imovel.idEstado"
-                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: imovel.idEstado}"
-                         ng-model="imovel.idCidade">
+                        <select class="form-control" ng-change="executeBairro(endereco.idCidade)" ng-disabled="!endereco.idEstado"
+                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: endereco.idEstado}"
+                         ng-model="endereco.idCidade">
                         <option value="">Selecione Cidade</option>
                         </select>
                 </div>
@@ -211,13 +211,13 @@
                         <label>Bairro</label>
                          <!-- InputBairro novo Bairro -->
                         <div ng-show="inputBairro">
-                        <input type="text" class="form-control" ng-model="imovel.idBairro" placeholder="Novo Bairro" required>
+                        <input type="text" class="form-control" ng-model="endereco.idBairro" placeholder="Novo Bairro" required>
                         </div>
 
                        <!-- Select de Bairros -->
-                        <select class="form-control" ng-disabled="!imovel.idCidade"
-                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: imovel.idCidade}"
-                         ng-model="imovel.idBairro"
+                        <select class="form-control" ng-disabled="!endereco.idCidade"
+                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: endereco.idCidade}"
+                         ng-model="endereco.idBairro"
                          ng-show="selectBairro">
                         <option value="">Selecione Bairro</option>
                         </select>
