@@ -51,8 +51,6 @@
 
     //função para verificar cpf
     $scope.checkCPF = function (value){
-      console.log('estou aqui');
-      console.log(value);
         // Cria a variavel com o CPF
         var cpf = value;
         //Consula no Back-end se existe o cpf

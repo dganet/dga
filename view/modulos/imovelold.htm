@@ -98,10 +98,12 @@
         
    
            <div class="modal-body">
-              <form name="formProprietario" ng-submit="">
+
 <!-- FORMULARIO QUE CHECK O CPF -->
                   <div class="row" ng-if="formCPF == 'ativo'">
 
+                      <form name="FormCPF" ng-submit="checkCPF(proprietario)" novalidate>
+                          
                           <div class="col-md-4">
                           <div class="form-group">
                               <label>CPF</label>
@@ -111,10 +113,11 @@
 
                           <div class="col-md-2">
                           <div class="form-group">
-                              <button ng-click="checkCPF(proprietario)" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search" aria-hidden="true"></i></button>
+                              <button type="submit" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search" aria-hidden="true"></i></button>
                           </div>
                           </div>
-                   
+                      </form>
+
                   </div>
 
 <!-- AO VERIFICAR O CPF PRINTA NA TELA O DADOS DO PROPRIETARIO OU FORMULARIO EM BRANCO -->
