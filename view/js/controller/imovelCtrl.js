@@ -34,6 +34,8 @@
     var emptyFotos = $scope.fotoImovel = [];
     var f = {infoImagem:emptyFotos};
 
+    var peif = [p,e,i,f];
+
 
     //Mudar o Css do Processo em ativo
     $scope.passo1 = 'background:gray; color:white';
@@ -343,10 +345,11 @@
           	 $scope.foto.splice(lastItem);
            };
 
+//*************CADASTRA NOVO IMOVEL *********************// 
            $scope.save = function(){
-               console.log(i);
-               console.log(e);
-               console.log(p);
-               console.log(f);
+             restful.saveImovel(peif).success(function(response){
+               // Fecha o Modal
+               $('#closeModalPost').modal('hide');
+             });
            };
  });//END do controller

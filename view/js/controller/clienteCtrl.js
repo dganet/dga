@@ -71,7 +71,6 @@
 
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, formCliente) {
-    console.log(values);
     // Enviado os valores em objetos para api/user do php/slim
     restful.clientePut(values,token).success(function(){
      // Fecha o Modal
@@ -96,7 +95,6 @@
 
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
-    console.log(values);
     // Enviado os valores em objetos para api/user do php/slim
     restful.clienteDel(values,token).success(function(){
     // Fecha o Modal

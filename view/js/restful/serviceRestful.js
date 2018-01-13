@@ -17,7 +17,11 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteList = 'App/cliente/list/'; // Lista todos os Cliente referente ao id do Usuario
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    $clientePut = 'App/cliente/update/'; // Lista unico cliente referente ao ID + token
-   $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token     
+   $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token   
+
+   //Classes Imovel
+   $imovelSave = 'Caminho do BACK-END'; // Salvar Imovel 
+
    //MODULO PEFIL
    $updatePicture = 'App/imagem'; //Update Foto
    // Resgate Senha e Update Senha
@@ -66,17 +70,19 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Atualiza as informações do Cliente
     var _clientePut = function (values, token){
-      console.log(values);
-      console.log(token);
         return  $http.put($clientePut + token , values);
     };
     //Inativa o Cliente
     var _clienteDel = function (values,token){
-      console.log(values);
-      console.log(token);
         return  $http.delete($clienteDel + values + '/' + token);
     };
-
+//|#######################################################|
+//|############# **  MODULO IMOVEL ** ###################|
+//|#######################################################|
+   //Inseri novo Imovel
+    var _imovelSave = function (values, token){
+        return  $http.post($imovelSave + token , values);
+    };
 
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|

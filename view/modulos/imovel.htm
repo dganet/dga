@@ -49,11 +49,14 @@
     <div class="row corpoTemplate">
         <div class="col col-md-12">
             
-            <table class="table table-hover corpoTableTemplate">
+            <table class="table table-hover corpoTableTemplate" style="height: 100px;">
               <thead>
                 <tr>
-                  <th class="centro">#</th>
-                  <th>Nome</th>
+                  <th class="centro">Ref</th>
+                  <th class="centro">Publicação</th>
+                  <th class="cent">Foto Principal</th>
+                  <th class="centro">Tipo</th>
+                  <th class="centro">Preço</th>
                   <th class="centro">Detalhes</th>
                   <th class="centro">Alterar</th>
                   <th class="centro">Deletar</th>
@@ -61,17 +64,39 @@
               </thead>
 
             <tbody> 
-             <tr ng-repeat="x in clientes | filter: busca  ">
-               
-               <td class="centro">{{x.idCliente}}</td>
-               <td>{{x.nomeCliente}}</td>
+
+             <!-- <tr ng-repeat="x in clientes | filter: busca  "> -->
+              <tr> 
+
+               <td><span class="align-middle">015845</span></td>
+               <td class="centro" >Privado</td>
+               <td><img src="view/galeria/casa01.jpg" width="125" height="100"></td>
+               <td class="centro">CASA</td>
                
                <td class="centro">
-                   <a class="btn btn-default" ng-click="dados(x.idCliente)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-address-card-o" ></i></a>
+                   R$ 10.000,00
                </td>
-                 
+               
+                <td class="centro">
+                    <a class="btn btn-default">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                  </a>
+               </td>
+
                <td class="centro">
-                   <a class="btn btn-default" ng-click="dados(x.idCliente)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>
+                   <a class="btn btn-default" ng-click="dados(x.idCliente)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-user" aria-hidden="true"></i> </a>
+
+                   <a class="btn btn-default">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                  </a>
+                    <a class="btn btn-default">
+                   <i class="fa fa-home" aria-hidden="true"></i>
+                 </a>
+                   <a class="btn btn-default">
+                   <i class="fa fa-picture-o" aria-hidden="true"></i>
+                 </a>
+
+                
                </td>
                
                  <td class="centro">
@@ -79,6 +104,11 @@
                </td>
              
                 </tr>
+
+
+
+
+
             </tbody>
                 
             </table>
@@ -98,10 +128,12 @@
         
    
            <div class="modal-body">
-              <form name="formProprietario" ng-submit="">
+
 <!-- FORMULARIO QUE CHECK O CPF -->
                   <div class="row" ng-if="formCPF == 'ativo'">
 
+                      <form name="FormCPF" ng-submit="checkCPF(proprietario)" novalidate>
+                          
                           <div class="col-md-4">
                           <div class="form-group">
                               <label>CPF</label>
@@ -111,10 +143,11 @@
 
                           <div class="col-md-2">
                           <div class="form-group">
-                              <button ng-click="checkCPF(proprietario)" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search" aria-hidden="true"></i></button>
+                              <button type="submit" class="btn btn-primary" style="margin-top:25px;"><i class="fa fa-search" aria-hidden="true"></i></button>
                           </div>
                           </div>
-                   
+                      </form>
+
                   </div>
 
 <!-- AO VERIFICAR O CPF PRINTA NA TELA O DADOS DO PROPRIETARIO OU FORMULARIO EM BRANCO -->
@@ -287,7 +320,7 @@
                 <div class="col-md-3" ng-if="valorImovel == 'ativo'">
                 <div class="form-group">
                     <label>Valor</label>
-                    <input type="text" class="form-control" ng-model="imovel.valorImovel">
+                    <input type="text" class="form-control" ng-model="imovel.valorImovel" ui-money-mask="2">
                 </div>
                 </div>
 
