@@ -71,7 +71,7 @@ class AuthController{
             //Gera Nova Senha e atualiza
             $newPass = rand(4000, 10000000000);
             $usuario->senhaUsuario = md5($newPass);    
-            
+            $usuario->update();
             // Corpo do email
             $body =
             "Olá Sr ".$usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario."<br>
