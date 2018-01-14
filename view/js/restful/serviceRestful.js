@@ -108,6 +108,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Atualiza a Senha
     var _updateSenha = function (values){
+      console.log(values);
         return $http.put($updateSenha , values);
     };
 
