@@ -41,7 +41,7 @@
     $scope.passo1 = 'background:gray; color:white';
     //Ativar o Form do Check CPF
 
-    $scope.formImovel = 'ativo';
+    $scope.formCPF = 'ativo';
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
 
@@ -186,9 +186,9 @@
      // TERCEIRO PASSO
      //
      //
-        //$scope.segundoPasso = function (values){
-            //, Coleta dados do Imovel
-           //  emptyEndereco.push(values);
+        $scope.segundoPasso = function (values){
+           //, Coleta dados do Imovel
+          emptyEndereco.push(values);
 
             $scope.passo1 = {};
             $scope.passo2 = {};
@@ -315,7 +315,7 @@
             $scope.areaTotalImovel ='ativo';
         };
      };
-//};//END do controller
+};//END do controller
      //
      //
      // QUARTO PASSO

@@ -15,7 +15,6 @@
       //Function que verifica se existe o resgate de senha
       $scope.verifica = function(dados){
             chave.push(dados);
-
             restful.resgateSenha(dados).success(function(response){
 
             if(response.flag == true ){

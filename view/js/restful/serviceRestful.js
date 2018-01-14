@@ -116,7 +116,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 //|################### **  LOGOUT ** #####################|
 //|#######################################################|
-    //Recuperação de Senha
+    //Logout do Sistema
     var _logout = function (values){
         return $http.post($logout , values);
     };
