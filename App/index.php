@@ -23,7 +23,7 @@ $app->get('/usuario/confirm/{creci}', \Api\Controller\UsuarioController::class .
 $app->post('/usuario/save', \Api\Controller\UsuarioController::class . ':save');
 //Atualiza as informações do usuario
 $app->put('/usuario/update/{id}/{token}', \Api\Controller\UsuarioController::class . ':update');
-//Inativa um Usuario
+//Inativa um Usuario0
 $app->delete('/usuario/delete/{id}/{token}', \Api\Controller\UsuarioController::class . ':delete');
 //Vincula a conta do facebook com a conta do imobiliar
 $app->put('/usuario/migrate', \Api\Controller\UsuarioController::class . ':migrate');
@@ -41,6 +41,11 @@ $app->post('/usuario/login/facebook', \Api\Controller\AuthController::class . ':
 $app->get('/usuario/login/{token}', \Api\Controller\AuthController::class . ':checkLogin');
 //Esqueci a senha
 $app->post('/usuario/login/forgot', \Api\Controller\AuthController::class . ':forgotPass');
+//Verifica o codigo de troca de senha
+$app->post('/usuario/login/forgot/check', \Api\Controller\AuthController::class . ':checkForgot');
+//Muda a senha para a nova senha que o usuario informou
+$app->put('/usuario/login/forgot/change', \Api\Controller\AuthController::class . ':changeForgot');
+
 //FIM AUTENTICACAO
 /**
  * IMOVEIS

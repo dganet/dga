@@ -81,18 +81,47 @@ class AuthController{
 
         }else{ 
             //Gera Nova Senha e atualiza
-            $newPass = rand(4000, 10000000000);
-            $usuario->senhaUsuario = md5($newPass);    
-            $usuario->update();
+            $cod = 'F'.rand(4000, 10000000000);
+            $cache = new Cache();
+            $cache->save($cod, json_encode($usuario));
             // Corpo do email
             $body =
-            "Olá Sr ".$usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario."<br>
-            Sua Senha foi modificada.<br>
+            "Olá Sr(a) ".$usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario." <br>
+            foi feita uma solicitação de mudañça de senha, caso não tenha sido solicitada por você favor desconsiderar.<br>
+            Acesse o link e digite o seguinte codigo para poder fazer a troca de senha.
+            Código: $cod
+
+            http://localhost/dga/#/site/forget 
             Sua nova senha é : $newPass";
             // Fim do corpo do email
             $mail = new MailController();
             $mail->makeEmail($usuario->emailUsuario, $usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario, 'Recuperação de Senha', $body);
             return $response->withJson($mail->send());
        }
+    }
+    /**
+     * Função para mudar a senha do usuario e apagar o arquivo de cache
+    */
+    public function changeForgot($request, $response, $args){
+        $post = json_decode($request->getBody(), true);
+        $cache = Auth::_getTokenInfo($post['codigo']);
+        $usuario = Usuario::getInstace();
+        $usuario->load($cache['conteudo']);
+        $usuario->senhaUsuario = md5($post['senha']);
+        if($usuario->update()){
+            Cache::delete($post['codigo']); 
+        }    
+    }
+    /**
+     * Função para verificar se o codigo que o usuario é valido
+    */
+    public function checkForgot($request, $response, $args){
+        $post = json_decode($request->getBody(), true);
+        $cache = Auth::_getTokenInfo($post['codigo']);
+        if(isset($cache['conteudo'])){
+            return $response->withJson(['flag' => true]);
+        }else{
+            return $response->withJson(['flag' => false]);
+        }
     }
 }
