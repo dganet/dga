@@ -81,10 +81,11 @@ class Cache{
     * @return Array
    */
    public static function delete($token){
-    $filename = $this->createFileLocation($token);
-    if(unlink($filename)){
-        return ['message' => 'Cache apagado com sucesso', 'flag' => true];
-    }else
-        return ['message' => 'Não foi possivel apagar o cache', 'flag' => false];
+        $filename = $this->createFileLocation($token);
+        if(unlink($filename)){
+            return ['message' => 'Cache apagado com sucesso', 'flag' => true];
+        }else{
+            return ['message' => 'Não foi possivel apagar o cache', 'flag' => false];
+        }
    }
 }
