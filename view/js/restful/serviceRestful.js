@@ -26,8 +26,8 @@ app.service('restful', function ($http,$sessionStorage) {
    $updatePicture = 'App/imagem'; //Update Foto
    // Resgate Senha e Update Senha
    $solicitaResgateSenha = 'App/usuario/login/forgot'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
-   $resgateSenha = 'Caminho do BACK-END'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
-   $updateSenha = 'caminho do BACK-END'; // Envia a senha atualiza e o e-mail 
+   $resgateSenha = 'App/usuario/login/forgot/check'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
+   $updateSenha = 'App/usuario/login/forgot/change'; // Envia a senha atualiza e o e-mail 
 
 
 
