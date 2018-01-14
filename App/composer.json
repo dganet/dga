@@ -9,6 +9,6 @@
         "require": {
                 "slim/slim": "^3.5",
                 "slim/php-view": "^2.1",
-	 	 "phpmailer/phpmailer": "^5.2"
+	 	 "phpmailer/phpmailer": "^6.0"
         }
 }

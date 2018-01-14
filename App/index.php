@@ -43,6 +43,7 @@ $app->post('/usuario/login/forgot', \Api\Controller\AuthController::class . ':fo
 /**
  * IMOVEIS
  */
+$app->post('/imovel/save/{token}', \Api\Controller\ImovelController::class . ':save');
 //FIM IMOVEIS
 /**
  * PROPRIETARIO

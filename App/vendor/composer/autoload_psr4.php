@@ -10,6 +10,7 @@ return array(
     'Slim\\' => array($vendorDir . '/slim/slim/Slim'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'PagSeguro\\' => array($vendorDir . '/pagseguro/php3/source'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Mail\\' => array($vendorDir . '/phpmailer/phpmailer'),
     'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
     'GORM\\' => array($baseDir . '/Api/Model/GORM/src'),

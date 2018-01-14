@@ -58,7 +58,7 @@ class AuthController{
      */
     public function forgotPass($request, $response, $args){
         $post = json_decode($request->getBody(),true);
-        $usuario = UsuarioController::forgot($post);
+        $usuario = UsuarioController::forgot($post['email']);
         if ($usuario->idUsuario == null){
             return 
             [
