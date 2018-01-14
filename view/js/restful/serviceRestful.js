@@ -28,6 +28,8 @@ app.service('restful', function ($http,$sessionStorage) {
    $solicitaResgateSenha = 'App/usuario/login/forgot'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
    $resgateSenha = 'Caminho do BACK-END'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
    $updateSenha = 'caminho do BACK-END'; // Envia a senha atualiza e o e-mail 
+   // Logout Sistema 
+   $logout = 'App/usuario/logout' // Mando o Token para o Back-End para quebrar a Sessão
 
 
 
@@ -110,6 +112,15 @@ app.service('restful', function ($http,$sessionStorage) {
     };
 
 //|#######################################################|
+//|################### **  LOGOUT ** #####################|
+//|#######################################################|
+    //Recuperação de Senha
+    var _logout = function (values){
+        return $http.post($logout , values);
+    };
+
+
+//|#######################################################|
 //|############# **  RETURNS ** ##########################|
 //|#######################################################|
 
@@ -137,6 +148,9 @@ app.service('restful', function ($http,$sessionStorage) {
         solicitaResgateSenha : _solicitaResgateSenha,
         resgateSenha : _resgateSenha,
         updateSenha : _updateSenha,
+
+        //Return do Logout
+        logout : _logout,
     }
 
 });

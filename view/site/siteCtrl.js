@@ -27,7 +27,6 @@
           }
         });
 };
-
     //Endereços Estado / Cidade
     serviceEnderecos.getEstados().success(function (response){
 		$scope.estados = response;
