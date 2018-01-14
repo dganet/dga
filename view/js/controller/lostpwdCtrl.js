@@ -10,11 +10,12 @@
       $scope.mensagemSenha = true;
       // Oculta a mensagem da Senha
       $scope.mensagemSenhaSucesso = true;
-      //Armazena o e-mail
-      var email = [];
+      //Chave de Resgate
+      var chave =[];
       //Function que verifica se existe o resgate de senha
       $scope.verifica = function(dados){
-            var chaveResgate = dados;
+            chave.push(dados);
+
             restful.resgateSenha(dados).success(function(response){
 
             if(response.flag == true ){
@@ -41,8 +42,8 @@
         
         if (dados.um === dados.dois){
 
-          // Concatena o e-mail e a senha de da variavel          
-          var values = [{codigo:chaveResgate},{senha:dados}];
+          // Cria um Json com a Chave de Resgate e a Senha        
+          var values = [{codigo:chave},{senha:dados}];
          
          // Envia para o Back End os valores
           restful.updateSenha(values).success(function(response){
