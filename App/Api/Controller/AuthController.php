@@ -23,6 +23,18 @@ class AuthController{
        }
     }
     /**
+     * Função para deslogar e quebrar a sessão
+     * @param Request $request
+     * @param Response $response
+     * @param Argumento $args
+     * @return void
+    */
+    public function deslogar($request, $response, $args){
+        $post = json_decode($request->getBody(), true);
+        $cache = new Cache();
+        return $response->withJson($cache->delete($post['token']));
+    }
+    /**
      * Checa se há um usuario logado com um determinato token
      * 
      * @param Request $request

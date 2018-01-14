@@ -74,4 +74,17 @@ class Cache{
         return unserialize($content);
     }
    }
+   /**
+    * Apaga o arquivo de cache
+    * 
+    * @param string $token
+    * @return Array
+   */
+   public function delete($token){
+    $filename = $this->createFileLocation($token);
+    if(unlink($filename)){
+        return ['message' => 'Cache apagado com sucesso', 'flag' => true];
+    }else
+        return ['message' => 'Não foi possivel apagar o cache', 'flag' => false];
+   }
 }

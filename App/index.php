@@ -33,6 +33,8 @@ $app->put('/usuario/migrate', \Api\Controller\UsuarioController::class . ':migra
  */
 //Loga usuario
 $app->post('/usuario/login', \Api\Controller\AuthController::class . ':logar');
+//Desloga o usuario
+$app->post('/usuario/logout', \Api\Controller\AuthController::class . ':deslogar');
 //Loga Com Facebook
 $app->post('/usuario/login/facebook', \Api\Controller\AuthController::class . ':facebookLogin');
 //Verifica o usuario Logado
