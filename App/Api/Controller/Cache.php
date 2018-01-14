@@ -80,7 +80,7 @@ class Cache{
     * @param string $token
     * @return Array
    */
-   public static function delete($token){
+   public  function delete($token){
         $filename = $this->createFileLocation($token);
         if(unlink($filename)){
             return ['message' => 'Cache apagado com sucesso', 'flag' => true];

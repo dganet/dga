@@ -1,6 +1,6 @@
 <?php
 namespace Api\Controller;
-
+use Api\Model\Entity\Usuario;
 class AuthController{
 
     /**
@@ -105,11 +105,13 @@ class AuthController{
     public function changeForgot($request, $response, $args){
         $post = json_decode($request->getBody(), true);
         $cache = Auth::_getTokenInfo($post['codigo']);
-        $usuario = Usuario::getInstace();
-        $usuario->load($cache['conteudo']);
+        $usuario = Usuario::getInstance();
+        $usuario->load(json_decode($cache['conteudo']));
+        $usuario->setPrimaryKey('idUsuario');
         $usuario->senhaUsuario = md5($post['senha']);
         if($usuario->update()){
-            Cache::delete($post['codigo']); 
+            $cache = new Cache();
+            $cache->delete($post['codigo']); 
         }    
     }
     /**
