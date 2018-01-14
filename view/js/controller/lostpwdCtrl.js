@@ -14,17 +14,14 @@
       var email = [];
       //Function que verifica se existe o resgate de senha
       $scope.verifica = function(dados){
-        
-        restful.resgateSenha(dados).success(function(response){
+            var chaveResgate = dados;
+            restful.resgateSenha(dados).success(function(response){
 
             if(response.flag == true ){
               
                       //Exibi o Form Update Senha 
                       $scope.formUpdate = false;
                       $scope.formResgate = true;
-                      // Armazena o e-mail para utilizar o email no update
-                      email.push(response.email); 
-
                     }else{
 
                         // Funcão de exibir a mensagem  em 5 segundos.
@@ -45,7 +42,7 @@
         if (dados.um === dados.dois){
 
           // Concatena o e-mail e a senha de da variavel          
-          var values = email.concat(dados.um);
+          var values = [{codigo:chaveResgate},{senha:dados}];
          
          // Envia para o Back End os valores
           restful.updateSenha(values).success(function(response){
