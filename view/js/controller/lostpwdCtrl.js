@@ -40,12 +40,12 @@
       $scope.updateSenha = function(dados){
         
         if (dados.um === dados.dois){
+          var senha = dados.um;
 
           // Cria um Json com a Chave de Resgate e a Senha        
-          var values = [{codigo:chave},{senha:dados}];
-         
+          var values = [{'codigo': chave[0]['codigo'],'senha': senha}];
          // Envia para o Back End os valores
-          restful.updateSenha(values).success(function(response){
+          restful.updateSenha(values[0]).success(function(response){
 
                   // Funcão de exibir a mensagem  em 5 segundos.
                   $scope.mensagemSenhaSucesso = false;
