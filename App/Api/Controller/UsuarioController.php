@@ -151,7 +151,6 @@ class UsuarioController {
      */
     public static function forgot($email){
         $usuario = Usuario::getInstance();
-        $usuario->email = $email;
         $usuario->makeSelect()->where("emailUsuario = '".$email."'");
         $collection = $usuario->execute()->get(0);
         return $collection;

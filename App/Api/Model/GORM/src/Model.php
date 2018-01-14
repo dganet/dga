@@ -118,6 +118,7 @@ use Database, Init, Persistent, Builder, Finder;
                 
             }
         }
+        $this->loadConf();
     }
     public function toArray(){
         foreach ($this as $key => $value) {
