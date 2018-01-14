@@ -347,7 +347,7 @@
 
 //*************CADASTRA NOVO IMOVEL *********************// 
            $scope.save = function(){
-             restful.saveImovel(peif).success(function(response){
+             restful.imovelSave(peif).success(function(response){
                // Fecha o Modal
                $('#closeModalPost').modal('hide');
              });

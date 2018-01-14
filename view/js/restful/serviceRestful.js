@@ -20,12 +20,12 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token   
 
    //Classes Imovel
-   $imovelSave = 'Caminho do BACK-END'; // Salvar Imovel 
+   $imovelSave = 'App/imovel/save/'; // Salvar Imovel 
 
    //MODULO PEFIL
    $updatePicture = 'App/imagem'; //Update Foto
    // Resgate Senha e Update Senha
-   $solicitaResgateSenha = 'caminho do Back-End'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
+   $solicitaResgateSenha = 'App/usuario/login/forgot'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
    $resgateSenha = 'Caminho do BACK-END'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
    $updateSenha = 'caminho do BACK-END'; // Envia a senha atualiza e o e-mail 
 
