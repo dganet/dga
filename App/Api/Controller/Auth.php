@@ -23,8 +23,7 @@ class Auth{
         }else{
             $usuario = Usuario::getInstance();
             $usuario->makeSelect()->where("emailUsuario='".$array["emailUsuario"]."'")->and("senhaUsuario='".md5($array['senhaUsuario'])."'")->and("statusUsuario='ATIVO'");
-            $usuario = $usuario->execute(true);
-            
+            $usuario = $usuario->execute()->get(0);
             //Verifica se existe alguma coisa em $usuario
             if (!$usuario->idUsuario == null){
                 $hash = md5($usuario->emailUsuario."|".time());
@@ -33,7 +32,9 @@ class Auth{
                 $user['token'] = $hash;
                 $user['flag'] = true;
                 return $user;
+               
             }else{
+               
                 return ['message' => 'Email ou Senha incorretos', 'flag' => false];
             }
         }

@@ -79,6 +79,7 @@ trait Persistent
      */
     public function update(){
         // Modo de Desenvolvimento
+        
         if ($this->configuration['mode'] == 'devel'){
             $this->beforeUpdate();
             try{

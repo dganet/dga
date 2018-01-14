@@ -59,6 +59,7 @@ class AuthController{
     public function forgotPass($request, $response, $args){
         $post = json_decode($request->getBody(),true);
         $usuario = UsuarioController::forgot($post['email']);
+        $usuario->setPrimaryKey('idUsuario');
         if ($usuario->idUsuario == null){
             return 
             [
@@ -66,19 +67,20 @@ class AuthController{
                 'message' => 'O Email informado não está cadastrado na nossa base de dados'
             ];
 
-        }else{
+        }else{ 
             //Gera Nova Senha e atualiza
             $newPass = rand(4000, 10000000000);
-            $usuario->senhaUsuario = $newPass;
+            $usuario->senhaUsuario = md5($newPass);    
             $usuario->update();
-            //Envia Email informando a nova senha
-            require "MailController.php";
-            forgotEmail($newPass, $usuario->nomeUsuario." ".$usuario->sobrenomeUsuario, $usuario->emailUsuario);
-            return 
-            [
-                'flag'    => true,
-                'message' => 'Senha modificada com sucess, nova senha enviada para o email cadastrado'
-            ];
-        }
+            // Corpo do email
+            $body =
+            "Olá Sr ".$usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario."<br>
+            Sua Senha foi modificada.<br>
+            Sua nova senha é : $newPass";
+            // Fim do corpo do email
+            $mail = new MailController();
+            $mail->makeEmail($usuario->emailUsuario, $usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario, 'Recuperação de Senha', $body);
+            return $response->withJson($mail->send());
+       }
     }
 }
