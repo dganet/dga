@@ -1,9 +1,9 @@
  app.controller("lostpwdCtrl", function($scope, restful, $timeout){
 
       // Exibi o form do Resgate
-      $scope.formResgate = true;
+      $scope.formResgate = false;
       // Exibi o form update senha
-      $scope.formUpdate = false;
+      $scope.formUpdate = true;
       // Oculta a mensagem de Regate 
       $scope.mensagemResgate = true;
       // Oculta a mensagem da Senha
@@ -20,7 +20,8 @@
             if(response.flag == true ){
               
                       //Exibi o Form Update Senha 
-                      $scope.formUpdateSenha = false;
+                      $scope.formUpdate = false;
+                      $scope.formResgate = true;
                       // Armazena o e-mail para utilizar o email no update
                       email.push(response.email); 
 

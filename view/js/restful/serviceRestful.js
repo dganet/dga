@@ -127,6 +127,9 @@ app.service('restful', function ($http,$sessionStorage) {
         clientePut : _clientePut,
         clienteDel : _clienteDel,
 
+        //Return do Imovel
+        imovelSave : _imovelSave,
+
         //Return Imagens
         updatePicture : _updatePicture,
         

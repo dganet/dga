@@ -320,65 +320,66 @@
                 <div class="col-md-3" ng-if="valorImovel == 'ativo'">
                 <div class="form-group">
                     <label>Valor</label>
-                    <input type="text" class="form-control" ng-model="imovel.valorImovel" ui-money-mask="2">
+                    <input type="tex" class="form-control" ng-model="imovel.valorImovel" ui-money-mask="2">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="iptuImovel == 'ativo'">
                 <div class="form-group">
                     <label>Iptu</label>
-                    <input type="text" class="form-control" ng-model="imovel.iptuImovel">
+                    <input type="text" class="form-control" ng-model="imovel.iptuImovel" ui-money-mask="2">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="condominioImovel == 'ativo'" >
                 <div class="form-group">
                     <label>Condominio</label>
-                    <input type="text" class="form-control" ng-model="imovel.condominioImovel">
+                    <input type="text" class="form-control" ng-model="imovel.condominioImovel" ui-money-mask="2">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="idadeImovel == 'ativo'">
                 <div class="form-group">
                     <label>Idade do Imovel</label>
-                    <input type="text" class="form-control" ng-model="imovel.idadeImovel">
+                    <input type="number" class="form-control" ng-model="imovel.idadeImovel">
                 </div>
                 </div>
 
-                <div class="col-md-3" ng-if="idadeImovel == 'ativo'">
+                <div class="col-md-3" ng-if="suiteImovel == 'ativo'">
                 <div class="form-group">
                     <label>Suite(s)</label>
-                    <input type="text" class="form-control" ng-model="imovel.suiteImovel">
+                    <input type="number" class="form-control" ng-model="imovel.suiteImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="copaImovel == 'ativo'">
                 <div class="form-group">
                     <label>Copa</label>
-                    <input type="text" class="form-control" ng-model="imovel.copaImovel">
+                    <input type="number" class="form-control" ng-model="imovel.copaImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="banheiroImovel == 'ativo'">
                 <div class="form-group">
                     <label>Banheiros</label>
-                    <input type="text" class="form-control" ng-model="imovel.banheiroImovel">
+                    <input type="number" class="form-control" ng-model="imovel.banheiroImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="saladejantarImovel == 'ativo'">
                 <div class="form-group">
                     <label>Sala de Jantar</label>
-                    <input type="text" class="form-control" ng-model="imovel.saladejantarImovel">
+                    <input type="number" class="form-control" ng-model="imovel.saladejantarImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="mobiladoImovel == 'ativo'">
                 <div class="form-group">
                     <label>Mobilado</label>
-                    <select class="form-control" ng-model="imovel.mobiladoImovel">
-                      <option ng-value="sim">Sim</option>
-                      <option ng-value="nao">Não</option>
+                    <select class="form-control" 
+                            ng-model="imovel.mobiladoImovel"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">é mobilado ?</option>
                     </select>
                 </div>
                 </div>
@@ -386,20 +387,18 @@
                 <div class="col-md-3" ng-if="elevadorImovel == 'ativo'">
                 <div class="form-group">
                     <label>Elevador</label>
-                    <input type="text" class="form-control" ng-model="imovel.elevadorImovel">
+                    <select class="form-control" 
+                            ng-model="imovel.elevadorImovel"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">Tem Elevador ?</option>
+                    </select>
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="andarImovel == 'ativo'">
                 <div class="form-group">
                     <label>Andar do Imovel</label>
-                    <input type="text" class="form-control" ng-model="imovel.andarImovel">
-                </div>
-                </div>
-                <div class="col-md-3" ng-if="descricaoImovel == 'ativo'">
-                <div class="form-group">
-                    <label>Descrição</label>
-                    <input type="text" class="form-control" ng-model="imovel.descricaoImovel">
+                    <input type="number" class="form-control" ng-model="imovel.andarImovel">
                 </div>
                 </div>
 
@@ -435,6 +434,13 @@
                 <div class="form-group">
                     <label>Aréa do total do Imovel</label>
                     <input type="text" class="form-control" ng-model="imovel.areaTotalImovel">
+                </div>
+                </div>
+
+                <div class="col-md-12" ng-if="descricaoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <input type="text" colspan="20" class="form-control" ng-model="imovel.descricaoImovel">
                 </div>
                 </div>
 

@@ -1,4 +1,4 @@
- app.controller("imovelCtrl", function($scope, $timeout , $location, $http, serviceEnderecos){
+ app.controller("imovelCtrl", function($scope, restful,$timeout , $location, $http, serviceEnderecos){
    //Pega o Token 
   var token = sessionStorage.getItem('usuario.token'); 
 
@@ -41,7 +41,7 @@
     $scope.passo1 = 'background:gray; color:white';
     //Ativar o Form do Check CPF
 
-    $scope.formCPF = 'ativo';
+    $scope.formImovel = 'ativo';
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
 
@@ -53,8 +53,6 @@
 
     //função para verificar cpf
     $scope.checkCPF = function (value){
-      console.log('estou aqui');
-      console.log(value);
         // Cria a variavel com o CPF
         var cpf = value;
         //Consula no Back-end se existe o cpf
@@ -89,11 +87,9 @@
                 $scope.passo1 = 'background:gray; color:white';
                 $scope.passo2 = {};
                 $scope.formProprietario = 'ativo';
-                console.log('proprietario');
                 }
 
                 if (value == 'endereco'){
-                console.log('endereco');
                 $scope.formEndereco = 'ativo';
                 $scope.formImovel = 'inativo';
                 $scope.passo2 = 'background:gray; color:white';
@@ -101,7 +97,6 @@
                 }
 
                 if (value == 'imovel'){
-                console.log('imovel');
                 $scope.formImagens = 'inativo';
                 $scope.formImovel = 'ativo';
 
@@ -191,9 +186,9 @@
      // TERCEIRO PASSO
      //
      //
-        $scope.segundoPasso = function (values){
+        //$scope.segundoPasso = function (values){
             //, Coleta dados do Imovel
-             emptyEndereco.push(values);
+           //  emptyEndereco.push(values);
 
             $scope.passo1 = {};
             $scope.passo2 = {};
@@ -208,7 +203,10 @@
                 {"idOperacao":1,"nomeOperacao":'Locacao'},
                 {"idOperacao":2,"nomeOperacao":'Venda'}
             ];
-
+            //Boleano
+            $scope.boleano = [
+              {label:'Sim',b:"1"},{label: 'Não', b:"0"}
+            ];
             //Função que Seleciona os tipos
             $scope.selectOperation = function (value){
 
@@ -317,7 +315,7 @@
             $scope.areaTotalImovel ='ativo';
         };
      };
-};//END do controller
+//};//END do controller
      //
      //
      // QUARTO PASSO
