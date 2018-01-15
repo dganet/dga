@@ -16,19 +16,16 @@
     var emptyProprietario = [];
     // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
     var p = {infoProprietario:emptyProprietario};
-    $scope.proprietario = emptyProprietario;
    
     //Armazena os dados do Objeto Endereco
     var emptyEndereco = [];
     // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
     var e = {infoEndereco:emptyEndereco};
-    $scope.endereco = emptyEndereco;
 
     //Armazena os dados do Objeto Imovel
     var emptyImovel = [];
     // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
     var i = {infoImovel:emptyImovel};
-    $scope.imovel = emptyImovel;
 
     //Armazena os dados da Imaggens do Imovel
     var emptyFotos = $scope.fotoImovel = [];
@@ -110,10 +107,10 @@
         //
         //
         //
-            $scope.primeiroPasso = function(dados){
-
+            $scope.primeiroPasso = function(proprietario){
             //, Coleta dados do proprietario
-             emptyProprietario.push(dados);
+             emptyProprietario.push(proprietario);
+             console.log(p);
 
              $scope.inputBairro = false;
 
@@ -186,9 +183,9 @@
      // TERCEIRO PASSO
      //
      //
-        $scope.segundoPasso = function (values){
+        $scope.segundoPasso = function (endereco){
            //, Coleta dados do Imovel
-          emptyEndereco.push(values);
+          emptyEndereco.push(endereco);
 
             $scope.passo1 = {};
             $scope.passo2 = {};
@@ -321,8 +318,8 @@
      // QUARTO PASSO
      //
      //
-        $scope.terceiroPasso = function (values){
-          emptyImovel.push(values);
+        $scope.terceiroPasso = function (imovel){
+          emptyImovel.push(imovel);
           $scope.passo1 = {};
           $scope.passo2 = {};
           $scope.passo3 = {};
@@ -345,6 +342,10 @@
 
 //*************CADASTRA NOVO IMOVEL *********************// 
            $scope.save = function(){
+            console.log(p);
+            console.log(e);
+            console.log(i);
+            console.log(f);
              restful.imovelSave(peif).success(function(response){
                // Fecha o Modal
                $('#closeModalPost').modal('hide');

@@ -132,7 +132,7 @@
 <!-- FORMULARIO QUE CHECK O CPF -->
                   <div class="row" ng-if="formCPF == 'ativo'">
 
-                      <form name="FormCPF" ng-submit="checkCPF(proprietario)" novalidate>
+                      <form name="FormCPF" ng-submit="checkCPF(proprietario)">
                           
                           <div class="col-md-4">
                           <div class="form-group">
@@ -463,7 +463,7 @@
     <div ng-if="formImagens == 'ativo'">
         
         <div class="row">
-             <form name="first" ng-submit="quartoPasso(proprietario)">
+             <form name="first" ng-submit="quartoPasso(fotos)">
                
                <div data-ng-repeat="x in fotoImovel">
                <div class="col-md-9">
