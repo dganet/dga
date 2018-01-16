@@ -405,42 +405,42 @@
                 <div class="col-md-3" ng-if="garagemCobertaImovel == 'ativo'">
                 <div class="form-group">
                     <label>Garagem Coberta</label>
-                    <input type="text" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemCobertaImovel">
+                    <input type="number" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemCobertaImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="garagemDescobertaImovel == 'ativo'">
                 <div class="form-group">
                     <label>Garagem Descoberta</label>
-                    <input type="text" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemDescobertaImovel">
+                    <input type="number" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemDescobertaImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="areaTerrenoImovel == 'ativo'">
                 <div class="form-group">
                     <label>Aréa do terreno</label>
-                    <input type="text" class="form-control" ng-model="imovel.areaTerrenoImovel">
+                    <input type="number" class="form-control" ng-model="imovel.areaTerrenoImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="areaUtilImovel == 'ativo'">
                 <div class="form-group">
                     <label>Aréa Util</label>
-                    <input type="text" class="form-control" ng-model="imovel.areaUtilImovel">
+                    <input type="number" class="form-control" ng-model="imovel.areaUtilImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="areaTotalImovel == 'ativo'">
                 <div class="form-group">
                     <label>Aréa do total do Imovel</label>
-                    <input type="text" class="form-control" ng-model="imovel.areaTotalImovel">
+                    <input type="number" class="form-control" ng-model="imovel.areaTotalImovel">
                 </div>
                 </div>
 
                 <div class="col-md-12" ng-if="descricaoImovel == 'ativo'">
                 <div class="form-group">
                     <label>Descrição</label>
-                    <input type="text" colspan="20" class="form-control" ng-model="imovel.descricaoImovel">
+                    <textarea type="text" rows="5" class="form-control" ng-model="imovel.descricaoImovel"></textarea>
                 </div>
                 </div>
 
@@ -461,32 +461,79 @@
 
 <!-- FORMULARIO DE IMAGENS-->
     <div ng-if="formImagens == 'ativo'">
-        
+              <div class="alert alert-info">
+                <strong>Imagens</strong> Permetido arquivo no máximo de <strong>2MB</strong> e formato <strong>jepg,jpg</strong>.
+            </div>
+
         <div class="row">
+
+
              <form name="first" ng-submit="quartoPasso(fotos)">
-               
-               <div data-ng-repeat="x in fotoImovel">
-               <div class="col-md-9">
+               <div class="col-md-6">
                   <div class="form-group">
-                    <label>Imagens</label>
-                    <input type="file" ng-file-model="x.anexoDocumento" name="arquivo"/ class="form-control">
+                    <input type="file" ng-file-model="fotos.um" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.dois" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().verificaFoto(this)">
+                  </div>
                </div>
 
-                <div class="col-md-1">
-                <div class="form-group">
-                  <label>Remover</label>
-                  <button type="button" class="btn btn-danger" ng-click="removeDocumento()">x</button>
-                </div>
-                </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.tres" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().tres(this)">
+                  </div>
+               </div>
 
-                <div class="col-md-1">
-                <div class="form-group">
-                  <label>Adicionar</label>
-                  <button type="button" class="btn btn-success" ng-click="addDocumento()">Foto</button>
-                </div>
-                </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.quatro" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().quatro(this)">
+                  </div>
+               </div>
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.cinco" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().cinco(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.seis" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().seis(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.sete" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().sete(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.oito" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().oito(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.nove" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().nove(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.dez" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().dez(this)">
+                  </div>
+               </div>
+
 
                 <div class="col-md-12">
                 <div class="form-group">
@@ -506,8 +553,8 @@
         
              
              <div class="modal-footer">
-  
-                <button type="button" class="btn btn-default" >Passo 1</button>
+                
+                  <!-- footer do modal -->
 
              </div>
 
