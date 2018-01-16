@@ -28,17 +28,16 @@
     var i = {infoImovel:emptyImovel};
 
     //Armazena os dados da Imaggens do Imovel
-    var emptyFotos = $scope.fotoImovel = [];
-    var f = {infoImagem:emptyFotos};
+    // var f = {infoImagem:emptyFotos};
 
-    var peif = [p,e,i,f];
+    var peif = [p,e,i];
 
 
     //Mudar o Css do Processo em ativo
     $scope.passo1 = 'background:gray; color:white';
     //Ativar o Form do Check CPF
 
-    $scope.formCPF = 'ativo';
+    $scope.formImagens = 'ativo';
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
 
@@ -110,7 +109,6 @@
             $scope.primeiroPasso = function(proprietario){
             //, Coleta dados do proprietario
              emptyProprietario.push(proprietario);
-             console.log(p);
 
              $scope.inputBairro = false;
 
@@ -303,7 +301,7 @@
             $scope.saladejantarImovel = 'inativo';
             $scope.mobiladoImovel = 'inativo';
             $scope.elevadorImovel ='inativo';
-            $scope.descricaoImovel ='inativo';
+            $scope.descricaoImovel ='ativo';
             $scope.garagemCobertaImovel = 'inativo';
             $scope.garagemDescobertaImovel = 'inativo';
             $scope.andarImovel = 'inativo';
@@ -319,7 +317,6 @@
      //
      //
         $scope.terceiroPasso = function (imovel){
-          emptyImovel.push(imovel);
           $scope.passo1 = {};
           $scope.passo2 = {};
           $scope.passo3 = {};
@@ -329,23 +326,20 @@
           $scope.formImagens = 'ativo';
   };
 
-          // Função que adicionar imagens,
-          $scope.addDocumento = function(){
-           var newInputs = $scope.fotoImovel.lenght+1;
-           $scope.fotoImovel.push({anexoDocumento:''});
-          };
-
-          $scope.removeDocumento = function() {
-          	 var lastItem = $scope.foto.length-1;
-          	 $scope.foto.splice(lastItem);
-           };
+      // MULTIPLOS UPLOAD DE IMAGENS
+        $scope.verificaFoto = function(element){
+       $scope.$apply(function(scope) {
+      // Turn the FileList object into an Array
+        var teste = $scope.files = []
+        for (var i = 0; i < element.files.length; i++) {
+          $scope.files.push(element.files[i])
+        }
+      console.log(teste[0]['size']);
+      });
+    };
 
 //*************CADASTRA NOVO IMOVEL *********************// 
            $scope.save = function(){
-            console.log(p);
-            console.log(e);
-            console.log(i);
-            console.log(f);
              restful.imovelSave(peif).success(function(response){
                // Fecha o Modal
                $('#closeModalPost').modal('hide');
