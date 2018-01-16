@@ -9,7 +9,7 @@ class Imovel extends \GORM\Model{
     public $cidadeImovel;
     public $iptuImovel;
     public $condominioImovel;
-    public $idadeConstricaoImovel;
+    public $idadeConstrucaoImovel;
     public $valorLocacaoImovel;
     public $valorVendaImovel;
     public $condicoesPagamentoImovel;
@@ -26,13 +26,15 @@ class Imovel extends \GORM\Model{
     public $outrosDadosImovel;
     public $elevadorImovel;
     public $areaUtilImovel;
-    public $andaresImovel;
+    public $andarImovel;
     public $areaTotalImovel;
     public $fkProprietario;
     public $fkGaleria;
+    public $fkCarteiraImovel;
     public $statusImovel;
     public $createAtImovel;
     public $updateAtImovel;
+    public $descricaoImovel;
     
     /**
      * Metodo Setter

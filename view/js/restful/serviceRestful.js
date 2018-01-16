@@ -84,8 +84,8 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri novo Imovel
     var _imovelSave = function (values, token){
-      console.log(values);
-        return  $http.post($imovelSave + token , values);
+      
+        return  $http.post($imovelSave + sessionStorage.getItem('usuario.token') , values);
     };
 
 //|#######################################################|
