@@ -327,16 +327,34 @@
   };
 
       // MULTIPLOS UPLOAD DE IMAGENS
+
+        //FUNÇÃO QUE PRINTA OS ALERTAS CONFORME AS ESPECIFICAÇÕES
         $scope.verificaFoto = function(element){
        $scope.$apply(function(scope) {
       // Turn the FileList object into an Array
-        var teste = $scope.files = []
+        var elementosFoto = $scope.files = []
         for (var i = 0; i < element.files.length; i++) {
           $scope.files.push(element.files[i])
         }
-      console.log(teste[0]['size']);
+
+               //Pega o tamano da foto   
+              $tamanhoFoto = elementosFoto[0]['size'];
+              // Pega extensão da Imagem
+              $extensaoFoto = elementosFoto[0]['type'];
+              console.log($extensaoFoto);
+              if ($tamanhoFoto > 2000000 || $extensão != 'image/jpeg' || $extensão != 'image/jpg'){
+                 alert('Tamanho ou exensão da foto não permetido');
+                return;
+              }
+
+
+
       });
     };
+
+    $scope.quartoPasso = function(fotos){
+        console.log(fotos.um.size);
+    }
 
 //*************CADASTRA NOVO IMOVEL *********************// 
            $scope.save = function(){
