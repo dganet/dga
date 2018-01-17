@@ -81,6 +81,5 @@ class Usuario extends \GORM\Model{
     public function __toString(){
         return var_dump($this->toArray());
     }
-
    
 }

@@ -49,11 +49,14 @@
     <div class="row corpoTemplate">
         <div class="col col-md-12">
             
-            <table class="table table-hover corpoTableTemplate">
+            <table class="table table-hover corpoTableTemplate" style="height: 100px;">
               <thead>
                 <tr>
-                  <th class="centro">#</th>
-                  <th>Nome</th>
+                  <th class="centro">Ref</th>
+                  <th class="centro">Publicação</th>
+                  <th class="cent">Foto Principal</th>
+                  <th class="centro">Tipo</th>
+                  <th class="centro">Preço</th>
                   <th class="centro">Detalhes</th>
                   <th class="centro">Alterar</th>
                   <th class="centro">Deletar</th>
@@ -61,17 +64,39 @@
               </thead>
 
             <tbody> 
-             <tr ng-repeat="x in clientes | filter: busca  ">
-               
-               <td class="centro">{{x.idCliente}}</td>
-               <td>{{x.nomeCliente}}</td>
+
+             <!-- <tr ng-repeat="x in clientes | filter: busca  "> -->
+              <tr> 
+
+               <td><span class="align-middle">015845</span></td>
+               <td class="centro" >Privado</td>
+               <td><img src="view/galeria/casa01.jpg" width="125" height="100"></td>
+               <td class="centro">CASA</td>
                
                <td class="centro">
-                   <a class="btn btn-default" ng-click="dados(x.idCliente)"  aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-address-card-o" ></i></a>
+                   R$ 10.000,00
                </td>
-                 
+               
+                <td class="centro">
+                    <a class="btn btn-default">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                  </a>
+               </td>
+
                <td class="centro">
-                   <a class="btn btn-default" ng-click="dados(x.idCliente)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-pencil-square-o" ></i></a>
+                   <a class="btn btn-default" ng-click="dados(x.idCliente)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-user" aria-hidden="true"></i> </a>
+
+                   <a class="btn btn-default">
+                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                  </a>
+                    <a class="btn btn-default">
+                   <i class="fa fa-home" aria-hidden="true"></i>
+                 </a>
+                   <a class="btn btn-default">
+                   <i class="fa fa-picture-o" aria-hidden="true"></i>
+                 </a>
+
+                
                </td>
                
                  <td class="centro">
@@ -79,6 +104,11 @@
                </td>
              
                 </tr>
+
+
+
+
+
             </tbody>
                 
             </table>
@@ -102,12 +132,12 @@
 <!-- FORMULARIO QUE CHECK O CPF -->
                   <div class="row" ng-if="formCPF == 'ativo'">
 
-                      <form name="FormCPF" ng-submit=checkCPF(proprietario)>
+                      <form name="FormCPF" ng-submit="checkCPF(proprietario)">
                           
                           <div class="col-md-4">
                           <div class="form-group">
                               <label>CPF</label>
-                              <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" required>
+                              <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" ui-br-cpf-mask>
                           </div>
                           </div>
 
@@ -123,7 +153,7 @@
 <!-- AO VERIFICAR O CPF PRINTA NA TELA O DADOS DO PROPRIETARIO OU FORMULARIO EM BRANCO -->
     <div ng-if="formProprietario == 'ativo'">
         <div class="row">
-             <form name="first" ng-submit="primeiroPasso(proprietario)">
+             <form name="first" ng-submit="primeiroPasso(proprietario)" novalidate>
 
             <div class="alert alert-success">
                 <strong>Novo Proprietário!</strong> Não foi encontrado nenhum proprietário nos seus registro com este cpf , deseja realmente criar um novo ?
@@ -176,20 +206,20 @@
     <!-- FORMULARIO ENDEREÇOS -->
     <div ng-if="formEndereco == 'ativo'">
         <div class="row">
-             <form name="second" ng-submit="segundoPasso(imovel)">
+             <form name="second" ng-submit="segundoPasso(endereco)">
 
                  <div class="col-md-12">
                     <div class="form-group">
                         <label>Endereço</label>
-                        <input type="text" class="form-control" ng-model="imovel.enderecoImovel">
+                        <input type="text" class="form-control" ng-model="endereco.enderecoImovel">
                      </div>
                  </div>
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Estado</label>
-                        <select class="form-control" ng-change="executeCidade(imovel.idEstado)"
-                        ng-options="imovel.idEstado as imovel.nome for imovel in estados track by imovel.idEstado"
-                        ng-model="imovel.idEstado">
+                        <select class="form-control" ng-change="executeCidade(endereco.idEstado)"
+                        ng-options="endereco.idEstado as endereco.nome for endereco in estados track by endereco.idEstado"
+                        ng-model="endereco.idEstado">
                         <option value="">Selecione Estado</option>
                         </select>
                 </div>
@@ -198,9 +228,9 @@
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Cidade</label>
-                        <select class="form-control" ng-change="executeBairro(imovel.idCidade)" ng-disabled="!imovel.idEstado"
-                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: imovel.idEstado}"
-                         ng-model="imovel.idCidade">
+                        <select class="form-control" ng-change="executeBairro(endereco.idCidade)" ng-disabled="!endereco.idEstado"
+                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: endereco.idEstado}"
+                         ng-model="endereco.idCidade">
                         <option value="">Selecione Cidade</option>
                         </select>
                 </div>
@@ -211,13 +241,13 @@
                         <label>Bairro</label>
                          <!-- InputBairro novo Bairro -->
                         <div ng-show="inputBairro">
-                        <input type="text" class="form-control" ng-model="imovel.idBairro" placeholder="Novo Bairro" required>
+                        <input type="text" class="form-control" ng-model="endereco.idBairro" placeholder="Novo Bairro" required>
                         </div>
 
                        <!-- Select de Bairros -->
-                        <select class="form-control" ng-disabled="!imovel.idCidade"
-                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: imovel.idCidade}"
-                         ng-model="imovel.idBairro"
+                        <select class="form-control" ng-disabled="!endereco.idCidade"
+                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: endereco.idCidade}"
+                         ng-model="endereco.idBairro"
                          ng-show="selectBairro">
                         <option value="">Selecione Bairro</option>
                         </select>
@@ -290,65 +320,66 @@
                 <div class="col-md-3" ng-if="valorImovel == 'ativo'">
                 <div class="form-group">
                     <label>Valor</label>
-                    <input type="text" class="form-control" ng-model="imovel.valorImovel">
+                    <input type="tex" class="form-control" ng-model="imovel.valorImovel" ui-money-mask="2">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="iptuImovel == 'ativo'">
                 <div class="form-group">
                     <label>Iptu</label>
-                    <input type="text" class="form-control" ng-model="imovel.iptuImovel">
+                    <input type="text" class="form-control" ng-model="imovel.iptuImovel" ui-money-mask="2">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="condominioImovel == 'ativo'" >
                 <div class="form-group">
                     <label>Condominio</label>
-                    <input type="text" class="form-control" ng-model="imovel.condominioImovel">
+                    <input type="text" class="form-control" ng-model="imovel.condominioImovel" ui-money-mask="2">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="idadeImovel == 'ativo'">
                 <div class="form-group">
                     <label>Idade do Imovel</label>
-                    <input type="text" class="form-control" ng-model="imovel.idadeImovel">
+                    <input type="number" class="form-control" ng-model="imovel.idadeImovel">
                 </div>
                 </div>
 
-                <div class="col-md-3" ng-if="idadeImovel == 'ativo'">
+                <div class="col-md-3" ng-if="suiteImovel == 'ativo'">
                 <div class="form-group">
                     <label>Suite(s)</label>
-                    <input type="text" class="form-control" ng-model="imovel.suiteImovel">
+                    <input type="number" class="form-control" ng-model="imovel.suiteImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="copaImovel == 'ativo'">
                 <div class="form-group">
                     <label>Copa</label>
-                    <input type="text" class="form-control" ng-model="imovel.copaImovel">
+                    <input type="number" class="form-control" ng-model="imovel.copaImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="banheiroImovel == 'ativo'">
                 <div class="form-group">
                     <label>Banheiros</label>
-                    <input type="text" class="form-control" ng-model="imovel.banheiroImovel">
+                    <input type="number" class="form-control" ng-model="imovel.banheiroImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="saladejantarImovel == 'ativo'">
                 <div class="form-group">
                     <label>Sala de Jantar</label>
-                    <input type="text" class="form-control" ng-model="imovel.saladejantarImovel">
+                    <input type="number" class="form-control" ng-model="imovel.saladejantarImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="mobiladoImovel == 'ativo'">
                 <div class="form-group">
                     <label>Mobilado</label>
-                    <select class="form-control" ng-model="imovel.mobiladoImovel">
-                      <option ng-value="sim">Sim</option>
-                      <option ng-value="nao">Não</option>
+                    <select class="form-control" 
+                            ng-model="imovel.mobiladoImovel"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">é mobilado ?</option>
                     </select>
                 </div>
                 </div>
@@ -356,55 +387,60 @@
                 <div class="col-md-3" ng-if="elevadorImovel == 'ativo'">
                 <div class="form-group">
                     <label>Elevador</label>
-                    <input type="text" class="form-control" ng-model="imovel.elevadorImovel">
+                    <select class="form-control" 
+                            ng-model="imovel.elevadorImovel"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">Tem Elevador ?</option>
+                    </select>
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="andarImovel == 'ativo'">
                 <div class="form-group">
                     <label>Andar do Imovel</label>
-                    <input type="text" class="form-control" ng-model="imovel.andarImovel">
-                </div>
-                </div>
-                <div class="col-md-3" ng-if="descricaoImovel == 'ativo'">
-                <div class="form-group">
-                    <label>Descrição</label>
-                    <input type="text" class="form-control" ng-model="imovel.descricaoImovel">
+                    <input type="number" class="form-control" ng-model="imovel.andarImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="garagemCobertaImovel == 'ativo'">
                 <div class="form-group">
                     <label>Garagem Coberta</label>
-                    <input type="text" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemCobertaImovel">
+                    <input type="number" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemCobertaImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="garagemDescobertaImovel == 'ativo'">
                 <div class="form-group">
                     <label>Garagem Descoberta</label>
-                    <input type="text" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemDescobertaImovel">
+                    <input type="number" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemDescobertaImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="areaTerrenoImovel == 'ativo'">
                 <div class="form-group">
                     <label>Aréa do terreno</label>
-                    <input type="text" class="form-control" ng-model="imovel.areaTerrenoImovel">
+                    <input type="number" class="form-control" ng-model="imovel.areaTerrenoImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="areaUtilImovel == 'ativo'">
                 <div class="form-group">
                     <label>Aréa Util</label>
-                    <input type="text" class="form-control" ng-model="imovel.areaUtilImovel">
+                    <input type="number" class="form-control" ng-model="imovel.areaUtilImovel">
                 </div>
                 </div>
 
                 <div class="col-md-3" ng-if="areaTotalImovel == 'ativo'">
                 <div class="form-group">
                     <label>Aréa do total do Imovel</label>
-                    <input type="text" class="form-control" ng-model="imovel.areaTotalImovel">
+                    <input type="number" class="form-control" ng-model="imovel.areaTotalImovel">
+                </div>
+                </div>
+
+                <div class="col-md-12" ng-if="descricaoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea type="text" rows="5" class="form-control" ng-model="imovel.descricaoImovel"></textarea>
                 </div>
                 </div>
 
@@ -425,32 +461,79 @@
 
 <!-- FORMULARIO DE IMAGENS-->
     <div ng-if="formImagens == 'ativo'">
-        
+              <div class="alert alert-info">
+                <strong>Imagens</strong> Permetido arquivo no máximo de <strong>2MB</strong> e formato <strong>jepg,jpg</strong>.
+            </div>
+
         <div class="row">
-             <form name="first" ng-submit="quartoPasso(proprietario)">
-               
-               <div data-ng-repeat="x in fotoImovel">
-               <div class="col-md-9">
+
+
+             <form name="first" ng-submit="quartoPasso(fotos)">
+               <div class="col-md-6">
                   <div class="form-group">
-                    <label>Imagens</label>
-                    <input type="file" ng-file-model="x.anexoDocumento" name="arquivo"/ class="form-control">
+                    <input type="file" ng-file-model="fotos.um" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.dois" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().verificaFoto(this)">
+                  </div>
                </div>
 
-                <div class="col-md-1">
-                <div class="form-group">
-                  <label>Remover</label>
-                  <button type="button" class="btn btn-danger" ng-click="removeDocumento()">x</button>
-                </div>
-                </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.tres" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().tres(this)">
+                  </div>
+               </div>
 
-                <div class="col-md-1">
-                <div class="form-group">
-                  <label>Adicionar</label>
-                  <button type="button" class="btn btn-success" ng-click="addDocumento()">Foto</button>
-                </div>
-                </div>
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.quatro" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().quatro(this)">
+                  </div>
+               </div>
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.cinco" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().cinco(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.seis" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().seis(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.sete" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().sete(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.oito" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().oito(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.nove" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().nove(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.dez" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().dez(this)">
+                  </div>
+               </div>
+
 
                 <div class="col-md-12">
                 <div class="form-group">
@@ -470,8 +553,8 @@
         
              
              <div class="modal-footer">
-  
-                <button type="button" class="btn btn-default" >Passo 1</button>
+                
+                  <!-- footer do modal -->
 
              </div>
 

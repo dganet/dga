@@ -9,6 +9,7 @@
       //Envio de Solicitação de Senha
       $scope.solicitaRecSenha = function(values){
         restful.solicitaResgateSenha(values).success(function(response){
+          console.log(response);
           if (response.flag == false){
               // Exibi a mensagem             
               $scope.mensagemErroEmail = true;
@@ -27,7 +28,6 @@
           }
         });
 };
-
     //Endereços Estado / Cidade
     serviceEnderecos.getEstados().success(function (response){
 		$scope.estados = response;

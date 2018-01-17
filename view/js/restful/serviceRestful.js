@@ -17,13 +17,20 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteList = 'App/cliente/list/'; // Lista todos os Cliente referente ao id do Usuario
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    $clientePut = 'App/cliente/update/'; // Lista unico cliente referente ao ID + token
-   $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token     
+   $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token   
+
+   //Classes Imovel
+   $imovelSave = 'App/imovel/save/'; // Salvar Imovel 
+
    //MODULO PEFIL
    $updatePicture = 'App/imagem'; //Update Foto
    // Resgate Senha e Update Senha
-   $solicitaResgateSenha = 'caminho do Back-End'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
-   $resgateSenha = 'Caminho do BACK-END'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
-   $updateSenha = 'caminho do BACK-END'; // Envia a senha atualiza e o e-mail 
+   $solicitaResgateSenha = 'App/usuario/login/forgot'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
+   $resgateSenha = 'App/usuario/login/forgot/check'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
+   $updateSenha = 'App/usuario/login/forgot/change'; // Envia a senha atualiza e o e-mail  
+   // Logout Sistema 
+   $logout = 'App/usuario/logout' // Mando o Token para o Back-End para quebrar a Sessão
+
 
 
 
@@ -66,17 +73,20 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Atualiza as informações do Cliente
     var _clientePut = function (values, token){
-      console.log(values);
-      console.log(token);
         return  $http.put($clientePut + token , values);
     };
     //Inativa o Cliente
     var _clienteDel = function (values,token){
-      console.log(values);
-      console.log(token);
         return  $http.delete($clienteDel + values + '/' + token);
     };
-
+//|#######################################################|
+//|############# **  MODULO IMOVEL ** ###################|
+//|#######################################################|
+   //Inseri novo Imovel
+    var _imovelSave = function (values, token){
+      
+        return  $http.post($imovelSave + sessionStorage.getItem('usuario.token') , values);
+    };
 
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
@@ -100,8 +110,18 @@ app.service('restful', function ($http,$sessionStorage) {
     };
     //Atualiza a Senha
     var _updateSenha = function (values){
+      console.log(values);
         return $http.put($updateSenha , values);
     };
+
+//|#######################################################|
+//|################### **  LOGOUT ** #####################|
+//|#######################################################|
+    //Logout do Sistema
+    var _logout = function (values){
+        return $http.post($logout , values);
+    };
+
 
 //|#######################################################|
 //|############# **  RETURNS ** ##########################|
@@ -121,6 +141,9 @@ app.service('restful', function ($http,$sessionStorage) {
         clientePut : _clientePut,
         clienteDel : _clienteDel,
 
+        //Return do Imovel
+        imovelSave : _imovelSave,
+
         //Return Imagens
         updatePicture : _updatePicture,
         
@@ -128,6 +151,9 @@ app.service('restful', function ($http,$sessionStorage) {
         solicitaResgateSenha : _solicitaResgateSenha,
         resgateSenha : _resgateSenha,
         updateSenha : _updateSenha,
+
+        //Return do Logout
+        logout : _logout,
     }
 
 });

@@ -36,18 +36,38 @@ class ImovelController {
      * @return void
      */
     public function save($request, $response, $args){
-        $post = json_decode($request->getBody()); 
+        $post = json_decode($request->getBody(), true); 
+        // Preparando as variaveis
+        $p = $post[0]['infoProprietario'][0];
+        $e = $post[1]['infoEndereco'][0];   
+        $i = $post[2]['infoImovel'][0];
+
+        $i['valorVendaImovel'] = $i['valorImovel'];
+        unset($i['valorImovel']);
+        $i['idadeConstrucaoImovel'] = $i['idadeImovel'];
+        unset($i['idadeImovel']);
+        $i['garagemCobertaImovel'] = $i['garagemDescobertaImovel'];
+        unset($i['garagemDescobertaImovel']);
+        
+        
+        $img = $post[3]['infoImagem'][0];
+        
+        //FIM
         $logado = Auth::_isLoggedIn($args['token']);
-            if ($logado['flag']){
+        $user = Auth::_getTokenInfo($args['token']);
+        if ($logado){
             //Gera o proprietário
             $proprietario = Proprietario::getInstance();
-            $proprietario->load($post['proprietario']);
-            unset($post['proprietario']);
-            $galeria = Galeria($post['galeria']);
-            unset($post['galeria']);
-            $imovel = new Imovel($post['imovel']);
-            $imovel->fkGaleria = $galeria->save(true);
-            $imovel->fkProprietario = $proprietario->save(true);
+            $proprietario->load($p);
+            $galeria =  Galeria::getInstance();
+            $galeria->nomeGaleria = 'Galeria Teste';
+            $lastid = $galeria->save(true);
+            $imovel = Imovel::getInstance();
+            $imovel->load($i);
+            $imovel->fkGaleria = $lastid['lastId'];
+            $lastid = $proprietario->save(true);
+            $imovel->fkCarteiraImovel = $user['conteudo']['fkCarteiraImovel'];
+            $imovel->fkProprietario = $lastid['lastId'];
             $r = $imovel->save();
             if ($r){
                 return $response->withJson([

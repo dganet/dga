@@ -3,12 +3,12 @@
                 "psr-4":{
                         "Api\\" : "Api/",
 			"GORM\\" : "Api/Model/GORM/src",
-                        "Mail\\" : "vendor/phpmailer/phpmailer"
+                        "Mail\\" : "vendor/phpmailer/phpmailer/src"
                 }
         },
         "require": {
                 "slim/slim": "^3.5",
                 "slim/php-view": "^2.1",
-	 	 "phpmailer/phpmailer": "^5.2"
+	 	 "phpmailer/phpmailer": "^6.0"
         }
 }

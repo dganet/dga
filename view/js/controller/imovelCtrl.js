@@ -1,4 +1,4 @@
- app.controller("imovelCtrl", function($scope, $timeout , $location, $http, serviceEnderecos){
+ app.controller("imovelCtrl", function($scope, restful,$timeout , $location, $http, serviceEnderecos){
    //Pega o Token 
   var token = sessionStorage.getItem('usuario.token'); 
 
@@ -13,19 +13,31 @@
 //*************CADASTRA IMOVEL *********************//
     
     //Armazena os dados do Objeto Proprietario
-    var p = $scope.proprietario = {};
+    var emptyProprietario = [];
+    // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
+    var p = {infoProprietario:emptyProprietario};
+   
+    //Armazena os dados do Objeto Endereco
+    var emptyEndereco = [];
+    // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
+    var e = {infoEndereco:emptyEndereco};
+
     //Armazena os dados do Objeto Imovel
-    var i = $scope.imovel = {};
+    var emptyImovel = [];
+    // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
+    var i = {infoImovel:emptyImovel};
+
     //Armazena os dados da Imaggens do Imovel
-    var f = $scope.fotoImovel = [];
-    var fotos = {imagem:f};
+    // var f = {infoImagem:emptyFotos};
+
+    var peif = [p,e,i];
 
 
     //Mudar o Css do Processo em ativo
     $scope.passo1 = 'background:gray; color:white';
     //Ativar o Form do Check CPF
 
-    $scope.formCPF = 'ativo';
+    $scope.formImagens = 'ativo';
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
 
@@ -63,7 +75,6 @@
                 if (value == 'cpf'){
                 $scope.formCPF = 'ativo';
                 $scope.formProprietario = 'inativo';
-                console.log('cpf');
                 }
 
                 if (value == 'proprietario'){
@@ -72,11 +83,9 @@
                 $scope.passo1 = 'background:gray; color:white';
                 $scope.passo2 = {};
                 $scope.formProprietario = 'ativo';
-                console.log('proprietario');
                 }
 
                 if (value == 'endereco'){
-                console.log('endereco');
                 $scope.formEndereco = 'ativo';
                 $scope.formImovel = 'inativo';
                 $scope.passo2 = 'background:gray; color:white';
@@ -84,7 +93,6 @@
                 }
 
                 if (value == 'imovel'){
-                console.log('imovel');
                 $scope.formImagens = 'inativo';
                 $scope.formImovel = 'ativo';
 
@@ -98,9 +106,10 @@
         //
         //
         //
-            $scope.primeiroPasso = function(dados){
+            $scope.primeiroPasso = function(proprietario){
             //, Coleta dados do proprietario
-             $scope.proprietario.push = dados;
+             emptyProprietario.push(proprietario);
+
              $scope.inputBairro = false;
 
             //Segundo Passo
@@ -172,8 +181,10 @@
      // TERCEIRO PASSO
      //
      //
-        $scope.segundoPasso = function (values){
-            $scope.imovel.push = values;
+        $scope.segundoPasso = function (endereco){
+           //, Coleta dados do Imovel
+          emptyEndereco.push(endereco);
+
             $scope.passo1 = {};
             $scope.passo2 = {};
             $scope.passo3 = 'background:gray; color:white';
@@ -187,7 +198,10 @@
                 {"idOperacao":1,"nomeOperacao":'Locacao'},
                 {"idOperacao":2,"nomeOperacao":'Venda'}
             ];
-
+            //Boleano
+            $scope.boleano = [
+              {label:'Sim',b:"1"},{label: 'Não', b:"0"}
+            ];
             //Função que Seleciona os tipos
             $scope.selectOperation = function (value){
 
@@ -287,7 +301,7 @@
             $scope.saladejantarImovel = 'inativo';
             $scope.mobiladoImovel = 'inativo';
             $scope.elevadorImovel ='inativo';
-            $scope.descricaoImovel ='inativo';
+            $scope.descricaoImovel ='ativo';
             $scope.garagemCobertaImovel = 'inativo';
             $scope.garagemDescobertaImovel = 'inativo';
             $scope.andarImovel = 'inativo';
@@ -302,8 +316,7 @@
      // QUARTO PASSO
      //
      //
-        $scope.terceiroPasso = function (values){
-          $scope.imovel.push = values;
+        $scope.terceiroPasso = function (imovel){
           $scope.passo1 = {};
           $scope.passo2 = {};
           $scope.passo3 = {};
@@ -313,20 +326,23 @@
           $scope.formImagens = 'ativo';
   };
 
-          // Função que adicionar imagens,
-          $scope.addDocumento = function(){
-           var newInputs = $scope.fotoImovel.lenght+1;
-           $scope.fotoImovel.push({anexoDocumento:''});
-          };
+      // MULTIPLOS UPLOAD DE IMAGENS
+        $scope.verificaFoto = function(element){
+       $scope.$apply(function(scope) {
+      // Turn the FileList object into an Array
+        var teste = $scope.files = []
+        for (var i = 0; i < element.files.length; i++) {
+          $scope.files.push(element.files[i])
+        }
+      console.log(teste[0]['size']);
+      });
+    };
 
-          $scope.removeDocumento = function() {
-          	 var lastItem = $scope.foto.length-1;
-          	 $scope.foto.splice(lastItem);
-           };
-
+//*************CADASTRA NOVO IMOVEL *********************// 
            $scope.save = function(){
-               console.log(i);
-               console.log(p);
-               console.log(f);
+             restful.imovelSave(peif).success(function(response){
+               // Fecha o Modal
+               $('#closeModalPost').modal('hide');
+             });
            };
  });//END do controller

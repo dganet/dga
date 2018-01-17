@@ -1,29 +1,27 @@
  app.controller("lostpwdCtrl", function($scope, restful, $timeout){
 
       // Exibi o form do Resgate
-      $scope.formResgate = true;
+      $scope.formResgate = false;
       // Exibi o form update senha
-      $scope.formUpdate = false;
+      $scope.formUpdate = true;
       // Oculta a mensagem de Regate 
       $scope.mensagemResgate = true;
       // Oculta a mensagem da Senha
       $scope.mensagemSenha = true;
       // Oculta a mensagem da Senha
       $scope.mensagemSenhaSucesso = true;
-      //Armazena o e-mail
-      var email = [];
+      //Chave de Resgate
+      var chave =[];
       //Function que verifica se existe o resgate de senha
       $scope.verifica = function(dados){
-        
-        restful.resgateSenha(dados).success(function(response){
+            chave.push(dados);
+            restful.resgateSenha(dados).success(function(response){
 
             if(response.flag == true ){
               
                       //Exibi o Form Update Senha 
-                      $scope.formUpdateSenha = false;
-                      // Armazena o e-mail para utilizar o email no update
-                      email.push(response.email); 
-
+                      $scope.formUpdate = false;
+                      $scope.formResgate = true;
                     }else{
 
                         // Funcão de exibir a mensagem  em 5 segundos.
@@ -42,12 +40,12 @@
       $scope.updateSenha = function(dados){
         
         if (dados.um === dados.dois){
+          var senha = dados.um;
 
-          // Concatena o e-mail e a senha de da variavel          
-          var values = email.concat(dados.um);
-         
+          // Cria um Json com a Chave de Resgate e a Senha        
+          var values = [{'codigo': chave[0]['codigo'],'senha': senha}];
          // Envia para o Back End os valores
-          restful.updateSenha(values).success(function(response){
+          restful.updateSenha(values[0]).success(function(response){
 
                   // Funcão de exibir a mensagem  em 5 segundos.
                   $scope.mensagemSenhaSucesso = false;
