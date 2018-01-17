@@ -38,9 +38,10 @@ class ImovelController {
     public function save($request, $response, $args){
         $post = json_decode($request->getBody()); 
         $logado = Auth::_isLoggedIn($args['token']);
-        if ($logado['flag']){
+            if ($logado['flag']){
             //Gera o proprietário
-            $proprietario = new Proprietario($post['proprietario']);
+            $proprietario = Proprietario::getInstance();
+            $proprietario->load($post['proprietario']);
             unset($post['proprietario']);
             $galeria = Galeria($post['galeria']);
             unset($post['galeria']);
