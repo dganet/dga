@@ -341,19 +341,20 @@
               $tamanhoFoto = elementosFoto[0]['size'];
               // Pega extensão da Imagem
               $extensaoFoto = elementosFoto[0]['type'];
+              console.log(typeof $extensaoFoto);
               console.log($extensaoFoto);
-              if ($tamanhoFoto > 2000000 || $extensão != 'image/jpeg' || $extensão != 'image/jpg'){
-                 alert('Tamanho ou exensão da foto não permetido');
-                return;
+              
+              $nameFoto = elementosFoto[0]['name'];
+              if ($tamanhoFoto > 2000000 || $extensaoFoto != 'image/jpeg' && 'image/jpg'){
+                alert('Foto com extensão ou tamanho inválido');
+              
               }
-
-
 
       });
     };
 
     $scope.quartoPasso = function(fotos){
-        console.log(fotos.um.size);
+        
     }
 
 //*************CADASTRA NOVO IMOVEL *********************// 
