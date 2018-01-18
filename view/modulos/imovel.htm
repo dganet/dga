@@ -548,6 +548,37 @@
 
      </div><!-- FORMULARIO DE IMAGENS-->
 
+<!-- FORMULARIO DE IMAGENS-->
+    <div ng-if="formIsPublic == 'ativo'">
+      
+              <div class="alert alert-info">
+                <strong>Imagens</strong> permetida no máximo de <strong>2MB</strong> e formato <strong>jepg,jpg</strong>.
+            </div>
+
+        <div class="row">
+
+
+             <form name="first" ng-submit="quinto(fotos)">
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.um" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                  </div>
+               </div>
+
+                <div class="col-md-12">
+                <div class="form-group">
+                  <hr>
+                  <button type="submit" class="btn btn-primary">Salvar Imovel</button>
+                  <button ng-click="back('imovel')" class="btn btn-danger">Voltar</button>
+                </div>
+                </div>
+
+             </form>
+      </div><!-- row -->
+
+     </div><!-- FORMULARIO DE IMAGENS-->
+
 
            </div><!--modal-body -->
         

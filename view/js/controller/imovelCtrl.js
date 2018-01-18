@@ -28,9 +28,10 @@
     var i = {infoImovel:emptyImovel};
 
     //Armazena os dados da Imaggens do Imovel
-    // var f = {infoImagem:emptyFotos};
+          var emptyFotos = [];
+    var f = {infoImagem:emptyFotos};
 
-    var peif = [p,e,i];
+    var peif = [p,e,i,f];
 
 
     //Mudar o Css do Processo em ativo
@@ -341,10 +342,7 @@
               $tamanhoFoto = elementosFoto[0]['size'];
               // Pega extensão da Imagem
               $extensaoFoto = elementosFoto[0]['type'];
-              console.log(typeof $extensaoFoto);
-              console.log($extensaoFoto);
-              
-              $nameFoto = elementosFoto[0]['name'];
+              // Valida se é menor que 2MB e se é diferente de jpeg e jpg  
               if ($tamanhoFoto > 2000000 || $extensaoFoto != 'image/jpeg' && 'image/jpg'){
                 alert('Foto com extensão ou tamanho inválido');
               
@@ -354,7 +352,18 @@
     };
 
     $scope.quartoPasso = function(fotos){
-        
+     $scope.formImagens = false;
+     $scope.formIsPublic = 'ativo';
+     
+      angular.forEach(fotos, function(value,key){
+         // Valida se é menor que 2MB e se é diferente de jpeg e jpg  
+        if(value.size > 2000000 || value.type != 'image/jpeg' && 'image/jpg'){
+          console.log('teste invalido');
+        }else{
+                this.push(value);
+        };
+  
+      },emptyFotos);
     }
 
 //*************CADASTRA NOVO IMOVEL *********************// 
