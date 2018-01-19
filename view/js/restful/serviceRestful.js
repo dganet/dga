@@ -23,7 +23,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelSave = 'App/imovel/save/'; // Salvar Imovel 
 
    //MODULO PEFIL
-   $updatePicture = 'App/imagem'; //Update Foto
+   $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
    // Resgate Senha e Update Senha
    $solicitaResgateSenha = 'App/usuario/login/forgot'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
    $resgateSenha = 'App/usuario/login/forgot/check'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
@@ -85,7 +85,7 @@ app.service('restful', function ($http,$sessionStorage) {
    //Inseri novo Imovel
     var _imovelSave = function (values, token){
       
-        return  $http.post($imovelSave + sessionStorage.getItem('usuario.token') , values);
+        return  $http.post($imovelSave + token, values);
     };
 
 //|#######################################################|

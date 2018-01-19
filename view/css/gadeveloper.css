@@ -1,4 +1,4 @@
-Skip to content
+FSkip to content
 This repository
 Search
 Pull requests
@@ -190,8 +190,8 @@ color:white;
 }
 
 /*  TEMPLATE UM  */
-.um {
-	background: white;
+.menuTemplateRight {
+	background: #F5F5F5;
 	width: 15%;
 	position: fixed;
 	bottom: 10px;
@@ -200,14 +200,15 @@ color:white;
 	padding-top: 20px;
 
 }
-.dois {
-	background: white;
+.menuTemplateLeft {
+	background: #F5F5F5;
 	width: calc(85% - 30px);
 	position: fixed;
 	bottom: 10px;
 	top:105px;
 	left: calc(15% + 20px);
 	overflow: auto;
+	padding: 50px;
 	}
 
 .tres {
@@ -250,11 +251,11 @@ color:white;
 	margin-bottom: 20px;
 }
 
-.um ul li {
+.menuTemplateRight ul li {
 	display: inline;
 	width: 100%;
 }
-.um ul li a {
+.menuTemplateRight ul li a {
 	width: 100%;
 	padding: 10px;
 	display: inline-block;
@@ -264,9 +265,9 @@ color:white;
 	margin-left: -30px;
 }
 
-.um a:hover {
+.menuTemplateRight a:hover {
 	text-decoration: none;
-	background: #F3F3F3;
+	background: white;
 }
 table tbody tr .teste a{
 	width: 100%;
