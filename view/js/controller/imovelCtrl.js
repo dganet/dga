@@ -383,6 +383,14 @@
             emptyPrivacidade.push(isPublic);
             console.log(peifpr);
 
+//*************CADASTRA NOVO IMOVEL *********************// 
+           $scope.save = function(){
+             restful.imovelSave(peifpr).success(function(response){
+               // Fecha o Modal
+               $('#closeModalPost').modal('hide');
+             });
+           };
+           
 
            };
  });//END do controller
