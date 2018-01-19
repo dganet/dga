@@ -9,6 +9,10 @@
   $scope.mensagemAtualizado = true;
   $scope.mensagemDelete = true;
 
+  //Boleano
+  $scope.boleano = [
+    {label:'Sim',b:"1"},{label: 'Não', b:"0"}
+  ];
 
 //*************CADASTRA IMOVEL *********************//
     
@@ -28,17 +32,20 @@
     var i = {infoImovel:emptyImovel};
 
     //Armazena os dados da Imaggens do Imovel
-          var emptyFotos = [];
+    var emptyFotos = [];
     var f = {infoImagem:emptyFotos};
 
-    var peif = [p,e,i,f];
+    var emptyPrivacidade = [];
+    var pr = {infoPrivacidade:emptyPrivacidade};
+
+    var peifpr = [p,e,i,f,pr];
 
 
     //Mudar o Css do Processo em ativo
-    $scope.passo1 = 'background:gray; color:white';
+    $scope.progresso = 0;
     //Ativar o Form do Check CPF
 
-    $scope.formImagens = 'ativo';
+    $scope.formCPF = 'ativo';
     //Oculta Formulario do Proprietario
     $scope.formProprietario = false;
 
@@ -56,6 +63,7 @@
         $http.post('App/proprietario/cpf/'+ token, value).success(function(response){
 
             $scope.formCPF = 'inativo';
+            $scope.progresso = 20;
             var flag = response.flag;
                 //Se não existir
                 if (flag == false){
@@ -76,27 +84,32 @@
                 if (value == 'cpf'){
                 $scope.formCPF = 'ativo';
                 $scope.formProprietario = 'inativo';
+                $scope.progresso = 0;
                 }
 
                 if (value == 'proprietario'){
                 $scope.formCPF = 'inativo';
                 $scope.formEndereco = 'inativo';
-                $scope.passo1 = 'background:gray; color:white';
-                $scope.passo2 = {};
+                $scope.progresso = 20;
                 $scope.formProprietario = 'ativo';
                 }
 
                 if (value == 'endereco'){
                 $scope.formEndereco = 'ativo';
                 $scope.formImovel = 'inativo';
-                $scope.passo2 = 'background:gray; color:white';
-                $scope.passo3 = {};
+                $scope.progresso = 40;
                 }
 
                 if (value == 'imovel'){
                 $scope.formImagens = 'inativo';
                 $scope.formImovel = 'ativo';
+                $scope.progresso = 60;
 
+                }
+                if (value == 'imagens'){
+                  $scope.formIsPublic = 'inativo';
+                  $scope.formImagens = 'ativo';
+                  $scope.progresso = 80;
                 }
 
             };
@@ -114,8 +127,7 @@
              $scope.inputBairro = false;
 
             //Segundo Passo
-            $scope.passo1 = {};
-            $scope.passo2 = 'background:gray; color:white';
+            $scope.progresso = 40;
             $scope.formProprietario = 'inativo';
             $scope.selectBairro = true;
             $scope.btnNewBairro = false;
@@ -186,9 +198,7 @@
            //, Coleta dados do Imovel
           emptyEndereco.push(endereco);
 
-            $scope.passo1 = {};
-            $scope.passo2 = {};
-            $scope.passo3 = 'background:gray; color:white';
+            $scope.progresso = 60;
 
             $scope.formEndereco = false;
             // Ativa o Formulario do Segundo Passo
@@ -199,10 +209,7 @@
                 {"idOperacao":1,"nomeOperacao":'Locacao'},
                 {"idOperacao":2,"nomeOperacao":'Venda'}
             ];
-            //Boleano
-            $scope.boleano = [
-              {label:'Sim',b:"1"},{label: 'Não', b:"0"}
-            ];
+
             //Função que Seleciona os tipos
             $scope.selectOperation = function (value){
 
@@ -318,10 +325,7 @@
      //
      //
         $scope.terceiroPasso = function (imovel){
-          $scope.passo1 = {};
-          $scope.passo2 = {};
-          $scope.passo3 = {};
-          $scope.passo4 = 'background:gray; color:white';
+          $scope.progresso = 80;
           $scope.formImovel = false;
           // Ativa o Formulario do Segundo Passo
           $scope.formImagens = 'ativo';
@@ -342,9 +346,11 @@
               $tamanhoFoto = elementosFoto[0]['size'];
               // Pega extensão da Imagem
               $extensaoFoto = elementosFoto[0]['type'];
+              //Pega nome da Foto
+              $nomeFoto = elementosFoto[0]['name'];
               // Valida se é menor que 2MB e se é diferente de jpeg e jpg  
               if ($tamanhoFoto > 2000000 || $extensaoFoto != 'image/jpeg' && 'image/jpg'){
-                alert('Foto com extensão ou tamanho inválido');
+                alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
               
               }
 
@@ -352,25 +358,31 @@
     };
 
     $scope.quartoPasso = function(fotos){
-     $scope.formImagens = false;
-     $scope.formIsPublic = 'ativo';
-     
+
       angular.forEach(fotos, function(value,key){
          // Valida se é menor que 2MB e se é diferente de jpeg e jpg  
-        if(value.size > 2000000 || value.type != 'image/jpeg' && 'image/jpg'){
-          console.log('teste invalido');
+        if(value.size < 2000000 && value.type == 'image/jpeg' && 'image/jpg'){
+            this.push(value);
+   
+          $scope.formImagens = false;
+          $scope.formIsPublic = 'ativo';
+          $scope.progresso = 99;
+     
+
+               
         }else{
-                this.push(value);
-        };
+             alert('Imagens Invalidas - > ' + value.name);}
+             ;
   
       },emptyFotos);
     }
 
 //*************CADASTRA NOVO IMOVEL *********************// 
-           $scope.save = function(){
-             restful.imovelSave(peif).success(function(response){
-               // Fecha o Modal
-               $('#closeModalPost').modal('hide');
-             });
+           $scope.save = function(isPublic){
+            //Envia as informacoes para emptyPrivacidade
+            emptyPrivacidade.push(isPublic);
+            console.log(peifpr);
+
+
            };
  });//END do controller
