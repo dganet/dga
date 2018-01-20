@@ -1,9 +1,9 @@
 <div class="menuTemplateRight">
 	<ul>
 
-		<li><a ng-click="click('changeFoto')"><i class="fa fa-picture-o" aria-hidden="true"></i> Mudar Foto</a></li>
-		<li><a ui-sref="user.perfil.update"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Altera Dados</a></li>
-		<li><a ui-sref="user.perfil.security"><i class="fa fa-lock" aria-hidden="true"></i> Segurança</a></li>
+		<li><a ng-click="click('updateFotos')"><i class="fa fa-picture-o" aria-hidden="true"></i> Mudar Foto</a></li>
+		<li><a ng-click="click('updateDados')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Altera Dados</a></li>
+		<li><a ng-click="click('updateSenha')"><i class="fa fa-lock" aria-hidden="true"></i> Segurança</a></li>
 		<li><a ui-sref="user.perfil.desativa"><i class="fa fa-trash-o" aria-hidden="true"></i> Desativar Conta</a></li>
 
 	</ul>
@@ -12,8 +12,14 @@
 <div class="menuTemplateLeft">
 		
 		<div class="alert alert-success" ng-hide="mensagemSucesso">
-		  <strong>Sucesso!</strong> Dados cadastrado com sucesso.
+		  <strong>Sucesso!</strong> Dados atualizdo com sucesso.
 		</div>
+
+<!--
+//|#######################################################|
+//|########### **  FORM UPDATE FOTOS ** ################|
+//|#######################################################|
+-->
 
 		<div class="conteudo" ng-if="formFoto == 'ativo'">		
 		
@@ -39,9 +45,170 @@
 
 			</form>
 		</div>
+<!--
+//|#######################################################|
+//|########### **  FORM DADOS PESSOAIS ** ################|
+//|#######################################################|
+-->
+		<div class="conteudo" ng-if="formDados == 'ativo'">		
+		
+		<div class="acoes">
+
+		<i class="fa fa-info" aria-hidden="true"></i>
+			<label>Dados Pessoais</label>
+
+		</div>
+
+		<hr>
+
+			<form name="FormPicture" ng-submit="update(pessoal)" method="post">
+			<div class="row">
+
+			  <div class="col-md-12">
+			  <div class="form-group">
+			    <label>Telefone</label>
+			    <input type="text" class="form-control" placeholder="(xx) xxxxx-xxxx" ng-model="pessoal.telefone" ui-br-phone-number>
+			  </div>
+			</div>
+
+			  <div class="col-md-12">
+			  <div class="form-group">
+			    <label>Celular</label>
+			    <input type="text" class="form-control" placeholder="(xx) xxxxx-xxxx" ng-model="pessoal.celular" ui-br-phone-number>
+			  </div>
+			  </div>
+
+			    <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input type="text" class="form-control" ng-model="pessoal.enderecoImovel">
+                     </div>
+                 </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Estado</label>
+                        <select class="form-control" ng-change="executeCidade(pessoal.idEstado)"
+                        ng-options="pessoal.idEstado as pessoal.nome for pessoal in estados track by pessoal.idEstado"
+                        ng-model="pessoal.idEstado">
+                        <option value="">Selecione Estado</option>
+                        </select>
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Cidade</label>
+                        <select class="form-control" ng-change="executeBairro(pessoal.idCidade)" ng-disabled="!pessoal.idEstado"
+                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: pessoal.idEstado}"
+                         ng-model="pessoal.idCidade">
+                        <option value="">Selecione Cidade</option>
+                        </select>
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Bairro</label>
+                         <!-- InputBairro novo Bairro -->
+                        <div ng-show="inputBairro">
+                        <input type="text" class="form-control" ng-model="pessoal.idBairro" placeholder="Novo Bairro" required>
+                        </div>
+
+                       <!-- Select de Bairros -->
+                        <select class="form-control" ng-disabled="!pessoal.idCidade"
+                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: pessoal.idCidade}"
+                         ng-model="pessoal.idBairro"
+                         ng-show="selectBairro">
+                        <option value="">Selecione Bairro</option>
+                        </select>
+                </div>
+                </div>
 
 
+                <div class="col-md-3" ng-show="btnNewBairro">
+                <div class="form-group">
+                    <span style="margin-top:25px; float:left;"> <button type="submit" class="btn btn-primary" ng-click="newBairro()">Novo Bairro</button></span>
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-show="btnBairroBack">
+                <div class="form-group">
+                    <span style="margin-top:25px;float:left;"><button type="submit" class="btn btn-danger" ng-click="backBairro('bairro')">Voltar</button></span>
+                </div>
+                </div>
+
+			  <hr>  
+
+			  <div class="col-md-12">
+              <div class="form-group">
+			  <button type="submit" class="btn btn-primary">Atualizar
+			     Dados</button>
+			     </div>
+			     </div> 
+
+			</form>
+		</div>
+	</div>
 
 
+<!--
+//|#######################################################|
+//|########### **  FORM UPDATE SENHA ** ################|
+//|#######################################################|
+-->
+
+		<div class="conteudo" ng-if="formSenha == 'ativo'">		
+
+		<div class="acoes">
+
+		<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+			<label>Atualizando a Senha</label>
+
+		</div>
+
+		<hr>
+
+		  <!--FORMULARIO DE SENHA -->
+		  <div class="formUpdateSenha">
+
+		        <!-- Mensagem do form Resgate-->
+		        <div class="alert alert-danger" ng-hide="mensagemSenha">
+		          <strong>Ops!</strong> Senhas não conferem.
+		        </div>
+
+		        <!-- Mensagem do form Resgate-->
+		        <div class="alert alert-success" ng-hide="mensagemSenhaSucesso">
+		          <strong>Ótimo!</strong> Sua senha foi atualizado com sucesso. 
+		        </div>
+
+		        <form  ng-submit="updateSenha(senha)">
+		          
+		          <div class="row">
+		            
+		            <div class="col-md-12">
+		              <div class="form-group">
+		                <input type="password" class="form-control" ng-model="senha.um" placeholder="Nova Senha">
+		              </div>
+		            </div>
+
+		            <div class="col-md-12">
+		              <div class="form-group">
+		                 <input type="password" class="form-control" ng-model="senha.dois" placeholder="Repetir Senha">
+		              </div>
+		            </div>      
+
+		              <div class="col-md-2">
+		                <div class="form-group"> 
+		                  <button type="submit" class="btn btn-primary">Atualizar</button> 
+		                </div>
+		              </div>
+
+		          </div>
+		        </form>
+		 </div>
+
+
+		</div>
 
 </div>

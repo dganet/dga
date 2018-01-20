@@ -24,6 +24,10 @@ app.service('restful', function ($http,$sessionStorage) {
 
    //MODULO PEFIL
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
+   $updatePessoal = 'CAMINHO PARA BACK-END'; //Update Dados Pessoais
+   $updateSenhaPerfil = 'CAMINHO PARA BACK-END'; //Update Dados Pessoais
+   
+
    // Resgate Senha e Update Senha
    $solicitaResgateSenha = 'App/usuario/login/forgot'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
    $resgateSenha = 'App/usuario/login/forgot/check'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
@@ -93,8 +97,17 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
 
    //Update Picture
-    var _updatePicture = function (values){
+    var _updatePicture = function (values ,token){
         return  $http.put($updatePicture + token , values);
+    };
+
+       //Update Dados Pessoais
+    var _updatePessoal = function (values ,token){
+        return  $http.put($updatePessoal + token , values);
+    };
+       //Update Senha no Pergil
+    var _updateSenhaPerfil = function (values ,token){
+        return  $http.put($updateSenhaPerfil + token , values);
     };
 
 //|#######################################################|
@@ -144,8 +157,10 @@ app.service('restful', function ($http,$sessionStorage) {
         //Return do Imovel
         imovelSave : _imovelSave,
 
-        //Return Imagens
+        //Return Perfil
         updatePicture : _updatePicture,
+        updatePessoal : _updatePessoal,
+        updateSenhaPerfil : _updateSenhaPerfil,
         
         //Return Resgate Senha e Update da Senha
         solicitaResgateSenha : _solicitaResgateSenha,

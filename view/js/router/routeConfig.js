@@ -164,20 +164,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider){
 //|#######################################################|
       .state('user.conta', {
       url: '/conta',
-      templateUrl: 'view/modConta/linkConta.htm',
+      templateUrl: 'view/modulos/planos.htm',
+      controller:'planosCtrl',
        ncyBreadcrumb: {
             label: 'Modulo Conta'
          }
     })
 
-      .state('user.conta.planos', {
-      url: '/inseri',
-      templateUrl: 'view/modConta/planos.htm',
-      controller: 'planosCtrl',
-       ncyBreadcrumb: {
-            label: 'Planos'
-         }
-    })
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ####################|
 //|#######################################################|
