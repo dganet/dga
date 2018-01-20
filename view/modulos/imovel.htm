@@ -155,7 +155,7 @@
         <div class="row">
              <form name="first" ng-submit="primeiroPasso(proprietario)" novalidate>
 
-            <div class="alert alert-success">
+            <div class="alert alert-info">
                 <strong>Novo Proprietário!</strong> Não foi encontrado nenhum proprietário nos seus registro com este cpf , deseja realmente criar um novo ?
             </div>
 
@@ -268,7 +268,7 @@
                 </div>
 
                 <div class="col-md-12">
-                    <div class="form-group">
+                <div class="form-group">
                 <hr>
 
                 <button type="submit" id="segundoPasso" class="btn btn-primary">Avançar</button>
@@ -462,7 +462,7 @@
 <!-- FORMULARIO DE IMAGENS-->
     <div ng-if="formImagens == 'ativo'">
               <div class="alert alert-info">
-                <strong>Imagens</strong> Permetido arquivo no máximo de <strong>2MB</strong> e formato <strong>jepg,jpg</strong>.
+                <strong>Imagens</strong> permetida no máximo de <strong>2MB</strong> e formato <strong>jepg,jpg</strong>.
             </div>
 
         <div class="row">
@@ -471,66 +471,66 @@
              <form name="first" ng-submit="quartoPasso(fotos)">
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.um" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().verificaFoto(this)">
+                    <input type="file" ng-file-model="fotos.um" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
 
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.dois" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().verificaFoto(this)">
+                    <input type="file" ng-file-model="fotos.dois" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
 
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.tres" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().tres(this)">
+                    <input type="file" ng-file-model="fotos.tres" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
 
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.quatro" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().quatro(this)">
+                    <input type="file" ng-file-model="fotos.quatro" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)")">
                   </div>
                </div>
 
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.cinco" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().cinco(this)">
-                  </div>
-               </div>
-
-
-               <div class="col-md-6">
-                  <div class="form-group">
-                    <input type="file" ng-file-model="fotos.seis" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().seis(this)">
+                    <input type="file" ng-file-model="fotos.cinco" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)"">
                   </div>
                </div>
 
 
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.sete" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().sete(this)">
+                    <input type="file" ng-file-model="fotos.seis" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
 
 
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.oito" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().oito(this)">
+                    <input type="file" ng-file-model="fotos.sete" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
 
 
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.nove" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().nove(this)">
+                    <input type="file" ng-file-model="fotos.oito" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
 
 
                <div class="col-md-6">
                   <div class="form-group">
-                    <input type="file" ng-file-model="fotos.dez" name="arquivo"/ class="form-control"  onchange="angular.element(this).scope().dez(this)">
+                    <input type="file" ng-file-model="fotos.nove" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                  </div>
+               </div>
+
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="file" ng-file-model="fotos.dez" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
                   </div>
                </div>
 
@@ -538,8 +538,43 @@
                 <div class="col-md-12">
                 <div class="form-group">
                   <hr>
-                  <button type="submit" class="btn btn-primary" ng-click="save()">Salvar Imovel</button>
-                  <button ng-click="back('imovel')" class="btn btn-danger">Voltar</button>
+                  <button type="submit" class="btn btn-primary">Avançar</button>
+                  <button ng-click="back('fotos')" class="btn btn-danger">Voltar</button>
+                </div>
+                </div>
+
+             </form>
+      </div><!-- row -->
+
+     </div><!-- FORMULARIO DE IMAGENS-->
+
+<!-- FORMULARIO DE IMAGENS-->
+    <div ng-if="formIsPublic == 'ativo'">
+      
+              <div class="alert alert-info">
+                <strong>Privacidade do Imovel </strong> Se deixa Publico , será visivel no seu perfil e nas aŕeas publicas do site , se não ficara apenas privado dentro da sua área de administração.
+            </div>
+
+        <div class="row">
+
+
+             <form name="first" ng-submit="save(privacidade)">
+
+               <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Imovél</label>
+                    <select class="form-control" 
+                            ng-model="privacidade.isPublic"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">Publico ou Privado ?</option>
+                    </select>
+                  </div>
+               </div>
+
+                <div class="col-md-12">
+                <div class="form-group">
+                  <hr>
+                  <button type="submit" class="btn btn-primary">Salvar Imovel</button>
                 </div>
                 </div>
 
@@ -554,7 +589,12 @@
              
              <div class="modal-footer">
                 
-                  <!-- footer do modal -->
+                 <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="{{progresso}}"
+                  aria-valuemin="0" aria-valuemax="100" style="width:{{progresso}}%">
+                   {{progresso}}%
+                  </div>
+                </div>
 
              </div>
 

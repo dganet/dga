@@ -164,52 +164,25 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider){
 //|#######################################################|
       .state('user.conta', {
       url: '/conta',
-      templateUrl: 'view/modConta/linkConta.htm',
+      templateUrl: 'view/modulos/planos.htm',
+      controller:'planosCtrl',
        ncyBreadcrumb: {
             label: 'Modulo Conta'
          }
     })
 
-      .state('user.conta.planos', {
-      url: '/inseri',
-      templateUrl: 'view/modConta/planos.htm',
-      controller: 'planosCtrl',
-       ncyBreadcrumb: {
-            label: 'Planos'
-         }
-    })
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ####################|
 //|#######################################################|
       .state('user.perfil', {
       url: '/perfil',
-      templateUrl: 'view/modPerfil/linkPerfil.htm',
+      templateUrl: 'view/modulos/perfil.htm',
+      controller:'perfilCtrl',
        ncyBreadcrumb: {
             label: 'Modulo Perfil'
          }
     })
-      .state('user.perfil.picture', {
-      url: '/imagem',
-      templateUrl: 'view/modPerfil/picturePerfil.htm',
-      controller:'picturePerfilCtrl',
-       ncyBreadcrumb: {
-            label: 'Mudar Imagem do Perfil'
-         }
-    })
-      .state('user.perfil.update', {
-      url: '/altera',
-      templateUrl: 'view/modPerfil/updatePerfil.htm',
-       ncyBreadcrumb: {
-            label: 'Atualiza os Dados'
-         }
-    })
-      .state('user.perfil.delete', {
-      url: '/deleta',
-      templateUrl: 'view/modPerfil/deletePerfil.htm',
-       ncyBreadcrumb: {
-            label: 'Deleta os Dados'
-         }
-    })
+
 //|#######################################################|
 //|############# **  FIM DOS MODULOS ** ##################|
 //|#######################################################|
