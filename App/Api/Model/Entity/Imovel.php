@@ -28,40 +28,11 @@ class Imovel extends \GORM\Model{
     public $areaUtilImovel;
     public $andarImovel;
     public $areaTotalImovel;
-    public $fkProprietario;
-    public $fkGaleria;
-    public $fkCarteiraImovel;
     public $statusImovel;
     public $createAtImovel;
     public $updateAtImovel;
     public $descricaoImovel;
+    public $isPublic;
     
-    /**
-     * Metodo Setter
-     * 
-     * @param String $attr
-     * @param String $value
-     */
-    public function __set($attr, $value){
-        $this->$attr = $value;
-    }
-    /**
-     * Metodo Getters 
-     * 
-     * @param String $attr
-     * @return String
-     */
-    public function __get($attr){
-        switch ($attr) {
-            case 'Proprietario':
-                $proprietario = new Proprietario();
-                $proprietario = $proprietario->find($this->fkProprietario);
-                return $proprietario;
-                break;
-            default:
-                return $this->$attr;
-                break;
-        }
-    }
     
 }

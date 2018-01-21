@@ -54,22 +54,19 @@ class UsuarioController {
         unset($post['senha']);
         //-------
         $usuario->load($post);
-        $usuario->fkPermissao = 1;
         $usuario->statusUsuario = 'AGUARDANDOCONFIRMACAOEMAIL';
         $usuario->senhaUsuario = md5($usuario->senhaUsuario);
-        $imovel =  CarteiraImovel::getInstance();
-        $cliente = CarteiraCliente::getInstance();
-        $imovel->nomeCarteiraImovel = "Carteira de Imovel de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario. "ID: ".$usuario->idUsuario;
-        $cliente->nomeCarteiraCliente = "Carteira de Cliente de ".$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario. "ID: ".$usuario->idUsuario;
-        $imovel = $imovel->save(true);
-        $cliente = $cliente->save(true);
-        $usuario->fkCarteiraImovel = $imovel['lastId'];
-        $usuario->fkCarteiraCliente = $cliente['lastId'];
+        $usuario->save();
         try{
+            $mail = new MailController();
+            $body ="
+            Olá Sr ".$user."<br>
+            O seu cadastro está quase completo, para confirmar o seu email precisamos que clique no link abaixo<br> 
+                <a href='http://localhost/App/usuario/confirm/".$usuario->creci."'> CLIQUE AQUI PARA CONFIRMAR SEU EMAIL!</a>
+            ";
+            $mail->makeEmail($usuario->emailUsuario, $usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario, 'Cadastro Imobiliar', $body);
+            $mail->send();
             
-            require "MailController.php";
-            confirmEmail($usuario->emailUsuario,$usuario->nomeUsuario." ".$usuario->sobrenomeUsuario, $usuario->creciUsuario);
-            return $response->withJson($usuario->save());
         }catch(Exception $e){
             switch ($e->getCode()) {
                 case 23000:
@@ -166,7 +163,16 @@ class UsuarioController {
         $cache = new Cache();
        
         $usuario->makeSelect()->where("idFacebook='".$post['userID']."'");
+        try{    
         $usuario = $usuario->execute()->get(0);
+        }catch(\GORM\Collection\ECollectionKeyInvalid $e){
+            return 
+            [
+                'flag' => false,
+                'message' => 'Usuario não possui cadastro vinculado ao facebook ou não possui nenhum cadastro no sistema',
+                'test' => $usuario->emailUsuario
+            ];
+        }
 
         if (is_null($usuario->emailUsuario)){
             //então o cara não tem cadastro vinculado com facebook.
@@ -188,8 +194,7 @@ class UsuarioController {
                     'message ' => 'Email do usuario já cadastrado no Imobiliar, anexando facebook a sua conta cadastrada',
                 ];
             }else{
-                $arr = (array) $usuario;
-                array_pop($arr);
+                $arr = $usuario->toArray();
                 $cache->save($post['accessToken'], $arr);
                 return $arr;    
             }

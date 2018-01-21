@@ -23,19 +23,24 @@ class Auth{
         }else{
             $usuario = Usuario::getInstance();
             $usuario->makeSelect()->where("emailUsuario='".$array["emailUsuario"]."'")->and("senhaUsuario='".md5($array['senhaUsuario'])."'")->and("statusUsuario='ATIVO'");
-            $usuario = $usuario->execute()->get(0);
+            $usuario = $usuario->execute();
             //Verifica se existe alguma coisa em $usuario
-            if (!$usuario->idUsuario == null){
-                $hash = md5($usuario->emailUsuario."|".time());
-                $cache->save($hash,  $usuario);
-                $user = (array)$usuario;
-                $user['token'] = $hash;
-                $user['flag'] = true;
-                return $user;
-               
-            }else{
-               
-                return ['message' => 'Email ou Senha incorretos', 'flag' => false];
+            try{
+                $usuario = $usuario->get(0);
+                if (!$usuario->idUsuario == null){
+                    $hash = md5($usuario->emailUsuario."|".time());
+                    $cache->save($hash,  $usuario->toArray());
+                    $user = $usuario ->toArray();
+                    $user['token'] = $hash;
+                    $user['flag'] = true;
+                    return $user;
+                   
+                }else{
+                   
+                    return ['message' => 'Email ou Senha incorretos', 'flag' => false];
+                }
+            }catch(\GORM\Collection\ECollectionKeyInvalid $e){
+                return  ['message' => 'Email ou Senha incorretos', 'flag' => false]; 
             }
         }
     }

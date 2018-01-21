@@ -1,6 +1,7 @@
 <?php
 namespace Api\Controller; 
 use \Api\Model\Entity\Cliente;
+use \Api\Model\Entity\CarteiraCliente;
 class ClienteController{
     /**
      * Variavel que receberá a instancia de Cliente
@@ -13,7 +14,8 @@ class ClienteController{
      */
     public function __construct(){
          $this->cliente = Cliente::getInstance();
-         $this->cliente->setPrimaryKey('idCliente');
+         
+         $this->carteiraCliente = CarteiraCliente::getInstance();
     }
     /**
      * Lista todos os clientes
@@ -24,10 +26,8 @@ class ClienteController{
      * @return MixedJson
      */
     public function list($request, $response, $args){
-        $token = $args['token'];
-        $user = Auth::_getTokenInfo($token);
-        $collection = $this->cliente->makeSelect()->where('fkCarteiraCliente='.$user['conteudo']['fkCarteiraCliente'])
-        ->and('statusCliente="ATIVO"')->execute();
+        $user = Auth::_getTokenInfo($args['token']);
+        $collection = $this->carteiraCliente->list($user['conteudo']['idUsuario']);
         return $response->withJson($collection->getAll());
     }
     /**
@@ -58,9 +58,13 @@ class ClienteController{
             $user = Auth::_getTokenInfo($token);
             $post = json_decode($request->getBody(), true);
             $cliente->load($post);
-            $cliente->fkCarteiraCliente = $user['conteudo']['fkCarteiraCliente'];
+            //$cliente->fkCarteiraCliente = $user['conteudo']['fkCarteiraCliente'];
             $cliente->statusCliente = 'ATIVO';
-           if($this->cliente->save()){
+            $r = $this->cliente->save(true);
+            $this->carteiraCliente->idCliente = $r['lastId'];
+            $this->carteiraCliente->idUsuario = $user['conteudo']['idUsuario'];
+            $this->carteiraCliente->save();
+           if($r['flag']){
                 return $response->withJson([
                     'message' => 'Cliente salvo com sucesso!',
                     'flag'    => true
@@ -91,6 +95,7 @@ class ClienteController{
         if (Auth::_isLoggedIn($token)){
             $post = json_decode($request->getBody(),true);
             $this->cliente->load($post);
+            $this->cliente->setPrimaryKey('idCliente');
             if ($this->cliente->update()){
                 return $response->withJson([
                     'message' => 'Informações do cliente atualizadas com sucesso',
@@ -123,6 +128,7 @@ class ClienteController{
         if (Auth::_isLoggedIn($token)){
             $this->cliente->idCliente = $args['id'];
             $this->cliente->statusCliente = 'INATIVO';
+            $this->cliente->setPrimaryKey('idCliente');
             return $response->withJson($this->cliente->update());
         }else{
             return $response->withJson([

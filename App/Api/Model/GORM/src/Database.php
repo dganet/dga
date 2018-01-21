@@ -15,7 +15,7 @@ trait Database
      *
      * @return Obj
      */
-    public static function getConnection(){
+    public  function getConnection(){
         // Pega a instancia da classe que está chamando a função
         $cls = self::getCalledClass();
             if (!isset(self::$connection)) {

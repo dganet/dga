@@ -136,7 +136,7 @@ class ProprietarioController{
                 $this->proprietario->setPrimaryKey('idProprietario');
                 $this->proprietario->find((int) $imoveis[$key]['fkProprietario']);
                 if ($this->proprietario->cpfProprietario == $post['cpfProprietario']){
-                    return $response->withJson((array)$this->proprietario);
+                    return $response->withJson($this->proprietario->toArray());
                     break;
                 } 
             }

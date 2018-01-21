@@ -10,9 +10,9 @@ class Image{
     */ 
   public static function _upload($img = []){
 
-        $destino = dirname(dirname(__FILE__)).'/upload/';
+        $destino = dirname(dirname(dirname(dirname(__FILE__)))).'/view/upload/';
+            
         if ($img != null || $img != ''){
-        
             //Verifica o Tamanho do arquivo
             if($img['size'] < 1000000){
                 $name       = $img['name'];
@@ -31,27 +31,28 @@ class Image{
                         fclose($handle);
                     // Com as informações
                       return array(
-                            flag    => true,
-                            message => "Imagem carregada com sucesso",
-                            path    => $destino,
-                            name    => $newName
+                            'flag'    => true,
+                            'message' => "Imagem carregada com sucesso",
+                            'path'    => $destino,
+                            'name'    => $newName
                         );
                     }else{
                         return array(
-                            flag    => false,
-                            message => "Imagem não pode ser salva. Aparentemente é um problema de escrita"
+                            'flag'    => false,
+                            'message' => "Imagem não pode ser salva. Aparentemente é um problema de escrita",
+                            'path'    => $destino.$newName
                         );
                     }
             }else{
                 return array(
-                    flag    => false,
-                    message => "Extensão não permitida. Somente as seguintes extensões são permitidas: JPG, JPEG, GIF, PNG"
+                    'flag'    => false,
+                    'message' => "Extensão não permitida. Somente as seguintes extensões são permitidas: JPG, JPEG, GIF, PNG"
                 );
             }
         }else{
             return array(
-                flag    => false,
-                message => "Tamanho do arquivo exede o permitido"
+                'flag'    => false,
+                'message' => "Tamanho do arquivo exede o permitido"
             );
         }
     }

@@ -8,7 +8,6 @@
   $scope.mensagemSucesso = true;
   $scope.mensagemAtualizado = true;
   $scope.mensagemDelete = true;
-
   //Boleano
   $scope.boleano = [
     {label:'Sim',b:"1"},{label: 'Não', b:"0"}
@@ -325,6 +324,7 @@
      //
      //
         $scope.terceiroPasso = function (imovel){
+          emptyImovel.push(imovel);
           $scope.progresso = 80;
           $scope.formImovel = false;
           // Ativa o Formulario do Segundo Passo

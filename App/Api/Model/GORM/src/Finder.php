@@ -10,7 +10,8 @@ trait Finder{
      */
     public function find($id, $needArray = false){
         $this->makeSelect()->where($this->configuration['primaryKey'].'='.$id);
-        $stmt = $this::getConnection()->prepare($this->configuration['sql']);
+        $stmt = $this->getConnection();
+        $stmt = $stmt->prepare($this->configuration['sql']);
         $stmt->execute(); 
         $line = $stmt->fetch(PDO::FETCH_ASSOC);
         if($needArray){

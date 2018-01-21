@@ -122,10 +122,9 @@ use Database, Init, Persistent, Builder, Finder;
     }
     public function toArray(){
         foreach ($this as $key => $value) {
-            $arr[$key] = $value;
+            if($key != 'configuration')
+                $arr[$key] = $value;
         }
         return $arr;
     }
-   
-
 }

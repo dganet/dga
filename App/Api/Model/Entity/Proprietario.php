@@ -6,20 +6,13 @@ class Proprietario extends \GORM\Model{
     public $nomeProprietario;
     public $sobrenomeProprietario;
     public $cpfProprietario;
+    public $telComercialProprietario;
     public $emailProprietario;
     public $statusProprietario;
     public $createAtProprietario;
     public $updateAtProprietario;
     
-    /**
-     * Metodo Setter
-     * 
-     * @param String $attr
-     * @param String $value
-     */
-    public function __set($attr, $value){
-        $this->$attr = $value;
-    }
+    
     /**
      * Metodo Getters 
      * 

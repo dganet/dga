@@ -3,45 +3,28 @@ namespace Api\Model\Entity;
 
 class CarteiraCliente extends \GORM\Model{
     public $idCarteiraCliente;
-    public $nomeCarteiraCliente;
-    public $carteira;
-    /**
-     * Metodo Setter
-     * 
-     * @param String $attr
-     * @param String $value
-     */
-    public function __set($attr, $value){
-        $this->$attr = $value;
+    public $idCliente;
+    public $idUsuario;
+
+    public function __construct(){
+
     }
-    /**
-     * Metodo Getters 
-     * 
-     * @param String $attr
-     * @return String
-     */
-    public function __get($attr){
-        switch ($attr) {
-            case 'Carteira':
-                $this->carteira = Cliente::getInstance();
-                $this->carteira = $this->carteira->select('where fkCarteiraCliente='.$this->idCarteiraCliente);
-                return $this->carteira;
-                break;
-            default:
-                return $this->$attr;
-                break;
+    public function list($idUsuario, $idCliente = null){
+        $collection = new \GORM\Collection\Collection();
+        if ($idCliente == null){
+            $return =  $this->makeSelect('idCliente')->where('idUsuario = '.$idUsuario)->execute(true);
+             foreach ($return as $key => $value) {
+                 $cliente = new Cliente();
+                 $cliente->setPrimaryKey('idCliente');
+                 $cliente = $cliente->makeSelect()->where('idCliente ='.$value['idCliente'])->and('statusCliente= "ATIVO"')->execute()->get(0);
+                 $collection->add($cliente);
+             }
+             return $collection;
+        }else{
+            $this->makeSelect('idCliente')->where('idUsuario = '.$idUsuario)->and('idCliente = '.$idCliente)->execute();
         }
     }
-    /**
-     * Retorna as propriedades da classe
-     * 
-     * @return string
-     */
-    public function __toString(){
-        return var_dump($this->toArray());
-    }
-    
     public function beforeSave(){
+        
     }
-
 }

@@ -50,6 +50,8 @@ $app->put('/usuario/login/forgot/change', \Api\Controller\AuthController::class 
 /**
  * IMOVEIS
  */
+
+$app->get('/imovel/list/{token}', \Api\Controller\ImovelController::class . ':list');
 $app->post('/imovel/save/{token}', \Api\Controller\ImovelController::class . ':save');
 //FIM IMOVEIS
 /**

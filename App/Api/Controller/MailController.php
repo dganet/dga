@@ -95,9 +95,9 @@ class MailController{
 //         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
 //     </head>
 //     <body>
-//     Olá Sr ".$user."<br>
-//     O seu cadastro está quase completo, para confirmar o seu email precisamos que clique no link abaixo<br> 
-//     <a href='http://localhost/App/usuario/confirm/$creci'> CLIQUE AQUI PARA CONFIRMAR SEU EMAIL!</a>
+    // Olá Sr ".$user."<br>
+    // O seu cadastro está quase completo, para confirmar o seu email precisamos que clique no link abaixo<br> 
+    // <a href='http://localhost/App/usuario/confirm/$creci'> CLIQUE AQUI PARA CONFIRMAR SEU EMAIL!</a>
 //     </body>
 //     </html>
 //     ";
