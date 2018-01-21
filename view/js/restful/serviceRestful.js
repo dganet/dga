@@ -25,7 +25,7 @@ app.service('restful', function ($http,$sessionStorage) {
    //MODULO PEFIL
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
    $updatePessoal = 'CAMINHO PARA BACK-END'; //Update Dados Pessoais
-   $updateSenhaPerfil = 'CAMINHO PARA BACK-END'; //Update Dados Pessoais
+   $updateSenhaPerfil = 'App/usuario/update/'; //Update Dados Pessoais
    
 
    // Resgate Senha e Update Senha

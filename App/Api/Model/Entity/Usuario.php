@@ -15,5 +15,9 @@ class Usuario extends \GORM\Model{
     public $createAtUsuario;
     public $updateAtUsuario;
     public $statusUsuario;
-   
+    
+    public function beforeUpdate(){
+        $this->senhaUsuario = md5($this->senhaUsuario);
+        $this->updateAtUsuario = date('Y-m-d H:i:s');
+    }   
 }

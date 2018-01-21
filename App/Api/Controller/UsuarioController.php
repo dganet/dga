@@ -87,10 +87,12 @@ class UsuarioController {
      * @return mixedJson
      */
     public function update($request, $response, $args){
-        $id = $args['id'];
+        $user = Auth::_getTokenInfo($args['token']);
         $post = json_decode($request->getbody());
         $usuario = Usuario::getInstance();
         $usuario->load($post);
+        $usuario->idUsuario = $user['conteudo']['idUsuario'];
+        $usuario->setPrimaryKey('idUsuario');
         if ($usuario->update()){
             return $response->withJson(['message' => 'Usuario atualizado com sucesso!', flag => true]);
         }else{

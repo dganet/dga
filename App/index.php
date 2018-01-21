@@ -22,7 +22,7 @@ $app->get('/usuario/confirm/{creci}', \Api\Controller\UsuarioController::class .
 //Salva um novo usuario
 $app->post('/usuario/save', \Api\Controller\UsuarioController::class . ':save');
 //Atualiza as informações do usuario
-$app->put('/usuario/update/{id}/{token}', \Api\Controller\UsuarioController::class . ':update');
+$app->put('/usuario/update/{token}', \Api\Controller\UsuarioController::class . ':update');
 //Inativa um Usuario0
 $app->delete('/usuario/delete/{id}/{token}', \Api\Controller\UsuarioController::class . ':delete');
 //Vincula a conta do facebook com a conta do imobiliar

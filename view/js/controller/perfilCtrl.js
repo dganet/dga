@@ -189,9 +189,9 @@ $scope.update = function(pessoal){
       $scope.updateSenha = function(dados){
         
         if (dados.um === dados.dois){
-          var senha = dados.um;
+          var senha = {'senhaUsuario': dados.um};
          // Envia para o Back End os valores
-          restful.updateSenha(senha, token).success(function(response){
+          restful.updateSenhaPerfil(senha, token).success(function(response){
 
                   // Funcão de exibir a mensagem  em 5 segundos.
                   $scope.mensagemSenhaSucesso = false;
