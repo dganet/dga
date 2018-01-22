@@ -12,7 +12,10 @@
   $scope.boleano = [
     {label:'Sim',b:"1"},{label: 'Não', b:"0"}
   ];
-
+  // Lista todos Imoveis do Cliente 
+  restful.imovelList(token).success(function(response){
+      $scope.imovelList = response;
+  });
 //*************CADASTRA IMOVEL *********************//
     
     //Armazena os dados do Objeto Proprietario
@@ -34,10 +37,7 @@
     var emptyFotos = [];
     var f = {infoImagem:emptyFotos};
 
-    var emptyPrivacidade = [];
-    var pr = {infoPrivacidade:emptyPrivacidade};
-
-    var peifpr = [p,e,i,f,pr];
+    var peif = [p,e,i,f];
 
 
     //Mudar o Css do Processo em ativo
@@ -62,7 +62,7 @@
         $http.post('App/proprietario/cpf/'+ token, value).success(function(response){
 
             $scope.formCPF = 'inativo';
-            $scope.progresso = 20;
+            $scope.progresso = 25;
             var flag = response.flag;
                 //Se não existir
                 if (flag == false){
@@ -89,26 +89,21 @@
                 if (value == 'proprietario'){
                 $scope.formCPF = 'inativo';
                 $scope.formEndereco = 'inativo';
-                $scope.progresso = 20;
+                $scope.progresso = 25;
                 $scope.formProprietario = 'ativo';
                 }
 
                 if (value == 'endereco'){
                 $scope.formEndereco = 'ativo';
                 $scope.formImovel = 'inativo';
-                $scope.progresso = 40;
+                $scope.progresso = 75;
                 }
 
                 if (value == 'imovel'){
                 $scope.formImagens = 'inativo';
                 $scope.formImovel = 'ativo';
-                $scope.progresso = 60;
+                $scope.progresso = 90;
 
-                }
-                if (value == 'imagens'){
-                  $scope.formIsPublic = 'inativo';
-                  $scope.formImagens = 'ativo';
-                  $scope.progresso = 80;
                 }
 
             };
@@ -126,7 +121,7 @@
              $scope.inputBairro = false;
 
             //Segundo Passo
-            $scope.progresso = 40;
+            $scope.progresso = 50;
             $scope.formProprietario = 'inativo';
             $scope.selectBairro = true;
             $scope.btnNewBairro = false;
@@ -197,7 +192,7 @@
            //, Coleta dados do Imovel
           emptyEndereco.push(endereco);
 
-            $scope.progresso = 60;
+            $scope.progresso = 75;
 
             $scope.formEndereco = false;
             // Ativa o Formulario do Segundo Passo
@@ -325,7 +320,7 @@
      //
         $scope.terceiroPasso = function (imovel){
           emptyImovel.push(imovel);
-          $scope.progresso = 80;
+          $scope.progresso = 95;
           $scope.formImovel = false;
           // Ativa o Formulario do Segundo Passo
           $scope.formImagens = 'ativo';
@@ -362,12 +357,41 @@
       angular.forEach(fotos, function(value,key){
          // Valida se é menor que 2MB e se é diferente de jpeg e jpg  
         if(value.size < 2000000 && value.type == 'image/jpeg' && 'image/jpg'){
+            
+            // Armazena as fotos no -> emptyfotos
             this.push(value);
-   
-          $scope.formImagens = false;
-          $scope.formIsPublic = 'ativo';
-          $scope.progresso = 99;
-     
+             
+
+
+          //*************CADASTRA NOVO IMOVEL *********************// 
+ 
+
+          restful.imovelSave(peif).success(function(response){
+
+
+          // Funcão de exibir a mensagem de sucesso em 5 segundos.
+          $scope.mensagemSucesso = false;
+          $timeout(function () {
+                   $scope.mensagemSucesso = true;
+               },10000);
+
+           //Resentando os input do formulario .
+          $scope.reset = function() {
+            $scope.formCPF ='Ativo';
+            $scope.formImagens = 'inativo';
+          // Copiando os valores vazio do scope.master 
+            $scope.imovel = angular.copy($scope.master);
+            $scope.proprietario = angular.copy($scope.master);
+            $scope.endereco = angular.copy($scope.master);
+            $scope.fotos = angular.copy($scope.master);
+          };
+          // Ativando a função
+          $scope.reset();
+
+             });
+          
+                         // Fecha o Modal
+               $('#closeModalPost').modal('hide');
 
                
         }else{
@@ -377,20 +401,6 @@
       },emptyFotos);
     }
 
-//*************CADASTRA NOVO IMOVEL *********************// 
-           $scope.save = function(isPublic){
-            //Envia as informacoes para emptyPrivacidade
-            emptyPrivacidade.push(isPublic);
-            console.log(peifpr);
 
-//*************CADASTRA NOVO IMOVEL *********************// 
-           $scope.save = function(){
-             restful.imovelSave(peifpr).success(function(response){
-               // Fecha o Modal
-               $('#closeModalPost').modal('hide');
-             });
-           };
            
-
-           };
  });//END do controller

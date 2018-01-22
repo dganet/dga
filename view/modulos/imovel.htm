@@ -48,7 +48,6 @@
 
     <div class="row corpoTemplate">
         <div class="col col-md-12">
-            
             <table class="table table-hover corpoTableTemplate" style="height: 100px;">
               <thead>
                 <tr>
@@ -65,16 +64,15 @@
 
             <tbody> 
 
-             <!-- <tr ng-repeat="x in clientes | filter: busca  "> -->
-              <tr> 
-
-               <td><span class="align-middle">015845</span></td>
-               <td class="centro" >Privado</td>
+             <tr ng-repeat="x in imovelList | filter: busca  "> 
+             
+               <td><span class="align-middle">{{x.idImovel}}</span></td>
+               <td class="centro" >{{x.isPublic}}</td>
                <td><img src="view/galeria/casa01.jpg" width="125" height="100"></td>
-               <td class="centro">CASA</td>
+               <td class="centro">{{x.tipoOperacaoImovel}}</td>
                
                <td class="centro">
-                   R$ 10.000,00
+                   R$ {{x.valorVendaImovel}}
                </td>
                
                 <td class="centro">
@@ -289,6 +287,17 @@
     <div ng-if="formImovel == 'ativo'">
         <div class="row">
              <form name="terceiro" ng-submit="terceiroPasso(imovel)">
+               
+               <div class="col-md-6">
+               <div class="form-group">
+                    <label>Imovél</label>
+                    <select class="form-control" 
+                            ng-model="imovel.isPublic"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">Imovel é Publico ?</option>
+                    </select>
+               </div>
+               </div>
 
                 <div class="col-md-3">
                 <div class="form-group">
@@ -547,42 +556,6 @@
       </div><!-- row -->
 
      </div><!-- FORMULARIO DE IMAGENS-->
-
-<!-- FORMULARIO DE IMAGENS-->
-    <div ng-if="formIsPublic == 'ativo'">
-      
-              <div class="alert alert-info">
-                <strong>Privacidade do Imovel </strong> Se deixa Publico , será visivel no seu perfil e nas aŕeas publicas do site , se não ficara apenas privado dentro da sua área de administração.
-            </div>
-
-        <div class="row">
-
-
-             <form name="first" ng-submit="save(privacidade)">
-
-               <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Imovél</label>
-                    <select class="form-control" 
-                            ng-model="privacidade.isPublic"
-                            ng-options="x.b as x.label for x in boleano">
-                            <option value="">Imovel é Publico ?</option>
-                    </select>
-                  </div>
-               </div>
-
-                <div class="col-md-12">
-                <div class="form-group">
-                  <hr>
-                  <button type="submit" class="btn btn-primary">Salvar Imovel</button>
-                </div>
-                </div>
-
-             </form>
-      </div><!-- row -->
-
-     </div><!-- FORMULARIO DE IMAGENS-->
-
 
            </div><!--modal-body -->
         

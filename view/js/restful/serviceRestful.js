@@ -21,6 +21,8 @@ app.service('restful', function ($http,$sessionStorage) {
 
    //Classes Imovel
    $imovelSave = 'App/imovel/save/'; // Salvar Imovel 
+   $imovelList =  'App/imovel/list/'; // Lista os Imoveis do Cliente
+   
 
    //MODULO PEFIL
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
@@ -91,7 +93,10 @@ app.service('restful', function ($http,$sessionStorage) {
         
         return  $http.post($imovelSave + sessionStorage.getItem('usuario.token'), values);
     };
-
+   //Lista todos imoveis do cliente
+    var _imovelList = function (token){
+        return  $http.get($imovelList + token);
+    };
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
@@ -156,6 +161,7 @@ app.service('restful', function ($http,$sessionStorage) {
 
         //Return do Imovel
         imovelSave : _imovelSave,
+        imovelList : _imovelList,
 
         //Return Perfil
         updatePicture : _updatePicture,
