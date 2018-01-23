@@ -40,13 +40,18 @@
        <div class="col col-md-4">
           <div class="acaoTemplate">
               <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-post">Novo <i class="fa fa-file-o" aria-hidden="true"></i></button>
+
+              <button type="button" ng-click="novo();" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-post">Filtro <i class="fa fa-filter" aria-hidden="true"></i></button>
+
          </div>
        </div>
+
+
     </div>
 
  <!-- Corpo Template-->
-
     <div class="row corpoTemplate">
+        
         <div class="col col-md-12">
             <table class="table table-hover corpoTableTemplate" style="height: 100px;">
               <thead>
@@ -56,7 +61,7 @@
                   <th class="cent">Foto Principal</th>
                   <th class="centro">Tipo</th>
                   <th class="centro">Preço</th>
-                  <th class="centro">Detalhes</th>
+                  <th class="centro">Endereço</th>
                   <th class="centro">Alterar</th>
                   <th class="centro">Deletar</th>
                 </tr>
@@ -76,10 +81,11 @@
                </td>
                
                 <td class="centro">
-                    <a class="btn btn-default">
-                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                  </a>
-               </td>
+                   {{bairroImovel}}, {{cidadeImovel}} - {{estadoImovel}}
+                   Rua Guanabara teste 2 e teste 2 <br>
+                   Boraceia, Bertioga-SP
+                   
+                </td>
 
                <td class="centro">
                    <a class="btn btn-default" ng-click="dados(x.idCliente)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-user" aria-hidden="true"></i> </a>
@@ -112,6 +118,7 @@
             </table>
             
         </div>
+
     </div>
         
   <!-- Modal Novo -->
