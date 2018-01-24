@@ -16,7 +16,7 @@
       $scope.verifica = function(dados){
             chave.push(dados);
             restful.resgateSenha(dados).success(function(response){
-
+              console.log(response);
             if(response.flag == true ){
               
                       //Exibi o Form Update Senha 

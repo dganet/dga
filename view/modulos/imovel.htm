@@ -88,15 +88,15 @@
                 </td>
 
                <td class="centro">
-                   <a class="btn btn-default" ng-click="dados(x.idCliente)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-update"><i class="fa fa-user" aria-hidden="true"></i> </a>
+                   <a class="btn btn-default" ng-click="dados(x.idImovel)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-UpdateProprietario"><i class="fa fa-user" aria-hidden="true"></i> </a>
 
-                   <a class="btn btn-default">
+                   <a class="btn btn-default" ng-click="dados(x.idImovel)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-UptadeEndereco">
                     <i class="fa fa-address-card" aria-hidden="true"></i>
                   </a>
-                    <a class="btn btn-default">
+                    <a class="btn btn-default" ng-click="dados(x.idImovel)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-UpdateImovel">
                    <i class="fa fa-home" aria-hidden="true"></i>
                  </a>
-                   <a class="btn btn-default">
+                   <a class="btn btn-default" ng-click="dados(x.idImovel)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-UpdateFotos">
                    <i class="fa fa-picture-o" aria-hidden="true"></i>
                  </a>
 
@@ -174,21 +174,21 @@
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>CPF</label>
-                    <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" disabled ui-br-cpf-mask required>
+                    <input type="text" class="form-control" ng-model="proprietario.cpfProprietario" disabled ui-br-cpf-mask>
                 </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>E-mail</label>
-                    <input type="email" class="form-control" ng-model="proprietario.emailProprietario" required>
+                    <input type="email" class="form-control" ng-model="proprietario.emailProprietario" >
                 </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Telefone</label>
-                    <input type="text" class="form-control" ng-model="proprietario.telefoneProprietario" ui-br-phone-number required>
+                    <input type="text" class="form-control" ng-model="proprietario.telefoneProprietario" ui-br-phone-number>
                 </div>
                 </div>
 
@@ -583,8 +583,8 @@
   </div>
 </div>   
     
-<!-- Modal Update -->
-<div class="modal fade bs-example-modal-lg-update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdate">
+<!-- Modal Update Proprietario -->
+<div class="modal fade bs-example-modal-lg-UpdateProprietario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdateProprietario">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
@@ -593,51 +593,37 @@
         <h4 class="modal-title" id="myModalLabel">Atualizar {{cliente.nomeCliente}}</h4>
       </div>
         
-       <form name="FormCliente" ng-submit="put(cliente)"> 
+       <form name="FormCliente" ng-submit="updateProprietario(proprietario)"> 
     
            <div class="modal-body">
               <div class="row">
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>Nome Completo</label>
-                  <input type="text" class="form-control" ng-model="cliente.nomeCliente" required> 
-                  </div> 
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" ng-model="proprietario.nomeProprietario">
+                </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>E-mail</label>
-                  <input type="email" class="form-control" ng-model="cliente.emailCliente" required> 
-                  </div> 
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>CPF</label>
+                    <input type="text" class="form-control" ng-model="proprietario.cpfProprietario"  ui-br-cpf-mask >
+                </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>Endereço</label>
-                  <input type="text" class="form-control" ng-model="cliente.enderecoCliente" required> 
-                  </div> 
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" ng-model="proprietario.emailProprietario">
+                </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>Telefone Fixo:</label>
-                  <input type="text" class="form-control" ng-model="cliente.telFixoCliente" ui-br-phone-number > 
-                  </div> 
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" ng-model="proprietario.telefoneProprietario" ui-br-phone-number>
                 </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>Telefone Celular:</label>
-                  <input type="text" class="form-control" ng-model="cliente.telCelularCliente" ui-br-phone-number> 
-                  </div> 
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                  <label>Telefone Comercial:</label>
-                  <input type="text" class="form-control" ng-model="cliente.telComercialCliente" ui-br-phone-number> 
-                  </div> 
                 </div>
 
             </div>    <!--row -->
@@ -677,59 +663,3 @@
     </div>
   </div>
 </div>
-
-<!-- Modal Detalhes -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalDetalhes">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Detalhes {{cliente.nomeClienete}}</h4>
-      </div>
-        
-    <div class="modal-body">
-            <table class="table table-hover corpoTableTemplate">
-              <tbody>
-                <tr>
-                  <td>id</td>
-                  <td>{{cliente.idCliente}}</td>
-                </tr>
-                <tr>
-                  <td>Nome</td>
-                  <td>{{cliente.nomeCliente}}</td>
-                </tr>
-                <tr>
-                  <td>Endereço</td>
-                  <td>{{cliente.enderecoCliente}}</td>
-                </tr>
-                <tr>
-                  <td>E-mail</td>
-                  <td>{{cliente.emailCliente}}</td>
-                </tr>
-                <tr>
-                  <td>Telefone Fixo</td>
-                  <td>{{cliente.telFixoCliente}}</td>
-                </tr>
-                <tr>
-                  <td>Telefone Celular</td>
-                  <td>{{cliente.telCelularCliente}}</td>
-                </tr>
-                <tr>
-                  <td>Telefone Comercial</td>
-                  <td>{{cliente.telComercialCliente}}</td>
-                </tr>
-              </tbody>
-        </table>
-      </div>
-        
-     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-      </div>
-        
-        
-    </div>
-  </div>
-</div>
-
-</div><!-- End Template ->

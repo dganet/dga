@@ -103,6 +103,7 @@ app.service('restful', function ($http,$sessionStorage) {
 
    //Update Picture
     var _updatePicture = function (values ,token){
+       //console.log(values,token); 
         return  $http.put($updatePicture + token , values);
     };
 
@@ -120,6 +121,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
     //Recuperação de Senha
     var _solicitaResgateSenha = function (values){
+     // console.log(values);
         return $http.post($solicitaResgateSenha , values);
     };
    //Solicita o Codigo da Recuperacao de Senha
