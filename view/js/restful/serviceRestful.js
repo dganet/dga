@@ -55,6 +55,7 @@ app.service('restful', function ($http,$sessionStorage) {
     };
    //Salva novo Usuario
     var _usuarioSave = function (values){
+      console.log(values);
         return  $http.post($usuarioSave, values);
     };
    //Migra Usuario com Dados do Facebook

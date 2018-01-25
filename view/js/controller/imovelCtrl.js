@@ -16,6 +16,177 @@
   restful.imovelList(token).success(function(response){
       $scope.imovelList = response;
   });
+
+
+ // Load Estados
+            serviceEnderecos.getEstados().success(function (response){
+            $scope.estados = response;
+            });
+            // Load Cidades referente ao Estado
+            $scope.executeCidade = function (id){
+                    serviceEnderecos.getCidadesEstado(id).success(function(response){
+                    $scope.cidades = response;
+                $scope.selectBairro = true;
+                $scope.btnBairroBack = false;
+                $scope.inputBairro = false;
+                });
+            };
+
+
+             // Load Bairros referente a Cidade
+            $scope.executeBairro = function (id){
+                var idCidade = id;
+                 serviceEnderecos.getBairros(id).success(function(response){
+                     var flag = response.flag;
+                     if (flag == false ){
+                         $scope.inputBairro = true;
+                         $scope.selectBairro = false;
+                         $scope.btnBairroBack = true;
+                         $scope.btnNewBairro = false;
+                         //Salva um novo Bairro
+                         $scope.bairro = function(values){
+                            values['cidadeId'] = idCidade;
+                            $http.post('App/bairro/save', values).success(function(response){
+                            });
+                         }
+                     }else {
+                     $scope.bairros = response;
+                     $scope.btnNewBairro = true;
+                     };
+                 });
+
+            };
+
+               $scope.newBairro = function(){
+                $scope.selectBairro = false;
+                $scope.btnNewBairro = false;
+                $scope.btnBairroBack = true;
+                $scope.inputBairro = true;
+               };
+
+                $scope.backBairro = function(){
+                $scope.selectBairro = true;
+                $scope.btnNewBairro = true;
+                $scope.btnBairroBack = false;
+                $scope.inputBairro = false;
+               };
+
+// FUNCOES DO IMOVEL
+
+  //Operaçoes
+  $scope.operacoes =   [
+      {"idOperacao":1,"nomeOperacao":'Locacao'},
+      {"idOperacao":2,"nomeOperacao":'Venda'}
+  ];
+  //Função que Seleciona os tipos
+            $scope.selectOperation = function (value){
+
+                if (value == null){
+                    $scope.operacao = 'inativo';
+                };
+
+                if (value == "Locacao"){
+                    $scope.operacao = 'ativo';
+                    $scope.tipos = [
+                    {"idTipo":1,"tipoImovel":'Apartamento'},
+                    {"idTipo":2,"tipoImovel":'Casa'},
+                   ];
+                };
+
+                if(value == "Venda"){
+                    $scope.operacao = 'ativo';
+                    $scope.tipos = [
+                    {"idTipo":1,"tipoImovel":'Apartamento'},
+                    {"idTipo":2,"tipoImovel":'Casa'},
+                    {"idTipo":3,"tipoImovel":'Terreno'},
+                   ];
+                };
+
+            };
+
+     $scope.selectTipo = function(value){
+        if (value == null){
+          $scope.valorImovel = 'inativo';
+          $scope.iptuImovel = 'inativo';
+          $scope.condominioImovel = 'inativo';
+          $scope.idadeImovel = 'inativo';
+          $scope.suiteImovel = 'inativo';
+          $scope.copaImovel = 'inativo';
+          $scope.banheiroImovel = 'inativo';
+          $scope.saladejantarImovel = 'atvo';
+          $scope.mobiladoImovel = 'inativo';
+          $scope.elevadorImovel = 'inativo';
+          $scope.descricaoImovel = 'inativo';
+          $scope.garagemCobertaImovel = 'inativo';
+          $scope.garagemDescobertaImovel = 'inativo';
+          $scope.andarImovel = 'inativo';
+          $scope.areaTerrenoImovel = 'inativo';
+          $scope.areaUtilImovel = 'inativo';
+          $scope.areaTotalImovel = 'inativo';
+        };
+        if(value == "Apartamento"){
+            //Ativar todos os Inputs
+            $scope.valorImovel = 'ativo';
+            $scope.iptuImovel = 'ativo';
+            $scope.condominioImovel = 'ativo';
+            $scope.idadeImovel = 'ativo';
+            $scope.suiteImovel = 'ativo';
+            $scope.copaImovel = 'ativo';
+            $scope.banheiroImovel = 'ativo';
+            $scope.saladejantarImovel = 'atvo';
+            $scope.mobiladoImovel = 'ativo';
+            $scope.elevadorImovel = 'ativo';
+            $scope.descricaoImovel = 'ativo';
+            $scope.garagemCobertaImovel = 'ativo';
+            $scope.garagemDescobertaImovel = 'ativo';
+            $scope.andarImovel = 'ativo';
+            $scope.areaTerrenoImovel = 'inativo';
+            $scope.areaUtilImovel = 'inativo';
+            $scope.areaTotalImovel = 'inativo';
+        };
+        if(value == "Casa"){
+            //Ativar todos os Inputs
+            $scope.valorImovel = 'ativo';
+            $scope.iptuImovel = 'ativo';
+            $scope.condominioImovel = 'ativo';
+            $scope.idadeImovel = 'ativo';
+            $scope.suiteImovel = 'ativo';
+            $scope.copaImovel = 'ativo';
+            $scope.banheiroImovel = 'ativo';
+            $scope.saladejantarImovel = 'atvo';
+            $scope.mobiladoImovel = 'ativo';
+            $scope.elevadorImovel = 'inativo';
+            $scope.descricaoImovel = 'ativo';
+            $scope.garagemCobertaImovel = 'ativo';
+            $scope.garagemDescobertaImovel = 'ativo';
+            $scope.andarImovel = 'inativo';
+            $scope.areaTerrenoImovel = 'inativo';
+            $scope.areaUtilImovel = 'inativo';
+            $scope.areaTotalImovel = 'inativo';
+        };
+
+        if(value == "Terreno"){
+            //Ativar todos os Inputs
+            $scope.valorImovel = 'inativo';
+            $scope.iptuImovel = 'inativo';
+            $scope.condominioImovel = 'inativo';
+            $scope.idadeImovel = 'inativo';
+            $scope.suiteImovel = 'inativo';
+            $scope.copaImovel = 'inativo';
+            $scope.banheiroImovel = 'inativo';
+            $scope.saladejantarImovel = 'inativo';
+            $scope.mobiladoImovel = 'inativo';
+            $scope.elevadorImovel ='inativo';
+            $scope.descricaoImovel ='ativo';
+            $scope.garagemCobertaImovel = 'inativo';
+            $scope.garagemDescobertaImovel = 'inativo';
+            $scope.andarImovel = 'inativo';
+            $scope.areaTerrenoImovel = 'ativo';
+            $scope.areaUtilImovel ='ativo';
+            $scope.areaTotalImovel ='ativo';
+        };
+     };
+
 //*************CADASTRA IMOVEL *********************//
     
     //Armazena os dados do Objeto Proprietario
@@ -130,58 +301,7 @@
             // Ativa o Formulario do Segundo Passo
             $scope.formEndereco = 'ativo';
 
-            // Load Estados
-            serviceEnderecos.getEstados().success(function (response){
-            $scope.estados = response;
-            });
-            // Load Cidades referente ao Estado
-            $scope.executeCidade = function (id){
-                    serviceEnderecos.getCidadesEstado(id).success(function(response){
-                    $scope.cidades = response;
-                $scope.selectBairro = true;
-                $scope.btnBairroBack = false;
-                $scope.inputBairro = false;
-                });
-            };
-
-
-             // Load Bairros referente a Cidade
-            $scope.executeBairro = function (id){
-                var idCidade = id;
-                 serviceEnderecos.getBairros(id).success(function(response){
-                     var flag = response.flag;
-                     if (flag == false ){
-                         $scope.inputBairro = true;
-                         $scope.selectBairro = false;
-                         $scope.btnBairroBack = true;
-                         $scope.btnNewBairro = false;
-                         //Salva um novo Bairro
-                         $scope.bairro = function(values){
-                            values['cidadeId'] = idCidade;
-                            $http.post('App/bairro/save', values).success(function(response){
-                            });
-                         }
-                     }else {
-                     $scope.bairros = response;
-                     $scope.btnNewBairro = true;
-                     };
-                 });
-
-            };
-
-               $scope.newBairro = function(){
-                $scope.selectBairro = false;
-                $scope.btnNewBairro = false;
-                $scope.btnBairroBack = true;
-                $scope.inputBairro = true;
-               };
-
-                $scope.backBairro = function(){
-                $scope.selectBairro = true;
-                $scope.btnNewBairro = true;
-                $scope.btnBairroBack = false;
-                $scope.inputBairro = false;
-               };
+           
         };
      //
      //
@@ -198,120 +318,8 @@
             // Ativa o Formulario do Segundo Passo
             $scope.formImovel = 'ativo';
 
-            //Operaçoes
-           $scope.operacoes =   [
-                {"idOperacao":1,"nomeOperacao":'Locacao'},
-                {"idOperacao":2,"nomeOperacao":'Venda'}
-            ];
 
-            //Função que Seleciona os tipos
-            $scope.selectOperation = function (value){
-
-                if (value == null){
-                    $scope.operacao = 'inativo';
-                };
-
-                if (value == "Locacao"){
-                    $scope.operacao = 'ativo';
-                    $scope.tipos = [
-                    {"idTipo":1,"tipoImovel":'Apartamento'},
-                    {"idTipo":2,"tipoImovel":'Casa'},
-                   ];
-                };
-
-                if(value == "Venda"){
-                    $scope.operacao = 'ativo';
-                    $scope.tipos = [
-                    {"idTipo":1,"tipoImovel":'Apartamento'},
-                    {"idTipo":2,"tipoImovel":'Casa'},
-                    {"idTipo":3,"tipoImovel":'Terreno'},
-                   ];
-                };
-
-            };
-
-     $scope.selectTipo = function(value){
-        if (value == null){
-          $scope.valorImovel = 'inativo';
-          $scope.iptuImovel = 'inativo';
-          $scope.condominioImovel = 'inativo';
-          $scope.idadeImovel = 'inativo';
-          $scope.suiteImovel = 'inativo';
-          $scope.copaImovel = 'inativo';
-          $scope.banheiroImovel = 'inativo';
-          $scope.saladejantarImovel = 'atvo';
-          $scope.mobiladoImovel = 'inativo';
-          $scope.elevadorImovel = 'inativo';
-          $scope.descricaoImovel = 'inativo';
-          $scope.garagemCobertaImovel = 'inativo';
-          $scope.garagemDescobertaImovel = 'inativo';
-          $scope.andarImovel = 'inativo';
-          $scope.areaTerrenoImovel = 'inativo';
-          $scope.areaUtilImovel = 'inativo';
-          $scope.areaTotalImovel = 'inativo';
-        };
-        if(value == "Apartamento"){
-            //Ativar todos os Inputs
-            $scope.valorImovel = 'ativo';
-            $scope.iptuImovel = 'ativo';
-            $scope.condominioImovel = 'ativo';
-            $scope.idadeImovel = 'ativo';
-            $scope.suiteImovel = 'ativo';
-            $scope.copaImovel = 'ativo';
-            $scope.banheiroImovel = 'ativo';
-            $scope.saladejantarImovel = 'atvo';
-            $scope.mobiladoImovel = 'ativo';
-            $scope.elevadorImovel = 'ativo';
-            $scope.descricaoImovel = 'ativo';
-            $scope.garagemCobertaImovel = 'ativo';
-            $scope.garagemDescobertaImovel = 'ativo';
-            $scope.andarImovel = 'ativo';
-            $scope.areaTerrenoImovel = 'inativo';
-            $scope.areaUtilImovel = 'inativo';
-            $scope.areaTotalImovel = 'inativo';
-        };
-        if(value == "Casa"){
-            //Ativar todos os Inputs
-            $scope.valorImovel = 'ativo';
-            $scope.iptuImovel = 'ativo';
-            $scope.condominioImovel = 'ativo';
-            $scope.idadeImovel = 'ativo';
-            $scope.suiteImovel = 'ativo';
-            $scope.copaImovel = 'ativo';
-            $scope.banheiroImovel = 'ativo';
-            $scope.saladejantarImovel = 'atvo';
-            $scope.mobiladoImovel = 'ativo';
-            $scope.elevadorImovel = 'inativo';
-            $scope.descricaoImovel = 'ativo';
-            $scope.garagemCobertaImovel = 'ativo';
-            $scope.garagemDescobertaImovel = 'ativo';
-            $scope.andarImovel = 'inativo';
-            $scope.areaTerrenoImovel = 'inativo';
-            $scope.areaUtilImovel = 'inativo';
-            $scope.areaTotalImovel = 'inativo';
-        };
-
-        if(value == "Terreno"){
-            //Ativar todos os Inputs
-            $scope.valorImovel = 'inativo';
-            $scope.iptuImovel = 'inativo';
-            $scope.condominioImovel = 'inativo';
-            $scope.idadeImovel = 'inativo';
-            $scope.suiteImovel = 'inativo';
-            $scope.copaImovel = 'inativo';
-            $scope.banheiroImovel = 'inativo';
-            $scope.saladejantarImovel = 'inativo';
-            $scope.mobiladoImovel = 'inativo';
-            $scope.elevadorImovel ='inativo';
-            $scope.descricaoImovel ='ativo';
-            $scope.garagemCobertaImovel = 'inativo';
-            $scope.garagemDescobertaImovel = 'inativo';
-            $scope.andarImovel = 'inativo';
-            $scope.areaTerrenoImovel = 'ativo';
-            $scope.areaUtilImovel ='ativo';
-            $scope.areaTotalImovel ='ativo';
-        };
-     };
+          
 };//END do controller
      //
      //
@@ -402,5 +410,28 @@
     }
 
 
-           
+          //*************UPDATE PROPRIETARIO *********************// 
+ 
+    $scope.modalUpdateProprietario = function(id){
+      console.log(id);
+    };
+
+           //*************UPDATE PROPRIETARIO *********************// 
+ 
+    $scope.modalUpdateEndereco = function(id){
+      console.log(id);
+    };
+    
+          //*************UPDATE PROPRIETARIO *********************// 
+ 
+    $scope.modalUpdateImovel = function(id){
+      console.log(id);
+    };
+    
+          //*************UPDATE PROPRIETARIO *********************// 
+ 
+    $scope.modalUpdateFotos = function(id){
+      console.log(id);
+    };
+
  });//END do controller
