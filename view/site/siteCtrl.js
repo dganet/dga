@@ -76,9 +76,9 @@ $scope.FBLogin = function (){
         // Pega o Nome do Facebook Logado   
         $scope.nomeFacebook = response.name;
         //VARIAVEL ID do facebook
-        var values  = dados.authResponse;
+        var idFacebook  = dados.authResponse;
         //Seviço executado
-         restful.usuarioLoginFB(values).success(function(response){
+         restful.usuarioLoginFB(idFacebook).success(function(response){
              //Retorno do Back
              var auth = response.flag;
              // IF
@@ -90,6 +90,7 @@ $scope.FBLogin = function (){
                     $scope.formConta = true;
 
 
+                    idFacebook = idFacebook.userID;
                     //Function para Migrar a Conta - POST para Back-End
                     $scope.migrar = function (values){
                             //Adicionar o Elemento no Array

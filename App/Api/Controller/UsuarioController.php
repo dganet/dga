@@ -213,8 +213,8 @@ class UsuarioController {
     public function migrate($request, $response, $args){
         $post = json_decode($request->getBody(), true);
         $usuario = Usuario::getInstance();
-        $usuario->_setDebug(false);
-        $usuario->makeSelect("where emailUsuario='".$post['emailUsuario']."' AND senhaUsuario='".md5($post['senhaUsuario'])."'");
+        $usuario = $usuario->makeSelect()->where("emailUsuario='".$post['emailUsuario']."'")->and("senhaUsuario='".md5($post['senhaUsuario'])."'")->execute()->get(0);
+     
         if (is_null($usuario->emailUsuario)){
             return $response->withJson(
             [
@@ -224,6 +224,7 @@ class UsuarioController {
             ]);
         }else{
             $usuario->idFacebook = $post['idFacebook'];
+            $usuario->setPrimaryKey('idUsuario');
             $usuario->update();
             return $response->withJson(
             [
