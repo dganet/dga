@@ -1,6 +1,7 @@
 <?php
 namespace Api\Controller;
 use \PHPMailer\PHPMailer\PHPMailer;
+use \PHPMailer\PHPMailer\Exception;
 //use PHPMailer;
 class MailController{
     /**
@@ -23,7 +24,7 @@ class MailController{
     *   Metodo contrutor da classe que irá fazer a manipulação para posterioe envio de email
     */
     public function __construct(){
-        $this->phpMailer = new PHPMailer();
+        $this->phpMailer = new PHPMailer(true);
         $this->phpMailer->isSMTP();
         $this->phpMailer->SMTPAuth = $this->auth;
         $this->phpMailer->Host = $this->host;
