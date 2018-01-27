@@ -60,9 +60,9 @@ class UsuarioController {
         try{
             $mail = new MailController();
             $body ="
-            Olá Sr ".$user."<br>
+            Olá Sr ".$usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario."<br>
             O seu cadastro está quase completo, para confirmar o seu email precisamos que clique no link abaixo<br> 
-                <a href='http://localhost/App/usuario/confirm/".$usuario->creci."'> CLIQUE AQUI PARA CONFIRMAR SEU EMAIL!</a>
+                <a href='http://localhost/dga/App/usuario/confirm/".$usuario->creciUsuario."'> CLIQUE AQUI PARA CONFIRMAR SEU EMAIL!</a>
             ";
             $mail->makeEmail($usuario->emailUsuario, $usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario, 'Cadastro Imobiliar', $body);
             $mail->send();
@@ -129,6 +129,7 @@ class UsuarioController {
     public function confirm($request, $response, $args){
       $usuario = Usuario::getInstance();
       $usuario = $usuario->makeSelect()->where('creciUsuario='.$args['creci'])->execute()->get(0);
+      $usuario->setPrimaryKey('idUsuario');
       $usuario->statusUsuario = 'ATIVO';
       if ($usuario->update()){
           return $response->withJson([
