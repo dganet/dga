@@ -24,6 +24,8 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelList =  'App/imovel/list/'; // Lista os Imoveis do Cliente
    $imovelListiIdProprietario = 'caminho do back-end' //Retorna alguns dados do Proprietário do Imovel
    $imovelUpdateProprietario = 'caminho do back-end' // Atualiza dados do Proprietario referente o id do imovel
+   $imovelListiIdEndereco = 'caminho do back-end' //Retorna alguns dados do Endereco do Imovel
+   $imovelUpdateEndereco = 'caminho do back-end' // Atualiza dados do Endereco referente o id do imovel
 
    //MODULO PEFIL
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
@@ -105,13 +107,26 @@ app.service('restful', function ($http,$sessionStorage) {
        console.log(token);
     return  $http.get($imovelListiIdProprietario + id '/' + token);
     };
-   //Lista dados do imovel por id do cliente
+   //Atualiza os dados do Proprietario referente ao id do imovel
    var _imovelUpdateProprietario = function (id,token,proprietario){
        console.log(id);
        console.log(token);
        console.log(proprietario);
-    return  $http.get($imovelUpdateProprietario + id '/' + token + proprietario);
+    return  $http.put($imovelUpdateProprietario + id '/' + token + proprietario);
     };
+   //Lista dados do endereco por id do cliente
+   var _imovelListiIdEndereco = function (id,token){
+    console.log(id);
+    console.log(token);
+ return  $http.get($imovelListiIdEndereco + id '/' + token);
+ };
+//Atualiza os dados do Endereco referente ao id do imovel
+var _imovelUpdateEndereco = function (id,token,endereco){
+    console.log(id);
+    console.log(token);
+    console.log(proprietario);
+ return  $http.put($imovelUpdateEndereco + id '/' + token + endereco);
+ };
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
@@ -181,6 +196,9 @@ app.service('restful', function ($http,$sessionStorage) {
         imovelList : _imovelList,
         imovelListiIdProprietario : _imovelListiIdProprietario,
         imovelUpdateProprietario : _imovelUpdateProprietario,
+        imovelListiIdEndereco : _imovelListiIdEndereco,
+        imovelUpdateEndereco : _imovelUpdateEndereco,
+
 
         //Return Perfil
         updatePicture : _updatePicture,

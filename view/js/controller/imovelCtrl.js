@@ -420,6 +420,8 @@
         $scope.updateProprietario = function(proprietario){
             
             restful.imovelUpdateProprietario(id,token,proprietario).success(function(response){
+                 // Fecha o Modal
+                    $('#closeModalUpdateProprietario').modal('hide');
                     // Funcão de exibir a mensagem de sucesso em 5 segundos.
                     $scope.mensagemSucesso = false;
                     $timeout(function () {
