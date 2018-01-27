@@ -22,7 +22,8 @@ app.service('restful', function ($http,$sessionStorage) {
    //Classes Imovel
    $imovelSave = 'App/imovel/save/'; // Salvar Imovel 
    $imovelList =  'App/imovel/list/'; // Lista os Imoveis do Cliente
-   
+   $imovelListiIdProprietario = 'caminho do back-end' //Retorna alguns dados do Proprietário do Imovel
+   $imovelUpdateProprietario = 'caminho do back-end' // Atualiza dados do Proprietario referente o id do imovel
 
    //MODULO PEFIL
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
@@ -98,6 +99,19 @@ app.service('restful', function ($http,$sessionStorage) {
     var _imovelList = function (token){
         return  $http.get($imovelList + token);
     };
+   //Lista dados do imovel por id do cliente
+   var _imovelListiIdProprietario = function (id,token){
+       console.log(id);
+       console.log(token);
+    return  $http.get($imovelListiIdProprietario + id '/' + token);
+    };
+   //Lista dados do imovel por id do cliente
+   var _imovelUpdateProprietario = function (id,token,proprietario){
+       console.log(id);
+       console.log(token);
+       console.log(proprietario);
+    return  $http.get($imovelUpdateProprietario + id '/' + token + proprietario);
+    };
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
@@ -165,6 +179,8 @@ app.service('restful', function ($http,$sessionStorage) {
         //Return do Imovel
         imovelSave : _imovelSave,
         imovelList : _imovelList,
+        imovelListiIdProprietario : _imovelListiIdProprietario,
+        imovelUpdateProprietario : _imovelUpdateProprietario,
 
         //Return Perfil
         updatePicture : _updatePicture,

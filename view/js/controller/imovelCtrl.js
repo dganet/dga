@@ -412,26 +412,51 @@
 
           //*************UPDATE PROPRIETARIO *********************// 
  
+          //Lista os dados do proprietario referente ao id
     $scope.modalUpdateProprietario = function(id){
-      console.log(id);
+      restful.imovelListiIdProprietario(id,token).success(function(response){
+        $scope.imovel = response;
+       
+        $scope.updateProprietario = function(proprietario){
+            
+            restful.imovelUpdateProprietario(id,token,proprietario).success(function(response){
+                    // Funcão de exibir a mensagem de sucesso em 5 segundos.
+                    $scope.mensagemSucesso = false;
+                    $timeout(function () {
+                            $scope.mensagemSucesso = true;
+                        },10000);
+            });
+          };   
+         
+      });
     };
+         //atualiza o proprietario
+
+
+
 
            //*************UPDATE PROPRIETARIO *********************// 
  
     $scope.modalUpdateEndereco = function(id){
-      console.log(id);
+        restful.listIdImovel(id).success(function(response){
+            $scope.imovel = response;
+          });
     };
     
           //*************UPDATE PROPRIETARIO *********************// 
  
     $scope.modalUpdateImovel = function(id){
-      console.log(id);
+        restful.listIdImovel(id).success(function(response){
+            $scope.imovel = response;
+          });
     };
     
           //*************UPDATE PROPRIETARIO *********************// 
  
     $scope.modalUpdateFotos = function(id){
-      console.log(id);
+        restful.listIdImovel(id).success(function(response){
+            $scope.imovel = response;
+          });
     };
 
  });//END do controller
