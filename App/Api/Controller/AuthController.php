@@ -15,7 +15,7 @@ class AuthController{
         $post = json_decode($request->getBody(), true);
         $auth =  new Auth();
         $auth = $auth->login($post);
-        if ($auth[flag]){
+        if ($auth['flag']){
             unset($auth['flag']);
             return $response->withJson($auth);
        }else{
@@ -91,8 +91,8 @@ class AuthController{
             Acesse o link e digite o seguinte codigo para poder fazer a troca de senha.
             Código: $cod
 
-            http://localhost/dga/#/site/forget 
-            Sua nova senha é : $newPass";
+            http://localhost/dga/#/site/forget" 
+            ;
             // Fim do corpo do email
             $mail = new MailController();
             $mail->makeEmail($usuario->emailUsuario, $usuario->nomeUsuario.' '.$usuario->sobrenomeUsuario, 'Recuperação de Senha', $body);

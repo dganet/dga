@@ -36,7 +36,6 @@ class Auth{
                     return $user;
                    
                 }else{
-                   
                     return ['message' => 'Email ou Senha incorretos', 'flag' => false];
                 }
             }catch(\GORM\Collection\ECollectionKeyInvalid $e){
