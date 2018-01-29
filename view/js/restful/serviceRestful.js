@@ -105,27 +105,27 @@ app.service('restful', function ($http,$sessionStorage) {
    var _imovelListiIdProprietario = function (id,token){
        console.log(id);
        console.log(token);
-    return  $http.get($imovelListiIdProprietario + id '/' + token);
+    return  $http.get($imovelListiIdProprietario + id + '/' + token);
     };
    //Atualiza os dados do Proprietario referente ao id do imovel
    var _imovelUpdateProprietario = function (id,token,proprietario){
        console.log(id);
-       console.log(token);
+       console.log(token);imovelUpdateEndereco
        console.log(proprietario);
-    return  $http.put($imovelUpdateProprietario + id '/' + token + proprietario);
+    return  $http.put($imovelUpdateProprietario + id + '/' + token + proprietario);
     };
    //Lista dados do endereco por id do cliente
    var _imovelListiIdEndereco = function (id,token){
     console.log(id);
     console.log(token);
- return  $http.get($imovelListiIdEndereco + id '/' + token);
+ return  $http.get($imovelListiIdEndereco + id + '/' + token);
  };
 //Atualiza os dados do Endereco referente ao id do imovel
 var _imovelUpdateEndereco = function (id,token,endereco){
     console.log(id);
     console.log(token);
     console.log(proprietario);
- return  $http.put($imovelUpdateEndereco + id '/' + token + endereco);
+ return  $http.put($imovelUpdateEndereco + id + '/' + token + endereco);
  };
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|

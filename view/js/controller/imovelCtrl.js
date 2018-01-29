@@ -437,27 +437,69 @@
 
 
 
-           //*************UPDATE PROPRIETARIO *********************// 
+           //*************UPDATE ENDERECO *********************// 
  
     $scope.modalUpdateEndereco = function(id){
-        restful.listIdImovel(id).success(function(response){
-            $scope.imovel = response;
+        restful.listIdEndereco(id).success(function(response){
+            $scope.endereco = response;
+
+            $scope.updateEndereco = function(endereco){
+            
+                restful.imovelUpdateEndereco(id,token,endereco).success(function(response){
+                     // Fecha o Modal
+                        $('#closeModalUpdateEndereco').modal('hide');
+                        // Funcão de exibir a mensagem de sucesso em 5 segundos.
+                        $scope.mensagemSucesso = false;
+                        $timeout(function () {
+                                $scope.mensagemSucesso = true;
+                            },10000);
+                });
+              };   
+
           });
     };
     
-          //*************UPDATE PROPRIETARIO *********************// 
+          //*************UPDATE IMOVEL *********************// 
  
     $scope.modalUpdateImovel = function(id){
         restful.listIdImovel(id).success(function(response){
             $scope.imovel = response;
+
+            $scope.updateImovel = function(imovel){
+            
+                restful.imovelUpdateImovel(id,token,imovel).success(function(response){
+                     // Fecha o Modal
+                        $('#closeModalUpdateImovel').modal('hide');
+                        // Funcão de exibir a mensagem de sucesso em 5 segundos.
+                        $scope.mensagemSucesso = false;
+                        $timeout(function () {
+                                $scope.mensagemSucesso = true;
+                            },10000);
+                });
+              };   
+
           });
     };
     
           //*************UPDATE PROPRIETARIO *********************// 
  
     $scope.modalUpdateFotos = function(id){
-        restful.listIdImovel(id).success(function(response){
+        restful.listIdFotos(id).success(function(response){
             $scope.imovel = response;
+
+            $scope.updateFotos = function(fotos){
+            
+                restful.imovelUpdateFotos(id,token,Fotos).success(function(response){
+                     // Fecha o Modal
+                        $('#closeModalUpdateImagem').modal('hide');
+                        // Funcão de exibir a mensagem de sucesso em 5 segundos.
+                        $scope.mensagemSucesso = false;
+                        $timeout(function () {
+                                $scope.mensagemSucesso = true;
+                            },10000);
+                });
+              };   
+
           });
     };
 
