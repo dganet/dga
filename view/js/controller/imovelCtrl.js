@@ -503,4 +503,26 @@
           });
     };
 
+              //*************FILTRO *********************// 
+ 
+              $scope.modalUpdateFotos = function(id){
+                restful.listIdFotos(id).success(function(response){
+                    $scope.imovel = response;
+        
+                    $scope.updateFotos = function(fotos){
+                    
+                        restful.imovelUpdateFotos(id,token,Fotos).success(function(response){
+                             // Fecha o Modal
+                                $('#closeModalUpdateImagem').modal('hide');
+                                // Funcão de exibir a mensagem de sucesso em 5 segundos.
+                                $scope.mensagemSucesso = false;
+                                $timeout(function () {
+                                        $scope.mensagemSucesso = true;
+                                    },10000);
+                        });
+                      };   
+        
+                  });
+            };
+
  });//END do controller
