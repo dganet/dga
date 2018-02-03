@@ -14,7 +14,7 @@ class ProprietarioController{
      */
     public function __construct(){
         $this->proprietario = Proprietario::getInstance();
-              
+        $this->proprietario->setPrimaryKey('idProprietario');
     }
     /**
      * Lista todos os proprietarios
@@ -25,7 +25,8 @@ class ProprietarioController{
      * @return MixidJson
      */
     public function list($request, $response, $args){
-        return $response->withJson($this->proprietario->all());
+        return $response->withJson(['message'=>'Nao tem nada aqui =)']);
+        //return $response->withJson($this->proprietario->all());
     }
     /**
      * Lista proprietario por ID

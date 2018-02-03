@@ -1,26 +1,25 @@
 <?php
 namespace Api\Model\Entity;
-
 class CarteiraImovel extends \GORM\Model{
     public $idCarteiraImovel;
     public $idImovel;
     public $idUsuario;
 
-
-     public function list($idUsuario, $idImovel = null){
+    /**
+     * Retorna todos os imoveis de um usuario
+     * 
+     * @param $idUsuario String -  Id do usuario que é dono do imovel
+     * @param $op String - Opções de campos a serem retornados
+     */
+    public function getImovel($idUsuario, $field){
+        $collectionId = $this->makeSelect()->where('idUsuario='.$idUsuario)->execute();
         $collection = new \GORM\Collection\Collection();
-        if ($idCliente == null){
-            $return =  $this->makeSelect('idImovel')->where('idUsuario = '.$idUsuario)->execute(true);
-             foreach ($return as $key => $value) {
-                 $imovel = new Imovel();
-                 $imovel->setPrimaryKey('idImovel');
-                 $imovel = $imovel->makeSelect()->where('idImovel ='.$value['idImovel'])->and('statusImovel="ATIVO"')->execute()->get(0);
-                 $collection->add($imovel);
-             }
-             return $collection;
-        }else{
-            $this->makeSelect('idImovel')->where('idUsuario = '.$idUsuario)->and('idImovel = '.$idCliente)->execute();
+        foreach ($collectionId as $key => $value) {
+            $imovel = Imovel::getInstance();
+            $imovel = $imovel->makeSelect($field)->where('idImovel='.$value->idImovel)->execute();
+            $collection->add($imovel->getAll()[0]);
         }
+        return $collection;
     }
 
    public function beforeSave(){

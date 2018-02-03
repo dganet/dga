@@ -4,9 +4,6 @@ namespace Api\Model\Entity;
 class Imovel extends \GORM\Model{
     public $idImovel;
     public $tipoOperacaoImovel;
-    public $enderecoImovel;
-    public $bairroImovel;
-    public $cidadeImovel;
     public $iptuImovel;
     public $condominioImovel;
     public $idadeConstrucaoImovel;
@@ -33,6 +30,6 @@ class Imovel extends \GORM\Model{
     public $updateAtImovel;
     public $descricaoImovel;
     public $isPublic;
-    
-    
+    public $fkEndereco;
+
 }

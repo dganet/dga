@@ -1,7 +1,8 @@
 <?php
 namespace Api\Controller;
 use \Api\Model\Entity\Imovel, \Api\Model\Entity\Galeria, \Api\Model\Entity\Proprietario;
-use \Api\Utils\Image, \Api\Model\Entity\CarteiraImovel;
+use \Api\Utils\Image, \Api\Model\Entity\CarteiraImovel, \Api\Model\Entity\Endereco;
+use \Api\Model\Entity\Bairro;
 class ImovelController {
 
     public $fkCarteiraImovel;
@@ -18,7 +19,8 @@ class ImovelController {
      */
     public function list($request, $response, $args){
         $user = Auth::_getTokenInfo($args['token']);
-        $collection = $this->carteiraImovel->list($user['conteudo']['idUsuario']);
+        $op = 'idImovel,isPublic,tipoOperacaoImovel,tipoImovel,iptuImovel,condominioImovel,idadeConstrucaoImovel,suiteImovel,copaImovel,banheiroImovel,salajantarImovel,mobiliadoImovel,elevadorImovel,andarImovel,garagemCobertaImovel,garagemCobertaImovel,areaTerrenoImovel,areaUtilImovel,areaTotalImovel,descricaoImovel,valorVendaImovel,valorLocacaoImovel';
+        $collection = $this->carteiraImovel->getImovel($user['conteudo']['idUsuario'], $op);
         return $response->withJson($collection->getAll());
     }
     /**
@@ -48,13 +50,13 @@ class ImovelController {
         $e = $post[1]['infoEndereco'][0];   
         $i = $post[2]['infoImovel'][0];
         $img = $post[3]['infoImagem'];
-        $i['valorVendaImovel'] = $i['valorImovel'];
+        $i['valorVendaImovel'] = isset($i['valorImovel'])?$i['valorImovel']:null;
         unset($i['valorImovel']);
-        $i['idadeConstrucaoImovel'] = $i['idadeImovel'];
+        $i['idadeConstrucaoImovel'] = isset($i['idadeImovel'])?$i['idadeImovel']:null;
         unset($i['idadeImovel']);
-        $i['garagemCobertaImovel'] = $i['garagemDescobertaImovel'];
+        $i['garagemCobertaImovel'] = isset($i['garagemDescobertaImovel'])? $i['garagemDescobertaImovel']: null;
         unset($i['garagemDescobertaImovel']);
-        $p['telComercialProprietario'] = $p['telefoneProprietario'];
+        $p['telComercialProprietario'] = isset($p['telefoneProprietario'])? $p['telefoneProprietario']: null;
         unset($p['telefoneProprietario']);
         // //FIM
         $logado = Auth::_isLoggedIn($args['token']);
@@ -64,9 +66,12 @@ class ImovelController {
             $proprietario = Proprietario::getInstance();
             $galeria =  Galeria::getInstance();
             $carteiraImovel = CarteiraImovel::getInstance();
+            $endereco = Endereco::getInstance();
             $imovel = Imovel::getInstance();
+            $bairro = Bairro::getInstance();
             $imagem = \Api\Model\Entity\Imagem::getInstance();
             $proprietario->load($p);
+            $imovel->load($i);
             /**
              * Caso o proprietário já exista ele somente pega o id do mesmo
              * Caso não exista ele salva e pega o id
@@ -76,12 +81,24 @@ class ImovelController {
             }else{
                 $propId = $proprietario->save(true);
                 $propId = $propId['lastId'];
-
             }
-            
+            /**
+             * Salva o endereco
+             */
+            $endereco->paisId = 1;
+            $endereco->estadoId = $e['idEstado'];
+            $endereco->cidadeId = $e['idCidade'];
+            if (is_int($e['idBairro'])){
+                $endereco->bairroId = $e['idBairro'];
+            }else{
+                $bairro->nome = $e['idBairro'];
+                $endereco->bairroId = $bairro->save(true)['lastId'];
+            }
+            $endereco->logradouro = $e['enderecoImovel'];
+            $imovel->fkEndereco = $endereco->save(true)['lastId'];
+            // FIM ENDERECO
             //Fim upload de imagem
             // Prepara o Imovel
-            $imovel->load($i);
             $imovel->fkProprietario = $propId;
             $imovel->statusImovel = 'ATIVO';
             $r = $imovel->save(true);
@@ -122,6 +139,15 @@ class ImovelController {
             ]);
         }
 
+    }
+
+    public function update($request, $response, $args){
+        $user = Auth::_getTokenInfo($args['token']);
+        $post = json_decode($request->getBody, true);
+        $imovel = Imovel::getInstance();
+        $imovel->load();
+        $imovel->setPrimaryKey('idImovel');
+        $imovel->update();
     }
 
 }

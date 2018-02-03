@@ -47,5 +47,11 @@ class Bairro extends \GORM\Model{
     public function __toString(){
         return var_dump($this->toArray());
     }
+    public function beforeSave(){
+
+    }
+    public function beforeUpdate(){
+        
+    }
     
 }

@@ -53,6 +53,7 @@ $app->put('/usuario/login/forgot/change', \Api\Controller\AuthController::class 
 
 $app->get('/imovel/list/{token}', \Api\Controller\ImovelController::class . ':list');
 $app->post('/imovel/save/{token}', \Api\Controller\ImovelController::class . ':save');
+$app->put('/imovel/update/{token}', \Api\Controller\ImovelController::class . ':update');
 //FIM IMOVEIS
 /**
  * PROPRIETARIO
