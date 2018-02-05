@@ -109,7 +109,7 @@
           $scope.valorImovel = 'inativo';
           $scope.iptuImovel = 'inativo';
           $scope.condominioImovel = 'inativo';
-          $scope.idadeImovel = 'inativo';
+          $scope.idadeConstrucaoImovel = 'inativo';
           $scope.suiteImovel = 'inativo';
           $scope.copaImovel = 'inativo';
           $scope.banheiroImovel = 'inativo';
@@ -129,7 +129,7 @@
             $scope.valorImovel = 'ativo';
             $scope.iptuImovel = 'ativo';
             $scope.condominioImovel = 'ativo';
-            $scope.idadeImovel = 'ativo';
+            $scope.idadeConstrucaoImovel = 'ativo';
             $scope.suiteImovel = 'ativo';
             $scope.copaImovel = 'ativo';
             $scope.banheiroImovel = 'ativo';
@@ -149,7 +149,7 @@
             $scope.valorImovel = 'ativo';
             $scope.iptuImovel = 'ativo';
             $scope.condominioImovel = 'ativo';
-            $scope.idadeImovel = 'ativo';
+            $scope.idadeConstrucaoImovel = 'ativo';
             $scope.suiteImovel = 'ativo';
             $scope.copaImovel = 'ativo';
             $scope.banheiroImovel = 'ativo';
@@ -170,7 +170,7 @@
             $scope.valorImovel = 'inativo';
             $scope.iptuImovel = 'inativo';
             $scope.condominioImovel = 'inativo';
-            $scope.idadeImovel = 'inativo';
+            $scope.idadeConstrucaoImovel = 'inativo';
             $scope.suiteImovel = 'inativo';
             $scope.copaImovel = 'inativo';
             $scope.banheiroImovel = 'inativo';

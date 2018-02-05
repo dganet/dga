@@ -24,8 +24,10 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelList =  'App/imovel/list/'; // Lista os Imoveis do Cliente
    $imovelListiIdProprietario = 'caminho do back-end' //Retorna alguns dados do Proprietário do Imovel
    $imovelUpdateProprietario = 'caminho do back-end' // Atualiza dados do Proprietario referente o id do imovel
-   $imovelListiIdEndereco = 'caminho do back-end' //Retorna alguns dados do Endereco do Imovel
+   $imovelListiIdEndereco = 'caminho do back-end' //Retorna alguns dados do Endereco do Imovel referete ao id
    $imovelUpdateEndereco = 'caminho do back-end' // Atualiza dados do Endereco referente o id do imovel
+   $imovelListiIdImovel = 'caminho do back-end' //Retorna alguns dados do Imovel referente ao id
+   $imovelUpdateImovel = 'caminho do back-end' // Atualiza dados do imovel referente o id do imovel
 
    //MODULO PEFIL
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
@@ -110,7 +112,7 @@ app.service('restful', function ($http,$sessionStorage) {
    //Atualiza os dados do Proprietario referente ao id do imovel
    var _imovelUpdateProprietario = function (id,token,proprietario){
        console.log(id);
-       console.log(token);imovelUpdateEndereco
+       console.log(token);
        console.log(proprietario);
     return  $http.put($imovelUpdateProprietario + id + '/' + token + proprietario);
     };
@@ -127,6 +129,20 @@ var _imovelUpdateEndereco = function (id,token,endereco){
     console.log(proprietario);
  return  $http.put($imovelUpdateEndereco + id + '/' + token + endereco);
  };
+    //Lista dados do imovel por id do imovel
+    var _imovelListiIdImovel = function (id,token){
+        console.log(id);
+        console.log(token);
+     return  $http.get($imovelListiIdEndereco + id + '/' + token);
+     };
+    //Atualiza os dados do Endereco referente ao id do imovel
+    var _imovelUpdateImovel = function (id,token,endereco){
+        console.log(id);
+        console.log(token);
+        console.log(proprietario);
+     return  $http.put($imovelUpdateEndereco + id + '/' + token + endereco);
+     };
+
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
