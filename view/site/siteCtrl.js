@@ -1,4 +1,4 @@
- app.controller("siteCtrl", function($scope, $timeout , $location, $sessionStorage, restful, serviceEnderecos){
+ app.controller("siteCtrl", function($scope, $timeout , $location, $sessionStorage, restful, serviceEnderecos, $loading){
     //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
@@ -29,11 +29,15 @@
         });
 };
     //Endereços Estado / Cidade
-    serviceEnderecos.getEstados().success(function (response){
-		$scope.estados = response;
-	});
+    $scope.loadClientes = function() {
+        $loading.start('estados');
+        serviceEnderecos.getEstados().success(function (response){
+            $scope.estados = response;
+            $loading.finish('estados');
+        });
 
-
+    };
+    $scope.loadClientes();
 
 $scope.executeCidade = function (id){
 

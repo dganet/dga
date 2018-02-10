@@ -61,7 +61,7 @@
               </thead>
 
             <tbody> 
-             <tr ng-repeat="x in clientes | filter: busca  ">
+             <tr dw-loading="clientes" dw-loading-options="{text: 'Carregando Clientes...'}" ng-repeat="x in clientes | filter: busca  ">
                
                <td class="centro">{{x.idCliente}}</td>
                <td>{{x.nomeCliente}}</td>

@@ -531,7 +531,7 @@
 
               //*************FILTRO *********************// 
  
-              $scope.busca = function(filtro){
+              $scope.listFiltro = function(filtro){
                 restful.imovelFiltro(filtro).success(function(response){
                     //Ativo o loop do filtro dos imoveis
                     $scope.imovelFiltro = 'ativo';
@@ -543,5 +543,5 @@
                                 $('#closeModalfiltro').modal('hide');
                         });
                       };   
-                      
+
  });//END do controller

@@ -239,7 +239,7 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         imovelUpdateFotos : _imovelUpdateFotos,
 
         //Return Busca o Filtro
-        imovelFiltro : _imovelFiltro,
+        imovelListFiltro : _imovelListFiltro,
 
         //Return Perfil
         updatePicture : _updatePicture,

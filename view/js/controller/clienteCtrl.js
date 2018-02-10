@@ -1,4 +1,4 @@
- app.controller("clienteCtrl", function($scope, $timeout , $location, restful){
+ app.controller("clienteCtrl", function($scope, $timeout , $location, restful,$loading){
 
   //Pega o Token 
   var token = sessionStorage.getItem('usuario.token'); 
@@ -16,10 +16,19 @@
       $scope.cliente = {};  
     };
 
-  //Lista todos os clientes
-    restful.clienteList(token).success(function(data){
-        $scope.clientes = data;
+    $scope.loadClientes = function() {
+      //Starta o Efeito de carregamento apenas  
+      $loading.start('clientes');
+
+      //Lista todos os clientes
+      restful.clienteList(token).success(function(data){
+          $scope.clientes = data;
+
+      //Finalizar o Efeito de carregamento apenas  
+      $loading.finish('clientes');
     });
+    $scope.loadClientes();
+  };
 
   // Show modaais de detalhes, alterar e deletar.
   $scope.dados = function (idCliente){

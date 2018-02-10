@@ -27,11 +27,11 @@
   <div class="row">
     <div class="col-md-5">
       <div class="form-group">
-        <select ng-change="executeCidade(imovel.id)" 
+        <select  dw-loading="estados" dw-loading-options="{text: 'Carregando Estados...'}"ng-change="executeCidade(imovel.id)" 
           ng-options="imovel.id as imovel.nome for imovel in estados track by imovel.id" 
           ng-model="imovel.id">
 
-            <option value="">Selecione Estado</option>
+            <option value="" >Selecione Estado</option>
         </select>
        </div>
       </div>
