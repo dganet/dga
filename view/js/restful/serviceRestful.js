@@ -30,6 +30,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelUpdateImovel = 'caminho do back-end' // Atualiza dados do imovel referente o id do imovel
    $imovelListiIdFotos = 'caminho do back-end' //Retorna alguns dados das Fotos referente ao id
    $imovelUpdateFotos = 'caminho do back-end' // Atualiza dados das Fotos referente o id do imovel
+   $imovelListFiltro = 'caminho do back-end' // Filtro do loop de Imoveis
 
    //MODULO PEFIL
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
@@ -116,7 +117,7 @@ app.service('restful', function ($http,$sessionStorage) {
        console.log(id);
        console.log(token);
        console.log(proprietario);
-    return  $http.put($imovelUpdateProprietario + id + '/' + token + proprietario);
+    return  $http.put($imovelUpdateProprietario + id + '/' + token , proprietario);
     };
    //Lista dados do endereco por id do cliente
    var _imovelListiIdEndereco = function (id,token){
@@ -129,7 +130,7 @@ var _imovelUpdateEndereco = function (id,token,endereco){
     console.log(id);
     console.log(token);
     console.log(endereco);
- return  $http.put($imovelUpdateEndereco + id + '/' + token + endereco);
+ return  $http.put($imovelUpdateEndereco + id + '/' + token , endereco);
  };
     //Lista dados do imovel por id do imovel
     var _imovelListiIdImovel = function (id,token){
@@ -142,7 +143,7 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         console.log(id);
         console.log(token);
         console.log(endereco);
-     return  $http.put($imovelUpdateEndereco + id + '/' + token + imovel);
+     return  $http.put($imovelUpdateEndereco + id + '/' + token , imovel);
      };
     //Lista fotos do imovel por id do imovel
     var _imovelListiIdFotos = function (id,token){
@@ -155,8 +156,12 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         console.log(id);
         console.log(token);
         console.log(fotos);
-     return  $http.put($imovelUpdateFotos + id + '/' + token + fotos);
+     return  $http.put($imovelUpdateFotos + id + '/' + token , fotos);
      };
+
+     var _imovelListFiltro = function(filtro,token){
+         return $http.get($imovelListFiltro + '/' + token , filtro)
+     }
 //|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
@@ -233,6 +238,8 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         imovelListiIdFotos : _imovelListiIdImovel,
         imovelUpdateFotos : _imovelUpdateFotos,
 
+        //Return Busca o Filtro
+        imovelFiltro : _imovelFiltro,
 
         //Return Perfil
         updatePicture : _updatePicture,

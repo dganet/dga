@@ -12,6 +12,9 @@
   $scope.boleano = [
     {label:'Sim',b:"1"},{label: 'Não', b:"0"}
   ];
+  //Ativando loop de imovel Padrao
+  $scope.listPadrao == 'ativo';
+
   // Lista todos Imoveis do Cliente 
   restful.imovelList(token).success(function(response){
       $scope.imovelList = response;
@@ -503,7 +506,7 @@
           });
     };
 
-              //*************FILTRO *********************// 
+              //*************FOTOS *********************// 
  
               $scope.modalUpdateFotos = function(id){
                 restful.listIdFotos(id).success(function(response){
@@ -525,4 +528,20 @@
                   });
             };
 
+
+              //*************FILTRO *********************// 
+ 
+              $scope.busca = function(filtro){
+                restful.imovelFiltro(filtro).success(function(response){
+                    //Ativo o loop do filtro dos imoveis
+                    $scope.imovelFiltro = 'ativo';
+                    //Desativo o loop default do imovel
+                    $scope.imovelList = 'inativo';
+                    // recebe dados do response
+                    $scope.imovelFiltro = response;
+                       // Fecha o Modal
+                                $('#closeModalfiltro').modal('hide');
+                        });
+                      };   
+                      
  });//END do controller

@@ -68,8 +68,9 @@
               </thead>
 
             <tbody> 
-
-             <tr ng-repeat="x in imovelList | filter: busca  "> 
+             
+             <tr ng-repeat="x in imovelFiltro | filter: busca" ng-show="listFiltro == 'ativo'">    
+             <tr ng-repeat="x in imovelList | filter: busca" ng-if="listPadrao == 'ativo'"> 
              
                <td><span class="align-middle">{{x.idImovel}}</span></td>
                <td class="centro" >{{x.isPublic}}</td>
