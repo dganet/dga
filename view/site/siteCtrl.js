@@ -1,4 +1,4 @@
- app.controller("siteCtrl", function($scope, $timeout , $location, $sessionStorage, restful, serviceEnderecos, $loading){
+ app.controller("siteCtrl", function($scope, $timeout , $location, $sessionStorage, restful, serviceEnderecos){
     //Oculata Mensagens
     $scope.mensagemSenha = false;
     $scope.mensagemErroSenha = false;
@@ -30,10 +30,10 @@
 };
     //Endereços Estado / Cidade
     $scope.loadClientes = function() {
-        $loading.start('estados');
+        //$loading.start('estados');
         serviceEnderecos.getEstados().success(function (response){
             $scope.estados = response;
-            $loading.finish('estados');
+            //$loading.finish('estados');
         });
 
     };

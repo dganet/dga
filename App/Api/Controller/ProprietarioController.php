@@ -37,7 +37,10 @@ class ProprietarioController{
      * @return MixidJson
      */
     public function listById($request, $response, $args){
-        return $response->withJson($this->proprietario->find($args['id'])->toArray());
+        $proprietario = Proprietario::getInstance();
+        $proprietario->setPrimaryKey('idProprietario');
+        $proprietario->find($args['id']);
+        return $response->withJson($proprietario);
     }
     /**
      * Salva as informações do Proprietário

@@ -1,4 +1,4 @@
- app.controller("clienteCtrl", function($scope, $timeout , $location, restful,$loading){
+ app.controller("clienteCtrl", function($scope, $timeout , $location, restful){
 
   //Pega o Token 
   var token = sessionStorage.getItem('usuario.token'); 
@@ -18,14 +18,14 @@
 
     $scope.loadClientes = function() {
       //Starta o Efeito de carregamento apenas  
-      $loading.start('clientes');
+      //$loading.start('clientes');
 
       //Lista todos os clientes
       restful.clienteList(token).success(function(data){
           $scope.clientes = data;
 
       //Finalizar o Efeito de carregamento apenas  
-      $loading.finish('clientes');
+      //$loading.finish('clientes');
     });
     $scope.loadClientes();
   };

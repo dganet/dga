@@ -22,11 +22,11 @@ app.service('restful', function ($http,$sessionStorage) {
    //Classes Imovel
    $imovelSave = 'App/imovel/save/'; // Salvar Imovel 
    $imovelList =  'App/imovel/list/'; // Lista os Imoveis do Cliente
-   $imovelListiIdProprietario = 'caminho do back-end' //Retorna alguns dados do Proprietário do Imovel
-   $imovelUpdateProprietario = 'caminho do back-end' // Atualiza dados do Proprietario referente o id do imovel
+   $imovelListiIdProprietario = 'App/proprietario/list/' //Retorna alguns dados do Proprietário do Imovel
+   $imovelUpdateProprietario = 'App/proprietario/update/' // Atualiza dados do Proprietario referente o id do imovel
    $imovelListiIdEndereco = 'caminho do back-end' //Retorna alguns dados do Endereco do Imovel referete ao id
    $imovelUpdateEndereco = 'caminho do back-end' // Atualiza dados do Endereco referente o id do imovel
-   $imovelListiIdImovel = 'caminho do back-end' //Retorna alguns dados do Imovel referente ao id
+   $imovelListiIdImovel = 'App/imovel/list/' //Retorna alguns dados do Imovel referente ao id
    $imovelUpdateImovel = 'caminho do back-end' // Atualiza dados do imovel referente o id do imovel
    $imovelListiIdFotos = 'caminho do back-end' //Retorna alguns dados das Fotos referente ao id
    $imovelUpdateFotos = 'caminho do back-end' // Atualiza dados das Fotos referente o id do imovel
