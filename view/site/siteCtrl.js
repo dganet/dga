@@ -5,7 +5,6 @@
     $scope.mensagemErroEmail = false;
     $scope.mensagemSucessoEmail = false;
 
-
       //Envio de Solicitação de Senha
       $scope.solicitaRecSenha = function(values){
         restful.solicitaResgateSenha(values).success(function(response){

@@ -17,6 +17,14 @@
 
   // Lista todos Imoveis do Cliente
   restful.imovelList(token).success(function(response){
+    response.forEach(function(element) {
+        if (element.isPublic == '1'){
+            element['isPublic'] = 'Publico';
+        }else{
+            element['isPublic'] = 'Privado';
+        }
+
+          }, this);
 
       $scope.imovelList = response;
   });

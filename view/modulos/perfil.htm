@@ -1,6 +1,6 @@
 <div class="menuTemplateRight">
 	<ul>
-
+		<li><a ng-click="click('updateUrl')"><i class="fa fa-share-alt-square" aria-hidden="true"></i> URL Perfil</a></li>
 		<li><a ng-click="click('updateFotos')"><i class="fa fa-picture-o" aria-hidden="true"></i> Mudar Foto</a></li>
 		<li><a ng-click="click('updateDados')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Altera Dados</a></li>
 		<li><a ng-click="click('updateSenha')"><i class="fa fa-lock" aria-hidden="true"></i> Segurança</a></li>
@@ -12,9 +12,46 @@
 <div class="menuTemplateLeft">
 		
 		<div class="alert alert-success" ng-hide="mensagemSucesso">
-		  <strong>Sucesso!</strong> Dados atualizdo com sucesso.
+		  <strong>Sucesso!</strong> Dados atualizado com sucesso.
 		</div>
+<!--
+//|#######################################################|
+//|########### **  FORM UPDATE URL ** ################|
+//|#######################################################|
+-->
 
+<div class="conteudo" ng-if="formUrl == 'ativo'">		
+
+	<div class="alert alert-danger" ng-hide="mensagemErroUrl">
+		<strong>Ops!</strong> Já existe esta url.
+	</div>
+
+	<div class="acoes">
+
+	<i class="fa fa-picture-o" aria-hidden="true"></i>
+		<label>Caminho da URL</label>
+
+	</div>
+
+	<hr>
+
+		<form name="FormUrl" ng-submit="updateUrl(url)" method="post">
+
+			<div class="form-group">
+				<label>URL Personalizada -> </label> http://imobiliar.net.br/<span style="font-weight:bold">{{url.url}}</span>
+				<input type="text" class="form-control" ng-model="url.url" placeholder="exemplos url amigavel: guilherme.britto, adnilton.santos,nomeSobrenome">
+			</div>
+
+			<div class="alert alert-warning">
+				<strong>Observação!</strong> Essa informação é muito importante, será o endereço onde todos consegue visualizar o seu perfil,alteração da url pode gerar desconforto para seus clientes que já possui o seu contato seja por cartão de visita, facebook , google entre outros.
+			</div>
+
+			<hr>  
+			<button type="submit" class="btn btn-primary">Atualizar
+				 Dados</button> 
+
+		</form>
+	</div>
 <!--
 //|#######################################################|
 //|########### **  FORM UPDATE FOTOS ** ################|
@@ -36,7 +73,7 @@
 
 			  <div class="form-group">
 			    <label>Alterar a foto Perfil</label>
-			    <input type="file" ng-file-model="picture.foto" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)")">
+			    <input type="file" ng-file-model="picture.foto" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
 			  </div>
 
 			  <hr>  

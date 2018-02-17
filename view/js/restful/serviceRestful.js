@@ -31,8 +31,14 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelListiIdFotos = 'caminho do back-end' //Retorna alguns dados das Fotos referente ao id
    $imovelUpdateFotos = 'caminho do back-end' // Atualiza dados das Fotos referente o id do imovel
    $imovelListFiltro = 'caminho do back-end' // Filtro do loop de Imoveis
+   
+   //Classes Corretor
+   $corretorListImovel = 'caminho do back-end'// Lista os Imoveis Publico de um determinado corretor atraves da url
+   $corretorListDados = 'caminho do back-end' // Pega os dados do corretor atraves da URL
 
    //MODULO PEFIL
+   $checkURL = 'CAMINHO PARA BACK-END'; //Verifica se Existe essa URL
+   $updateURL = 'CAMINHO PARA BACK-END'; //Update URL
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
    $updatePessoal = 'CAMINHO PARA BACK-END'; //Update Dados Pessoais
    $updateSenhaPerfil = 'App/usuario/update/'; //Update Dados Pessoais
@@ -163,9 +169,34 @@ var _imovelUpdateEndereco = function (id,token,endereco){
          return $http.get($imovelListFiltro + '/' + token , filtro)
      }
 //|#######################################################|
+//|############# **  MODULO CORRETOR ** ################|
+//|#######################################################|
+   //List Imovel do Corretor
+   var _corretorListImovel = function (values){
+    //console.log(values,token); 
+     return  $http.get($corretorListImovel, values);
+ };
+    //Listar Dados do Corretor
+   var _corretorListDados = function (values){
+    //console.log(values,token); 
+     return  $http.get($corretorListDados, values);
+ };
+
+
+
+//|#######################################################|
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
-
+   //Check URL
+   var _checkURL = function (values ,token){
+    //console.log(values,token); 
+     return  $http.get($checkURL + token , values);
+ };
+   //Update Picture
+   var _updateURL = function (values ,token){
+    //console.log(values,token); 
+     return  $http.put($updateURL + token , values);
+ };
    //Update Picture
     var _updatePicture = function (values ,token){
        //console.log(values,token); 
@@ -237,7 +268,10 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         imovelUpdateImovel : _imovelUpdateImovel,
         imovelListiIdFotos : _imovelListiIdImovel,
         imovelUpdateFotos : _imovelUpdateFotos,
-
+        
+        //Corretor
+        corretorListImovel: _corretorListImovel,
+        corretorListDados: _corretorListDados,
         //Return Busca o Filtro
         imovelListFiltro : _imovelListFiltro,
 
@@ -245,6 +279,8 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         updatePicture : _updatePicture,
         updatePessoal : _updatePessoal,
         updateSenhaPerfil : _updateSenhaPerfil,
+        checkURL : _checkURL,
+        updateURL : _updateURL,
         
         //Return Resgate Senha e Update da Senha
         solicitaResgateSenha : _solicitaResgateSenha,

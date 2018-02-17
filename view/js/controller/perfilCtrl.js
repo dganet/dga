@@ -10,6 +10,7 @@
   $scope.mensagemSucesso = true;
   $scope.mensagemAtualizado = true;
   $scope.mensagemDelete = true;
+  $scope.mensagemErroUrl = true;
       // Oculta a mensagem da Senha
       $scope.mensagemSenha = true;
       // Oculta a mensagem da Senha
@@ -31,8 +32,13 @@
   $scope.formSenha = 'ativo';
   $scope.formDados = 'inativo';
   $scope.formFoto = 'inativo';
-
   };
+  if (dados == 'updateUrl'){
+    $scope.formUrl = 'ativo'
+    $scope.formSenha = 'inativo';
+    $scope.formDados = 'inativo';
+    $scope.formFoto = 'inativo';
+    };
 
   };
 
@@ -211,7 +217,30 @@ $scope.update = function(pessoal){
         };
       };
 
-
+      // Update URL
+      $scope.updateUrl = function(url){
+        //verifica se existe o caminho 
+        restful.checkURL(url).success(function(){
+          response == true;
+          //se existir , printa a informa na tela
+          if (response == true){
+              // Funcão de exibir a mensagem  em 5 segundos.
+              $scope.mensagemErroUrl = false;
+              $timeout(function () {
+                        $scope.mensagemErroUrl = true;
+                    },5000);  
+          }else{
+            //Se não existir , atuliza
+            restful.updateURL(url).success(function(response){
+              // Funcão de exibir a mensagem  em 5 segundos.
+              $scope.mensagemSenhaSucesso = false;
+              $timeout(function () {
+                        $scope.mensagemSenhaSucesso = true;
+                    },5000);   
+            });
+          }
+        });
+      }
 
  });//END do controller}
 
