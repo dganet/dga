@@ -17,11 +17,7 @@
 
   // Lista todos Imoveis do Cliente
   restful.imovelList(token).success(function(response){
-      array.forEach(response => {
-          if(response.isPublic == '1'){
-              response.isPublic = "Público";
-          }
-      })
+
       $scope.imovelList = response;
   });
 
@@ -448,7 +444,7 @@
            //*************UPDATE ENDERECO *********************//
 
     $scope.modalUpdateEndereco = function(id){
-        restful.listIdEndereco(id).success(function(response){
+        restful.imovelListiIdEndereco(id).success(function(response){
             $scope.endereco = response;
 
             $scope.updateEndereco = function(endereco){
