@@ -3,11 +3,11 @@
     <!-- Mensagens-->
     <div class="row">
       <div class="col col-md-12">
-        
+
         <div class="alert alert-success" ng-hide="mensagemSucesso">
           <strong>Sucesso!</strong> Dados cadastrado com sucesso.
         </div>
-          
+
         <div class="alert alert-warning" ng-hide="mensagemAtualizado">
           <strong>Sucesso!</strong> Dados alterado com sucesso.
         </div>
@@ -15,21 +15,21 @@
         <div class="alert alert-danger" ng-hide="mensagemDelete">
           <strong>Sucesso!</strong> Dados deletado com sucesso.
         </div>
-          
+
     </div>
     </div>
 
 
-    
+
      <!-- Topo Template-->
     <div class="row">
 
       <div class="col col-md-4 labelTemplate">
           <i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
           <label>Painel de Ações do Imoveis</label>
-          
+
       </div>
-        
+
        <div class="col col-md-4">
          <div class="input-group margin-bottom-sm">
     			 <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
@@ -49,9 +49,9 @@
 
     </div>
 
- <!-- Corpo Template-->
+ <!-- Corpo Templatpwee-->
     <div class="row corpoTemplate">
-        
+
         <div class="col col-md-12">
             <table class="table table-hover corpoTableTemplate" style="height: 100px;">
               <thead>
@@ -67,25 +67,25 @@
                 </tr>
               </thead>
 
-            <tbody> 
-             
-             <tr ng-repeat="x in imovelFiltro | filter: busca" ng-show="listFiltro == 'ativo'">    
-             <tr ng-repeat="x in imovelList | filter: busca" ng-if="listPadrao == 'ativo'"> 
-             
+            <tbody>
+
+             <tr ng-repeat="x in imovelFiltro | filter: busca" ng-if="listFiltro == 'ativo'">
+             <tr ng-repeat="x in imovelList | filter: busca" ng-if="listPadrao == 'ativo'">
+
                <td><span class="align-middle">{{x.idImovel}}</span></td>
                <td class="centro" >{{x.isPublic}}</td>
                <td><img src="view/galeria/casa01.jpg" width="125" height="100"></td>
                <td class="centro">{{x.tipoOperacaoImovel}}</td>
-               
+
                <td class="centro">
                    R$ {{x.valorVendaImovel}}
                </td>
-               
+
                 <td class="centro">
                    {{bairroImovel}}, {{cidadeImovel}} - {{estadoImovel}}
                    Rua Guanabara teste 2 e teste 2 <br>
                    Boraceia, Bertioga-SP
-                   
+
                 </td>
 
                <td class="centro">
@@ -101,13 +101,13 @@
                    <i class="fa fa-picture-o" aria-hidden="true"></i>
                  </a>
 
-                
+
                </td>
-               
+
                  <td class="centro">
                      <a class="btn btn-default" ng-click="dados(x.idCliente)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-delete" ><i class="fa fa-trash-o "></i></a>
                </td>
-             
+
                 </tr>
 
 
@@ -115,13 +115,13 @@
 
 
             </tbody>
-                
+
             </table>
-            
+
         </div>
 
     </div>
-        
+
   <!-- Modal Novo -->
 <div class="modal fade bs-example-modal-lg-post" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="closeModalPost">
   <div class="modal-dialog modal-lg" role="document">
@@ -131,15 +131,15 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Cadastrar Imovel</h4>
       </div>
-        
-   
+
+
            <div class="modal-body">
 
 <!-- FORMULARIO QUE CHECK O CPF -->
                   <div class="row" ng-if="formCPF == 'ativo'">
 
                       <form name="FormCPF" ng-submit="checkCPF(proprietario)">
-                          
+
                           <div class="col-md-4">
                           <div class="form-group">
                               <label>CPF</label>
@@ -295,11 +295,11 @@
     <div ng-if="formImovel == 'ativo'">
         <div class="row">
              <form name="terceiro" ng-submit="terceiroPasso(imovel)">
-               
+
                <div class="col-md-6">
                <div class="form-group">
                     <label>Imovél</label>
-                    <select class="form-control" 
+                    <select class="form-control"
                             ng-model="imovel.isPublic"
                             ng-options="x.b as x.label for x in boleano">
                             <option value="">Imovel é Publico ?</option>
@@ -393,7 +393,7 @@
                 <div class="col-md-3" ng-if="mobiliadoImovel == 'ativo'">
                 <div class="form-group">
                     <label>Mobilado</label>
-                    <select class="form-control" 
+                    <select class="form-control"
                             ng-model="imovel.mobiliadoImovel"
                             ng-options="x.b as x.label for x in boleano">
                             <option value="">é mobilado ?</option>
@@ -404,7 +404,7 @@
                 <div class="col-md-3" ng-if="elevadorImovel == 'ativo'">
                 <div class="form-group">
                     <label>Elevador</label>
-                    <select class="form-control" 
+                    <select class="form-control"
                             ng-model="imovel.elevadorImovel"
                             ng-options="x.b as x.label for x in boleano">
                             <option value="">Tem Elevador ?</option>
@@ -566,10 +566,10 @@
      </div><!-- FORMULARIO DE IMAGENS-->
 
            </div><!--modal-body -->
-        
-             
+
+
              <div class="modal-footer">
-                
+
                  <div class="progress">
                   <div class="progress-bar" role="progressbar" aria-valuenow="{{progresso}}"
                   aria-valuemin="0" aria-valuemax="100" style="width:{{progresso}}%">
@@ -579,11 +579,11 @@
 
              </div>
 
-        
+
     </div>
   </div>
-</div>   
-    
+</div>
+
 <!-- Modal Update Proprietario -->
 <div class="modal fade bs-example-modal-lg-UpdateProprietario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdateProprietario">
   <div class="modal-dialog modal-lg" role="document">
@@ -593,9 +593,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
       </div>
-        
-       <form name="FormCliente" ng-submit="updateProprietario(proprietario)"> 
-    
+
+       <form name="FormCliente" ng-submit="updateProprietario(proprietario)">
+
            <div class="modal-body">
               <div class="row">
 
@@ -623,21 +623,21 @@
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Telefone</label>
-                    <input type="text" class="form-control" ng-model="proprietario.telefoneProprietario" ui-br-phone-number>
+                    <input type="text" class="form-control" ng-model="proprietario.telCelularProprietario" ui-br-phone-number>
                 </div>
                 </div>
 
             </div>    <!--row -->
-       
+
            </div><!--modal-body -->
-        
+
              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Atualizar Dados</button> 
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
               </div>
-           
+
          </form>
-        
+
     </div>
   </div>
 </div>
@@ -652,9 +652,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Atualizar {{cliente.nomeCliente}}</h4>
       </div>
-        
-       <form name="FormCliente" ng-submit="updateEndereco(endereco)"> 
-    
+
+       <form name="FormCliente" ng-submit="updateEndereco(endereco)">
+
            <div class="modal-body">
               <div class="row">
 
@@ -717,16 +717,16 @@
                 </div>
                 </div>
             </div>    <!--row -->
-       
+
            </div><!--modal-body -->
-        
+
              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Atualizar Dados</button> 
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
               </div>
-           
+
          </form>
-        
+
     </div>
   </div>
 </div>
@@ -740,9 +740,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
       </div>
-        
-       <form name="FormCliente" ng-submit="updateImovel(imovel)"> 
-    
+
+       <form name="FormCliente" ng-submit="updateImovel(imovel)">
+
            <div class="modal-body">
               <div class="row">
 
@@ -750,7 +750,7 @@
                <div class="col-md-6">
                <div class="form-group">
                     <label>Imovél</label>
-                    <select class="form-control" 
+                    <select class="form-control"
                             ng-model="imovel.isPublic"
                             ng-options="x.b as x.label for x in boleano">
                             <option value="">Imovel é Publico ?</option>
@@ -844,7 +844,7 @@
                 <div class="col-md-3" ng-if="mobiliadoImovel == 'ativo'">
                 <div class="form-group">
                     <label>Mobilado</label>
-                    <select class="form-control" 
+                    <select class="form-control"
                             ng-model="imovel.mobiliadoImovel"
                             ng-options="x.b as x.label for x in boleano">
                             <option value="">é mobilado ?</option>
@@ -855,7 +855,7 @@
                 <div class="col-md-3" ng-if="elevadorImovel == 'ativo'">
                 <div class="form-group">
                     <label>Elevador</label>
-                    <select class="form-control" 
+                    <select class="form-control"
                             ng-model="imovel.elevadorImovel"
                             ng-options="x.b as x.label for x in boleano">
                             <option value="">Tem Elevador ?</option>
@@ -913,16 +913,16 @@
                 </div>
 
             </div>    <!--row -->
-       
+
            </div><!--modal-body -->
-        
+
              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Atualizar Dados</button> 
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
               </div>
-           
+
          </form>
-        
+
     </div>
   </div>
 </div>
@@ -938,9 +938,9 @@ modalUpdateFotos">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
       </div>
-        
-       <form name="FormCliente" ng-submit="updateFotos(fotos)"> 
-    
+
+       <form name="FormCliente" ng-submit="updateFotos(fotos)">
+
            <div class="modal-body">
               <div class="row">
 
@@ -1010,16 +1010,16 @@ modalUpdateFotos">
                </div>
 
             </div>    <!--row -->
-       
+
            </div><!--modal-body -->
-        
+
              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Atualizar Dados</button> 
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
               </div>
-           
+
          </form>
-        
+
     </div>
   </div>
 </div>
@@ -1028,22 +1028,22 @@ modalUpdateFotos">
  <div class="modal fade bs-example-modal-lg-filtro" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalDel">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-  
+
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Deletar</h4>
         </div>
-          
-              <div class="modal-body">               
+
+              <div class="modal-body">
                 <form name="filtroImoveis" ng-submit="listFiltro(filtro)">
                     <div class="row">
-                    
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Referência" ng-model="filtro.referencia">
                         </div>
                     </div>
-        
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Transação</label>
@@ -1053,7 +1053,7 @@ modalUpdateFotos">
                             </select>
                         </div>
                     </div>
-        
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Tipo do Imovel</label>
@@ -1063,40 +1063,40 @@ modalUpdateFotos">
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Minimo" ng-model="filtro.minimo">
                         </div>
                     </div>
-        
-                    <div class="col-md-6">         
+
+                    <div class="col-md-6">
                         <div class="form-group">
                              <input type="text" class="form-control" placeholder="Máximo" ng-model="filtro.maximo">
                         </div>
                     </div>
-        
-                    <div class="col-md-12">  
+
+                    <div class="col-md-12">
                         <div class="form-group">
-                         <button type="submit" class="btn btn-primary">Buscar</button> 
+                         <button type="submit" class="btn btn-primary">Buscar</button>
                         </div>
                     </div>
-        
+
                     </div>
-        
-                </form>            
+
+                </form>
              </div><!--modal-body -->
-          
+
                <div class="modal-footer">
                    <button type="button" class="btn btn-danger" ng-click="del(cursofaculdade.id)">Sim</button>
                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
                 </div>
-          
+
       </div>
     </div>
   </div>
 
-  
+
  <!-- Modal Delete -->
 <div class="modal fade bs-example-modal-lg-delete" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalDel">
   <div class="modal-dialog modal-lg" role="document">
@@ -1106,16 +1106,16 @@ modalUpdateFotos">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Deletar</h4>
       </div>
-        
-            <div class="modal-body">               
-               Deseja realmente Deletar {{cliente.nomeCliente}} ?                 
+
+            <div class="modal-body">
+               Deseja realmente Deletar {{cliente.nomeCliente}} ?
            </div><!--modal-body -->
-        
+
              <div class="modal-footer">
                  <button type="button" class="btn btn-danger" ng-click="del(cursofaculdade.id)">Sim</button>
                  <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
               </div>
-        
+
     </div>
   </div>
 </div>

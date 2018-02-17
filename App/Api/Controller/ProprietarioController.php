@@ -14,7 +14,7 @@ class ProprietarioController{
      */
     public function __construct(){
         $this->proprietario = Proprietario::getInstance();
-        $this->proprietario->setPrimaryKey('idProprietario');
+
     }
     /**
      * Lista todos os proprietarios
@@ -110,17 +110,18 @@ class ProprietarioController{
      * @param Mixed $args
      * @return MixidJson
      */
-    public function update($request, $responsem ,$args){
+    public function update($request, $response ,$args){
         $token = $args['token'];
         if (Auth::_isLoggedIn($token)){
             $this->proprietario->load(json_decode($request->getBody(), true));
+            $this->proprietario->setPrimaryKey('idProprietario');
             if($this->proprietario->update()){
-                return $request->withJson([
+                return $response->withJson([
                     'message' => 'Proprietario atualizado com sucesso!',
                     'flag' => true
                 ]);
             }else{
-                return $request->withJson([
+                return $response->withJson([
                     'message' => 'Ocorreu um problema ao atualizar o proprietário',
                     'flag' => false
                 ]);
@@ -142,7 +143,7 @@ class ProprietarioController{
                 if ($this->proprietario->cpfProprietario == $post['cpfProprietario']){
                     return $response->withJson($this->proprietario->toArray());
                     break;
-                } 
+                }
             }
             return $response->withJson(['flag' => false]);
         }else{

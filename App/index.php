@@ -61,7 +61,7 @@ $app->put('/imovel/update/{token}', \Api\Controller\ImovelController::class . ':
 //Lista todos os proprietario
 $app->get('/proprietario/list', \Api\Controller\ProprietarioController::class . ':list');
 //Lista os proprietarios atraves do ID
-$app->get('/proprietario/list/{id}', \Api\Controller\ProprietarioController::class . ':listById');
+$app->get('/proprietario/list/{id}/{token}', \Api\Controller\ProprietarioController::class . ':listById');
 //Salva um novo proprietario
 $app->post('/proprietario/save/{token}', \Api\Controller\ProprietarioController::class . ':save');
 //Atualiza as informações do proprietario
@@ -97,7 +97,7 @@ $app->put('/imagem', \Api\Controller\ImageController::class . ':main');
 $app->get('/pais', \Api\Controller\EnderecoController::class . ':getPais');
 //Retorna os Estados cadastrados
 $app->get('/estado', \Api\Controller\EnderecoController::class . ':getEstado');
-//Retorna as Cidades Cadastradas 
+//Retorna as Cidades Cadastradas
 $app->get('/cidade', \Api\Controller\EnderecoController::class . ':getCidade');
 //Retorna os bairros cadastrados
 $app->get('/bairro', \Api\Controller\EnderecoController::class . ':getBairro');
@@ -105,7 +105,7 @@ $app->get('/bairro', \Api\Controller\EnderecoController::class . ':getBairro');
 $app->get('/pais/{id}', \Api\Controller\EnderecoController::class . ':getPaisById');
 //Retorna os Estados por id
 $app->get('/estado/{id}', \Api\Controller\EnderecoController::class . ':getEstadoById');
-//Retorna as Cidades por id 
+//Retorna as Cidades por id
 $app->get('/cidade/{id}', \Api\Controller\EnderecoController::class . ':getCidadeById');
 //Retorna os bairros por id
 $app->get('/bairro/{id}', \Api\Controller\EnderecoController::class . ':getBairroById');

@@ -1,9 +1,9 @@
  app.controller("clienteCtrl", function($scope, $timeout , $location, restful){
 
-  //Pega o Token 
-  var token = sessionStorage.getItem('usuario.token'); 
-  //Pega o idUsuario 
-  var idUsuario = sessionStorage.getItem('usuario.idUsuario'); 
+  //Pega o Token
+  var token = sessionStorage.getItem('usuario.token');
+  //Pega o idUsuario
+  var idUsuario = sessionStorage.getItem('usuario.idUsuario');
   //scope.master vazio;
   $scope.master = {};
   //Ocultando o Alert Mensagem .
@@ -13,28 +13,21 @@
 
 //Novo registro. zera todas informaçoes do objeto
     $scope.novo = function(){
-      $scope.cliente = {};  
+      $scope.cliente = {};
     };
-
-    $scope.loadClientes = function() {
-      //Starta o Efeito de carregamento apenas  
-      //$loading.start('clientes');
 
       //Lista todos os clientes
       restful.clienteList(token).success(function(data){
           $scope.clientes = data;
-
-      //Finalizar o Efeito de carregamento apenas  
-      //$loading.finish('clientes');
     });
-    $scope.loadClientes();
-  };
+
+
 
   // Show modaais de detalhes, alterar e deletar.
   $scope.dados = function (idCliente){
-      //Resentando 
+      //Resentando
       $scope.reset = function() {
-      // Copiando os valores vazio do scope.master 
+      // Copiando os valores vazio do scope.master
         $scope.cliente = angular.copy($scope.master);
       };
       // Ativando a função
@@ -42,11 +35,11 @@
           //Pega as info da universidade selecionada
       restful.clienteListId(idCliente).success(function(data){
         console.log(data);
-        $scope.cliente = data;  
+        $scope.cliente = data;
           });
     };
 
-//*************CADASTRA NOVO CLIENTE *********************// 
+//*************CADASTRA NOVO CLIENTE *********************//
 
   //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, formCliente) {
@@ -54,12 +47,12 @@
     restful.clienteSave(values,token).success(function(response){
       // Fecha o Modal
       $('#closeModalPost').modal('hide');
-    
+
     //Lista todas Cursos
     restful.clienteList(token).success(function(data){
-    $scope.clientes = data;       
+    $scope.clientes = data;
   });
-        
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagemSucesso = false;
       $timeout(function () {
@@ -68,7 +61,7 @@
     });
      //Resentando os input do formulario .
     $scope.reset = function() {
-    // Copiando os valores vazio do scope.master 
+    // Copiando os valores vazio do scope.master
       $scope.cliente = angular.copy($scope.master);
     };
     // Ativando a função
@@ -76,7 +69,7 @@
 
   };
 
-//************* UPDATE *********************//   
+//************* UPDATE *********************//
 
 //Passa os valores do form em Objeto no "values"
   $scope.put = function(values, formCliente) {
@@ -87,9 +80,9 @@
 
         //Lista todas Cursos
         restful.clienteList(token).success(function(data){
-            $scope.clientes = data;       
+            $scope.clientes = data;
         });
-         
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagemAtualizado = false;
       $timeout(function () {
@@ -100,7 +93,7 @@
 
 };
 
-//************* DELETE *********************// 
+//************* DELETE *********************//
 
 //Passa os valores do form em Objeto no "values"
   $scope.del = function(values) {
@@ -108,12 +101,12 @@
     restful.clienteDel(values,token).success(function(){
     // Fecha o Modal
       $('#closeModalDel').modal('hide');
-        
+
      //Lista todas Cursos
         restful.clienteList().success(function(data){
-            $scope.clientes = data;       
+            $scope.clientes = data;
         });
-        
+
       // Funcão de exibir a mensagem de sucesso em 5 segundos.
       $scope.mensagemDelete = false;
       $timeout(function () {

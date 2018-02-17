@@ -1,6 +1,6 @@
  app.controller("imovelCtrl", function($scope, restful,$timeout , $location, $http, serviceEnderecos){
-   //Pega o Token 
-  var token = sessionStorage.getItem('usuario.token'); 
+   //Pega o Token
+  var token = sessionStorage.getItem('usuario.token');
 
   //scope.master vazio;
   $scope.master = {};
@@ -13,9 +13,9 @@
     {label:'Sim',b:"1"},{label: 'Não', b:"0"}
   ];
   //Ativando loop de imovel Padrao
-  $scope.listPadrao == 'ativo';
+  $scope.listPadrao = 'ativo';
 
-  // Lista todos Imoveis do Cliente 
+  // Lista todos Imoveis do Cliente
   restful.imovelList(token).success(function(response){
       $scope.imovelList = response;
   });
@@ -191,12 +191,12 @@
      };
 
 //*************CADASTRA IMOVEL *********************//
-    
+
     //Armazena os dados do Objeto Proprietario
     var emptyProprietario = [];
     // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
     var p = {infoProprietario:emptyProprietario};
-   
+
     //Armazena os dados do Objeto Endereco
     var emptyEndereco = [];
     // Modelo a Ser Enviado para o Back End, não faz nenhuma importancia no front
@@ -304,7 +304,7 @@
             // Ativa o Formulario do Segundo Passo
             $scope.formEndereco = 'ativo';
 
-           
+
         };
      //
      //
@@ -322,7 +322,7 @@
             $scope.formImovel = 'ativo';
 
 
-          
+
 };//END do controller
      //
      //
@@ -348,16 +348,16 @@
           $scope.files.push(element.files[i])
         }
 
-               //Pega o tamano da foto   
+               //Pega o tamano da foto
               $tamanhoFoto = elementosFoto[0]['size'];
               // Pega extensão da Imagem
               $extensaoFoto = elementosFoto[0]['type'];
               //Pega nome da Foto
               $nomeFoto = elementosFoto[0]['name'];
-              // Valida se é menor que 2MB e se é diferente de jpeg e jpg  
+              // Valida se é menor que 2MB e se é diferente de jpeg e jpg
               if ($tamanhoFoto > 2000000 || $extensaoFoto != 'image/jpeg' && 'image/jpg'){
                 alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
-              
+
               }
 
       });
@@ -366,16 +366,16 @@
     $scope.quartoPasso = function(fotos){
 
       angular.forEach(fotos, function(value,key){
-         // Valida se é menor que 2MB e se é diferente de jpeg e jpg  
+         // Valida se é menor que 2MB e se é diferente de jpeg e jpg
         if(value.size < 2000000 && value.type == 'image/jpeg' && 'image/jpg'){
-            
+
             // Armazena as fotos no -> emptyfotos
             this.push(value);
-             
 
 
-          //*************CADASTRA NOVO IMOVEL *********************// 
- 
+
+          //*************CADASTRA NOVO IMOVEL *********************//
+
 
           restful.imovelSave(peif).success(function(response){
 
@@ -390,7 +390,7 @@
           $scope.reset = function() {
             $scope.formCPF ='Ativo';
             $scope.formImagens = 'inativo';
-          // Copiando os valores vazio do scope.master 
+          // Copiando os valores vazio do scope.master
             $scope.imovel = angular.copy($scope.master);
             $scope.proprietario = angular.copy($scope.master);
             $scope.endereco = angular.copy($scope.master);
@@ -400,28 +400,28 @@
           $scope.reset();
 
              });
-          
+
                          // Fecha o Modal
                $('#closeModalPost').modal('hide');
 
-               
+
         }else{
              alert('Imagens Invalidas - > ' + value.name);}
              ;
-  
+
       },emptyFotos);
     }
 
 
-          //*************UPDATE PROPRIETARIO *********************// 
- 
+          //*************UPDATE PROPRIETARIO *********************//
+
           //Lista os dados do proprietario referente ao id
     $scope.modalUpdateProprietario = function(id){
       restful.imovelListiIdProprietario(id,token).success(function(response){
-        $scope.imovel = response;
-       
+        $scope.proprietario = response;
+
         $scope.updateProprietario = function(proprietario){
-            
+
             restful.imovelUpdateProprietario(id,token,proprietario).success(function(response){
                  // Fecha o Modal
                     $('#closeModalUpdateProprietario').modal('hide');
@@ -431,8 +431,8 @@
                             $scope.mensagemSucesso = true;
                         },10000);
             });
-          };   
-         
+          };
+
       });
     };
          //atualiza o proprietario
@@ -440,14 +440,14 @@
 
 
 
-           //*************UPDATE ENDERECO *********************// 
- 
+           //*************UPDATE ENDERECO *********************//
+
     $scope.modalUpdateEndereco = function(id){
         restful.listIdEndereco(id).success(function(response){
             $scope.endereco = response;
 
             $scope.updateEndereco = function(endereco){
-            
+
                 restful.imovelUpdateEndereco(id,token,endereco).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateEndereco').modal('hide');
@@ -457,19 +457,19 @@
                                 $scope.mensagemSucesso = true;
                             },10000);
                 });
-              };   
+              };
 
           });
     };
-    
-          //*************UPDATE IMOVEL *********************// 
- 
+
+          //*************UPDATE IMOVEL *********************//
+
     $scope.modalUpdateImovel = function(id){
         restful.listIdImovel(id).success(function(response){
             $scope.imovel = response;
 
             $scope.updateImovel = function(imovel){
-            
+
                 restful.imovelUpdateImovel(id,token,imovel).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateImovel').modal('hide');
@@ -479,19 +479,19 @@
                                 $scope.mensagemSucesso = true;
                             },10000);
                 });
-              };   
+              };
 
           });
     };
-    
-          //*************UPDATE PROPRIETARIO *********************// 
- 
+
+          //*************UPDATE PROPRIETARIO *********************//
+
     $scope.modalUpdateFotos = function(id){
         restful.listIdFotos(id).success(function(response){
             $scope.imovel = response;
 
             $scope.updateFotos = function(fotos){
-            
+
                 restful.imovelUpdateFotos(id,token,Fotos).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateImagem').modal('hide');
@@ -501,19 +501,19 @@
                                 $scope.mensagemSucesso = true;
                             },10000);
                 });
-              };   
+              };
 
           });
     };
 
-              //*************FOTOS *********************// 
- 
+              //*************FOTOS *********************//
+
               $scope.modalUpdateFotos = function(id){
                 restful.listIdFotos(id).success(function(response){
                     $scope.imovel = response;
-        
+
                     $scope.updateFotos = function(fotos){
-                    
+
                         restful.imovelUpdateFotos(id,token,Fotos).success(function(response){
                              // Fecha o Modal
                                 $('#closeModalUpdateImagem').modal('hide');
@@ -523,14 +523,14 @@
                                         $scope.mensagemSucesso = true;
                                     },10000);
                         });
-                      };   
-        
+                      };
+
                   });
             };
 
 
-              //*************FILTRO *********************// 
- 
+              //*************FILTRO *********************//
+
               $scope.listFiltro = function(filtro){
                 restful.imovelFiltro(filtro).success(function(response){
                     //Ativo o loop do filtro dos imoveis
@@ -542,6 +542,6 @@
                        // Fecha o Modal
                                 $('#closeModalfiltro').modal('hide');
                         });
-                      };   
+                      };
 
  });//END do controller
