@@ -16,11 +16,13 @@ class CarteiraCliente extends \GORM\Model{
              foreach ($return as $key => $value) {
                  $cliente = new Cliente();
                  $cliente->setPrimaryKey('idCliente');
-                 $cliente = $cliente->makeSelect()->where('idCliente ='.$value['idCliente'])->and('statusCliente= "ATIVO"')->execute();
+                 $cliente = $cliente->makeSelect()->where('idCliente ='.$value['idCliente'])->execute();
                  if ($cliente->exists(0)){
                    $cliente = $cliente->get(0);
+                   if($cliente->statusCliente == 'ATIVO'){
+                       $collection->add($cliente);
+                   }
                  }
-                 $collection->add($cliente);
              }
              return $collection;
         }else{
