@@ -22,16 +22,19 @@
   $scope.formFoto = 'ativo';
   $scope.formDados = 'inativo';
   $scope.formSenha = 'inativo';
+  $scope.formUrl = 'inativo';
   };
   if (dados == 'updateDados'){
   $scope.formDados = 'ativo';
   $scope.formFoto = 'inativo';
   $scope.formSenha = 'inativo';
+  $scope.formUrl = 'inativo';
   };
   if (dados == 'updateSenha'){
   $scope.formSenha = 'ativo';
   $scope.formDados = 'inativo';
   $scope.formFoto = 'inativo';
+  $scope.formUrl = 'inativo';
   };
   if (dados == 'updateUrl'){
     $scope.formUrl = 'ativo'
@@ -240,6 +243,7 @@ $scope.update = function(pessoal){
             });
           }
         });
+
       }
 
  });//END do controller}
