@@ -89,6 +89,8 @@ $app->delete('/cliente/delete/{id}/{token}', \Api\Controller\ClienteController::
  * IMAGEM
  */
 $app->put('/imagem', \Api\Controller\ImageController::class . ':main');
+$app->get('/imagem/listId/{idImagem}/{token}', \Api\Controller\ImageController::class . ':listId');
+$app->get('/imagem/galeria/{idImovel}/{token}', \Api\Controller\ImageController::class . ':getGaleria');
 //FIM IMAGEM
 /**
  * ENDERECOS

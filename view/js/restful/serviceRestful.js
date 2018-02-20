@@ -2,8 +2,8 @@ app.service('restful', function ($http,$sessionStorage) {
  //Pegando Token
  var token = sessionStorage.getItem('usuario.token');
 
-//REQUISICOES DO FRONT-END TO BACK-END 
-  
+//REQUISICOES DO FRONT-END TO BACK-END
+
   //CAMINHOS
 
    //Classes Usuario
@@ -17,10 +17,10 @@ app.service('restful', function ($http,$sessionStorage) {
    $clienteList = 'App/cliente/list/'; // Lista todos os Cliente referente ao id do Usuario
    $clienteListId = 'App/cliente/listId/'; // Lista unico cliente referente ao ID + token
    $clientePut = 'App/cliente/update/'; // Lista unico cliente referente ao ID + token
-   $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token   
+   $clienteDel = 'App/cliente/delete/'; // Lista unico cliente referente ao ID + token
 
    //Classes Imovel
-   $imovelSave = 'App/imovel/save/'; // Salvar Imovel 
+   $imovelSave = 'App/imovel/save/'; // Salvar Imovel
    $imovelList =  'App/imovel/list/'; // Lista os Imoveis do Cliente
    $imovelListiIdProprietario = 'App/proprietario/list/' //Retorna alguns dados do Proprietário do Imovel
    $imovelUpdateProprietario = 'App/proprietario/update/' // Atualiza dados do Proprietario referente o id do imovel
@@ -28,10 +28,10 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelUpdateEndereco = 'caminho do back-end' // Atualiza dados do Endereco referente o id do imovel
    $imovelListiIdImovel = 'App/imovel/list/' //Retorna alguns dados do Imovel referente ao id
    $imovelUpdateImovel = 'caminho do back-end' // Atualiza dados do imovel referente o id do imovel
-   $imovelListiIdFotos = 'caminho do back-end' //Retorna alguns dados das Fotos referente ao id
-   $imovelUpdateFotos = 'caminho do back-end' // Atualiza dados das Fotos referente o id do imovel
+   $imovelListiIdFotos = '/App/imagem/listId/' //Retorna alguns dados das Fotos referente ao id
+   $imovelUpdateFotos = '/App/imagem/update/' // Atualiza dados das Fotos referente o id do imovel
    $imovelListFiltro = 'caminho do back-end' // Filtro do loop de Imoveis
-   
+
    //Classes Corretor
    $corretorListImovel = 'caminho do back-end'// Lista os Imoveis Publico de um determinado corretor atraves da url
    $corretorListDados = 'caminho do back-end' // Pega os dados do corretor atraves da URL
@@ -42,13 +42,13 @@ app.service('restful', function ($http,$sessionStorage) {
    $updatePicture = 'CAMINHO PARA BACK-END'; //Update Foto
    $updatePessoal = 'CAMINHO PARA BACK-END'; //Update Dados Pessoais
    $updateSenhaPerfil = 'App/usuario/update/'; //Update Dados Pessoais
-   
+
 
    // Resgate Senha e Update Senha
    $solicitaResgateSenha = 'App/usuario/login/forgot'; // Envia o Email para Solicitação do Codigo de recuperacao de Senha
    $resgateSenha = 'App/usuario/login/forgot/check'; // Envia o Codigo para o Back End verificar se existe um resgate Senha
-   $updateSenha = 'App/usuario/login/forgot/change'; // Envia a senha atualiza e o e-mail  
-   // Logout Sistema 
+   $updateSenha = 'App/usuario/login/forgot/change'; // Envia a senha atualiza e o e-mail
+   // Logout Sistema
    $logout = 'App/usuario/logout' // Mando o Token para o Back-End para quebrar a Sessão
 
 
@@ -105,7 +105,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri novo Imovel
     var _imovelSave = function (values, token){
-        
+
         return  $http.post($imovelSave + sessionStorage.getItem('usuario.token'), values);
     };
    //Lista todos imoveis do cliente
@@ -173,12 +173,12 @@ var _imovelUpdateEndereco = function (id,token,endereco){
 //|#######################################################|
    //List Imovel do Corretor
    var _corretorListImovel = function (values){
-    //console.log(values,token); 
+    //console.log(values,token);
      return  $http.get($corretorListImovel, values);
  };
     //Listar Dados do Corretor
    var _corretorListDados = function (values){
-    //console.log(values,token); 
+    //console.log(values,token);
      return  $http.get($corretorListDados, values);
  };
 
@@ -189,17 +189,17 @@ var _imovelUpdateEndereco = function (id,token,endereco){
 //|#######################################################|
    //Check URL
    var _checkURL = function (values ,token){
-    //console.log(values,token); 
+    //console.log(values,token);
      return  $http.get($checkURL + token , values);
  };
    //Update Picture
    var _updateURL = function (values ,token){
-    //console.log(values,token); 
+    //console.log(values,token);
      return  $http.put($updateURL + token , values);
  };
    //Update Picture
     var _updatePicture = function (values ,token){
-       //console.log(values,token); 
+       //console.log(values,token);
         return  $http.put($updatePicture + token , values);
     };
 
@@ -268,7 +268,7 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         imovelUpdateImovel : _imovelUpdateImovel,
         imovelListiIdFotos : _imovelListiIdImovel,
         imovelUpdateFotos : _imovelUpdateFotos,
-        
+
         //Corretor
         corretorListImovel: _corretorListImovel,
         corretorListDados: _corretorListDados,
@@ -281,7 +281,7 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         updateSenhaPerfil : _updateSenhaPerfil,
         checkURL : _checkURL,
         updateURL : _updateURL,
-        
+
         //Return Resgate Senha e Update da Senha
         solicitaResgateSenha : _solicitaResgateSenha,
         resgateSenha : _resgateSenha,
