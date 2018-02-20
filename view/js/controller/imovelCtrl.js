@@ -17,6 +17,7 @@
 
   // Lista todos Imoveis do Cliente
   restful.imovelList(token).success(function(response){
+      console.log(response);
     response.forEach(function(element) {
         if (element.isPublic == '1'){
             element['isPublic'] = 'Publico';
@@ -495,13 +496,13 @@
 
           //*************UPDATE PROPRIETARIO *********************//
 
-    $scope.modalUpdateFotos = function(id){
-        restful.listIdFotos(id).success(function(response){
-            $scope.imovel = response;
+    $scope.modalUpdateProprietario = function(id){
+        restful.imovelListiIdProprietario(id).success(function(response){
+            $scope.proprietario = response;
 
-            $scope.updateFotos = function(fotos){
+            $scope.updateProprietario = function(fotos){
 
-                restful.imovelUpdateFotos(id,token,Fotos).success(function(response){
+                restful.imovelUpdateProprietario(id,token,Fotos).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateImagem').modal('hide');
                         // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -518,9 +519,21 @@
               //*************FOTOS *********************//
 
               $scope.modalUpdateFotos = function(id){
-                restful.listIdFotos(id).success(function(response){
-                    $scope.imovel = response;
-
+                restful.imovelListiIdFotos(id,token).success(function(response){
+                   
+                   var merda = {
+  
+                        "um" :{"idImagem":"3","caminhoImagem":"\/var\/www\/html\/dga\/view\/upload\/","nomeImagem":"15166435245a6624c482a12.jpeg","statusImagem":null,"createAtImagem":"2018-01-22 15:52:04","updateAtImagem":null,"tipoImagem":"image\/jpeg"},
+                        
+                        "dois":{"idImagem":"3","caminhoImagem":"\/var\/www\/html\/dga\/view\/upload\/","nomeImagem":"15166435245a6624c482a12.jpeg","statusImagem":null,"createAtImagem":"2018-01-22 15:52:04","updateAtImagem":null,"tipoImagem":"image\/jpeg"},
+                        
+                        "tres":{"idImagem":"3","caminhoImagem":"\/var\/www\/html\/dga\/view\/upload\/","nomeImagem":"15166435245a6624c482a12.jpeg","statusImagem":null,"createAtImagem":"2018-01-22 15:52:04","updateAtImagem":null,"tipoImagem":"image\/jpeg"},
+                    
+                        "quatro":{"idImagem":"3","caminhoImagem":"\/var\/www\/html\/dga\/view\/upload\/","nomeImagem":"15166435245a6624c482a12.jpeg","statusImagem":null,"createAtImagem":"2018-01-22 15:52:04","updateAtImagem":null,"tipoImagem":"image\/jpeg"}, 
+                    
+                   };
+                      console.log(merda);
+                      $scope.fotos = merda;
                     $scope.updateFotos = function(fotos){
 
                         restful.imovelUpdateFotos(id,token,Fotos).success(function(response){

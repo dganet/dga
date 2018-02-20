@@ -28,8 +28,8 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelUpdateEndereco = 'caminho do back-end' // Atualiza dados do Endereco referente o id do imovel
    $imovelListiIdImovel = 'App/imovel/list/' //Retorna alguns dados do Imovel referente ao id
    $imovelUpdateImovel = 'caminho do back-end' // Atualiza dados do imovel referente o id do imovel
-   $imovelListiIdFotos = '/App/imagem/listId/' //Retorna alguns dados das Fotos referente ao id
-   $imovelUpdateFotos = '/App/imagem/update/' // Atualiza dados das Fotos referente o id do imovel
+   $imovelListiIdFotos = 'App/imagem/listId/' //Retorna alguns dados das Fotos referente ao id
+   $imovelUpdateFotos = 'App/imagem/update/' // Atualiza dados das Fotos referente o id do imovel
    $imovelListFiltro = 'caminho do back-end' // Filtro do loop de Imoveis
 
    //Classes Corretor
@@ -266,7 +266,7 @@ var _imovelUpdateEndereco = function (id,token,endereco){
         imovelUpdateEndereco : _imovelUpdateEndereco,
         imovelListiIdImovel : _imovelListiIdImovel,
         imovelUpdateImovel : _imovelUpdateImovel,
-        imovelListiIdFotos : _imovelListiIdImovel,
+        imovelListiIdFotos : _imovelListiIdFotos,
         imovelUpdateFotos : _imovelUpdateFotos,
 
         //Corretor
