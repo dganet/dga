@@ -362,6 +362,19 @@ h4 {
 .obrigatorio {
 	color:red;
 }
+/* Esconde o input */
+input[type='file'] {
+	display: none;
+  }
+  
+  /* Aparência que terá o seletor de arquivo */
+  .label-file {
+    border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	margin: 10px;
+	padding: 6px 20px
+  }
 /* 
 /* Desktop maiores */
 /*@media (min-width: 1200px) { 

@@ -14,10 +14,25 @@
   ];
   //Ativando loop de imovel Padrao
   $scope.listPadrao = 'ativo';
+  //Inputs Imagens
+  var contagem = [
+      {value:"0", label:"Foto Principal"},
+      {value:"1", label:"Foto 01"},
+      {value:"2", label:"Foto 02"},
+      {value:"3", label:"Foto 03"},
+      {value:"4", label:"Foto 04"},
+      {value:"5", label:"Foto 05"},
+      {value:"6", label:"Foto 06"},
+      {value:"7", label:"Foto 07"},
+      {value:"8", label:"Foto 08"},
+      {value:"9", label:"Foto 09"},
+
+    ];
+  $scope.inputsFotos = contagem;
+ 
 
   // Lista todos Imoveis do Cliente
   restful.imovelList(token).success(function(response){
-      console.log(response);
     response.forEach(function(element) {
         if (element.isPublic == '1'){
             element['isPublic'] = 'Publico';
@@ -366,9 +381,8 @@
               $nomeFoto = elementosFoto[0]['name'];
               // Valida se é menor que 2MB e se é diferente de jpeg e jpg
               if ($tamanhoFoto > 2000000 || $extensaoFoto != 'image/jpeg' && 'image/jpg'){
-                alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
-
-              }
+                     alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
+               }
 
       });
     };
@@ -416,7 +430,9 @@
 
 
         }else{
-             alert('Imagens Invalidas - > ' + value.name);}
+             alert('Imagens Invalidas - > ' + value.name);
+        
+            }
              ;
 
       },emptyFotos);
@@ -475,7 +491,7 @@
           //*************UPDATE IMOVEL *********************//
 
     $scope.modalUpdateImovel = function(id){
-        restful.listIdImovel(id).success(function(response){
+        restful.imovelListiIdImovel(id).success(function(response){
             $scope.imovel = response;
 
             $scope.updateImovel = function(imovel){
@@ -520,23 +536,17 @@
 
               $scope.modalUpdateFotos = function(id){
                 restful.imovelListiIdFotos(id,token).success(function(response){
-                   
-                   var merda = {
-  
-                        "um" :{"idImagem":"3","caminhoImagem":"\/var\/www\/html\/dga\/view\/upload\/","nomeImagem":"15166435245a6624c482a12.jpeg","statusImagem":null,"createAtImagem":"2018-01-22 15:52:04","updateAtImagem":null,"tipoImagem":"image\/jpeg"},
-                        
-                        "dois":{"idImagem":"3","caminhoImagem":"\/var\/www\/html\/dga\/view\/upload\/","nomeImagem":"15166435245a6624c482a12.jpeg","statusImagem":null,"createAtImagem":"2018-01-22 15:52:04","updateAtImagem":null,"tipoImagem":"image\/jpeg"},
-                        
-                        "tres":{"idImagem":"3","caminhoImagem":"\/var\/www\/html\/dga\/view\/upload\/","nomeImagem":"15166435245a6624c482a12.jpeg","statusImagem":null,"createAtImagem":"2018-01-22 15:52:04","updateAtImagem":null,"tipoImagem":"image\/jpeg"},
-                    
-                        "quatro":{"idImagem":"3","caminhoImagem":"\/var\/www\/html\/dga\/view\/upload\/","nomeImagem":"15166435245a6624c482a12.jpeg","statusImagem":null,"createAtImagem":"2018-01-22 15:52:04","updateAtImagem":null,"tipoImagem":"image\/jpeg"}, 
-                    
-                   };
-                      console.log(merda);
-                      $scope.fotos = merda;
-                    $scope.updateFotos = function(fotos){
-
-                        restful.imovelUpdateFotos(id,token,Fotos).success(function(response){
+                        var i = -1;
+                    response.forEach(function(element) {
+                        i++;
+                        element['ordem'] = true; 
+                              
+                          }, this);
+                          console.log(response);
+                    $scope.foto = response;
+                    $scope.updateFotos = function(foto){
+                        console.log(foto);
+                        restful.imovelUpdateFotos(id,token,foto).success(function(response){
                              // Fecha o Modal
                                 $('#closeModalUpdateImagem').modal('hide');
                                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
