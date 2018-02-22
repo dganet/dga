@@ -381,8 +381,10 @@
               $nomeFoto = elementosFoto[0]['name'];
               // Valida se é menor que 2MB e se é diferente de jpeg e jpg
               if ($tamanhoFoto > 2000000 || $extensaoFoto != 'image/jpeg' && 'image/jpg'){
-                     alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
-               }
+                
+                alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
+                
+                  }
 
       });
     };
@@ -542,7 +544,7 @@
                         element['ordem'] = true; 
                               
                           }, this);
-                          console.log(response);
+
                     $scope.foto = response;
                     $scope.updateFotos = function(foto){
                         console.log(foto);
