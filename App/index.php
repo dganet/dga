@@ -50,10 +50,13 @@ $app->put('/usuario/login/forgot/change', \Api\Controller\AuthController::class 
 /**
  * IMOVEIS
  */
-
+//Lista todos imoveis de um usuario
 $app->get('/imovel/list/{token}', \Api\Controller\ImovelController::class . ':list');
+//Lista imovel atraves de um id
 $app->get('/imovel/listId/{id}/{token}', \Api\Controller\ImovelController::class . ':listById');
+//Salva um imovel
 $app->post('/imovel/save/{token}', \Api\Controller\ImovelController::class . ':save');
+//Atualiza um imovel
 $app->put('/imovel/update/{token}', \Api\Controller\ImovelController::class . ':update');
 //FIM IMOVEIS
 /**
@@ -120,6 +123,8 @@ $app->get('/cidade/estado/{id}', \Api\Controller\EnderecoController::class . ':g
 $app->get('/estado/pais/{id}', \Api\Controller\EnderecoController::class . ':getEstadoByPais');
 //Insere Novo bairro
 $app->post('/bairro/save', \Api\Controller\EnderecoController::class . ':setBairro');
+// Retorna o endereco completo atraves do id do Bairro
+$app->get('/endereco/{id}/{token}', \Api\Controller\EnderecoController::class . ':getEndereco');
 /**
  * TESTE
  */
