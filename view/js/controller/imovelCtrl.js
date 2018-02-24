@@ -16,18 +16,23 @@
   $scope.listPadrao = 'ativo';
   //Inputs Imagens
   var contagem = [
-      {value:"0", label:"Foto Principal"},
-      {value:"1", label:"Foto 01"},
-      {value:"2", label:"Foto 02"},
-      {value:"3", label:"Foto 03"},
-      {value:"4", label:"Foto 04"},
-      {value:"5", label:"Foto 05"},
-      {value:"6", label:"Foto 06"},
-      {value:"7", label:"Foto 07"},
-      {value:"8", label:"Foto 08"},
-      {value:"9", label:"Foto 09"},
+      {value:"0", label:"Foto Principal", status:"true"},
+      {value:"1", label:"Foto 01",status:"true"},
+      {value:"2", label:"Foto 02",status:"true"},
+      {value:"3", label:"Foto 03",status:"true"},
+      {value:"4", label:"Foto 04",status:"true"},
+      {value:"5", label:"Foto 05",status:"true"},
+      {value:"6", label:"Foto 06",status:"true"},
+      {value:"7", label:"Foto 07",status:"true"},
+      {value:"8", label:"Foto 08",status:"true"},
+      {value:"9", label:"Foto 09",status:"true"},
 
-    ];
+    ];  
+    $scope.fotoSelect = function(value){
+       var a = this.fotoSelecionado = value;
+        this.contactCopy = angular.copy(value);
+        console.log(a);
+    };
   $scope.inputsFotos = contagem;
  
 
@@ -365,7 +370,8 @@
       // MULTIPLOS UPLOAD DE IMAGENS
 
         //FUNÇÃO QUE PRINTA OS ALERTAS CONFORME AS ESPECIFICAÇÕES
-        $scope.verificaFoto = function(element){
+       $scope.verificaFoto = function(element){
+
        $scope.$apply(function(scope) {
       // Turn the FileList object into an Array
         var elementosFoto = $scope.files = []
@@ -381,8 +387,7 @@
               $nomeFoto = elementosFoto[0]['name'];
               // Valida se é menor que 2MB e se é diferente de jpeg e jpg
               if ($tamanhoFoto > 2000000 || $extensaoFoto != 'image/jpeg' && 'image/jpg'){
-                
-                alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
+               alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
                 
                   }
 
@@ -541,11 +546,12 @@
                         var i = -1;
                     response.forEach(function(element) {
                         i++;
-                        element['ordem'] = true; 
+                        element['status'] = i; 
                               
                           }, this);
-
+                          
                     $scope.foto = response;
+                    
                     $scope.updateFotos = function(foto){
                         console.log(foto);
                         restful.imovelUpdateFotos(id,token,foto).success(function(response){

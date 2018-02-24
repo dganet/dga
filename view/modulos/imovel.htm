@@ -939,25 +939,72 @@ modalUpdateFotos">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
       </div>
-       <form name="FormCliente" ng-submit="updateFotos(foto)">
+       <form name="myForm" ng-submit="updateFotos(foto)">
 
            <div class="modal-body">
               <div class="row">
+                    <div ng-repeat = "x in inputsFotos">
+                        <div class="col-md-3">
+                        <div class="form-group">
+                                
+         
+                                      
+                            <center><label for="">{{x.label}}</label></center>
 
+                            <input style="display:none" type="file" name="myImage" image-with-preview
+                                   ng-model="foto[$index]"
+                                   accept="image/jpeg,image/png"
+                                   id='selecao-arquivo{{x.value}}'
+                                   dimensions="height < 400 && width < 1800 && width > 2 * height">
+                                   <span class="error" ng-show="myForm.myImage.$error.image">
+                                        Not a JPEG or a PNG!
+                                      </span>
+                                      <span class="error" ng-show="myForm.myImage.$error.dimensions">
+                                        Invalid dimensions! Expecting a landscape image smaller than 1800x400.
+                                      </span>
+                                      
+                            
+                            <div ng-if="foto[$index]['status'] != x.value">
+                                
+                                <label class="label-file" for='selecao-arquivo{{$index}}' ng-click="fotoSelect($index)">
+                                    <div ng-if="$index != fotoSelecionado">
+                                    <img src="view/upload/imovelUpload.jpg"  width="100" height="100">
+                                    </div>    
+                                <img ng-show="foto[$index].src" ng-src="{{foto[$index].src}}"
+                                 width="100" height="100"/>
+                           
+                                </label>
+                        </div>
+                        
+                        <div ng-if="foto[$index]['status'] == x.value">
+                            <label class="label-file" for='selecao-arquivo{{$index}}'>
+                            <img src="view/upload/{{foto[$index]['nomeImagem']}}" 
+                             width="100" height="100" alt="">
+                            </label>
+                        </div>
+                    
+                        </div>
+                        </div>
+                    </div>
+
+                <!--
               <div ng-repeat = "x in inputsFotos">
                 <div class="col-md-3">
                   <div class="form-group">
-                    <center><label for="">{{x.label}}</label></center>
-                     <div ng-hide="foto[{{x.value}}]['ordem'] == true"> <label class="label-file" for='selecao-arquivo0'><img src="view/upload/imovelUpload.jpg" width="100" height="100" alt=""></label></div>
-                     <div ng-show="foto[{{x.value}}]['ordem'] == true"> <label class="label-file" for='selecao-arquivo0'><img src="view/upload/{{foto[x.value]['nomeImagem']}}" width="100" height="100" alt=""></label></div>
+                    <center><label for="">{{x.label}}{{x.status}}</label></center>
+                    <div ng-if="foto[$index]['status'] != x.status"> <label class="label-file" for='selecao-arquivo{{$index}}'><img src="view/upload/imovelUpload.jpg" width="100" height="100" alt=""></label></div>
+                     <div ng-if="foto[$index]['status'] == x.status"> <label class="label-file" for='selecao-arquivo{{$index}}'><img src="view/upload/{{foto[$index]['nomeImagem']}}" width="100" height="100" alt=""></label></div>
                      <input type="file" style="display:none" id='selecao-arquivo{{x.value}}' 
-                     ng-file-model="foto[index]" name="arquivo"/  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                     ng-file-model="foto[$index]" name="arquivo"/ 
+                     accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" 
+                     onchange="angular.element(this).scope().verificaFoto(this)"
+                     >
                   </div>
                 </div>
             </div>
 
             </div>    <!--row -->
-
+        
            </div><!--modal-body -->
 
              <div class="modal-footer">
