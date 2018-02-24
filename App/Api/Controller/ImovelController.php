@@ -10,7 +10,7 @@ class ImovelController {
         $this->carteiraImovel = CarteiraImovel::getInstance();
     }
     /**
-     * Lista todos os Imoveis 
+     * Lista todos os Imoveis
      *
      * @param Request $request
      * @param Response $response
@@ -33,7 +33,8 @@ class ImovelController {
      */
     public function listById($request, $response, $args){
         $imovel = new Imovel();
-        return $response->withJson($imovel->find($args['id']));
+        $collection = $imovel->makeSelect()->where('idImovel='.$args['id'])->execute();
+        return $response->withJson($collection->getAll());
     }
     /**
      * Salva um imovel
@@ -44,10 +45,10 @@ class ImovelController {
      * @return void
      */
     public function save($request, $response, $args){
-        $post = json_decode($request->getBody(), true); 
+        $post = json_decode($request->getBody(), true);
         // Preparando as variaveis
         $p = $post[0]['infoProprietario'][0];
-        $e = $post[1]['infoEndereco'][0];   
+        $e = $post[1]['infoEndereco'][0];
         $i = $post[2]['infoImovel'][0];
         $img = $post[3]['infoImagem'];
         $i['valorVendaImovel'] = isset($i['valorImovel'])?$i['valorImovel']:null;
