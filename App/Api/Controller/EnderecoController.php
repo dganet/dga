@@ -1,27 +1,31 @@
 <?php
 namespace Api\Controller;
-use \Api\Model\Entity\Pais, 
-\Api\Model\Entity\Estado, 
-\Api\Model\Entity\Cidade, 
-\Api\Model\Entity\Bairro; 
+use \Api\Model\Entity\Pais,
+\Api\Model\Entity\Estado,
+\Api\Model\Entity\Cidade,
+\Api\Model\Entity\Bairro,
+\Api\Model\Entity\Endereco;
+
 class EnderecoController{
 
     private $pais;
     private $estado;
     private $cidade;
     private $bairro;
-    
+    private $endereco;
+
     public function __construct(){
         $this->pais   = Pais::getInstance();
-        $this->estado = Estado::getInstance(); 
+        $this->estado = Estado::getInstance();
         $this->cidade = Cidade::getInstance();
         $this->bairro = Bairro::getInstance();
+        $this->endereco = Endereco::getInstance();
     }
-    
-    
+
+
     /**
      * Retorna todos os paises cadastrados
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -33,7 +37,7 @@ class EnderecoController{
     }
     /**
      * Retorna todos os estados cadastrados
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -46,7 +50,7 @@ class EnderecoController{
     }
     /**
      * Retorna todas as Cidades Cadastradas
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -57,7 +61,7 @@ class EnderecoController{
     }
     /**
      * Retorna todos os Bairros cadastrados
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -68,7 +72,7 @@ class EnderecoController{
     }
     /**
      * Retona o Pais conforme o id
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -81,7 +85,7 @@ class EnderecoController{
     }
     /**
      * Retorna o Estado conforme o ID em modo cascata
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -95,7 +99,7 @@ class EnderecoController{
     }
     /**
      * Retorna a cidade conforme o ID em modo cascata
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -109,7 +113,7 @@ class EnderecoController{
     }
     /**
      * Retorna o bairro conforme o ID em modo cascata
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -123,7 +127,7 @@ class EnderecoController{
     }
     /**
      * Retorna todos os bairros de uma determinada cidade(ID)
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -136,11 +140,11 @@ class EnderecoController{
         }else{
             return $response->withJson($r);
         }
-        
+
     }
     /**
      * Retorna todas as cidades de um determinado estado
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -151,7 +155,7 @@ class EnderecoController{
     }
     /**
      * Retorna todos os estados de um determinado pais
-     * 
+     *
      * @param Request $request
      * @param Response $response
      * @param Mixed $args
@@ -160,10 +164,24 @@ class EnderecoController{
      public function getEstadoByPais($request, $response, $args){
         return $response->withJson($this->estado->makeSelect->where('paisId='.$args['id'])->execute()->getAll());
     }
-    
+
     public function setBairro($request,$response,$args){
         $post = decode_json($resquest->getBody(),true);
         $this->bairro->load($post);
         return $response->withJson($this->bairro->save());
+    }
+
+    public function getEndereco($request, $response, $args){
+      $token  = $args['token'];
+      $idBairro = $args['id'];
+      if(Auth::_isLoggedIn($token)){
+        $collection = $this->endereco->makeSelect('endereco.logradouro as Logradouro, bairro.nome as Bairro, cidade.nome as Cidade, estado.nome as Estado, pais.nome as Pais')
+                                   ->inner('bairro', 'endereco.bairroId=bairro.idBairro')
+                                   ->inner('cidade','endereco.cidadeId=cidade.idCidade')
+                                   ->inner('estado','endereco.estadoId=estado.idEstado')
+                                   ->inner('pais','endereco.paisId=pais.idPais')
+                                   ->where('endereco.enderecoId='.$idBairro)->execute(true);
+        return $response->withJson($collection);
+      }
     }
 }
