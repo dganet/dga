@@ -92,7 +92,7 @@
                <td class="centro">
                    <a class="btn btn-default" ng-click="modalUpdateProprietario(x.idImovel)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-UpdateProprietario"><i class="fa fa-user" aria-hidden="true"></i> </a>
 
-                   <a class="btn btn-default" ng-click="modalUpdateEndereco(x.idImovel)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-UpdateEndereco">
+                   <a class="btn btn-default" ng-click="modalUpdateEndereco(x.fkEndereco)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-UpdateEndereco">
                     <i class="fa fa-address-card" aria-hidden="true"></i>
                   </a>
                     <a class="btn btn-default" ng-click="modalUpdateImovel(x.idImovel)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-UpdateImovel">
@@ -651,7 +651,7 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Atualizar {{cliente.nomeCliente}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
       </div>
 
        <form name="FormCliente" ng-submit="updateEndereco(endereco)">
@@ -662,14 +662,14 @@
                     <div class="col-md-12">
                     <div class="form-group">
                         <label>Endereço</label>
-                        <input type="text" class="form-control" ng-model="endereco.enderecoImovel">
+                        <input type="text" class="form-control" ng-model="endereco.logradouro">
                      </div>
                  </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                    <label>Estado</label>
-                        <select class="form-control" ng-change="executeCidade(endereco.idEstado)"
-                        ng-options="endereco.idEstado as endereco.nome for endereco in estados track by endereco.idEstado"
+                    <label>Estado{{endereco.estadoId}}</label>
+                        <select class="form-control" ng-change="executeCidade(endereco.estadoId)"
+                        ng-options="endereco.idEstado as endereco.nome for endereco in estados track by endereco.estadoId"
                         ng-model="endereco.idEstado">
                         <option value="">Selecione Estado</option>
                         </select>
@@ -946,43 +946,43 @@ modalUpdateFotos">
                     <div ng-repeat = "x in inputsFotos">
                         <div class="col-md-3">
                         <div class="form-group">
-                                
-         
-                                      
+
+
+
                             <center><label for="">{{x.label}}</label></center>
 
-                            <input style="display:none" type="file" name="myImage" image-with-preview
+                            <input style="display:none" type="file" name="myImage[$index]" image-with-preview
                                    ng-model="foto[$index]"
                                    accept="image/jpeg,image/png"
                                    id='selecao-arquivo{{x.value}}'
                                    dimensions="height < 400 && width < 1800 && width > 2 * height">
-                                   <span class="error" ng-show="myForm.myImage.$error.image">
+                                   <span class="error" ng-show="myForm.myImage[$index].$error.image">
                                         Not a JPEG or a PNG!
                                       </span>
-                                      <span class="error" ng-show="myForm.myImage.$error.dimensions">
+                                      <span class="error" ng-show="myForm.myImage[$index].$error.dimensions">
                                         Invalid dimensions! Expecting a landscape image smaller than 1800x400.
                                       </span>
-                                      
-                            
+
+
                             <div ng-if="foto[$index]['status'] != x.value">
-                                
+
                                 <label class="label-file" for='selecao-arquivo{{$index}}' ng-click="fotoSelect($index)">
                                     <div ng-if="$index != fotoSelecionado">
                                     <img src="view/upload/imovelUpload.jpg"  width="100" height="100">
-                                    </div>    
+                                    </div>
                                 <img ng-show="foto[$index].src" ng-src="{{foto[$index].src}}"
                                  width="100" height="100"/>
-                           
+
                                 </label>
                         </div>
-                        
+
                         <div ng-if="foto[$index]['status'] == x.value">
                             <label class="label-file" for='selecao-arquivo{{$index}}'>
-                            <img src="view/upload/{{foto[$index]['nomeImagem']}}" 
+                            <img src="view/upload/{{foto[$index]['nomeImagem']}}"
                              width="100" height="100" alt="">
                             </label>
                         </div>
-                    
+
                         </div>
                         </div>
                     </div>
@@ -994,9 +994,9 @@ modalUpdateFotos">
                     <center><label for="">{{x.label}}{{x.status}}</label></center>
                     <div ng-if="foto[$index]['status'] != x.status"> <label class="label-file" for='selecao-arquivo{{$index}}'><img src="view/upload/imovelUpload.jpg" width="100" height="100" alt=""></label></div>
                      <div ng-if="foto[$index]['status'] == x.status"> <label class="label-file" for='selecao-arquivo{{$index}}'><img src="view/upload/{{foto[$index]['nomeImagem']}}" width="100" height="100" alt=""></label></div>
-                     <input type="file" style="display:none" id='selecao-arquivo{{x.value}}' 
-                     ng-file-model="foto[$index]" name="arquivo"/ 
-                     accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" 
+                     <input type="file" style="display:none" id='selecao-arquivo{{x.value}}'
+                     ng-file-model="foto[$index]" name="arquivo"/
+                     accept="image/x-png, image/gif, image/jpeg" data-max-size="2048"
                      onchange="angular.element(this).scope().verificaFoto(this)"
                      >
                   </div>
@@ -1004,7 +1004,7 @@ modalUpdateFotos">
             </div>
 
             </div>    <!--row -->
-        
+
            </div><!--modal-body -->
 
              <div class="modal-footer">
@@ -1125,16 +1125,16 @@ modalUpdateFotos">
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-      
+
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div ng-repeat="x in fotos">
             <div class="item active">
-                <img src="view/galeria/casa01.jpg" alt="Los Angeles" width="100%" height="100%">
+                <img src="view/upload/{{x.caminhoImagem}}" alt="Los Angeles" width="100%" height="100%">
             </div>
             </div>
         </div>
-      
+
         <!-- Left and right controls -->
         <a class="left carousel-control" href="/user/imovel#myCarousel" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>

@@ -19,7 +19,7 @@ class ImovelController {
      */
     public function list($request, $response, $args){
         $user = Auth::_getTokenInfo($args['token']);
-        $op = 'idImovel,isPublic,tipoOperacaoImovel,tipoImovel,iptuImovel,condominioImovel,idadeConstrucaoImovel,suiteImovel,copaImovel,banheiroImovel,salajantarImovel,mobiliadoImovel,elevadorImovel,andarImovel,garagemCobertaImovel,garagemCobertaImovel,areaTerrenoImovel,areaUtilImovel,areaTotalImovel,descricaoImovel,valorVendaImovel,valorLocacaoImovel';
+        $op = 'fkEndereco,idImovel,isPublic,tipoOperacaoImovel,tipoImovel,iptuImovel,condominioImovel,idadeConstrucaoImovel,suiteImovel,copaImovel,banheiroImovel,salajantarImovel,mobiliadoImovel,elevadorImovel,andarImovel,garagemCobertaImovel,garagemCobertaImovel,areaTerrenoImovel,areaUtilImovel,areaTotalImovel,descricaoImovel,valorVendaImovel,valorLocacaoImovel';
         $collection = $this->carteiraImovel->getImovel($user['conteudo']['idUsuario'], $op);
         return $response->withJson($collection->getAll());
     }

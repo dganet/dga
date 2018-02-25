@@ -10,7 +10,7 @@
         restful.solicitaResgateSenha(values).success(function(response){
           console.log(response);
           if (response.flag == false){
-              // Exibi a mensagem             
+              // Exibi a mensagem
               $scope.mensagemErroEmail = true;
               // Depois de 5 segundos some a mensagem
               $timeout(function () {
@@ -18,12 +18,12 @@
                },10000);
           }else{
 
-              // Exibi a mensagem             
+              // Exibi a mensagem
               $scope.mensagemSucessoEmail = true;
               // Depois de 5 segundos some a mensagem
               $timeout(function () {
               $scope.mensagemSucessoEmail = false;
-               },10000);            
+               },10000);
           }
         });
 };
@@ -31,6 +31,7 @@
     $scope.loadClientes = function() {
         //$loading.start('estados');
         serviceEnderecos.getEstados().success(function (response){
+        
             $scope.estados = response;
             //$loading.finish('estados');
         });
@@ -42,7 +43,7 @@ $scope.executeCidade = function (id){
 
 		serviceEnderecos.getCidadesEstado(id).success(function (response){
 			$scope.cidades = response;
-			
+
 		});
 
 	};
@@ -52,23 +53,23 @@ $scope.executeCidade = function (id){
           var idCidade = dados;
           // Pega os dados da Cidade
          serviceEnderecos.getCidade(idCidade).success(function (response){
-         $scope.cidades = response;    
+         $scope.cidades = response;
          sessionStorage.setItem('cidade.nome', response.nome);
-         $scope.activePath = $location.path('/cidade/' + idCidade);                                             
+         $scope.activePath = $location.path('/cidade/' + idCidade);
 
          });
- 
+
       };
 
     //Questionário SIM ou NAO da Conta do facebook
-    $scope.contaSim = function (){  
-        $scope.formMigraFacebook = true; 
-        $scope.formContaFacebook = false;  
+    $scope.contaSim = function (){
+        $scope.formMigraFacebook = true;
+        $scope.formContaFacebook = false;
 
     }
-    $scope.contaNao = function (){  
-        $scope.formContaFacebook = true;   
-        $scope.formMigraFacebook = false;          
+    $scope.contaNao = function (){
+        $scope.formContaFacebook = true;
+        $scope.formMigraFacebook = false;
     }
 
     //CONFIGURAÇÕES PLUGIN FACEBBOK
@@ -76,7 +77,7 @@ $scope.FBLogin = function (){
     FB.login(function(dados) {
     if (dados.authResponse) {
      FB.api('/me', function(response) {
-        // Pega o Nome do Facebook Logado   
+        // Pega o Nome do Facebook Logado
         $scope.nomeFacebook = response.name;
         //VARIAVEL ID do facebook
         var idFacebook  = dados.authResponse;
@@ -103,7 +104,7 @@ $scope.FBLogin = function (){
 
                                     var auth = response.flag;
                                     if (auth == false){
-                                        // Exibi a mensagem  				    
+                                        // Exibi a mensagem
                                         $scope.mensagemErroSenha = true;
                                         // Depois de 5 segundos some a mensagem
                                         $timeout(function () {
@@ -111,23 +112,23 @@ $scope.FBLogin = function (){
                                          },10000);
 
                                     }else{
-                                        // Exibi a mensagem  				    
+                                        // Exibi a mensagem
                                         $scope.mensagemMigrar = true;
                                         // Depois de 5 segundos some a mensagem
-                                        $timeout(function () {                              
+                                        $timeout(function () {
                                             $scope.activePath = $location.path('/user');
                                             sessionStorage.setItem('usuario.idUsuario', response.idUsuario);
                                             sessionStorage.setItem('usuario.nome', response.nomeUsuario);
                                             sessionStorage.setItem('usuario.sobrenome', response.sobrenomeUsuario);
                                             sessionStorage.setItem('usuario.token', response.token);
                                          },10000);
-       
+
                                     };
                             });
                      };
 
 
-                    //*************CADASTRA NOVO USUARIO DADOS FACEBOOK *********************// 
+                    //*************CADASTRA NOVO USUARIO DADOS FACEBOOK *********************//
 
                     //Passa os valores do form em Objeto no "values"
                     $scope.addFB = function(values, formUsuario) {
@@ -145,7 +146,7 @@ $scope.FBLogin = function (){
                                         },10000);
                                     //Resentando os input do formulario .
                                     $scope.reset = function() {
-                                    // Copiando os valores vazio do scope.master 
+                                    // Copiando os valores vazio do scope.master
                                     $scope.usuario = angular.copy($scope.master);
                                     };
                                     // Ativando a função
@@ -166,7 +167,7 @@ $scope.FBLogin = function (){
 
              }else{
 
-                    // Se for verdadeiro manda pra Home 
+                    // Se for verdadeiro manda pra Home
                     $scope.activePath = $location.path('/user');
                     sessionStorage.setItem('usuario.id', response.idUsuario);
                     sessionStorage.setItem('usuario.nome', response.nomeUsuario);
@@ -185,14 +186,14 @@ $scope.FBLogin = function (){
 };
 
      //Autentinca o Usuario e loga no sistema por Login e Senha
-     		    
+
 		    $scope.logando = function (values , formAut){
                     restful.usuarioLogin(values).success(function(response){
 
                         var auth = response.flag;
 
                     if (auth == false){
-                        // Exibi a mensagem  				    
+                        // Exibi a mensagem
                         $scope.mensagemErroSenha = true;
                         // Depois de 5 segundos some a mensagem
                         $timeout(function () {
@@ -200,20 +201,20 @@ $scope.FBLogin = function (){
                     },10000);
 
                     } else {
-                    // Se for verdadeiro manda pra Home 
+                    // Se for verdadeiro manda pra Home
                     $scope.activePath = $location.path('/user');
                     sessionStorage.setItem('usuario.id', response.idUsuario);
                     sessionStorage.setItem('usuario.nome', response.nomeUsuario);
                     sessionStorage.setItem('usuario.sobrenome', response.sobrenomeUsuario);
                     sessionStorage.setItem('usuario.token', response.token);
                 }
-                
+
 
                 });
             };
 
 
-//*************CADASTRA NOVO USUARIO *********************// 
+//*************CADASTRA NOVO USUARIO *********************//
 
 //Passa os valores do form em Objeto no "values"
   $scope.add = function(values, formUsuario) {
@@ -231,7 +232,7 @@ $scope.FBLogin = function (){
                     },10000);
                 //Resentando os input do formulario .
                 $scope.reset = function() {
-                // Copiando os valores vazio do scope.master 
+                // Copiando os valores vazio do scope.master
                 $scope.usuario = angular.copy($scope.master);
                 };
                 // Ativando a função
@@ -247,5 +248,5 @@ $scope.FBLogin = function (){
 
   };
 
-  
+
  });

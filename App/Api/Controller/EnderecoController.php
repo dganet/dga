@@ -175,13 +175,8 @@ class EnderecoController{
       $token  = $args['token'];
       $idBairro = $args['id'];
       if(Auth::_isLoggedIn($token)){
-        $collection = $this->endereco->makeSelect('endereco.logradouro as Logradouro, bairro.nome as Bairro, cidade.nome as Cidade, estado.nome as Estado, pais.nome as Pais')
-                                   ->inner('bairro', 'endereco.bairroId=bairro.idBairro')
-                                   ->inner('cidade','endereco.cidadeId=cidade.idCidade')
-                                   ->inner('estado','endereco.estadoId=estado.idEstado')
-                                   ->inner('pais','endereco.paisId=pais.idPais')
-                                   ->where('endereco.enderecoId='.$idBairro)->execute(true);
-        return $response->withJson($collection);
+      $collection = $this->endereco->makeSelect()->where('enderecoId='.$args['id'])->execute();
+        return $response->withJson($collection->getAll());
       }
     }
 }

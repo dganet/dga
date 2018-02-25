@@ -24,7 +24,7 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelList =  'App/imovel/list/'; // Lista os Imoveis do Cliente
    $imovelListiIdProprietario = 'App/proprietario/list/' //Retorna alguns dados do Proprietário do Imovel
    $imovelUpdateProprietario = 'App/proprietario/update/' // Atualiza dados do Proprietario referente o id do imovel
-   $imovelListiIdEndereco = 'caminho do back-end' //Retorna alguns dados do Endereco do Imovel referete ao id
+   $imovelListiIdEndereco = 'App/endereco/' //Retorna alguns dados do Endereco do Imovel referete ao id
    $imovelUpdateEndereco = 'caminho do back-end' // Atualiza dados do Endereco referente o id do imovel
    $imovelListiIdImovel = 'App/imovel/listId/' //Retorna alguns dados do Imovel referente ao id
    $imovelUpdateImovel = 'caminho do back-end' // Atualiza dados do imovel referente o id do imovel
@@ -126,10 +126,10 @@ app.service('restful', function ($http,$sessionStorage) {
     return  $http.put($imovelUpdateProprietario + id + '/' + token , proprietario);
     };
    //Lista dados do endereco por id do cliente
-   var _imovelListiIdEndereco = function (id,token){
-    console.log(id);
+   var _imovelListiIdEndereco = function (fkEndereco,token){
+    console.log(fkEndereco);
     console.log(token);
- return  $http.get($imovelListiIdEndereco + id + '/' + token);
+ return  $http.get($imovelListiIdEndereco + fkEndereco + '/' + token);
  };
 //Atualiza os dados do Endereco referente ao id do imovel
 var _imovelUpdateEndereco = function (id,token,endereco){
@@ -142,14 +142,14 @@ var _imovelUpdateEndereco = function (id,token,endereco){
     var _imovelListiIdImovel = function (id,token){
         console.log(id);
         console.log(token);
-     return  $http.get($imovelListiIdEndereco + id + '/' + token);
+     return  $http.get($imovelListiIdImovel + id + '/' + token);
      };
     //Atualiza os dados do Endereco referente ao id do imovel
     var _imovelUpdateImovel = function (id,token,imovel){
         console.log(id);
         console.log(token);
         console.log(endereco);
-     return  $http.put($imovelUpdateEndereco + id + '/' + token , imovel);
+     return  $http.put($imovelUpdateImovel + id + '/' + token , imovel);
      };
     //Lista fotos do imovel por id do imovel
     var _imovelListiIdFotos = function (id,token){

@@ -27,14 +27,14 @@
       {value:"8", label:"Foto 08",status:"true"},
       {value:"9", label:"Foto 09",status:"true"},
 
-    ];  
+    ];
     $scope.fotoSelect = function(value){
        var a = this.fotoSelecionado = value;
         this.contactCopy = angular.copy(value);
         console.log(a);
     };
   $scope.inputsFotos = contagem;
- 
+
 
   // Lista todos Imoveis do Cliente
   restful.imovelList(token).success(function(response){
@@ -388,7 +388,7 @@
               // Valida se é menor que 2MB e se é diferente de jpeg e jpg
               if ($tamanhoFoto > 2000000 || $extensaoFoto != 'image/jpeg' && 'image/jpg'){
                alert('Foto com extensão ou tamanho inválido - > ' + $nomeFoto);
-                
+
                   }
 
       });
@@ -438,7 +438,7 @@
 
         }else{
              alert('Imagens Invalidas - > ' + value.name);
-        
+
             }
              ;
 
@@ -475,9 +475,10 @@
 
            //*************UPDATE ENDERECO *********************//
 
-    $scope.modalUpdateEndereco = function(id){
-        restful.imovelListiIdEndereco(id).success(function(response){
-            $scope.endereco = response;
+    $scope.modalUpdateEndereco = function(fkEndereco){
+        restful.imovelListiIdEndereco(fkEndereco, token).success(function(response){
+
+            $scope.endereco = response[0];
 
             $scope.updateEndereco = function(endereco){
 
@@ -498,8 +499,8 @@
           //*************UPDATE IMOVEL *********************//
 
     $scope.modalUpdateImovel = function(id){
-        restful.imovelListiIdImovel(id).success(function(response){
-            $scope.imovel = response;
+        restful.imovelListiIdImovel(id,token).success(function(response){
+            console.log($scope.imovel = response[0]);
 
             $scope.updateImovel = function(imovel){
 
@@ -546,12 +547,12 @@
                         var i = -1;
                     response.forEach(function(element) {
                         i++;
-                        element['status'] = i; 
-                              
+                        element['status'] = i;
+
                           }, this);
-                          
+
                     $scope.foto = response;
-                    
+
                     $scope.updateFotos = function(foto){
                         console.log(foto);
                         restful.imovelUpdateFotos(id,token,foto).success(function(response){
