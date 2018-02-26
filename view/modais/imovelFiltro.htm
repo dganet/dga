@@ -1,0 +1,71 @@
+ <!-- Modal Filtro -->
+ <div class="modal fade bs-example-modal-lg-filtro" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalDel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Deletar</h4>
+        </div>
+
+              <div class="modal-body">
+                <form name="filtroImoveis" ng-submit="listFiltro(filtro)">
+                    <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Referência" ng-model="filtro.referencia">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Transação</label>
+                            <select class="form-control" ng-model="filtro.transacao">
+                              <option value="volvo">Comprar</option>
+                              <option value="saab">Alugar</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Tipo do Imovel</label>
+                            <select class="form-control" ng-model="filtro.tipoImovel">
+                              <option value="volvo">Casa</option>
+                              <option value="saab">Aparatamento</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Minimo" ng-model="filtro.minimo">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                             <input type="text" class="form-control" placeholder="Máximo" ng-model="filtro.maximo">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                         <button type="submit" class="btn btn-primary">Buscar</button>
+                        </div>
+                    </div>
+
+                    </div>
+
+                </form>
+             </div><!--modal-body -->
+
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-danger" ng-click="del(cursofaculdade.id)">Sim</button>
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                </div>
+
+      </div>
+    </div>
+  </div>

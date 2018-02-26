@@ -1,0 +1,88 @@
+<!-- Modal Update Endereco -->
+<div class="modal fade bs-example-modal-lg-UpdateEndereco" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdateEndereco">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
+      </div>
+
+       <form name="FormCliente" ng-submit="updateEndereco(endereco)">
+
+           <div class="modal-body">
+              <div class="row">
+
+                    <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input type="text" class="form-control" ng-model="endereco.logradouro">
+                     </div>
+                     </div>
+
+                    <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Estado{{endereco.estadoId}}</label>
+                        <select class="form-control" ng-change="executeCidade(endereco.estadoId)"
+                        ng-options="endereco.idEstado as endereco.nome for endereco in estados track by endereco.estadoId"
+                        ng-model="endereco.idEstado">
+                        <option value="">Selecione Estado</option>
+                        </select>
+                    </div>
+                    </div>
+
+                    <div class="col-md-3">
+                    <div class="form-group">
+                    <label>Cidade</label>
+                        <select class="form-control" ng-change="executeBairro(endereco.idCidade)" ng-disabled="!endereco.idEstado"
+                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: endereco.idEstado}"
+                         ng-model="endereco.idCidade">
+                        <option value="">Selecione Cidade</option>
+                        </select>
+                    </div>
+                    </div>
+
+                    <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Bairro</label>
+                         <!-- InputBairro novo Bairro -->
+                        <div ng-show="inputBairro">
+                        <input type="text" class="form-control" ng-model="endereco.idBairro" placeholder="Novo Bairro" required>
+                        </div>
+
+                       <!-- Select de Bairros -->
+                        <select class="form-control" ng-disabled="!endereco.idCidade"
+                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: endereco.idCidade}"
+                         ng-model="endereco.idBairro"
+                         ng-show="selectBairro">
+                        <option value="">Selecione Bairro</option>
+                        </select>
+                </div>
+                </div>
+
+
+                <div class="col-md-3" ng-show="btnNewBairro">
+                <div class="form-group">
+                    <span style="margin-top:25px; float:left;"> <button type="submit" class="btn btn-primary" ng-click="newBairro()">Novo Bairro</button></span>
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-show="btnBairroBack">
+                <div class="form-group">
+                    <span style="margin-top:25px;float:left;"><button type="submit" class="btn btn-danger" ng-click="backBairro('bairro')">Voltar</button></span>
+                </div>
+                </div>
+            </div>    <!--row -->
+
+           </div><!--modal-body -->
+
+             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+
+         </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,195 @@
+<!-- Modal Update Imovel -->
+<div class="modal fade bs-example-modal-lg-UpdateImovel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdateProprietario">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
+      </div>
+
+       <form name="FormCliente" ng-submit="updateImovel(imovel)">
+
+           <div class="modal-body">
+              <div class="row">
+
+
+               <div class="col-md-6">
+               <div class="form-group">
+                    <label>Imovél</label>
+                    <select class="form-control"
+                            ng-model="imovel.isPublic"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">Imovel é Publico ?</option>
+                    </select>
+               </div>
+               </div>
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Qual Operação ? </label>
+                    <select class="form-control"
+                                ng-options="op.nomeOperacao as op.nomeOperacao for op in operacoes"
+                                ng-model="imovel.tipoOperacaoImovel"
+                                ng-change="selectOperation(imovel.tipoOperacaoImovel)">
+                                <option value="">Selecione a Operação</option>
+                    </select>
+
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="operacao == 'ativo'">
+                <div class="form-group">
+                    <label>Selecione o Tipo</label>
+                    <select class="form-control"
+                            ng-model="imovel.tipoImovel"
+                            ng-options ="t.tipoImovel as t.tipoImovel for t in tipos"
+                            ng-change="selectTipo(imovel.tipoImovel)"
+                            >
+                        <option value="">Tipo de Imovel</option>
+                    </select>
+
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="valorImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Valor</label>
+                    <input type="tex" class="form-control" ng-model="imovel.valorImovel" ui-money-mask="2">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="iptuImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Iptu</label>
+                    <input type="text" class="form-control" ng-model="imovel.iptuImovel" ui-money-mask="2">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="condominioImovel == 'ativo'" >
+                <div class="form-group">
+                    <label>Condominio</label>
+                    <input type="text" class="form-control" ng-model="imovel.condominioImovel" ui-money-mask="2">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="idadeConstrucaoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Idade do Imovel</label>
+                    <input type="number" class="form-control" ng-model="imovel.idadeConstrucaoImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="suiteImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Suite(s)</label>
+                    <input type="number" class="form-control" ng-model="imovel.suiteImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="copaImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Copa</label>
+                    <input type="number" class="form-control" ng-model="imovel.copaImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="banheiroImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Banheiros</label>
+                    <input type="number" class="form-control" ng-model="imovel.banheiroImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="saladejantarImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Sala de Jantar</label>
+                    <input type="number" class="form-control" ng-model="imovel.saladejantarImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="mobiliadoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Mobilado</label>
+                    <select class="form-control"
+                            ng-model="imovel.mobiliadoImovel"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">é mobilado ?</option>
+                    </select>
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="elevadorImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Elevador</label>
+                    <select class="form-control"
+                            ng-model="imovel.elevadorImovel"
+                            ng-options="x.b as x.label for x in boleano">
+                            <option value="">Tem Elevador ?</option>
+                    </select>
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="andarImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Andar do Imovel</label>
+                    <input type="number" class="form-control" ng-model="imovel.andarImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="garagemCobertaImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Garagem Coberta</label>
+                    <input type="number" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemCobertaImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="garagemDescobertaImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Garagem Descoberta</label>
+                    <input type="number" class="form-control" placeholder="Quantas Vagas ?" ng-model="imovel.garagemDescobertaImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="areaTerrenoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Aréa do terreno</label>
+                    <input type="number" class="form-control" ng-model="imovel.areaTerrenoImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="areaUtilImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Aréa Util</label>
+                    <input type="number" class="form-control" ng-model="imovel.areaUtilImovel">
+                </div>
+                </div>
+
+                <div class="col-md-3" ng-if="areaTotalImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Aréa do total do Imovel</label>
+                    <input type="number" class="form-control" ng-model="imovel.areaTotalImovel">
+                </div>
+                </div>
+
+                <div class="col-md-12" ng-if="descricaoImovel == 'ativo'">
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea type="text" rows="5" class="form-control" ng-model="imovel.descricaoImovel"></textarea>
+                </div>
+                </div>
+
+            </div>    <!--row -->
+
+           </div><!--modal-body -->
+
+             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+
+         </form>
+
+    </div>
+  </div>
+</div>

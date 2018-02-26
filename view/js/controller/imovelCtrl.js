@@ -395,7 +395,7 @@
     };
 
     $scope.quartoPasso = function(fotos){
-
+       
       angular.forEach(fotos, function(value,key){
          // Valida se é menor que 2MB e se é diferente de jpeg e jpg
         if(value.size < 2000000 && value.type == 'image/jpeg' && 'image/jpg'){
@@ -407,10 +407,10 @@
 
           //*************CADASTRA NOVO IMOVEL *********************//
 
-
+          console.log(peif);
           restful.imovelSave(peif).success(function(response){
 
-
+            
           // Funcão de exibir a mensagem de sucesso em 5 segundos.
           $scope.mensagemSucesso = false;
           $timeout(function () {
