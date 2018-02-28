@@ -12,6 +12,9 @@
   $scope.boleano = [
     {label:'Sim',b:"1"},{label: 'Não', b:"0"}
   ];
+
+  //Ativando o Select Bairro 
+  $scope.selectBairro = true;
   //Ativando loop de imovel Padrao
   $scope.listPadrao = 'ativo';
   //Inputs Imagens
@@ -51,14 +54,23 @@
   });
 
 
- // Load Estados
+            // Load Estados
             serviceEnderecos.getEstados().success(function (response){
             $scope.estados = response;
             });
+            // Load Cidades
+            serviceEnderecos.getAllCidades().success(function (response){
+            $scope.cidades = response;
+            });
+            // Load Bairros
+            serviceEnderecos.getAllBairros().success(function (response){
+            $scope.bairros = response;
+            });
+
             // Load Cidades referente ao Estado
             $scope.executeCidade = function (id){
-                    serviceEnderecos.getCidadesEstado(id).success(function(response){
-                    $scope.cidades = response;
+                serviceEnderecos.getCidadesEstado(id).success(function(response){
+                $scope.cidades = response;
                 $scope.selectBairro = true;
                 $scope.btnBairroBack = false;
                 $scope.inputBairro = false;
@@ -409,7 +421,7 @@
 
           console.log(peif);
           restful.imovelSave(peif).success(function(response){
-
+            console.log('funcao save');
             
           // Funcão de exibir a mensagem de sucesso em 5 segundos.
           $scope.mensagemSucesso = false;
@@ -481,8 +493,7 @@
             $scope.endereco = response[0];
 
             $scope.updateEndereco = function(endereco){
-
-                restful.imovelUpdateEndereco(id,token,endereco).success(function(response){
+                restful.imovelUpdateEndereco(fkEndereco,token,endereco).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateEndereco').modal('hide');
                         // Funcão de exibir a mensagem de sucesso em 5 segundos.

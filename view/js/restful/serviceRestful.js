@@ -105,7 +105,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri novo Imovel
     var _imovelSave = function (values, token){
-
+        console.log('estou na imovel save rest');
         return  $http.post($imovelSave + sessionStorage.getItem('usuario.token'), values);
     };
    //Lista todos imoveis do cliente

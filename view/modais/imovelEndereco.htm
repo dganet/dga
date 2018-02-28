@@ -22,10 +22,11 @@
 
                     <div class="col-md-3">
                     <div class="form-group">
-                    <label>Estado{{endereco.estadoId}}</label>
-                        <select class="form-control" ng-change="executeCidade(endereco.estadoId)"
-                        ng-options="endereco.idEstado as endereco.nome for endereco in estados track by endereco.estadoId"
-                        ng-model="endereco.idEstado">
+                    <label>Estado</label>
+                        <select class="form-control" ng-change="executeCidade(endereco.idEstado)"
+                        ng-options="endereco.idEstado as endereco.nome for endereco in estados"
+                        ng-model="endereco.idEstado"
+                        ng-init="endereco.idEstado = endereco.idEstado || endereco.estadoId">
                         <option value="">Selecione Estado</option>
                         </select>
                     </div>
@@ -36,7 +37,8 @@
                     <label>Cidade</label>
                         <select class="form-control" ng-change="executeBairro(endereco.idCidade)" ng-disabled="!endereco.idEstado"
                         ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: endereco.idEstado}"
-                         ng-model="endereco.idCidade">
+                        ng-model="endereco.idCidade"
+                        ng-init="endereco.idCidade = endereco.idCidade || endereco.cidadeId">
                         <option value="">Selecione Cidade</option>
                         </select>
                     </div>
@@ -54,7 +56,8 @@
                         <select class="form-control" ng-disabled="!endereco.idCidade"
                          ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: endereco.idCidade}"
                          ng-model="endereco.idBairro"
-                         ng-show="selectBairro">
+                         ng-show="selectBairro"
+                         ng-init="endereco.idBairro = endereco.idBairro || endereco.bairroId">
                         <option value="">Selecione Bairro</option>
                         </select>
                 </div>

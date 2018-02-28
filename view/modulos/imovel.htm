@@ -218,15 +218,16 @@
                  <div class="col-md-12">
                     <div class="form-group">
                         <label>Endereço</label>
-                        <input type="text" class="form-control" ng-model="endereco.enderecoImovel">
+                        <input type="text" class="form-control" ng-model="endereco.logradouro">
                      </div>
                  </div>
+
                 <div class="col-md-3">
                     <div class="form-group">
                     <label>Estado</label>
                         <select class="form-control" ng-change="executeCidade(endereco.idEstado)"
                         ng-options="endereco.idEstado as endereco.nome for endereco in estados track by endereco.idEstado"
-                        ng-model="endereco.idEstado">
+                        ng-model="endereco.idEstado">                       
                         <option value="">Selecione Estado</option>
                         </select>
                 </div>
@@ -243,8 +244,8 @@
                 </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="form-group">
+                        <div class="col-md-3">
+                        <div class="form-group">
                         <label>Bairro</label>
                          <!-- InputBairro novo Bairro -->
                         <div ng-show="inputBairro">
@@ -585,6 +586,7 @@
     </div>
   </div>
 </div>
+
 <!-- Modal Imovel Proprietario -->
 <div ng-include="'view/modais/imovelProprietario.htm'"></div>
 
