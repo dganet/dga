@@ -511,7 +511,7 @@
 
     $scope.modalUpdateImovel = function(id){
         restful.imovelListiIdImovel(id,token).success(function(response){
-            console.log($scope.imovel = response[0]);
+            $scope.imovel = response[0];
 
             $scope.updateImovel = function(imovel){
 

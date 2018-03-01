@@ -16,7 +16,7 @@
 
                <div class="col-md-6">
                <div class="form-group">
-                    <label>Imovél{{imovel.isPublic}}</label>
+                    <label>Imovél</label>
                     <select class="form-control"
                             ng-model="imovel.isPublic"
                             ng-options="x.b as x.label for x in boleano">
@@ -27,11 +27,12 @@
 
                 <div class="col-md-3">
                 <div class="form-group">
-                    <label>Qual Operação ? </label>
+                    <label>Qual Operação ? -> {{imovel : json }} </label>
                     <select class="form-control"
                                 ng-options="op.nomeOperacao as op.nomeOperacao for op in operacoes"
                                 ng-model="imovel.tipoOperacaoImovel"
-                                ng-change="selectOperation(imovel.tipoOperacaoImovel)">
+                                ng-change="selectOperation(imovel.tipoOperacaoImovel)"
+                                ng-init="imovel.tipoOperacaoImovel = imovel.tipoOperacaoImovel || imovel.tipoOperacaoImovel">
                                 <option value="">Selecione a Operação</option>
                     </select>
 
