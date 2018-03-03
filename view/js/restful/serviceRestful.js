@@ -148,7 +148,7 @@ var _imovelUpdateEndereco = function (id,token,endereco){
     var _imovelUpdateImovel = function (id,token,imovel){
         console.log(id);
         console.log(token);
-        console.log(endereco);
+        console.log(imovel);
      return  $http.put($imovelUpdateImovel + id + '/' + token , imovel);
      };
     //Lista fotos do imovel por id do imovel

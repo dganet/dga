@@ -510,8 +510,23 @@
     $scope.modalUpdateImovel = function(id){
         restful.imovelListiIdImovel(id,token).success(function(response){
             $scope.operacao = 'ativo';
+            
+            response.forEach(function(element){
+                element['copaImovel'] = parseInt(element['copaImovel']);
+                element['andarImovel'] = parseInt(element['andarImovel']);
+                element['garagemCobertaImovel'] = parseInt(element['garagemCobertaImovel']);
+                element['garagemDescobertaImovel'] = parseInt(element['garagemDescobertaImovel']);
+                element['areaTerrenoImovel'] = parseInt(element['areaTerrenoImovel']);
+                element['areaUtilImovel'] = parseInt(element['areaUtilImovel']);
+                element['areaTotalImovel'] = parseInt(element['areaTotalImovel']);
+                element['idadeConstrucaoImovel'] = parseInt(element['idadeConstrucaoImovel']);
+                element['banheiroImovel'] = parseInt(element['banheiroImovel']);
+                element['saladejantarImovel'] = parseInt(element['saladejantarImovel']);
+                element['suiteImovel'] = parseInt(element['suiteImovel']);     
+            }, this );
+            // Passa a variavel para o Imovel 
             var imovel = $scope.imovel = response[0];
-            console.log(imovel);
+            
             if(imovel.tipoImovel == "Apartamento"){
                 //Ativar todos os Inputs
                 $scope.valorImovel = 'ativo';
@@ -575,8 +590,6 @@
             };
 
             $scope.updateImovel = function(imovel){
-                console.log('estou aqui');
-                console.log(imovel);
                 restful.imovelUpdateImovel(id,token,imovel).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateImovel').modal('hide');
