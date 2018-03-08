@@ -29,6 +29,8 @@
       {value:"7", label:"Foto 07",status:"true"},
       {value:"8", label:"Foto 08",status:"true"},
       {value:"9", label:"Foto 09",status:"true"},
+      {value:"10", label:"Foto 10",status:"true"},
+      {value:"11", label:"Foto 11",status:"true"},
 
     ];
     $scope.fotoSelect = function(value){

@@ -375,7 +375,20 @@ input[type='file'] {
 	margin: 10px;
 	padding: 6px 20px;
   }
-
+.fundo-imagem {
+	width:100px;
+	height: 100px;
+	overflow:hidden;
+ 	background-image: url('../imagens/imovelUpload.jpg');
+	background-repeat: no-repeat;
+    background-size:100%;
+}
+.centro-imagem{
+	width:100px;
+	height:100px;
+	margin-top:-13px;
+	margin-left:-30px;
+}
 
 /* 
 /* Desktop maiores */
