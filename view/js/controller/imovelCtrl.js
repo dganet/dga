@@ -12,6 +12,9 @@
   $scope.boleano = [
     {label:'Sim',b:"1"},{label: 'Não', b:"0"}
   ];
+
+  //Ativando o Select Bairro 
+  $scope.selectBairro = true;
   //Ativando loop de imovel Padrao
   $scope.listPadrao = 'ativo';
   //Inputs Imagens
@@ -26,6 +29,8 @@
       {value:"7", label:"Foto 07",status:"true"},
       {value:"8", label:"Foto 08",status:"true"},
       {value:"9", label:"Foto 09",status:"true"},
+      {value:"10", label:"Foto 10",status:"true"},
+      {value:"11", label:"Foto 11",status:"true"},
 
     ];
     $scope.fotoSelect = function(value){
@@ -51,14 +56,23 @@
   });
 
 
- // Load Estados
+            // Load Estados
             serviceEnderecos.getEstados().success(function (response){
             $scope.estados = response;
             });
+            // Load Cidades
+            serviceEnderecos.getAllCidades().success(function (response){
+            $scope.cidades = response;
+            });
+            // Load Bairros
+            serviceEnderecos.getAllBairros().success(function (response){
+            $scope.bairros = response;
+            });
+
             // Load Cidades referente ao Estado
             $scope.executeCidade = function (id){
-                    serviceEnderecos.getCidadesEstado(id).success(function(response){
-                    $scope.cidades = response;
+                serviceEnderecos.getCidadesEstado(id).success(function(response){
+                $scope.cidades = response;
                 $scope.selectBairro = true;
                 $scope.btnBairroBack = false;
                 $scope.inputBairro = false;
@@ -111,6 +125,13 @@
       {"idOperacao":1,"nomeOperacao":'Locacao'},
       {"idOperacao":2,"nomeOperacao":'Venda'}
   ];
+  // Tipos
+    $scope.tipos = [
+        {"idTipo":1,"tipoImovel":'Apartamento'},
+        {"idTipo":2,"tipoImovel":'Casa'},
+        {"idTipo":3,"tipoImovel":'Terreno'},
+       ];
+
   //Função que Seleciona os tipos
             $scope.selectOperation = function (value){
 
@@ -120,19 +141,12 @@
 
                 if (value == "Locacao"){
                     $scope.operacao = 'ativo';
-                    $scope.tipos = [
-                    {"idTipo":1,"tipoImovel":'Apartamento'},
-                    {"idTipo":2,"tipoImovel":'Casa'},
-                   ];
+
                 };
 
                 if(value == "Venda"){
                     $scope.operacao = 'ativo';
-                    $scope.tipos = [
-                    {"idTipo":1,"tipoImovel":'Apartamento'},
-                    {"idTipo":2,"tipoImovel":'Casa'},
-                    {"idTipo":3,"tipoImovel":'Terreno'},
-                   ];
+
                 };
 
             };
@@ -395,7 +409,7 @@
     };
 
     $scope.quartoPasso = function(fotos){
-
+       
       angular.forEach(fotos, function(value,key){
          // Valida se é menor que 2MB e se é diferente de jpeg e jpg
         if(value.size < 2000000 && value.type == 'image/jpeg' && 'image/jpg'){
@@ -407,10 +421,8 @@
 
           //*************CADASTRA NOVO IMOVEL *********************//
 
-
           restful.imovelSave(peif).success(function(response){
-
-
+           
           // Funcão de exibir a mensagem de sucesso em 5 segundos.
           $scope.mensagemSucesso = false;
           $timeout(function () {
@@ -481,8 +493,7 @@
             $scope.endereco = response[0];
 
             $scope.updateEndereco = function(endereco){
-
-                restful.imovelUpdateEndereco(id,token,endereco).success(function(response){
+                restful.imovelUpdateEndereco(fkEndereco,token,endereco).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateEndereco').modal('hide');
                         // Funcão de exibir a mensagem de sucesso em 5 segundos.
@@ -500,10 +511,87 @@
 
     $scope.modalUpdateImovel = function(id){
         restful.imovelListiIdImovel(id,token).success(function(response){
-            console.log($scope.imovel = response[0]);
+            $scope.operacao = 'ativo';
+            
+            response.forEach(function(element){
+                element['copaImovel'] = parseInt(element['copaImovel']);
+                element['andarImovel'] = parseInt(element['andarImovel']);
+                element['garagemCobertaImovel'] = parseInt(element['garagemCobertaImovel']);
+                element['garagemDescobertaImovel'] = parseInt(element['garagemDescobertaImovel']);
+                element['areaTerrenoImovel'] = parseInt(element['areaTerrenoImovel']);
+                element['areaUtilImovel'] = parseInt(element['areaUtilImovel']);
+                element['areaTotalImovel'] = parseInt(element['areaTotalImovel']);
+                element['idadeConstrucaoImovel'] = parseInt(element['idadeConstrucaoImovel']);
+                element['banheiroImovel'] = parseInt(element['banheiroImovel']);
+                element['saladejantarImovel'] = parseInt(element['saladejantarImovel']);
+                element['suiteImovel'] = parseInt(element['suiteImovel']);     
+            }, this );
+            // Passa a variavel para o Imovel 
+            var imovel = $scope.imovel = response[0];
+            
+            if(imovel.tipoImovel == "Apartamento"){
+                //Ativar todos os Inputs
+                $scope.valorImovel = 'ativo';
+                $scope.iptuImovel = 'ativo';
+                $scope.condominioImovel = 'ativo';
+                $scope.idadeConstrucaoImovel = 'ativo';
+                $scope.suiteImovel = 'ativo';
+                $scope.copaImovel = 'ativo';
+                $scope.banheiroImovel = 'ativo';
+                $scope.saladejantarImovel = 'atvo';
+                $scope.mobiladoImovel = 'ativo';
+                $scope.elevadorImovel = 'ativo';
+                $scope.descricaoImovel = 'ativo';
+                $scope.garagemCobertaImovel = 'ativo';
+                $scope.garagemDescobertaImovel = 'ativo';
+                $scope.andarImovel = 'ativo';
+                $scope.areaTerrenoImovel = 'inativo';
+                $scope.areaUtilImovel = 'inativo';
+                $scope.areaTotalImovel = 'inativo';
+            };
+            if(imovel.tipoImovel == "Casa"){
+                //Ativar todos os Inputs
+                $scope.valorImovel = 'ativo';
+                $scope.iptuImovel = 'ativo';
+                $scope.condominioImovel = 'ativo';
+                $scope.idadeConstrucaoImovel = 'ativo';
+                $scope.suiteImovel = 'ativo';
+                $scope.copaImovel = 'ativo';
+                $scope.banheiroImovel = 'ativo';
+                $scope.saladejantarImovel = 'atvo';
+                $scope.mobiladoImovel = 'ativo';
+                $scope.elevadorImovel = 'inativo';
+                $scope.descricaoImovel = 'ativo';
+                $scope.garagemCobertaImovel = 'ativo';
+                $scope.garagemDescobertaImovel = 'ativo';
+                $scope.andarImovel = 'inativo';
+                $scope.areaTerrenoImovel = 'inativo';
+                $scope.areaUtilImovel = 'inativo';
+                $scope.areaTotalImovel = 'inativo';
+            };
+    
+            if(imovel.tipoImovel == "Terreno"){
+                //Ativar todos os Inputs
+                $scope.valorImovel = 'inativo';
+                $scope.iptuImovel = 'inativo';
+                $scope.condominioImovel = 'inativo';
+                $scope.idadeConstrucaoImovel = 'inativo';
+                $scope.suiteImovel = 'inativo';
+                $scope.copaImovel = 'inativo';
+                $scope.banheiroImovel = 'inativo';
+                $scope.saladejantarImovel = 'inativo';
+                $scope.mobiladoImovel = 'inativo';
+                $scope.elevadorImovel ='inativo';
+                $scope.descricaoImovel ='ativo';
+                $scope.garagemCobertaImovel = 'inativo';
+                $scope.garagemDescobertaImovel = 'inativo';
+                $scope.andarImovel = 'inativo';
+                $scope.areaTerrenoImovel = 'ativo';
+                $scope.areaUtilImovel ='ativo';
+                $scope.areaTotalImovel ='ativo';
+            };
 
             $scope.updateImovel = function(imovel){
-
                 restful.imovelUpdateImovel(id,token,imovel).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateImovel').modal('hide');

@@ -1,0 +1,57 @@
+<!-- Modal Update Proprietario -->
+<div class="modal fade bs-example-modal-lg-UpdateProprietario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  id="closeModalUpdateProprietario">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
+      </div>
+
+       <form name="FormCliente" ng-submit="updateProprietario(proprietario)">
+
+           <div class="modal-body">
+              <div class="row">
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" ng-model="proprietario.nomeProprietario">
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>CPF</label>
+                    <input type="text" class="form-control" ng-model="proprietario.cpfProprietario"  ui-br-cpf-mask >
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" ng-model="proprietario.emailProprietario">
+                </div>
+                </div>
+
+                <div class="col-md-3">
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" class="form-control" ng-model="proprietario.telCelularProprietario" ui-br-phone-number>
+                </div>
+                </div>
+
+            </div>    <!--row -->
+
+           </div><!--modal-body -->
+
+             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Atualizar Dados</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+
+         </form>
+
+    </div>
+  </div>
+</div>

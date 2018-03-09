@@ -162,8 +162,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider){
 //|#######################################################|
 //|############# **  MODULO CONTA ** #####################|
 //|#######################################################|
-      .state('user.conta', {
-      url: '/conta',
+      .state('user.planos', {
+      url: '/planos',
       templateUrl: 'view/modulos/planos.htm',
       controller:'planosCtrl',
        ncyBreadcrumb: {

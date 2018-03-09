@@ -105,8 +105,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri novo Imovel
     var _imovelSave = function (values, token){
-
-        return  $http.post($imovelSave + sessionStorage.getItem('usuario.token'), values);
+         return  $http.post($imovelSave + sessionStorage.getItem('usuario.token'), values);
     };
    //Lista todos imoveis do cliente
     var _imovelList = function (token){
@@ -114,55 +113,35 @@ app.service('restful', function ($http,$sessionStorage) {
     };
    //Lista dados do imovel por id do cliente
    var _imovelListiIdProprietario = function (id,token){
-       console.log(id);
-       console.log(token);
-    return  $http.get($imovelListiIdProprietario + id + '/' + token);
+        return  $http.get($imovelListiIdProprietario + id + '/' + token);
     };
    //Atualiza os dados do Proprietario referente ao id do imovel
    var _imovelUpdateProprietario = function (id,token,proprietario){
-       console.log(id);
-       console.log(token);
-       console.log(proprietario);
-    return  $http.put($imovelUpdateProprietario + id + '/' + token , proprietario);
+        return  $http.put($imovelUpdateProprietario + id + '/' + token , proprietario);
     };
    //Lista dados do endereco por id do cliente
    var _imovelListiIdEndereco = function (fkEndereco,token){
-    console.log(fkEndereco);
-    console.log(token);
- return  $http.get($imovelListiIdEndereco + fkEndereco + '/' + token);
+        return  $http.get($imovelListiIdEndereco + fkEndereco + '/' + token);
  };
 //Atualiza os dados do Endereco referente ao id do imovel
 var _imovelUpdateEndereco = function (id,token,endereco){
-    console.log(id);
-    console.log(token);
-    console.log(endereco);
- return  $http.put($imovelUpdateEndereco + id + '/' + token , endereco);
+     return  $http.put($imovelUpdateEndereco + id + '/' + token , endereco);
  };
     //Lista dados do imovel por id do imovel
     var _imovelListiIdImovel = function (id,token){
-        console.log(id);
-        console.log(token);
-     return  $http.get($imovelListiIdImovel + id + '/' + token);
+         return  $http.get($imovelListiIdImovel + id + '/' + token);
      };
     //Atualiza os dados do Endereco referente ao id do imovel
     var _imovelUpdateImovel = function (id,token,imovel){
-        console.log(id);
-        console.log(token);
-        console.log(endereco);
-       return  $http.put($imovelUpdateImovel + id + '/' + token , imovel);
+         return  $http.put($imovelUpdateImovel + id + '/' + token , imovel);
      };
     //Lista fotos do imovel por id do imovel
     var _imovelListiIdFotos = function (id,token){
-        console.log(id);
-        console.log(token);
-     return  $http.get($imovelListiIdFotos + id + '/' + token);
+         return  $http.get($imovelListiIdFotos + id + '/' + token);
      };
     //Atualiza os dados do Endereco referente ao id do imovel
     var _imovelUpdateFotos = function (id,token,fotos){
-        console.log(id);
-        console.log(token);
-        console.log(fotos);
-     return  $http.put($imovelUpdateFotos + id + '/' + token , fotos);
+         return  $http.put($imovelUpdateFotos + id + '/' + token , fotos);
      };
 
      var _imovelListFiltro = function(filtro,token){
@@ -173,12 +152,10 @@ var _imovelUpdateEndereco = function (id,token,endereco){
 //|#######################################################|
    //List Imovel do Corretor
    var _corretorListImovel = function (values){
-    //console.log(values,token);
      return  $http.get($corretorListImovel, values);
  };
     //Listar Dados do Corretor
    var _corretorListDados = function (values){
-    //console.log(values,token);
      return  $http.get($corretorListDados, values);
  };
 
@@ -188,18 +165,15 @@ var _imovelUpdateEndereco = function (id,token,endereco){
 //|############# **  MODULO PERFIL ** ################|
 //|#######################################################|
    //Check URL
-   var _checkURL = function (values ,token){
-    //console.log(values,token);
-     return  $http.get($checkURL + token , values);
- };
+    var _checkURL = function (values ,token){
+        return  $http.get($checkURL + token , values);
+    };
    //Update Picture
-   var _updateURL = function (values ,token){
-    //console.log(values,token);
-     return  $http.put($updateURL + token , values);
- };
+    var _updateURL = function (values ,token){
+        return  $http.put($updateURL + token , values);
+    };
    //Update Picture
     var _updatePicture = function (values ,token){
-       //console.log(values,token);
         return  $http.put($updatePicture + token , values);
     };
 
@@ -217,7 +191,6 @@ var _imovelUpdateEndereco = function (id,token,endereco){
 //|#######################################################|
     //Recuperação de Senha
     var _solicitaResgateSenha = function (values){
-     // console.log(values);
         return $http.post($solicitaResgateSenha , values);
     };
    //Solicita o Codigo da Recuperacao de Senha

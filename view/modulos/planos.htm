@@ -1,23 +1,70 @@
-<div class="alert alert-success" ng-show="mensagemSucesso">
-  <strong>Sucesso!</strong> Dados cadastrado com sucesso.
-</div>
-
-<div class="acoes">
-
-<i class="fa fa-users" aria-hidden="true"></i>
-	<label>Planos</label>
-
-</div>
-
-<div class="conteudo">
-   <div class="bloco-plano">
-      1 Ano Por Apenas R$ 49,99 {{nomeUsuario}}
-    <!-- Botão Pagseguro -->  
-          <input alt="Pague com PagSeguro" ng-click="pagseguro()" type="image"  
-  src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/>  
-            
+<div class="menuTemplateRight">
+    <ul>
+      <li><a ng-click="click('updateUrl')"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>Cartão de Crédito</a></li>
+      <li><a ng-click="click('updateFotos')"><i class="fa fa-barcode" aria-hidden="true"></i> Boleto Bancário</a></li>
+    </ul>
+  </div>
+  <div class="menuTemplateLeft">
+      
+  
+  
+  <div class="menuTemplateLeft">
+  
+      <div class="alert alert-success" ng-hide="mensagemSucesso">
+        <strong>Sucesso!</strong> Dados atualizado com sucesso.
+      </div>
+  <!--
+  //|#######################################################|
+  //|########### **  FORM UPDATE URL ** ################|
+  //|#######################################################|
+  -->
+  
+  <div class="conteudo" ng-if="formUrl == 'ativo'">		
+  
+    <div class="alert alert-danger" ng-hide="mensagemErroUrl">
+      <strong>Ops!</strong> Já existe esta url.
     </div>
+  
+    <div class="acoes">
+  
+    <i class="fa fa-picture-o" aria-hidden="true"></i>
+      <label>Caminho da URL</label>
+  
+    </div>
+  
+    <hr>
 
 
-</div>
-
+    </div>
+  <!--
+  //|#######################################################|
+  //|########### **  FORM UPDATE FOTOS ** ################|
+  //|#######################################################|
+  -->
+  
+      <div class="conteudo" ng-if="formFoto == 'ativo'">		
+      
+      <div class="acoes">
+  
+      <i class="fa fa-picture-o" aria-hidden="true"></i>
+        <label>Foto do Perfil</label>
+  
+      </div>
+  
+      <hr>
+  
+        <form name="FormPicture" ng-submit="fotoPerfil(picture)" method="post">
+  
+          <div class="form-group">
+            <label>Alterar a foto Perfil</label>
+            <input type="file" ng-file-model="picture.foto" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+          </div>
+  
+          <hr>  
+          <button type="submit" class="btn btn-primary">Atualizar
+             Dados</button> 
+  
+        </form>
+      </div>
+ 
+  </div>
