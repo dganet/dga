@@ -45,6 +45,8 @@ $app->post('/usuario/login/forgot', \Api\Controller\AuthController::class . ':fo
 $app->post('/usuario/login/forgot/check', \Api\Controller\AuthController::class . ':checkForgot');
 //Muda a senha para a nova senha que o usuario informou
 $app->put('/usuario/login/forgot/change', \Api\Controller\AuthController::class . ':changeForgot');
+//Atualiza as informações dos usuarioSave
+$app->put('/usuario/update/{id}/{token}', \Api\Controller\AuthController::class . ':update')
 
 //FIM AUTENTICACAO
 /**
