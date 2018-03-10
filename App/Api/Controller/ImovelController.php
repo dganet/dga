@@ -143,12 +143,30 @@ class ImovelController {
     }
 
     public function update($request, $response, $args){
-        $user = Auth::_getTokenInfo($args['token']);
-        $post = json_decode($request->getBody, true);
-        $imovel = Imovel::getInstance();
-        $imovel->load();
-        $imovel->setPrimaryKey('idImovel');
-        $imovel->update();
+        $token = $args['token'];
+        if(Auth::_isLoggedIn($token)){
+          $user = Auth::_getTokenInfo($args['token']);
+          $post = json_decode($request->getBody(), true);
+          $imovel = Imovel::getInstance();
+          $imovel->load($post);
+          $imovel->setPrimaryKey('idImovel');
+          if($imovel->update()){
+            return $response->withJson([
+              'message' => 'Imovel atualizado com sucesso!',
+              'flag'    => true
+            ]);
+          }else{
+            return $response->withJson([
+              'message' => 'Não foi possivel atualizar as informações ',
+              'flag'    => false
+            ]);
+          }
+        }else{
+          return $response->withJson([
+            'message' => 'Usuario não está logado',
+            'flag'    => false
+          ]);
+        }
     }
 
 }

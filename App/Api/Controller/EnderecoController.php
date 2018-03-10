@@ -179,4 +179,37 @@ class EnderecoController{
         return $response->withJson($collection->getAll());
       }
     }
+    /**
+     * Atualiza as informações do bairro
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param Mixed $args
+     * @return Json
+     */
+    public function updateEndereco($request, $response, $args){
+      $token = $args['token'];
+      if (Auth::_isLoggedIn($token)){
+        $this->endereco->load(json_decode($request->getBody(), true));
+        $this->endereco->setPrimaryKey('enderecoId');
+
+        if (!is_numeric($this->endereco->bairroId)){
+          $this->bairro->nome = $this->endereco->bairroId;
+          $this->bairro->cidadeId = $this->endereco->cidadeId;
+          $this->endereco->bairroId = $this->bairro->save(true)['lastId'];
+        }
+
+        if($this->endereco->update()){
+          return $response->WithJson([
+            'message' => 'Endereco atualizado com sucesso',
+            'flag'    => true
+          ]);
+        }else{
+          return $response->WithJson([
+            'message' => 'Houve um problema ao tentar atualizar as informações',
+            'flag'    => false
+          ]);
+        }
+      }
+    }
 }

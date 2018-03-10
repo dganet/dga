@@ -15,7 +15,7 @@
 
                     <div class="col-md-12">
                     <div class="form-group">
-                        <label>Endereço</label>
+                        <label>Endereço{{enderecos}}</label>
                         <input type="text" class="form-control" ng-model="enderecos.logradouro">
                      </div>
                      </div>
@@ -23,9 +23,9 @@
                     <div class="col-md-3">
                     <div class="form-group">
                     <label>Estado</label>
-                        <select class="form-control" ng-change="executeCidade(enderecos.idEstado)"
+                        <select class="form-control" ng-change="executeCidade(enderecos.estadoId)"
                         ng-options="endereco.idEstado as endereco.nome for endereco in estados"
-                        ng-model="enderecos.idEstado"
+                        ng-model="enderecos.estadoId"
                         ng-init="endereco.idEstado = endereco.idEstado || endereco.estadoId">
                         <option value="">Selecione Estado</option>
                         </select>
@@ -35,9 +35,9 @@
                     <div class="col-md-3">
                     <div class="form-group">
                     <label>Cidade</label>
-                        <select class="form-control" ng-change="executeBairro(enderecos.idCidade)" ng-disabled="!enderecos.idEstado"
-                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: endereco.idEstado}"
-                        ng-model="enderecos.idCidade"
+                        <select class="form-control" ng-change="executeBairro(enderecos.cidadeId)" ng-disabled="!enderecos.estadoId"
+                        ng-options="c.idCidade as c.nome for c in cidades | filter: {estadoId: enderecos.estadoId}"
+                        ng-model="enderecos.cidadeId"
                         ng-init="endereco.idCidade = endereco.idCidade || endereco.cidadeId">
                         <option value="">Selecione Cidade</option>
                         </select>
@@ -49,13 +49,14 @@
                         <label>Bairro</label>
                          <!-- InputBairro novo Bairro -->
                         <div ng-show="inputBairro">
-                        <input type="text" class="form-control" ng-model="enderecos.idBairro" placeholder="Novo Bairro" required>
+                        <input type="text" class="form-control" ng-model="enderecos.bairroId" placeholder="Novo Bairro" required>
                         </div>
 
                        <!-- Select de Bairros -->
-                        <select class="form-control" ng-disabled="!enderecos.idCidade"
-                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: endereco.idCidade}"
-                         ng-model="enderecos.idBairro"
+                
+                        <select class="form-control" ng-disabled="!enderecos.cidadeId"
+                         ng-options="b.idBairro as b.nome for b in bairros | filter: {cidadeId: enderecos.cidadeId}"
+                         ng-model="enderecos.bairroId"
                          ng-show="selectBairro"
                          ng-init="endereco.idBairro = endereco.idBairro || endereco.bairroId">
                         <option value="">Selecione Bairro</option>

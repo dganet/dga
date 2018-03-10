@@ -13,7 +13,7 @@
     {label:'Sim',b:"1"},{label: 'Não', b:"0"}
   ];
 
-  //Ativando o Select Bairro 
+  //Ativando o Select Bairro
   $scope.selectBairro = true;
   //Ativando loop de imovel Padrao
   $scope.listPadrao = 'ativo';
@@ -81,7 +81,7 @@
 
              // Load Bairros referente a Cidade
             $scope.executeBairro = function (id){
-                var idCidade = id;
+                    var idCidade = id;
                  serviceEnderecos.getBairros(id).success(function(response){
                      var flag = response.flag;
                      if (flag == false ){
@@ -408,7 +408,7 @@
     };
 
     $scope.quartoPasso = function(fotos){
-       
+
       angular.forEach(fotos, function(value,key){
          // Valida se é menor que 2MB e se é diferente de jpeg e jpg
         if(value.size < 2000000 && value.type == 'image/jpeg' && 'image/jpg'){
@@ -421,7 +421,7 @@
           //*************CADASTRA NOVO IMOVEL *********************//
 
           restful.imovelSave(peif).success(function(response){
-           
+
           // Funcão de exibir a mensagem de sucesso em 5 segundos.
           $scope.mensagemSucesso = false;
           $timeout(function () {
@@ -435,7 +435,7 @@
           // Copiando os valores vazio do scope.master
             $scope.imovel = angular.copy($scope.master);
             $scope.proprietario = angular.copy($scope.master);
-            //$scope.endereco = angular.copy($scope.master);
+            $scope.endereco = angular.copy($scope.master);
             $scope.fotos = angular.copy($scope.master);
           };
           // Ativando a função
@@ -462,6 +462,7 @@
           //Lista os dados do proprietario referente ao id
     $scope.modalUpdateProprietario = function(id){
       restful.imovelListiIdProprietario(id,token).success(function(response){
+
         $scope.proprietario = response;
 
         $scope.updateProprietario = function(proprietario){
@@ -481,17 +482,21 @@
     };
          //atualiza o proprietario
 
- 
+
            //*************UPDATE ENDERECO *********************//
 
-    $scope.modalUpdateEndereco = function(fkEndereco){               
+    $scope.modalUpdateEndereco = function(fkEndereco){
         restful.imovelListiIdEndereco(fkEndereco,token).success(function(response){
-         
+
            $scope.enderecos = response[0];
-            $scope.updateEndereco = function(enderecos){
+
+               $scope.updateEndereco = function(enderecos){
+
                 restful.imovelUpdateEndereco(fkEndereco,token,enderecos).success(function(response){
+                  $scope.enderecos = angular.copy($scope.master);
                      // Fecha o Modal
                         $('#closeModalUpdateEndereco').modal('hide');
+
                         // Funcão de exibir a mensagem de sucesso em 5 segundos.
                         $scope.mensagemSucesso = false;
                         $timeout(function () {
@@ -508,7 +513,7 @@
     $scope.modalUpdateImovel = function(id){
         restful.imovelListiIdImovel(id,token).success(function(response){
             $scope.operacao = 'ativo';
-            
+
             response.forEach(function(element){
                 element['copaImovel'] = parseInt(element['copaImovel']);
                 element['andarImovel'] = parseInt(element['andarImovel']);
@@ -520,11 +525,11 @@
                 element['idadeConstrucaoImovel'] = parseInt(element['idadeConstrucaoImovel']);
                 element['banheiroImovel'] = parseInt(element['banheiroImovel']);
                 element['saladejantarImovel'] = parseInt(element['saladejantarImovel']);
-                element['suiteImovel'] = parseInt(element['suiteImovel']);     
+                element['suiteImovel'] = parseInt(element['suiteImovel']);
             }, this );
-            // Passa a variavel para o Imovel 
+            // Passa a variavel para o Imovel
             var imovel = $scope.imovel = response[0];
-            
+
             if(imovel.tipoImovel == "Apartamento"){
                 //Ativar todos os Inputs
                 $scope.valorImovel = 'ativo';
@@ -565,7 +570,7 @@
                 $scope.areaUtilImovel = 'inativo';
                 $scope.areaTotalImovel = 'inativo';
             };
-    
+
             if(imovel.tipoImovel == "Terreno"){
                 //Ativar todos os Inputs
                 $scope.valorImovel = 'inativo';

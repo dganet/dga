@@ -25,9 +25,9 @@ app.service('restful', function ($http,$sessionStorage) {
    $imovelListiIdProprietario = 'App/proprietario/list/' //Retorna alguns dados do Proprietário do Imovel
    $imovelUpdateProprietario = 'App/proprietario/update/' // Atualiza dados do Proprietario referente o id do imovel
    $imovelListiIdEndereco = 'App/endereco/' //Retorna alguns dados do Endereco do Imovel referete ao id
-   $imovelUpdateEndereco = 'caminho do back-end' // Atualiza dados do Endereco referente o id do imovel
+   $imovelUpdateEndereco = 'App/endereco/' // Atualiza dados do Endereco referente o id do imovel
    $imovelListiIdImovel = 'App/imovel/listId/' //Retorna alguns dados do Imovel referente ao id
-   $imovelUpdateImovel = 'caminho do back-end' // Atualiza dados do imovel referente o id do imovel
+   $imovelUpdateImovel = 'App/imovel/update/' // Atualiza dados do imovel referente o id do imovel
    $imovelListiIdFotos = 'App/imagem/listId/' //Retorna alguns dados das Fotos referente ao id
    $imovelUpdateFotos = 'App/imagem/update/' // Atualiza dados das Fotos referente o id do imovel
    $imovelListFiltro = 'caminho do back-end' // Filtro do loop de Imoveis
