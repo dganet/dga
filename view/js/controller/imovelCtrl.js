@@ -36,10 +36,9 @@
     $scope.fotoSelect = function(value){
        var a = this.fotoSelecionado = value;
         this.contactCopy = angular.copy(value);
-        console.log(a);
-    };
-  $scope.inputsFotos = contagem;
+       };
 
+  $scope.inputsFotos = contagem;
 
   // Lista todos Imoveis do Cliente
   restful.imovelList(token).success(function(response){
@@ -436,7 +435,7 @@
           // Copiando os valores vazio do scope.master
             $scope.imovel = angular.copy($scope.master);
             $scope.proprietario = angular.copy($scope.master);
-            $scope.endereco = angular.copy($scope.master);
+            //$scope.endereco = angular.copy($scope.master);
             $scope.fotos = angular.copy($scope.master);
           };
           // Ativando a função
@@ -482,18 +481,15 @@
     };
          //atualiza o proprietario
 
-
-
-
+ 
            //*************UPDATE ENDERECO *********************//
 
-    $scope.modalUpdateEndereco = function(fkEndereco){
-        restful.imovelListiIdEndereco(fkEndereco, token).success(function(response){
-
-            $scope.endereco = response[0];
-
-            $scope.updateEndereco = function(endereco){
-                restful.imovelUpdateEndereco(fkEndereco,token,endereco).success(function(response){
+    $scope.modalUpdateEndereco = function(fkEndereco){               
+        restful.imovelListiIdEndereco(fkEndereco,token).success(function(response){
+         
+           $scope.enderecos = response[0];
+            $scope.updateEndereco = function(enderecos){
+                restful.imovelUpdateEndereco(fkEndereco,token,enderecos).success(function(response){
                      // Fecha o Modal
                         $('#closeModalUpdateEndereco').modal('hide');
                         // Funcão de exibir a mensagem de sucesso em 5 segundos.

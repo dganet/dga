@@ -1,13 +1,49 @@
 app.controller("planosCtrl", function($scope,serviceEnderecos, $timeout , $location, restful, $http){
-		
+	
+	var teste = {
+    reference: "PEDIDO123",
+    firstDueDate: "2017-09-14",
+    numberOfPayments: "4",
+    periodicity: "monthly",
+    amount: "19.87",
+    instructions: "juros de 1% ao dia e mora de 5,00",
+    description: "Assinatura de Sorvete",
+    customer: {
+        document: {
+            type: "CPF",
+            value: "00000000000"
+        },
+        name: "Alini QA",
+        email: "compradoralini@xpto.com.br",
+        phone: {
+            areaCode: "11",
+            number: "80804040"
+        },
+        address: {
+            postalCode: "01046010",
+            street: "Av. Ipiranga",
+            number: "100",
+            district: "Republica",
+            city: "Sao Paulo",
+            state: "SP"
+        }
+    }
+};
+
 	var $urlPagSeguro = 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions?email=adniltonweb@gmail.com&token=C630DC7410554CE5A3EDA90BC6666A68';
 		
 		$http.post($urlPagSeguro).success(function(response){
-			
-			//Id Transação PagSeguro		  	
-			this.idTransacaoPagSeguro = response;	
-			console.log(response);	
 		
+			var idTransacaoPagSeguro = response;	
+			console.log(idTransacaoPagSeguro);	
+		
+			$urlBoleto = 'https://ws.pagseguro.uol.com.br/recurring-payment/boletos';
+			$http.post($urlBoleto + '/' + 'eb87e1c923c64be2b359ff7445b2b163').success(function(response){
+
+				console.log(response);
+			});
+			//Id Transação PagSeguro		  	
+			
 		});		
 
 
