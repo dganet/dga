@@ -46,6 +46,7 @@ $app->post('/usuario/login/forgot/check', \Api\Controller\AuthController::class 
 //Muda a senha para a nova senha que o usuario informou
 $app->put('/usuario/login/forgot/change', \Api\Controller\AuthController::class . ':changeForgot');
 
+
 //FIM AUTENTICACAO
 /**
  * IMOVEIS
