@@ -12,13 +12,84 @@ modalUpdateFotos">
       </div>
 
       <div class="alert alert-warning">
-          <strong>Atenção!</strong> Extensões permetidas , JPG e JPEG. Tamanho permetidos, Altura de 400px até 800px e Largura de 750px até 1024px. 
+          <strong>Atenção!</strong> Extensões permetidas , JPG e JPEG. Tamanho permetidos, Altura de 400px até 800px e Largura de 750px até 1024px.
         </div>
-       <form name="myForm" ng-submit="updateFotos(foto)">
+
+       <form name="myForm" ng-submit="updateFotos(fotos)">
 
               <div class="modal-body">
               <div class="row">
-                        
+
+
+                              <div class="col-md-6">
+                              <div class="form-group">
+                                   <input type="file" ng-file-model="fotos.um" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">                    <input type="file" ng-file-model="x.idImagem" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                 </div>
+                              </div>
+
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                   <input type="file" ng-file-model="fotos.dois" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                 </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                   <input type="file" ng-file-model="fotos.tres" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                 </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="file" ng-file-model="fotos.quatro" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <input type="file" ng-file-model="fotos.cinco" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                </div>
+                             </div>
+
+
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                  <input type="file" ng-file-model="fotos.seis" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                </div>
+                             </div>
+
+
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                  <input type="file" ng-file-model="fotos.sete" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                </div>
+                             </div>
+
+
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                  <input type="file" ng-file-model="fotos.oito" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                </div>
+                             </div>
+
+
+                           <div class="col-md-6">
+                                <div class="form-group">
+                                  <input type="file" ng-file-model="fotos.nove" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                </div>
+                             </div>
+
+
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                  <input type="file" ng-file-model="fotos.dez" name="arquivo"/ class="form-control"  accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                </div>
+                                </div>
+
+
+
+
+                  <!--
                         <div ng-repeat = "x in inputsFotos">
                         <div class="col-md-3">
                         <div class="form-group">
@@ -27,29 +98,29 @@ modalUpdateFotos">
 
     <center><label for="">{{x.label}}</label><center>
     <label class="label-file btn btn-primary" for='selecao-arquivo{{$index}}'>Update Foto</label>
-    
-            <input style="display:none" type="file" name="myImage{{$index}}" 
+
+            <input style="display:none" type="file" name="myImage{{$index}}"
             image-with-preview
             ng-model="foto[$index]"
             accept="image/jpeg,image/jpg"
             id="selecao-arquivo{{x.value}}"
-            dimensions="height > 399 && width > 749 && height < 801 && width 
+            dimensions="height > 399 && width > 749 && height < 801 && width
             < 1025 ">
              <br />
             <span class="error" ng-show="myForm.myImage{{$index}}.$error.image">
                 Not a JPEG or a PNG!
               </span>
-              
-      
 
-        <div class="fundo-imagem">  
+
+
+        <div class="fundo-imagem">
             <span class="error" ng-show="myForm.myImage{{$index}}.$error.dimensions">
                <img src="view/imagens/imovelError.jpg" width="120" height="120" class="centro-imagem">
               </span>
-              
-              
+
+
             <img ng-show="foto[$index].src" ng-src="{{foto[$index].src}}"
-            width="100" height="100"/>                          
+            width="100" height="100"/>
 
             <div ng-if="foto[$index]['status'] == x.value">
               <label class="label-file" for='selecao-arquivo{{$index}}'>
@@ -62,8 +133,9 @@ modalUpdateFotos">
                         </div>
                         </div>
                         </div>
+-->
+            </div>
 
-            </div>    <!--row -->
             </div><!--modal-body -->
 
              <div class="modal-footer">

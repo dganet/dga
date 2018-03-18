@@ -633,18 +633,13 @@
 
               $scope.modalUpdateFotos = function(id){
                 restful.imovelListiIdFotos(id,token).success(function(response){
-                        var i = -1;
-                    response.forEach(function(element) {
-                        i++;
-                        element['status'] = i;
-
-                          }, this);
 
                     $scope.foto = response;
 
-                    $scope.updateFotos = function(foto){
-                        console.log(foto);
-                        restful.imovelUpdateFotos(id,token,foto).success(function(response){
+                    $scope.updateFotos = function(fotos){
+                      console.log('estou aqui');
+                        console.log(fotos);
+                        restful.imovelUpdateFotos(id,token,fotos).success(function(response){
                              // Fecha o Modal
                                 $('#closeModalUpdateImagem').modal('hide');
                                 // Funcão de exibir a mensagem de sucesso em 5 segundos.
