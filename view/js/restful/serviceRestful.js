@@ -82,6 +82,7 @@ app.service('restful', function ($http,$sessionStorage) {
 //|#######################################################|
    //Inseri novo Cliente
     var _clienteSave = function (values, token){
+        console.log(values,token);
         return  $http.post($clienteSave + token , values);
     };
    //Lista todos os Clientes
@@ -123,9 +124,9 @@ app.service('restful', function ($http,$sessionStorage) {
    var _imovelListiIdEndereco = function (fkEndereco,token){
         return  $http.get($imovelListiIdEndereco + fkEndereco + '/' + token);
  };
-//Atualiza os dados do Endereco referente ao id do imovel
-var _imovelUpdateEndereco = function (id,token,endereco){
-     return  $http.put($imovelUpdateEndereco + id + '/' + token , endereco);
+    //Atualiza os dados do Endereco referente ao id do imovel
+    var _imovelUpdateEndereco = function (fkEndereco,token,endereco){
+     return  $http.put($imovelUpdateEndereco + fkEndereco + '/' + token , endereco);
  };
     //Lista dados do imovel por id do imovel
     var _imovelListiIdImovel = function (id,token){
