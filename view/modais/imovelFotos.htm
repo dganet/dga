@@ -12,7 +12,7 @@ modalUpdateFotos">
       </div>
 
       <div class="alert alert-warning">
-          <strong>Atenção!</strong> Extensões permetidas , JPG e JPEG. Tamanho permetidos, Altura de 400px até 800px e Largura de 750px até 1024px.
+
         </div>
 
        <form name="myForm" ng-submit="updateFotos(fotos)">
@@ -20,10 +20,9 @@ modalUpdateFotos">
               <div class="modal-body">
               <div class="row">
 
-
                               <div class="col-md-6">
                               <div class="form-group">
-                                   <input type="file" ng-file-model="fotos.um" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">                    <input type="file" ng-file-model="x.idImagem" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
+                                   <input type="file" ng-file-model="fotos.{{index}}" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">                    <input type="file" ng-file-model="x.idImagem" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
                                  </div>
                               </div>
 

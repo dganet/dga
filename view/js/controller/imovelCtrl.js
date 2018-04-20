@@ -634,11 +634,10 @@
               $scope.modalUpdateFotos = function(id){
                 restful.imovelListiIdFotos(id,token).success(function(response){
 
-                    $scope.foto = response;
+                    console.log($scope.fotos = response);
 
                     $scope.updateFotos = function(fotos){
-                      console.log('estou aqui');
-                        console.log(fotos);
+                          console.log(fotos);
                         restful.imovelUpdateFotos(id,token,fotos).success(function(response){
                              // Fecha o Modal
                                 $('#closeModalUpdateImagem').modal('hide');
