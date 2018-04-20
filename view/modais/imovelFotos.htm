@@ -11,15 +11,19 @@ modalUpdateFotos">
         <h4 class="modal-title" id="myModalLabel">Atualizar</h4>
       </div>
 
+<<<<<<< HEAD
       <div class="alert alert-warning">
 
         </div>
+=======
+>>>>>>> a678c6f61150428a5d0c0c7a518da532d8dc5632
 
        <form name="myForm" ng-submit="updateFotos(fotos)">
 
               <div class="modal-body">
               <div class="row">
 
+<<<<<<< HEAD
                               <div class="col-md-6">
                               <div class="form-group">
                                    <input type="file" ng-file-model="fotos.{{index}}" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">                    <input type="file" ng-file-model="x.idImagem" name="arquivo"/ class="form-control" accept="image/x-png, image/gif, image/jpeg" data-max-size="2048" onchange="angular.element(this).scope().verificaFoto(this)">
@@ -120,24 +124,38 @@ modalUpdateFotos">
 
             <img ng-show="foto[$index].src" ng-src="{{foto[$index].src}}"
             width="100" height="100"/>
+=======
+             
+              <div ng-repeat="x in fotos">
+                  
+               
+                <div class="col-md-4">
+                <div class="form-group">
+                      
+                      <img src="view/upload/{{x.nomeImagem}}" width="100px" height="100px">
+                 
 
-            <div ng-if="foto[$index]['status'] == x.value">
-              <label class="label-file" for='selecao-arquivo{{$index}}'>
-                <img src="view/upload/{{foto[$index]['nomeImagem']}}"
-                  width="100" height="100" class="centro-imagem">
-              </label>
-            </div>
+                      <input type="file" ng-file-model="x.fotos" 
+                      name="arquivo"/ class="form-control" 
+                      accept="image/x-png, image/gif, image/jpeg" 
+                      data-max-size="2048" 
+                      onchange="angular.element(this).scope().verificaFoto(this)">                    
+                </div>
+                </div>
 
-        </div>
-                        </div>
-                        </div>
-                        </div>
--->
+              </div>
+>>>>>>> a678c6f61150428a5d0c0c7a518da532d8dc5632
+
+              
+
+ 
             </div>
 
             </div><!--modal-body -->
 
              <div class="modal-footer">
+
+                <button type="buttom" class="btn btn-info" ng-click="addfield()">+ Fotos</button>
                 <button type="submit" class="btn btn-primary">Atualizar Dados</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
               </div>

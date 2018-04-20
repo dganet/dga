@@ -17,28 +17,6 @@
   $scope.selectBairro = true;
   //Ativando loop de imovel Padrao
   $scope.listPadrao = 'ativo';
-  //Inputs Imagens
-  var contagem = [
-      {value:"0", label:"Foto Principal", status:"true"},
-      {value:"1", label:"Foto 01",status:"true"},
-      {value:"2", label:"Foto 02",status:"true"},
-      {value:"3", label:"Foto 03",status:"true"},
-      {value:"4", label:"Foto 04",status:"true"},
-      {value:"5", label:"Foto 05",status:"true"},
-      {value:"6", label:"Foto 06",status:"true"},
-      {value:"7", label:"Foto 07",status:"true"},
-      {value:"8", label:"Foto 08",status:"true"},
-      {value:"9", label:"Foto 09",status:"true"},
-      {value:"10", label:"Foto 10",status:"true"},
-      {value:"11", label:"Foto 11",status:"true"},
-
-    ];
-    $scope.fotoSelect = function(value){
-       var a = this.fotoSelecionado = value;
-        this.contactCopy = angular.copy(value);
-       };
-
-  $scope.inputsFotos = contagem;
 
   // Lista todos Imoveis do Cliente
   restful.imovelList(token).success(function(response){
@@ -487,11 +465,11 @@
 
     $scope.modalUpdateEndereco = function(fkEndereco){
         restful.imovelListiIdEndereco(fkEndereco,token).success(function(response){
+            var fkEndereco = fkEndereco;
 
            $scope.enderecos = response[0];
 
-               $scope.updateEndereco = function(enderecos){
-
+               $scope.updateEndereco = function(fkEndereco,token,enderecos){
                 restful.imovelUpdateEndereco(fkEndereco,token,enderecos).success(function(response){
                   $scope.enderecos = angular.copy($scope.master);
                      // Fecha o Modal
@@ -632,12 +610,36 @@
               //*************FOTOS *********************//
 
               $scope.modalUpdateFotos = function(id){
+               
                 restful.imovelListiIdFotos(id,token).success(function(response){
+                    
+                    $scope.fotos = [];
 
+                    $scope.fotos.push(response[0]);              
+
+<<<<<<< HEAD
                     console.log($scope.fotos = response);
 
                     $scope.updateFotos = function(fotos){
                           console.log(fotos);
+=======
+                    $scope.addfield=function(){
+                      $scope.fotos.push({})
+                    };                    
+
+                });
+
+                    $scope.updateFotos = function(fotos){
+                        
+                        if(fotos[0]['idImagem'] > 0){
+                            fotos.forEach(function(element){
+                            console.log(element['fotos']['idImagem'] = element[0]['idImagem']);
+                            },this);
+                        
+                        };
+                        console.log(fotos);
+
+>>>>>>> a678c6f61150428a5d0c0c7a518da532d8dc5632
                         restful.imovelUpdateFotos(id,token,fotos).success(function(response){
                              // Fecha o Modal
                                 $('#closeModalUpdateImagem').modal('hide');
@@ -649,7 +651,6 @@
                         });
                       };
 
-                  });
             };
 
 

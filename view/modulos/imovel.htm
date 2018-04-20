@@ -71,6 +71,7 @@
 
              <tr ng-repeat="x in imovelFiltro | filter: busca" ng-if="listFiltro == 'ativo'">
              <tr ng-repeat="x in imovelList | filter: busca" ng-if="listPadrao == 'ativo'">
+                
                <td><span class="align-middle">{{x.idImovel}}</span></td>
                <td class="centro" >{{x.isPublic}}</td>
                <td><a class="btn btn-default" ng-click="modalUpdateFotos(x.idImovel)" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg-modalSlideFotos">
@@ -83,9 +84,8 @@
                </td>
 
                 <td class="centro">
-                   {{bairroImovel}}, {{cidadeImovel}} - {{estadoImovel}}
-                   Rua Guanabara teste 2 e teste 2 <br>
-                   Boraceia, Bertioga-SP
+                   {{logradouroImovel}} <br>
+                   {{bairroImovel}},  {{cidadeImovel}} - {{estadoImovel}}
 
                 </td>
 
